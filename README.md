@@ -160,13 +160,15 @@ submission from a second device in a real browser.
 ## Live crew development
 
 Every idea gets its own `crew/...` branch, sibling worktree under
-`/data/dev/amundsen-game-worktrees`, and independent headless `codex exec`
-process. The coordinating session reviews and smoke-checks branches before merging
-on `main`, which serves the live game.
+`/data/dev/amundsen-game-worktrees`, and independent headless worker process.
+The default worker is Claude Code (`claude -p --model claude-fable-5-1`);
+`--worker codex` selects `codex exec`. The coordinating session reviews and
+smoke-checks branches before merging on `main`, which serves the live game.
 
 ```sh
 python3 tools/crew.py status
 python3 tools/crew.py start my-idea /path/to/brief.md
+python3 tools/crew.py start my-idea /path/to/brief.md --worker codex
 python3 tools/crew_watch.py          # Queue current board once
 ```
 
@@ -182,6 +184,6 @@ not retried automatically.
 XDG_RUNTIME_DIR=/run/user/1000 systemctl --user stop amundsen-game-crew.service
 ```
 
-Stopping the watcher prevents new runs; existing Codex workers continue their
+Stopping the watcher prevents new runs; existing workers continue their
 assigned tasks. `AGENTS.md` carries the product voice, data-source rules, and
 worker workflow. All requested data pulls use the underway server.

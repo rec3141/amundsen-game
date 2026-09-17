@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Launch one headless Codex process per crew idea in an isolated Git worktree."""
+"""Launch one headless coding agent per crew idea in an isolated Git worktree."""
 import argparse
 import json
 from pathlib import Path
@@ -10,6 +10,28 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNS = ROOT / 'runtime/crew'
+CLAUDE_MODEL = 'claude-fable-5-1'
+DEFAULT_WORKER = 'claude'
+
+def command(worker, state, run):
+    """Both workers read the brief on stdin and stream JSON events to stdout."""
+    if worker == 'codex':
+        return ['codex', 'exec', '-C', state['worktree'], '-s', 'danger-full-access',
+                '-c', 'approval_policy="never"', '--json', '-o', str(run / 'result.md'), '-']
+    # A headless worker has nobody to approve tool calls, so permissions are bypassed.
+    return ['claude', '-p', '--model', CLAUDE_MODEL, '--dangerously-skip-permissions',
+            '--output-format', 'stream-json', '--verbose']
+
+def claude_result(events):
+    """Return (final report, failed) from Claude Code's stream-json events."""
+    for line in reversed(events.read_text().splitlines()):
+        try:
+            event = json.loads(line)
+        except ValueError:
+            continue
+        if isinstance(event, dict) and event.get('type') == 'result':
+            return event.get('result') or '', bool(event.get('is_error'))
+    return '', True
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -17,6 +39,7 @@ def main():
     start = sub.add_parser('start')
     start.add_argument('slug')
     start.add_argument('brief', type=Path)
+    start.add_argument('--worker', choices=['claude', 'codex'], default=DEFAULT_WORKER)
     sub.add_parser('status')
     worker = sub.add_parser('_worker')
     worker.add_argument('run', type=Path)
@@ -34,7 +57,7 @@ def main():
         subprocess.run(['git', '-C', str(ROOT), 'worktree', 'add', '-b', branch, str(worktree), 'main'], check=True)
         run.mkdir()
         (run / 'brief.md').write_text(brief)
-        state = {'branch': branch, 'worktree': str(worktree), 'status': 'starting', 'started': time.time()}
+        state = {'branch': branch, 'worktree': str(worktree), 'worker': args.worker, 'status': 'starting', 'started': time.time()}
         (run / 'state.json').write_text(json.dumps(state, indent=2))
         with (run / 'launcher.log').open('ab') as log:
             process = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), '_worker', str(run)],
@@ -43,19 +66,23 @@ def main():
     elif args.command == '_worker':
         run = args.run
         state = json.loads((run / 'state.json').read_text())
-        with (run / 'brief.md').open('rb') as brief, (run / 'events.jsonl').open('wb') as output, (run / 'stderr.log').open('wb') as errors:
-            process = subprocess.Popen(['codex', 'exec', '-C', state['worktree'], '-s', 'danger-full-access',
-                                        '-c', 'approval_policy="never"', '--json', '-o', str(run / 'result.md'), '-'],
+        worker = state.get('worker', 'codex')
+        with(run / 'brief.md').open('rb') as brief, (run / 'events.jsonl').open('wb') as output, (run / 'stderr.log').open('wb') as errors:
+            process = subprocess.Popen(command(worker, state, run), cwd=state['worktree'],
                                        stdin=brief, stdout=output, stderr=errors)
             state.update(status='running', pid=process.pid)
             (run / 'state.json').write_text(json.dumps(state, indent=2))
             code = process.wait()
+        if worker == 'claude':
+            report, failed = claude_result(run / 'events.jsonl')
+            (run / 'result.md').write_text(report)
+            code = code or int(failed)
         state.update(status='ready_for_review' if code == 0 else 'failed', exit_code=code, finished=time.time())
         (run / 'state.json').write_text(json.dumps(state, indent=2))
     else:
         for path in sorted(RUNS.glob('*/state.json')):
             state = json.loads(path.read_text())
-            print(f"{state['branch']}: {state['status']} (pid {state.get('pid', 'pending')})")
+            print(f"{state['branch']}: {state['status']} ({state.get('worker', 'codex')} pid{state.get('pid', 'pending')})")
 
 if __name__ == '__main__':
     main()

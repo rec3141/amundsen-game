@@ -1,5 +1,5 @@
 [Unit]
-Description=Queue Amundsen crew ideas into headless Codex worktrees
+Description=Queue Amundsen crew ideas into headless worker worktrees
 After=amundsen-game.service
 Requires=amundsen-game.service
 
