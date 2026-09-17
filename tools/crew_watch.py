@@ -21,7 +21,7 @@ def sync():
         prefix = f"idea-{idea['id']}-"
         if any(slug.startswith(prefix) for slug in known):
             continue
-        if active >= 3:
+        if active >= 6:
             break
         slug = f"idea-{idea['id']}-minigame"
         module = f"crew-{idea['id']}"
