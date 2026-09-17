@@ -3,11 +3,8 @@ dialog:has(.ctd-game) { width: min(1120px, 96vw); max-width: 96vw; }
 .ctd-game h2 { font-size: 1.8rem; margin: 4px 0; }
 .ctd-game p { line-height: 1.5; }
 .ctd-kicker { color: #8cdd90; font-size: .7rem; letter-spacing: .2em; }
-.ctd-setup, .ctd-controls, .ctd-telemetry { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.ctd-setup label { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 180px; font-size: .8rem; color: #afc7d5; }
-.ctd-game select, .ctd-game button { background: #213e4d; color: #f2f7fa; border: 1px solid #587586; border-radius: 7px; padding: 10px 12px; font: inherit; }
-.ctd-game select { width: 100%; }
-.ctd-game button { cursor: pointer; }
+.ctd-controls, .ctd-telemetry { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.ctd-game button { background: #213e4d; color: #f2f7fa; border: 1px solid #587586; border-radius: 7px; padding: 10px 12px; font: inherit; cursor: pointer; }
 .ctd-game button:disabled { opacity: .45; cursor: default; }
 .ctd-game :focus-visible { outline: 3px solid #f2d477; outline-offset: 3px; }
 .ctd-game .ctd-fire { background: #a5efaa; color: #102431; font-weight: 700; }
@@ -15,7 +12,12 @@ dialog:has(.ctd-game) { width: min(1120px, 96vw); max-width: 96vw; }
 .ctd-depth { font-size: 1.5rem; font-variant-numeric: tabular-nums; }
 .ctd-chart { overflow-x: auto; background: #0b1b26; border-radius: 8px; margin-bottom: 14px; }
 .ctd-chart svg { display: block; width: 100%; min-width: 720px; }
-.ctd-rule { color: #f2d477; }
+.ctd-layers { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px; margin: 0 0 12px; padding: 0; }
+.ctd-layers li { display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; border-left: 3px solid var(--ctd-layer, #f2d477); background: #1a3341; border-radius: 0 7px 7px 0; font-size: .8rem; color: #afc7d5; }
+.ctd-layers strong { color: #f2f7fa; font-size: .9rem; }
+.ctd-outcome { font-variant-numeric: tabular-nums; }
+.ctd-caught { color: #a5efaa; }
+.ctd-missed { color: #ff9c8a; }
 .ctd-status { min-height: 2.8em; }
 .ctd-result:not(:empty) { padding: 12px 18px; border-left: 3px solid #a5efaa; background: #1a3341; }
 .ctd-result h3 { margin-top: 0; }
@@ -23,5 +25,3 @@ dialog:has(.ctd-game) { width: min(1120px, 96vw); max-width: 96vw; }
 @media (max-width: 600px) { .ctd-controls button { flex: 1 1 40%; } .ctd-chart { max-height: 55vh; } .ctd-telemetry { gap: 8px; } }
 
 .ctd-game > header { display: block; height: auto; padding: 0 0 12px; margin: 0; background: none; border: 0; }
-.ctd-controls label { display: flex; align-items: center; gap: 8px; margin: 0; color: #afc7d5; }
-.ctd-controls input[type="checkbox"] { display: inline-block; width: auto; margin: 0; }

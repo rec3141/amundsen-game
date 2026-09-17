@@ -31,12 +31,10 @@ test('density target is strongest positive gradient, negative gradients excluded
   assert.ok(layer.p >= 17 && layer.p <= 21);
   assert.equal(findLayer(profile(a.map(v => -v)), 'pycnocline'), null);
 });
-test('winch holds at bottom, respects pause, and finishes at surface', () => {
+test('winch holds at bottom and finishes at surface', () => {
   const bottom = advance({ phase: 'down', pressure: 95 }, 1, 100, 10);
   assert.deepEqual(bottom, { phase: 'bottom', pressure: 100 });
   assert.equal(advance(bottom, 999, 100, 10), bottom);
-  const paused = { phase: 'up', pressure: 50, paused: true };
-  assert.equal(advance(paused, 10, 100, 10), paused);
   assert.equal(advance({ phase: 'up', pressure: 5 }, 1, 100, 10).phase, 'done');
 });
 test('bundled profiles preserve finite targets and M4A provenance', () => {
@@ -53,16 +51,18 @@ test('bundled profiles preserve finite targets and M4A provenance', () => {
   }
   for (const count of Object.values(counts)) assert.ok(count >= 20);
 });
-test('mount returns synchronous cleanup; three bottles finish; retry cannot award twice', async () => {
+test('mount returns synchronous cleanup; the last bottle finishes; a new cast cannot award twice', async () => {
   const { ctd } = await import('../static/minigames/ctd.js');
   class Element {
     constructor() { this.children = []; this.nodes = new Map(); this.value = ''; this.textContent = ''; this._html = ''; }
     append(el) { this.children.push(el); }
     remove() { this.removed = true; }
+    setAttribute() {}
+    contains() { return false; }
     set innerHTML(value) { this._html = value; this.textContent = value.replace(/<[^>]*>/g, ''); }
     get innerHTML() { return this._html; }
     querySelector(key) {
-      if (!this.nodes.has(key)) { const el = new Element(); el.value = key === '.ctd-target' ? 'chlorophyll' : key === '.ctd-cast' ? 'test' : ''; this.nodes.set(key, el); }
+      if (!this.nodes.has(key)) { this.nodes.set(key, new Element()); }
       return this.nodes.get(key);
     }
   }
@@ -83,12 +83,18 @@ test('mount returns synchronous cleanup; three bottles finish; retry cannot awar
     descend(); assert.match(get('.ctd-phase').textContent, /At depth/);
     assert.ok(!get('svg').innerHTML.includes('stroke-dasharray'));
     get('.ctd-action').onclick();
-    for (let i = 0; i < 3; i++) get('.ctd-fire').onclick();
-    assert.equal(awards.length, 1); assert.equal(awards[0][1].bottles.length, 3);
+    assert.ok(!get('.ctd-layers').innerHTML.includes('dbar'));
+    const capacity = Number(get('.ctd-bottles').textContent.match(/of (\d+)/)[1]);
+    for (let i = 0; i < capacity; i++) get('.ctd-fire').onclick();
+    assert.equal(awards.length, 1); assert.equal(awards[0][1].bottles.length, capacity);
+    assert.ok(awards[0][1].layers.length > capacity);
+    assert.equal(awards[0][1].castId, 'test'); assert.equal(awards[0][1].source, 'source.json');
     assert.ok(get('svg').innerHTML.includes('stroke-dasharray'));
     assert.doesNotThrow(() => JSON.stringify(awards));
-    get('.ctd-retry').onclick(); descend(); get('.ctd-action').onclick();
-    for (let i = 0; i < 3; i++) get('.ctd-fire').onclick();
+    get('.ctd-action').onclick(); await new Promise(resolve => setImmediate(resolve));
+    descend(); get('.ctd-action').onclick();
+    for (let i = 0; i < capacity; i++) get('.ctd-fire').onclick();
+    assert.match(get('.ctd-phase').textContent, /on deck/);
     assert.equal(awards.length, 1);
     cleanup(); assert.ok(signal.aborted); assert.ok(removed); assert.ok(game.removed);
   } finally { for (const [k, value] of Object.entries(original)) { if (value === undefined) delete globalThis[k]; else globalThis[k] = value; } }
