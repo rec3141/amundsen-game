@@ -94,7 +94,7 @@ function draw(){
  ctx.strokeStyle='#796b4530';ctx.lineWidth=1;
  for(let x=0;x<=width;x+=width/10){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,height);ctx.stroke();}
  for(let y=0;y<=height;y+=height/8){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(width,y);ctx.stroke();}
- ctx.fillStyle='#6a5d42';ctx.font='italic 13px Georgia';ctx.fillText('Chart of the imagined northern reaches',18,25);
+ ctx.fillStyle='#6a5d42';ctx.font='italic 13px Georgia';ctx.fillText('The northern reaches',18,25);
  ctx.save();ctx.translate(width-32,48);ctx.strokeStyle='#6a5d42';ctx.beginPath();ctx.moveTo(0,-14);ctx.lineTo(0,14);ctx.moveTo(-10,0);ctx.lineTo(10,0);ctx.stroke();ctx.font='11px Georgia';ctx.fillText('N',-4,-20);ctx.restore();
  ctx.strokeStyle='#e8c589';ctx.lineWidth=1.5;ctx.setLineDash([3,3]);ctx.beginPath();state.route.forEach((p,i)=>i?ctx.lineTo(p.x*width,p.y*height):ctx.moveTo(p.x*width,p.y*height));ctx.stroke();ctx.setLineDash([]);
  for(const d of state.discoveries){const x=d.x*width,y=d.y*height;ctx.fillStyle='#f0ba70';ctx.strokeStyle='#523d25';ctx.beginPath();ctx.moveTo(x,y-6);ctx.lineTo(x+5,y);ctx.lineTo(x,y+6);ctx.lineTo(x-5,y);ctx.closePath();ctx.fill();ctx.stroke();}

@@ -12,7 +12,7 @@ export const ice = {
     root.innerHTML = `
       <section class="ice-game" aria-label="Ice thickness transect">
         <link rel="stylesheet" href="${stylesheet}">
-        <div class="ice-heading"><div><p class="ice-kicker">FIELD NOTEBOOK / SEEDED FLOE</p>
+        <div class="ice-heading"><div><p class="ice-kicker">FIELD NOTEBOOK / ICE TRANSECT</p>
           <h3>Find the shape beneath the surface.</h3></div><div class="ice-score"><strong data-score>0</strong><span>points</span></div></div>
         <p class="ice-instructions">Press <kbd>D</kbd> repeatedly or tap Drill. Break through, log the thickness, then move along the transect.</p>
         <div class="ice-layout">
