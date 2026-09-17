@@ -33,9 +33,9 @@ SUBMISSION JSON:
 END SUBMISSION.
 
 Only edit new files static/minigames/{module}.js, static/minigames/{module}-*.js,
-static/minigames/{module}.css, tests/*{module}*, and static/data/{module}* if real data is needed.
+static/minigames/{module}.css, and static/data/{module}* if real data is needed.
 Do not change registry.js, game.js, server.py, shared CSS, AGENTS, README, services or other repositories.
-The coordinator integrates the game into registry, reviews/tests, and merges. Do not merge or deploy yourself.
+The coordinator integrates the game into registry, smoke-checks, and merges. Do not merge or deploy yourself.
 Build a complete playable minigame, with keyboard AND button controls, offline local assets, responsive layout.
 Audience: STEM postgraduate scientists aboard CCGS Amundsen. Subtle science, no disclaimer or preachy copy.
 Minigames can launch anywhere, with no fixed station gate. Data pulls use the underway server's local files
@@ -44,9 +44,9 @@ Export const game = {{ title: '...', mount(root, {{complete, expedition}}) {{ /*
 mount returns cleanup synchronously. On finish, call complete(points, detail) ONCE; detail is plain JSON with a title.
 Load scoped CSS and data using new URL(..., import.meta.url), preserving /game/ proxy compatibility.
 Use module-scoped DOM lookup, clean up global listeners/timers/animation frames on close. Support replay.
-Meaningful tests for game mechanics, syntax checks, and commit all scoped implementation files.
+NO TESTS: do not write test files or test suites. Quick syntax checks and playing/smoke-checking the game are welcome. Commit all scoped implementation files.
 No spawning further agents. Do not read credentials or modify any production/runtime data. Do not start servers.
-Final report: commit hash, exported symbol, keyboard controls, test commands/results, limitations and integration notes.
+Final report: commit hash, exported symbol, keyboard controls, verification results, limitations and integration notes.
 ''')
         subprocess.run([sys.executable, str(ROOT / 'tools/crew.py'), 'start', slug, str(brief)], check=True)
         active += 1

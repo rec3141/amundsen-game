@@ -11,9 +11,15 @@
 
 ## Crew-idea workflow
 - Each crew idea gets a separate Git branch and worktree and its own headless `codex exec` process.
-- The coordinating session reviews, tests, and merges completed branches on main. Worker instances must not merge themselves or deploy.
-- Work only within the assigned file scope; commit the implementation and report tests and limits.
+- The coordinating session reviews, smoke-checks, and merges completed branches on main. Worker instances must not merge themselves or deploy.
+- Work only within the assigned file scope; commit the implementation and report verification and limits.
 - Main at /data/dev/amundsen-game is the live deployment; runtime state is excluded from Git.
+
+## NO TESTS
+- This is fast, live, exploratory coding. Do not create automated test files or test suites unless the user explicitly asks.
+- Testing the game is welcome: play it, inspect behavior, run a quick syntax check or a targeted smoke check when useful.
+- Do not add tests for their own sake or spend the meeting building test infrastructure.
+- Existing checks may be run when they help verify a change; prioritize playable features and quick feedback.
 
 ## Code and coordination
 - Comments, docstrings, and headers describe current behavior and constraints, not repository history. Keep issue pointers, and verify statements against current code.
