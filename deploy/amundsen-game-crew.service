@@ -1,0 +1,11 @@
+[Unit]
+Description=Queue Amundsen crew ideas into headless Codex worktrees
+After=amundsen-game.service
+Requires=amundsen-game.service
+
+[Service]
+WorkingDirectory=/data/dev/amundsen-game
+Environment=PATH=/home/cryomics/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 /data/dev/amundsen-game/tools/crew_watch.py --watch
+Restart=on-failure
+RestartSec=10

@@ -125,3 +125,32 @@ node --input-type=module --check < static/minigames/registry.js
 The API tests use a temporary database and do not submit ideas to the live board.
 Before the meeting, check sailing, CTD completion, restart, phone layout, and
 submission from a second device in a real browser.
+
+## Live crew development
+
+Every idea gets its own `crew/...` branch, sibling worktree under
+`/data/dev/amundsen-game-worktrees`, and independent headless `codex exec`
+process. The coordinating session reviews and tests branches before merging
+on `main`, which serves the live game.
+
+```sh
+python3 tools/crew.py status
+python3 tools/crew.py start my-idea /path/to/brief.md
+python3 tools/crew_watch.py          # Queue current board once
+```
+
+`amundsen-game-crew.service` currently watches the suggestion board every 15
+seconds, launching at most three workers concurrently. It runs for the meeting;
+it is not enabled at boot. The watcher continues after a chat turn ends. Workers
+commit their branch and stop; they do not deploy or merge. Merges require the
+coordinating session to be active. Logs, exact task briefs, process IDs, and final
+reports are in `runtime/crew/<slug>/`. Failed runs stay visible for review and are
+not retried automatically.
+
+```sh
+XDG_RUNTIME_DIR=/run/user/1000 systemctl --user stop amundsen-game-crew.service
+```
+
+Stopping the watcher prevents new runs; existing Codex workers continue their
+assigned tasks. `AGENTS.md` carries the product voice, data-source rules, and
+worker workflow. All requested data pulls use the underway server.
