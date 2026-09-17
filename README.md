@@ -161,7 +161,7 @@ submission from a second device in a real browser.
 
 Every idea gets its own `crew/...` branch, sibling worktree under
 `/data/dev/amundsen-game-worktrees`, and independent headless `codex exec`
-process. The coordinating session reviews and tests branches before merging
+process. The coordinating session reviews and smoke-checks branches before merging
 on `main`, which serves the live game.
 
 ```sh
