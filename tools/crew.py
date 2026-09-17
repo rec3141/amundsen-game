@@ -11,15 +11,18 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 RUNS = ROOT / 'runtime/crew'
 CLAUDE_MODEL = 'claude-fable-5-1'
+FALLBACK_MODEL = 'claude-opus-5'
 DEFAULT_WORKER = 'claude'
+RESUME_NOTE = ('An earlier worker on this brief stopped with an error. Check git status and git log in this '
+               'worktree, keep what is sound, and finish the brief below.\n\n')
 
-def command(worker, state, run):
+def command(worker, state, run, model=None):
     """Both workers read the brief on stdin and stream JSON events to stdout."""
     if worker == 'codex':
         return ['codex', 'exec', '-C', state['worktree'], '-s', 'danger-full-access',
                 '-c', 'approval_policy="never"', '--json', '-o', str(run / 'result.md'), '-']
     # A headless worker has nobody to approve tool calls, so permissions are bypassed.
-    return ['claude', '-p', '--model', CLAUDE_MODEL, '--dangerously-skip-permissions',
+    return ['claude', '-p', '--model', model or CLAUDE_MODEL, '--dangerously-skip-permissions',
             '--output-format', 'stream-json', '--verbose']
 
 def claude_result(events):
@@ -67,22 +70,32 @@ def main():
         run = args.run
         state = json.loads((run / 'state.json').read_text())
         worker = state.get('worker', 'codex')
-        with(run / 'brief.md').open('rb') as brief, (run / 'events.jsonl').open('wb') as output, (run / 'stderr.log').open('wb') as errors:
-            process = subprocess.Popen(command(worker, state, run), cwd=state['worktree'],
-                                       stdin=brief, stdout=output, stderr=errors)
-            state.update(status='running', pid=process.pid)
-            (run / 'state.json').write_text(json.dumps(state, indent=2))
-            code = process.wait()
-        if worker == 'claude':
-            report, failed = claude_result(run / 'events.jsonl')
-            (run / 'result.md').write_text(report)
-            code = code or int(failed)
+        # A Claude run that errors (a classifier block, an API failure) is relaunched once on the fallback model.
+        models = [CLAUDE_MODEL, FALLBACK_MODEL] if worker == 'claude' else [None]
+        for attempt, model in enumerate(models):
+            events = run / ('events.jsonl' if not attempt else f'events-{model}.jsonl')
+            prompt = (run / 'brief.md').read_bytes()
+            if attempt:
+                prompt = RESUME_NOTE.encode() + prompt
+            with events.open('wb') as output, (run / 'stderr.log').open('ab') as errors:
+                process = subprocess.Popen(command(worker, state, run, model), cwd=state['worktree'],
+                                           stdin=subprocess.PIPE, stdout=output, stderr=errors)
+                state.update(status='running', pid=process.pid, model=model)
+                (run / 'state.json').write_text(json.dumps(state, indent=2))
+                process.communicate(prompt)
+                code = process.returncode
+            if worker == 'claude':
+                report, failed = claude_result(events)
+                (run / 'result.md').write_text(report)
+                code = code or int(failed)
+            if code == 0:
+                break
         state.update(status='ready_for_review' if code == 0 else 'failed', exit_code=code, finished=time.time())
         (run / 'state.json').write_text(json.dumps(state, indent=2))
     else:
         for path in sorted(RUNS.glob('*/state.json')):
             state = json.loads(path.read_text())
-            print(f"{state['branch']}: {state['status']} ({state.get('worker', 'codex')} pid{state.get('pid', 'pending')})")
+            print(f"{state['branch']}: {state['status']} ({state.get('model') or state.get('worker', 'codex')} pid {state.get('pid', 'pending')})")
 
 if __name__ == '__main__':
     main()
