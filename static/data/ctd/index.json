@@ -1,0 +1,282 @@
+{
+  "sourceRoot": "/data/underway_server/www",
+  "sourceIndex": "data/casts/index.json",
+  "indexSha256": "60407d326890a023bd6942818b58318f43d53c266188b6b311c571ba36a0ccb5",
+  "leg": "2026_LEG_03",
+  "method": "Published JSON copied byte-for-byte; arrays and units unmodified. Underway dashboard/casts.py bins classic CNV downcasts to 1 dbar; published plot-derived profiles retain their source representation.",
+  "casts": [
+    {
+      "id": "2026_LEG_03:CTD_001",
+      "station": "CardS-3",
+      "file": "2026_LEG_03_001.json",
+      "source": "data/casts/2026_LEG_03/CTD_001.json",
+      "sha256": "2ab0f94b5900a5fd52a3621d69c0ae7cd26a58bc42372c57456e3abffdb786dd"
+    },
+    {
+      "id": "2026_LEG_03:CTD_003",
+      "station": "CardS-5",
+      "file": "2026_LEG_03_003.json",
+      "source": "data/casts/2026_LEG_03/CTD_003.json",
+      "sha256": "d52110c822fb537e10bf2452c7a8dc7996f425e86303f1681a0d3e518c14cdad"
+    },
+    {
+      "id": "2026_LEG_03:CTD_005",
+      "station": "CardS-4",
+      "file": "2026_LEG_03_005.json",
+      "source": "data/casts/2026_LEG_03/CTD_005.json",
+      "sha256": "d97aee3b4f40fee02fa376b974fb64b1ca2c104f5932125441571664283ed848"
+    },
+    {
+      "id": "2026_LEG_03:CTD_006",
+      "station": "CardS-2",
+      "file": "2026_LEG_03_006.json",
+      "source": "data/casts/2026_LEG_03/CTD_006.json",
+      "sha256": "cd4b0044b58ae7fa224a31bcfec5d6f06a146ab146fb4ef31f5b7c584c0a9982"
+    },
+    {
+      "id": "2026_LEG_03:CTD_007",
+      "station": "CardS-1",
+      "file": "2026_LEG_03_007.json",
+      "source": "data/casts/2026_LEG_03/CTD_007.json",
+      "sha256": "885b8b905dd9652994e4c3c2c8e64a5d2b18020b1e33ab4b113baa617dfc71b2"
+    },
+    {
+      "id": "2026_LEG_03:CTD_008",
+      "station": "CardS-N",
+      "file": "2026_LEG_03_008.json",
+      "source": "data/casts/2026_LEG_03/CTD_008.json",
+      "sha256": "77c18837cc01a185405b74c0e351286adbba4ecda4d634164d0d06cc7a634d00"
+    },
+    {
+      "id": "2026_LEG_03:CTD_009",
+      "station": "Norwegian Bay 1",
+      "file": "2026_LEG_03_009.json",
+      "source": "data/casts/2026_LEG_03/CTD_009.json",
+      "sha256": "9e64c1224c74367f55a6da5b59c512d2ee0376a419fea3064d0da0140418eaa5"
+    },
+    {
+      "id": "2026_LEG_03:CTD_011",
+      "station": "Norwegian Bay 1",
+      "file": "2026_LEG_03_011.json",
+      "source": "data/casts/2026_LEG_03/CTD_011.json",
+      "sha256": "6ca4fe2ed7c90d4b457201910075440db47389d846e858f051f81a87d2889487"
+    },
+    {
+      "id": "2026_LEG_03:CTD_012",
+      "station": "MSG-2",
+      "file": "2026_LEG_03_012.json",
+      "source": "data/casts/2026_LEG_03/CTD_012.json",
+      "sha256": "a6b936058552915da75bb91ce95e06b2d1c670b41aa134495395e322cad343a0"
+    },
+    {
+      "id": "2026_LEG_03:CTD_013",
+      "station": "MSG-3",
+      "file": "2026_LEG_03_013.json",
+      "source": "data/casts/2026_LEG_03/CTD_013.json",
+      "sha256": "4981db173724c48934ddc9f673bf08c852e13c5014626694850b6b7bb3eef396"
+    },
+    {
+      "id": "2026_LEG_03:CTD_014",
+      "station": "MSG-4",
+      "file": "2026_LEG_03_014.json",
+      "source": "data/casts/2026_LEG_03/CTD_014.json",
+      "sha256": "db14dc2a4741a7913e33482ebe3fcab31e7c163199d42eaefd54c8092bc1e276"
+    },
+    {
+      "id": "2026_LEG_03:CTD_015",
+      "station": "GF-1",
+      "file": "2026_LEG_03_015.json",
+      "source": "data/casts/2026_LEG_03/CTD_015.json",
+      "sha256": "81ea67406a1433f9c336f3a0f34e1b2bdb5bb65831d56c919e8438ec0e4e84f1"
+    },
+    {
+      "id": "2026_LEG_03:CTD_016",
+      "station": "GF-2",
+      "file": "2026_LEG_03_016.json",
+      "source": "data/casts/2026_LEG_03/CTD_016.json",
+      "sha256": "f27c815a0ffa8575a93e392dd2042f7935f3ea95f4366a9dcd20dd6435a1d670"
+    },
+    {
+      "id": "2026_LEG_03:CTD_017",
+      "station": "GF-3",
+      "file": "2026_LEG_03_017.json",
+      "source": "data/casts/2026_LEG_03/CTD_017.json",
+      "sha256": "4bab8192bb4194f6be2a49a03b7c6869010e346ed134117b82855ac3b247aad9"
+    },
+    {
+      "id": "2026_LEG_03:CTD_018",
+      "station": "GF-5",
+      "file": "2026_LEG_03_018.json",
+      "source": "data/casts/2026_LEG_03/CTD_018.json",
+      "sha256": "d2cac4b17fbeda56b93544c007e1e864477bb8e962e397ff1ee309430168490c"
+    },
+    {
+      "id": "2026_LEG_03:CTD_020",
+      "station": "MSG-5",
+      "file": "2026_LEG_03_020.json",
+      "source": "data/casts/2026_LEG_03/CTD_020.json",
+      "sha256": "f725406954cd7c7b480e5c0e2db9b4323e73c6954f0e8987a8b8b03b638b7f3d"
+    },
+    {
+      "id": "2026_LEG_03:CTD_021",
+      "station": "GF-Seep 1",
+      "file": "2026_LEG_03_021.json",
+      "source": "data/casts/2026_LEG_03/CTD_021.json",
+      "sha256": "e6d53814ac22c11f7422780164414a9c431558e2beee8b0763244fd99f459cc1"
+    },
+    {
+      "id": "2026_LEG_03:CTD_022",
+      "station": "GF-4",
+      "file": "2026_LEG_03_022.json",
+      "source": "data/casts/2026_LEG_03/CTD_022.json",
+      "sha256": "2a4b8edf129a01a087c44ae6a790bc14bf78146df1a3dbf88c8babdfa052ed03"
+    },
+    {
+      "id": "2026_LEG_03:CTD_024",
+      "station": "MS-ICE2",
+      "file": "2026_LEG_03_024.json",
+      "source": "data/casts/2026_LEG_03/CTD_024.json",
+      "sha256": "551f661efc6fdb189e55fa27a22966890a33032815af8317f26cd3619f098cff"
+    },
+    {
+      "id": "2026_LEG_03:CTD_026",
+      "station": "ES-S5",
+      "file": "2026_LEG_03_026.json",
+      "source": "data/casts/2026_LEG_03/CTD_026.json",
+      "sha256": "b2b718c2db1dfa6795785655a14002f58f00ec8a55944d593dd98759f429b1e6"
+    },
+    {
+      "id": "2026_LEG_03:CTD_027",
+      "station": "ES-S4",
+      "file": "2026_LEG_03_027.json",
+      "source": "data/casts/2026_LEG_03/CTD_027.json",
+      "sha256": "b33f4cec7f756375f2c9cb99bbf654a34ce043e085e4fea31f0722695e5c1904"
+    },
+    {
+      "id": "2026_LEG_03:CTD_028",
+      "station": "ES-S3",
+      "file": "2026_LEG_03_028.json",
+      "source": "data/casts/2026_LEG_03/CTD_028.json",
+      "sha256": "c8b3e37e492607ba43bf61b21c01312eab360b2a14504ebeb525076f8c4fd251"
+    },
+    {
+      "id": "2026_LEG_03:CTD_029",
+      "station": "",
+      "file": "2026_LEG_03_029.json",
+      "source": "data/casts/2026_LEG_03/CTD_029.json",
+      "sha256": "5687dc54c27508ea90c04e56f0857b7c757a0c9eeacf27fa94fde6b272c7ec2b"
+    },
+    {
+      "id": "2026_LEG_03:CTD_030",
+      "station": "ES-S1",
+      "file": "2026_LEG_03_030.json",
+      "source": "data/casts/2026_LEG_03/CTD_030.json",
+      "sha256": "b4ffbfe3d1d67776f1d9c61c832aa85931231b099c21296abc45777fd9e5e726"
+    },
+    {
+      "id": "2026_LEG_03:CTD_031",
+      "station": "mappingALT1",
+      "file": "2026_LEG_03_031.json",
+      "source": "data/casts/2026_LEG_03/CTD_031.json",
+      "sha256": "060d16f12f33f2155203f8993b2fe7c9a53c7e58c795ee7327d386a0a7f1bfa7"
+    },
+    {
+      "id": "2026_LEG_03:CTD_032",
+      "station": "ES-4",
+      "file": "2026_LEG_03_032.json",
+      "source": "data/casts/2026_LEG_03/CTD_032.json",
+      "sha256": "ab0d5bb947f9f9808cdbe9828f37cadf1f06c51e64371291d45e74e37c6d01b5"
+    },
+    {
+      "id": "2026_LEG_03:CTD_035",
+      "station": "Bay Fiord",
+      "file": "2026_LEG_03_035.json",
+      "source": "data/casts/2026_LEG_03/CTD_035.json",
+      "sha256": "a11dd2a26b5dfb5f4fecf54e3d41c48f861a764cbcda13146d0293850ed7ab68"
+    },
+    {
+      "id": "2026_LEG_03:CTD_037",
+      "station": "Bay Fiord",
+      "file": "2026_LEG_03_037.json",
+      "source": "data/casts/2026_LEG_03/CTD_037.json",
+      "sha256": "1e2c77c41016092191cdb478f1611697d799b8525da1c6ece9151df4ab7b88a3"
+    },
+    {
+      "id": "2026_LEG_03:CTD_038",
+      "station": "SF-4",
+      "file": "2026_LEG_03_038.json",
+      "source": "data/casts/2026_LEG_03/CTD_038.json",
+      "sha256": "4173084e38a0d96a7f976e7b7af762ab7a0466b8bdb834ca72a4396ba1d18b9e"
+    },
+    {
+      "id": "2026_LEG_03:CTD_040",
+      "station": "BMF-1",
+      "file": "2026_LEG_03_040.json",
+      "source": "data/casts/2026_LEG_03/CTD_040.json",
+      "sha256": "ed99237f0164e4bbfc6225178b75d31f54816ade081e5485642d5d9c0241c107"
+    },
+    {
+      "id": "2026_LEG_03:CTD_041",
+      "station": "BMF-5",
+      "file": "2026_LEG_03_041.json",
+      "source": "data/casts/2026_LEG_03/CTD_041.json",
+      "sha256": "c2891047de4590ca6d84c86d904841b12797afa268775c846328e55b53a66fc3"
+    },
+    {
+      "id": "2026_LEG_03:CTD_042",
+      "station": "BMF-3",
+      "file": "2026_LEG_03_042.json",
+      "source": "data/casts/2026_LEG_03/CTD_042.json",
+      "sha256": "50792dcdcca4172673f7c407c9e003356d8c4a910c038a65852e394355bae19c"
+    },
+    {
+      "id": "2026_LEG_03:CTD_043",
+      "station": "BMF-3",
+      "file": "2026_LEG_03_043.json",
+      "source": "data/casts/2026_LEG_03/CTD_043.json",
+      "sha256": "469f34489613dc48a1835c203cade6a9a8b9cbc4239772d80b0974583be002ed"
+    },
+    {
+      "id": "2026_LEG_03:CTD_044",
+      "station": "ES-ICE1",
+      "file": "2026_LEG_03_044.json",
+      "source": "data/casts/2026_LEG_03/CTD_044.json",
+      "sha256": "05b4e7da30f44236d2bed743978fbb5d4147000e3684a854a9dc17f11fbb3e1a"
+    },
+    {
+      "id": "2026_LEG_03:CTD_046",
+      "station": "ES-3",
+      "file": "2026_LEG_03_046.json",
+      "source": "data/casts/2026_LEG_03/CTD_046.json",
+      "sha256": "cc1bc2717d3a1bedd99e8c7e837ff26999a1daf74f18cae8da51f09e306e1356"
+    },
+    {
+      "id": "2026_LEG_03:CTD_048",
+      "station": "SF-5",
+      "file": "2026_LEG_03_048.json",
+      "source": "data/casts/2026_LEG_03/CTD_048.json",
+      "sha256": "5008bed01f3c943236f97d460fb9e27f803cae7823b0871ccf08ff708feac282"
+    },
+    {
+      "id": "2026_LEG_03:CTD_050",
+      "station": "SF-4R",
+      "file": "2026_LEG_03_050.json",
+      "source": "data/casts/2026_LEG_03/CTD_050.json",
+      "sha256": "fb605f8c412b2b975d44230230629a12e25b0564ab0bbfd905d127cf68d275dc"
+    },
+    {
+      "id": "2026_LEG_03:CTD_051",
+      "station": "M4A",
+      "file": "2026_LEG_03_051.json",
+      "source": "data/casts/2026_LEG_03/CTD_051.json",
+      "sha256": "93ed056626a5c9b5893a40e6cbe04c135bb66c3e15a74be9911a16c4192be657"
+    },
+    {
+      "id": "2026_LEG_03:CTD_052",
+      "station": "",
+      "file": "2026_LEG_03_052.json",
+      "source": "data/casts/2026_LEG_03/CTD_052.json",
+      "sha256": "ed66bace04f7825481bb836ee60e555c572ce3eaf74abfbde26cd30e6c76cb17"
+    }
+  ]
+}
