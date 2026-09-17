@@ -2,6 +2,8 @@ export const targets = {
   chlorophyll: { label: 'Chlorophyll maximum', channel: 'Fluorescence', mode: 'max', rule: 'Find the fluorescence peak (chlorophyll proxy).' },
   temperature: { label: 'Temperature minimum', channel: 'Temperature', mode: 'min', rule: 'Find the coldest measured layer.' },
   oxygen: { label: 'Oxygen minimum', channel: 'Oxygen', mode: 'min', rule: 'Find the lowest measured oxygen concentration.' },
+  warm: { label: 'Temperature maximum', channel: 'Temperature', mode: 'max', rule: 'Find the warmest measured layer.' },
+  oxygenMax: { label: 'Oxygen maximum', channel: 'Oxygen', mode: 'max', rule: 'Find the highest measured oxygen concentration.' },
   pycnocline: { label: 'Pycnocline', channel: 'Sigma-t', mode: 'gradient', rule: 'Find the strongest positive Sigma-t gradient with pressure.' },
 };
 const median = a => { const b = [...a].sort((x, y) => x - y); return b[Math.floor(b.length / 2)]; };
@@ -54,12 +56,43 @@ export function findLayer(profile, key) {
       `Measured ${target.mode === 'min' ? 'minimum' : 'maximum'} after a ±2 dbar median filter.${best.edge ? ' At an edge of a measured segment; an interior extremum is not required.' : ''}` };
 }
 
-export function scoreBottle(pressure, layer) {
+// Every target this cast can support; targets without enough informative data are absent.
+export function findLayers(profile) {
+  return Object.keys(targets).map(key => findLayer(profile, key)).filter(Boolean);
+}
+// Fewer bottles than layers, so every closure is a choice.
+export function bottleCount(layerCount) {
+  return Math.max(1, Math.min(layerCount - 1, Math.ceil(layerCount * 2 / 3)));
+}
+// Pressure error at which a bottle stops scoring. It grows with cast depth so the
+// catch window stays a similar fraction of the chart and of the upcast time.
+export function reach(maximum) {
+  return Math.max(8, Math.min(30, maximum * .06));
+}
+export function scoreBottle(pressure, layer, limit = layer.tolerance * 4) {
   const error = Math.min(...layer.pressures.map(p => Math.abs(p - pressure)));
-  return { pressure, error, points: Math.round(100 * Math.max(0, 1 - error / (layer.tolerance * 4))) };
+  return { pressure, error, points: Math.round(100 * Math.max(0, 1 - error / limit)) };
+}
+// Bottles are taken in firing order. Each counts toward the nearest layer it scores for;
+// layers within 2 dbar of that nearest error count as coincident, and the bottle goes to
+// whichever of them holds the lowest score, so stacked layers take one bottle each.
+// Each layer keeps its best bottle; the cast total is the sum over layers.
+export function scoreCast(pressures, layers, limit) {
+  const held = new Map(layers.map(layer => [layer.key, { key: layer.key, points: 0, pressure: null }]));
+  const bottles = pressures.map(pressure => {
+    const scoring = layers.map(layer => ({ key: layer.key, ...scoreBottle(pressure, layer, limit) })).filter(s => s.points > 0);
+    if (!scoring.length) return { key: null, pressure, error: null, points: 0 };
+    const nearest = Math.min(...scoring.map(s => s.error));
+    const chosen = scoring.filter(s => s.error - nearest <= 2)
+      .reduce((a, b) => held.get(b.key).points < held.get(a.key).points ? b : a);
+    if (chosen.points > held.get(chosen.key).points) held.set(chosen.key, { key: chosen.key, points: chosen.points, pressure });
+    return chosen;
+  });
+  const results = [...held.values()];
+  return { bottles, layers: results, points: results.reduce((sum, r) => sum + r.points, 0) };
 }
 export function advance(state, dt, maximum, speed) {
-  if (state.paused || !['down', 'up'].includes(state.phase)) return state;
+  if (!['down', 'up'].includes(state.phase)) return state;
   const pressure = Math.max(0, Math.min(maximum, state.pressure + (state.phase === 'down' ? 1 : -1) * dt * speed));
   return { ...state, pressure, phase: pressure >= maximum && state.phase === 'down' ? 'bottom' :
     pressure <= 0 && state.phase === 'up' ? 'done' : state.phase };
