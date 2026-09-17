@@ -1,9 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createTransect, drill, move, finish, score, measurements, HOLE_COUNT, MAX_DEPTH_CM, STROKE_CM } from '../static/minigames/ice-model.js';
+import { createTransect, nextAction, drill, pull, empty, extend, move, finish, score, measurements, HOLE_COUNT, MAX_DEPTH_CM, STROKE_CM, BARREL_CM } from '../static/minigames/ice-model.js';
+
+const steps = { drill, pull, empty, extend };
 
 function completeHole(state) {
-  while (drill(state)) { /* Drill until breakthrough. */ }
+  for (let step = nextAction(state); step; step = nextAction(state)) steps[step](state);
 }
 
 test('seeded floes are repeatable, varied, and fit the chart range', () => {
@@ -15,7 +17,7 @@ test('seeded floes are repeatable, varied, and fit the chart range', () => {
     assert.ok(HOLE_COUNT >= 8);
     state.holes.forEach((hole, i) => {
       assert.equal(hole.distanceM, i * 5);
-      assert.ok(hole.thicknessCm > 0 && hole.thicknessCm < MAX_DEPTH_CM);
+      assert.ok(hole.thicknessCm >= 30 && hole.thicknessCm < state.scaleCm && state.scaleCm <= MAX_DEPTH_CM);
     });
   }
 });
@@ -31,6 +33,7 @@ test('each stroke advances depth; only breakthrough reveals the measurement', ()
   completeHole(state);
   assert.equal(hole.depthCm, hole.thicknessCm);
   assert.equal(hole.strokes, Math.ceil(hole.thicknessCm / STROKE_CM));
+  assert.equal(hole.runs, Math.ceil(hole.thicknessCm / BARREL_CM));
   assert.equal(measurements(state).length, 1);
   const saved = structuredClone(state);
   assert.equal(drill(state), false);
@@ -60,7 +63,7 @@ test('early finish awards once and excludes partial holes', () => {
   assert.equal(result.detail.holes, 1);
   assert.equal(result.detail.title, 'Ice thickness');
   assert.equal(result.detail.source, 'seeded game floe');
-  assert.deepEqual(result.detail.transect, [{ distanceM: 0, thicknessCm: state.holes[0].thicknessCm }]);
+  assert.deepEqual(result.detail.transect, [{ distanceM: 0, thicknessCm: state.holes[0].thicknessCm, coreRuns: state.holes[0].runs }]);
   assert.deepEqual(JSON.parse(JSON.stringify(result)), result);
   const saved = structuredClone(state);
   assert.equal(finish(state), null);

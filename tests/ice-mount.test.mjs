@@ -61,11 +61,11 @@ test('mount uses proxy-relative stylesheet; repeat, text input and modifiers do 
     f.key('d', { ctrlKey: true });
     assert.equal(f.node('[data-reading]').textContent, 'Drilled: 0 cm');
     assert.equal(f.key('D').defaultPrevented, true);
-    assert.equal(f.node('[data-reading]').textContent, 'Drilled: 14 cm');
+    assert.equal(f.node('[data-reading]').textContent, 'Drilled: 20 cm');
     f.key('ArrowRight');
     f.click('[data-drill]');
     f.key('ArrowLeft');
-    assert.equal(f.node('[data-reading]').textContent, 'Drilled: 14 cm');
+    assert.equal(f.node('[data-reading]').textContent, 'Drilled: 20 cm');
     assert.equal(f.node('[data-chart]').children.length, 0);
   } finally { f.cleanup(); }
 });
@@ -75,7 +75,7 @@ test('breakthrough reveals chart, enables early finish, and complete is called o
   try {
     f.click('[data-finish]');
     assert.equal(f.results.length, 0);
-    for (let i = 0; i < 20; i++) f.click('[data-drill]');
+    for (let i = 0; i < 40; i++) f.click('[data-drill]');
     assert.equal(f.node('[data-chart]').children.length, 1);
     assert.equal(f.node('[data-drill]').disabled, true);
     assert.equal(f.node('[data-finish]').disabled, false);
@@ -107,7 +107,7 @@ test('closed or detached game ignores keyboard, and cleanup removes keyboard and
 test('chart leaves unmeasured gaps, then joins adjacent measurements; full finish awards once', () => {
   const f = fixture();
   try {
-    const drillHole = () => { for (let i = 0; i < 20; i++) f.key('d'); };
+    const drillHole = () => { for (let i = 0; i < 30; i++) ['d', 'p', 'e', 'x'].forEach(k => f.key(k)); };
     drillHole();
     f.key('ArrowRight');
     f.key('ArrowRight');
