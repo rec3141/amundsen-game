@@ -1,0 +1,12 @@
+[Unit]
+Description=Amundsen expedition game and crew idea board
+After=network.target
+
+[Service]
+WorkingDirectory=/data/dev/amundsen-game
+ExecStart=/usr/bin/python3 /data/dev/amundsen-game/server.py --host 127.0.0.1 --port 8050
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Keep the Amundsen game route available after Caddy reloads
+
+[Timer]
+OnBootSec=15
+OnUnitActiveSec=30
+AccuracySec=2
+
+[Install]
+WantedBy=timers.target

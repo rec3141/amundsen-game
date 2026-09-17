@@ -1,0 +1,8 @@
+[Unit]
+Description=Register the Amundsen game path in Caddy
+After=amundsen-game.service
+Requires=amundsen-game.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /data/dev/amundsen-game/deploy/route.py
