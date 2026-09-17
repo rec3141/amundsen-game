@@ -1,4 +1,4 @@
-import { createTransect, drill, move, measurements, score, finish, MAX_DEPTH_CM } from './ice-model.js';
+import { createTransect, nextAction, drill, pull, empty, extend, move, measurements, score, finish, BARREL_CM } from './ice-model.js';
 
 const stylesheet = new URL('./ice.css', import.meta.url).href;
 const svgNS = 'http://www.w3.org/2000/svg';
@@ -6,35 +6,69 @@ const svgNS = 'http://www.w3.org/2000/svg';
 export const ice = {
   title: 'Ice thickness',
   mount(root, { complete, expedition }) {
-    const state = createTransect(expedition?.seed ?? expedition?.id ?? Date.now());
+    // The same spot on the chart is the same floe; without a position every launch finds a new one.
+    const position = Number.isFinite(expedition?.x) && Number.isFinite(expedition?.y) ? `floe:${Math.round(expedition.x)}:${Math.round(expedition.y)}` : null;
+    const state = createTransect(expedition?.seed ?? expedition?.id ?? position ?? Date.now(), expedition?.ice ?? null);
+    const scale = state.scaleCm;
+    const tick = scale > 250 ? 100 : 50;
+    const ticks = Array.from({ length: Math.floor(scale / tick) + 1 }, (_, i) => i * tick);
+    const chartY = cm => 242 - cm / scale * 204;
+    const labels = {
+      drill: 'Drill <kbd>D</kbd>',
+      pull: 'Pull corer <kbd>P</kbd>',
+      empty: 'Empty core <kbd>E</kbd>',
+      extend: 'Add extension <kbd>X</kbd>',
+    };
     const events = new AbortController();
     let active = true;
     root.innerHTML = `
       <section class="ice-game" aria-label="Ice thickness transect">
         <link rel="stylesheet" href="${stylesheet}">
         <div class="ice-heading"><div><p class="ice-kicker">FIELD NOTEBOOK / ICE TRANSECT</p>
-          <h3>Find the shape beneath the surface.</h3></div><div class="ice-score"><strong data-score>0</strong><span>points</span></div></div>
-        <p class="ice-instructions">Press <kbd>D</kbd> repeatedly or tap Drill. Break through, log the thickness, then move along the transect.</p>
+          <h3>Core the floe a metre at a time.</h3></div><div class="ice-score"><strong data-score>0</strong><span>points</span></div></div>
+        <p class="ice-instructions">Press <kbd>D</kbd> or tap to turn the Kovacs corer. Its barrel holds 1 m of core: when it fills, pull <kbd>P</kbd>, empty <kbd>E</kbd>, add an extension <kbd>X</kbd> and go back down until you break through.</p>
         <div class="ice-layout">
           <div class="ice-workstation">
             <div class="ice-location"><strong data-hole></strong><span data-distance></span></div>
             <div class="ice-section" aria-hidden="true">
-              <div class="ice-snow">FLOE SURFACE</div><div class="ice-water"></div>
-              <div class="ice-bore"></div><div class="ice-auger"><span></span></div>
-              <div class="ice-ruler"><span>0</span><span>60</span><span>120</span><span>180</span><span>240 cm</span></div>
+              <svg class="ice-scene" viewBox="-150 -150 300 ${scale + 170}" preserveAspectRatio="xMidYMin meet">
+                <defs>
+                  <linearGradient id="ice-floe-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3f4f6"/><stop offset="1" stop-color="#8fc2d1"/></linearGradient>
+                  <clipPath id="ice-barrel-clip"><rect x="-16" y="-100" width="32" height="93"/></clipPath>
+                </defs>
+                <rect class="ice-floe" x="-1000" y="0" width="2000" height="${scale + 40}" fill="url(#ice-floe-fill)"/>
+                <rect class="ice-water ice-off" data-water x="-1000" y="0" width="2000" height="${scale + 40}"/>
+                <rect class="ice-snow" x="-1000" y="-5" width="2000" height="7"/>
+                <g class="ice-ruler" font-size="${Math.round(scale / 18)}">${ticks.map(n => `<path d="M-122 ${n} h10"/><text x="-108" y="${n}" dominant-baseline="middle">${n}</text>`).join('')}</g>
+                <rect class="ice-bore" data-bore x="-18" y="0" width="36" height="0"/>
+                <rect class="ice-flood ice-off" data-flood x="-18" y="0" width="36" height="0"/>
+                <g class="ice-cores">${[0, 1, 2].map(i => `<g class="ice-off" data-core="${i}"><rect x="32" y="${-19 - i * 16}" width="${BARREL_CM}" height="14" rx="7"/><path d="M57 ${-19 - i * 16} v14 M82 ${-19 - i * 16} v14 M107 ${-19 - i * 16} v14"/></g>`).join('')}</g>
+                <g class="ice-corer" data-corer>
+                  ${[1, 2, 3].map(i => `<g class="ice-rod ice-off" data-rod="${i}"><rect x="-3.5" y="${-108 - i * 100}" width="7" height="100"/><rect class="ice-coupling" x="-6" y="${-113 - (i - 1) * 100}" width="12" height="10" rx="2"/></g>`).join('')}
+                  <g class="ice-handle" data-handle><rect x="-3.5" y="-24" width="7" height="24"/><rect x="-27" y="-31" width="54" height="9" rx="4.5"/></g>
+                  <rect class="ice-barrel" x="-12" y="-100" width="24" height="93" rx="1"/>
+                  <rect class="ice-core" data-core-fill x="-6" y="0" width="12" height="0"/>
+                  <g clip-path="url(#ice-barrel-clip)"><g class="ice-flights">${Array.from({ length: 12 }, (_, i) => `<path d="M-16 ${-137.5 + i * 12.5} l32 8"/>`).join('')}</g></g>
+                  <rect class="ice-driver" x="-13" y="-109" width="26" height="10" rx="2"/><circle class="ice-pin" cx="0" cy="-104" r="2.2"/>
+                  <path class="ice-cutter" d="M-16 -8 h32 v5 l-5 3 l-5 -4 h-12 l-5 4 l-5 -3 z"/>
+                </g>
+                <text class="ice-tape ice-off" data-tape x="30" y="0" font-size="${Math.round(scale / 16)}" dominant-baseline="middle"></text>
+              </svg>
+              <div class="ice-snow-label">FLOE SURFACE</div>
               <div class="ice-depth" data-depth></div>
             </div>
-            <div class="ice-drilling"><span data-reading></span><span data-strokes></span></div>
-            <div class="ice-progress" role="meter" aria-label="Drilling depth in centimetres" aria-valuemin="0" aria-valuemax="240"><div></div></div>
+            <div class="ice-drilling"><span data-reading></span><span data-barrel></span></div>
+            <div class="ice-progress" role="meter" aria-label="Core in the 1 metre barrel, centimetres" aria-valuemin="0" aria-valuemax="${BARREL_CM}"><div></div></div>
             <button type="button" class="ice-drill" data-drill>Drill <kbd>D</kbd></button>
+            <div class="ice-corer-actions" role="group" aria-label="Core barrel handling"><button type="button" data-pull>Pull <kbd>P</kbd></button><button type="button" data-empty>Empty <kbd>E</kbd></button><button type="button" data-extend>Extend <kbd>X</kbd></button></div>
             <div class="ice-navigation"><button type="button" data-prev aria-label="Previous hole, left arrow">← Previous</button><button type="button" data-next aria-label="Next hole, right arrow">Next hole →</button></div>
           </div>
           <div class="ice-notebook">
             <div class="ice-chart-heading"><h4>Thickness along transect</h4><span data-count></span></div>
             <svg class="ice-chart" viewBox="0 0 490 295" role="img" aria-label="Ice thickness chart. Measurements are listed below.">
               <text x="53" y="18">Ice thickness (cm)</text>
-              <g class="ice-grid">${[0, 60, 120, 180, 240].map(n => {
-                const y = 242 - n / MAX_DEPTH_CM * 204;
+              <g class="ice-grid">${ticks.map(n => {
+                const y = chartY(n);
                 return `<path d="M53 ${y} H463"/><text x="44" y="${y + 4}" text-anchor="end">${n}</text>`;
               }).join('')}</g>
               <g class="ice-ticks">${state.holes.map(h => `<text x="${53 + h.distanceM / 45 * 410}" y="260" text-anchor="middle">${h.distanceM}</text>`).join('')}</g>
@@ -44,43 +78,84 @@ export const ice = {
             <p class="ice-chart-empty">Your first breakthrough starts the chart.</p>
             <div class="ice-hole-strip" role="group" aria-label="Transect holes">${state.holes.map((_, i) => `<button type="button" data-select="${i}">${i + 1}</button>`).join('')}</div>
             <details class="ice-log"><summary>Measurement notebook <span data-log-count></span></summary>
-              <table><caption>Completed holes</caption><thead><tr><th scope="col">Hole</th><th scope="col">Distance (m)</th><th scope="col">Thickness (cm)</th></tr></thead><tbody data-log></tbody></table>
+              <table><caption>Completed holes</caption><thead><tr><th scope="col">Hole</th><th scope="col">Distance (m)</th><th scope="col">Thickness (cm)</th><th scope="col">Core runs</th></tr></thead><tbody data-log></tbody></table>
             </details>
             <p class="ice-reward">25 points per measured hole · +50 for the full transect</p>
           </div>
         </div>
-        <div class="ice-footer"><p role="status" aria-live="polite" data-status>Hole 1 is ready. Each press takes the auger deeper.</p><button type="button" class="ice-finish" data-finish disabled>Finish transect</button></div>
+        <div class="ice-footer"><p role="status" aria-live="polite" data-status>Hole 1 is ready. Each press turns the corer deeper.</p><button type="button" class="ice-finish" data-finish disabled>Finish transect</button></div>
       </section>`;
     const game = root.querySelector('.ice-game');
     const find = selector => game.querySelector(selector);
     const drillButton = find('[data-drill]');
+    const stepButtons = { pull: find('[data-pull]'), empty: find('[data-empty]'), extend: find('[data-extend]') };
     const nextButton = find('[data-next]');
     const previousButton = find('[data-prev]');
     const finishButton = find('[data-finish]');
     const status = find('[data-status]');
+    const section = find('.ice-section');
     const holeButtons = [...game.querySelectorAll('[data-select]')];
     const dialog = root.closest('dialog');
+    const steps = { drill, pull, empty, extend };
+    let turns = 0;
+
+    function renderScene(hole) {
+      const onSurface = !hole.measured && (hole.stage === 'pulled' || hole.stage === 'emptied');
+      const rods = onSurface ? 0 : hole.extensions;
+      // The cutting head sits at the bottom of the hole, or hangs just above the snow once the corer is pulled.
+      section.style.setProperty('--ice-head', onSurface ? -12 : hole.depthCm);
+      section.classList.toggle('ice-breakthrough', hole.measured);
+      section.classList.toggle('ice-hauling', hole.stage !== 'drilling' && !hole.measured);
+      find('[data-bore]').setAttribute('height', hole.depthCm);
+      find('[data-core-fill]').setAttribute('y', -hole.coreCm);
+      find('[data-core-fill]').setAttribute('height', hole.coreCm);
+      find('[data-handle]').setAttribute('transform', `translate(0 ${-108 - rods * 100})`);
+      [1, 2, 3].forEach(i => find(`[data-rod="${i}"]`).classList.toggle('ice-off', i > rods));
+      const cores = hole.extensions + (hole.stage === 'emptied' ? 1 : 0);
+      [0, 1, 2].forEach(i => find(`[data-core="${i}"]`).classList.toggle('ice-off', i >= cores));
+      // Sea water floods the finished hole up to the freeboard level, about a tenth of the thickness below the surface.
+      const water = find('[data-water]');
+      const flood = find('[data-flood]');
+      const tape = find('[data-tape]');
+      [water, flood, tape].forEach(node => node.classList.toggle('ice-off', !hole.measured));
+      if (hole.measured) {
+        const freeboard = Math.round(hole.thicknessCm * 0.1);
+        water.setAttribute('y', hole.thicknessCm);
+        flood.setAttribute('y', freeboard);
+        flood.setAttribute('height', hole.thicknessCm - freeboard);
+        tape.setAttribute('y', hole.thicknessCm);
+        tape.textContent = `${hole.thicknessCm} cm`;
+      }
+    }
 
     function render() {
       const hole = state.holes[state.current];
       const records = measurements(state);
+      const action = nextAction(state);
       find('[data-score]').textContent = score(state);
       find('[data-hole]').textContent = `Hole ${state.current + 1} / ${state.holes.length}`;
       find('[data-distance]').textContent = `${hole.distanceM} m along transect`;
       find('[data-depth]').textContent = `${hole.depthCm} cm`;
       find('[data-reading]').textContent = hole.measured ? `Thickness: ${hole.thicknessCm} cm` : `Drilled: ${hole.depthCm} cm`;
-      find('[data-strokes]').textContent = `${hole.strokes} strokes`;
+      find('[data-barrel]').textContent = hole.measured
+        ? `${hole.runs} core run${hole.runs === 1 ? '' : 's'}`
+        : `Barrel ${hole.coreCm} / ${BARREL_CM} cm · ${hole.extensions} ext`;
       find('[data-count]').textContent = `${records.length} / ${state.holes.length} logged`;
       find('[data-log-count]').textContent = `(${records.length})`;
-      const depth = hole.depthCm / MAX_DEPTH_CM * 100;
-      find('.ice-section').style.setProperty('--ice-depth', `${depth}%`);
-      find('.ice-section').classList.toggle('ice-breakthrough', hole.measured);
+      renderScene(hole);
       const meter = find('.ice-progress');
-      meter.setAttribute('aria-valuenow', hole.depthCm);
-      meter.setAttribute('aria-valuetext', `${hole.depthCm} centimetres${hole.measured ? ', breakthrough' : ' drilled'}`);
-      meter.firstElementChild.style.width = `${depth}%`;
-      drillButton.disabled = state.finished || hole.measured;
-      drillButton.innerHTML = hole.measured ? 'Breakthrough ✓' : 'Drill <kbd>D</kbd>';
+      meter.setAttribute('aria-valuenow', hole.coreCm);
+      meter.setAttribute('aria-valuetext', `${hole.coreCm} of ${BARREL_CM} centimetres of core, hole ${hole.depthCm} centimetres deep${hole.measured ? ', breakthrough' : ''}`);
+      meter.firstElementChild.style.width = `${hole.coreCm / BARREL_CM * 100}%`;
+      meter.classList.toggle('ice-full', hole.coreCm === BARREL_CM && !hole.measured);
+      // The large button always performs the step the hole needs next, so one thumb can run the whole cycle.
+      drillButton.disabled = !action;
+      drillButton.innerHTML = hole.measured ? 'Breakthrough ✓' : labels[action ?? 'drill'];
+      drillButton.classList.toggle('ice-handling', Boolean(action) && action !== 'drill');
+      Object.entries(stepButtons).forEach(([name, button]) => {
+        button.disabled = action !== name;
+        button.classList.toggle('ice-due', action === name);
+      });
       previousButton.disabled = state.finished || state.current === 0;
       nextButton.disabled = state.finished || state.current === state.holes.length - 1;
       finishButton.disabled = state.finished || records.length === 0;
@@ -99,11 +174,11 @@ export const ice = {
       state.holes.forEach((h, i) => {
         if (!h.measured) return;
         const x = 53 + h.distanceM / 45 * 410;
-        const y = 242 - h.thicknessCm / MAX_DEPTH_CM * 204;
+        const y = chartY(h.thicknessCm);
         if (i && state.holes[i - 1].measured) {
           const previous = state.holes[i - 1];
           const line = document.createElementNS(svgNS, 'line');
-          Object.entries({ x1: 53 + previous.distanceM / 45 * 410, y1: 242 - previous.thicknessCm / MAX_DEPTH_CM * 204, x2: x, y2: y }).forEach(([key, value]) => line.setAttribute(key, value));
+          Object.entries({ x1: 53 + previous.distanceM / 45 * 410, y1: chartY(previous.thicknessCm), x2: x, y2: y }).forEach(([key, value]) => line.setAttribute(key, value));
           chart.append(line);
         }
         const point = document.createElementNS(svgNS, 'circle');
@@ -113,20 +188,39 @@ export const ice = {
         point.append(title);
         chart.append(point);
       });
-      find('[data-log]').innerHTML = state.holes.map((h, i) => h.measured ? `<tr><th scope="row">${i + 1}</th><td>${h.distanceM}</td><td>${h.thicknessCm}</td></tr>` : '').join('');
+      find('[data-log]').innerHTML = state.holes.map((h, i) => h.measured ? `<tr><th scope="row">${i + 1}</th><td>${h.distanceM}</td><td>${h.thicknessCm}</td><td>${h.runs}</td></tr>` : '').join('');
     }
 
-    function takeStroke() {
-      if (!active || !drill(state)) return;
-      const hole = state.holes[state.current];
-      game.classList.toggle('ice-stroke-a', hole.strokes % 2 === 1);
-      game.classList.toggle('ice-stroke-b', hole.strokes % 2 === 0);
+    function report(step, hole) {
       if (hole.measured) {
         const count = measurements(state).length;
-        status.textContent = count === state.holes.length
+        return count === state.holes.length
           ? `All ${count} holes logged. Finish to save ${score(state)} points.`
-          : `Breakthrough! ${hole.thicknessCm} cm at ${hole.distanceM} m. Choose another hole or finish your transect.`;
+          : `Breakthrough! ${hole.thicknessCm} cm at ${hole.distanceM} m in ${hole.runs} core run${hole.runs === 1 ? '' : 's'}. Choose another hole or finish your transect.`;
       }
+      if (hole.stage === 'full') return `Barrel full at ${hole.depthCm} cm and still in ice. Pull the corer (P).`;
+      if (step === 'pull') return `Corer on the surface with ${BARREL_CM} cm of core. Empty the barrel (E).`;
+      if (step === 'empty') return `Core ${hole.extensions + 1} laid out on the snow. Add a 1 m extension (X) to reach ${hole.depthCm} cm.`;
+      if (step === 'extend') return `Extension ${hole.extensions} pinned. Cutting head back at ${hole.depthCm} cm. Keep drilling.`;
+      return null;
+    }
+
+    // Runs one step of the coring cycle; with no step named it runs whichever the hole needs next.
+    function act(step = nextAction(state)) {
+      if (!active || !step) return;
+      const hole = state.holes[state.current];
+      if (!steps[step](state)) {
+        const due = nextAction(state);
+        if (due && due !== 'drill') status.textContent = `${{ pull: 'Barrel full. Pull the corer (P)', empty: 'Empty the core barrel (E)', extend: 'Add a 1 m extension (X)' }[due]} before drilling on.`;
+        return;
+      }
+      if (step === 'drill') {
+        turns += 1;
+        game.classList.toggle('ice-stroke-a', turns % 2 === 1);
+        game.classList.toggle('ice-stroke-b', turns % 2 === 0);
+      }
+      const message = report(step, hole);
+      if (message) status.textContent = message;
       render();
       if (hole.measured && document.activeElement === drillButton) {
         (measurements(state).length === state.holes.length ? finishButton : !nextButton.disabled ? nextButton : previousButton).focus();
@@ -138,7 +232,7 @@ export const ice = {
       const hole = state.holes[state.current];
       status.textContent = hole.measured
         ? `Hole ${state.current + 1}: ${hole.thicknessCm} cm logged at ${hole.distanceM} m.`
-        : `Hole ${state.current + 1}, ${hole.distanceM} m. ${hole.depthCm ? `Resume from ${hole.depthCm} cm.` : 'Ready to drill.'}`;
+        : `Hole ${state.current + 1}, ${hole.distanceM} m. ${hole.depthCm ? `Resume at ${hole.depthCm} cm: ${{ drill: 'drill on', pull: 'pull the corer', empty: 'empty the barrel', extend: 'add an extension' }[nextAction(state)]}.` : 'Ready to drill.'}`;
       render();
     }
 
@@ -151,7 +245,8 @@ export const ice = {
       complete(result.points, result.detail);
     }
 
-    drillButton.addEventListener('click', takeStroke, { signal: events.signal });
+    drillButton.addEventListener('click', () => act(), { signal: events.signal });
+    Object.entries(stepButtons).forEach(([name, button]) => button.addEventListener('click', () => act(name), { signal: events.signal }));
     nextButton.addEventListener('click', () => go(1), { signal: events.signal });
     previousButton.addEventListener('click', () => go(-1), { signal: events.signal });
     finishButton.addEventListener('click', save, { signal: events.signal });
@@ -160,11 +255,12 @@ export const ice = {
       if (!active || !game.isConnected || (dialog && !dialog.open) || event.ctrlKey || event.metaKey || event.altKey) return;
       if (event.target?.closest?.('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]')) return;
       const key = event.key.toLowerCase();
-      if (!['d', 'arrowleft', 'arrowright'].includes(key)) return;
+      const step = { d: 'drill', p: 'pull', e: 'empty', x: 'extend' }[key];
+      if (!step && key !== 'arrowleft' && key !== 'arrowright') return;
       event.preventDefault();
       event.stopImmediatePropagation();
       if (event.repeat || state.finished) return;
-      if (key === 'd') takeStroke();
+      if (step) act(step);
       else go(key === 'arrowleft' ? -1 : 1);
     }, { capture: true, signal: events.signal });
     render();
