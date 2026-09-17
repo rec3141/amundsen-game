@@ -65,16 +65,44 @@ The Python server is intended for a trusted ship intranet, not public hosting.
 
 ## Play and collaborate
 
-- Click water to sail there; click a numbered station or its checklist card to
-  sail to it and start its mission automatically.
-- Steer with WASD or arrows. Press E close to a station to begin a mission.
-- Lower the CTD, then fire a bottle between 290 and 380 m for 100 science points.
-- Each of the three stations currently uses the CTD minigame. Complete all three
-  to finish the expedition. Close a mission to abort; completed stations award once.
-- Progress is per browser and saved locally. Restart clears only that expedition.
-- Crew ideas opens the shared web form. It works on phones and refreshes every
-  five seconds. Names are optional; all ideas are visible to the crew.
-- This is single-player sailing with a shared suggestion board, not multiplayer.
+- Click the chart to sail, or steer with WASD/arrows. Sailing uncovers the
+  captain's chart and draws the voyage track.
+- Launch operations anywhere using the sidebar buttons or keyboard shortcuts.
+  **C** opens the CTD notebook; **I** opens the ice-thickness transect.
+- CTD: choose an archived cast and target layer, lower the rosette to reveal
+  temperature, salinity, oxygen, fluorescence and density curves, then begin
+  ascent. Press Space or Fire bottle to close up to three bottles. Pause or slow
+  the winch to refine the catch. The best bottle earns up to 100 points.
+- CTD targets: chlorophyll maximum (fluorescence peak), temperature minimum,
+  oxygen minimum, and pycnocline (strongest positive Sigma-t gradient). Target
+  pressures and bottle errors appear after sampling. Retry in the same notebook
+  is practice; a fresh launch creates another logged operation.
+- Ice: press D repeatedly or use Drill, move along the floe, and build a thickness
+  chart from each completed hole. Finish the transect to bank the points.
+- Completed operations leave discovery marks at the ship's position and entries
+  in the expedition log. There are no predetermined mission locations.
+- Score, chart, track and discoveries are saved per browser. Restart clears that
+  voyage; the crew's shared ideas stay on the server.
+- Crew ideas opens a shared phone-friendly form and board, refreshed every five
+  seconds. Names are optional; all ideas are visible to the crew.
+
+## Underway CTD profiles
+
+`static/data/ctd/` holds original published cast JSON from
+`/data/underway_server/www/data/casts/`. The manifest records source paths and
+SHA-256 checksums. Refresh from the underway server with:
+
+```sh
+python3 tools/pull_ctd.py --leg 2026_LEG_03
+```
+
+Units and measurement arrays are preserved. Layer detection applies a ±2 dbar
+median filter within finite, contiguous segments. Maxima/minima can occur at
+segment edges, and tied extrema are all accepted. Pycnocline targeting finds
+the largest positive Sigma-t change over 6–8 dbar. Missing values and pressure
+gaps break the curves and the gradient calculation. Scoring decreases from 100
+at the target to zero at a 20 dbar error. Source profiles, methods and results
+are testable in `tests/test_ctd.mjs`.
 
 Suggestions are stored in `runtime/suggestions.sqlite`, independent of the
 browser. Set `AMUNDSEN_GAME_DB` to choose another database path. Back up this file
@@ -97,11 +125,13 @@ export const myGame = {
 };
 ```
 
-Import it in `static/minigames/registry.js`, add it to `minigames`, and change
-one station's `game` to the matching registry key. Station coordinates are
-normalized from 0 to 1. Keep station IDs stable to preserve saved progress.
+Import it in `static/minigames/registry.js`, add it to `minigames`, and add an
+`activities` entry with `id`, `title`, `description`, and a unique keyboard `key`.
+The activity ID must match its `minigames` key. The shell creates its launch
+button and shortcut automatically.
 Use `root.querySelector` for local controls, and return cleanup for animation
-frames, timers, or listeners. The shell handles awarding points, saving progress,
+frames, timers, or listeners. Call `complete(points, detail)` once; `detail.title` names the discovery log entry.
+The shell handles awarding points, recording discoveries, saving progress,
 and closing the dialog. Do not fetch runtime assets from the internet.
 
 Reload the browser after an edit; static assets are served with `no-store`.
@@ -120,6 +150,7 @@ python3 -m unittest discover -s tests -v
 node --input-type=module --check < static/game.js
 node --input-type=module --check < static/minigames/ctd.js
 node --input-type=module --check < static/minigames/registry.js
+node --test tests/*.mjs
 ```
 
 The API tests use a temporary database and do not submit ideas to the live board.
