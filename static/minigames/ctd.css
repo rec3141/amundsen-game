@@ -21,3 +21,7 @@ dialog:has(.ctd-game) { width: min(1120px, 96vw); max-width: 96vw; }
 .ctd-result h3 { margin-top: 0; }
 .ctd-source { font-size: .72rem; color: #afc7d5; overflow-wrap: anywhere; }
 @media (max-width: 600px) { .ctd-controls button { flex: 1 1 40%; } .ctd-chart { max-height: 55vh; } .ctd-telemetry { gap: 8px; } }
+
+.ctd-game > header { display: block; height: auto; padding: 0 0 12px; margin: 0; background: none; border: 0; }
+.ctd-controls label { display: flex; align-items: center; gap: 8px; margin: 0; color: #afc7d5; }
+.ctd-controls input[type="checkbox"] { display: inline-block; width: auto; margin: 0; }

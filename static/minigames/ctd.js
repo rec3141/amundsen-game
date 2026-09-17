@@ -87,7 +87,7 @@ export const ctd = {
           const groups = segments(profile, channel), values = groups.flat().map(q => q.value);
           return { groups, min: Math.min(...values), max: Math.max(...values) };
         });
-        $('.ctd-source').textContent = `${profile.id} · ${profile.station || 'Unlabelled station'} · ${profile.time || 'Time unavailable'} · ${maximum} dbar. Source: underway ${entry.source}. Offline copy; original arrays and units.`;
+        $('.ctd-source').textContent = `${profile.id} · ${profile.station || 'Unlabelled station'} · ${profile.time || 'Time unavailable'} · ${maximum} dbar. Underway archive.`;
         reset();
       } catch (error) { if (!disposed && version === loadVersion) { state.phase = 'ready'; layer = null; controls(); status(`${error.message}. Select a cast to retry.`); } }
     }
@@ -100,7 +100,7 @@ export const ctd = {
       status('Layer revealed. Compare your bottles with the profile, or try another cast.'); controls(); chart();
       if (!awarded) {
         awarded = true;
-        complete(best.points, { title: ctd.title, castId: profile.id, target: layer.key, pressure: best.pressure,
+        complete(best.points, { title: `${targets[layer.key].label} · ${profile.station || profile.cast}`, castId: profile.id, target: layer.key, pressure: best.pressure,
           source: entry.source, targetPressure: layer.p, bottles: catches });
       }
     }
