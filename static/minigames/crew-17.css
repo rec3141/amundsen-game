@@ -1,0 +1,26 @@
+.c17 { color: #e5f4f4; background: #102b39; padding: clamp(12px, 3vw, 24px); border-radius: 12px; font: 15px/1.5 system-ui, sans-serif; max-width: 1000px; margin: auto; }
+.c17 * { box-sizing: border-box; }
+.c17 header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.c17 h3 { font-size: 25px; margin: 0; }
+.c17 .c17-eyebrow { color: #f3c879; font-size: 11px; letter-spacing: .18em; margin: 0; }
+.c17 button { font: inherit; color: #ecfafa; background: #214758; border: 1px solid #7197a4; border-radius: 7px; padding: 9px 12px; min-height: 44px; cursor: pointer; touch-action: manipulation; }
+.c17 button:hover:not(:disabled) { background: #356277; }
+.c17 button:focus-visible { outline: 3px solid #ffd580; outline-offset: 2px; }
+.c17 button:disabled { opacity: .5; cursor: default; }
+.c17 .c17-meters { background: #071f2b; color: #ffe0a4; padding: 12px; border-radius: 6px; font-weight: 700; margin-bottom: 16px; font-variant-numeric: tabular-nums; }
+.c17 .c17-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(240px, 1fr); gap: 20px; }
+.c17 .c17-board { display: grid; grid-template-columns: repeat(9, 1fr); border: 2px solid #759cab; aspect-ratio: 1; background: #1b4053; }
+.c17 .c17-cell { min-width: 0; display: flex; align-items: center; justify-content: center; border: 1px solid #ffffff18; font-size: clamp(14px, 3vw, 25px); line-height: 1; color: #ffe0a4; }
+.c17 .c17-pack { background: #afcdd3; color: #142e3e; }
+.c17 .c17-trail { box-shadow: inset 0 0 0 2px #eec78580; }
+.c17 .c17-here { background: #f4c96e; color: #102b39; font-weight: bold; }
+.c17 .c17-legend { font-size: 12px; color: #b8cfd7; }
+.c17 [data-status] { margin-top: 0; min-height: 5em; color: #ffe0a4; }
+.c17 .c17-pad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px; }
+.c17 .c17-actions { display: grid; gap: 6px; }
+.c17 .c17-actions button { text-align: left; }
+.c17 small { display: block; font-size: 11px; color: #c7dfe4; }
+.c17 .c17-result { margin-top: 16px; padding: 16px; border: 1px solid #f4c96e; background: #071f2b; }
+.c17 .c17-result h4 { margin: 0; font-size: 21px; }
+.c17 [hidden] { display: none; }
+@media (max-width: 620px) { .c17 .c17-layout { grid-template-columns: minmax(0, 1fr); } .c17 [data-status] { min-height: 0; } .c17 .c17-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
