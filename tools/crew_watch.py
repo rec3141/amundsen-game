@@ -15,14 +15,12 @@ def sync():
     with urllib.request.urlopen('http://127.0.0.1:8050/api/suggestions', timeout=5) as response:
         ideas = sorted(json.load(response), key=lambda row: row['id'])
     states = [json.loads(path.read_text()) for path in RUNS.glob('*/state.json')]
-    active = sum(state['status'] in ('starting', 'running') for state in states)
     known = {state['branch'].split('/')[-1] for state in states}
+    # Every new idea starts a worker immediately; there is no concurrency cap.
     for idea in ideas:
         prefix = f"idea-{idea['id']}-"
         if any(slug.startswith(prefix) for slug in known):
             continue
-        if active >= 6:
-            break
         slug = f"idea-{idea['id']}-minigame"
         module = f"crew-{idea['id']}"
         brief = ROOT / 'runtime' / f'{slug}-brief.md'
@@ -49,7 +47,6 @@ No spawning further agents. Do not read credentials or modify any production/run
 Final report: commit hash, exported symbol, keyboard controls, verification results, limitations and integration notes.
 ''')
         subprocess.run([sys.executable, str(ROOT / 'tools/crew.py'), 'start', slug, str(brief)], check=True)
-        active += 1
         known.add(slug)
         print(f"Queued crew idea #{idea['id']}: {idea['title']}", flush=True)
 

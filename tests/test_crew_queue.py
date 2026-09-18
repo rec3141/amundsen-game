@@ -12,7 +12,7 @@ queue = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(queue)
 
 class QueueTests(unittest.TestCase):
-    def test_existing_idea_and_capacity(self):
+    def test_existing_idea_skipped_and_new_ideas_all_start(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             runs = root / 'runtime/crew'
@@ -26,12 +26,10 @@ class QueueTests(unittest.TestCase):
                  patch.object(queue.urllib.request, 'urlopen', return_value=io.BytesIO(json.dumps(ideas).encode())), \
                  patch.object(queue.subprocess, 'run') as launch:
                 queue.sync()
-                launch.assert_called_once()
-                self.assertEqual(launch.call_args.args[0][-2], 'idea-2-minigame')
+                self.assertEqual([call.args[0][-2] for call in launch.call_args_list], ['idea-2-minigame', 'idea-3-minigame'])
                 prompt = (root / 'runtime/idea-2-minigame-brief.md').read_text()
                 self.assertIn('static/minigames/crew-2.js', prompt)
                 self.assertIn('/data/underway_server/www', prompt)
-                self.assertFalse((root / 'runtime/idea-3-minigame-brief.md').exists())
 
     def test_completed_and_failed_ideas_not_duplicated(self):
         with tempfile.TemporaryDirectory() as tmp:

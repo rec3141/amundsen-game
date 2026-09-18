@@ -173,7 +173,7 @@ python3 tools/crew_watch.py          # Queue current board once
 ```
 
 `amundsen-game-crew.service` currently watches the suggestion board every 15
-seconds, launching at most six workers concurrently. It runs for the meeting;
+seconds, launching a worker for every new idea with no concurrency cap. It runs for the meeting;
 it is not enabled at boot. The watcher continues after a chat turn ends. Workers
 commit their branch and stop; they do not deploy or merge. Merges require the
 coordinating session to be active. Logs, exact task briefs, process IDs, and final
