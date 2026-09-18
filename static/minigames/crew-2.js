@@ -64,9 +64,9 @@ export const crew2 = {
               <div class="crew2-loupe-row"><canvas class="crew2-loupe" data-loupe width="180" height="180" aria-hidden="true"></canvas>
                 <dl class="crew2-stats"><dt>Backscatter</dt><dd data-dn>–</dd><dt>Texture σ</dt><dd data-sd>–</dd><dt>Hull speed</dt><dd data-speed>–</dd></dl></div>
               <div class="crew2-actions" role="group" aria-label="Mark the floe under the cursor">
-                <button type="button" data-mark="first-year">First-year <kbd>F</kbd></button>
-                <button type="button" data-mark="old">Old ice <kbd>O</kbd></button>
-                <button type="button" data-remove>Remove <kbd>Del</kbd></button></div>
+                <button type="button" data-mark="first-year" disabled>First-year <kbd>F</kbd></button>
+                <button type="button" data-mark="old" disabled>Old ice <kbd>O</kbd></button>
+                <button type="button" data-remove disabled>Remove <kbd>Del</kbd></button></div>
             </div>
             <div data-panel="drill" hidden>
               <div class="crew2-hole-heading"><strong data-hole-title></strong><span data-hole-note></span></div>
