@@ -1,5 +1,6 @@
 import { ctd } from './ctd.js';
 import { ice } from './ice.js';
+import { game as cliceify } from './crew-3.js';
 import { game as net } from './crew-9.js';
 import { game as seep } from './crew-5.js';
 import { game as oldice } from './crew-2.js';
@@ -8,7 +9,7 @@ import { game as plan } from './crew-11.js';
 import { game as flood } from './crew-10.js';
 import { game as raft } from './crew-8.js';
 // Activities launch at the ship's current position. `requires: 'ice'` needs charted ice under the ship (world.js ICE_STATION_MIN).
-export const minigames = { ctd, ice, raft, flood, plan, contaminants, oldice, seep, net };
+export const minigames = { ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify };
 export const activities = [
   { id: 'ctd', title: 'CTD cast', description: 'Read the water column', key: 'c' },
   { id: 'ice', title: 'Ice thickness', description: 'Drill a floe transect', key: 'i', requires: 'ice' },
@@ -19,4 +20,5 @@ export const activities = [
   { id: 'oldice', title: "Where is the old ice?", description: "Read the radar, then go drill it", key: 'o' },
   { id: 'seep', title: "Seep-Seeker", description: "Core the shelf to find the methane vent", key: 'm' },
   { id: 'net', title: "Crazy Net", description: "Tow a net through keels and boulders", key: 'n' },
+  { id: 'cliceify', title: "Cliceify", description: "Classify ice from deck to satellite", key: 'l' },
 ];
