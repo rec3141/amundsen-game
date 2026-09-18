@@ -1,6 +1,10 @@
 // Paints the whole world once into an offscreen canvas: shaded land relief, bathymetry, glaciers and sea ice.
 // The shore drawn here is world.shore()'s zero line, the same line that stops the ship.
-export const CHART_SCALE = 2;          // chart pixels per grid cell
+// Chart pixels per grid cell. Two on a desktop; one on a phone or tablet when two would exceed the canvas area
+// small devices allow (16.8 Mpx), since game.js keeps three canvases of this size. Set by renderChart, read live.
+export let CHART_SCALE = 2;
+const SMALL_DEVICE_PIXELS = 16777216;
+const chartScale = world => world.cols * world.rows * 4 > SMALL_DEVICE_PIXELS && typeof matchMedia === 'function' && matchMedia('(max-width: 900px), (pointer: coarse)').matches ? 1 : 2;
 
 const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
 const SEA_STOPS = [[0, '#78b7b9'], [50, '#569fa7'], [200, '#36808d'], [500, '#236777'], [1000, '#195364'], [2500, '#113e4f'], [4000, '#0c2e3d']].map(([v, c]) => [v, hex(c)]);
@@ -29,18 +33,23 @@ function hillshade(world) {
   return shade;
 }
 
+// The render is banded and yields to the page after every band, so a 19 Mpx chart never blocks input for long.
 export async function renderChart(world, onProgress = () => {}, bathymetry = true) {
+  CHART_SCALE = chartScale(world);
   const S = CHART_SCALE, { cols, rows, elevation, sign, iceConcentration, iceClass, glacier } = world, W = cols * S, H = rows * S;
   const canvas = document.createElement('canvas'); canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext('2d'), shade = hillshade(world), sea = table(SEA_STOPS, 4000), land = table(LAND_STOPS, 2400);
   const solid = world.meta.ice.classes.map(kind => /fast|shelf/i.test(kind.form)), old = world.meta.ice.classes.map(kind => /old|multi|second/i.test(kind.stage));
-  const BAND = 60;
+  // The two cells each pixel column straddles and its weight between them, the same for every row.
+  const colA = new Int32Array(W), colB = new Int32Array(W), colT = new Float32Array(W);
+  for (let x = 0; x < W; x++) { const fu = (x + .5) / S - .5, cf = Math.floor(fu); colT[x] = fu - cf; colA[x] = Math.max(0, Math.min(cols - 1, cf)); colB[x] = Math.max(0, Math.min(cols - 1, cf + 1)); }
+  const BAND = 64;
   for (let y0 = 0; y0 < H; y0 += BAND) {
     const h = Math.min(BAND, H - y0), image = ctx.createImageData(W, h), px = image.data;
     for (let y = 0; y < h; y++) {
       const fv = (y0 + y + .5) / S - .5, rf = Math.floor(fv), b = fv - rf, ra = Math.max(0, Math.min(rows - 1, rf)) * cols, rb = Math.max(0, Math.min(rows - 1, rf + 1)) * cols;
       for (let x = 0; x < W; x++) {
-        const fu = (x + .5) / S - .5, cf = Math.floor(fu), a = fu - cf, ca = Math.max(0, Math.min(cols - 1, cf)), cb = Math.max(0, Math.min(cols - 1, cf + 1));
+        const a = colT[x], ca = colA[x], cb = colB[x];
         const i00 = ra + ca, i10 = ra + cb, i01 = rb + ca, i11 = rb + cb, w00 = (1 - a) * (1 - b), w10 = a * (1 - b), w01 = (1 - a) * b, w11 = a * b;
         const shoreValue = sign[i00] * w00 + sign[i10] * w10 + sign[i01] * w01 + sign[i11] * w11, side = shoreValue > 0 ? 1 : -1;
         // Heights and depths are interpolated only among cells on this pixel's side of the shore.
@@ -74,7 +83,7 @@ export async function renderChart(world, onProgress = () => {}, bathymetry = tru
       }
     }
     ctx.putImageData(image, 0, y0);
-    if (y0 % (BAND * 5) === 0) { onProgress((y0 + h) / H); await pause(); }
+    onProgress((y0 + h) / H); await pause();
   }
   // The ship's own logged track from the underway system, as a fine pecked line.
   ctx.strokeStyle = '#7a2f2388'; ctx.lineWidth = 1.5; ctx.setLineDash([2, 4]); ctx.beginPath();

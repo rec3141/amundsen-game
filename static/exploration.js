@@ -1,9 +1,17 @@
-export const STORAGE_KEY = 'amundsen-exploration', VERSION = 3;
-// The fog grid covers the whole world (2600 x 1800 km): a cell is 20 km, the ship charts 120 km around it.
-export const COLS = 130, ROWS = 90, MAX_ROUTE = 1200, MAX_LOG = 100, MAX_SIGHTED = 300;
-const REVEAL_X = .046, REVEAL_Y = .0667;
+export const STORAGE_KEY = 'amundsen-exploration', VERSION = 4;
+// The chart grids voyages have been saved on, by the first save version that used each: cell size and edges in
+// projected metres (WGS84 polar stereographic, world.json) and the 20 km fog grid laid over it. A save keeps
+// positions as fractions of its grid, so a voyage from an older grid is carried across through metres.
+const GRIDS = {
+  3: { cols: 1300, rows: 900, resolution: 2000, xmin: -1300000, ymax: -600000, fogCols: 130, fogRows: 90 },
+  4: { cols: 3080, rows: 1560, resolution: 3000, xmin: -4620000, ymax: 60000, fogCols: 462, fogRows: 234 },
+};
+export const GRID = GRIDS[VERSION];
+// The fog grid covers the whole world (9240 x 4680 km): a cell is 20 km, the ship charts 120 km around it.
+export const COLS = GRID.fogCols, ROWS = GRID.fogRows, MAX_ROUTE = 1200, MAX_LOG = 100, MAX_SIGHTED = 300;
+const REVEAL_X = 120000 / (GRID.cols * GRID.resolution), REVEAL_Y = 120000 / (GRID.rows * GRID.resolution);
 // Northern Baffin Bay off Pituffik, the first open-water waypoint of the Leg 3 plan (world.json start).
-export const START = { x: .6916, y: .4508 };
+export const START = { x: .5539, y: .3144 };
 // Diesel in cubic metres. The Amundsen sails on 2,000 m³ and the extra bunker tank adds 800. Burn is per kilometre
 // sailed: 0.05 m³ in open water, six times that breaking 10/10 ice (an ice-strengthened hull halves the ice share).
 // The helicopter flies on its own 800 L of Jet A-1 at 0.3 L/km and refills from the ship's stock on landing.
@@ -41,6 +49,36 @@ function entry(d, placed = true) {
   const at = placed && validPosition(d) ? position(d) : { x: null, y: null };
   return { ...at, lon: optional(d.lon, -180, 180), lat: optional(d.lat, -90, 90), depth: optional(d.depth, 0, 12000), title: title(d.title, 'Observation'), activity: title(d.activity, 'operation'), points: finite(d.points, 0, 0, 1000000), lost: Math.floor(finite(d.lost, 0, 0, Number.MAX_SAFE_INTEGER)), date: typeof d.date === 'string' && Number.isFinite(Date.parse(d.date)) ? d.date : '', detail: safeDetail(d.detail) };
 }
+// Carries a voyage saved on grid `from` onto grid `to`. Both grids share the projection, so a fraction of the old
+// grid maps to a fraction of the new one through projected metres. A point that lands off the new chart is
+// dropped: the ship and her safe berth fall back to the start, a log entry keeps only its lon/lat, and a route,
+// mapped or revealed cell is left out.
+function migrate(raw, from, to = GRID) {
+  const width = grid => grid.cols * grid.resolution, height = grid => grid.rows * grid.resolution;
+  const carried = p => {
+    if (!validPosition(p)) return null;
+    const x = (from.xmin + p.x * width(from) - to.xmin) / width(to), y = (to.ymax - (from.ymax - p.y * height(from))) / height(to);
+    return x >= 0 && x < 1 && y >= 0 && y < 1 ? { x, y } : null;
+  };
+  // Cell indices of a grid `fromCols` wide map through their centres; several old cells may share a new one.
+  const cells = (list, fromCols, fromRows, toCols, toRows) => {
+    const out = new Set();
+    for (const n of Array.isArray(list) ? list : []) {
+      if (!Number.isInteger(n) || n < 0 || n >= fromCols * fromRows) continue;
+      const q = carried({ x: (n % fromCols + .5) / fromCols, y: (Math.floor(n / fromCols) + .5) / fromRows });
+      if (q) out.add(Math.floor(q.y * toRows) * toCols + Math.floor(q.x * toCols));
+    }
+    return [...out];
+  };
+  const list = value => Array.isArray(value) ? value : [];
+  return {
+    ...raw, version: VERSION, ...(carried(raw) ?? { x: null, y: null }), safe: carried(raw.safe),
+    route: list(raw.route).map(carried).filter(Boolean),
+    discoveries: list(raw.discoveries).map(d => d && typeof d === 'object' ? { ...d, ...(carried(d) ?? { x: null, y: null }) } : d),
+    mapped: cells(raw.mapped, from.cols, from.rows, to.cols, to.rows),
+    revealed: cells(raw.revealed, from.fogCols, from.fogRows, to.fogCols, to.fogRows),
+  };
+}
 export function restoreVoyage(raw, legacy, start = START) {
   if (raw?.version === 1) {
     // Version 1 charted an imaginary sea: the score, the tally and the log carry over, positions do not.
@@ -49,8 +87,10 @@ export function restoreVoyage(raw, legacy, start = START) {
     state.discoveries = (Array.isArray(raw.discoveries) ? raw.discoveries : []).filter(d => d && typeof d === 'object').slice(-MAX_LOG).map(d => entry(d, false));
     return state;
   }
-  // Version 2 sailed the same chart without fuel or stores: she carries full tanks and nothing bought.
-  if (!raw || (raw.version !== 2 && raw.version !== VERSION)) return newVoyage(legacy?.score, start);
+  // Versions 2 and 3 sailed the 2 km grid of the archipelago; version 2 without fuel or stores, so she carries
+  // full tanks and nothing bought.
+  if (!raw || (raw.version !== 2 && raw.version !== 3 && raw.version !== VERSION)) return newVoyage(legacy?.score, start);
+  if (raw.version !== VERSION) raw = migrate(raw, GRIDS[3]);
   const state = { ...newVoyage(raw.score, start), ...position(raw, start) };
   state.upgrades = Object.fromEntries(STORES.filter(item => raw.upgrades?.[item.id] === true).map(item => [item.id, true]));
   state.fuel = finite(raw.fuel, tankCapacity(state), 0, tankCapacity(state));
