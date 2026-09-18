@@ -69,16 +69,15 @@ The Python server is intended for a trusted ship intranet, not public hosting.
   captain's chart and draws the voyage track.
 - Launch operations anywhere using the sidebar buttons or keyboard shortcuts.
   **C** opens the CTD notebook; **I** opens the ice-thickness transect.
-- CTD: choose an archived cast and target layer, lower the rosette to reveal
-  temperature, salinity, oxygen, fluorescence and density curves, then begin
-  ascent. Press Space or Fire bottle to close up to three bottles. Pause or slow
-  the winch to refine the catch. The best bottle earns up to 100 points.
-- CTD targets: chlorophyll maximum (fluorescence peak), temperature minimum,
-  oxygen minimum, and pycnocline (strongest positive Sigma-t gradient). Target
-  pressures and bottle errors appear after sampling. Retry in the same notebook
-  is practice; a fresh launch creates another logged operation.
-- Ice: press D repeatedly or use Drill, move along the floe, and build a thickness
-  chart from each completed hole. Finish the transect to bank the points.
+- CTD: a random archived cast is drawn each launch. Lower the rosette to reveal
+  temperature, salinity, oxygen, fluorescence and density curves, then begin the
+  non-stop ascent and press Space or Fire bottle to catch as many of the listed
+  layers as the bottles allow (fewer bottles than layers). Each layer keeps its
+  best bottle, 100 at the layer falling to 0 at the reach distance; up to 400 a
+  cast. Layer pressures appear only in the review. Retries are practice.
+- Ice: drill with a 1 m Kovacs corer (D or tap). Ice thicker than the barrel
+  needs pull (P), empty (E) and extend (X) runs. Each breakthrough adds to the
+  transect chart; finish the transect to bank the points.
 - Completed operations leave discovery marks at the ship's position and entries
   in the expedition log. There are no predetermined mission locations.
 - Sailing maps the seabed in a depth-dependent multibeam swath and scores newly
