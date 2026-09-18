@@ -1,0 +1,144 @@
+{
+ "source": "Canadian Ice Service regional ice charts, WMO egg code stage of development, from the underway server ice-charts folder",
+ "note": "tenths are partial concentrations (CA/CB/CC) summed over ice polygons; areaKm2 is the equirectangular polygon area weighted by that partial concentration",
+ "charts": [
+  {
+   "region": "Eastern Arctic",
+   "date": "2026-08-31",
+   "icePolygons": 117,
+   "polygonsWithOldIce": 69,
+   "polygonsWithFirstYear": 55,
+   "tenths": {
+    "old": 239,
+    "firstYear": 108,
+    "glacier": 0
+   },
+   "areaKm2": {
+    "old": 157495,
+    "firstYear": 65594,
+    "glacier": 0
+   },
+   "stages": {
+    "Old ice": 69,
+    "Thick first-year ice (>120 cm)": 55,
+    "Glacier ice": 30,
+    "Unknown": 3
+   }
+  },
+  {
+   "region": "Eastern Arctic",
+   "date": "2026-09-07",
+   "icePolygons": 97,
+   "polygonsWithOldIce": 71,
+   "polygonsWithFirstYear": 47,
+   "tenths": {
+    "old": 214,
+    "firstYear": 123,
+    "glacier": 0
+   },
+   "areaKm2": {
+    "old": 146316,
+    "firstYear": 71298,
+    "glacier": 0
+   },
+   "stages": {
+    "Thick first-year ice (>120 cm)": 45,
+    "Old ice": 71,
+    "Glacier ice": 19,
+    "New ice": 3,
+    "Unknown": 1
+   }
+  },
+  {
+   "region": "Hudson Bay",
+   "date": "2026-08-31",
+   "icePolygons": 5,
+   "polygonsWithOldIce": 2,
+   "polygonsWithFirstYear": 2,
+   "tenths": {
+    "old": 4,
+    "firstYear": 5,
+    "glacier": 0
+   },
+   "areaKm2": {
+    "old": 103,
+    "firstYear": 129,
+    "glacier": 0
+   },
+   "stages": {
+    "Old ice": 2,
+    "Thick first-year ice (>120 cm)": 2,
+    "Unknown": 1,
+    "Glacier ice": 1
+   }
+  },
+  {
+   "region": "Hudson Bay",
+   "date": "2026-09-07",
+   "icePolygons": 2,
+   "polygonsWithOldIce": 1,
+   "polygonsWithFirstYear": 0,
+   "tenths": {
+    "old": 0,
+    "firstYear": 0,
+    "glacier": 0
+   },
+   "areaKm2": {
+    "old": 0,
+    "firstYear": 0,
+    "glacier": 0
+   },
+   "stages": {
+    "Glacier ice": 1,
+    "Old ice": 1
+   }
+  },
+  {
+   "region": "Western Arctic",
+   "date": "2026-08-31",
+   "icePolygons": 118,
+   "polygonsWithOldIce": 86,
+   "polygonsWithFirstYear": 78,
+   "tenths": {
+    "old": 263,
+    "firstYear": 154,
+    "glacier": 0
+   },
+   "areaKm2": {
+    "old": 547979,
+    "firstYear": 320226,
+    "glacier": 0
+   },
+   "stages": {
+    "Old ice": 86,
+    "Thick first-year ice (>120 cm)": 78,
+    "Glacier ice": 12,
+    "Unknown": 1
+   }
+  },
+  {
+   "region": "Western Arctic",
+   "date": "2026-09-07",
+   "icePolygons": 123,
+   "polygonsWithOldIce": 102,
+   "polygonsWithFirstYear": 83,
+   "tenths": {
+    "old": 322,
+    "firstYear": 187,
+    "glacier": 0
+   },
+   "areaKm2": {
+    "old": 501685,
+    "firstYear": 325450,
+    "glacier": 0
+   },
+   "stages": {
+    "Old ice": 102,
+    "Thick first-year ice (>120 cm)": 83,
+    "New ice": 5,
+    "Glacier ice": 9,
+    "Unknown": 1
+   }
+  }
+ ]
+}
