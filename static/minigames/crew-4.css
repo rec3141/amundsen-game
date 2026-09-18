@@ -62,3 +62,6 @@ dialog:has(.patrol-game) { max-width: 940px; max-height: calc(100dvh - 24px); ov
 @media (max-height: 760px) and (min-width: 721px) {
   .patrol-game .patrol-layout { grid-template-columns: minmax(240px, 340px) minmax(0, 1fr); }
 }
+
+.patrol-game [hidden] { display: none !important; }
+.patrol-game .patrol-pause { width: 100%; margin-top: 8px; }

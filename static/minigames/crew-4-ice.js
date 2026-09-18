@@ -33,7 +33,7 @@ export function stageInfo(code) {
   return STAGES[code] ?? { name: `Stage ${code}`, look: 'firstYear', chart: '#9aa5ab' };
 }
 
-// Polyominoes by cell count. A zone's concentration in tenths sets how many cells it fills.
+// Polyominoes by cell count. A zone's concentration scales to one through four cells.
 const SHAPES = {
   1: [[[0, 0]]],
   2: [[[0, 0], [1, 0]]],

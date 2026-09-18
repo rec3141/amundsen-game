@@ -51,12 +51,12 @@ export const game = {
         <link rel="stylesheet" href="${stylesheet}">
         <div class="patrol-heading"><div><p class="patrol-kicker">HELICOPTER / ICE RECONNAISSANCE</p>
           <h3>Chart the pack ahead of the ship.</h3></div><div class="patrol-score"><strong data-score>0</strong><span>points</span></div></div>
-        <p class="patrol-instructions">Floes drift in under the helicopter as egg codes from the ice chart. Steer with <kbd>←</kbd><kbd>→</kbd>, turn with <kbd>↑</kbd>, drop with <kbd>Space</kbd>. Ten tenths across is a charted band, and the patrol flies on. Bears and musk ox will cross your view: press <kbd>L</kbd> while one is in sight to log it.</p>
+        <p class="patrol-instructions">Floes drift in under the helicopter as egg codes from the ice chart. Steer with <kbd>←</kbd><kbd>→</kbd>, turn with <kbd>↑</kbd>, drop with <kbd>Space</kbd>, hover with <kbd>P</kbd>, return with <kbd>R</kbd>. Ten tenths across is a charted band, and the patrol flies on. Bears and musk ox will cross your view: press <kbd>L</kbd> while one is in sight to log it.</p>
         <div class="patrol-layout">
           <div class="patrol-cockpit">
             <div class="patrol-hud"><span data-distance>0 km</span><span data-bands>0 bands</span><span class="patrol-fuel" role="meter" aria-label="Fuel" aria-valuemin="0" aria-valuemax="${FUEL_SECONDS}" aria-valuenow="${FUEL_SECONDS}"><i data-fuel></i></span></div>
             <div class="patrol-stage">
-              <canvas class="patrol-scene" width="${W}" height="${H}" aria-label="Ice field seen from the helicopter. The status line below reports what happens."></canvas>
+              <canvas class="patrol-scene" tabindex="0" width="${W}" height="${H}" aria-label="Ice field seen from the helicopter. The status line below reports what happens."></canvas>
               <div class="patrol-overlay" data-overlay><p data-overlay-text>Loading ice chart…</p><button type="button" data-start hidden>Lift off <kbd>Enter</kbd></button></div>
             </div>
             <div class="patrol-pad" role="group" aria-label="Flight controls">
@@ -66,6 +66,7 @@ export const game = {
               <button type="button" data-act="down" aria-label="Soft drop">▼</button>
               <button type="button" data-act="drop" aria-label="Hard drop">Drop</button>
             </div>
+            <button type="button" class="patrol-pause" data-pause disabled>Hover <kbd>P</kbd></button>
             <button type="button" class="patrol-log" data-act="log">Log sighting <kbd>L</kbd></button>
           </div>
           <div class="patrol-notebook">
@@ -76,7 +77,7 @@ export const game = {
             <p class="patrol-source" data-source></p>
           </div>
         </div>
-        <div class="patrol-footer"><p role="status" aria-live="polite" data-status>Reading the regional ice chart.</p><button type="button" class="patrol-finish" data-finish disabled>Return to ship</button></div>
+        <div class="patrol-footer"><p role="status" aria-live="polite" data-status>Reading the regional ice chart.</p><button type="button" class="patrol-finish" data-finish disabled>Return to ship <kbd>R</kbd></button></div>
       </section>`;
     const section = root.querySelector('.patrol-game');
     const find = selector => section.querySelector(selector);
@@ -87,6 +88,9 @@ export const game = {
     const startButton = find('[data-start]');
     const status = find('[data-status]');
     const finishButton = find('[data-finish]');
+    const pauseButton = find('[data-pause]');
+    const releases = [];
+    const releaseControls = () => { softDrop = false; releases.forEach(release => release()); };
     const dialog = root.closest('dialog');
 
     // Presentation state: scrolling pack, wildlife, helicopter position and row flashes.
@@ -130,6 +134,10 @@ export const game = {
       find('.patrol-fuel').setAttribute('aria-valuenow', Math.round(fuel));
       find('.patrol-fuel').setAttribute('aria-valuetext', `${Math.round(fuel)} seconds of fuel`);
       finishButton.disabled = !state || !state.started || state.finished;
+      pauseButton.disabled = finishButton.disabled;
+      const pauseLabel = paused ? 'Resume <kbd>P</kbd>' : 'Hover <kbd>P</kbd>';
+      if (pauseButton.innerHTML !== pauseLabel) pauseButton.innerHTML = pauseLabel;
+      pauseButton.setAttribute('aria-pressed', String(paused));
     }
 
     function renderNext() {
@@ -137,7 +145,7 @@ export const game = {
       const zone = state.next.zone;
       find('[data-egg]').innerHTML = eggSVG(zone.ct, zone.partials);
       const parts = zone.partials.map(p => `${p.c === '–' ? '' : `${p.c} tenths `}${stageInfo(p.s).name.toLowerCase()} <b style="color:${stageInfo(p.s).chart}">${p.s}</b>${FORMS[p.f] ? `, ${FORMS[p.f].toLowerCase()}` : ''}`);
-      find('[data-next-text]').innerHTML = `<b>${escape(zone.ct)}/10</b> · ${parts.join(' · ')}${zone.trace ? ` · trace of ${escape(zone.trace.toLowerCase())}` : ''}<br><small>${zone.distanceKm} km from the ship · ${state.next.cells.length} cell${state.next.cells.length === 1 ? '' : 's'}</small>`;
+      find('[data-next-text]').innerHTML = `<b>${escape(zone.ct)}/10</b> · ${parts.join(' · ')}${zone.trace ? ` · trace of ${escape(zone.trace.toLowerCase())}` : ''}<br><small>${zone.distanceKm} km from chart snapshot fix · ${state.next.cells.length} cell${state.next.cells.length === 1 ? '' : 's'}</small>`;
     }
 
     function renderBands() {
@@ -199,6 +207,7 @@ export const game = {
 
     function settle(result) {
       if (!result.locked) return;
+      gravity = 0;
       if (result.cleared.length) {
         flashes.push(...result.cleared.map(y => ({ y, until: clock + 0.4 })));
         targetScroll += result.cleared.length * CELL;
@@ -238,14 +247,17 @@ export const game = {
 
     function togglePause() {
       if (!state?.started || state.finished) return;
+      releaseControls();
       paused = !paused;
       running = !paused;
       if (paused) showOverlay('Hovering. <kbd>P</kbd> to fly on.', 'Resume <kbd>P</kbd>');
       else overlay.hidden = true;
+      renderHud();
     }
 
     function end(reason) {
-      if (!state || state.finished) return;
+      if (!state?.started || state.finished) return;
+      releaseControls();
       running = false;
       const result = finish(state, reason, chart);
       renderHud();
@@ -253,7 +265,7 @@ export const game = {
       const bears = result.detail.sightings.polarBear;
       const ox = result.detail.sightings.muskOx;
       const summary = `${result.detail.bandsCharted} band${result.detail.bandsCharted === 1 ? '' : 's'} charted over ${result.detail.distanceKm} km, ${bears} bear${bears === 1 ? '' : 's'} and ${ox} musk ox herd${ox === 1 ? '' : 's'} logged.`;
-      showOverlay(`<b>${why}</b><br>${summary}<br>${result.points} points.`);
+      showOverlay(`<b>${why}</b><br>${summary}<br>${result.points} points.<br>Close and launch Ice Patrol again for another flight.`);
       say(`${why} ${summary} ${result.points} points logged.`);
       finishButton.textContent = 'Patrol logged ✓';
       if (!completed) {
@@ -301,7 +313,7 @@ export const game = {
       const dt = Math.min(0.1, (now - (last || now)) / 1000);
       last = now;
       if (running) update(dt);
-      animate(dt);
+      if (running) animate(dt);
       draw(now);
     }
 
@@ -530,7 +542,7 @@ export const game = {
         ctx.fillRect(FIELD_X, FIELD_Y + f.y * CELL, FIELD_W, CELL);
       }
       for (const a of animals) (a.kind === 'bear' ? drawBear : drawHerd)(a);
-      if (state?.started) drawHelicopter(now);
+      if (state?.started) drawHelicopter(clock * 1000);
       ctx.fillStyle = '#ffffffb0';
       ctx.font = '600 9px system-ui, sans-serif';
       ctx.textAlign = 'left';
@@ -543,9 +555,13 @@ export const game = {
     function holdable(button, name) {
       let timer = 0;
       const release = () => { clearInterval(timer); timer = 0; if (name === 'down') softDrop = false; };
+      releases.push(release);
+      button.addEventListener('click', event => { if (event.detail === 0) act(name); }, { signal });
       button.addEventListener('pointerdown', event => {
+        if (event.button !== 0 || !running) return;
         event.preventDefault();
         act(name);
+        if (!running) return;
         if (name === 'down') softDrop = true;
         clearInterval(timer);
         timer = setInterval(() => act(name), 120);
@@ -559,6 +575,7 @@ export const game = {
       else button.addEventListener('click', () => act(name), { signal });
     });
     startButton.addEventListener('click', () => (paused ? togglePause() : start()), { signal });
+    pauseButton.addEventListener('click', togglePause, { signal });
     finishButton.addEventListener('click', () => end('return'), { signal });
     canvas.addEventListener('pointerdown', event => {
       if (!running) return;
@@ -572,21 +589,24 @@ export const game = {
       if (!active || !section.isConnected || (dialog && !dialog.open) || event.ctrlKey || event.metaKey || event.altKey) return;
       if (event.target?.closest?.('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]')) return;
       const key = event.key.toLowerCase();
-      const name = { arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right', arrowup: 'rotate', w: 'rotate', x: 'rotate', z: 'unrotate', arrowdown: 'down', s: 'down', ' ': 'drop', l: 'log', p: 'pause', enter: 'start' }[key];
+      if ((key === 'enter' || key === ' ') && event.target?.closest?.('button, a')) return;
+      const name = { arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right', arrowup: 'rotate', w: 'rotate', x: 'rotate', z: 'unrotate', arrowdown: 'down', s: 'down', ' ': 'drop', l: 'log', p: 'pause', r: 'return', enter: 'start' }[key];
       if (!name) return;
       event.preventDefault();
       event.stopImmediatePropagation();
       const repeatable = name === 'left' || name === 'right' || name === 'down';
       if (event.repeat && !repeatable) return;
+      if (name === 'return') return end('return');
       if (name === 'pause') return togglePause();
       if (name === 'start') return state?.started ? (paused ? togglePause() : undefined) : start();
-      if (name === 'down') softDrop = true;
+      if (name === 'down' && running) softDrop = true;
       act(name);
     }, { capture: true, signal });
     window.addEventListener('keyup', event => {
       const key = event.key.toLowerCase();
       if (key === 'arrowdown' || key === 's') softDrop = false;
     }, { capture: true, signal });
+    window.addEventListener('blur', () => { releaseControls(); if (running) togglePause(); }, { signal });
     document.addEventListener('visibilitychange', () => { if (document.hidden && running) togglePause(); }, { signal });
 
     fetch(chartUrl, { signal }).then(response => {
@@ -594,10 +614,11 @@ export const game = {
       return response.json();
     }).then(data => {
       if (!active) return;
+      if (!data.zones?.length) throw new Error('The ice chart contains no zones');
       chart = data.chart;
       const seed = `${expedition?.seed ?? expedition?.id ?? ''}:${Date.now()}`;
       state = createGame(data.zones, seed);
-      find('[data-source]').textContent = `Egg codes: ${chart.attribution}, ${chart.region} chart of ${chart.date} · ${data.zones.length} ice polygons, nearest first from ${Math.abs(data.origin.lat).toFixed(1)}°${data.origin.lat < 0 ? 'S' : 'N'} ${Math.abs(data.origin.lon).toFixed(1)}°${data.origin.lon < 0 ? 'W' : 'E'}`;
+      find('[data-source]').textContent = `Egg codes: ${chart.attribution}, ${chart.region} chart of ${chart.date} · ${data.zones.length} ice polygons, ordered from snapshot fix ${Math.abs(data.origin.lat).toFixed(1)}°${data.origin.lat < 0 ? 'S' : 'N'} ${Math.abs(data.origin.lon).toFixed(1)}°${data.origin.lon < 0 ? 'W' : 'E'}`;
       renderNext();
       renderBands();
       renderSightings();
