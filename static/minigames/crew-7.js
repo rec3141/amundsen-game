@@ -367,7 +367,7 @@ export const game = {
       const missing = result.detail.missing.length;
       announce(state.outcome === 'landed'
         ? `Landed on deck with ${result.detail.items.length} of ${state.items.length} items · ${result.points} points.${missing ? ` Clement still needs ${missing}.` : ' Clean sweep.'}`
-        : `Fuel exhausted over the ice. Autorotation onto the floe; ${result.detail.items.length} items aboard for ${result.points} points. The Zodiac will fetch you.`);
+        : `Fuel exhausted. Autorotation ${nearestFloe() ? 'onto the floe' : 'into a lead, floats out'}; ${result.detail.items.length} items aboard for ${result.points} points. The Zodiac will fetch you.`);
       if (!completed) { completed = true; complete(result.points, result.detail); }
     }
 

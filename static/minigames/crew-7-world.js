@@ -4,8 +4,8 @@
 
 export const WORLD = { width: 1000, height: 700 };
 export const SHIP = { x: 500, y: 640, heading: -Math.PI / 2 };
-export const ENDURANCE_S = 150;
-export const LOW_FUEL_S = 30;
+export const ENDURANCE_S = 100;
+export const LOW_FUEL_S = 25;
 export const SPOT_RADIUS = 60;
 export const GRAB_RADIUS = 16;
 export const GRAB_SPEED = 30;
