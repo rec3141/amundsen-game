@@ -1,7 +1,9 @@
-// Shipwrecks: pick a wreck from the archive's chart, plan sonar lines over the search box against the
-// ship-time budget, spot the contact in the mosaic and the waterfall, then drop the ROV to identify it.
-import { loadWorld } from '../world.js';
-import { GRID, createGame, clampBox, planLegs, planCost, startSurvey, advanceSurvey, dive, endDive, score, isCovered, contactAt, diveHours, distanceKm, bearingDeg, compass, formatPosition, projectStereo, SURVEY_KN, named } from './crew-18-model.js';
+// Shipwrecks, in two steps. Launched at sea, the game is a target picker: the archive's wrecks by range and
+// bearing from the ship, and choosing one hands the ship to the shell (expedition.steamTo) to steam there.
+// Launched on station (expedition.wreck names the wreck the ship is over), it opens straight on the search:
+// plan sonar lines over the box against the ship-time budget, spot the contact in the mosaic and the
+// waterfall, then drop the ROV to identify it. Without steamTo the search is run from wherever the ship is.
+import { GRID, createGame, clampBox, planLegs, planCost, startSurvey, advanceSurvey, dive, endDive, score, isCovered, contactAt, diveHours, distanceKm, bearingDeg, compass, formatPosition, siteBudget, SURVEY_KN, named } from './crew-18-model.js';
 
 const stylesheet = new URL('./crew-18.css', import.meta.url).href;
 const archive = new URL('../data/crew-18-wrecks.json', import.meta.url);
@@ -9,6 +11,8 @@ const ARROWS = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowR
 const MOSAIC_PX = 22;              // offscreen pixels per search-box cell
 const SURVEY_SECONDS = 75;         // real seconds to spend the whole budget at normal speed
 const FAST = 4;
+const RINGS = [10, 25, 50, 100, 250, 500, 1000, 2000, 3000];   // candidate range rings, km
+const BEACH_KM = 3;                // a datum further than this from charted water gets a note in the picker
 const esc = text => String(text).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 const hours = h => { const m = Math.round(h * 60); return `${Math.floor(m / 60)}h ${String(m % 60).padStart(2, '0')}m`; };
 const km = v => v >= 10 ? `${v.toFixed(0)} km` : `${v.toFixed(1)} km`;
@@ -22,9 +26,11 @@ export const game = {
     const ship = { lon: Number.isFinite(expedition?.lon) ? expedition.lon : -70.56, lat: Number.isFinite(expedition?.lat) ? expedition.lat : 76.51 };
     const seed = `${ship.lon.toFixed(2)}:${ship.lat.toFixed(2)}:${Date.now()}`;
     let phase = 'loading', wrecks = [], selected = 0, state = null, mode = 'box', fast = false;
-    let world = null, chartBase = null, mosaic = null, waterfall = null, diveAnim = null, hover = -1;
+    let mosaic = null, waterfall = null, diveAnim = null, hover = -1;
     let width = 0, height = 0, dpr = 1;
-    const chart = { x0: 0, y0: 0, scale: 1, markers: [] };
+    const plot = { cx: 0, cy: 0, radius: 1, maxKm: 1, rings: [], markers: [] };
+    const canSteam = typeof expedition?.steamTo === 'function';
+    const picking = () => phase === 'loading' || phase === 'pick' || phase === 'steaming';
 
     root.innerHTML = `
       <section class="c18-game" data-phase="loading" aria-label="Shipwrecks">
@@ -38,7 +44,7 @@ export const game = {
         </div>
         <div class="c18-layout">
           <div class="c18-stage">
-            <canvas class="c18-canvas" data-canvas tabindex="-1" aria-label="Chart and sonar display"></canvas>
+            <canvas class="c18-canvas" data-canvas tabindex="-1" aria-label="Range plot and sonar display"></canvas>
             <div class="c18-legend" data-legend aria-hidden="true"></div>
           </div>
           <aside class="c18-panel" data-panel></aside>
@@ -55,82 +61,49 @@ export const game = {
     // ---- data ------------------------------------------------------------------------------
     fetch(archive).then(r => { if (!r.ok) throw Error('archive missing'); return r.json(); }).then(data => {
       if (!active) return;
-      wrecks = data.wrecks.map(w => ({ ...w, distanceKm: distanceKm(ship.lat, ship.lon, w.lat, w.lon), bearing: bearingDeg(ship.lat, ship.lon, w.lat, w.lon) }))
+      wrecks = data.wrecks.map(w => ({ ...w, distanceKm: distanceKm(ship.lat, ship.lon, w.lat, w.lon), bearing: bearingDeg(ship.lat, ship.lon, w.lat, w.lon), budget: siteBudget(w) }))
         .sort((a, b) => a.distanceKm - b.distanceKm);
+      // The shell names the wreck when the ship launches the game on its datum: straight to the search.
+      const station = wrecks.findIndex(w => w.id === expedition?.wreck);
+      if (station >= 0) { selected = station; begin(wrecks[station], true); return; }
       selected = 0;
-      setPhase('chart');
-      layoutChart();
+      setPhase('pick');
+      layoutPlot();
       renderPanel();
     }).catch(error => { console.error(error); panel.innerHTML = '<p class="c18-status">The wreck archive did not load. Close and try again.</p>'; });
-    loadWorld().then(w => { if (!active) return; world = w; chartBase = null; }).catch(error => console.warn('Chart land unavailable', error));
 
-    // ---- chart geometry --------------------------------------------------------------------
-    function layoutChart() {
+    // ---- range and bearing plot ------------------------------------------------------------
+    // The ship at the centre, each wreck at its great-circle range and initial bearing. The range scale is
+    // square-root so the near wrecks do not pile onto the ship; the labelled rings say what it is.
+    function layoutPlot() {
       if (!wrecks.length) return;
-      const pts = [...wrecks, ship].map(p => projectStereo(p.lon, p.lat));
-      let xmin = Infinity, xmax = -Infinity, ymin = Infinity, ymax = -Infinity;
-      for (const p of pts) { xmin = Math.min(xmin, p.x); xmax = Math.max(xmax, p.x); ymin = Math.min(ymin, p.y); ymax = Math.max(ymax, p.y); }
-      const padX = (xmax - xmin) * 0.1 + 60000, padY = (ymax - ymin) * 0.1 + 60000;
-      xmin -= padX; xmax += padX; ymin -= padY; ymax += padY;
-      const scale = Math.min(width / (xmax - xmin), height / (ymax - ymin));
-      chart.scale = scale;
-      chart.x0 = (xmin + xmax) / 2 - width / 2 / scale;
-      chart.y0 = (ymin + ymax) / 2 - height / 2 / scale;
-      chart.markers = wrecks.map(w => { const p = projectStereo(w.lon, w.lat); return { x: (p.x - chart.x0) * scale, y: (p.y - chart.y0) * scale }; });
-      chartBase = null;
+      // The caption runs along the bottom edge; the compass letters sit just outside the outer ring.
+      plot.cx = width / 2; plot.cy = (height - 18) / 2; plot.radius = Math.min(width, height - 18) / 2 - 18;
+      plot.maxKm = Math.max(50, ...wrecks.map(w => w.distanceKm)) * 1.06;
+      plot.rings = []; let lastR = 0;
+      for (const d of RINGS) { const r = plotRadius(d); if (d < plot.maxKm && r - lastR >= 22) { plot.rings.push(d); lastR = r; } }
+      plot.markers = wrecks.map(w => plotPoint(w.distanceKm, w.bearing));
     }
-    const toScreen = (lon, lat) => { const p = projectStereo(lon, lat); return { x: (p.x - chart.x0) * chart.scale, y: (p.y - chart.y0) * chart.scale }; };
+    const plotRadius = d => plot.radius * Math.sqrt(Math.min(1, d / plot.maxKm));
+    const plotPoint = (d, bearing) => { const r = plotRadius(d), a = (bearing - 90) * Math.PI / 180; return { x: plot.cx + Math.cos(a) * r, y: plot.cy + Math.sin(a) * r }; };
 
-    // Land, depth tint and graticule, drawn once per size from the world grid.
-    function buildChartBase() {
-      const off = document.createElement('canvas');
-      off.width = Math.max(1, Math.round(width * dpr)); off.height = Math.max(1, Math.round(height * dpr));
-      const c = off.getContext('2d');
-      c.fillStyle = '#183b4a'; c.fillRect(0, 0, off.width, off.height);
-      if (world) {
-        const { grid } = world.meta, img = c.createImageData(off.width, off.height), px = img.data;
-        for (let j = 0; j < off.height; j++) for (let i = 0; i < off.width; i++) {
-          const mx = chart.x0 + i / dpr / chart.scale, my = chart.y0 + j / dpr / chart.scale;
-          const u = (mx - grid.xmin) / grid.resolution, v = (grid.ymax + my) / grid.resolution;
-          const k = (j * off.width + i) * 4;
-          let r = 24, g = 59, b = 74;
-          if (u >= 0 && v >= 0 && u < grid.cols && v < grid.rows) {
-            const idx = Math.floor(v) * grid.cols + Math.floor(u);
-            if (world.sign[idx] > 0) { r = 214; g = 206; b = 184; if (world.glacier[idx]) { r = 236; g = 240; b = 240; } }
-            else { const d = Math.min(1, Math.max(0, -world.elevation[idx]) / 1200); r = 40 - d * 18; g = 92 - d * 34; b = 110 - d * 34; }
-          }
-          px[k] = r; px[k + 1] = g; px[k + 2] = b; px[k + 3] = 255;
-        }
-        c.putImageData(img, 0, 0);
-      }
-      c.setTransform(dpr, 0, 0, dpr, 0, 0);
-      c.strokeStyle = 'rgba(255,255,255,.16)'; c.lineWidth = 1; c.font = '10px system-ui, sans-serif'; c.fillStyle = 'rgba(255,255,255,.55)';
-      for (let lat = 66; lat <= 84; lat += 2) {
-        c.beginPath();
-        for (let lon = -160; lon <= -20; lon += 1) { const p = toScreen(lon, lat); lon === -160 ? c.moveTo(p.x, p.y) : c.lineTo(p.x, p.y); }
-        c.stroke();
-        const p = toScreen(-125, lat); if (p.y > 8 && p.y < height - 4 && p.x > 0 && p.x < width) c.fillText(`${lat}°N`, Math.max(3, p.x), p.y - 2);
-      }
-      for (let lon = -150; lon <= -30; lon += 10) {
-        c.beginPath();
-        for (let lat = 60; lat <= 86; lat += 0.5) { const p = toScreen(lon, lat); lat === 60 ? c.moveTo(p.x, p.y) : c.lineTo(p.x, p.y); }
-        c.stroke();
-        const p = toScreen(lon, 66.5); if (p.x > 14 && p.x < width - 30 && p.y < height && p.y > 0) c.fillText(`${-lon}°W`, p.x + 2, Math.min(height - 4, p.y));
-      }
-      return off;
-    }
-
-    function drawChart(now) {
-      if (!chartBase) chartBase = buildChartBase();
-      ctx.drawImage(chartBase, 0, 0, width, height);
-      const s = toScreen(ship.lon, ship.lat), sel = chart.markers[selected];
+    function drawPlot(now) {
+      ctx.fillStyle = '#183b4a'; ctx.fillRect(0, 0, width, height);
+      const s = { x: plot.cx, y: plot.cy }, sel = plot.markers[selected];
+      ctx.strokeStyle = 'rgba(255,255,255,.16)'; ctx.lineWidth = 1; ctx.font = '10px system-ui, sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.55)';
+      for (const d of plot.rings) { const r = plotRadius(d); ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, Math.PI * 2); ctx.stroke(); ctx.fillText(`${d} km`, s.x + 3, s.y - r + 11); }
+      ctx.beginPath(); ctx.arc(s.x, s.y, plot.radius, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(s.x, s.y - plot.radius); ctx.lineTo(s.x, s.y + plot.radius); ctx.moveTo(s.x - plot.radius, s.y); ctx.lineTo(s.x + plot.radius, s.y); ctx.stroke();
+      ctx.font = '700 11px system-ui, sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.textAlign = 'center';
+      ctx.fillText('N', s.x, s.y - plot.radius - 5); ctx.fillText('S', s.x, s.y + plot.radius + 13); ctx.fillText('E', s.x + plot.radius + 9, s.y + 4); ctx.fillText('W', s.x - plot.radius - 9, s.y + 4);
+      ctx.textAlign = 'start';
       // Bearing line from the ship to the chosen wreck.
       if (sel) {
         ctx.save(); ctx.setLineDash([5, 5]); ctx.strokeStyle = 'rgba(245,190,90,.85)'; ctx.lineWidth = 1.5;
         ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(sel.x, sel.y); ctx.stroke(); ctx.restore();
       }
       wrecks.forEach((w, i) => {
-        const m = chart.markers[i], isSel = i === selected;
+        const m = plot.markers[i], isSel = i === selected;
         ctx.save(); ctx.translate(m.x, m.y);
         const r = isSel ? 7 : 5;
         if (isSel) { ctx.strokeStyle = `rgba(245,190,90,${0.5 + 0.4 * Math.sin(now / 250)})`; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, 13, 0, Math.PI * 2); ctx.stroke(); }
@@ -159,12 +132,15 @@ export const game = {
         ctx.fillStyle = colour; ctx.fillText(text, rect.x + 3, rect.y + 12);
       };
       placed.push({ x: s.x - 8, y: s.y - 10, w: 16, h: 18 });
-      chart.markers.forEach(m => placed.push({ x: m.x - 6, y: m.y - 6, w: 12, h: 12 }));
+      plot.markers.forEach(m => placed.push({ x: m.x - 6, y: m.y - 6, w: 12, h: 12 }));
+      // Compass letters and ring labels are already on the plot; wreck labels keep off them.
+      placed.push({ x: s.x - 6, y: s.y - plot.radius - 15, w: 12, h: 12 }, { x: s.x - 6, y: s.y + plot.radius + 2, w: 12, h: 13 }, { x: s.x + plot.radius + 3, y: s.y - 6, w: 12, h: 12 }, { x: s.x - plot.radius - 15, y: s.y - 6, w: 12, h: 12 });
+      for (const d of plot.rings) placed.push({ x: s.x + 2, y: s.y - plotRadius(d) + 1, w: 44, h: 12 });
       label(s.x, s.y, 'Amundsen', '700 11px system-ui, sans-serif', '#fff', true);
       const order = [selected, ...wrecks.map((_, i) => i).filter(i => i !== selected)];
-      for (const i of order) { const w = wrecks[i], m = chart.markers[i]; label(m.x, m.y, `${w.ship} ${w.year}`, `${i === selected ? '700 ' : ''}11px system-ui, sans-serif`, i === selected ? '#ffe4a8' : i === hover ? '#fff' : '#e6eef0', i === selected || i === hover); }
+      for (const i of order) { const w = wrecks[i], m = plot.markers[i]; label(m.x, m.y, `${w.ship} ${w.year}`, `${i === selected ? '700 ' : ''}11px system-ui, sans-serif`, i === selected ? '#ffe4a8' : i === hover ? '#fff' : '#e6eef0', i === selected || i === hover); }
       ctx.font = '10px system-ui, sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.7)';
-      ctx.fillText('Datum positions from the underway history archive · GEBCO depths · ⊗ wreck  ● located', 8, height - 6);
+      ctx.fillText(width < 640 ? 'Range and bearing from the ship · ⊗ wreck  ● located' : 'Range and bearing from the ship · datum positions from the underway history archive · ⊗ wreck  ● located', 8, height - 6);
     }
 
     // ---- mosaic (the full seabed image, revealed cell by cell) ------------------------------
@@ -356,32 +332,48 @@ export const game = {
     // ---- sizing ----------------------------------------------------------------------------
     function fit() {
       const rect = canvas.getBoundingClientRect();
-      const w = Math.max(240, Math.round(rect.width)), h = Math.round(phase === 'chart' || phase === 'loading' ? w * (w < 520 ? 0.95 : 0.62) : Math.min(w * 0.76, Math.max(320, w * 0.74)));   // the chart gets taller on a phone
+      const w = Math.max(240, Math.round(rect.width)), h = Math.round(picking() ? w * (w < 520 ? 0.95 : 0.62) : Math.min(w * 0.76, Math.max(320, w * 0.74)));   // the plot gets taller on a phone
       const d = Math.min(3, window.devicePixelRatio || 1);
       if (w === width && h === height && d === dpr) return;
       width = w; height = h; dpr = d;
       canvas.style.height = `${h}px`; canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      layoutChart();
+      layoutPlot();
     }
 
     // ---- panel -----------------------------------------------------------------------------
+    // Where the ship can actually get to: a datum on a beach or in a bay narrower than a chart cell is
+    // further from charted water than the shell's on-station radius allows for.
+    const chartNote = w => w.chart?.cell === 'off' ? 'The datum lies off the edge of the game\'s chart.'
+      : w.chart?.nearestWaterKm > BEACH_KM ? `Charted water is ${km(w.chart.nearestWaterKm)} from the datum${w.chart.cell === 'land' ? ', which the chart holds as land' : ''}.` : null;
+    const summary = w => `${km(w.distanceKm)} ${compass(w.bearing)} · ${w.depth.m} m · difficulty ${w.budget.difficulty} of 6 · ${w.found ? `located ${w.found}` : 'never found'}`;
     function renderPanel() {
-      if (phase === 'chart') {
+      if (phase === 'pick') {
         const w = wrecks[selected];
         panel.innerHTML = `
-          <h4>Pick a wreck</h4>
-          <ol class="c18-list" data-list>${wrecks.map((x, i) => `<li><button type="button" data-pick="${i}" class="${i === selected ? 'c18-picked' : ''}" aria-pressed="${i === selected}"><b>${esc(x.ship)}</b> <span>${x.year}</span><small>${km(x.distanceKm)} ${compass(x.bearing)} · ${x.depth.m} m · ${x.found ? `located ${x.found}` : 'never found'}</small></button></li>`).join('')}</ol>
-          <div class="c18-story" data-story>
-            <b>${esc(w.place)} · ${esc(w.date)}</b>
-            <p>${esc(w.story)}</p>
-            <small>${esc(w.positionNote)}</small>
-          </div>
-          <button type="button" class="c18-primary" data-go>Survey ${esc(named(w.ship))} <kbd>Enter</kbd></button>
-          <p class="c18-help"><kbd>↑</kbd><kbd>↓</kbd> choose · <kbd>Enter</kbd> sail to the site · click a mark on the chart</p>`;
-        find('[data-legend]').innerHTML = `<span><i style="background:#f4f1e6"></i>never found</span><span><i style="background:#ffd27a"></i>located</span><span><i style="background:#ff6b4a"></i>Amundsen</span><span><i style="background:#d6ceb8"></i>land</span><span><i style="background:#1f4a5a"></i>sea, darker is deeper</span>`;
+          <h4>Choose a target</h4>
+          <ol class="c18-list" data-list>${wrecks.map((x, i) => `<li><button type="button" data-pick="${i}" class="${i === selected ? 'c18-picked' : ''}" aria-pressed="${i === selected}"><b>${esc(x.ship)}</b> <span>${x.year}</span><small>${summary(x)}</small>${chartNote(x) ? `<small class="c18-warn">${esc(chartNote(x))}</small>` : ''}</button></li>`).join('')}</ol>
+          <div class="c18-story" data-story></div>
+          <p class="c18-status" role="status" aria-live="polite" data-status></p>
+          <button type="button" class="c18-primary" data-go></button>
+          <p class="c18-help"><kbd>↑</kbd><kbd>↓</kbd> choose · <kbd>Enter</kbd> ${canSteam ? 'steam to the datum' : 'survey from here'} · click a mark on the plot</p>`;
+        find('[data-legend]').innerHTML = `<span><i style="background:#f4f1e6"></i>never found</span><span><i style="background:#ffd27a"></i>located</span><span><i style="background:#ff6b4a"></i>Amundsen</span><span>rings: great-circle range, square-root scale</span>`;
         panel.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => { select(Number(b.dataset.pick)); }, { signal }));
-        find('[data-go]').addEventListener('click', begin, { signal });
+        find('[data-go]').addEventListener('click', choose, { signal });
+        select(selected);
+        return;
+      }
+      if (phase === 'steaming') {
+        const w = wrecks[selected];
+        panel.innerHTML = `
+          <h4>Under way</h4>
+          <p class="c18-status" role="status" aria-live="polite" data-status>Steaming to ${esc(w.ship)} · the survey begins when the ship is on the datum</p>
+          <dl class="c18-readouts">
+            <div><dt>Datum</dt><dd>${esc(formatPosition(w.lat, w.lon))}</dd></div>
+            <div><dt>Range</dt><dd>${km(w.distanceKm)} ${compass(w.bearing)} (${Math.round(w.bearing).toString().padStart(3, '0')}°)</dd></div>
+          </dl>
+          <button type="button" data-back>Choose another <kbd>Backspace</kbd></button>`;
+        find('[data-back]').addEventListener('click', backToPick, { signal });
         return;
       }
       if (phase === 'plan' || phase === 'survey' || phase === 'dive') {
@@ -452,22 +444,37 @@ export const game = {
 
     // ---- actions ---------------------------------------------------------------------------
     function select(i) {
+      if (phase !== 'pick') return;
       selected = (i + wrecks.length) % wrecks.length;
       panel.querySelectorAll('[data-pick]').forEach((b, k) => { b.classList.toggle('c18-picked', k === selected); b.setAttribute('aria-pressed', String(k === selected)); });
-      const w = wrecks[selected];
-      find('[data-story]').innerHTML = `<b>${esc(w.place)} · ${esc(w.date)}</b><p>${esc(w.story)}</p><small>${esc(w.positionNote)}</small>`;
-      find('[data-go]').innerHTML = `Survey ${esc(named(w.ship))} <kbd>Enter</kbd>`;
+      const w = wrecks[selected], note = chartNote(w);
+      find('[data-story]').innerHTML = `<b>${esc(w.place)} · ${esc(w.date)}</b><p>${esc(w.story)}</p>
+        <div class="c18-clue"><b>FROM THE RECORD</b>${esc(w.clue)}</div>
+        <small>${esc(w.positionNote)}</small>${note ? `<small class="c18-warn">${esc(note)}</small>` : ''}`;
+      find('[data-go]').innerHTML = canSteam
+        ? `Steam to ${esc(w.ship)} <kbd>Enter</kbd><small>${km(w.distanceKm)} ${compass(w.bearing)} · ${w.budget.sonar.label}, ${hours(w.budget.budgetH)} of ship time on site</small>`
+        : `Survey ${esc(named(w.ship))} <kbd>Enter</kbd><small>${w.budget.sonar.label}, ${hours(w.budget.budgetH)} of ship time</small>`;
       panel.querySelector(`[data-pick="${selected}"]`)?.scrollIntoView?.({ block: 'nearest' });
     }
-    function begin() {
+    function backToPick() { setPhase('pick'); find('[data-title]').textContent = 'Shipwrecks of the archive'; renderPanel(); }
+    // Enter on the picker: hand the ship to the shell if it can steam, otherwise search from here.
+    function choose() {
+      if (phase !== 'pick') return;
       const w = wrecks[selected];
+      if (!canSteam) return begin(w, false);
+      setPhase('steaming'); find('[data-title]').textContent = `Steaming to ${w.ship}`; renderPanel();
+      // The shell closes the dialog (running cleanup) inside steamTo, so nothing here may touch the DOM after it.
+      try { expedition.steamTo({ id: w.id, ship: w.ship, year: w.year, lon: w.lon, lat: w.lat, place: w.place }); }
+      catch (error) { console.error(error); if (active) { backToPick(); say('The bridge could not lay the course. Choose again.'); } }
+    }
+    function begin(w, onStation) {
       state = createGame(w, seed);
       mosaic = buildMosaic(state.site);
       waterfall = document.createElement('canvas'); waterfall.width = 160; waterfall.height = GRID * MOSAIC_PX;
       mode = 'box'; fast = false;
       find('[data-title]').textContent = `${w.ship}, ${w.year} · ${w.place}`;
       setPhase('plan'); fit(); renderPanel();
-      say(`${formatPosition(w.lat, w.lon)}, ${km(w.distanceKm)} ${compass(w.bearing)} of the ship. ${hours(state.site.budgetH)} of ship time. Read the record, box the likely water, run the lines.`);
+      say(`${onStation ? `On station over the ${w.short} datum, ${formatPosition(w.lat, w.lon)}` : `${formatPosition(w.lat, w.lon)}, ${km(w.distanceKm)} ${compass(w.bearing)} of the ship`}. ${hours(state.site.budgetH)} of ship time. Read the record, box the likely water, run the lines.`);
     }
     function setMode(next) {
       if (!state || state.phase === 'done') return;
@@ -543,7 +550,7 @@ export const game = {
       const dt = last ? Math.min(0.1, (now - last) / 1000) : 0;
       last = now;
       fit();
-      if (phase === 'chart' || phase === 'loading') { if (wrecks.length) drawChart(now); else { ctx.fillStyle = '#183b4a'; ctx.fillRect(0, 0, width, height); } }
+      if (picking()) { if (wrecks.length) drawPlot(now); else { ctx.fillStyle = '#183b4a'; ctx.fillRect(0, 0, width, height); } }
       else if (state) {
         if (state.phase === 'survey') {
           const before = state.ship ? { ...state.ship } : null;
@@ -565,10 +572,13 @@ export const game = {
       const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
       if ((key === ' ' || key === 'Enter') && event.target?.closest?.('button')) return;
       let handled = true;
-      if (phase === 'chart') {
+      if (phase === 'pick') {
         if (key === 'ArrowDown' || key === 's' || key === 'ArrowRight' || key === 'd') select(selected + 1);
         else if (key === 'ArrowUp' || key === 'w' || key === 'ArrowLeft' || key === 'a') select(selected - 1);
-        else if (key === 'Enter' || key === ' ') begin();
+        else if (key === 'Enter' || key === ' ') choose();
+        else handled = false;
+      } else if (phase === 'steaming') {
+        if (key === 'Backspace') backToPick();
         else handled = false;
       } else if (state && state.phase === 'plan') {
         if (ARROWS[key]) move(...ARROWS[key], event.shiftKey);
@@ -588,21 +598,22 @@ export const game = {
       if (handled) { event.preventDefault(); event.stopPropagation(); }
     }, { capture: true, signal });
 
-    // Pointer: pick a wreck on the chart; drag a box or click a cursor on the seabed.
+    // Pointer: pick a wreck on the plot; drag a box or click a cursor on the seabed.
     let drag = null;
     const canvasPoint = event => { const r = canvas.getBoundingClientRect(); return { x: (event.clientX - r.left) * width / r.width, y: (event.clientY - r.top) * height / r.height }; };
-    const nearestMarker = p => { let best = -1, bd = 18; chart.markers.forEach((m, i) => { const d = Math.hypot(m.x - p.x, m.y - p.y); if (d < bd) { bd = d; best = i; } }); return best; };
+    const nearestMarker = p => { let best = -1, bd = 18; plot.markers.forEach((m, i) => { const d = Math.hypot(m.x - p.x, m.y - p.y); if (d < bd) { bd = d; best = i; } }); return best; };
     canvas.addEventListener('pointerdown', event => {
       if (!active) return;
       const p = canvasPoint(event);
-      if (phase === 'chart') { const i = nearestMarker(p); if (i >= 0) { if (i === selected && event.detail > 1) begin(); else select(i); } return; }
+      if (phase === 'pick') { const i = nearestMarker(p); if (i >= 0) { if (i === selected && event.detail > 1) choose(); else select(i); } return; }
+      if (picking()) return;
       if (!state || state.phase !== 'plan') return;
       event.preventDefault(); canvas.setPointerCapture?.(event.pointerId);
       drag = { start: p, cell: toCell(p.x, p.y), moved: false };
     }, { signal });
     canvas.addEventListener('pointermove', event => {
       const p = canvasPoint(event);
-      if (phase === 'chart') { hover = nearestMarker(p); return; }
+      if (picking()) { hover = nearestMarker(p); return; }
       if (!drag || !state || state.phase !== 'plan') return;
       if (!drag.moved && Math.hypot(p.x - drag.start.x, p.y - drag.start.y) < 5) return;
       drag.moved = true; if (mode !== 'box') { mode = 'box'; }

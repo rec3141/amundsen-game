@@ -78,10 +78,20 @@ export const named = ship => /^(a|an|the) /i.test(ship) ? ship : `the ${ship}`;
 const SECTORS = { N: 270, NE: 315, E: 0, SE: 45, S: 90, SW: 135, W: 180, NW: 225 };   // screen angles, y down
 
 // ---- the site -----------------------------------------------------------------------------
-export function createSite(wreck, seed = wreck.id) {
-  const random = rng(`${wreck.id}:${seed}`);
+// What a wreck costs before any geometry is generated: the sonar the depth calls for, the ship time a
+// full-box survey takes, the budget the search is played against and the difficulty it scores at.
+export function siteBudget(wreck) {
   const cellM = wreck.boxKm * 1000 / GRID, depth = wreck.depth.m, sonar = sonarFor(depth);
   const swathCells = sonar.swathM / cellM, spacing = Math.max(1, Math.floor(swathCells));
+  const fullLines = Math.ceil(GRID / spacing);
+  const fullHours = TRANSIT_H + fullLines * (wreck.boxKm / KM_PER_H + TURN_H);
+  const budgetH = Math.round((0.7 * fullHours + 2 * diveHours(depth)) * 10) / 10;
+  const difficulty = Math.max(1, Math.min(6, 1 + Math.round(Math.log2(Math.max(1, fullHours / 2))) + (wreck.hint ? 0 : 1) + (depth > 300 ? 1 : 0)));
+  return { cellM, depth, sonar, swathCells, spacing, fullHours, budgetH, difficulty };
+}
+export function createSite(wreck, seed = wreck.id) {
+  const random = rng(`${wreck.id}:${seed}`);
+  const { cellM, depth, sonar, swathCells, spacing, fullHours, budgetH, difficulty } = siteBudget(wreck);
   const hint = wreck.hint, half = GRID / 2;
   // Target offset from the datum, inside the sector the clue names.
   let tx, ty;
@@ -123,10 +133,6 @@ export function createSite(wreck, seed = wreck.id) {
     const kind = random() < 0.55 ? 'boulder' : random() < 0.7 ? 'scour' : 'outcrop';
     contacts.push({ x, y, kind, heading: random() * Math.PI, size: kind === 'scour' ? 2 + random() * 4 : 0.35 + random() * 0.45 });
   }
-  const fullLines = Math.ceil(GRID / spacing);
-  const fullHours = TRANSIT_H + fullLines * (wreck.boxKm / KM_PER_H + TURN_H);
-  const budgetH = Math.round((0.7 * fullHours + 2 * diveHours(depth)) * 10) / 10;
-  const difficulty = Math.max(1, Math.min(6, 1 + Math.round(Math.log2(Math.max(1, fullHours / 2))) + (hint ? 0 : 1) + (depth > 300 ? 1 : 0)));
   return { wreck, cellM, depth, sonar, swathCells, spacing, target, land, seabed, texture, contacts, fullHours, budgetH, difficulty };
 }
 
