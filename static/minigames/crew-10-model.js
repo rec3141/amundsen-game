@@ -1,5 +1,6 @@
-// Flooding model for the aft lab: one burst seawater-loop fitting, a deck that fills like a tank,
-// and a scientist who can walk, wade, turn a valve, clear a drain and lift gear onto the bench.
+// Flooding model for the aft lab: one hard roll that blows a seawater-loop fitting and throws a
+// laptop off the bench, a deck that fills like a tank, and a scientist who can walk, wade, turn a
+// valve, clear a drain and lift gear onto the bench.
 // Pure functions over a plain state object; the UI drives it with step(state, dt).
 
 export const AREA_M2 = 40;          // deck area that the water spreads over
@@ -13,6 +14,11 @@ export const ABANDON_M = 0.5;       // the watch shuts the watertight door at th
 export const DRAINED_M = 0.01;      // below this the deck is squeegee work, not flooding
 export const TIME_LIMIT = 120;      // real seconds before the deck watch takes over
 export const G = 9.81;
+export const ROLL_PEAK_DEG = 7;     // the opening roll that empties the bench
+export const ROLL_SETTLE_S = 1.6;   // real seconds for the hard roll to ring down
+export const ROLL_AMBIENT_DEG = 1.4;// the ship keeps rolling gently underneath everything
+export const ROLL_PERIOD_S = 7;     // real seconds per ambient roll, a visual cadence
+export const LAPTOP_FALL_S = 0.32;  // real seconds from bench edge to deck
 
 const BASE_SPEED = 620;             // scene units per second on a dry deck (scene is 1000 wide)
 const TURN_SECONDS = 0.45;          // one quarter turn on the valve handwheel
@@ -20,7 +26,7 @@ const TURN_SECONDS = 0.45;          // one quarter turn on the valve handwheel
 export const STATIONS = [
   { id: 'valve', x: 95, name: 'Loop valve', key: '1', verb: 'Turn the handwheel' },
   { id: 'pump', x: 235, name: 'Sump pump', key: '2', verb: 'Start the pump' },
-  { id: 'laptop', x: 395, name: 'Laptop', key: '3', verb: 'Lift to the bench', work: 0.5, item: true, dieAt: 0.02, mass: 2, footprint: 0.09, points: 30 },
+  { id: 'laptop', x: 395, name: 'Laptop', key: '3', verb: 'Put it back on the bench', work: 0.5, item: true, dieAt: 0.02, mass: 2, footprint: 0.09, points: 30, fell: true },
   { id: 'power', x: 540, name: 'Power bar', key: '4', verb: 'Hang it up', work: 0.5, item: true, dieAt: 0.05, mass: 1.5, footprint: 0.02, points: 15 },
   { id: 'crate', x: 680, name: 'Sample crate', key: '5', verb: 'Heave onto the bench', work: 2.0, item: true, mass: 30, footprint: 0.24, tipAfter: 2.5, points: 40 },
   { id: 'pelican', x: 800, name: 'Pelican case', key: '6', verb: 'Lift to the bench', work: 1.5, item: true, mass: 8, footprint: 0.2, points: 0 },
@@ -80,8 +86,16 @@ export function createFlood(seed, seawater) {
     t: 0, level: 0, peak: 0, inflow: LINE_FLOW, outflow: 0,
     player: { x: 500, target: null, pending: false, working: null },
     lights: true, valveClosedAt: null, drainedAt: null,
-    over: null, events: [],
+    over: null,
+    events: [{ type: 'roll', text: `Hard roll to starboard. The loop fitting lets go, and somebody's laptop goes off the bench with it.` }],
   };
+}
+
+// Roll angle of the ship in degrees at real time t: the opening lurch ringing down, then a gentle
+// ambient roll. Positive tilts the deck down to the right of the scene.
+export function rollAt(t) {
+  const ring = ROLL_PEAK_DEG * Math.exp(-t / (ROLL_SETTLE_S / 3)) * Math.cos((t / ROLL_SETTLE_S) * Math.PI * 2.5);
+  return ring + ROLL_AMBIENT_DEG * Math.sin((t / ROLL_PERIOD_S) * Math.PI * 2);
 }
 
 export const station = (state, id) => state.stations.find(s => s.id === id);
@@ -136,7 +150,7 @@ function finishWork(state, s) {
   else if (s.id === 'scupper') state.events.push({ type: 'scupper', text: 'Scupper clear: cable ties and tape out. It drains faster the deeper the water.' });
   else if (s.item) {
     s.place = 'bench';
-    state.events.push({ type: 'saved', text: s.id === 'pelican' ? 'Pelican case on the bench. It was sealed anyway.' : `${s.name} on the bench, dry.` });
+    state.events.push({ type: 'saved', text: s.id === 'pelican' ? 'Pelican case on the bench. It was sealed anyway.' : s.fell ? `${s.name} back on the bench, dry. Its owner need never know it was on the floor.` : `${s.name} on the bench, dry.` });
   }
 }
 
@@ -185,7 +199,7 @@ export function step(state, dt) {
     if (s.dieAt && state.level >= s.dieAt) {
       s.place = 'lost'; s.lost = 'wet';
       if (s.id === 'power') { state.lights = false; state.events.push({ type: 'lost', text: 'Power bar under water: the breaker trips. Emergency lighting only.' }); }
-      else state.events.push({ type: 'lost', text: `${s.name} is under water. Salt water and a live board do not mix.` });
+      else state.events.push({ type: 'lost', text: s.fell ? `${s.name} is under water. Its owner is going to ask why it was on the floor.` : `${s.name} is under water. Salt water and a live board do not mix.` });
       if (player.working === s.id) player.working = null;
       continue;
     }
@@ -225,9 +239,9 @@ export function summary(state) {
     ...items.map(s => ({
       label: s.name,
       points: s.place === 'bench' ? s.points : 0,
-      note: s.place === 'bench' ? (s.id === 'pelican' ? 'sealed case, did not need lifting' : 'dry on the bench')
+      note: s.place === 'bench' ? (s.id === 'pelican' ? 'sealed case, did not need lifting' : s.fell ? 'back on the bench, dry' : 'dry on the bench')
         : s.lost === 'tipped' ? 'tipped while afloat, samples lost'
-        : s.lost === 'wet' ? 'flooded on the deck'
+        : s.lost === 'wet' ? (s.fell ? 'flooded where the roll left it' : 'flooded on the deck')
         : s.id === 'pelican' ? 'floated, sealed, unharmed' : 'left on the deck',
     })),
     { label: 'Deck drained', points: state.over === 'drained' ? 25 : 0, note: state.over === 'drained' ? `${labClock(state.drainedAt)} on the lab clock` : 'not before the watch arrived' },
