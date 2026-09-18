@@ -1,0 +1,128 @@
+dialog:has(.flood-game) { max-width: 1040px; max-height: calc(100dvh - 24px); overflow-y: auto; }
+.flood-game { --flood-ink: #183f4c; --flood-teal: #116c71; --flood-alarm: #b3411d; color: var(--flood-ink); font: 14px/1.5 system-ui, sans-serif; }
+.flood-game * { box-sizing: border-box; }
+.flood-game .flood-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.flood-game .flood-kicker { font-size: 10px; font-weight: 750; letter-spacing: 1.8px; color: var(--flood-alarm); margin: 0 0 5px; }
+.flood-game h3 { font: 25px/1.2 Georgia, serif; margin: 0; letter-spacing: -.4px; }
+.flood-game .flood-score { text-align: center; background: #e7f0e7; border-radius: 12px; min-width: 76px; padding: 7px 12px; }
+.flood-game .flood-score strong { display: block; font-size: 28px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.flood-game .flood-score span { font-size: 11px; }
+.flood-game .flood-instructions { margin: 14px 0; color: #48636b; }
+.flood-game kbd { background: #fff2; border: 1px solid currentColor; padding: 1px 6px; font: 12px monospace; border-radius: 4px; }
+.flood-game .flood-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(250px, .9fr); gap: 20px; }
+.flood-game .flood-scene-wrap { min-width: 0; align-self: start; border: 1px solid #c9dedf; border-radius: 12px; background: #edf4f3; padding: 10px; }
+.flood-game .flood-scene { display: block; width: 100%; height: auto; border-radius: 8px; background: #d5dfe3; }
+.flood-game .flood-off { display: none; }
+.flood-game .flood-deckhead { fill: #b8c6cc; }
+.flood-game .flood-lamps rect { fill: #fff7d6; stroke: #a9b3b8; stroke-width: 1; }
+.flood-game .flood-lamps.flood-lamps-off rect { fill: #6d7478; }
+.flood-game .flood-door { fill: #9fb3bb; stroke: #5f7680; stroke-width: 2; }
+.flood-game .flood-handle { fill: #3c4f57; }
+.flood-game .flood-sign { font: 700 12px system-ui, sans-serif; letter-spacing: 2px; fill: #4c6670; }
+.flood-game .flood-porthole { fill: #8a9aa1; }
+.flood-game .flood-porthole-glass { fill: #c6dde6; }
+.flood-game .flood-bench { fill: #c8a878; stroke: #8a6a3c; stroke-width: 1; }
+.flood-game .flood-bench-legs { stroke: #8a6a3c; stroke-width: 4; }
+.flood-game .flood-label { font: 600 10px system-ui, sans-serif; letter-spacing: 1.4px; fill: #4c6670; }
+.flood-game .flood-deck-label { fill: #d9e3e6; }
+.flood-game .flood-pipe path { stroke: #7c8d94; stroke-width: 10; fill: none; stroke-linecap: round; }
+.flood-game .flood-valve-body { fill: #5c6d75; }
+.flood-game .flood-wheel { fill: #c9563a; stroke: #7a2f1d; stroke-width: 3; }
+.flood-game .flood-spokes { stroke: #7a2f1d; stroke-width: 3; }
+.flood-game .flood-hub { fill: #3b2a24; }
+.flood-game [data-wheel] { transition: transform .12s linear; }
+.flood-game .flood-spray circle { fill: #bfe6f2; }
+.flood-game .flood-jet { fill: none; stroke: #9dd6e8; stroke-linecap: round; opacity: .85; }
+.flood-game .flood-pump { fill: #35525c; stroke: #1c2f36; }
+.flood-game .flood-pump-switch { fill: #8b9da4; stroke: #4b5d64; }
+.flood-game .flood-lamp-off { fill: #4d1b12; }
+.flood-game .flood-lamp-on { fill: #63e56c; filter: drop-shadow(0 0 4px #63e56c); }
+.flood-game .flood-hose { fill: none; stroke: #2c3f47; stroke-width: 6; stroke-linecap: round; }
+.flood-game .flood-grate { fill: #7c8d94; }
+.flood-game .flood-grate-bars { stroke: #3d4e55; stroke-width: 2; }
+.flood-game .flood-clog path { stroke: #e0e6a1; stroke-width: 2; fill: none; }
+.flood-game .flood-clog rect { fill: #9a9f74; }
+.flood-game .flood-laptop-lid { fill: #303c42; stroke: #1c2529; }
+.flood-game .flood-laptop-base { fill: #6a7a82; }
+.flood-game .flood-led { fill: #63e56c; }
+.flood-game .flood-powerbar { fill: #f0f0ea; stroke: #8e9296; }
+.flood-game [data-item="power"] rect:not(.flood-powerbar) { fill: #43494d; }
+.flood-game .flood-cord { fill: none; stroke: #2b2f33; stroke-width: 2; }
+.flood-game .flood-crate { fill: #e6eef0; stroke: #6b8a95; stroke-width: 2; }
+.flood-game .flood-crate-lines { stroke: #6b8a95; stroke-width: 1; }
+.flood-game .flood-crate-label { font: 700 9px monospace; fill: #315a68; }
+.flood-game .flood-pelican { fill: #e3a23b; stroke: #8b5e17; stroke-width: 1.5; }
+.flood-game .flood-pelican-latch { stroke: #3a3a3a; stroke-width: 3; }
+.flood-game [data-items] g { transition: transform .35s ease-out; }
+.flood-game [data-items] .flood-lost { opacity: .55; }
+.flood-game [data-items] .flood-lost .flood-led { fill: #7a2f1d; }
+.flood-game .flood-legs, .flood-game .flood-arms { stroke: #2d3a40; stroke-width: 7; stroke-linecap: round; fill: none; }
+.flood-game .flood-jacket { fill: #e8641b; stroke: #8f3a0d; }
+.flood-game .flood-stripe { fill: #d8dfe2; }
+.flood-game .flood-head { fill: #f0c7a6; }
+.flood-game .flood-toque { fill: #1d5f74; }
+.flood-game .flood-progress-track { fill: #ffffffcc; stroke: #3e5860; }
+.flood-game .flood-progress-fill { fill: var(--flood-teal); }
+.flood-game .flood-water { fill: url(#flood-water); }
+.flood-game .flood-dark { fill: url(#flood-emergency); pointer-events: none; }
+.flood-game .flood-ruler path { stroke: #4c6670; stroke-width: 2; }
+.flood-game .flood-ruler text { font: 700 11px monospace; fill: #2c5361; paint-order: stroke; stroke: #e5edf0; stroke-width: 4px; }
+.flood-game .flood-ruler-unit { letter-spacing: 1px; }
+.flood-game .flood-deck { fill: #3b4a52; }
+.flood-game .flood-deck-text { font: 600 10px system-ui, sans-serif; letter-spacing: 2px; fill: #9db2ba; }
+.flood-game .flood-readouts { display: grid; grid-template-columns: repeat(4, 1fr) 2fr; gap: 8px; margin-top: 10px; font-variant-numeric: tabular-nums; }
+.flood-game .flood-readouts div { background: #fff; border: 1px solid #d3e0e0; border-radius: 8px; padding: 6px 9px; min-width: 0; }
+.flood-game .flood-readouts span { display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #48636b; }
+.flood-game .flood-readouts strong { font-size: 15px; display: block; }
+.flood-game .flood-water-read strong { font-size: 13px; }
+.flood-game .flood-panel { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.flood-game .flood-here { background: #edf4f3; border-radius: 10px; padding: 8px 12px; }
+.flood-game .flood-here span { display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #48636b; }
+.flood-game .flood-here strong { font-size: 16px; }
+.flood-game .flood-here em { display: block; font-style: normal; font-size: 12px; color: #48636b; min-height: 18px; }
+.flood-game button { min-height: 44px; border: 1px solid #aec6c8; border-radius: 7px; background: #fff; color: var(--flood-ink); font: 600 13px/1.3 system-ui, sans-serif; padding: 8px 10px; cursor: pointer; touch-action: manipulation; }
+.flood-game button:disabled { opacity: .55; cursor: default; }
+.flood-game button:focus-visible { outline: 3px solid #c87b2e; outline-offset: 3px; }
+.flood-game button:not(:disabled):hover { background: #e2eeee; border-color: var(--flood-teal); }
+.flood-game .flood-controls { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 8px; }
+.flood-game button.flood-act { background: var(--flood-teal); color: #fff; font-size: 16px; box-shadow: 0 3px 0 #094b50; }
+.flood-game button.flood-act:not(:disabled):hover { background: #0a565c; color: #fff; }
+.flood-game button.flood-act:not(:disabled):active { transform: translateY(2px); box-shadow: 0 1px 0 #094b50; }
+.flood-game button.flood-act.flood-busy { background: #b3661d; box-shadow: 0 3px 0 #7a4210; }
+.flood-game .flood-act kbd { margin-left: 8px; }
+.flood-game .flood-stations { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.flood-game .flood-stations li { min-width: 0; }
+.flood-game .flood-stations button { width: 100%; min-width: 0; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 6px; align-items: center; text-align: left; padding: 6px 8px; }
+.flood-game .flood-stations kbd { grid-row: 1 / 3; font-size: 11px; }
+.flood-game .flood-stations b { font-size: 12px; line-height: 1.2; }
+.flood-game .flood-stations small { font-size: 10px; color: #48636b; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.flood-game .flood-stations [aria-pressed="true"] { outline: 2px solid var(--flood-teal); outline-offset: 1px; }
+.flood-game .flood-stations .flood-done { background: #dcece1; border-bottom: 3px solid #3a8161; }
+.flood-game .flood-stations .flood-gone { background: #f3e2dc; border-bottom: 3px solid var(--flood-alarm); }
+.flood-game .flood-status { margin: 0; font-size: 13px; min-height: 40px; padding: 8px 10px; background: #fff7e6; border-left: 3px solid #c87b2e; border-radius: 0 6px 6px 0; }
+.flood-game .flood-log { list-style: none; margin: 0; padding: 0; font: 11px/1.4 monospace; color: #48636b; max-height: 96px; overflow: hidden; }
+.flood-game .flood-log li { padding: 1px 0; border-bottom: 1px dotted #d6e2df; }
+.flood-game .flood-log .flood-event-lost { color: var(--flood-alarm); }
+.flood-game .flood-log .flood-event-saved, .flood-game .flood-log .flood-event-valve { color: #2f6e4d; }
+.flood-game .flood-result { background: #e9f1e4; border-radius: 10px; padding: 12px 14px; }
+.flood-game .flood-result h4 { margin: 0 0 8px; font: 18px/1.2 Georgia, serif; }
+.flood-game .flood-result table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+.flood-game .flood-result th { text-align: left; font-weight: 600; padding: 3px 0; }
+.flood-game .flood-result td { padding: 3px 0 3px 8px; color: #48636b; }
+.flood-game .flood-result td:last-child { text-align: right; color: var(--flood-ink); font-weight: 700; }
+.flood-game .flood-result tfoot th, .flood-game .flood-result tfoot td { border-top: 1px solid #b9cdb4; padding-top: 6px; }
+.flood-game .flood-result p { margin: 10px 0 0; font-size: 12px; color: #48636b; }
+.flood-game .flood-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; }
+.flood-game .flood-reward { font-size: 10px; color: #48636b; text-align: right; }
+@media (max-width: 760px) {
+  dialog:has(.flood-game) { padding: 30px 14px 18px; }
+  .flood-game .flood-layout { grid-template-columns: 1fr; }
+  .flood-game h3 { font-size: 22px; }
+  .flood-game .flood-readouts { grid-template-columns: repeat(2, 1fr); }
+  .flood-game .flood-water-read { grid-column: 1 / -1; }
+  .flood-game .flood-footer { flex-direction: column; align-items: stretch; }
+  .flood-game .flood-reward { text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flood-game [data-items] g, .flood-game [data-wheel] { transition: none; }
+}
