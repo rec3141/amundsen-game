@@ -81,6 +81,17 @@ The Python server is intended for a trusted ship intranet, not public hosting.
   chart from each completed hole. Finish the transect to bank the points.
 - Completed operations leave discovery marks at the ship's position and entries
   in the expedition log. There are no predetermined mission locations.
+- Sailing maps the seabed in a depth-dependent multibeam swath and scores newly
+  mapped cells. **G** launches the helicopter (hired from stores) to explore
+  inland; **Y** launches the zodiac; **1** arms the AUV for a straight mapping run.
+- The ship burns diesel per km, more in ice. **U** bunkers at a community berth
+  within 6 km or from the tanker M/T Nanny at her announced anchorage, for science
+  points. Dry tanks mean a drift and a tow south to the start. **Q** opens the
+  ship's stores: hull, tank, swath, winch upgrades and craft hire.
+- Running aground costs the points of the last operation and returns the ship to
+  safe water; the chart and log survive.
+- The Leaderboard tab ranks career points and each operation's best run for
+  players who sign the log in the ship card.
 - Score, chart, track and discoveries are saved per browser. Restart clears that
   voyage; the crew's shared ideas stay on the server.
 - Crew ideas opens a shared phone-friendly form and board, refreshed every five
