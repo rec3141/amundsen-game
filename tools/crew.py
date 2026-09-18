@@ -2,6 +2,7 @@
 """Launch one headless coding agent per crew idea in an isolated Git worktree."""
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -13,8 +14,8 @@ RUNS = ROOT / 'runtime/crew'
 CLAUDE_MODEL = 'claude-fable-5-1'
 FALLBACK_MODEL = 'claude-opus-5'
 DEFAULT_WORKER = 'claude'
-RESUME_NOTE = ('An earlier worker on this brief stopped with an error. Check git status and git log in this '
-               'worktree, keep what is sound, and finish the brief below.\n\n')
+RESUME_NOTE = ('An earlier worker on this brief was interrupted before it finished. Check git status and git log in '
+               'this worktree, keep what is sound, and finish the brief below.\n\n')
 
 def command(worker, state, run, model=None):
     """Both workers read the brief on stdin and stream JSON events to stdout."""
@@ -24,6 +25,20 @@ def command(worker, state, run, model=None):
     # A headless worker has nobody to approve tool calls, so permissions are bypassed.
     return ['claude', '-p', '--model', model or CLAUDE_MODEL, '--dangerously-skip-permissions',
             '--output-format', 'stream-json', '--verbose']
+
+def supervise(run):
+    """Detach a supervisor for the run and return its pid."""
+    with (run / 'launcher.log').open('ab') as log:
+        process = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), '_worker', str(run)],
+                                   stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
+    return process.pid
+
+def alive(pid):
+    try:
+        os.kill(pid, 0)
+    except (OSError, TypeError):
+        return False
+    return True
 
 def claude_result(events):
     """Return (final report, failed) from Claude Code's stream-json events."""
@@ -43,6 +58,8 @@ def main():
     start.add_argument('slug')
     start.add_argument('brief', type=Path)
     start.add_argument('--worker', choices=['claude', 'codex'], default=DEFAULT_WORKER)
+    resume = sub.add_parser('resume', help='relaunch a dead or failed run in its existing worktree')
+    resume.add_argument('slug')
     sub.add_parser('status')
     worker = sub.add_parser('_worker')
     worker.add_argument('run', type=Path)
@@ -62,20 +79,27 @@ def main():
         (run / 'brief.md').write_text(brief)
         state = {'branch': branch, 'worktree': str(worktree), 'worker': args.worker, 'status': 'starting', 'started': time.time()}
         (run / 'state.json').write_text(json.dumps(state, indent=2))
-        with (run / 'launcher.log').open('ab') as log:
-            process = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), '_worker', str(run)],
-                                       stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
-        print(json.dumps({**state, 'supervisor_pid': process.pid}, indent=2))
+        print(json.dumps({**state, 'supervisor_pid': supervise(run)}, indent=2))
+    elif args.command == 'resume':
+        run = RUNS / args.slug
+        state = json.loads((run / 'state.json').read_text())
+        if state['status'] in ('starting', 'running') and alive(state.get('pid')):
+            parser.error('This run is still working.')
+        state.update(status='starting', started=time.time(), attempts=state.get('attempts', 1))
+        state.pop('finished', None); state.pop('exit_code', None)
+        (run / 'state.json').write_text(json.dumps(state, indent=2))
+        print(json.dumps({**state, 'supervisor_pid': supervise(run)}, indent=2))
     elif args.command == '_worker':
         run = args.run
         state = json.loads((run / 'state.json').read_text())
         worker = state.get('worker', 'codex')
         # A Claude run that errors (a classifier block, an API failure) is relaunched once on the fallback model.
         models = [CLAUDE_MODEL, FALLBACK_MODEL] if worker == 'claude' else [None]
-        for attempt, model in enumerate(models):
-            events = run / ('events.jsonl' if not attempt else f'events-{model}.jsonl')
+        for model in models:
+            attempt = state['attempts'] = state.get('attempts', 0) + 1
+            events = run / ('events.jsonl' if attempt == 1 else f'events-{attempt}-{model or worker}.jsonl')
             prompt = (run / 'brief.md').read_bytes()
-            if attempt:
+            if attempt > 1:
                 prompt = RESUME_NOTE.encode() + prompt
             with events.open('wb') as output, (run / 'stderr.log').open('ab') as errors:
                 process = subprocess.Popen(command(worker, state, run, model), cwd=state['worktree'],
@@ -95,7 +119,10 @@ def main():
     else:
         for path in sorted(RUNS.glob('*/state.json')):
             state = json.loads(path.read_text())
-            print(f"{state['branch']}: {state['status']} ({state.get('model') or state.get('worker', 'codex')} pid {state.get('pid', 'pending')})")
+            status = state['status']
+            if status in ('starting', 'running') and not alive(state.get('pid')):
+                status = 'DEAD (resume it)'
+            print(f"{state['branch']}: {status} ({state.get('model') or state.get('worker', 'codex')} pid {state.get('pid', 'pending')})")
 
 if __name__ == '__main__':
     main()

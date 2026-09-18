@@ -9,3 +9,5 @@ Environment=PATH=/home/cryomics/.local/bin:/usr/local/bin:/usr/bin:/bin
 ExecStart=/usr/bin/python3 /data/dev/amundsen-game/tools/crew_watch.py --watch
 Restart=on-failure
 RestartSec=10
+# Workers the watcher launches must outlive a watcher restart; only the watcher itself is stopped.
+KillMode=process
