@@ -80,10 +80,15 @@ function startActivity(activity) {
   recorder = operationRecorder(state, activity, location, entry => { save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart`); });
   const session = recorder;
   $('#mission-dialog').showModal();
+  // showModal focuses the first focusable control, the close button; Enter or Space would then close the
+  // operation. Focus the game root instead so the keys reach the minigame's own handlers.
+  $('#minigame').focus();
   try { cleanup = game.mount($('#minigame'), { complete: (points, detail) => { if ($('#mission-dialog').open) session.complete(points, detail); }, expedition: { ...location, score: state.score, operations: state.operations, chartPercent: chartPercent(state, sea) } }); }
   catch (error) { endActivity(); $('#mission-dialog').close(); toast('Could not open this operation. Please try again.'); console.error(error); }
 }
 $('#close-mission').onclick = () => { endActivity(); $('#mission-dialog').close(); };
+// Only a pointer closes the operation with the × button; Enter and Space belong to the minigame (Escape still closes).
+$('#close-mission').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); });
 $('#mission-dialog').addEventListener('cancel', () => endActivity());
 $('#mission-dialog').addEventListener('close', () => { if ($('#mission-dialog').open) return; endActivity(); if (returnFocus?.isConnected) returnFocus.focus(); else canvas.focus(); });
 $('#reset').onclick = () => { if (confirm('Start a fresh voyage and clear your chart, log and science points? Crew ideas stay on the server.')) { endActivity(); state = newVoyage(0, world?.start); try { localStorage.removeItem('amundsen-expedition'); } catch {} known = new Set(); chartPosition(state, known); waypoints = []; keys.clear(); save(); updateUI(); buildFog(); } };
