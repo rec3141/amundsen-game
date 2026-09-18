@@ -1,0 +1,242 @@
+// The Raft: piston-coring an emerged coastal lake from an inflatable platform.
+// Everything random is drawn from seeds so the UI can be shadowed deterministically.
+
+export const DRIVES = 3;
+// A hand winch on the tripod winds line in at a steady rate; tension climbs with it while the core holds.
+export const HAUL_KG_PER_S = 14;
+export const RIG_KG = 6;
+export const ROD_KG_PER_M = 1.2;
+export const RAFT_LIMIT_KG = [80, 165];
+
+// Stratigraphy of a tundra lake that was cut off from the sea by isostatic uplift, top down.
+// adhesion: line tension needed per centimetre of tube wall in the layer, kg/cm.
+// stroke: how far one hammer blow drives the tube, cm. rate: points per centimetre recovered, rising with age.
+// bonus: awarded once the tube first enters the layer.
+export const PROFILE = [
+  { key: 'gyttja', name: 'Gyttja', note: 'olive-brown organic mud, soft', thickness: [90, 170], adhesion: 0.11, stroke: 12, rate: 0.3, bonus: 0, colour: '#5b5a2e' },
+  { key: 'contact', name: 'Isolation contact', note: 'laminated brackish silt, the basin leaving the sea', thickness: [6, 14], adhesion: 0.25, stroke: 10, rate: 0.6, bonus: 25, colour: '#8a7f55' },
+  { key: 'marine', name: 'Marine clay', note: 'grey silty clay with shell fragments', thickness: [80, 160], adhesion: 0.42, stroke: 8, rate: 0.6, bonus: 0, colour: '#7d8489' },
+  { key: 'diamict', name: 'Glaciomarine diamicton', note: 'stony mud, dropstones from calving ice', thickness: [40, 90], adhesion: 0.85, stroke: 4, rate: 1, bonus: 40, colour: '#5f6366' },
+  { key: 'till', name: 'Till', note: 'refusal', thickness: [400, 400], adhesion: 2, stroke: 0, rate: 0, bonus: 60, colour: '#43423c' },
+];
+
+// Cue thresholds, as a fraction of the raft's breaking load. Jitter keeps them from reading the limit off directly.
+const CUES = [
+  { key: 'tilt', at: 0.45, text: 'The deck tilts toward the tripod.' },
+  { key: 'awash', at: 0.63, text: 'Water sheets across the upwind pontoon.' },
+  { key: 'creak', at: 0.78, text: 'Something creaks under the tripod feet.' },
+  { key: 'screw', at: 0.9, text: 'A deck screw pops.' },
+];
+
+export function seededRandom(seed) {
+  let value = 2166136261;
+  for (const char of String(seed)) value = Math.imul(value ^ char.charCodeAt(0), 16777619) >>> 0;
+  return () => {
+    value = (Math.imul(value, 1664525) + 1013904223) >>> 0;
+    return value / 4294967296;
+  };
+}
+
+const between = (random, [low, high]) => low + random() * (high - low);
+
+export function createSession({ lakeSeed = 'lake', raftSeed = 'raft' } = {}) {
+  const lake = seededRandom(lakeSeed);
+  let top = 0;
+  const layers = PROFILE.map(layer => {
+    const thickness = Math.round(between(lake, layer.thickness));
+    const entry = { ...layer, topCm: top, bottomCm: top + thickness };
+    top += thickness;
+    return entry;
+  });
+  const raft = seededRandom(raftSeed);
+  const limitKg = Math.round(between(raft, RAFT_LIMIT_KG));
+  const cues = CUES.map(cue => ({ ...cue, at: cue.at + (raft() - 0.5) * 0.1 }));
+  const state = {
+    layers,
+    refusalCm: layers[layers.length - 1].topCm,
+    limitKg,
+    cues,
+    random: raft,
+    cores: [],
+    core: null,
+    bank: 0,
+    finished: false,
+    broken: false,
+    reported: false,
+    knownSafeKg: 0,
+  };
+  newCore(state);
+  return state;
+}
+
+export function layerAt(state, depthCm) {
+  return state.layers.find(layer => depthCm < layer.bottomCm) ?? state.layers[state.layers.length - 1];
+}
+
+function newCore(state) {
+  state.core = {
+    index: state.cores.length + 1,
+    depthCm: 0,
+    phase: 'drive',
+    tensionKg: 0,
+    peakKg: 0,
+    extractKg: null,
+    shifted: false,
+    stopped: null,
+    bonuses: [],
+    cues: [],
+  };
+}
+
+// Tension the line must reach before the barrel breaks free: rig and rods, plus wall adhesion through every layer cored.
+export function pullEstimateKg(state, depthCm = state.core.depthCm) {
+  let total = RIG_KG + ROD_KG_PER_M * depthCm / 100;
+  for (const layer of state.layers) {
+    const cored = Math.min(depthCm, layer.bottomCm) - layer.topCm;
+    if (cored > 0) total += cored * layer.adhesion;
+  }
+  return total;
+}
+
+export function pullRangeKg(state, depthCm) {
+  const estimate = pullEstimateKg(state, depthCm);
+  return { low: Math.round(estimate * 0.88), high: Math.round(estimate * 1.14) };
+}
+
+export function coreValue(state, core = state.core) {
+  let value = 0;
+  for (const layer of state.layers) {
+    const cored = Math.min(core.depthCm, layer.bottomCm) - layer.topCm;
+    if (cored > 0) value += cored * layer.rate;
+  }
+  return Math.round(value) + core.bonuses.reduce((sum, bonus) => sum + bonus.points, 0);
+}
+
+export const drivesLeft = state => DRIVES - state.cores.length;
+
+// One push on the rods. Returns the layer entered, if any, and whether the drive has hit refusal.
+export function push(state) {
+  const core = state.core;
+  if (state.finished || core.phase !== 'drive' || core.stopped) return null;
+  const layer = layerAt(state, core.depthCm);
+  const before = layer;
+  let stroke = layer.stroke;
+  let stopped = null;
+  // Dropstones sit in the diamicton; the barrel that lands on one goes no further.
+  if (layer.key === 'diamict' && state.random() < 0.03) {
+    stroke = Math.round(stroke * state.random());
+    stopped = 'dropstone';
+  }
+  const depth = Math.min(state.refusalCm, core.depthCm + stroke);
+  core.depthCm = depth;
+  if (depth >= state.refusalCm) stopped = 'till';
+  core.stopped = stopped;
+  const now = layerAt(state, depth);
+  // A long stroke can pass straight through a thin band; every layer the barrel has entered still counts.
+  const entered = state.layers.filter(layer => layer.bonus && !core.bonuses.some(b => b.key === layer.key) && depth >= layer.topCm + (layer.stroke ? 1 : 0));
+  entered.forEach(layer => core.bonuses.push({ key: layer.key, name: layer.name, points: layer.bonus }));
+  return { layer: now, before, entered, stopped, depthCm: depth };
+}
+
+export function beginPull(state) {
+  const core = state.core;
+  if (state.finished || core.phase !== 'drive' || core.depthCm === 0) return false;
+  core.phase = 'pull';
+  // The barrel's real grip sits inside the quoted range; suction on a stiff base can push it past the top end.
+  const spread = 0.88 + state.random() * 0.26;
+  core.extractKg = Math.round(pullEstimateKg(state) * spread * 10) / 10;
+  return true;
+}
+
+// Winds the winch for dt seconds. Returns the events raised, in order: cue keys, 'shift', 'pop', 'break'.
+export function haul(state, dt) {
+  const core = state.core;
+  if (state.finished || core.phase !== 'pull') return [];
+  const events = [];
+  core.tensionKg = Math.min(core.tensionKg + HAUL_KG_PER_S * dt, 250);
+  core.peakKg = Math.max(core.peakKg, core.tensionKg);
+  if (core.tensionKg >= state.limitKg) {
+    core.phase = 'lost';
+    state.broken = true;
+    state.finished = true;
+    return ['break'];
+  }
+  for (const cue of state.cues) {
+    if (!core.cues.includes(cue.key) && core.tensionKg >= cue.at * state.limitKg) {
+      core.cues.push(cue.key);
+      events.push(cue.key);
+    }
+  }
+  if (!core.shifted && core.tensionKg >= core.extractKg * 0.9) {
+    core.shifted = true;
+    events.push('shift');
+  }
+  if (core.tensionKg >= core.extractKg) {
+    core.phase = 'recovered';
+    state.knownSafeKg = Math.max(state.knownSafeKg, core.peakKg);
+    // Every hard pull works the deck fittings looser.
+    const strain = core.peakKg - state.limitKg * 0.6;
+    if (strain > 0) state.limitKg = Math.max(core.peakKg + 2, Math.round(state.limitKg - strain * 0.3));
+    const value = coreValue(state);
+    state.bank += value;
+    state.cores.push({ ...core, points: value, outcome: 'recovered' });
+    events.push('pop');
+  }
+  return events;
+}
+
+// Slackens the line and leaves the tube in the lake bed. Costs half the core's value and a drive.
+export function abandon(state) {
+  const core = state.core;
+  if (state.finished || core.phase !== 'pull') return null;
+  core.phase = 'lost';
+  core.tensionKg = 0;
+  state.knownSafeKg = Math.max(state.knownSafeKg, core.peakKg);
+  const penalty = Math.max(15, Math.round(coreValue(state) / 2));
+  state.bank -= penalty;
+  state.cores.push({ ...core, points: -penalty, outcome: 'abandoned' });
+  return penalty;
+}
+
+export function nextCore(state) {
+  if (state.finished || !['recovered', 'lost'].includes(state.core.phase) || drivesLeft(state) <= 0) return false;
+  newCore(state);
+  return true;
+}
+
+// Paddling in is allowed between cores: after a pull has ended, or before the next tube has been driven.
+export const canFinish = state => !state.finished && state.cores.length > 0 && (['recovered', 'lost'].includes(state.core.phase) || (state.core.phase === 'drive' && state.core.depthCm === 0));
+
+export function points(state) {
+  return state.broken ? 0 : Math.max(0, state.bank);
+}
+
+// Reports the session once: after paddling in, or after the raft has broken.
+export function finish(state, reason = 'paddled in') {
+  if (state.reported || !(state.broken || canFinish(state))) return null;
+  state.finished = true;
+  state.reported = true;
+  const recovered = state.cores.filter(core => core.outcome === 'recovered');
+  const longest = recovered.reduce((best, core) => Math.max(best, core.depthCm), 0);
+  return {
+    points: points(state),
+    detail: {
+      title: state.broken ? 'The Raft: platform broke up' : `The Raft: ${recovered.length} core${recovered.length === 1 ? '' : 's'} · longest ${longest} cm`,
+      outcome: state.broken ? 'raft broke' : reason,
+      raftLimitKg: state.limitKg,
+      longestCm: longest,
+      cores: state.cores.map(core => ({
+        depthCm: core.depthCm,
+        outcome: core.outcome,
+        points: core.points,
+        peakKg: Math.round(core.peakKg),
+        extractKg: core.extractKg,
+        layers: state.layers.filter(layer => layer.topCm < core.depthCm && layer.key !== 'till').map(layer => layer.key),
+      })),
+    },
+  };
+}
+
+export function cueText(state, key) {
+  return state.cues.find(cue => cue.key === key)?.text ?? '';
+}
