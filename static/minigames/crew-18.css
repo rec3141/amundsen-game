@@ -1,0 +1,28 @@
+.c18 { color: #e0edf0; background: #102a36; border: 1px solid #456574; border-radius: 14px; padding: clamp(12px, 3vw, 26px); max-width: 1000px; margin: auto; font: 16px/1.5 system-ui, sans-serif; }
+.c18 * { box-sizing: border-box; }
+.c18 [hidden] { display: none !important; }
+.c18 header, .c18-end { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.c18 h2 { font: 700 clamp(25px, 5vw, 38px)/1.1 Georgia, serif; margin: 4px 0 12px; color: #f5c46d; }
+.c18 h3 { margin: 8px 0; font-size: 18px; }
+.c18 p { margin: 10px 0; }
+.c18 .c18-eyebrow { font-size: 11px; letter-spacing: .14em; color: #9ae3da; }
+.c18-layout { display: grid; grid-template-columns: minmax(170px, .8fr) minmax(0, 1.5fr); gap: 24px; }
+.c18 aside { border-right: 1px solid #456574; padding-right: 20px; }
+.c18 svg { width: 100%; background: #0b202b; border-radius: 8px; }
+.c18 svg text { fill: #c7dce3; font: 10px system-ui, sans-serif; }
+.c18 button { background: #204656; color: #edf6f7; border: 1px solid #70949f; border-radius: 7px; min-height: 44px; padding: 9px 12px; font: inherit; cursor: pointer; touch-action: manipulation; }
+.c18 button:hover:not(:disabled) { background: #315e70; }
+.c18 button:focus-visible { outline: 3px solid #f5c46d; outline-offset: 2px; }
+.c18 button:disabled { opacity: .45; cursor: default; }
+.c18-sites { display: grid; gap: 8px; }
+.c18-grid { display: grid; grid-template-columns: repeat(8, 1fr); aspect-ratio: 1; max-width: 430px; background: #091d28; border: 1px solid #63838c; }
+.c18-grid span { display: grid; place-items: center; border: 1px solid #244551; color: #f5c46d; font-size: clamp(16px, 3vw, 24px); }
+.c18-grid .c18-possible { background: #376a70; border-color: #9ae3da; }
+.c18 .c18-small { color: #b2c9d2; font-size: 12px; }
+.c18 [data-status] { min-height: 3em; color: #f5d79e; }
+.c18-controls { display: flex; gap: 8px; flex-wrap: wrap; }
+.c18-pad { display: flex; gap: 4px; }
+.c18-fixes { display: flex; gap: 8px 24px; flex-wrap: wrap; padding-left: 22px; font-size: 13px; max-height: 110px; overflow: auto; }
+.c18-log { border-top: 1px solid #456574; margin-top: 18px; padding: 12px 0; }
+.c18-log p { border-left: 3px solid #9ae3da; padding-left: 12px; }
+@media (max-width: 600px) { .c18-layout { grid-template-columns: 1fr; gap: 12px; } .c18 aside { border-right: 0; padding: 0; } .c18 svg { max-height: 140px; } .c18-grid { max-width: none; } .c18 button { font-size: 14px; } }
