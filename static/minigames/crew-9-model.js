@@ -17,10 +17,10 @@ export const COLLECTION_BONUS = 150;
 // metres (large evasive animals see a small net coming), `benthic` gear rides the seabed.
 export const NETS = [
   { id: 'ring', name: 'Ring net', mesh: '200 µm', minMm: 2, mouth: 0.5, benthic: false, cost: 0, height: 4.5, note: 'Half-metre ring, 200 µm mesh. Copepods and pteropods.' },
-  { id: 'wp2', name: 'WP-2', mesh: '63 µm', minMm: 0.5, mouth: 0.57, benthic: false, cost: 60, height: 4.5, note: 'Fine 63 µm mesh keeps the small copepods the ring net extrudes.' },
-  { id: 'tucker', name: 'Tucker trawl', mesh: '500 µm', minMm: 5, mouth: 1, benthic: false, cost: 140, height: 7, note: '1 m² opening. Fast enough for amphipods, jellies and juvenile fish.' },
-  { id: 'agassiz', name: 'Agassiz trawl', mesh: '1 mm', minMm: 10, mouth: 1.5, benthic: true, cost: 200, height: 5, note: 'Skids along the seabed. Lift it over boulders or it snags.' },
-  { id: 'beam', name: 'Beam trawl', mesh: '2 mm', minMm: 20, mouth: 3, benthic: true, cost: 320, height: 6.5, note: '3 m beam. Wide enough for crabs and flatfish that dodge the Agassiz.' },
+  { id: 'wp2', name: 'WP-2', mesh: '63 µm', minMm: 0.5, mouth: 0.57, benthic: false, cost: 50, height: 4.5, note: 'Fine 63 µm mesh keeps the small copepods the ring net extrudes.' },
+  { id: 'tucker', name: 'Tucker trawl', mesh: '500 µm', minMm: 5, mouth: 1, benthic: false, cost: 120, height: 7, note: '1 m² opening. Fast enough for amphipods, jellies and juvenile fish.' },
+  { id: 'agassiz', name: 'Agassiz trawl', mesh: '1 mm', minMm: 10, mouth: 1.5, benthic: true, cost: 170, height: 5, note: 'Skids along the seabed. Lift it over boulders or it snags.' },
+  { id: 'beam', name: 'Beam trawl', mesh: '2 mm', minMm: 20, mouth: 3, benthic: true, cost: 240, height: 6.5, note: '3 m beam. Wide enough for crabs and flatfish that dodge the Agassiz.' },
 ];
 
 // Habitat keys: 'chl' hugs the fluorescence maximum, 'ice' hangs under keels, 'bottom' sits on the seabed.
