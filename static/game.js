@@ -1,7 +1,7 @@
 import { publicMirror } from './site.js';
 import { minigames, activities } from './minigames/registry.js';
 import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
-import { loadWorld, ICE_STATION_MIN } from './world.js';
+import { loadWorld } from './world.js';
 import { renderChart, CHART_SCALE } from './world-chart.js';
 const $ = s => document.querySelector(s);
 if (publicMirror) {
@@ -20,9 +20,45 @@ let zodiac = null, auv = null, auvArmed = false, adrift = null, routePlan = null
 const craft = () => helicopter || zodiac;
 const pilotU = () => craft()?.u ?? shipU(), pilotV = () => craft()?.v ?? shipV();
 let waypoints = [], routeComplete = true, holdUntil = 0, shake = 0;
+// Live events: the archive wrecks on the chart, the wreck the ship is steaming to, an alarm waiting to open, the
+// cached nearest-ice search and the chart mark under the mouse.
+let wrecks = [], target = null, pendingAlarm = null, iceCache = null, hovered = null;
 // The zodiac keeps within a tether of the ship; the AUV runs straight out and maps a fixed near-bottom swath;
 // bunkering, and recovering the AUV, need the ship within BUNKER_KM; dry tanks drift for the grace period, then a tow.
 const ZODIAC_TETHER_KM = 30, AUV_RANGE_KM = 60, AUV_SWATH_M = 3000, AUV_CELLS_PER_S = 12, BUNKER_KM = 6, PORT_CHART_KM = 300, ADRIFT_GRACE_MS = 30000;
+// A wreck is surveyed within WRECK_KM of its datum; a Mayday is answered within SAR_KM of the casualty and is stood
+// down after SAR_LIFE_S; ice stations need charted ice of ICE_NEAR_PERCENT or more within ICE_NEAR_KM. Intervals are
+// seconds of active play: the next call comes SAR_GAP_S after the last plus an exponential draw of mean SAR_SPREAD_S
+// (12 minutes on average), the next alarm ALARM_GAP_S after the last plus a draw of mean ALARM_SPREAD_S (15 minutes).
+const WRECK_KM = 15, SAR_KM = 20, SAR_LIFE_S = 1200, SAR_GAP_S = 360, SAR_SPREAD_S = 360, SAR_FIRST_S = [150, 300], SAR_RANGE_KM = [60, 300];
+const ALARM_GAP_S = 480, ALARM_SPREAD_S = 420, ALARM_FIRST_S = [300, 480], ALARM_DELAY_MS = 2000, ICE_NEAR_KM = 10, ICE_NEAR_PERCENT = 10, ICE_SEARCH_CELLS = 400;
+const ALARMS = { flood: 'flooding in the aft lab', contaminants: 'contamination on the rosette deck' };
+// Vessels that raise a Mayday; the game's own MV Kittiwake among them.
+const CASUALTIES = [
+  { name: 'MV Kittiwake', kind: 'cruise ship', trouble: 'beset and taking water forward, 162 passengers' },
+  { name: 'MV Boreal Spirit', kind: 'cruise ship', trouble: 'holed by ice, listing to port' },
+  { name: 'MS Aurora Strait', kind: 'cruise ship', trouble: 'steering gear failed, drifting with the floes' },
+  { name: 'MV Tuvaq Sealift', kind: 'sealift carrier', trouble: 'beset, deck cargo shifting' },
+  { name: 'MV Hudson Trader', kind: 'sealift carrier', trouble: 'engine room fire, adrift in the pack' },
+  { name: 'FV Sannirut', kind: 'fishing vessel', trouble: 'nipped in the ice and listing' },
+  { name: 'FV Kingnait Bay', kind: 'fishing vessel', trouble: 'propeller fouled, beset' },
+  { name: 'SY Wandering Tern', kind: 'yacht', trouble: 'trapped in closing pack, two aboard' },
+  { name: 'SY Petrel', kind: 'yacht', trouble: 'dismasted, drifting onto the ice edge' },
+];
+const expo = mean => -Math.log(1 - Math.random()) * mean, between = ([lo, hi]) => lo + Math.random() * (hi - lo);
+// Event state rides in the saved voyage beside the exploration fields and is restored here with guarded defaults:
+// `played` seconds of active play; `lastCall`, `nextCall`, `lastAlarm`, `nextAlarm` on that clock; the active
+// Mayday; the id of the wreck the ship is steaming to.
+function restoreEvents(state, raw) {
+  const num = (value, fallback) => Number.isFinite(value) && value >= 0 ? value : fallback, text = (value, max) => typeof value === 'string' ? value.slice(0, max) : '';
+  state.played = num(raw?.played, 0);
+  state.lastCall = Number.isFinite(raw?.lastCall) ? raw.lastCall : null; state.lastAlarm = Number.isFinite(raw?.lastAlarm) ? raw.lastAlarm : null;
+  state.nextCall = num(raw?.nextCall, state.played + between(SAR_FIRST_S)); state.nextAlarm = num(raw?.nextAlarm, state.played + between(ALARM_FIRST_S));
+  const m = raw?.mayday;
+  state.mayday = m && [m.x, m.y, m.lon, m.lat, m.at, m.until].every(Number.isFinite) && m.x >= 0 && m.x <= 1 && m.y >= 0 && m.y <= 1
+    ? { name: text(m.name, 60) || 'an unnamed vessel', kind: text(m.kind, 40), trouble: text(m.trouble, 120), x: m.x, y: m.y, lon: m.lon, lat: m.lat, at: m.at, until: m.until } : null;
+  state.target = text(raw?.target, 40) || null;
+}
 // M/T Nanny, the sealift tanker, lies 8 minutes at each anchorage in turn on a 12-minute cycle of the wall clock.
 const TANKER = { name: 'M/T Nanny', slot: 720000, stay: 480000, anchorages: [
   { name: 'Baffin Bay off Clyde River', lon: -67, lat: 70.6 }, { name: 'Melville Bay', lon: -60, lat: 75.2 }, { name: 'Smith Sound', lon: -73, lat: 78.3 },
@@ -38,7 +74,7 @@ const m3 = value => value < 10 ? value.toFixed(1) : Math.round(value).toLocaleSt
 // Nothing is written until the world has placed the ship, so a slow load cannot overwrite a saved voyage.
 function save() { if (!world) return; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { $('#save-status').textContent = 'Chart stays in this tab · storage unavailable'; } }
 let toastTimer;
-function toast(message, long = false) { $('#toast').textContent = message; $('#toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('show'), long ? 7000 : 3500); }
+function toast(message, long = false, klaxon = false) { $('#toast').textContent = message; $('#toast').classList.toggle('klaxon', klaxon); $('#toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('show'), long ? 7000 : 3500); }
 function showPage(name) { if (publicMirror && name !== 'game') return; page = name; keys.clear(); waypoints = []; $('#game-page').hidden = name !== 'game'; $('#ideas-page').hidden = name !== 'ideas'; $('#board-page').hidden = name !== 'board'; document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.page === name)); if (name === 'ideas') loadIdeas(); else if (name === 'board') loadLeaderboard(); else resize(); }
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => showPage(b.dataset.page));
 $('#suggest-shortcut').onclick = $('#crew-link').onclick = () => showPage('ideas');
@@ -56,11 +92,50 @@ function here(airborne = false) {
   const u = airborne ? pilotU() : shipU(), v = airborne ? pilotV() : shipV(), { lon, lat } = world.unproject(u, v), ice = world.ice(u, v);
   return { x: u / world.cols, y: v / world.rows, vehicle: airborne ? 'helicopter' : 'ship', lon, lat, depth: world.depth(u, v), ice: ice && { ...ice, concentration: ice.tenths, chartDate: world.chartDate } };
 }
-const iceHere = () => (world?.ice(shipU(), shipV())?.percent ?? 0) >= ICE_STATION_MIN;
+// Distances and compass bearings between grid positions; north is the direction of the pole at the origin.
+const COMPASS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+const kmBetween = (u0, v0, u1, v1) => Math.hypot(u1 - u0, v1 - v0) * world.km;
+function bearing(u0, v0, u1, v1) { const a = Math.atan2(v1 - v0, u1 - u0) - world.northAngle(u0, v0), deg = ((a * 180 / Math.PI) % 360 + 360) % 360; return COMPASS[Math.round(deg / 45) % 8]; }
+// Charted ice of ICE_NEAR_PERCENT or more within ICE_NEAR_KM of a position, and the nearest such cell to it,
+// searched in rings out to ICE_SEARCH_CELLS and cached for the grid cell the position is in.
+const icy = i => world.sign[i] < 0 && world.iceConcentration[i] !== 255 && world.iceConcentration[i] >= ICE_NEAR_PERCENT;
+function nearIce(u, v) {
+  const reach = ICE_NEAR_KM / world.km, r = Math.ceil(reach), c0 = Math.floor(u), r0 = Math.floor(v);
+  for (let rr = Math.max(0, r0 - r); rr <= Math.min(world.rows - 1, r0 + r); rr++) for (let cc = Math.max(0, c0 - r); cc <= Math.min(world.cols - 1, c0 + r); cc++)
+    if (Math.hypot(cc + .5 - u, rr + .5 - v) <= reach && icy(rr * world.cols + cc)) return true;
+  return false;
+}
+function nearestIce(u, v) {
+  const c0 = Math.floor(u), r0 = Math.floor(v), key = r0 * world.cols + c0;
+  if (iceCache?.key === key) return iceCache.result;
+  let best = null;
+  const look = (cc, rr) => { if (cc < 0 || rr < 0 || cc >= world.cols || rr >= world.rows || !icy(rr * world.cols + cc)) return; const d = Math.hypot(cc + .5 - u, rr + .5 - v); if (!best || d < best.d) best = { d, u: cc + .5, v: rr + .5 }; };
+  for (let ring = 0; ring <= ICE_SEARCH_CELLS && !(best && ring - 1 > best.d); ring++) {
+    for (let cc = c0 - ring; cc <= c0 + ring; cc++) { look(cc, r0 - ring); if (ring) look(cc, r0 + ring); }
+    for (let rr = r0 - ring + 1; rr < r0 + ring; rr++) { look(c0 - ring, rr); look(c0 + ring, rr); }
+  }
+  iceCache = { key, result: best && { km: best.d * world.km, bearing: bearing(u, v, best.u, best.v) } };
+  return iceCache.result;
+}
+const iceDistance = (u, v, of = '') => { const near = nearestIce(u, v); return near ? `Nearest ice ${Math.round(near.km)} km ${near.bearing}${of} · charted ice within ${ICE_NEAR_KM} km needed` : `No charted ice within ${ICE_SEARCH_CELLS * world.km} km`; };
+// The archive wrecks: the nearest to the ship, and the one whose datum the ship is on.
+function nearestWreck(u = shipU(), v = shipV()) { let best = null; for (const wreck of wrecks) { const km = kmBetween(u, v, wreck.u, wreck.v); if (!best || km < best.km) best = { wreck, km, bearing: bearing(u, v, wreck.u, wreck.v) }; } return best; }
+const wreckHere = () => { const near = world && nearestWreck(); return near && near.km <= (near.wreck.reach ?? WRECK_KM) ? near.wreck : null; };
+const maydayU = () => state.mayday.x * world.cols, maydayV = () => state.mayday.y * world.rows;
+const maydayRange = () => ({ km: kmBetween(shipU(), shipV(), maydayU(), maydayV()), bearing: bearing(shipU(), shipV(), maydayU(), maydayV()) });
+const maydayLine = () => { const r = maydayRange(); return `Answer the Mayday from ${state.mayday.name} · ${Math.round(r.km)} km ${r.bearing}`; };
 function unavailableReason(activity) {
-  if (activity.id === 'patrol') return !state.upgrades.helicopter ? 'Hire the helicopter in the ship’s stores (Q) for Ice Patrol' : !helicopter ? 'Launch the helicopter (G) for Ice Patrol' : world.isLand(pilotU(), pilotV()) || !(world.ice(pilotU(), pilotV())?.percent > 0) ? 'Fly over charted sea ice for Ice Patrol' : '';
+  if (activity.id === 'patrol') return !state.upgrades.helicopter ? 'Hire the helicopter in the ship’s stores (Q) for Ice Patrol' : !helicopter ? 'Launch the helicopter (G) for Ice Patrol' : !nearIce(pilotU(), pilotV()) ? iceDistance(pilotU(), pilotV(), ' of the helicopter') : '';
   if (activity.id === 'raft') return !state.upgrades.helicopter ? 'Hire the helicopter in the ship’s stores (Q) for The Raft' : !helicopter ? 'Launch the helicopter (G) for The Raft' : !world.isLand(pilotU(), pilotV()) ? 'Fly inland over land for The Raft' : '';
-  return activity.requires === 'ice' && !iceHere() ? 'Ice stations need charted ice of 4/10 or more under the ship' : '';
+  if (activity.id === 'sar') return !state.mayday ? 'No call on the radio' : maydayRange().km > SAR_KM ? maydayLine() : '';
+  return activity.requires === 'ice' && !nearIce(shipU(), shipV()) ? iceDistance(shipU(), shipV()) : '';
+}
+// What an available operation offers right now.
+function describe(activity) {
+  if (!world) return activity.description;
+  if (activity.id === 'sar' && state.mayday) return maydayLine();
+  if (activity.id === 'wrecks') { const wreck = wreckHere(); if (wreck) return `Survey the ${wreck.ship} datum · on station`; }
+  return activity.description;
 }
 const available = activity => !unavailableReason(activity);
 const craftReady = () => world && chart && page === 'game' && !$('#mission-dialog').open;
@@ -73,6 +148,7 @@ function toggleHelicopter() {
   helicopter = helicopter ? null : { u: shipU(), v: shipV(), rtb: false };
   if (!helicopter) state.heliFuel = FUEL.heliTank;
   keys.clear(); waypoints = []; routePlan = null; preview = null;
+  if (!helicopter && target) routeTarget();
   $('#helicopter').setAttribute('aria-pressed', String(!!helicopter));
   toast(helicopter ? `Helicopter airborne · ${FUEL.heliTank} L Jet A-1 · ship holding position. Fly with arrows / WASD or tap the chart; G returns aboard, and she turns back on her own at bingo fuel.` : 'Helicopter aboard · refuelled · ship controls resumed.');
   updateUI(); canvas.focus();
@@ -87,6 +163,7 @@ function toggleZodiac() {
   }
   zodiac = zodiac ? null : { u: shipU(), v: shipV() };
   keys.clear(); waypoints = []; routePlan = null; preview = null;
+  if (!zodiac && target) routeTarget();
   $('#zodiac').setAttribute('aria-pressed', String(!!zodiac)); $('#zodiac').textContent = zodiac ? 'Y · Recover zodiac' : 'Y · Launch zodiac';
   toast(zodiac ? `Zodiac away · open water only, ${ZODIAC_TETHER_KM} km from the ship at most · it sounds the seabed under its track. Y recovers it.` : 'Zodiac hoisted aboard · ship controls resumed.');
   updateUI(); canvas.focus();
@@ -158,7 +235,7 @@ function doBunker() {
   if (!source) { const near = nearestFuel(); toast(`No fuel within ${BUNKER_KM} km. Nearest: ${near.name}, ${Math.round(near.km)} km · fuel ports show on the chart within ${PORT_CHART_KM} km.`, true); return; }
   const record = bunker(state, here(), source.label, source.rate);
   if (!record) { toast('Tanks are full.'); return; }
-  adrift = null; waypoints = []; routePlan = null; save(); updateUI();
+  adrift = null; waypoints = []; routePlan = null; if (target) routeTarget(); save(); updateUI();
   toast(`${record.title} · ${record.lost ? `−${record.lost} science points` : 'no charge'} · ${Math.round(state.fuel).toLocaleString()} m³ aboard.`, true);
 }
 $('#bunker').onclick = doBunker;
@@ -182,7 +259,7 @@ function drift(time, dt) {
 function tow() {
   const u = shipU(), v = shipV(), { lon, lat } = world.unproject(u, v);
   const record = towSouth(state, { x: state.x, y: state.y, lon, lat, depth: world.depth(u, v) }, world.nearestPlace(u, v)?.name ?? '', world.start, startPlace);
-  adrift = null; waypoints = []; routePlan = null; keys.clear(); holdUntil = performance.now() + 1500; angle = -.4;
+  adrift = null; waypoints = []; routePlan = null; keys.clear(); holdUntil = performance.now() + 1500; angle = -.4; clearTarget();
   save(); updateUI();
   toast(`${record.title} · ${FUEL.towed} m³ of diesel aboard · chart and log intact.`, true);
 }
@@ -195,6 +272,142 @@ function routeCost(points, from = { u: shipU(), v: shipV() }) {
     prev = p;
   }
   return { km, fuel };
+}
+
+// The archive wrecks, fetched relative to the page once the world can place them.
+async function loadWrecks() {
+  try {
+    const response = await fetch('data/crew-18-wrecks.json'); if (!response.ok) throw Error('wreck archive missing');
+    const data = await response.json();
+    wrecks = (Array.isArray(data?.wrecks) ? data.wrecks : []).filter(w => typeof w?.id === 'string' && Number.isFinite(w.lon) && Number.isFinite(w.lat))
+      .map(w => ({ id: w.id.slice(0, 40), ship: String(w.ship ?? w.id).slice(0, 60), year: Number.isFinite(w.year) ? w.year : null, place: String(w.place ?? '').slice(0, 80), lon: w.lon, lat: w.lat, ...world.project(w.lon, w.lat) }));
+    // A datum deep in a bay with no water within WRECK_KM is surveyed from the nearest water instead.
+    for (const wreck of wrecks) wreck.reach = Math.max(WRECK_KM, nearestWaterKm(wreck.u, wreck.v) + 2);
+  } catch (error) { console.error(error); wrecks = []; }
+}
+function nearestWaterKm(u, v, reach = 12) {
+  let best = Infinity;
+  for (let r = Math.max(0, Math.floor(v) - reach); r <= Math.min(world.rows - 1, Math.floor(v) + reach); r++) for (let c = Math.max(0, Math.floor(u) - reach); c <= Math.min(world.cols - 1, Math.floor(u) + reach); c++)
+    if (world.sign[r * world.cols + c] < 0) best = Math.min(best, Math.hypot(c + .5 - u, r + .5 - v));
+  return best * world.km;
+}
+// Water the ship can reach nearest a datum: the datum itself when it is afloat, else the closest cell with sea room
+// within `reach` cells, then any water cell, the first with a complete route winning. Falls back to holding short.
+function approach(u, v, reach = 12) {
+  const from = { u: shipU(), v: shipV() }, roomy = [], tight = [];
+  if (!world.isLand(u, v)) roomy.push({ u, v, d: 0 });
+  for (let r = Math.max(0, Math.floor(v) - reach); r <= Math.min(world.rows - 1, Math.floor(v) + reach); r++) for (let c = Math.max(0, Math.floor(u) - reach); c <= Math.min(world.cols - 1, Math.floor(u) + reach); c++) {
+    if (world.sign[r * world.cols + c] >= 0) continue;
+    const spot = { u: c + .5, v: r + .5, d: Math.hypot(c + .5 - u, r + .5 - v) };
+    (world.seaRoom(spot.u, spot.v) ? roomy : tight).push(spot);
+  }
+  const order = [...roomy.sort((a, b) => a.d - b.d), ...tight.sort((a, b) => a.d - b.d)];
+  let first = null;
+  for (const spot of order.slice(0, 8)) { const plan = world.route(from, spot); first ??= { goal: spot, plan }; if (plan.complete) return { goal: spot, plan }; }
+  return first ?? { goal: { u, v }, plan: world.route(from, { u, v }) };
+}
+function routeTarget() {
+  if (!target || craft() || state.fuel <= 0) return null;
+  const way = approach(target.wreck.u, target.wreck.v);
+  target.goal = way.goal; waypoints = way.plan.points; routeComplete = way.plan.complete; routePlan = waypoints.length ? routeCost(waypoints) : null; keys.clear(); preview = null;
+  return way;
+}
+function clearTarget() { target = null; state.target = null; }
+// The Shipwrecks picker hands over a wreck: the operation closes and the ship sets off for the datum, to be surveyed
+// with V once she is within WRECK_KM of it. Returns false when the wreck cannot be placed on the chart.
+function steamTo(wreck) {
+  if (!world) return false;
+  const known = wrecks.find(w => w.id === wreck?.id) ?? (Number.isFinite(wreck?.lon) && Number.isFinite(wreck?.lat)
+    ? { id: String(wreck.id ?? '').slice(0, 40), ship: String(wreck.ship ?? 'the wreck').slice(0, 60), year: Number.isFinite(wreck.year) ? wreck.year : null, place: String(wreck.place ?? '').slice(0, 80), lon: wreck.lon, lat: wreck.lat, ...world.project(wreck.lon, wreck.lat) } : null);
+  if (!known) return false;
+  endActivity(); if ($('#mission-dialog').open) $('#mission-dialog').close();
+  target = { wreck: known, goal: null }; state.target = known.id;
+  const way = routeTarget(); save(); updateUI(); canvas.focus();
+  if (!way) toast(`${known.ship} is the target · the passage begins once the ${state.fuel <= 0 ? 'tanks are filled' : 'craft is aboard'}.`, true);
+  else if (!way.plan.complete) toast(`No sea route to the ${known.ship} datum from here · holding short. Sail round and press V within ${WRECK_KM} km of it.`, true);
+  else toast(`Steaming to ${known.ship} · ${Math.round(routePlan.km)} km · ${m3(routePlan.fuel)} m³ · V surveys her within ${WRECK_KM} km of the datum.`, true);
+  return true;
+}
+function targetLine() {
+  if (!target) return '';
+  const km = routePlan && waypoints.length ? routePlan.km : kmBetween(shipU(), shipV(), target.wreck.u, target.wreck.v);
+  return `Steaming to ${target.wreck.ship} · ${Math.round(km)} km${routePlan && waypoints.length ? ` · ${m3(routePlan.fuel)} m³` : ''}`;
+}
+// Once the passage ends: on the datum, V surveys the wreck; short of it, the ship holds where the water ran out.
+function checkTarget() {
+  if (!target || craft() || waypoints.length || adrift) return;
+  const km = kmBetween(shipU(), shipV(), target.wreck.u, target.wreck.v), wreck = target.wreck;
+  if (km <= (wreck.reach ?? WRECK_KM)) { clearTarget(); save(); updateUI(); toast(`On the ${wreck.ship} datum · ${Math.round(km)} km off · press V to survey her.`, true); }
+  else if (target.goal && kmBetween(shipU(), shipV(), target.goal.u, target.goal.v) < 1.5) { clearTarget(); save(); updateUI(); toast(`Holding ${Math.round(km)} km off the ${wreck.ship} datum · no water closer. V surveys within ${WRECK_KM} km.`, true); }
+}
+// A Mayday is placed on water with sea room SAR_RANGE_KM from the ship, in charted ice when the draw finds any,
+// and always somewhere the ship can route to.
+function placeMayday() {
+  const su = shipU(), sv = shipV(); let routes = 0, fallback = null;
+  for (let n = 0; n < 300 && routes < 8; n++) {
+    const km = between(SAR_RANGE_KM), a = Math.random() * Math.PI * 2, u = Math.floor(su + Math.cos(a) * km / world.km) + .5, v = Math.floor(sv + Math.sin(a) * km / world.km) + .5;
+    if (u < 1 || v < 1 || u >= world.cols - 1 || v >= world.rows - 1) continue;
+    const i = Math.floor(v) * world.cols + Math.floor(u);
+    if (world.sign[i] >= 0 || !world.seaRoom(u, v)) continue;
+    if (!icy(i) && n < 200) { fallback ??= { u, v }; continue; }
+    routes++; if (world.route({ u: su, v: sv }, { u, v }).complete) return { u, v };
+  }
+  return fallback && world.route({ u: su, v: sv }, fallback).complete ? fallback : null;
+}
+function raiseMayday() {
+  const spot = placeMayday();
+  if (!spot) { state.nextCall = state.played + 120; return; }
+  const who = CASUALTIES[Math.floor(Math.random() * CASUALTIES.length)], { lon, lat } = world.unproject(spot.u, spot.v);
+  state.mayday = { ...who, lon, lat, x: spot.u / world.cols, y: spot.v / world.rows, at: state.played, until: state.played + SAR_LIFE_S };
+  state.lastCall = state.played; state.nextCall = state.played + SAR_GAP_S + expo(SAR_SPREAD_S);
+  const r = maydayRange(), where = `${Math.round(r.km)} km ${r.bearing}`;
+  logEvent(state, { x: state.mayday.x, y: state.mayday.y, lon, lat, depth: world.depth(spot.u, spot.v) }, 'radio', `Mayday · ${who.name}, ${who.kind}, ${who.trouble} · ${where}`);
+  save(); updateUI(); toast(`MAYDAY · ${who.name}, ${who.kind}, ${who.trouble} · ${where} · X answers within ${SAR_KM} km`, true, true);
+}
+function standDown(reason, quiet = false) {
+  const m = state.mayday; if (!m) return;
+  state.mayday = null;
+  logEvent(state, { x: m.x, y: m.y, lon: m.lon, lat: m.lat, depth: world.depth(m.x * world.cols, m.y * world.rows) }, 'radio', `Radio · ${m.name} stood down · ${reason}`);
+  save(); updateUI(); if (!quiet) toast(`Radio · ${m.name} stood down · ${reason}.`, true);
+}
+const minutesAgo = at => Math.round((state.played - at) / 60);
+// A random alarm sounds when due; the operation opens itself ALARM_DELAY_MS later, once no other is open.
+function soundAlarm(time) {
+  const ids = Object.keys(ALARMS).filter(id => activities.some(a => a.id === id) && minigames[id]?.mount);
+  if (!ids.length) { state.nextAlarm = Infinity; return; }
+  const id = ids[Math.floor(Math.random() * ids.length)];
+  pendingAlarm = { id, at: time + ALARM_DELAY_MS }; keys.clear();
+  $('.map-panel')?.classList.remove('alarm'); void $('.map-panel')?.offsetWidth; $('.map-panel')?.classList.add('alarm');
+  updateEvents(); toast(`ALARM · ${ALARMS[id]}`, true, true);
+}
+function fireAlarm() {
+  const activity = activities.find(a => a.id === pendingAlarm.id); pendingAlarm = null;
+  state.lastAlarm = state.played; state.nextAlarm = state.played + ALARM_GAP_S + expo(ALARM_SPREAD_S); save();
+  if (activity) startActivity(activity, { alarm: true });
+}
+// The event tick, on the active-play clock: calls stand down and are raised, alarms sound and open, passages end.
+function events(time) {
+  if (state.mayday && state.played >= state.mayday.until) standDown('another responder reached her');
+  if (!state.mayday && state.played >= state.nextCall) raiseMayday();
+  if (pendingAlarm) { if (time >= pendingAlarm.at) fireAlarm(); }
+  else if (state.played >= state.nextAlarm) soundAlarm(time);
+  checkTarget();
+}
+// The ship card in plain words: the passage, the radio, the alarms, the ice and the nearest wreck.
+function updateEvents() {
+  if (!world) return;
+  const lines = [];
+  if (target) lines.push(['target', targetLine()]);
+  else { const near = nearestWreck(); if (near) lines.push(['wreck', near.wreck === wreckHere() ? `On the ${near.wreck.ship} datum · ${Math.round(near.km)} km ${near.bearing} · V surveys her` : `Nearest wreck datum · ${near.wreck.ship}${near.wreck.year ? ` (${near.wreck.year})` : ''} ${Math.round(near.km)} km ${near.bearing} · V surveys within ${WRECK_KM} km`]); }
+  if (state.mayday) { const r = maydayRange(), m = state.mayday; lines.push(['mayday', `Mayday · ${m.name}, ${m.kind}, ${m.trouble} · ${Math.round(r.km)} km ${r.bearing} · ${Math.max(1, Math.ceil((m.until - state.played) / 60))} min before she is stood down · X answers within ${SAR_KM} km`]); }
+  else lines.push(['radio', 'Radio · no call · listening on channel 16']);
+  if (pendingAlarm) lines.push(['alarm', `ALARM · ${ALARMS[pendingAlarm.id]} · opening now`]);
+  else lines.push(['quiet', state.lastAlarm === null ? 'Alarms · none this voyage' : `Alarms · last one ${minutesAgo(state.lastAlarm) ? `${minutesAgo(state.lastAlarm)} min ago` : 'just now'}`]);
+  const u = pilotU(), v = pilotV(), who = helicopter ? 'the helicopter' : 'the ship';
+  const ice = nearIce(u, v) ? null : nearestIce(u, v);
+  lines.push(['ice', nearIce(u, v) ? `Charted ice within ${ICE_NEAR_KM} km of ${who} · ice stations open` : ice ? `Nearest charted ice ${Math.round(ice.km)} km ${ice.bearing} of ${who} · ice stations open within ${ICE_NEAR_KM} km of it` : `No charted ice within ${ICE_SEARCH_CELLS * world.km} km`]);
+  const list = $('#events'); list.replaceChildren();
+  for (const [kind, text] of lines) { const row = el('div', kind); row.textContent = text; list.append(row); }
 }
 
 // Ship's stores.
@@ -241,11 +454,11 @@ function updateUI() {
     name.textContent = entry.title;
     const where = Number.isFinite(entry.lon) && Number.isFinite(entry.lat) ? formatPosition(entry.lon, entry.lat) : entry.x === null ? 'earlier chart' : `Chart ${Math.round(entry.x * 100)} / ${Math.round(entry.y * 100)}`;
     const depth = Number.isFinite(entry.depth) ? ` · ${Math.round(entry.depth)} m` : '';
-    const tally = entry.lost ? `−${entry.lost} points` : { grounding: 'no points to lose', bunker: 'no charge', tow: 'no points lost', radio: 'schedule' }[entry.activity] ?? `+${entry.points}`;
+    const tally = entry.lost ? `−${entry.lost} points` : { grounding: 'no points to lose', bunker: 'no charge', tow: 'no points lost', radio: 'on the radio' }[entry.activity] ?? `+${entry.points}`;
     meta.textContent = `${entry.date ? new Date(entry.date).toLocaleDateString() + ' · ' : ''}${where}${depth} · ${tally}`;
     item.append(name, meta); if (['grounding', 'bunker', 'tow', 'radio'].includes(entry.activity)) item.className = entry.activity; $('#discovery-log').append(item);
   }
-  updateActivities(); updateStores(); updateFuel();
+  updateActivities(); updateStores(); updateFuel(); updateEvents();
 }
 const activityButtons = new Map();
 for (const activity of activities) {
@@ -258,7 +471,7 @@ function updateActivities() {
   for (const [activity, { button, description }] of activityButtons) {
     const ok = !world || available(activity);
     button.classList.toggle('unavailable', !ok); button.setAttribute('aria-disabled', String(!ok));
-    description.textContent = ok ? activity.description : unavailableReason(activity);
+    description.textContent = ok ? describe(activity) : unavailableReason(activity);
   }
 }
 function endActivity() {
@@ -267,7 +480,7 @@ function endActivity() {
   try { if (typeof dispose === 'function') dispose(); } catch (error) { console.error('Activity cleanup failed', error); }
   $('#minigame').replaceChildren();
 }
-function startActivity(activity) {
+function startActivity(activity, extra = {}) {
   if ($('#mission-dialog').open || page !== 'game') return;
   if (!world) { toast('The chart is still unrolling. One moment.'); return; }
   const game = minigames[activity.id]; if (!game?.mount) { toast('This operation is unavailable.'); return; }
@@ -275,7 +488,11 @@ function startActivity(activity) {
   endActivity(); waypoints = []; keys.clear(); returnFocus = document.activeElement;
   $('#mission-title').textContent = activity.title;
   const location = here(['patrol', 'raft'].includes(activity.id));
-  recorder = operationRecorder(state, activity, location, entry => { save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart`); postScore(activity, entry); });
+  recorder = operationRecorder(state, activity, location, entry => {
+    const rescued = activity.id === 'sar' && state.mayday ? state.mayday.name : '';
+    if (rescued) state.mayday = null;
+    save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart${rescued ? ` · ${rescued} safe, call cleared` : ''}`); postScore(activity, entry);
+  });
   const session = recorder;
   $('#mission-dialog').showModal();
   // showModal focuses the first focusable control, the close button; Enter or Space would then close the
@@ -283,7 +500,12 @@ function startActivity(activity) {
   $('#minigame').focus();
   // The fast winch lets a CTD station bank more casts: 25% more points for that operation.
   const bonus = activity.id === 'ctd' && state.upgrades.winch ? 1.25 : 1;
-  try { cleanup = game.mount($('#minigame'), { complete: (points, detail) => { if ($('#mission-dialog').open) session.complete(Number.isFinite(points) ? points * bonus : points, detail); }, expedition: { ...location, score: state.score, operations: state.operations, chartPercent: chartPercent(state, sea), fuel: state.fuel, upgrades: { ...state.upgrades } } }); }
+  // Shipwrecks learns the wreck under the ship and how to steam to another; SAR learns the casualty; alarms say so.
+  const wreck = activity.id === 'wrecks' ? wreckHere() : null, mayday = activity.id === 'sar' ? state.mayday : null;
+  const expedition = { ...location, score: state.score, operations: state.operations, chartPercent: chartPercent(state, sea), fuel: state.fuel, upgrades: { ...state.upgrades }, steamTo, ...extra };
+  if (wreck) expedition.wreck = wreck.id;
+  if (mayday) expedition.sar = { name: mayday.name, kind: mayday.kind, trouble: mayday.trouble, lon: mayday.lon, lat: mayday.lat, distanceKm: Math.round(maydayRange().km * 10) / 10 };
+  try { cleanup = game.mount($('#minigame'), { complete: (points, detail) => { if ($('#mission-dialog').open) session.complete(Number.isFinite(points) ? points * bonus : points, detail); }, expedition }); }
   catch (error) { endActivity(); $('#mission-dialog').close(); toast('Could not open this operation. Please try again.'); console.error(error); }
 }
 $('#close-mission').onclick = () => { endActivity(); $('#mission-dialog').close(); };
@@ -291,7 +513,7 @@ $('#close-mission').onclick = () => { endActivity(); $('#mission-dialog').close(
 $('#close-mission').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); });
 $('#mission-dialog').addEventListener('cancel', () => endActivity());
 $('#mission-dialog').addEventListener('close', () => { if ($('#mission-dialog').open) return; endActivity(); if (returnFocus?.isConnected) returnFocus.focus(); else canvas.focus(); });
-$('#reset').onclick = () => { if (confirm('Start a fresh voyage and clear your chart, log, science points and stores? Crew ideas stay on the server.')) { endActivity(); if (helicopter) toggleHelicopter(); if (zodiac) toggleZodiac(); auv = null; auvArmed = false; adrift = null; routePlan = null; preview = null; $('#auv').setAttribute('aria-pressed', 'false'); state = newVoyage(0, world?.start); try { localStorage.removeItem('amundsen-expedition'); } catch {} known = new Set(); mapped = new Set(); rebuildSurface(); chartPosition(state, known); waypoints = []; keys.clear(); save(); updateUI(); buildFog(); } };
+$('#reset').onclick = () => { if (confirm('Start a fresh voyage and clear your chart, log, science points and stores? Crew ideas stay on the server.')) { endActivity(); if (helicopter) toggleHelicopter(); if (zodiac) toggleZodiac(); auv = null; auvArmed = false; adrift = null; routePlan = null; preview = null; $('#auv').setAttribute('aria-pressed', 'false'); state = newVoyage(0, world?.start); restoreEvents(state, null); target = null; pendingAlarm = null; iceCache = null; try { localStorage.removeItem('amundsen-expedition'); } catch {} known = new Set(); mapped = new Set(); rebuildSurface(); chartPosition(state, known); waypoints = []; keys.clear(); save(); updateUI(); buildFog(); } };
 
 // The view follows the active vehicle; zoom is chart pixels per grid cell, clamped so the view never leaves the world.
 const minZoom = () => world ? Math.max(1, width / world.cols, height / world.rows) : 1;
@@ -310,6 +532,7 @@ function sailTo(u, v) {
   if (helicopter?.rtb) { toast('Bingo fuel · the helicopter is returning to the ship.'); return; }
   if (craft()) { waypoints = [{ u: Math.max(.5, Math.min(world.cols - .5, u)), v: Math.max(.5, Math.min(world.rows - .5, v)) }]; routeComplete = true; return; }
   if (state.fuel <= 0) { toast(`Tanks dry · the ship drifts. U bunkers if fuel is within ${BUNKER_KM} km.`); return; }
+  if (target) { clearTarget(); updateEvents(); }
   const plan = world.route({ u: shipU(), v: shipV() }, { u, v });
   waypoints = plan.points; routeComplete = plan.complete; routePlan = plan.points.length ? routeCost(plan.points) : null;
   if (!plan.complete) toast(plan.points.length ? 'No sea route there. Holding short of the coast.' : 'That is land. The ship stays afloat.');
@@ -353,7 +576,8 @@ window.addEventListener('keydown', e => {
   if (activity) { e.preventDefault(); if (!e.repeat) startActivity(activity); return; }
   if (k === '+' || k === '=') { e.preventDefault(); setZoom(zoom * 1.4); return; }
   if (k === '-' || k === '_') { e.preventDefault(); setZoom(zoom / 1.4); return; }
-  if (['w', 'a', 's', 'd', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright'].includes(k)) { e.preventDefault(); if (helicopter?.rtb) return; keys.add(k); waypoints = []; routePlan = null; }
+  if (k === '2') { e.preventDefault(); if (!e.repeat) toggleLegend(); return; }
+  if (['w', 'a', 's', 'd', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright'].includes(k)) { e.preventDefault(); if (helicopter?.rtb) return; keys.add(k); waypoints = []; routePlan = null; if (target && !craft()) { clearTarget(); updateEvents(); } }
 });
 window.addEventListener('keyup', e => keys.delete(e.key.toLowerCase())); window.addEventListener('blur', () => { keys.clear(); save(); });
 document.addEventListener('focusin', e => { if (isControl(e.target)) keys.clear(); });
@@ -442,9 +666,9 @@ function label(text, x, y, colour = '#1b2a2c', font = 'bold 11px sans-serif') {
   ctx.font = font; ctx.lineWidth = 3; ctx.strokeStyle = '#ddcca7cc'; ctx.strokeText(text, x, y); ctx.fillStyle = colour; ctx.fillText(text, x, y);
 }
 // A fuel port's berth: a teal drop, gold with a ring when the ship can bunker there.
+const fuelDrop = (c, near) => { c.fillStyle = near ? '#f6c75f' : '#116b6b'; c.strokeStyle = '#1b2a2c'; c.lineWidth = 1; c.beginPath(); c.moveTo(0, -9); c.bezierCurveTo(7, -1, 7, 5, 0, 6); c.bezierCurveTo(-7, 5, -7, -1, 0, -9); c.closePath(); c.fill(); c.stroke(); };
 function drawFuel(x, y, near, text, scale = 1) {
-  ctx.save(); ctx.translate(x, y); ctx.scale(scale, scale); ctx.fillStyle = near ? '#f6c75f' : '#116b6b'; ctx.strokeStyle = '#1b2a2c'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(0, -9); ctx.bezierCurveTo(7, -1, 7, 5, 0, 6); ctx.bezierCurveTo(-7, 5, -7, -1, 0, -9); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.save(); ctx.translate(x, y); ctx.scale(scale, scale); fuelDrop(ctx, near);
   if (near) { ctx.strokeStyle = '#f6c75f'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, 15, 0, 7); ctx.stroke(); }
   ctx.restore();
   if (text) label(text, x + 10, y + 14, '#0f4a4a', 'italic 11px Georgia');
@@ -456,6 +680,63 @@ function drawTanker(x, y, near, text) {
   ctx.restore();
   label(text, x + 30, y + 4, '#7a2f23');
 }
+// Chart glyphs, one per logged activity, about 10 px across: one fill colour and the chart ink.
+const INK = '#2b1d10', CREAM = '#f6f1e4';
+const GLYPHS = {
+  ctd(c) { c.fillStyle = '#c9ced2'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.arc(0, 0, 5.5, 0, 7); c.fill(); c.stroke(); c.fillStyle = INK; for (let n = 0; n < 6; n++) { c.beginPath(); c.arc(Math.cos(n * Math.PI / 3) * 3.2, Math.sin(n * Math.PI / 3) * 3.2, 1.2, 0, 7); c.fill(); } },
+  ice(c) { c.strokeStyle = INK; c.lineWidth = 2; c.beginPath(); c.moveTo(0, -7); c.lineTo(0, 7); c.stroke(); c.strokeStyle = '#7cc4ea'; c.lineWidth = 1.6; c.beginPath(); for (let y = -4; y <= 4; y += 3) { c.moveTo(-3.5, y); c.lineTo(3.5, y + 1.6); } c.stroke(); },
+  net(c) { c.fillStyle = '#e2cf93'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.moveTo(-6, -5); c.lineTo(6, -5); c.lineTo(0, 6); c.closePath(); c.fill(); c.stroke(); c.beginPath(); c.moveTo(-3, -5); c.lineTo(2, 2.5); c.moveTo(3, -5); c.lineTo(-2, 2.5); c.moveTo(-4.5, -1.5); c.lineTo(4.5, -1.5); c.stroke(); },
+  sar(c) { c.lineWidth = 3.5; c.strokeStyle = '#e0392b'; c.beginPath(); c.arc(0, 0, 4.5, 0, 7); c.stroke(); c.strokeStyle = CREAM; for (let n = 0; n < 4; n++) { c.beginPath(); c.arc(0, 0, 4.5, n * Math.PI / 2 + .4, n * Math.PI / 2 + 1.2); c.stroke(); } c.strokeStyle = INK; c.lineWidth = .8; c.beginPath(); c.arc(0, 0, 6.3, 0, 7); c.stroke(); c.beginPath(); c.arc(0, 0, 2.7, 0, 7); c.stroke(); },
+  flood(c) { c.fillStyle = '#3f8fd1'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.moveTo(0, -7); c.bezierCurveTo(5.5, -1, 5.5, 5.5, 0, 6.5); c.bezierCurveTo(-5.5, 5.5, -5.5, -1, 0, -7); c.closePath(); c.fill(); c.stroke(); },
+  contaminants(c) { c.fillStyle = '#e7b254'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.arc(0, 1, 6, Math.PI, 0); c.lineTo(6, 4.5); c.lineTo(-6, 4.5); c.closePath(); c.fill(); c.stroke(); c.fillStyle = INK; c.fillRect(-4, -1, 8, 3); },
+  neptune(c) { c.strokeStyle = '#116b6b'; c.lineWidth = 2; c.beginPath(); c.moveTo(0, 7.5); c.lineTo(0, -7.5); c.moveTo(-4.5, -1); c.lineTo(-4.5, -6.5); c.moveTo(4.5, -1); c.lineTo(4.5, -6.5); c.moveTo(-4.5, -1); c.quadraticCurveTo(0, 2.5, 4.5, -1); c.stroke(); c.fillStyle = '#f6c75f'; c.beginPath(); c.arc(0, 4, 1.7, 0, 7); c.fill(); },
+  wrecks(c) { const anchor = () => { c.beginPath(); c.arc(0, -5.5, 1.6, 0, 7); c.moveTo(0, -3.9); c.lineTo(0, 7); c.moveTo(-4, -1); c.lineTo(4, -1); c.moveTo(-6, 2.5); c.quadraticCurveTo(0, 9.5, 6, 2.5); c.stroke(); }; c.strokeStyle = INK; c.lineWidth = 3; anchor(); c.strokeStyle = '#f0ba70'; c.lineWidth = 1.2; anchor(); },
+  patrol(c) { c.strokeStyle = INK; c.lineWidth = 1.6; c.beginPath(); c.moveTo(-7, -7); c.lineTo(7, 7); c.moveTo(7, -7); c.lineTo(-7, 7); c.stroke(); c.fillStyle = '#f6c75f'; c.lineWidth = 1; c.beginPath(); c.arc(0, 0, 3.2, 0, 7); c.fill(); c.stroke(); },
+  wildlife(c) { c.fillStyle = '#6f9a5c'; c.strokeStyle = INK; c.lineWidth = 1; c.fillRect(-2, -4, 4, 3); c.strokeRect(-2, -4, 4, 3); for (const x of [-3.6, 3.6]) { c.beginPath(); c.arc(x, 1.5, 3.6, 0, 7); c.fill(); c.stroke(); } },
+  rivals(c) { c.fillStyle = '#9b6bb3'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.moveTo(-2, -7); c.lineTo(2, -7); c.lineTo(2, -2); c.lineTo(6.5, 6.5); c.lineTo(-6.5, 6.5); c.lineTo(-2, -2); c.closePath(); c.fill(); c.stroke(); },
+  raft(c) { c.fillStyle = '#c9a56b'; c.strokeStyle = INK; c.lineWidth = 1; c.fillRect(-2.5, -7, 5, 14); c.strokeRect(-2.5, -7, 5, 14); c.fillStyle = INK; c.fillRect(-2.5, -3, 5, 1.5); c.fillRect(-2.5, 2, 5, 1.5); },
+  plan(c) { c.fillStyle = CREAM; c.strokeStyle = INK; c.lineWidth = 1; c.fillRect(-5, -6, 10, 12.5); c.strokeRect(-5, -6, 10, 12.5); c.fillStyle = INK; c.fillRect(-2, -7.5, 4, 2.5); c.strokeStyle = '#116b6b'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(-3, .5); c.lineTo(-1, 3); c.lineTo(3.2, -2.5); c.stroke(); },
+  oldice(c) { c.fillStyle = '#eef6f8'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); for (let n = 0; n < 6; n++) { const a = n * Math.PI / 3 + Math.PI / 6; c[n ? 'lineTo' : 'moveTo'](Math.cos(a) * 6.8, Math.sin(a) * 6.8); } c.closePath(); c.fill(); c.stroke(); c.strokeStyle = '#4a8fb8'; c.beginPath(); c.arc(0, 0, 3, 0, 7); c.stroke(); },
+  seep(c) { c.fillStyle = '#9fd0c0'; c.strokeStyle = INK; c.lineWidth = 1; for (const [x, y, r] of [[2.5, 4.5, 1.6], [-2.5, .5, 2.3], [2, -4.5, 3]]) { c.beginPath(); c.arc(x, y, r, 0, 7); c.fill(); c.stroke(); } },
+  cliceify(c) { c.fillStyle = '#5b6b70'; c.strokeStyle = INK; c.lineWidth = 1; c.fillRect(-7, -4, 14, 9.5); c.strokeRect(-7, -4, 14, 9.5); c.fillRect(-3, -6.5, 6, 2.5); c.fillStyle = CREAM; c.beginPath(); c.arc(0, .8, 3, 0, 7); c.fill(); c.stroke(); },
+  heli(c) { c.fillStyle = '#f0a35b'; c.strokeStyle = INK; c.lineWidth = 1; c.fillRect(-5.5, -5.5, 11, 11); c.strokeRect(-5.5, -5.5, 11, 11); c.fillStyle = INK; c.fillRect(-5.5, -1, 11, 2); c.fillRect(-1, -5.5, 2, 11); },
+  radio(c) { c.strokeStyle = INK; c.lineWidth = 1.6; c.beginPath(); c.moveTo(0, 7.5); c.lineTo(0, -2); c.stroke(); c.fillStyle = INK; c.beginPath(); c.arc(0, -2, 1.5, 0, 7); c.fill(); c.strokeStyle = '#85683b'; c.lineWidth = 1.4; for (const r of [3.5, 6.5]) { c.beginPath(); c.arc(0, -2, r, Math.PI * 1.15, Math.PI * 1.85); c.stroke(); } },
+};
+const drawCross = (c, colour) => { c.strokeStyle = colour; c.lineWidth = 2; c.beginPath(); c.moveTo(-5, -5); c.lineTo(5, 5); c.moveTo(5, -5); c.lineTo(-5, 5); c.stroke(); };
+// An entry with no glyph of its own keeps the diamond.
+function drawMark(c, activity, x, y, scale = 1) {
+  c.save(); c.translate(x, y); c.scale(scale, scale); c.lineJoin = 'round'; c.lineCap = 'round';
+  if (activity === 'bunker') fuelDrop(c, false);
+  else if (activity === 'grounding' || activity === 'tow') drawCross(c, activity === 'tow' ? '#d9822b' : '#b3352b');
+  else if (GLYPHS[activity]) GLYPHS[activity](c);
+  else { c.fillStyle = '#f0ba70'; c.strokeStyle = '#523d25'; c.lineWidth = 1; c.beginPath(); c.moveTo(0, -6); c.lineTo(5, 0); c.lineTo(0, 6); c.lineTo(-5, 0); c.closePath(); c.fill(); c.stroke(); }
+  c.restore();
+}
+// A wreck datum is the chart symbol for a wreck, ringed in gold when the ship can survey it from here.
+function drawWreckDatum(c, near) {
+  c.lineJoin = 'round'; c.strokeStyle = INK; c.lineWidth = 1.5; c.fillStyle = '#8a3b2b';
+  c.beginPath(); c.moveTo(-6.5, 0); c.quadraticCurveTo(0, 7.5, 6.5, 0); c.closePath(); c.fill(); c.stroke();
+  c.beginPath(); c.moveTo(-8, 0); c.lineTo(8, 0); for (const [x, h] of [[-3, 4], [0, 6.5], [3, 4]]) { c.moveTo(x, 0); c.lineTo(x, -h); } c.stroke();
+  if (near) { c.strokeStyle = '#f6c75f'; c.lineWidth = 2; c.beginPath(); c.arc(0, 0, 14, 0, 7); c.stroke(); }
+}
+// The casualty: a red mark inside a ring that swells and fades with `pulse` (0–1).
+function drawMayday(c, pulse) {
+  c.strokeStyle = `rgba(224,57,43,${(.95 - pulse * .8).toFixed(2)})`; c.lineWidth = 2; c.beginPath(); c.arc(0, 0, 6 + pulse * 12, 0, 7); c.stroke();
+  c.fillStyle = '#e0392b'; c.strokeStyle = CREAM; c.lineWidth = 1.5; c.beginPath(); c.arc(0, 0, 4.5, 0, 7); c.fill(); c.stroke();
+}
+const drawTargetRing = (c, r) => { c.setLineDash([5, 4]); for (const [colour, w] of [[INK, 4], ['#f6c75f', 2]]) { c.strokeStyle = colour; c.lineWidth = w; c.beginPath(); c.arc(0, 0, r, 0, 7); c.stroke(); } c.setLineDash([]); c.beginPath(); c.moveTo(-4, 0); c.lineTo(4, 0); c.moveTo(0, -4); c.lineTo(0, 4); c.stroke(); };
+// The legend lists every glyph the chart can carry; 2 or the button in the chart's bottom bar shows it.
+const LEGEND = [...activities.map(a => ({ id: a.id, name: a.title })), { id: 'radio', name: 'Radio call' }, { id: 'bunker', name: 'Bunkered' }, { id: 'grounding', name: 'Ran aground' }, { id: 'tow', name: 'Towed' }, { id: 'datum', name: 'Wreck datum' }, { id: 'mayday', name: 'Mayday' }, { id: 'target', name: 'Steaming to' }];
+function buildLegend() {
+  for (const item of LEGEND) {
+    const row = el('span', 'legend-item'), swatch = document.createElement('canvas'); swatch.width = swatch.height = 44;
+    const c = swatch.getContext('2d'); c.scale(2, 2); c.translate(11, 11);
+    if (item.id === 'datum') drawWreckDatum(c, false); else if (item.id === 'mayday') drawMayday(c, .25); else if (item.id === 'target') drawTargetRing(c, 8); else drawMark(c, item.id, 0, 0);
+    row.append(swatch, el('span', '', item.name)); $('#legend').append(row);
+  }
+}
+function toggleLegend(open = !!$('#legend').hidden) { $('#legend').hidden = !open; $('#legend-toggle').setAttribute('aria-expanded', String(open)); }
+$('#legend-toggle').onclick = () => toggleLegend();
 function drawLoading() {
   ctx.fillStyle = '#ddcca7'; ctx.fillRect(0, 0, width, height);
   ctx.fillStyle = '#6a5d42'; ctx.font = 'italic 16px Georgia'; ctx.textAlign = 'center';
@@ -472,13 +753,19 @@ function draw() {
   ctx.drawImage(fog, u0 / world.cols * fog.width, v0 / world.rows * fog.height, width / z / world.cols * fog.width, height / z / world.rows * fog.height, 0, 0, width, height);
   drawGraticule(z, u0, v0);
   ctx.strokeStyle = '#e8c589'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]); ctx.beginPath(); state.route.forEach((p, i) => i ? ctx.lineTo(toX(p.x * world.cols), toY(p.y * world.rows)) : ctx.moveTo(toX(p.x * world.cols), toY(p.y * world.rows))); ctx.stroke(); ctx.setLineDash([]);
+  // Every logged entry with a place gets its activity's glyph; the titles show under the mouse and at high zoom.
+  const marks = [];
   for (const d of state.discoveries) {
     if (d.x === null) continue;
-    const x = toX(d.x * world.cols), y = toY(d.y * world.rows);
-    if (d.activity === 'radio') continue;
-    if (d.activity === 'bunker') { drawFuel(x, y, false, '', .6); continue; }
-    if (d.activity === 'grounding' || d.activity === 'tow') { ctx.strokeStyle = d.activity === 'tow' ? '#d9822b' : '#b3352b'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x - 5, y - 5); ctx.lineTo(x + 5, y + 5); ctx.moveTo(x + 5, y - 5); ctx.lineTo(x - 5, y + 5); ctx.stroke(); continue; }
-    ctx.fillStyle = '#f0ba70'; ctx.strokeStyle = '#523d25'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, y - 6); ctx.lineTo(x + 5, y); ctx.lineTo(x, y + 6); ctx.lineTo(x - 5, y); ctx.closePath(); ctx.fill(); ctx.stroke();
+    const x = toX(d.x * world.cols), y = toY(d.y * world.rows); if (x < -20 || x > width + 20 || y < -20 || y > height + 20) continue;
+    marks.push({ x, y, text: d.title });
+    drawMark(ctx, d.activity, x, y, d.activity === 'bunker' ? .6 : 1);
+  }
+  const onDatum = wreckHere();
+  for (const wreck of wrecks) {
+    const x = toX(wreck.u), y = toY(wreck.v); if (x < -20 || x > width + 20 || y < -20 || y > height + 20) continue;
+    marks.push({ x, y, text: `${wreck.ship}${wreck.year ? ` · ${wreck.year}` : ''} · wreck datum` });
+    ctx.save(); ctx.translate(x, y); drawWreckDatum(ctx, wreck === onDatum); ctx.restore();
   }
   // Sighted places are named; where settlements crowd a fjord, only the first label at that spot is written.
   ctx.fillStyle = '#3b3222'; ctx.font = 'italic 12px Georgia'; const labelled = [];
@@ -498,6 +785,18 @@ function draw() {
   }
   const call = tanker();
   if (call.at) { const x = toX(call.anchorage.u), y = toY(call.anchorage.v); if (x > -60 && x < width + 60 && y > -20 && y < height + 20) drawTanker(x, y, Math.hypot(call.anchorage.u - su, call.anchorage.v - sv) <= bunkerReach, `${TANKER.name} · ${call.anchorage.name} · until ${clock(call.until)}`); }
+  if (target) {
+    const x = toX(target.wreck.u), y = toY(target.wreck.v);
+    ctx.save(); ctx.translate(x, y); drawTargetRing(ctx, Math.max(10, WRECK_KM / world.km * z)); ctx.restore();
+    label(targetLine(), x + 12, y - 10, '#7a5a1c', 'bold 11px sans-serif');
+  }
+  if (state.mayday) {
+    const x = toX(maydayU()), y = toY(maydayV()), r = maydayRange(), pulse = (Math.sin(performance.now() / 250) + 1) / 2;
+    ctx.strokeStyle = '#e0392b90'; ctx.setLineDash([2, 5]); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(toX(su), toY(sv)); ctx.lineTo(x, y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = '#e0392b50'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(x, y, SAR_KM / world.km * z, 0, 7); ctx.stroke();
+    ctx.save(); ctx.translate(x, y); drawMayday(ctx, pulse); ctx.restore();
+    label(`MAYDAY · ${state.mayday.name} · ${Math.round(r.km)} km ${r.bearing}`, x + 12, y - 10, '#8c1d12', 'bold 11px sans-serif');
+  }
   if (preview?.points.length && !waypoints.length) {
     ctx.strokeStyle = preview.auv ? '#d9e26bb0' : preview.complete ? '#ffffff70' : '#e9955c90'; ctx.setLineDash([2, 6]); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(toX(su), toY(sv));
     for (const p of preview.points) ctx.lineTo(toX(p.u), toY(p.v));
@@ -529,6 +828,9 @@ function draw() {
     helicopterSprite(ctx, x, y, flightAngle, px + 1, last);
     ctx.fillStyle = '#f6c75f'; ctx.font = 'bold 12px sans-serif'; ctx.fillText('HELICOPTER', x + 15, y - 15);
   }
+  hovered = pointer ? marks.reduce((best, m) => { const d = Math.hypot(m.x - pointer.px, m.y - pointer.py); return d <= 12 && (!best || d < best.d) ? { ...m, d } : best; }, null) : null;
+  if (z >= 5) for (const m of marks) if (m !== hovered) label(m.text, m.x + 8, m.y - 7, '#1b2a2c', 'italic 11px Georgia');
+  if (hovered) label(hovered.text, hovered.x + 10, hovered.y - 9, '#1b2a2c', 'bold 12px sans-serif');
   ctx.restore();
   // Compass: true north is the direction of the pole, which swings with longitude on this projection.
   const north = world.northAngle(pilotU(), pilotV());
@@ -540,6 +842,8 @@ function draw() {
   ctx.fillStyle = '#ca5342'; ctx.beginPath(); ctx.arc(m.x + shipU() / world.cols * m.w, m.y + shipV() / world.rows * m.h, 2.5, 0, 7); ctx.fill();
   if (craft()) { ctx.fillStyle = helicopter ? '#f6c75f' : '#f0a35b'; ctx.fillRect(m.x + pilotU() / world.cols * m.w - 2, m.y + pilotV() / world.rows * m.h - 2, 4, 4); }
   if (auv) { ctx.fillStyle = '#d9e26b'; ctx.fillRect(m.x + auv.u / world.cols * m.w - 2, m.y + auv.v / world.rows * m.h - 2, 4, 4); }
+  if (state.mayday) { ctx.fillStyle = '#e0392b'; ctx.beginPath(); ctx.arc(m.x + state.mayday.x * m.w, m.y + state.mayday.y * m.h, 2.5, 0, 7); ctx.fill(); }
+  if (target) { ctx.strokeStyle = '#f6c75f'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(m.x + target.wreck.u / world.cols * m.w, m.y + target.wreck.v / world.rows * m.h, 3, 0, 7); ctx.stroke(); }
 }
 function loop(time) {
   const dt = last ? Math.min((time - last) / 1000, .04) : 0; last = time;
@@ -549,7 +853,7 @@ function loop(time) {
     let len = 0;
     if (time < holdUntil) { dx = dy = 0; keys.clear(); }
     const z = view().z, ice = world.ice(shipU(), shipV());
-    drift(time, dt); stepAuv(dt);
+    state.played += dt; drift(time, dt); stepAuv(dt);
     // Cells per second: 20 (40 km/s) at the default zoom, a little slower when zoomed in, slowed further by the pack
     // (less with an ice-strengthened hull). The helicopter flies at 2.5 times that, the zodiac at 1.6.
     const speed = 20 * Math.sqrt(3.2 / z) * (helicopter ? 2.5 : zodiac ? 1.6 : world.iceSpeed(ice ? ice.percent : 255, state.upgrades.hull ? .6 : 1)) * dt;
@@ -574,7 +878,7 @@ function loop(time) {
       if (chartPosition(craft() ? { ...state, x: pilotU() / world.cols, y: pilotV() / world.rows, route: [] } : state, known)) { buildFog(); updateProgress(); sightPlaces(); }
       if (mappingDirty) { mappingDirty = false; $('#score').textContent = state.score; updateProgress(); updateStores(); }
       if (world.seaRoom(shipU(), shipV())) state.safe = { x: state.x, y: state.y };
-      checkHelicopterFuel(); radio(); updatePreview(); updateFuel();
+      checkHelicopterFuel(); radio(); updatePreview(); updateFuel(); events(time); updateEvents();
       if (waypoints.length && !craft()) routePlan = routeCost(waypoints); else if (!waypoints.length) routePlan = null;
       const source = craft() ? null : fuelSource(); $('#bunker').classList.toggle('ready', !!source);
       const { lon, lat } = world.unproject(pilotU(), pilotV()), depth = Math.round(world.depth(shipU(), shipV()));
@@ -592,7 +896,8 @@ function loop(time) {
 async function boot() {
   try {
     world = await loadWorld();
-    state = readVoyage(localStorage, world.start); known = new Set(state.revealed);
+    let raw = null; try { raw = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch {}
+    state = readVoyage(localStorage, world.start); restoreEvents(state, raw); known = new Set(state.revealed);
     state.mapped = state.mapped.filter(cell => cell < world.cols * world.rows && world.sign[cell] < 0); mapped = new Set(state.mapped);
     if (world.isLand(shipU(), shipV())) Object.assign(state, world.start);
     if (!world.seaRoom(state.safe.x * world.cols, state.safe.y * world.rows)) state.safe = { ...world.start };
@@ -601,6 +906,7 @@ async function boot() {
     for (const anchorage of TANKER.anchorages) Object.assign(anchorage, world.project(anchorage.lon, anchorage.lat));
     startPlace = world.nearestPlace(world.start.x * world.cols, world.start.y * world.rows)?.name ?? '';
     radioSeen = tanker().slot;
+    loadWrecks().then(() => { const wreck = wrecks.find(w => w.id === state.target); if (wreck) { target = { wreck, goal: null }; routeTarget(); } else state.target = null; updateUI(); });
     chartPosition(state, known); updateUI(); buildFog();
     $('#mapping-rule').textContent = `1 point per new ${world.km} × ${world.km} km grid cell · 120° fan widens with depth`;
     $('#chart-credit').textContent = `GEBCO 2024 · CIS ice chart ${world.chartDate}`;
@@ -691,4 +997,4 @@ async function loadIdeas() {
   } catch { $('#board-status').textContent = 'Cannot reach the server. Retrying…'; }
 }
 $('#idea-form').onsubmit = async e => { e.preventDefault(); const form = e.currentTarget, button = form.querySelector('button'); button.disabled = true; $('#form-status').textContent = 'Sending…'; try { const response = await fetch('api/suggestions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) }); if (!response.ok) throw Error((await response.json()).error || 'Could not save idea'); form.reset(); $('#form-status').textContent = 'Your idea is on the crew board. Thank you!'; await loadIdeas(); } catch (error) { $('#form-status').textContent = error.message === 'Failed to fetch' ? 'Connection lost. Your draft is still here; try again.' : error.message; } finally { button.disabled = false; } };
-setInterval(() => { if (!document.hidden) loadIdeas(); if (world) save(); }, 5000); setInterval(() => { if (!document.hidden && page === 'board') loadLeaderboard(); }, 10000); updateUI(); loadIdeas(); resize(); requestAnimationFrame(loop); boot();
+buildLegend(); setInterval(() => { if (!document.hidden) loadIdeas(); if (world) save(); }, 5000); setInterval(() => { if (!document.hidden && page === 'board') loadLeaderboard(); }, 10000); updateUI(); loadIdeas(); resize(); requestAnimationFrame(loop); boot();
