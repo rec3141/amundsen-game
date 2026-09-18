@@ -29,7 +29,7 @@ function hillshade(world) {
   return shade;
 }
 
-export async function renderChart(world, onProgress = () => {}) {
+export async function renderChart(world, onProgress = () => {}, bathymetry = true) {
   const S = CHART_SCALE, { cols, rows, elevation, sign, iceConcentration, iceClass, glacier } = world, W = cols * S, H = rows * S;
   const canvas = document.createElement('canvas'); canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext('2d'), shade = hillshade(world), sea = table(SEA_STOPS, 4000), land = table(LAND_STOPS, 2400);
@@ -57,10 +57,10 @@ export async function renderChart(world, onProgress = () => {}) {
           if (glacier[nearest]) { red = 236 * gain; green = 241 * gain; blue = 242 * gain; }
           else { red = land.colours[k] * gain; green = land.colours[k + 1] * gain; blue = land.colours[k + 2] * gain; }
         } else {
-          const k = sea.at(-z), gain = 1 + light * .12;
+          const k = sea.at(bathymetry ? -z : 500), gain = bathymetry ? 1 + light * .12 : 1;
           red = sea.colours[k] * gain; green = sea.colours[k + 1] * gain; blue = sea.colours[k + 2] * gain;
           const percent = iceConcentration[nearest];
-          if (percent === 255) { if ((x + y0 + y) % 9 === 0) { red += 50; green += 46; blue += 34; } }        // beyond the ice charts
+          if (percent === 255) { if ((x + y0 + y) % 16 < 5) { red = 181; green = 143; blue = 91; } else { red = 76; green = 91; blue = 100; } }        // beyond the ice charts
           else if (percent) {
             // Floes are 2x2-pixel blocks switched on in proportion to the charted concentration.
             const kind = iceClass[nearest], grain = hash(x >> 1, (y0 + y) >> 1);

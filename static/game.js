@@ -1,6 +1,6 @@
 import { publicMirror } from './site.js';
 import { minigames, activities } from './minigames/registry.js';
-import { STORAGE_KEY, COLS, ROWS, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground } from './exploration.js';
+import { STORAGE_KEY, COLS, ROWS, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth } from './exploration.js';
 import { loadWorld, ICE_STATION_MIN } from './world.js';
 import { renderChart, CHART_SCALE } from './world-chart.js';
 const $ = s => document.querySelector(s);
@@ -13,6 +13,8 @@ const fog = document.createElement('canvas'), mini = document.createElement('can
 let width = 900, height = 480, keys = new Set(), last = 0, angle = -.4, cleanup = null, page = 'game';
 let world = null, chart = null, miniBase = null, sea = null, zoom = 3.2, progress = 0;
 let state = newVoyage(), known = new Set(), recorder = null, returnFocus = null, chartElapsed = 0;
+let helicopter = null, flightAngle = 0, mapped = new Set(), surface = null, mappingDirty = false, seaCells = 1;
+const pilotU = () => helicopter?.u ?? shipU(), pilotV = () => helicopter?.v ?? shipV();
 let waypoints = [], routeComplete = true, holdUntil = 0, shake = 0;
 // Nothing is written until the world has placed the ship, so a slow load cannot overwrite a saved voyage.
 function save() { if (!world) return; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { $('#save-status').textContent = 'Chart stays in this tab · storage unavailable'; } }
@@ -27,18 +29,33 @@ const shipU = () => state.x * world.cols, shipV = () => state.y * world.rows;
 const degrees = (value, positive, negative) => { const abs = Math.abs(value), whole = Math.floor(abs), minutes = ((abs - whole) * 60).toFixed(1); return `${whole}°${minutes.padStart(4, '0')}′${value >= 0 ? positive : negative}`; };
 const formatPosition = (lon, lat) => `${degrees(lat, 'N', 'S')} ${degrees(lon, 'E', 'W')}`;
 function iceLabel(ice) {
-  if (!ice) return 'no ice chart';
+  if (!ice) return 'ice coverage unknown · outside CIS chart';
   if (!ice.percent) return /iceberg/i.test(ice.form) ? 'bergy water' : 'open water';
   return `ice ${ice.percent === 5 ? '<1' : ice.tenths}/10 ${ice.stage.replace(/ \(.*\)/, '').toLowerCase()}`;
 }
-function here() {
-  const u = shipU(), v = shipV(), { lon, lat } = world.unproject(u, v), ice = world.ice(u, v);
-  return { x: state.x, y: state.y, lon, lat, depth: world.depth(u, v), ice: ice && { ...ice, concentration: ice.tenths, chartDate: world.chartDate } };
+function here(airborne = false) {
+  const u = airborne ? pilotU() : shipU(), v = airborne ? pilotV() : shipV(), { lon, lat } = world.unproject(u, v), ice = world.ice(u, v);
+  return { x: u / world.cols, y: v / world.rows, vehicle: airborne ? 'helicopter' : 'ship', lon, lat, depth: world.depth(u, v), ice: ice && { ...ice, concentration: ice.tenths, chartDate: world.chartDate } };
 }
 const iceHere = () => (world?.ice(shipU(), shipV())?.percent ?? 0) >= ICE_STATION_MIN;
-const available = activity => activity.requires !== 'ice' || iceHere();
+function unavailableReason(activity) {
+  if (activity.id === 'patrol') return !helicopter ? 'Launch the helicopter (G) for Ice Patrol' : world.isLand(pilotU(), pilotV()) || !(world.ice(pilotU(), pilotV())?.percent > 0) ? 'Fly over charted sea ice for Ice Patrol' : '';
+  if (activity.id === 'raft') return !helicopter ? 'Launch the helicopter (G) for The Raft' : !world.isLand(pilotU(), pilotV()) ? 'Fly inland over land for The Raft' : '';
+  return activity.requires === 'ice' && !iceHere() ? 'Ice stations need charted ice of 4/10 or more under the ship' : '';
+}
+const available = activity => !unavailableReason(activity);
+function toggleHelicopter() {
+  if (!world || !chart || page !== 'game' || $('#mission-dialog').open) return;
+  helicopter = helicopter ? null : { u: shipU(), v: shipV() };
+  keys.clear(); waypoints = [];
+  $('#helicopter').textContent = helicopter ? 'G · Return to ship' : 'G · Launch helicopter';
+  $('#helicopter').setAttribute('aria-pressed', String(!!helicopter));
+  toast(helicopter ? 'Helicopter airborne · ship holding position. Fly with arrows / WASD or tap the chart. G returns aboard.' : 'Helicopter aboard · ship controls resumed.');
+  updateActivities(); canvas.focus();
+}
+$('#helicopter').onclick = toggleHelicopter;
 
-function updateProgress() { const percent = chartPercent(state, sea); $('#chart-percent').textContent = `${percent}%`; $('#chart-progress').value = percent; }
+function updateProgress() { const percent = Math.floor(mapped.size / seaCells * 1000) / 10; $('#chart-percent').textContent = `${percent}% · ${mapped.size} cells`; $('#chart-progress').value = percent; }
 function updateUI() {
   $('#score').textContent = state.score; $('#completed').textContent = state.operations; updateProgress();
   $('#discovery-log').replaceChildren();
@@ -65,7 +82,7 @@ function updateActivities() {
   for (const [activity, { button, description }] of activityButtons) {
     const ok = !world || available(activity);
     button.classList.toggle('unavailable', !ok); button.setAttribute('aria-disabled', String(!ok));
-    description.textContent = ok ? activity.description : 'No ice here · sail into ice of 4/10 or more';
+    description.textContent = ok ? activity.description : unavailableReason(activity);
   }
 }
 function endActivity() {
@@ -78,10 +95,10 @@ function startActivity(activity) {
   if ($('#mission-dialog').open || page !== 'game') return;
   if (!world) { toast('The chart is still unrolling. One moment.'); return; }
   const game = minigames[activity.id]; if (!game?.mount) { toast('This operation is unavailable.'); return; }
-  if (!available(activity)) { toast('No ice here. Ice stations need a floe under the ship: sail into ice of 4/10 or more, the white patches on the chart.', true); return; }
+  if (!available(activity)) { toast(unavailableReason(activity), true); return; }
   endActivity(); waypoints = []; keys.clear(); returnFocus = document.activeElement;
   $('#mission-title').textContent = activity.title;
-  const location = here();
+  const location = here(['patrol', 'raft'].includes(activity.id));
   recorder = operationRecorder(state, activity, location, entry => { save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart`); postScore(activity, entry); });
   const session = recorder;
   $('#mission-dialog').showModal();
@@ -96,13 +113,13 @@ $('#close-mission').onclick = () => { endActivity(); $('#mission-dialog').close(
 $('#close-mission').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); });
 $('#mission-dialog').addEventListener('cancel', () => endActivity());
 $('#mission-dialog').addEventListener('close', () => { if ($('#mission-dialog').open) return; endActivity(); if (returnFocus?.isConnected) returnFocus.focus(); else canvas.focus(); });
-$('#reset').onclick = () => { if (confirm('Start a fresh voyage and clear your chart, log and science points? Crew ideas stay on the server.')) { endActivity(); state = newVoyage(0, world?.start); try { localStorage.removeItem('amundsen-expedition'); } catch {} known = new Set(); chartPosition(state, known); waypoints = []; keys.clear(); save(); updateUI(); buildFog(); } };
+$('#reset').onclick = () => { if (confirm('Start a fresh voyage and clear your chart, log and science points? Crew ideas stay on the server.')) { endActivity(); state = newVoyage(0, world?.start); try { localStorage.removeItem('amundsen-expedition'); } catch {} known = new Set(); mapped = new Set(); if (helicopter) toggleHelicopter(); rebuildSurface(); chartPosition(state, known); waypoints = []; keys.clear(); save(); updateUI(); buildFog(); } };
 
-// The view follows the ship; zoom is chart pixels per grid cell, clamped so the view never leaves the world.
+// The view follows the active vehicle; zoom is chart pixels per grid cell, clamped so the view never leaves the world.
 const minZoom = () => world ? Math.max(1, width / world.cols, height / world.rows) : 1;
 function view() {
   const z = Math.max(minZoom(), zoom), w = width / z, h = height / z;
-  const u = Math.max(w / 2, Math.min(world.cols - w / 2, shipU())), v = Math.max(h / 2, Math.min(world.rows - h / 2, shipV()));
+  const u = Math.max(w / 2, Math.min(world.cols - w / 2, pilotU())), v = Math.max(h / 2, Math.min(world.rows - h / 2, pilotV()));
   return { z, u0: u - w / 2, v0: v - h / 2 };
 }
 function setZoom(next) { zoom = Math.max(minZoom(), Math.min(8, next)); }
@@ -112,6 +129,7 @@ new ResizeObserver(resize).observe(canvas);
 const miniRect = () => { const w = width < 520 ? 96 : 156, h = Math.round(w * (world ? world.rows / world.cols : .7)); return { x: width - w - 12, y: 12, w, h }; };
 function sailTo(u, v) {
   if (!world) return;
+  if (helicopter) { waypoints = [{ u: Math.max(.5, Math.min(world.cols - .5, u)), v: Math.max(.5, Math.min(world.rows - .5, v)) }]; routeComplete = true; return; }
   const plan = world.route({ u: shipU(), v: shipV() }, { u, v });
   waypoints = plan.points; routeComplete = plan.complete;
   if (!plan.complete) toast(plan.points.length ? 'No sea route there. Holding short of the coast.' : 'That is land. The ship stays afloat.');
@@ -126,6 +144,7 @@ function isControl(element) { return element?.closest?.('input,textarea,select,b
 window.addEventListener('keydown', e => {
   if (page !== 'game' || $('#mission-dialog').open || isControl(e.target) || e.ctrlKey || e.metaKey || e.altKey) return;
   const k = e.key.toLowerCase(), activity = activities.find(a => a.key.toLowerCase() === k) || (k === 'e' ? activities.find(a => a.id === 'ctd') : null);
+  if (k === 'g') { e.preventDefault(); if (!e.repeat) toggleHelicopter(); return; }
   if (activity) { e.preventDefault(); if (!e.repeat) startActivity(activity); return; }
   if (k === '+' || k === '=') { e.preventDefault(); setZoom(zoom * 1.4); return; }
   if (k === '-' || k === '_') { e.preventDefault(); setZoom(zoom / 1.4); return; }
@@ -162,13 +181,27 @@ function aground() {
   save(); updateUI();
   toast(`${record.title}. ${lost ? `${lost} science points lost` : 'Nothing left to lose'} · back to safe water, chart and log intact.`, true);
 }
-// Steering is stopped a step short of the shore; only the ship's own position touching land counts as grounding.
+// The helicopter crosses land freely; every ship movement checks the shore and maps its swept fan.
 function move(du, dv) {
-  const u = shipU(), v = shipV(), cols = world.cols, rows = world.rows;
+  const u = pilotU(), v = pilotV(), cols = world.cols, rows = world.rows;
   const nu = Math.max(.5, Math.min(cols - .5, u + du)), nv = Math.max(.5, Math.min(rows - .5, v + dv));
+  if (helicopter) { helicopter.u = nu; helicopter.v = nv; return true; }
   if (world.isLand(nu, nv) || !world.lineClear(u, v, nu, nv)) { state.x = nu / cols; state.y = nv / rows; aground(); return false; }
+  const added = mapSwath(state, mapped, world, { u, v }, { u: nu, v: nv });
+  if (added.length) { clearSeabed(added); mappingDirty = true; }
   state.x = nu / cols; state.y = nv / rows;
   return true;
+}
+let surfaceBase = null;
+function clearSeabed(cells) {
+  if (!surface) return;
+  const paint = surface.getContext('2d');
+  for (const cell of cells) paint.clearRect(cell % world.cols * CHART_SCALE, Math.floor(cell / world.cols) * CHART_SCALE, CHART_SCALE, CHART_SCALE);
+}
+function rebuildSurface() {
+  if (!surfaceBase) return;
+  surface = document.createElement('canvas'); surface.width = surfaceBase.width; surface.height = surfaceBase.height;
+  surface.getContext('2d').drawImage(surfaceBase, 0, 0); clearSeabed(mapped);
 }
 function drawGraticule(z, u0, v0) {
   const pole = world.pole, px = (pole.u - u0) * z, py = (pole.v - v0) * z;
@@ -202,6 +235,7 @@ function draw() {
   ctx.save(); if (shake > 0) ctx.translate((Math.random() - .5) * 8 * shake, (Math.random() - .5) * 8 * shake);
   ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
   ctx.drawImage(chart, u0 * S, v0 * S, width / z * S, height / z * S, 0, 0, width, height);
+  if (surface) ctx.drawImage(surface, u0 * S, v0 * S, width / z * S, height / z * S, 0, 0, width, height);
   ctx.drawImage(fog, u0 / world.cols * fog.width, v0 / world.rows * fog.height, width / z / world.cols * fog.width, height / z / world.rows * fog.height, 0, 0, width, height);
   drawGraticule(z, u0, v0);
   ctx.strokeStyle = '#e8c589'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]); ctx.beginPath(); state.route.forEach((p, i) => i ? ctx.lineTo(toX(p.x * world.cols), toY(p.y * world.rows)) : ctx.moveTo(toX(p.x * world.cols), toY(p.y * world.rows))); ctx.stroke(); ctx.setLineDash([]);
@@ -221,20 +255,28 @@ function draw() {
     labelled.push([x, y]); ctx.fillText(place.name, x + 6, y + 4);
   }
   if (waypoints.length) {
-    ctx.strokeStyle = routeComplete ? '#cfdfd880' : '#e9955c'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(toX(shipU()), toY(shipV()));
+    ctx.strokeStyle = routeComplete ? '#cfdfd880' : '#e9955c'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(toX(pilotU()), toY(pilotV()));
     for (const p of waypoints) ctx.lineTo(toX(p.u), toY(p.v));
     ctx.stroke(); ctx.setLineDash([]); const end = waypoints.at(-1); ctx.beginPath(); ctx.arc(toX(end.u), toY(end.v), 5, 0, 7); ctx.stroke();
   }
   drawShip(toX(shipU()), toY(shipV()), Math.min(1, .35 + z * .1));
+  if (helicopter) {
+    const x = toX(pilotU()), y = toY(pilotV());
+    ctx.save(); ctx.translate(x, y); ctx.rotate(flightAngle); ctx.fillStyle = '#f6c75f'; ctx.strokeStyle = '#332912'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.ellipse(0, 0, 10, 5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-19, 0); ctx.lineTo(0, 0); ctx.moveTo(0, -18); ctx.lineTo(0, 18); ctx.stroke(); ctx.restore();
+    ctx.fillStyle = '#f6c75f'; ctx.font = 'bold 12px sans-serif'; ctx.fillText('HELICOPTER', x + 15, y - 15);
+  }
   ctx.restore();
   // Compass: true north is the direction of the pole, which swings with longitude on this projection.
-  const north = world.northAngle(shipU(), shipV());
+  const north = world.northAngle(pilotU(), pilotV());
   ctx.save(); ctx.translate(34, height - 40); ctx.rotate(north + Math.PI / 2); ctx.strokeStyle = '#3b3222'; ctx.fillStyle = '#3b3222'; ctx.lineWidth = 1.5;
   ctx.beginPath(); ctx.moveTo(0, 14); ctx.lineTo(0, -10); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, -16); ctx.lineTo(-5, -6); ctx.lineTo(5, -6); ctx.closePath(); ctx.fill(); ctx.font = 'bold 11px Georgia'; ctx.fillText('N', -4, -19); ctx.restore();
   const m = miniRect();
   ctx.drawImage(mini, m.x, m.y, m.w, m.h); ctx.strokeStyle = '#3b3222'; ctx.lineWidth = 1; ctx.strokeRect(m.x + .5, m.y + .5, m.w - 1, m.h - 1);
   ctx.strokeStyle = '#ffffffcc'; ctx.strokeRect(m.x + u0 / world.cols * m.w, m.y + v0 / world.rows * m.h, width / z / world.cols * m.w, height / z / world.rows * m.h);
   ctx.fillStyle = '#ca5342'; ctx.beginPath(); ctx.arc(m.x + shipU() / world.cols * m.w, m.y + shipV() / world.rows * m.h, 2.5, 0, 7); ctx.fill();
+  if (helicopter) { ctx.fillStyle = '#f6c75f'; ctx.fillRect(m.x + pilotU() / world.cols * m.w - 2, m.y + pilotV() / world.rows * m.h - 2, 4, 4); }
 }
 function loop(time) {
   const dt = last ? Math.min((time - last) / 1000, .04) : 0; last = time;
@@ -245,29 +287,30 @@ function loop(time) {
     if (time < holdUntil) { dx = dy = 0; keys.clear(); }
     const z = view().z, ice = world.ice(shipU(), shipV());
     // Cells per second: 20 (40 km/s) at the default zoom, a little slower when zoomed in, slowed further by the pack.
-    const speed = 20 * Math.sqrt(3.2 / z) * world.iceSpeed(ice ? ice.percent : 255) * dt;
+    const speed = 20 * Math.sqrt(3.2 / z) * (helicopter ? 2.5 : world.iceSpeed(ice ? ice.percent : 255)) * dt;
     if (waypoints.length) {
       let budget = speed;
       while (waypoints.length && budget > 0) {
-        const next = waypoints[0], du = next.u - shipU(), dv = next.v - shipV(), d = Math.hypot(du, dv);
+        const next = waypoints[0], du = next.u - pilotU(), dv = next.v - pilotV(), d = Math.hypot(du, dv);
         if (d < .05) { waypoints.shift(); continue; }
-        angle = Math.atan2(dv, du); const step = Math.min(budget, d); len = 1;
+        if (helicopter) flightAngle = Math.atan2(dv, du); else angle = Math.atan2(dv, du); const step = Math.min(budget, d); len = 1;
         if (!move(du / d * step, dv / d * step)) break;
         budget -= step; if (step === d) waypoints.shift();
       }
       if (!waypoints.length) save();
     } else if (dx || dy) {
-      len = Math.hypot(dx, dy); angle = Math.atan2(dy, dx);
+      len = Math.hypot(dx, dy); if (helicopter) flightAngle = Math.atan2(dy, dx); else angle = Math.atan2(dy, dx);
       for (let part = 0; part < 4; part++) if (!move(dx / len * speed / 4, dy / len * speed / 4)) break;
     }
     shake = Math.max(0, shake - dt * 3);
     chartElapsed += dt;
     if (chartElapsed >= .15) {
       chartElapsed = 0;
-      if (chartPosition(state, known)) { buildFog(); updateProgress(); sightPlaces(); }
+      if (chartPosition(helicopter ? { ...state, x: pilotU() / world.cols, y: pilotV() / world.rows, route: [] } : state, known)) { buildFog(); updateProgress(); sightPlaces(); }
+      if (mappingDirty) { mappingDirty = false; $('#score').textContent = state.score; updateProgress(); }
       if (world.seaRoom(shipU(), shipV())) state.safe = { x: state.x, y: state.y };
-      const { lon, lat } = world.unproject(shipU(), shipV());
-      const navigation = `BRIDGE / ${formatPosition(lon, lat)} · ${Math.round(world.depth(shipU(), shipV()))} m · ${iceLabel(ice)} · ${len ? 'Underway' : 'Holding position'}`;
+      const { lon, lat } = world.unproject(pilotU(), pilotV());
+      const navigation = helicopter ? `HELICOPTER / ${formatPosition(lon, lat)} · ${world.isLand(pilotU(), pilotV()) ? 'over land' : iceLabel(world.ice(pilotU(), pilotV()))} · ship holding · G to return` : `BRIDGE / ${formatPosition(lon, lat)} · ${Math.round(world.depth(shipU(), shipV()))} m · ${iceLabel(ice)} · ${len ? 'Underway' : 'Holding position'} · swath ${(swathWidth(world.depth(shipU(), shipV())) / 1000).toFixed(1)} km`;
       if ($('#navigation').textContent !== navigation) $('#navigation').textContent = navigation;
       updateActivities();
     }
@@ -279,14 +322,18 @@ async function boot() {
   try {
     world = await loadWorld();
     state = readVoyage(localStorage, world.start); known = new Set(state.revealed);
+    state.mapped = state.mapped.filter(cell => cell < world.cols * world.rows && world.sign[cell] < 0); mapped = new Set(state.mapped);
     if (world.isLand(shipU(), shipV())) Object.assign(state, world.start);
     if (!world.seaRoom(state.safe.x * world.cols, state.safe.y * world.rows)) state.safe = { ...world.start };
     sea = world.seaFog(COLS, ROWS);
+    seaCells = world.sign.reduce((sum, sign) => sum + (sign < 0 ? 1 : 0), 0) || 1;
     chartPosition(state, known); updateUI(); buildFog();
+    $('#mapping-rule').textContent = `1 point per new ${world.km} × ${world.km} km grid cell · 120° fan widens with depth`;
     $('#chart-credit').textContent = `GEBCO 2024 · CIS ice chart ${world.chartDate}`;
+    surfaceBase = await renderChart(world, () => {}, false); rebuildSurface();
     chart = await renderChart(world, value => { progress = value; });
     miniBase = document.createElement('canvas'); const m = miniRect(); miniBase.width = m.w * 2; miniBase.height = m.h * 2;
-    const base = miniBase.getContext('2d'); base.imageSmoothingEnabled = true; base.drawImage(chart, 0, 0, miniBase.width, miniBase.height);
+    const base = miniBase.getContext('2d'); base.imageSmoothingEnabled = true; base.drawImage(surfaceBase, 0, 0, miniBase.width, miniBase.height);
     buildFog(); sightPlaces(); save(); canvas.focus();
   } catch (error) {
     console.error(error);
@@ -329,7 +376,7 @@ function commentForm(idea) {
       const response = await fetch(`api/suggestions/${idea.id}/comments`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: form.name.value, body: form.body.value }) });
       if (!response.ok) throw Error((await response.json()).error || 'Could not save comment');
       crewName = form.name.value.trim(); try { localStorage.setItem('amundsen-crew-name', crewName); } catch {}
-      form.body.value = ''; status.textContent = ''; await loadIdeas(true);
+      form.body.value = ''; status.textContent = ''; await loadIdeas();
     } catch (error) { status.textContent = error.message === 'Failed to fetch' ? 'Connection lost; your comment is still here.' : error.message; }
     finally { button.disabled = false; }
   };
@@ -349,6 +396,25 @@ function ideaCard(idea) {
   return article;
 }
 // A refresh never replaces a card whose thread is open or being typed in, so drafts survive the 5 s poll.
-async function loadIdeas(force = false) { if (publicMirror) return; try { const response = await fetch('api/suggestions'); if (!response.ok) throw Error(); const ideas = await response.json(); $('#idea-count').textContent = ideas.length; $('#board-status').textContent = 'Updates every 5 seconds'; const list = $('#idea-list'); const keep = new Map(); for (const card of list.querySelectorAll('.idea')) { const details = card.querySelector('details'); if (!force && (details?.open || card.contains(document.activeElement))) keep.set(card.dataset.id, card); } list.replaceChildren(); if (!ideas.length) { list.append(el('div', 'empty', 'The next adventure starts with an idea. Be the first to share yours.')); } for (const idea of ideas) { const kept = keep.get(String(idea.id)); if (kept) { kept.querySelector('summary').textContent = summaryText(idea); commentList(idea, kept.querySelector('.comments')); list.append(kept); } else list.append(ideaCard(idea)); } } catch { $('#board-status').textContent = 'Cannot reach the server. Retrying…'; } }
+async function loadIdeas() {
+  if (publicMirror) return;
+  try {
+    const response = await fetch('api/suggestions'); if (!response.ok) throw Error();
+    const ideas = await response.json(), list = $('#idea-list');
+    $('#idea-count').textContent = ideas.length; $('#board-status').textContent = 'Updates every 5 seconds';
+    list.querySelector('.empty')?.remove();
+    const ids = new Set(ideas.map(idea => String(idea.id)));
+    for (const card of list.querySelectorAll('.idea')) if (!ids.has(card.dataset.id) && !card.contains(document.activeElement) && !card.querySelector('textarea')?.value) card.remove();
+    for (const idea of ideas) {
+      const card = [...list.children].find(node => node.dataset.id === String(idea.id));
+      if (!card) { list.append(ideaCard(idea)); continue; }
+      card.querySelector('summary').textContent = summaryText(idea);
+      commentList(idea, card.querySelector('.comments'));
+      const head = card.querySelector('.idea-head'); head.querySelector('.build')?.remove();
+      if (idea.build) head.append(el('span', `build build-${idea.build}`, BUILD_LABEL[idea.build] || idea.build));
+    }
+    if (!ideas.length && !list.children.length) list.append(el('div', 'empty', 'The next adventure starts with an idea. Be the first to share yours.'));
+  } catch { $('#board-status').textContent = 'Cannot reach the server. Retrying…'; }
+}
 $('#idea-form').onsubmit = async e => { e.preventDefault(); const form = e.currentTarget, button = form.querySelector('button'); button.disabled = true; $('#form-status').textContent = 'Sending…'; try { const response = await fetch('api/suggestions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) }); if (!response.ok) throw Error((await response.json()).error || 'Could not save idea'); form.reset(); $('#form-status').textContent = 'Your idea is on the crew board. Thank you!'; await loadIdeas(); } catch (error) { $('#form-status').textContent = error.message === 'Failed to fetch' ? 'Connection lost. Your draft is still here; try again.' : error.message; } finally { button.disabled = false; } };
 setInterval(() => { if (!document.hidden) loadIdeas(); if (world) save(); }, 5000); setInterval(() => { if (!document.hidden && page === 'board') loadLeaderboard(); }, 10000); updateUI(); loadIdeas(); resize(); requestAnimationFrame(loop); boot();
