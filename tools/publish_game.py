@@ -5,7 +5,6 @@ import fcntl
 import io
 import json
 from pathlib import Path
-import shutil
 import subprocess
 import tarfile
 import tempfile
@@ -32,6 +31,7 @@ def main():
         revision = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip()
         with tempfile.TemporaryDirectory(prefix='game-public-', dir=RUNTIME) as temp:
             stage = Path(temp)
+            stage.chmod(0o755)
             archive = subprocess.check_output(['git', '-C', str(ROOT), 'archive', 'HEAD:static'])
             with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
                 tar.extractall(stage, filter='data')
