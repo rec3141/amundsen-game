@@ -3,11 +3,16 @@ dialog:has(.flood-game) { max-width: 1040px; max-height: calc(100dvh - 24px); ov
 .flood-game * { box-sizing: border-box; }
 .flood-game .flood-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
 .flood-game .flood-kicker { font-size: 10px; font-weight: 750; letter-spacing: 1.8px; color: var(--flood-alarm); margin: 0 0 5px; }
+.flood-game .flood-alarm-line { margin: 10px 0 0; font: 700 12px/1.4 monospace; letter-spacing: 1px; text-transform: uppercase; color: #48636b; }
+.flood-game .flood-alarm-line.flood-alarm-live { color: #fff; background: var(--flood-alarm); padding: 6px 10px; border-radius: 6px; }
+.flood-game .flood-beacon { fill: #ff3b1f; opacity: 0; pointer-events: none; }
+.flood-game .flood-beacon-run { animation: flood-beacon .9s ease-in-out 5; }
+@keyframes flood-beacon { 0%, 100% { opacity: 0; } 50% { opacity: .28; } }
 .flood-game h3 { font: 25px/1.2 Georgia, serif; margin: 0; letter-spacing: -.4px; }
 .flood-game .flood-score { text-align: center; background: #e7f0e7; border-radius: 12px; min-width: 76px; padding: 7px 12px; }
 .flood-game .flood-score strong { display: block; font-size: 28px; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .flood-game .flood-score span { font-size: 11px; }
-.flood-game .flood-instructions { margin: 14px 0; color: #48636b; }
+.flood-game .flood-instructions { margin: 10px 0 14px; color: #48636b; }
 .flood-game kbd { background: #fff2; border: 1px solid currentColor; padding: 1px 6px; font: 12px monospace; border-radius: 4px; }
 .flood-game .flood-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(250px, .9fr); gap: 20px; }
 .flood-game .flood-scene-wrap { min-width: 0; align-self: start; border: 1px solid #c9dedf; border-radius: 12px; background: #edf4f3; padding: 10px; }
@@ -40,19 +45,38 @@ dialog:has(.flood-game) { max-width: 1040px; max-height: calc(100dvh - 24px); ov
 .flood-game .flood-hose { fill: none; stroke: #2c3f47; stroke-width: 6; stroke-linecap: round; }
 .flood-game .flood-grate { fill: #7c8d94; }
 .flood-game .flood-grate-bars { stroke: #3d4e55; stroke-width: 2; }
-.flood-game .flood-clog path { stroke: #e0e6a1; stroke-width: 2; fill: none; }
-.flood-game .flood-clog rect { fill: #9a9f74; }
-.flood-game .flood-laptop-lid { fill: #303c42; stroke: #1c2529; }
-.flood-game .flood-laptop-base { fill: #6a7a82; }
+.flood-game .flood-clog-ties { stroke: #e0e6a1; stroke-width: 2; fill: none; }
+.flood-game .flood-clog-tape { fill: #9a9f74; }
+.flood-game [data-clog] { transition: transform .4s ease-out; }
+.flood-game .flood-weed { fill: none; stroke: #4d7a3a; stroke-width: 4; stroke-linecap: round; }
+.flood-game .flood-lever { stroke: #c9563a; stroke-width: 6; stroke-linecap: round; }
+.flood-game [data-lever] { transition: transform .12s linear; }
+.flood-game .flood-tank { fill: #dfeef2; fill-opacity: .5; stroke: #5f7680; stroke-width: 2; }
+.flood-game .flood-tank-water { fill: #3f8ea6; opacity: .55; }
+.flood-game .flood-crack { fill: none; stroke: #1c2f36; stroke-width: 2; }
+.flood-game .flood-cabinet { fill: #9fb3bb; stroke: #5f7680; }
+.flood-game .flood-sink { fill: #d9e2e6; stroke: #6b7c84; stroke-width: 2; }
+.flood-game .flood-sink-water { fill: #3f8ea6; opacity: .6; }
+.flood-game .flood-i-dark { fill: #303c42; stroke: #1c2529; }
+.flood-game .flood-i-steel { fill: #8a9aa1; stroke: #56666d; }
+.flood-game .flood-i-white { fill: #f0f0ea; stroke: #8e9296; }
+.flood-game .flood-i-foam { fill: #f7f7f2; stroke: #b9bbb3; }
+.flood-game .flood-i-card { fill: #c9a56b; stroke: #8a6a3c; }
+.flood-game .flood-i-crate { fill: #e6eef0; stroke: #6b8a95; stroke-width: 2; }
+.flood-game .flood-i-orange { fill: #e3a23b; stroke: #8b5e17; stroke-width: 1.5; }
+.flood-game .flood-i-blue { fill: #2f6f9e; stroke: #1c4560; }
+.flood-game .flood-i-yellow { fill: #e9c93a; stroke: #9a7d10; }
+.flood-game .flood-i-red { fill: #b3411d; stroke: #6e2510; }
+.flood-game .flood-i-glass { fill: #dff3f8; fill-opacity: .7; stroke: #7fb4c4; stroke-width: 1.5; }
+.flood-game .flood-i-bubble { fill: #fff; fill-opacity: .8; stroke: #7fb4c4; }
+.flood-game .flood-i-lines { stroke: #6b8a95; stroke-width: 1; fill: none; }
+.flood-game .flood-i-white-line { stroke: #f0f0ea; stroke-width: 2; fill: none; }
+.flood-game .flood-i-arm { stroke: #3d4e55; stroke-width: 3; fill: none; stroke-linecap: round; }
+.flood-game .flood-i-latch { stroke: #3a3a3a; stroke-width: 3; }
+.flood-game .flood-i-tube { fill: none; stroke: #c9563a; stroke-width: 2; }
+.flood-game .flood-i-text { font: 700 8px monospace; fill: #315a68; }
 .flood-game .flood-led { fill: #63e56c; }
-.flood-game .flood-powerbar { fill: #f0f0ea; stroke: #8e9296; }
-.flood-game [data-item="power"] rect:not(.flood-powerbar) { fill: #43494d; }
 .flood-game .flood-cord { fill: none; stroke: #2b2f33; stroke-width: 2; }
-.flood-game .flood-crate { fill: #e6eef0; stroke: #6b8a95; stroke-width: 2; }
-.flood-game .flood-crate-lines { stroke: #6b8a95; stroke-width: 1; }
-.flood-game .flood-crate-label { font: 700 9px monospace; fill: #315a68; }
-.flood-game .flood-pelican { fill: #e3a23b; stroke: #8b5e17; stroke-width: 1.5; }
-.flood-game .flood-pelican-latch { stroke: #3a3a3a; stroke-width: 3; }
 .flood-game [data-items] g { transition: transform .35s ease-out; }
 .flood-game [data-items] g.flood-falling { transition: none; }
 .flood-game [data-items] .flood-lost { opacity: .55; }
@@ -125,5 +149,6 @@ dialog:has(.flood-game) { max-width: 1040px; max-height: calc(100dvh - 24px); ov
   .flood-game .flood-reward { text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .flood-game [data-items] g, .flood-game [data-wheel] { transition: none; }
+  .flood-game [data-items] g, .flood-game [data-wheel], .flood-game [data-lever], .flood-game [data-clog] { transition: none; }
+  .flood-game .flood-beacon-run { animation: none; }
 }
