@@ -1,0 +1,60 @@
+dialog:has(.c12-game) { max-width: 1100px; width: calc(100vw - 24px); max-height: calc(100dvh - 24px); overflow-y: auto; }
+.c12-game { --c12-ink: #1b3540; --c12-teal: #116c71; --c12-line: #cfdde0; --c12-paper: #f3f7f7; --c12-red: #c8203a; color: var(--c12-ink); font: 14px/1.5 system-ui, sans-serif; }
+.c12-game * { box-sizing: border-box; }
+.c12-game .c12-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.c12-game .c12-kicker { font-size: 10px; font-weight: 750; letter-spacing: 1.8px; color: var(--c12-teal); margin: 0 0 5px; }
+.c12-game h3 { font: 25px/1.2 Georgia, serif; margin: 0; letter-spacing: -.4px; }
+.c12-game h4 { font: 19px/1.25 Georgia, serif; margin: 0 0 8px; }
+.c12-game .c12-meters { display: flex; gap: 12px; align-items: stretch; }
+.c12-game .c12-score, .c12-game .c12-clock { text-align: center; background: #e7f0e7; border-radius: 12px; min-width: 88px; padding: 7px 12px; }
+.c12-game .c12-clock { background: #e6eef3; min-width: 132px; }
+.c12-game .c12-clock.c12-late { background: #f6d9cf; }
+.c12-game .c12-score strong, .c12-game .c12-clock strong { display: block; font-size: 26px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.c12-game .c12-score span, .c12-game .c12-clock span { font-size: 11px; display: block; }
+.c12-game .c12-signal { margin: 14px 0; padding: 10px 14px; border-left: 5px solid var(--c12-red); background: #fbf1ee; border-radius: 0 10px 10px 0; font-size: 13px; }
+.c12-game .c12-signal b { display: block; font-size: 10px; letter-spacing: 1.6px; color: var(--c12-red); margin-bottom: 3px; }
+.c12-game kbd { background: #fff2; border: 1px solid currentColor; padding: 0 5px; font: 11px monospace; border-radius: 4px; }
+.c12-game .c12-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 290px); gap: 16px; align-items: start; }
+.c12-game .c12-chart-wrap { min-width: 0; }
+.c12-game canvas.c12-chart { display: block; width: 100%; min-height: 0; height: auto; border-radius: 10px; background: #233a45; touch-action: none; image-rendering: auto; }
+.c12-game .c12-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 11px; color: #48636b; margin-top: 8px; align-items: center; }
+.c12-game .c12-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.c12-game .c12-legend i { width: 14px; height: 14px; border-radius: 3px; border: 1px solid #0003; display: inline-block; }
+.c12-game .c12-legend .c12-legend-channel { background: #bee4f6; background-image: radial-gradient(#fff 1.4px, transparent 1.6px); background-size: 6px 6px; }
+.c12-game .c12-legend .c12-legend-fog { background: #233a45; }
+.c12-game .c12-legend .c12-legend-scale { margin-left: auto; }
+.c12-game .c12-legend .c12-legend-scale i { width: 28px; height: 5px; border-radius: 0; background: var(--c12-ink); border: 0; }
+.c12-game .c12-panel { border: 1px solid var(--c12-line); border-radius: 12px; background: var(--c12-paper); padding: 12px; display: grid; gap: 10px; }
+.c12-game .c12-readouts { margin: 0; display: grid; gap: 4px; }
+.c12-game .c12-readouts div { display: grid; grid-template-columns: 96px 1fr; gap: 8px; align-items: baseline; }
+.c12-game .c12-readouts dt { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #48636b; }
+.c12-game .c12-readouts dd { margin: 0; font-size: 13px; font-variant-numeric: tabular-nums; }
+.c12-game .c12-status { margin: 0; font-size: 13px; min-height: 3.2em; color: #2c4a55; }
+.c12-game .c12-controls { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
+.c12-game .c12-dpad { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 3px; }
+.c12-game .c12-dpad button:nth-child(1) { grid-column: 2; grid-row: 1; }
+.c12-game .c12-dpad button:nth-child(2) { grid-column: 1; grid-row: 2; }
+.c12-game .c12-dpad button:nth-child(3) { grid-column: 3; grid-row: 2; }
+.c12-game .c12-dpad button:nth-child(4) { grid-column: 2; grid-row: 3; }
+.c12-game .c12-actions { display: grid; gap: 6px; }
+.c12-game button { border: 1px solid #aec6c8; border-radius: 8px; background: #fff; color: var(--c12-ink); font: 600 13px/1.25 system-ui, sans-serif; padding: 8px 10px; cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none; min-height: 40px; }
+.c12-game button small { display: block; font-size: 10px; font-weight: 400; color: #48636b; }
+.c12-game button:disabled { opacity: .55; cursor: default; }
+.c12-game button:focus-visible { outline: 3px solid #c87b2e; outline-offset: 2px; }
+.c12-game button:not(:disabled):hover { background: #e2eeee; border-color: var(--c12-teal); }
+.c12-game .c12-dpad button { padding: 0; font-size: 16px; }
+.c12-game .c12-ram { border-color: #d9a3a3; background: #fff5f3; }
+.c12-game .c12-help { margin: 0; font-size: 11.5px; color: #48636b; }
+.c12-game .c12-debrief { margin-top: 14px; padding: 12px 16px; border-radius: 12px; background: #e7f0e7; border: 1px solid #c6dccb; }
+.c12-game .c12-debrief ul { margin: 0 0 8px; padding-left: 18px; font-size: 13px; }
+.c12-game .c12-debrief p { margin: 0; }
+@media (max-width: 760px) {
+  .c12-game .c12-layout { grid-template-columns: 1fr; }
+  .c12-game .c12-meters { width: 100%; }
+  .c12-game .c12-meters > div { flex: 1; }
+  .c12-game .c12-controls { grid-template-columns: auto 1fr; }
+  .c12-game .c12-legend .c12-legend-scale { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .c12-game button { transition: none; }
+}
