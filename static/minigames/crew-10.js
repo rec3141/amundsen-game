@@ -1,10 +1,11 @@
-import { createFlood, step, go, move, act, station, closure, atStation, available, summary, result, labClock, STATIONS, LINE_FLOW, AREA_M2 } from './crew-10-model.js';
+import { createFlood, step, go, move, act, station, closure, atStation, available, summary, result, labClock, rollAt, STATIONS, LINE_FLOW, AREA_M2, LAPTOP_FALL_S } from './crew-10-model.js';
 
 const stylesheet = new URL('./crew-10.css', import.meta.url).href;
 const seawaterUrl = new URL('../data/crew-10-seawater.json', import.meta.url).href;
 const DECK_Y = 380;               // scene y of the deck
 const UNITS_PER_M = 500;          // 50 cm of water fills the ruler
 const BENCH_Y = 150;
+const ROLL_GAIN = 0.45;           // scene degrees per degree of ship roll; the room leans, the water stays level
 const levelY = m => DECK_Y - m * UNITS_PER_M;
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const fmt = (value, digits = 1) => Number.isFinite(value) ? value.toFixed(digits) : '–';
@@ -26,8 +27,8 @@ export const game = {
       <section class="flood-game" aria-label="Flood the aft lab">
         <link rel="stylesheet" href="${stylesheet}">
         <div class="flood-heading"><div><p class="flood-kicker">AFT LAB / DAMAGE CONTROL</p>
-          <h3>The seawater loop let go.</h3></div><div class="flood-score"><strong data-score>0</strong><span>points</span></div></div>
-        <p class="flood-instructions">A fitting on the flow-through line has blown off and the deck is filling. Walk with <kbd>←</kbd> <kbd>→</kbd> or <kbd>1</kbd>–<kbd>7</kbd>, act with <kbd>Space</kbd>. Shut the loop valve, get what matters onto the bench, then drain the deck.</p>
+          <h3>One hard roll, and the seawater loop let go.</h3></div><div class="flood-score"><strong data-score>0</strong><span>points</span></div></div>
+        <p class="flood-instructions">The roll blew a fitting off the flow-through line and put somebody's laptop on the deck. Walk with <kbd>←</kbd> <kbd>→</kbd> or <kbd>1</kbd>–<kbd>7</kbd>, act with <kbd>Space</kbd>. Shut the loop valve, get what matters onto the bench, then drain the deck.</p>
         <div class="flood-layout">
           <div class="flood-scene-wrap">
             <svg class="flood-scene" viewBox="0 0 1000 440" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -36,8 +37,9 @@ export const game = {
                 <linearGradient id="flood-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f8ea6" stop-opacity=".78"/><stop offset="1" stop-color="#173f52" stop-opacity=".9"/></linearGradient>
                 <radialGradient id="flood-emergency" cx=".5" cy="0" r=".8"><stop offset="0" stop-color="#ff5a3c" stop-opacity=".5"/><stop offset="1" stop-color="#050b12" stop-opacity=".85"/></radialGradient>
               </defs>
-              <rect x="0" y="0" width="1000" height="440" fill="url(#flood-wall)"/>
-              <rect x="0" y="0" width="1000" height="24" class="flood-deckhead"/>
+              <rect x="-100" y="-100" width="1200" height="640" fill="url(#flood-wall)"/>
+              <g data-ship>
+              <rect x="-100" y="-100" width="1200" height="124" class="flood-deckhead"/>
               <g class="flood-lamps" data-lamps>${[160, 420, 680, 900].map(x => `<rect x="${x - 40}" y="24" width="80" height="6" rx="2"/>`).join('')}</g>
               <rect x="466" y="70" width="70" height="310" rx="6" class="flood-door"/><circle cx="522" cy="230" r="4" class="flood-handle"/>
               <text x="501" y="58" text-anchor="middle" class="flood-sign">AFT LAB</text>
@@ -56,10 +58,11 @@ export const game = {
               <g data-player transform="translate(500 ${DECK_Y})"><path class="flood-legs" data-legs d="M-8 -34 L-10 0 M8 -34 L10 0"/><rect x="-13" y="-80" width="26" height="48" rx="6" class="flood-jacket"/><rect x="-13" y="-58" width="26" height="4" class="flood-stripe"/><circle cx="0" cy="-92" r="11" class="flood-head"/><rect x="-12" y="-104" width="24" height="9" rx="4" class="flood-toque"/><path class="flood-arms" data-arms d="M-13 -74 L-26 -48 M13 -74 L26 -48"/></g>
               <g data-progress class="flood-progress flood-off"><rect x="-30" y="0" width="60" height="7" rx="3" class="flood-progress-track"/><rect x="-30" y="0" width="0" height="7" rx="3" class="flood-progress-fill" data-progress-fill/></g>
               <path data-water class="flood-water" d=""/>
-              <rect x="0" y="0" width="1000" height="440" data-dark class="flood-dark flood-off"/>
               <g class="flood-ruler">${[0, 10, 20, 30, 40, 50].map(cm => `<path d="M0 ${levelY(cm / 100)} h14"/><text x="18" y="${levelY(cm / 100) + 4}">${cm}</text>`).join('')}<text x="18" y="${levelY(0.5) - 12}" class="flood-ruler-unit">cm</text></g>
-              <rect x="0" y="${DECK_Y}" width="1000" height="60" class="flood-deck"/>
+              <rect x="-100" y="${DECK_Y}" width="1200" height="160" class="flood-deck"/>
               <text x="500" y="${DECK_Y + 38}" text-anchor="middle" class="flood-deck-text">MAIN DECK · ${AREA_M2} m² OF IT</text>
+              </g>
+              <rect x="0" y="0" width="1000" height="440" data-dark class="flood-dark flood-off"/>
             </svg>
             <div class="flood-readouts">
               <div><span>Water</span><strong data-level>0.0 cm</strong></div>
@@ -94,18 +97,32 @@ export const game = {
     const items = Object.fromEntries(STATIONS.filter(s => s.item).map(s => [s.id, find(`[data-item="${s.id}"]`)]));
     let stride = 0, logged = 0;
 
+    // The room leans with the ship; the water keeps its own level, so its surface tilts the other way in the scene.
+    const surfaceY = (level, x) => Math.min(DECK_Y, levelY(level) - (x - 500) * Math.tan(rollAt(state.t) * ROLL_GAIN * Math.PI / 180));
+
     function waterPath(level, t) {
       if (level <= 0) return '';
-      const y = levelY(level);
       const amp = Math.min(4, 1 + state.inflow * 60);
-      let d = `M0 ${DECK_Y} L0 ${y}`;
-      for (let x = 0; x <= 1000; x += 50) d += ` L${x} ${(y + Math.sin(x / 80 + t * 4) * amp).toFixed(1)}`;
-      return `${d} L1000 ${DECK_Y} Z`;
+      let d = `M-100 ${DECK_Y + 40} L-100 ${surfaceY(level, -100).toFixed(1)}`;
+      for (let x = -100; x <= 1100; x += 50) d += ` L${x} ${Math.min(DECK_Y, surfaceY(level, x) + Math.sin(x / 80 + t * 4) * amp).toFixed(1)}`;
+      return `${d} L1100 ${DECK_Y + 40} Z`;
+    }
+
+    // The laptop tumbles off the bench edge in the opening roll, bounces once and lies where it lands.
+    function laptopFall(t) {
+      if (t >= LAPTOP_FALL_S + 0.3) return null;
+      if (t < LAPTOP_FALL_S) {
+        const p = t / LAPTOP_FALL_S;
+        return { y: BENCH_Y - 4 + (DECK_Y - BENCH_Y + 4) * p * p, rot: -30 * Math.sin(p * Math.PI * 0.5) };
+      }
+      const b = (t - LAPTOP_FALL_S) / 0.3;
+      return { y: DECK_Y - 12 * Math.sin(b * Math.PI) * (1 - b), rot: -30 * (1 - b) * (1 - b) };
     }
 
     function renderScene() {
       const player = state.player;
       const level = state.level;
+      find('[data-ship]').setAttribute('transform', `rotate(${(rollAt(state.t) * ROLL_GAIN).toFixed(2)} 500 ${DECK_Y - 120})`);
       find('[data-water]').setAttribute('d', waterPath(level, state.t));
       // The handwheel turns a quarter turn per press-worth of work; spray shortens as the gate closes.
       const c = closure(state);
@@ -137,11 +154,14 @@ export const game = {
         if (!s.item) continue;
         const node = items[s.id];
         let x = s.x, y = DECK_Y, rot = 0;
+        const fall = s.fell && s.place === 'deck' ? laptopFall(state.t) : null;
         if (s.place === 'bench') y = BENCH_Y;
-        else if (s.place === 'lost' && s.lost === 'tipped') { x = s.x + s.drift; y = levelY(level) + 8; rot = 78; }
+        else if (fall) ({ y, rot } = fall);
+        else if (s.place === 'lost' && s.lost === 'tipped') { x = s.x + s.drift; y = surfaceY(level, x) + 8; rot = 78; }
         else if (s.place === 'lost') y = DECK_Y;
-        else if (level >= s.draft) { x = s.x + s.drift; y = levelY(level) + s.draft * UNITS_PER_M * 0.9; rot = Math.sin(s.afloat * 2.1) * 8; }
+        else if (level >= s.draft) { x = s.x + s.drift; y = surfaceY(level, x) + s.draft * UNITS_PER_M * 0.9; rot = Math.sin(s.afloat * 2.1) * 8; }
         node.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot.toFixed(1)})`);
+        node.classList.toggle('flood-falling', Boolean(fall));
         node.classList.toggle('flood-lost', s.place === 'lost');
         node.classList.toggle('flood-wet', s.place !== 'bench' && level > 0.005);
       }
@@ -168,6 +188,7 @@ export const game = {
       if (s.place === 'bench') return 'on bench';
       if (s.place === 'lost') return s.lost === 'tipped' ? 'tipped' : 'flooded';
       if (state.level >= s.draft) return 'afloat';
+      if (s.fell) return `on the floor, dies at ${(s.dieAt * 100).toFixed(0)} cm`;
       return s.dieAt ? `dies at ${(s.dieAt * 100).toFixed(0)} cm` : `floats at ${(s.draft * 100).toFixed(0)} cm`;
     }
 
