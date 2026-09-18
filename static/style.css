@@ -16,3 +16,11 @@
 @media(max-width:740px){.map-zoom{bottom:118px;right:10px}.map-zoom button{width:38px;height:38px}}
 
 #helicopter{margin:0 12px 6px 0;padding:8px 12px}#helicopter[aria-pressed="true"]{background:#f6c75f;color:#332912}.map-bottom #navigation{white-space:normal}
+
+/* Fuel, stores and small craft. */
+.stats{flex-wrap:wrap;gap:22px}.fuel{margin-top:14px}.fuel small{display:block;font-size:10px;color:var(--muted)}#fuel-gauge{margin:0 0 6px;accent-color:#116b6b}#fuel-gauge.low{accent-color:#c8552f}#tanker-status{margin-top:4px;color:#85683b}
+#stores-toggle{margin-top:14px;padding:8px 12px}#stores-toggle[aria-expanded="true"]{background:#e4ece6;border-color:var(--teal)}
+.stores{border-bottom:1px solid var(--line);padding-bottom:8px}.stores .missions-heading{margin-top:16px}.store{display:flex;align-items:center;gap:12px;width:100%;background:#fbfcf8;border:1px solid var(--line);border-radius:7px;padding:10px 12px;margin:8px 0}.store b{display:block;font-size:12px}.store small{display:block;font-size:10.5px;color:var(--muted);margin-top:2px}.store button{margin-left:auto;flex-shrink:0;padding:7px 10px;font-size:11px;min-width:74px}.store button:disabled{opacity:.55;cursor:default}.store.owned{background:#e6eee4}.store.owned button{border-color:transparent;color:var(--teal);font-weight:700}
+.map-help .craft{display:inline;margin:0}.map-help .craft button{margin:0 6px 6px 0;padding:8px 12px}#zodiac[aria-pressed="true"]{background:#f0a35b;color:#2b1a0c}#auv[aria-pressed="true"]{background:#d9e26b;color:#25290c}#bunker.ready{background:#116b6b;color:#fff;border-color:#116b6b}
+#discovery-log li.tow b{color:#b4632a}#discovery-log li.bunker b{color:#116b6b}#discovery-log li.radio b{color:#85683b;font-weight:600}
+@media(max-width:740px){.stats{gap:18px}.stats strong{font-size:23px}.map-help .craft button{padding:7px 9px;font-size:11px}}

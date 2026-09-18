@@ -1,6 +1,5 @@
 import { game as patrol } from './crew-4.js';
 import { game as wildlife } from './crew-14.js';
-import { game as logistics } from './crew-17.js';
 import { game as wrecks } from './crew-18.js';
 import { game as rivals } from './crew-19.js';
 import { ctd } from './ctd.js';
@@ -17,11 +16,10 @@ import { game as plan } from './crew-11.js';
 import { game as flood } from './crew-10.js';
 import { game as raft } from './crew-8.js';
 // Activities launch at the ship's current position. `requires: 'ice'` needs charted ice under the ship (world.js ICE_STATION_MIN).
-export const minigames = { patrol, wildlife, logistics, wrecks, rivals, ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, neptune };
+export const minigames = { patrol, wildlife, wrecks, rivals, ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, neptune };
 export const activities = [
   { id: 'patrol', title: 'Ice Patrol', description: 'Read the ice from a helicopter', key: 'j' },
   { id: 'wildlife', title: 'Wildlife Observer', description: 'Take a watch on the bridge', key: 'b' },
-  { id: 'logistics', title: 'Fuel for Discovery', description: 'Refuel and equip the expedition', key: 'u' },
   { id: 'wrecks', title: 'Shipwrecks', description: 'Explore the Arctic wreck archive', key: 'v' },
   { id: 'rivals', title: 'Rival Researchers', description: 'A fierce battle of science', key: 'z' },
 
