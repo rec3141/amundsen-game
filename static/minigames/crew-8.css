@@ -1,0 +1,100 @@
+dialog:has(.raft-game) { max-width: 960px; max-height: calc(100dvh - 24px); overflow-y: auto; }
+.raft-game { --raft-ink: #2d3a2e; --raft-moss: #4f6b3a; --raft-rust: #b3661d; color: var(--raft-ink); font: 14px/1.5 system-ui, sans-serif; }
+.raft-game * { box-sizing: border-box; }
+.raft-game .raft-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.raft-game .raft-kicker { font-size: 10px; font-weight: 750; letter-spacing: 1.8px; color: var(--raft-moss); margin: 0 0 5px; }
+.raft-game h3 { font: 25px/1.2 Georgia, serif; margin: 0; letter-spacing: -.4px; }
+.raft-game .raft-score { text-align: center; background: #e9eedf; border-radius: 12px; min-width: 76px; padding: 7px 12px; }
+.raft-game .raft-score strong { display: block; font-size: 28px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.raft-game .raft-score span { font-size: 11px; }
+.raft-game .raft-instructions { margin: 16px 0; color: #5a6a5c; }
+.raft-game kbd { background: #fff2; border: 1px solid currentColor; padding: 1px 6px; font: 12px monospace; border-radius: 4px; }
+.raft-game .raft-layout { display: grid; grid-template-columns: minmax(240px, .9fr) minmax(0, 1.1fr); gap: 22px; }
+.raft-game .raft-station { padding: 16px; border: 1px solid #cdd8c6; border-radius: 12px; background: #eef2e8; }
+.raft-game .raft-location, .raft-game .raft-readouts, .raft-game .raft-chart-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.raft-game .raft-location span, .raft-game .raft-readouts { font-size: 12px; }
+.raft-game .raft-section { position: relative; height: 400px; margin: 12px 0 10px; border-radius: 8px; overflow: hidden; background: #d8e6ea; isolation: isolate; }
+.raft-game .raft-scene { display: block; width: 100%; height: 100%; }
+.raft-game .raft-off { display: none; }
+.raft-game .raft-sky { fill: #dbe7ea; }
+.raft-game .raft-bed-labels text { font: 8px system-ui, sans-serif; fill: #fff; opacity: .85; letter-spacing: .6px; }
+.raft-game .raft-ruler path { stroke: #ffffffaa; stroke-width: 1.5; }
+.raft-game .raft-ruler text { font: 8px monospace; fill: #fff; opacity: .85; }
+.raft-game .raft-hole { fill: #2b3134; }
+.raft-game .raft-line { stroke: #f0d7a5; stroke-width: 1.4; }
+.raft-game .raft-tube { fill: #e8eef0; stroke: #6f7d83; stroke-width: 1; }
+.raft-game .raft-cutter { fill: #8e9ba1; stroke: #3d4a50; stroke-width: 1; stroke-linejoin: round; }
+.raft-game .raft-corer { transition: transform .12s ease-out; }
+.raft-game .raft-platform { transition: transform .18s ease-out; }
+.raft-game .raft-pontoon { fill: #d9d2c5; stroke: #6d675b; stroke-width: 1; }
+.raft-game .raft-deck { fill: #b58a4c; stroke: #6f4f22; stroke-width: 1; }
+.raft-game .raft-crate { fill: #7f9bab; stroke: #3f5763; stroke-width: 1; }
+.raft-game .raft-tripod path { fill: none; stroke: #4b4f52; stroke-width: 2; stroke-linecap: round; }
+.raft-game .raft-tripod circle { fill: #e59f59; }
+.raft-game .raft-winch { fill: #6e7a80; stroke: #2e373b; stroke-width: 1; }
+.raft-game .raft-person circle { fill: #f2c9a0; stroke: #6a4c2f; stroke-width: 1; }
+.raft-game .raft-person path { fill: none; stroke: #c9572e; stroke-width: 2.2; stroke-linecap: round; }
+.raft-game .raft-wash { fill: #9fd0dcaa; }
+.raft-game .raft-splash { font: 700 22px Georgia, serif; fill: #b3261e; letter-spacing: 3px; }
+.raft-game .raft-broken .raft-lake { filter: brightness(.85); }
+.raft-game .raft-cue .raft-platform { animation: raft-shudder .45s ease-out; }
+@keyframes raft-shudder { 0%, 100% { translate: 0 0; } 25% { translate: -2px 1px; } 50% { translate: 2px -1px; } 75% { translate: -1px 0; } }
+.raft-game.raft-stroke-a .raft-corer { animation: raft-hammer-a .16s ease-out; }
+.raft-game.raft-stroke-b .raft-corer { animation: raft-hammer-b .16s ease-out; }
+/* Two identical keyframes let alternate strokes restart the hammer blow. */
+@keyframes raft-hammer-a { from { translate: 0 -6px; } }
+@keyframes raft-hammer-b { from { translate: 0 -6px; } }
+.raft-game .raft-depth { position: absolute; left: 9px; bottom: 9px; padding: 3px 7px; background: #1f2a2ceb; color: #fff; border-radius: 4px; font: 13px monospace; }
+.raft-game .raft-layer { position: absolute; right: 9px; bottom: 9px; max-width: 60%; padding: 3px 7px; background: #ffffffd9; border-radius: 4px; font-size: 11px; line-height: 1.3; color: #2d3a2e; }
+.raft-game .raft-gauge { position: relative; height: 18px; margin: 16px 0 26px; background: #d3dccc; border-radius: 6px; }
+.raft-game .raft-gauge-band { position: absolute; top: 0; bottom: 0; background: #f0d9b0; border-inline: 1px solid #c8a466; }
+.raft-game .raft-gauge-fill { position: absolute; top: 3px; bottom: 3px; left: 0; width: 0; background: var(--raft-moss); border-radius: 3px; transition: width .08s linear; }
+.raft-game .raft-gauge-fill.raft-shifted { background: var(--raft-rust); }
+.raft-game .raft-gauge-safe { position: absolute; top: -4px; bottom: -4px; width: 2px; background: #2d3a2e; }
+.raft-game .raft-gauge-safe::after { content: 'held'; position: absolute; bottom: 100%; left: -11px; font-size: 9px; letter-spacing: .5px; color: #2d3a2e; }
+.raft-game .raft-gauge-ticks span { position: absolute; top: 100%; transform: translateX(-50%); font: 10px monospace; color: #5a6a5c; margin-top: 2px; }
+.raft-game .raft-gauge-ticks span::before { content: ''; position: absolute; bottom: 100%; left: 50%; height: 4px; border-left: 1px solid #8a9788; }
+.raft-game button { min-height: 44px; border: 1px solid #b7c4ae; border-radius: 7px; background: #fff; color: var(--raft-ink); font: 600 13px/1.3 system-ui, sans-serif; padding: 10px 12px; cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.raft-game button:disabled { opacity: .55; cursor: default; }
+.raft-game button:focus-visible { outline: 3px solid #c87b2e; outline-offset: 3px; }
+.raft-game button:not(:disabled):hover { background: #e4ecdc; border-color: var(--raft-moss); }
+.raft-game .raft-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.raft-game .raft-actions button { min-height: 56px; font-size: 16px; color: #fff; }
+.raft-game .raft-actions button small { display: block; font-size: 11px; font-weight: 500; opacity: .9; }
+.raft-game button.raft-push { background: var(--raft-moss); box-shadow: 0 3px 0 #33482a; }
+.raft-game button.raft-push:not(:disabled):hover { background: #3f5a2f; }
+.raft-game button.raft-push:not(:disabled):active { transform: translateY(2px); box-shadow: 0 1px 0 #33482a; }
+.raft-game button.raft-pull { background: var(--raft-rust); box-shadow: 0 3px 0 #7a4210; }
+.raft-game button.raft-pull:not(:disabled):hover { background: #9a5514; }
+.raft-game button.raft-pull.raft-winding, .raft-game button.raft-pull:not(:disabled):active { transform: translateY(2px); box-shadow: 0 1px 0 #7a4210; background: #8a4a12; }
+.raft-game .raft-actions kbd { margin-left: 6px; }
+.raft-game .raft-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.raft-game .raft-notebook { min-width: 0; padding-top: 6px; }
+.raft-game h4 { margin: 0; font-size: 14px; }
+.raft-game .raft-chart-heading > span { font-size: 11px; white-space: nowrap; }
+.raft-game .raft-columns { width: 100%; height: auto; display: block; margin-top: 10px; overflow: visible; }
+.raft-game .raft-columns text { font: 8px system-ui, sans-serif; fill: #5a6a5c; }
+.raft-game .raft-column-ruler path { stroke: #d6dfd2; fill: none; }
+.raft-game .raft-column-lost { fill: none; stroke: #8a9788; stroke-dasharray: 3 3; }
+.raft-game .raft-columns-empty { font-size: 12px; text-align: center; color: #5a6a5c; margin: 2px 0 12px; }
+.raft-game .raft-log { width: 100%; border-collapse: collapse; text-align: right; font-size: 12px; font-variant-numeric: tabular-nums; margin-top: 10px; }
+.raft-game caption { text-align: left; padding: 6px 0; font-weight: 600; }
+.raft-game th, .raft-game td { padding: 6px; border-bottom: 1px solid #d6dfd2; }
+.raft-game .raft-notes { margin-top: 14px; padding: 10px 12px; background: #f3f5ee; border-radius: 8px; font-size: 12px; }
+.raft-game .raft-notes p { margin: 4px 0 0; }
+.raft-game .raft-notes ul { margin: 6px 0 0; padding-left: 18px; color: #5a6a5c; max-height: 96px; overflow-y: auto; }
+.raft-game .raft-reward { font-size: 11px; color: #5a6a5c; margin: 12px 0 0; }
+.raft-game .raft-footer { display: flex; gap: 16px; justify-content: space-between; align-items: center; border-top: 1px solid #d6dfd2; margin-top: 20px; padding-top: 14px; }
+.raft-game .raft-footer p { font-size: 13px; margin: 0; }
+.raft-game .raft-finish { flex-shrink: 0; background: #eaf0de; }
+@media (max-width: 650px) {
+  dialog:has(.raft-game) { padding: 30px 16px 18px; }
+  .raft-game .raft-layout { grid-template-columns: 1fr; gap: 20px; }
+  .raft-game h3 { font-size: 22px; }
+  .raft-game .raft-section { height: 340px; }
+  .raft-game .raft-footer { flex-direction: column; align-items: stretch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .raft-game .raft-corer, .raft-game .raft-platform, .raft-game .raft-gauge-fill { transition: none; }
+  .raft-game .raft-cue .raft-platform, .raft-game.raft-stroke-a .raft-corer, .raft-game.raft-stroke-b .raft-corer { animation: none; }
+}
