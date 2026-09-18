@@ -1,16 +1,40 @@
-export const STORAGE_KEY = 'amundsen-exploration', VERSION = 2;
+export const STORAGE_KEY = 'amundsen-exploration', VERSION = 3;
 // The fog grid covers the whole world (2600 x 1800 km): a cell is 20 km, the ship charts 120 km around it.
 export const COLS = 130, ROWS = 90, MAX_ROUTE = 1200, MAX_LOG = 100, MAX_SIGHTED = 300;
 const REVEAL_X = .046, REVEAL_Y = .0667;
 // Northern Baffin Bay off Pituffik, the first open-water waypoint of the Leg 3 plan (world.json start).
 export const START = { x: .6916, y: .4508 };
+// Diesel in cubic metres. The Amundsen sails on 2,000 m³ and the extra bunker tank adds 800. Burn is per kilometre
+// sailed: 0.05 m³ in open water, six times that breaking 10/10 ice (an ice-strengthened hull halves the ice share).
+// The helicopter flies on its own 800 L of Jet A-1 at 0.3 L/km and refills from the ship's stock on landing.
+// Bunkering costs science points per m³, less at a community than from the tanker; a port call always supplies at
+// least `minimum` m³, and a tow back to the start leaves `towed` m³ in the tanks.
+export const FUEL = { tank: 2000, extraTank: 800, burn: .05, iceBurn: 5, hullIceBurn: 2.5, heliTank: 800, heliBurn: .3, towed: 500, minimum: 300, portRate: .1, tankerRate: .2 };
+// One-time purchases from the ship's stores, paid in science points.
+export const STORES = [
+  { id: 'helicopter', title: 'Helicopter hire', price: 150, description: 'Bell 429 and pilot · G flies to Ice Patrol and The Raft' },
+  { id: 'zodiac', title: 'Zodiac', price: 120, description: 'Y launches a fast boat · open water only · sounds its track · 30 km tether' },
+  { id: 'auv', title: 'AUV', price: 300, description: '1 sends it on a straight run of up to 60 km · 3 km swath, then back to its launch point' },
+  { id: 'hull', title: 'Ice-strengthened hull', price: 350, description: 'Keeps more speed in the pack · half the extra burn in ice' },
+  { id: 'tank', title: 'Extra bunker tank', price: 250, description: '+800 m³ of diesel' },
+  { id: 'swath', title: 'Wide-swath multibeam', price: 300, description: 'Sonar fan 40% wider · more cells per kilometre' },
+  { id: 'winch', title: 'Fast winch', price: 150, description: 'CTD casts earn 25% more' },
+];
+export const tankCapacity = state => FUEL.tank + (state.upgrades?.tank ? FUEL.extraTank : 0);
+// Cubic metres per kilometre in a charted ice concentration (255 = uncharted, taken as open water).
+export function burnRate(state, icePercent) {
+  const p = icePercent === 255 || !Number.isFinite(icePercent) ? 0 : Math.max(0, Math.min(1, icePercent / 100));
+  return FUEL.burn * (1 + (state.upgrades?.hull ? FUEL.hullIceBurn : FUEL.iceBurn) * p ** 1.5);
+}
+// Burns diesel for a distance sailed; false once the tanks are dry.
+export function sail(state, km, icePercent) { state.fuel = Math.max(0, state.fuel - Math.max(0, km) * burnRate(state, icePercent)); return state.fuel > 0; }
 const finite = (value, fallback, min, max) => Number.isFinite(value) ? Math.max(min, Math.min(max, value)) : fallback;
 const position = (p, start = START) => ({ x: finite(p?.x, start.x, 0, 1), y: finite(p?.y, start.y, 0, 1) });
 const validPosition = p => p && Number.isFinite(p.x) && Number.isFinite(p.y);
 const title = (value, fallback) => typeof value === 'string' && value.trim() ? value.trim().slice(0, 160) : fallback;
 const optional = (value, min, max) => Number.isFinite(value) && value >= min && value <= max ? value : null;
 export function newVoyage(score = 0, start = START) {
-  return { version: VERSION, ...position(null, start), safe: position(null, start), score: finite(score, 0, 0, Number.MAX_SAFE_INTEGER), operations: 0, groundings: 0, revealed: [], mapped: [], route: [], discoveries: [], sighted: [] };
+  return { version: VERSION, ...position(null, start), safe: position(null, start), score: finite(score, 0, 0, Number.MAX_SAFE_INTEGER), operations: 0, groundings: 0, tows: 0, fuel: FUEL.tank, heliFuel: FUEL.heliTank, upgrades: {}, revealed: [], mapped: [], route: [], discoveries: [], sighted: [] };
 }
 // Log entries keep where they happened; an entry from an older chart with no place on this one has x and y null.
 function entry(d, placed = true) {
@@ -25,8 +49,13 @@ export function restoreVoyage(raw, legacy, start = START) {
     state.discoveries = (Array.isArray(raw.discoveries) ? raw.discoveries : []).filter(d => d && typeof d === 'object').slice(-MAX_LOG).map(d => entry(d, false));
     return state;
   }
-  if (!raw || raw.version !== VERSION) return newVoyage(legacy?.score, start);
+  // Version 2 sailed the same chart without fuel or stores: she carries full tanks and nothing bought.
+  if (!raw || (raw.version !== 2 && raw.version !== VERSION)) return newVoyage(legacy?.score, start);
   const state = { ...newVoyage(raw.score, start), ...position(raw, start) };
+  state.upgrades = Object.fromEntries(STORES.filter(item => raw.upgrades?.[item.id] === true).map(item => [item.id, true]));
+  state.fuel = finite(raw.fuel, tankCapacity(state), 0, tankCapacity(state));
+  state.heliFuel = finite(raw.heliFuel, FUEL.heliTank, 0, FUEL.heliTank);
+  state.tows = Math.floor(finite(raw.tows, 0, 0, Number.MAX_SAFE_INTEGER));
   state.safe = validPosition(raw.safe) ? position(raw.safe, start) : position(state, start);
   state.operations = Math.floor(finite(raw.operations, 0, 0, Number.MAX_SAFE_INTEGER));
   state.groundings = Math.floor(finite(raw.groundings, 0, 0, Number.MAX_SAFE_INTEGER));
@@ -102,16 +131,51 @@ export function runAground(state, location, place = '') {
   Object.assign(state, position(state.safe, START));
   return record;
 }
+// A log entry that scores nothing: bunkering, a tow, a radio call.
+export function logEvent(state, location, activity, title, lost = 0) {
+  const record = entry({ ...location, title, activity, points: 0, lost, date: new Date().toISOString() });
+  state.discoveries.push(record);
+  if (state.discoveries.length > MAX_LOG) state.discoveries.shift();
+  return record;
+}
+// Buys a stores item once; null when unknown, already aboard or unaffordable.
+export function buy(state, id) {
+  const item = STORES.find(i => i.id === id);
+  if (!item || state.upgrades[id] || state.score < item.price) return null;
+  state.score -= item.price; state.upgrades[id] = true;
+  return item;
+}
+// Fills the tanks at `rate` points per m³: as much as the expedition can pay for, never less than FUEL.minimum,
+// and never more than the space. Null when the tanks are already full.
+export function bunker(state, location, source, rate) {
+  const space = tankCapacity(state) - state.fuel;
+  if (space < 1) return null;
+  const affordable = rate > 0 ? Math.floor(state.score / rate) : space;
+  const taken = Math.round(Math.min(space, Math.max(affordable, FUEL.minimum)));
+  const cost = Math.min(state.score, Math.ceil(taken * rate));
+  state.score -= cost; state.fuel = Math.min(tankCapacity(state), state.fuel + taken);
+  return { ...logEvent(state, location, 'bunker', `Bunkered ${taken.toLocaleString()} m³ ${source}`, cost), taken };
+}
+// Dry tanks and adrift: the ship is towed back to the start with a reserve of diesel. Chart, log and stores stay.
+export function towSouth(state, location, place = '', start = START, harbour = '') {
+  state.tows = Math.min(Number.MAX_SAFE_INTEGER, state.tows + 1);
+  const record = logEvent(state, location, 'tow', `Ran dry${place ? ` near ${place}` : ''} · towed south${harbour ? ` to ${harbour}` : ''}`);
+  Object.assign(state, position(null, start)); state.safe = position(null, start); state.fuel = FUEL.towed;
+  return record;
+}
 
-// A 120-degree fan spans 2 * depth * tan(60°). Cells are credited once at DEM resolution.
-export const swathWidth = depth => 2 * depth * Math.sqrt(3);
-export function mapSwath(state, mapped, world, from, to) {
+// A 120-degree fan spans 2 * depth * tan(60°); the wide-swath upgrade widens it by `WIDE_SWATH`. Cells are
+// credited once at DEM resolution. `fixed` is a swath width in metres that ignores depth (an AUV near the
+// bottom, or 0 for a boat sounding only its own track).
+export const WIDE_SWATH = 1.4;
+export const swathWidth = (depth, widen = 1) => 2 * depth * Math.sqrt(3) * widen;
+export function mapSwath(state, mapped, world, from, to, widen = 1, fixed = null) {
   const du = to.u - from.u, dv = to.v - from.v, distance = Math.hypot(du, dv);
   if (!distance) return [];
   const added = [], steps = Math.max(1, Math.ceil(distance * 4));
   for (let step = 0; step <= steps; step++) {
     const u = from.u + du * step / steps, v = from.v + dv * step / steps;
-    const half = swathWidth(world.depth(u, v)) / world.meta.grid.resolution / 2;
+    const half = (fixed ?? swathWidth(world.depth(u, v), widen)) / world.meta.grid.resolution / 2;
     const samples = Math.max(1, Math.ceil(half * 8));
     for (let n = 0; n <= samples; n++) {
       const offset = half * (2 * n / samples - 1);

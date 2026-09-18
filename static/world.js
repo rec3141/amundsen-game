@@ -4,6 +4,8 @@
 const DATA = new URL('./data/world/', import.meta.url);
 // An ice station needs a floe to stand on: open drift (4/10) or more.
 export const ICE_STATION_MIN = 40;
+// Communities with a sealift fuel supply and a charted approach on this grid; the ship bunkers at their berth.
+export const BUNKER_PORTS = ['Arctic Bay', 'Cambridge Bay', 'Clyde River', 'Dundas', 'Gjoa Haven', 'Grise Fiord', 'Igloolik', 'Kugaaruk', 'Kugluktuk', 'Kullorsuaq', 'Paulatuk', 'Pond Inlet', 'Qaanaaq', 'Qikiqtarjuaq', 'Resolute', 'Sachs Harbour', 'Sanirajak', 'Ulukhaktok', 'Upernavik'];
 const SQRT2 = Math.SQRT2;
 
 function projection(p, grid) {
@@ -79,8 +81,9 @@ export function createWorld(meta, layers) {
     const kind = meta.ice.classes[iceClass[i]] ?? meta.ice.classes[0];
     return { percent, tenths: percent / 10, stage: kind.stage, form: kind.form };
   }
-  // Share of open-water speed the ship keeps: an icebreaker is slowed by the pack, never stopped.
-  const iceSpeed = percent => percent === 255 ? 1 : 1 - .65 * (percent / 100) ** 1.3;
+  // Share of open-water speed the ship keeps: an icebreaker is slowed by the pack, never stopped. `hull` scales
+  // the slowdown (1 as built, less with an ice-strengthened hull).
+  const iceSpeed = (percent, hull = 1) => percent === 255 ? 1 : 1 - .65 * hull * (percent / 100) ** 1.3;
 
   // A* over water cells. Diagonal steps need both orthogonal neighbours afloat, so the polyline of cell centres
   // never touches the shore function. Cells against the coast and cells in ice cost more, which keeps the
@@ -164,13 +167,23 @@ export function createWorld(meta, layers) {
     for (const place of places) { const d = Math.hypot(place.u - u, place.v - v); if (d < bestDistance) { best = place; bestDistance = d; } }
     return best;
   }
+  // The nearest water with sea room to a community: where a ship lies to bunker.
+  function berth(u, v, reach = 10) {
+    let best = null, bestDistance = Infinity;
+    for (let r = Math.max(0, Math.floor(v) - reach); r <= Math.min(rows - 1, Math.floor(v) + reach); r++) for (let c = Math.max(0, Math.floor(u) - reach); c <= Math.min(cols - 1, Math.floor(u) + reach); c++) {
+      const d = Math.hypot(c + .5 - u, r + .5 - v);
+      if (d < bestDistance && sign[r * cols + c] < 0 && seaRoom(c + .5, r + .5)) { best = { u: c + .5, v: r + .5 }; bestDistance = d; }
+    }
+    return best;
+  }
+  const ports = places.filter(place => BUNKER_PORTS.includes(place.name)).map(place => ({ ...place, berth: berth(place.u, place.v) })).filter(place => place.berth);
   const start = proj.project(meta.start.lon, meta.start.lat);
   return {
-    meta, cols, rows, km, elevation, sign, iceConcentration, iceClass, glacier, places, ...proj,
+    meta, cols, rows, km, elevation, sign, iceConcentration, iceClass, glacier, places, ports, ...proj,
     start: { x: start.u / cols, y: start.v / rows },
     shipTrack: meta.shipTrack.lonLat.map(([lon, lat]) => proj.project(lon, lat)),
     chartDate: meta.ice.charts.map(chart => chart.date).filter(Boolean).sort().at(-1) ?? '',
-    shore, isLand, lineClear, seaRoom, ice, iceSpeed, route, nearestPlace,
+    shore, isLand, lineClear, lastClear, seaRoom, ice, iceSpeed, route, nearestPlace,
     depth: (u, v) => Math.max(0, -elevation[index(u, v)]),
     // Screen angle of true north at a position: the direction of the pole.
     northAngle: (u, v) => Math.atan2(proj.pole.v - v, proj.pole.u - u),
