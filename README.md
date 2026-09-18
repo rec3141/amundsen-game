@@ -83,6 +83,12 @@ The Python server is intended for a trusted ship intranet, not public hosting.
 - Sailing maps the seabed in a depth-dependent multibeam swath and scores newly
   mapped cells. **G** launches the helicopter (hired from stores) to explore
   inland; **Y** launches the zodiac; **1** arms the AUV for a straight mapping run.
+- Every logged operation leaves its own glyph on the chart (**2** toggles the
+  legend). The 16 archive shipwrecks are marked: **V** picks one to steam to, and
+  the survey starts once the ship is on the datum. Mayday calls appear at
+  intervals and **X** answers within 20 km. Flooding and contamination alarms
+  fire on their own now and then as well as on demand. Ice games need charted
+  ice within 10 km of the ship or helicopter.
 - The ship burns diesel per km, more in ice. **U** bunkers at a community berth
   within 6 km or from the tanker M/T Nanny at her announced anchorage, for science
   points. Dry tanks mean a drift and a tow south to the start. **Q** opens the
