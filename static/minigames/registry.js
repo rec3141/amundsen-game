@@ -1,5 +1,6 @@
 import { ctd } from './ctd.js';
 import { ice } from './ice.js';
+import { game as neptune } from './crew-15.js';
 import { game as sar } from './crew-12.js';
 import { game as heli } from './crew-7.js';
 import { game as cliceify } from './crew-3.js';
@@ -11,7 +12,7 @@ import { game as plan } from './crew-11.js';
 import { game as flood } from './crew-10.js';
 import { game as raft } from './crew-8.js';
 // Activities launch at the ship's current position. `requires: 'ice'` needs charted ice under the ship (world.js ICE_STATION_MIN).
-export const minigames = { ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar };
+export const minigames = { ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, neptune };
 export const activities = [
   { id: 'ctd', title: 'CTD cast', description: 'Read the water column', key: 'c' },
   { id: 'ice', title: 'Ice thickness', description: 'Drill a floe transect', key: 'i', requires: 'ice' },
@@ -25,4 +26,5 @@ export const activities = [
   { id: 'cliceify', title: "Cliceify", description: "Classify ice from deck to satellite", key: 'l' },
   { id: 'heli', title: "Find Clement's stuff", description: "Fly the old floes for lost gear", key: 'h' },
   { id: 'sar', title: "Search and Rescue", description: "Find a beset ship and break her out", key: 'x' },
+  { id: 'neptune', title: "Neptune's Wrath", description: "Five trials before the sea king", key: 'k' },
 ];
