@@ -435,12 +435,9 @@ function drawGraticule(z, u0, v0) {
   }
   ctx.restore();
 }
-function drawShip(x, y, scale) {
-  ctx.save(); ctx.translate(x, y); ctx.rotate(angle); ctx.scale(scale, scale);
-  ctx.strokeStyle = '#a8d5d05a'; for (let n = 0; n < 3; n++) { ctx.beginPath(); ctx.moveTo(-22 - n * 8, -5 - n * 4); ctx.lineTo(-32 - n * 8, 0); ctx.lineTo(-22 - n * 8, 5 + n * 4); ctx.stroke(); }
-  ctx.shadowColor = '#041d33aa'; ctx.shadowBlur = 14; ctx.beginPath(); ctx.moveTo(25, 0); ctx.lineTo(8, -10); ctx.lineTo(-22, -9); ctx.lineTo(-25, 0); ctx.lineTo(-22, 9); ctx.lineTo(8, 10); ctx.closePath(); ctx.fillStyle = '#f1e9d9'; ctx.fill(); ctx.shadowBlur = 0;
-  ctx.fillStyle = '#ca5342'; ctx.fillRect(-20, -7, 27, 14); ctx.fillStyle = '#f6f4e6'; ctx.fillRect(-3, -6, 12, 12); ctx.fillStyle = '#2b5660'; ctx.fillRect(4, -4, 3, 8); ctx.fillStyle = '#e7b254'; ctx.fillRect(-14, -3, 6, 6); ctx.restore();
-}
+// Craft are pixel sprites; `px` is screen pixels per sprite pixel, 1 on the open chart and 2 zoomed close in.
+import { drawShip as shipSprite, drawHelicopter as helicopterSprite, drawZodiac as zodiacSprite, drawAUV as auvSprite, drawTanker as tankerSprite } from './sprites.js';
+function drawShip(x, y, px) { shipSprite(ctx, x, y, angle, px); }
 function label(text, x, y, colour = '#1b2a2c', font = 'bold 11px sans-serif') {
   ctx.font = font; ctx.lineWidth = 3; ctx.strokeStyle = '#ddcca7cc'; ctx.strokeText(text, x, y); ctx.fillStyle = colour; ctx.fillText(text, x, y);
 }
@@ -453,12 +450,11 @@ function drawFuel(x, y, near, text, scale = 1) {
   if (text) label(text, x + 10, y + 14, '#0f4a4a', 'italic 11px Georgia');
 }
 function drawTanker(x, y, near, text) {
-  ctx.save(); ctx.translate(x, y); ctx.fillStyle = '#7a2f23'; ctx.strokeStyle = '#1b2a2c'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(-15, -3); ctx.lineTo(10, -3); ctx.lineTo(16, 0); ctx.lineTo(10, 4); ctx.lineTo(-15, 4); ctx.closePath(); ctx.fill(); ctx.stroke();
-  ctx.fillStyle = '#f1e9d9'; ctx.fillRect(-13, -9, 6, 6); ctx.fillStyle = '#e7b254'; ctx.fillRect(-4, -6, 10, 3);
-  if (near) { ctx.strokeStyle = '#f6c75f'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, 22, 0, 7); ctx.stroke(); }
+  tankerSprite(ctx, x, y, 0, 1);
+  ctx.save(); ctx.translate(x, y);
+  if (near) { ctx.strokeStyle = '#f6c75f'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, 30, 0, 7); ctx.stroke(); }
   ctx.restore();
-  label(text, x + 20, y + 4, '#7a2f23');
+  label(text, x + 30, y + 4, '#7a2f23');
 }
 function drawLoading() {
   ctx.fillStyle = '#ddcca7'; ctx.fillRect(0, 0, width, height);
@@ -514,27 +510,23 @@ function draw() {
     ctx.stroke(); ctx.setLineDash([]); const end = waypoints.at(-1); ctx.beginPath(); ctx.arc(toX(end.u), toY(end.v), 5, 0, 7); ctx.stroke();
     if (routePlan && !craft()) label(`${Math.round(routePlan.km)} km · ${m3(routePlan.fuel)} m³`, toX(end.u) + 8, toY(end.v) - 8, routePlan.fuel > state.fuel ? '#b3352b' : '#1b2a2c');
   }
+  const px = z >= 6 ? 2 : 1;
   if (auv) {
     const x = toX(auv.u), y = toY(auv.v), goal = auv.home ? auv.dock : auv.target;
     if (!auv.waiting) { ctx.strokeStyle = '#d9e26bb0'; ctx.setLineDash([2, 4]); ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(toX(goal.u), toY(goal.v)); ctx.stroke(); ctx.setLineDash([]); }
-    ctx.save(); ctx.translate(x, y); if (!auv.waiting) ctx.rotate(Math.atan2(goal.v - auv.v, goal.u - auv.u)); ctx.fillStyle = '#d9e26b'; ctx.strokeStyle = '#25290c'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.roundRect(-9, -3.5, 18, 7, 3.5); ctx.fill(); ctx.stroke(); ctx.restore();
+    auvSprite(ctx, x, y, auv.waiting ? 0 : Math.atan2(goal.v - auv.v, goal.u - auv.u), px + 1);
     label(auv.waiting ? 'AUV · surfaced, waiting' : `AUV · ${auv.cells} cells`, x + 12, y - 8, '#25290c');
   }
   if (zodiac) { ctx.strokeStyle = '#f0a35b90'; ctx.setLineDash([2, 4]); ctx.beginPath(); ctx.moveTo(toX(su), toY(sv)); ctx.lineTo(toX(zodiac.u), toY(zodiac.v)); ctx.stroke(); ctx.setLineDash([]); }
-  drawShip(toX(su), toY(sv), Math.min(1, .35 + z * .1));
+  drawShip(toX(su), toY(sv), px);
   if (zodiac) {
     const x = toX(zodiac.u), y = toY(zodiac.v);
-    ctx.save(); ctx.translate(x, y); ctx.rotate(flightAngle); ctx.fillStyle = '#f0a35b'; ctx.strokeStyle = '#2b1a0c'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(10, 0); ctx.lineTo(3, -5); ctx.lineTo(-8, -5); ctx.lineTo(-8, 5); ctx.lineTo(3, 5); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = '#5b6b70'; ctx.fillRect(-5, -2.5, 8, 5); ctx.restore();
+    zodiacSprite(ctx, x, y, flightAngle, px + 1);
     label('ZODIAC', x + 14, y - 12, '#2b1a0c', 'bold 12px sans-serif');
   }
   if (helicopter) {
     const x = toX(pilotU()), y = toY(pilotV());
-    ctx.save(); ctx.translate(x, y); ctx.rotate(flightAngle); ctx.fillStyle = '#f6c75f'; ctx.strokeStyle = '#332912'; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.ellipse(0, 0, 10, 5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(-19, 0); ctx.lineTo(0, 0); ctx.moveTo(0, -18); ctx.lineTo(0, 18); ctx.stroke(); ctx.restore();
+    helicopterSprite(ctx, x, y, flightAngle, px + 1, last);
     ctx.fillStyle = '#f6c75f'; ctx.font = 'bold 12px sans-serif'; ctx.fillText('HELICOPTER', x + 15, y - 15);
   }
   ctx.restore();
