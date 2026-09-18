@@ -11,7 +11,7 @@
 - All game runtime assets and data must work without internet access.
 
 ## Crew-idea workflow
-- Each crew idea gets a separate Git branch and worktree and its own headless worker process: Claude Code on Fable by default, `codex exec` with `tools/crew.py start --worker codex`.
+- Each crew idea gets a separate Git branch and worktree and its own headless worker process: the saved Claude Code/Codex preference (`python3 tools/crew.py switch claude|codex`). Usage limits automatically hand the same worktree to the other tool once; if both are limited the run stops.
 - The coordinating session reviews, smoke-checks, and merges completed branches on main. Worker instances must not merge themselves or deploy.
 - Work only within the assigned file scope; commit the implementation and report verification and limits.
 - Main at /data/dev/amundsen-game is the live deployment; runtime state is excluded from Git.

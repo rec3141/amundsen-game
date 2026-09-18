@@ -163,12 +163,19 @@ submission from a second device in a real browser.
 
 Every idea gets its own `crew/...` branch, sibling worktree under
 `/data/dev/amundsen-game-worktrees`, and independent headless worker process.
-The default worker is Claude Code (`claude -p --model claude-fable-5-1`);
-`--worker codex` selects `codex exec`. The coordinating session reviews and
+The saved worker preference selects Claude Code or Codex. `--worker` overrides
+it for an individual start or resume. Usage/session limits automatically switch
+tools in the same worktree, preserving partial changes and commits. The alternate
+tool becomes the preference for subsequent jobs. Each tool is tried at most once
+per launch; if both are limited, the run stops with status `limited`. Other errors
+keep the Claude model fallback but do not trigger a cross-tool retry. The coordinating session reviews and
 smoke-checks branches before merging on `main`, which serves the live game.
 
 ```sh
 python3 tools/crew.py status
+python3 tools/crew.py switch codex    # Prefer Codex, or use claude
+python3 tools/crew.py switch --fallback off  # on enables automatic switching
+python3 tools/crew.py resume my-idea --worker codex
 python3 tools/crew.py start my-idea /path/to/brief.md
 python3 tools/crew.py start my-idea /path/to/brief.md --worker codex
 python3 tools/crew_watch.py          # Queue current board once
@@ -183,7 +190,9 @@ it is not enabled at boot. The watcher continues after a chat turn ends. Workers
 commit their branch and stop; they do not deploy or merge. Merges require the
 coordinating session to be active. Logs, exact task briefs, process IDs, and final
 reports are in `runtime/crew/<slug>/`. Failed runs stay visible for review and are
-not retried automatically.
+not retried automatically once the bounded fallback is exhausted. Settings live
+in `runtime/crew/worker.json`; per-attempt event logs and reports stay in each
+run directory. Switching affects new/resumed jobs, not an already-running process.
 
 ```sh
 XDG_RUNTIME_DIR=/run/user/1000 systemctl --user stop amundsen-game-crew.service
