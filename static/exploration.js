@@ -168,7 +168,8 @@ export function towSouth(state, location, place = '', start = START, harbour = '
 // credited once at DEM resolution. `fixed` is a swath width in metres that ignores depth (an AUV near the
 // bottom, or 0 for a boat sounding only its own track).
 export const WIDE_SWATH = 1.4;
-export const swathWidth = (depth, widen = 1) => 2 * depth * Math.sqrt(3) * widen;
+// Eight times a real multibeam fan, so a voyage charts a visible band of seabed.
+export const swathWidth = (depth, widen = 1) => 16 * depth * Math.sqrt(3) * widen;
 export function mapSwath(state, mapped, world, from, to, widen = 1, fixed = null) {
   const du = to.u - from.u, dv = to.v - from.v, distance = Math.hypot(du, dv);
   if (!distance) return [];

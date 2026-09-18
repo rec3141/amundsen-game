@@ -59,7 +59,7 @@ dialog:has(.c14-game) { max-width: 1040px; width: calc(100vw - 24px); max-height
 .c14-game .c14-idmenu-list button { display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 6px; align-items: center; text-align: left; padding: 5px 8px; min-height: 0; font-weight: 500; }
 .c14-game .c14-idmenu-list button[aria-selected="true"] { outline: 2px solid var(--c14-teal); outline-offset: 0; background: #e6f2f2; }
 .c14-game .c14-idmenu-list b { display: block; font-size: 12.5px; }
-.c14-game .c14-idmenu-list small { display: block; font-size: 10.5px; color: var(--c14-muted); line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c14-game .c14-idmenu-list small { display: block; font-size: 10.5px; color: var(--c14-muted); line-height: 1.25; white-space: normal; overflow-wrap: anywhere; }
 .c14-game .c14-idmenu-key { font: 700 11px monospace; color: var(--c14-muted); }
 .c14-game .c14-idmenu-pts { font: 700 12px system-ui, sans-serif; color: var(--c14-teal); font-variant-numeric: tabular-nums; }
 .c14-game .c14-idmenu-foot { margin: 0; font-size: 11px; color: var(--c14-muted); }
