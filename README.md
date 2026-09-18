@@ -201,3 +201,22 @@ XDG_RUNTIME_DIR=/run/user/1000 systemctl --user stop amundsen-game-crew.service
 Stopping the watcher prevents new runs; existing workers continue their
 assigned tasks. `AGENTS.md` carries the product voice, data-source rules, and
 worker workflow. All requested data pulls use the underway server.
+
+## Public game mirror
+
+https://cryomics.org/underway/game/ serves the committed game, including world
+terrain and minigame data. Progress stays in each browser. The public edition
+hides the ship's crew board and shared leaderboard and makes no API requests.
+Crew names, submissions, comments, scores, databases and worker logs stay aboard.
+
+```sh
+python3 tools/publish_game.py                # Ship → grid → DreamHost
+python3 tools/publish_game.py --stage-only   # Prepare the local public copy
+```
+
+The export includes only `HEAD:static`. Its `site.js` enables public mode and
+`release.json` records the revision. The staged copy at
+`/data/underway_server/www/game/` also travels with the existing underway mirror.
+The game's user publish timer runs every five minutes and shares grid's existing
+publish lock. It deploys only the game subtree. Mutable assets revalidate; the
+compressed world data retains its gzip bytes for browser decompression.

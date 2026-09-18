@@ -1,0 +1,9 @@
+[Unit]
+Description=Mirror Amundsen game through the underway publishing route
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/data/dev/amundsen-game
+ExecStart=/usr/bin/python3 /data/dev/amundsen-game/tools/publish_game.py
+TimeoutStartSec=1200
