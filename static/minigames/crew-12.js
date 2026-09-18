@@ -32,7 +32,7 @@ export const game = {
           <div class="c12-chart-wrap">
             <canvas class="c12-chart" data-chart aria-label="Ice chart: your ship, the search datum and the pack"></canvas>
             <div class="c12-legend" aria-hidden="true">
-              <span><i style="background:${ctColour(0)}"></i>&lt;1</span><span><i style="background:${ctColour(2)}"></i>1–3</span><span><i style="background:${ctColour(5)}"></i>4–6</span><span><i style="background:${ctColour(7)}"></i>7–8</span><span><i style="background:${ctColour(10)}"></i>9–10</span><span><i class="c12-legend-channel"></i>channel</span><span><i class="c12-legend-fog"></i>beyond radar</span><span class="c12-legend-scale"><i></i>1 nmi</span>
+              <span><i style="background:${ctColour(0)}"></i>&lt;1</span><span><i style="background:${ctColour(2)}"></i>1–3</span><span><i style="background:${ctColour(5)}"></i>4–6</span><span><i style="background:${ctColour(7)}"></i>7–8</span><span><i style="background:${ctColour(10)}"></i>9–10</span><span><i class="c12-legend-channel"></i>channel</span><span><i class="c12-legend-fog"></i>beyond radar</span><span class="c12-legend-scale"><i data-scale></i>1 nmi</span>
             </div>
           </div>
           <aside class="c12-panel">
@@ -75,6 +75,7 @@ export const game = {
       const dpr = Math.min(3, window.devicePixelRatio || 1);
       if (w === width && h === height && canvas.width === Math.round(w * dpr)) return;
       width = w; height = h; cellPx = w / COLS;
+      find('[data-scale]').style.width = `${cellPx / CELL_NMI}px`;
       canvas.style.height = `${h}px`;
       canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -224,7 +225,7 @@ export const game = {
         else if (event.type === 'berg') say('Identified: an iceberg. Not them.');
         else if (event.type === 'ram') say('Backing and ramming.');
         else if (event.type === 'timeout') say(`${Math.round(SEARCH_LIMIT_S / 3600)} hours gone. The tasking passes to a helicopter out of Resolute.`);
-        else if (event.type === 'delivered') say(`${VESSEL} is in open water and making her own way south.`);
+        else if (event.type === 'delivered') say(`${VESSEL} is in open water and under her own power.`);
       }
     }
 
@@ -280,7 +281,7 @@ export const game = {
       if ((key === ' ' || key === 'Enter') && event.target?.closest?.('button')) return;
       if (KEYS[key]) { held.add(KEYS[key].join(',')); event.preventDefault(); event.stopPropagation(); }
       else if (key === ' ') { ramQueued = true; event.preventDefault(); event.stopPropagation(); }
-      else if (key === 'b' || key === 'h') { bearingQueued = true; event.preventDefault(); event.stopPropagation(); }
+      else if (key === 'b') { bearingQueued = true; event.preventDefault(); event.stopPropagation(); }
     }, { capture: true, signal });
     document.addEventListener('keyup', event => {
       const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
