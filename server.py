@@ -17,6 +17,7 @@ def connect():
     db.row_factory = sqlite3.Row
     db.execute('CREATE TABLE IF NOT EXISTS suggestions (id INTEGER PRIMARY KEY, name TEXT, title TEXT, description TEXT, created TEXT DEFAULT CURRENT_TIMESTAMP)')
     db.execute('CREATE TABLE IF NOT EXISTS comments (id INTEGER PRIMARY KEY, idea INTEGER NOT NULL, name TEXT, body TEXT, created TEXT DEFAULT CURRENT_TIMESTAMP)')
+    db.execute('CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY, player TEXT NOT NULL, activity TEXT NOT NULL, title TEXT, points INTEGER NOT NULL, created TEXT DEFAULT CURRENT_TIMESTAMP)')
     return db
 
 def build_status():
@@ -32,6 +33,18 @@ def build_status():
             latest[ident] = state
     names = {'starting': 'building', 'running': 'building', 'ready_for_review': 'review', 'merged': 'live', 'failed': 'failed'}
     return {ident: names.get(state.get('status'), state.get('status')) for ident, state in latest.items()}
+
+def leaderboard():
+    """Overall career points per player plus each activity's best single score per player, top ten each."""
+    with connect() as db:
+        overall = [dict(r) for r in db.execute('SELECT player, SUM(points) AS points, COUNT(*) AS operations FROM scores GROUP BY player ORDER BY points DESC, operations ASC LIMIT 10')]
+        rows = db.execute('SELECT activity, title, player, MAX(points) AS points, MIN(created) AS created FROM scores GROUP BY activity, player ORDER BY activity, points DESC, created ASC').fetchall()
+    activities = {}
+    for r in rows:
+        entry = activities.setdefault(r['activity'], {'activity': r['activity'], 'title': r['title'], 'top': []})
+        if len(entry['top']) < 10:
+            entry['top'].append({'player': r['player'], 'points': r['points']})
+    return {'overall': overall, 'activities': list(activities.values())}
 
 def clean(data, fields):
     """Return stripped string fields within their limits, or None when the payload is unusable."""
@@ -72,6 +85,8 @@ class Handler(SimpleHTTPRequestHandler):
                 idea['comments'] = [dict(c) for c in comments if c['idea'] == idea['id']]
                 idea['build'] = status.get(idea['id'])
             return self.respond(200, ideas)
+        if urlsplit(self.path).path == '/api/leaderboard':
+            return self.respond(200, leaderboard())
         return super().do_GET()
 
     def read_json(self):
@@ -90,11 +105,19 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         path = urlsplit(self.path).path
         comment = re.fullmatch(r'/api/suggestions/(\d+)/comments', path)
-        if path != '/api/suggestions' and not comment:
+        if path not in ('/api/suggestions', '/api/scores') and not comment:
             return self.respond(404, {'error': 'Unknown endpoint'})
         status, data = self.read_json()
         if status != 200:
             return self.respond(status, data)
+        if path == '/api/scores':
+            fields = clean(data, [('player', 60), ('activity', 40), ('title', 100)])
+            points = data.get('points') if isinstance(data, dict) else None
+            if not fields or not fields[0] or not fields[1] or not isinstance(points, int) or isinstance(points, bool) or not 0 <= points <= 1000000:
+                return self.respond(400, {'error': 'A score needs a player, an activity and whole points.'})
+            with connect() as db:
+                ident = db.execute('INSERT INTO scores(player,activity,title,points) VALUES (?,?,?,?)', (*fields, points)).lastrowid
+            return self.respond(201, {'id': ident})
         if comment:
             fields = clean(data, [('name', 60), ('body', 1500)])
             if not fields or not fields[1]:

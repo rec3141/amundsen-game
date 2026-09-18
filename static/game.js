@@ -13,7 +13,7 @@ let waypoints = [], routeComplete = true, holdUntil = 0, shake = 0;
 function save() { if (!world) return; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { $('#save-status').textContent = 'Chart stays in this tab · storage unavailable'; } }
 let toastTimer;
 function toast(message, long = false) { $('#toast').textContent = message; $('#toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('show'), long ? 7000 : 3500); }
-function showPage(name) { page = name; keys.clear(); waypoints = []; $('#game-page').hidden = name !== 'game'; $('#ideas-page').hidden = name !== 'ideas'; document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.page === name)); if (name === 'ideas') loadIdeas(); else resize(); }
+function showPage(name) { page = name; keys.clear(); waypoints = []; $('#game-page').hidden = name !== 'game'; $('#ideas-page').hidden = name !== 'ideas'; $('#board-page').hidden = name !== 'board'; document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.page === name)); if (name === 'ideas') loadIdeas(); else if (name === 'board') loadLeaderboard(); else resize(); }
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => showPage(b.dataset.page));
 $('#suggest-shortcut').onclick = $('#crew-link').onclick = () => showPage('ideas');
 
@@ -77,7 +77,7 @@ function startActivity(activity) {
   endActivity(); waypoints = []; keys.clear(); returnFocus = document.activeElement;
   $('#mission-title').textContent = activity.title;
   const location = here();
-  recorder = operationRecorder(state, activity, location, entry => { save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart`); });
+  recorder = operationRecorder(state, activity, location, entry => { save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart`); postScore(activity, entry); });
   const session = recorder;
   $('#mission-dialog').showModal();
   // showModal focuses the first focusable control, the close button; Enter or Space would then close the
@@ -288,6 +288,28 @@ async function boot() {
     $('#navigation').textContent = `BRIDGE / The chart could not be loaded: ${error.message}`;
   }
 }
+// Scores go to the shared leaderboard only under a name; the name is shared with the idea board's comment form.
+function playerName() { try { return (localStorage.getItem('amundsen-crew-name') || '').trim(); } catch { return ''; } }
+$('#player-name').value = playerName();
+$('#player-name').onchange = () => { crewName = $('#player-name').value.trim(); try { localStorage.setItem('amundsen-crew-name', crewName); } catch {} };
+async function postScore(activity, entry) {
+  const player = playerName();
+  if (!player) { toast('Sign the log with your name to post scores to the leaderboard.'); return; }
+  try { await fetch('api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ player, activity: activity.id, title: activity.title, points: entry.points }) }); } catch {}
+}
+function boardList(list, rows, empty) { list.replaceChildren(); if (!rows.length) { list.append(el('li', 'none', empty)); return; } for (const r of rows) { const item = el('li'); item.append(el('span', '', r.player), el('b', '', `${r.points}${r.operations ? ` · ${r.operations} ops` : ''}`)); list.append(item); } }
+async function loadLeaderboard() {
+  try {
+    const response = await fetch('api/leaderboard'); if (!response.ok) throw Error(); const board = await response.json();
+    $('#board-refresh').textContent = 'Updates every 10 seconds';
+    boardList($('#overall-board'), board.overall, 'No scores yet. Sign the log on the expedition page and complete an operation.');
+    const holder = $('#activity-boards'); holder.replaceChildren();
+    for (const activity of activities) {
+      const section = el('section', 'board'), entry = board.activities.find(a => a.activity === activity.id);
+      section.append(el('h2', '', activity.title)); const list = el('ol'); boardList(list, entry?.top || [], 'Nobody has logged this one yet.'); section.append(list); holder.append(section);
+    }
+  } catch { $('#board-refresh').textContent = 'Cannot reach the server. Retrying…'; }
+}
 const BUILD_LABEL = { building: 'Being built', review: 'In review', live: 'In the game', failed: 'Build stalled' };
 function el(tag, className, text) { const node = document.createElement(tag); if (className) node.className = className; if (text != null) node.textContent = text; return node; }
 let crewName = ''; try { crewName = localStorage.getItem('amundsen-crew-name') || ''; } catch {}
@@ -322,4 +344,4 @@ function ideaCard(idea) {
 // A refresh never replaces a card whose thread is open or being typed in, so drafts survive the 5 s poll.
 async function loadIdeas(force = false) { try { const response = await fetch('api/suggestions'); if (!response.ok) throw Error(); const ideas = await response.json(); $('#idea-count').textContent = ideas.length; $('#board-status').textContent = 'Updates every 5 seconds'; const list = $('#idea-list'); const keep = new Map(); for (const card of list.querySelectorAll('.idea')) { const details = card.querySelector('details'); if (!force && (details?.open || card.contains(document.activeElement))) keep.set(card.dataset.id, card); } list.replaceChildren(); if (!ideas.length) { list.append(el('div', 'empty', 'The next adventure starts with an idea. Be the first to share yours.')); } for (const idea of ideas) { const kept = keep.get(String(idea.id)); if (kept) { kept.querySelector('summary').textContent = summaryText(idea); commentList(idea, kept.querySelector('.comments')); list.append(kept); } else list.append(ideaCard(idea)); } } catch { $('#board-status').textContent = 'Cannot reach the server. Retrying…'; } }
 $('#idea-form').onsubmit = async e => { e.preventDefault(); const form = e.currentTarget, button = form.querySelector('button'); button.disabled = true; $('#form-status').textContent = 'Sending…'; try { const response = await fetch('api/suggestions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) }); if (!response.ok) throw Error((await response.json()).error || 'Could not save idea'); form.reset(); $('#form-status').textContent = 'Your idea is on the crew board. Thank you!'; await loadIdeas(); } catch (error) { $('#form-status').textContent = error.message === 'Failed to fetch' ? 'Connection lost. Your draft is still here; try again.' : error.message; } finally { button.disabled = false; } };
-setInterval(() => { if (!document.hidden) loadIdeas(); if (world) save(); }, 5000); updateUI(); loadIdeas(); resize(); requestAnimationFrame(loop); boot();
+setInterval(() => { if (!document.hidden) loadIdeas(); if (world) save(); }, 5000); setInterval(() => { if (!document.hidden && page === 'board') loadLeaderboard(); }, 10000); updateUI(); loadIdeas(); resize(); requestAnimationFrame(loop); boot();
