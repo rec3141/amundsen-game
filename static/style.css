@@ -14,3 +14,5 @@
 #discovery-log li.grounding b{color:#b3352b}
 @keyframes aground{0%,100%{box-shadow:0 8px 24px #51452b12}20%{box-shadow:0 0 0 4px #b3352b,0 8px 40px #b3352b80}}.map-panel.aground{animation:aground 1.2s ease-out}
 @media(max-width:740px){.map-zoom{bottom:118px;right:10px}.map-zoom button{width:38px;height:38px}}
+
+#helicopter{margin:0 12px 6px 0;padding:8px 12px}#helicopter[aria-pressed="true"]{background:#f6c75f;color:#332912}.map-bottom #navigation{white-space:normal}

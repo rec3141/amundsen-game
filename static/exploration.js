@@ -10,7 +10,7 @@ const validPosition = p => p && Number.isFinite(p.x) && Number.isFinite(p.y);
 const title = (value, fallback) => typeof value === 'string' && value.trim() ? value.trim().slice(0, 160) : fallback;
 const optional = (value, min, max) => Number.isFinite(value) && value >= min && value <= max ? value : null;
 export function newVoyage(score = 0, start = START) {
-  return { version: VERSION, ...position(null, start), safe: position(null, start), score: finite(score, 0, 0, Number.MAX_SAFE_INTEGER), operations: 0, groundings: 0, revealed: [], route: [], discoveries: [], sighted: [] };
+  return { version: VERSION, ...position(null, start), safe: position(null, start), score: finite(score, 0, 0, Number.MAX_SAFE_INTEGER), operations: 0, groundings: 0, revealed: [], mapped: [], route: [], discoveries: [], sighted: [] };
 }
 // Log entries keep where they happened; an entry from an older chart with no place on this one has x and y null.
 function entry(d, placed = true) {
@@ -31,6 +31,7 @@ export function restoreVoyage(raw, legacy, start = START) {
   state.operations = Math.floor(finite(raw.operations, 0, 0, Number.MAX_SAFE_INTEGER));
   state.groundings = Math.floor(finite(raw.groundings, 0, 0, Number.MAX_SAFE_INTEGER));
   state.revealed = [...new Set((Array.isArray(raw.revealed) ? raw.revealed : []).filter(n => Number.isInteger(n) && n >= 0 && n < COLS * ROWS))];
+  state.mapped = [...new Set((Array.isArray(raw.mapped) ? raw.mapped : []).filter(n => Number.isInteger(n) && n >= 0 && n < 10000000))];
   state.route = (Array.isArray(raw.route) ? raw.route : []).filter(validPosition).slice(-MAX_ROUTE).map(p => position(p));
   state.discoveries = (Array.isArray(raw.discoveries) ? raw.discoveries : []).filter(d => d && typeof d === 'object').slice(-MAX_LOG).map(d => entry(d));
   state.sighted = [...new Set((Array.isArray(raw.sighted) ? raw.sighted : []).filter(name => typeof name === 'string').map(name => name.slice(0, 80)))].slice(-MAX_SIGHTED);
@@ -99,4 +100,27 @@ export function runAground(state, location, place = '') {
   if (state.discoveries.length > MAX_LOG) state.discoveries.shift();
   Object.assign(state, position(state.safe, START));
   return record;
+}
+
+// A 120-degree fan spans 2 * depth * tan(60°). Cells are credited once at DEM resolution.
+export const swathWidth = depth => 2 * depth * Math.sqrt(3);
+export function mapSwath(state, mapped, world, from, to) {
+  const du = to.u - from.u, dv = to.v - from.v, distance = Math.hypot(du, dv);
+  if (!distance) return [];
+  const added = [], steps = Math.max(1, Math.ceil(distance * 4));
+  for (let step = 0; step <= steps; step++) {
+    const u = from.u + du * step / steps, v = from.v + dv * step / steps;
+    const half = swathWidth(world.depth(u, v)) / world.meta.grid.resolution / 2;
+    const samples = Math.max(1, Math.ceil(half * 8));
+    for (let n = 0; n <= samples; n++) {
+      const offset = half * (2 * n / samples - 1);
+      const x = u - dv / distance * offset, y = v + du / distance * offset;
+      if (x < 0 || y < 0 || x >= world.cols || y >= world.rows || world.isLand(x, y) || !world.lineClear(u, v, x, y)) continue;
+      const cell = Math.floor(y) * world.cols + Math.floor(x);
+      if (world.sign[cell] > 0 || mapped.has(cell)) continue;
+      mapped.add(cell); state.mapped.push(cell); added.push(cell);
+    }
+  }
+  state.score = Math.min(Number.MAX_SAFE_INTEGER, state.score + added.length);
+  return added;
 }
