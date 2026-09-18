@@ -24,3 +24,12 @@
 .map-help .craft{display:inline;margin:0}.map-help .craft button{margin:0 6px 6px 0;padding:8px 12px}#zodiac[aria-pressed="true"]{background:#f0a35b;color:#2b1a0c}#auv[aria-pressed="true"]{background:#d9e26b;color:#25290c}#bunker.ready{background:#116b6b;color:#fff;border-color:#116b6b}
 #discovery-log li.tow b{color:#b4632a}#discovery-log li.bunker b{color:#116b6b}#discovery-log li.radio b{color:#85683b;font-weight:600}
 @media(max-width:740px){.stats{gap:18px}.stats strong{font-size:23px}.map-help .craft button{padding:7px 9px;font-size:11px}}
+
+/* Live events: the chart legend, the ship card's event lines, the klaxon. */
+.map-bottom #navigation{flex:1}.legend-toggle{flex:none;align-self:center;background:none;border:1px solid #ffffff30;color:#e0eeee;border-radius:4px;padding:4px 8px;font-size:9px;letter-spacing:1px;line-height:1}.legend-toggle:hover{border-color:#e8c589}.legend-toggle[aria-expanded="true"]{background:#e8c589;color:#1b2a2c;border-color:#e8c589}
+#legend{position:absolute;left:14px;top:74px;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px 16px;background:#0e313bdf;border:1px solid #ffffff20;border-radius:6px;padding:10px 12px;font-size:11px;color:#e0eeee;max-height:62%;overflow:auto}
+.legend-item{display:flex;align-items:center;gap:8px;white-space:nowrap;padding:1px 0}#legend canvas{width:22px;height:22px;flex:none;background:#ddcca7;border-radius:3px;min-height:0}
+.events{margin-top:12px;font-size:11px;color:var(--muted)}.events div{padding:4px 0;border-top:1px solid var(--line)}.events .target{color:#85683b;font-weight:600}.events .mayday{color:#b3352b;font-weight:600}.events .alarm{color:#b3352b;font-weight:700}
+#toast.klaxon{background:#b3352b}
+@keyframes klaxon{0%,100%{box-shadow:0 8px 24px #51452b12}20%,60%{box-shadow:0 0 0 4px #e0392b,0 8px 40px #e0392b80}40%,80%{box-shadow:0 0 0 1px #e0392b60,0 8px 24px #51452b12}}.map-panel.alarm{animation:klaxon 2s ease-out}
+@media(max-width:740px){#legend{left:8px;top:66px;grid-template-columns:1fr;font-size:10px;max-height:50%}.legend-toggle{padding:4px 6px}}
