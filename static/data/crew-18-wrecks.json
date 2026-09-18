@@ -1,121 +1,515 @@
 {
   "provenance": {
-    "source": "Underway local history archive",
+    "compiled": "2026-09-18",
+    "source": "Arctic history archive published on the underway server, read-only",
     "files": [
       {
+        "path": "/data/underway_server/www/data/history/events.json",
+        "sha256": "805e0c563b07aa56a886f4b1292a0ed04a65509e0ed57f0f5832c7a6fc267c7d",
+        "idPrefix": "E"
+      },
+      {
+        "path": "/data/underway_server/www/data/history/artifacts.json",
+        "sha256": "b93b9f84d8bfaed5664f912a8e5c31fb08be6db952cde901f39c0e307a2f8aa0",
+        "idPrefix": "A"
+      },
+      {
         "path": "/data/underway_server/www/data/history/places.json",
-        "sha256": "bd4315070ceae8f7b759101a71d5bd8ff628eea353ca45a5a2dff3963ef1138e"
+        "sha256": "bd4315070ceae8f7b759101a71d5bd8ff628eea353ca45a5a2dff3963ef1138e",
+        "idPrefix": "P"
       },
       {
         "path": "/data/underway_server/www/data/history/vessels.json",
-        "sha256": "02020cec2e8c7ee16c4c4f8cfbb015563fd841198f6cd11fea43157250f544f9"
+        "sha256": "02020cec2e8c7ee16c4c4f8cfbb015563fd841198f6cd11fea43157250f544f9",
+        "idPrefix": "V"
+      },
+      {
+        "path": "static/data/world/world.bin.gz",
+        "sha256": "c904e3f07da5c2714850f241c1399251923fd57fa9c0da572732c1b444658e64",
+        "note": "GEBCO elevation on the game's 2 km grid, used for the depth of open-water sites"
       }
     ],
-    "coordinateMeaning": "Regional archive positions; Investigator is an approximate historic berth. Search-grid cells and sonar ranges are generated game geometry.",
-    "retrieved": "2026-09-18"
+    "positions": "lat/lon are the archive's published or recorded positions for the loss or the wreck; `positionNote` says how well each is fixed. Nothing here is a survey-grade wreck position.",
+    "depth": "`depth.m` is the seabed depth the search is played at. `depth.source` is `archive` (stated in the record), `gebco` (the world grid cell at the position, 2 km resolution) or `estimate` (a harbour or beach where the 2 km cell is land or the record gives no figure).",
+    "game": "The search box (`boxKm` across, generated game geometry sized to how well the position is fixed), the seabed texture inside it, the false contacts and the offset of the target from the datum are generated per wreck from a seed. `clue` paraphrases what the record says; `hint` is the compass sector the clue points to (`centre` for a well-fixed site, null when the record gives none) and the generated offset honours it. `hint.shore` puts a coastline on that side of the box.",
+    "sourceIds": "E = events.json id, A = artifacts.json id, P = places.json name, V = vessels.json name."
   },
-  "sites": [
+  "wrecks": [
     {
-      "ship": "HMS Erebus",
-      "place": "Wilmot and Crampton Bay",
-      "lat": 68.23,
-      "lon": -98.71,
-      "story": "Inuit accounts of a ship in Utjulik helped guide the search. Erebus was found in 2014 off the Adelaide Peninsula.",
-      "placeRecord": {
-        "name": "Wilmot and Crampton Bay",
-        "historic": "",
-        "inuktitut": "",
-        "lat": 68.23,
-        "lon": -98.71,
-        "kind": "wreck",
-        "note": "The wreck of HMS Erebus lies here in about 11 m of water off the Adelaide Peninsula, found on 2 September 2014. The area is closed to the public; Parks Canada gives a bounded protected zone rather than a position. The Inuit name for the district is Utjulik.",
-        "bibkey": "raymond2019qiniqtiryuaq",
-        "topic": "franklin-1845",
-        "page": "place/wilmot-and-crampton-bay"
+      "id": "fury",
+      "ship": "HMS Fury",
+      "kind": "bomb vessel, Royal Navy",
+      "year": 1825,
+      "date": "1825-08-25",
+      "lat": 72.71,
+      "lon": -91.83,
+      "place": "Fury Beach, Prince Regent Inlet",
+      "positionNote": "Parry's own fix, 72°42′30″N 91°50′05″W (E247). The hull broke up on the beach and nothing of it has been found since; the search is for what the ice pushed into the shallows.",
+      "depth": {
+        "m": 12,
+        "source": "estimate",
+        "note": "Beach and shallows; the GEBCO cell straddles the inlet (254 m) and does not describe the shore."
       },
-      "vesselRecord": {
-        "name": "HMS Erebus",
-        "kind": "bomb-vessel",
-        "kind_note": "",
-        "also": "",
-        "role": "Sir John Franklin's flagship, 1845-1848; earlier, with the Terror, James Clark Ross's Antarctic ship, 1839-1843",
-        "built": "1826, Pembroke Dock",
-        "lost": "abandoned off King William Island 22 April 1848; wreck found in Wilmot and Crampton Bay, 2 September 2014",
-        "affiliation": "Royal Navy",
-        "tonnage": "372 tons",
-        "note": "Fitted with a converted railway locomotive engine and a screw that could be lifted, steam heating, and three years of tinned provisions. She and the [[vessel:HMS Terror]] were last seen by whalers in Baffin Bay in July 1845. Inuit testimony collected by Rae, Hall and Schwatka describes a ship that sank in deep water and one that was boarded; the 2014 find in Utjulik matched the oral record. See [[topic:franklin-1845]], [[place:Wilmot and Crampton Bay]] and [[artifact:franklin-1845-001]].",
-        "topic": "vessels",
-        "kind_label": "bomb vessel",
-        "page": "vessel/hms-erebus"
-      }
+      "found": null,
+      "story": "Driven ashore on Somerset Island in August 1825 and abandoned with her stores under canvas; seven years later those stores kept John Ross's Victory crew alive.",
+      "clue": "Parry fixed the spot at 72°42′30″N 91°50′05″W. The ice drove her onto the beach, so whatever is left lies inshore, along the shore, not out in the inlet.",
+      "hint": {
+        "bearing": "W",
+        "shore": true
+      },
+      "sources": [
+        "E247",
+        "A:wrecks-disasters-010",
+        "A:ross-parry-025",
+        "P:Fury Beach",
+        "V:HMS Fury"
+      ],
+      "bibkey": "parry1826journal",
+      "boxKm": 3
     },
     {
-      "ship": "HMS Terror",
-      "place": "Terror Bay",
-      "lat": 68.9,
-      "lon": -98.93,
-      "story": "Sammy Kogvik of Gjoa Haven recalled a mast protruding through the ice. Terror was found in 2016 in the bay named for her.",
-      "placeRecord": {
-        "name": "Terror Bay",
-        "historic": "",
-        "inuktitut": "",
-        "lat": 68.9,
-        "lon": -98.93,
-        "kind": "wreck",
-        "note": "On the south-west coast of King William Island. The wreck of HMS Terror was found in the middle of the bay on 3 September 2016 in about 24 m of water. The bay was named in 1910, long before the ship was found in it. A large camp site with human remains was recorded on its shore by the search parties.",
-        "bibkey": "gilder1881schwatkas",
-        "topic": "franklin-1845",
-        "page": "place/terror-bay"
+      "id": "victory",
+      "ship": "Victory",
+      "kind": "paddle steamer, John Ross's private expedition",
+      "year": 1832,
+      "date": "1832-05-29",
+      "lat": 70.155,
+      "lon": -91.509,
+      "place": "Victoria Harbour, Boothia Peninsula",
+      "positionNote": "Position from James Clark Ross's magnetic table (A:ross-victory-054). Never seen again after 1832.",
+      "depth": {
+        "m": 8,
+        "source": "estimate",
+        "note": "A small harbour; the GEBCO cell is land."
       },
-      "vesselRecord": {
-        "name": "HMS Terror",
-        "kind": "bomb-vessel",
-        "kind_note": "",
-        "also": "",
-        "role": "Crozier's ship in the Franklin expedition, 1845-1848; earlier at Baffin Island under George Back, 1836-37, and in the Antarctic with the Erebus",
-        "built": "1813, Topsham, Devon",
-        "lost": "abandoned off King William Island 22 April 1848; wreck found in Terror Bay, 3 September 2016",
-        "affiliation": "Royal Navy",
-        "tonnage": "325 tons",
-        "note": "Older than the Erebus and already an ice veteran: Back nearly lost her in Frozen Strait in 1836-37 and brought her home sinking. Found in 2016 in the bay that had been named for her in 1910, before anyone knew she was in it, after Sammy Kogvik of Gjoa Haven told the searchers about a mast he had seen through the ice. See [[topic:franklin-1845]], [[place:Terror Bay]] and [[topic:inuit-oral-history]].",
-        "topic": "vessels",
-        "kind_label": "bomb vessel",
-        "page": "vessel/hms-terror"
-      }
+      "found": null,
+      "story": "Her engine useless from the first season, she spent four winters on the Boothia coast; on 29 May 1832 her colours were nailed to the mast and Ross went last over the side.",
+      "clue": "Fast in the harbour ice from 1830 and abandoned where she lay. Search the harbour itself, close under the shore, not the open coast outside it.",
+      "hint": {
+        "bearing": "E",
+        "shore": true
+      },
+      "sources": [
+        "E311",
+        "A:wrecks-disasters-011",
+        "A:ross-victory-054",
+        "V:Victory"
+      ],
+      "bibkey": "ross1835narrative",
+      "boxKm": 2
     },
     {
+      "id": "william-torr",
+      "ship": "William Torr",
+      "kind": "Hull whaler",
+      "year": 1835,
+      "date": "1835-12",
+      "lat": 66.9,
+      "lon": -61.5,
+      "place": "off Cape Fry, Davis Strait",
+      "positionNote": "Approximate. The archive pins the loss off Cape Fry from Inuit testimony (E673); the artifact record pins it at Cape Searle because the wreck position is not fixed (A:wrecks-disasters-021).",
+      "depth": {
+        "m": 79,
+        "source": "gebco"
+      },
+      "found": null,
+      "story": "Last seen 16 October 1835 drifting south in the pack; Inuit told Captain Harrison in 1840 that she was crushed off Cape Fry in December and that twenty-two sick men left ashore all died.",
+      "clue": "Last seen forty-five miles south-east of Cape Searle, drifting south in the pack, and crushed some weeks later. A ship crushed in a drifting pack goes down along the drift: look south of the datum.",
+      "hint": {
+        "bearing": "S"
+      },
+      "sources": [
+        "E673",
+        "A:wrecks-disasters-021",
+        "A:whaling-023",
+        "V:William Torr"
+      ],
+      "bibkey": "jones1950voyage",
+      "boxKm": 8
+    },
+    {
+      "id": "baffin-fair",
+      "ship": "a Baffin Fair whaler",
+      "kind": "one of nineteen or twenty whalers crushed together",
+      "year": 1830,
+      "date": "1830-06-19",
+      "lat": 75.17,
+      "lon": -60.5,
+      "place": "Melville Bay",
+      "positionNote": "Approximate: 'about 75 degrees 10 minutes north, 60 degrees 30 minutes west, some forty miles south of Cape York' (A:wrecks-disasters-017). No individual wreck has a fixed position; the named ships are listed in A:wrecks-disasters-044.",
+      "depth": {
+        "m": 528,
+        "source": "gebco"
+      },
+      "found": null,
+      "story": "The worst week the Davis Strait fishery ever had: a gale on 19 June 1830 drove the pack onto the fleet lying along the land floe, nineteen ships were crushed and a thousand men camped on the ice with no lives lost.",
+      "clue": "The fleet lay stem to stern against the land floe when the pack came in from seaward. The land ice, and Cape York, were to the north: the wrecks lie along the floe edge north of the datum.",
+      "hint": {
+        "bearing": "N"
+      },
+      "sources": [
+        "E2009",
+        "A:wrecks-disasters-017",
+        "A:wrecks-disasters-044",
+        "A:wrecks-disasters-018"
+      ],
+      "bibkey": "lindsay1911voyage",
+      "boxKm": 10
+    },
+    {
+      "id": "hecla-aberdeen",
+      "ship": "Hecla of Aberdeen",
+      "kind": "whaler",
+      "year": 1840,
+      "date": "1840-06-23",
+      "lat": 75.0,
+      "lon": -60.0,
+      "place": "Melville Bay",
+      "positionNote": "Approximate: the archive gives only Melville Bay (E1202).",
+      "depth": {
+        "m": 449,
+        "source": "gebco"
+      },
+      "found": null,
+      "story": "Crushed in Melville Bay on 23 June 1840 alongside the Bon Accord; the record says no more than that.",
+      "clue": "The record gives the bay and the date and nothing else. There is no clue to narrow the box; cover it.",
+      "hint": null,
+      "sources": [
+        "E1202",
+        "V:Hecla of Aberdeen"
+      ],
+      "bibkey": "mdonald1841narrative",
+      "boxKm": 10
+    },
+    {
+      "id": "maclellan",
+      "ship": "MacLellan",
+      "kind": "American whaler",
+      "year": 1852,
+      "date": "1852-07-08",
+      "lat": 75.9,
+      "lon": -63.0,
+      "place": "Melville Bay",
+      "positionNote": "Approximate; the archive places the loss in Melville Bay (E680). McDougall's plate of the loss is pinned at 75.0 −64.0 (A:mcclure-investigator-073).",
+      "depth": {
+        "m": 221,
+        "source": "gebco"
+      },
+      "found": null,
+      "story": "Leading a file of whalers and naval search ships through a crack in the ice she was nipped; two days later the repair was stove in and Belcher bought her for a hundred pounds for her oil and timber.",
+      "clue": "She was leading the file north through a crack toward Cape York when she was nipped, and went down in the same crack two days later. Look north of the datum, along the lead.",
+      "hint": {
+        "bearing": "N"
+      },
+      "sources": [
+        "E680",
+        "A:mcclure-investigator-073"
+      ],
+      "bibkey": "vaughan1986bowhead",
+      "boxKm": 8
+    },
+    {
+      "id": "investigator",
       "ship": "HMS Investigator",
-      "place": "Wreck of HMS Investigator",
+      "kind": "barque, Royal Navy",
+      "year": 1853,
+      "date": "1853-06-03",
       "lat": 74.117,
       "lon": -117.9,
-      "story": "Trapped at Mercy Bay, the crew left the ship in 1853. Parks Canada located the upright hull with side-scan sonar in 2010.",
-      "placeRecord": {
-        "name": "Wreck of HMS Investigator",
-        "historic": "",
-        "inuktitut": "",
-        "lat": 74.117,
-        "lon": -117.9,
-        "kind": "wreck",
-        "note": "On the bed of Mercy Bay, upright in about eleven metres of water with the upper deck about eight metres down, just outside the boundary of Aulavik National Park. Found by Parks Canada side-scan sonar in July 2010, dived in 2011, and surveyed again by remotely operated vehicle through two metres of sea ice in May 2026. The position given here is the ship's berth as reported in 1853 and is approximate to within a kilometre; Parks Canada has not published a precise wreck position.",
-        "bibkey": "parkscanada2026investigator",
-        "topic": "mcclure-investigator",
-        "page": "place/wreck-of-hms-investigator"
+      "place": "Mercy Bay, Banks Island",
+      "positionNote": "The archive's wreck-site pin (P:Wreck of HMS Investigator); Parks Canada located her in July 2010.",
+      "depth": {
+        "m": 11,
+        "source": "archive",
+        "note": "Upright in about eleven metres, the upper deck about eight metres down (E894)."
       },
-      "vesselRecord": {
-        "name": "HMS Investigator",
-        "kind": "barque",
-        "kind_note": "purchased into the Navy",
-        "also": "",
-        "role": "Robert McClure's ship, 1850-1853; the first vessel to be taken through the Northwest Passage, though not in one hull",
-        "built": "1848, Greenock",
-        "lost": "abandoned in the Bay of Mercy, Banks Island, 3 June 1853; wreck found on the bed of Mercy Bay by Parks Canada, July 2010",
-        "affiliation": "Royal Navy",
-        "tonnage": "422 tons",
-        "note": "McClure entered from Bering Strait, saw the last link of the passage from Banks Island in October 1850, and was then held three winters at Mercy Bay while his people starved. Lieutenant Bedford Pim walked over the ice from the [[vessel:HMS Resolute]] in April 1853 and the crew walked out to her. She sits upright in about eleven metres of water and was surveyed again by remotely operated vehicle in May 2026. See [[topic:mcclure-investigator]], [[place:Wreck of HMS Investigator]] and [[artifact:mcclure-investigator-023]].",
-        "topic": "vessels",
-        "kind_label": "barque",
-        "page": "vessel/hms-investigator"
-      }
+      "found": 2010,
+      "story": "McClure took her into Mercy Bay in September 1851 and never got her out; after three winters and two scurvy deaths, Bedford Pim walked in over the ice and the crew abandoned her for the Resolute.",
+      "clue": "Left at her winter berth in the bay with her colours flying. In 2010 side-scan sonar picked her up within fifteen minutes of the first line: she is close to where she was left, and the box is small.",
+      "hint": {
+        "bearing": "centre"
+      },
+      "sources": [
+        "E874",
+        "E894",
+        "A:wrecks-disasters-003",
+        "A:wrecks-disasters-004",
+        "P:Wreck of HMS Investigator",
+        "V:HMS Investigator"
+      ],
+      "bibkey": "parkscanada2026investigator",
+      "boxKm": 2
+    },
+    {
+      "id": "breadalbane",
+      "ship": "Breadalbane",
+      "kind": "barque, Admiralty transport",
+      "year": 1853,
+      "date": "1853-08-21",
+      "lat": 74.6833,
+      "lon": -91.85,
+      "place": "off Beechey Island, Barrow Strait",
+      "positionNote": "The rounded position published for the protected wreck site (P:Breadalbane wreck site). Found by side-scan sonar on 13 August 1980.",
+      "depth": {
+        "m": 100,
+        "source": "archive",
+        "note": "About 100 m (P:Breadalbane wreck site); the GEBCO cell gives 97 m."
+      },
+      "found": 1980,
+      "story": "Landing stores for Belcher's squadron with the Phoenix, she was nipped by a driving floe half a mile from Beechey Island and crushed in fifteen minutes; her people walked off onto the ice.",
+      "clue": "Nipped about half a mile from the island, and found in 1980 upright in about 100 m half a mile south of it. Search the deep water south of the island, not the shallows under it.",
+      "hint": {
+        "bearing": "S"
+      },
+      "sources": [
+        "E1961",
+        "A:wrecks-disasters-001",
+        "A:wrecks-disasters-002",
+        "A:wrecks-disasters-029",
+        "P:Breadalbane wreck site",
+        "V:Breadalbane"
+      ],
+      "bibkey": "mcdougall1857eventful",
+      "boxKm": 2.5
+    },
+    {
+      "id": "intrepid",
+      "ship": "HMS Intrepid",
+      "kind": "steam tender, Royal Navy",
+      "year": 1854,
+      "date": "1854-05-15",
+      "lat": 74.6928,
+      "lon": -101.3683,
+      "place": "Barrow Strait",
+      "positionNote": "The abandonment position, 74°41′N 101°22′W (E1973). The ship drifted in the pack afterwards and was never seen again; where she went down is unknown.",
+      "depth": {
+        "m": 122,
+        "source": "gebco"
+      },
+      "found": null,
+      "story": "Abandoned in the pack beside the Resolute on Belcher's written order; the Resolute drifted a thousand miles east and was found afloat sixteen months later, the Intrepid was never seen again.",
+      "clue": "Her consort drifted east the length of Barrow Strait and Lancaster Sound. If the Intrepid went down near where she was left, she lies east of the abandonment position, down the drift.",
+      "hint": {
+        "bearing": "E"
+      },
+      "sources": [
+        "E1973",
+        "E883",
+        "A:wrecks-disasters-023",
+        "A:wrecks-disasters-025",
+        "V:HMS Intrepid"
+      ],
+      "bibkey": "mcdougall1857eventful",
+      "boxKm": 10
+    },
+    {
+      "id": "assistance",
+      "ship": "HMS Assistance",
+      "kind": "barque, Royal Navy (with her tender Pioneer)",
+      "year": 1854,
+      "date": "1854-08-25",
+      "lat": 75.5206,
+      "lon": -92.3653,
+      "place": "off Cape Osborn, Wellington Channel",
+      "positionNote": "The abandonment position, 75°31′14″N 92°21′55″W (A:wrecks-disasters-024). Never seen again.",
+      "depth": {
+        "m": 77,
+        "source": "gebco"
+      },
+      "found": null,
+      "story": "Belcher's flagship, abandoned with the Pioneer in Wellington Channel with her colours nailed to the mast, 'as if we had encoffined some cherished object'.",
+      "clue": "Left in the pack of Wellington Channel, which streams south into Barrow Strait. A ship crushed in that drift lies south of where she was left.",
+      "hint": {
+        "bearing": "S"
+      },
+      "sources": [
+        "E955",
+        "A:wrecks-disasters-024",
+        "A:wrecks-disasters-026",
+        "V:HMS Assistance"
+      ],
+      "bibkey": "belcher1855last",
+      "boxKm": 6
+    },
+    {
+      "id": "advance",
+      "ship": "Advance",
+      "kind": "brig, Second Grinnell Expedition",
+      "year": 1855,
+      "date": "1855-05-20",
+      "lat": 78.6194,
+      "lon": -70.667,
+      "place": "Rensselaer Harbour, north-west Greenland",
+      "positionNote": "Rensselaer Harbour as pinned in the archive (E18). Never seen again.",
+      "depth": {
+        "m": 12,
+        "source": "estimate",
+        "note": "A small harbour; the GEBCO cell reads 2 m at the shore."
+      },
+      "found": null,
+      "story": "Kane's brig was frozen into Rensselaer Harbour for two winters; every man signed the paper to leave her, the flags were hoisted and hauled down, and the party walked once round the brig before setting off south by boat.",
+      "clue": "Frozen in at her winter berth inside a small, shoal harbour and abandoned there. The box is small; search close under the shore.",
+      "hint": {
+        "bearing": "N",
+        "shore": true
+      },
+      "sources": [
+        "E18",
+        "V:Advance"
+      ],
+      "bibkey": "kane1856arctic",
+      "boxKm": 2
+    },
+    {
+      "id": "polaris",
+      "ship": "Polaris",
+      "kind": "steamer, United States North Polar Expedition",
+      "year": 1872,
+      "date": "1872-10-16",
+      "lat": 78.37,
+      "lon": -72.87,
+      "place": "Life Boat Cove, Smith Sound",
+      "positionNote": "The archive's Life Boat Cove pin opposite Littleton Island (P:Life Boat Cove). The Tigress logged the winter camp at 78°23′N 73°46′W (E168), a different longitude; the pin is used here.",
+      "depth": {
+        "m": 65,
+        "source": "gebco"
+      },
+      "found": 1873,
+      "story": "Nipped in Smith Sound on 15 October 1872, she broke away from nineteen people left on a floe; the fourteen still aboard ran her into the land, wintered in a hut built from her, and the Tigress found her sunk the next August.",
+      "clue": "Run into the land at the cove and broken up by her people for a hut and a boat; the Tigress found her 'sunk about a mile and a half offshore'. Search offshore of the cove, to the west, out toward Littleton Island.",
+      "hint": {
+        "bearing": "W"
+      },
+      "sources": [
+        "E168",
+        "E160",
+        "A:wrecks-disasters-013",
+        "P:Life Boat Cove",
+        "V:Polaris"
+      ],
+      "bibkey": "blake1874arctic",
+      "boxKm": 4
+    },
+    {
+      "id": "proteus",
+      "ship": "Proteus",
+      "kind": "Newfoundland sealer, Greely relief",
+      "year": 1883,
+      "date": "1883-07-23",
+      "lat": 78.78,
+      "lon": -74.5,
+      "place": "Kane Basin, off Cape Sabine",
+      "positionNote": "Approximate: the gazetteer pin off Cape Sabine (A:wrecks-disasters-005); the event record pins Kane Basin at 79.0 −71.0 and says 'position approximate' (E419).",
+      "depth": {
+        "m": 30,
+        "source": "gebco",
+        "note": "The cell at the pin; the neighbourhood runs from the shore to 210 m."
+      },
+      "found": null,
+      "story": "Chartered to carry Garlington's party north to relieve Greely, she was nipped in Kane Basin and sank with most of her stores; the relief party's retreat left Greely's men to winter at Cape Sabine on almost nothing.",
+      "clue": "Nipped in the pack north-east of Cape Sabine and gone in the afternoon; the party retreated south by boat. The pack in Kane Basin sets south toward Smith Sound: look south of the datum.",
+      "hint": {
+        "bearing": "S"
+      },
+      "sources": [
+        "E419",
+        "A:wrecks-disasters-005",
+        "A:wrecks-disasters-039",
+        "V:Proteus"
+      ],
+      "bibkey": "greely1886three",
+      "boxKm": 8
+    },
+    {
+      "id": "windward",
+      "ship": "Windward",
+      "kind": "Dundee whaler, earlier Peary's expedition ship",
+      "year": 1907,
+      "date": "1907-06-26",
+      "lat": 76.72,
+      "lon": -72.75,
+      "place": "Carey Islands, Baffin Bay",
+      "positionNote": "The Carey Islands as pinned in the archive (E512). Which island she struck is not recorded.",
+      "depth": {
+        "m": 63,
+        "source": "gebco",
+        "note": "The cell at the pin; the islands' shoals run to the surface within 2 km."
+      },
+      "found": null,
+      "story": "The same Windward that carried Peary north in 1898, wrecked on the Carey Islands in June 1907; Captain Cooney and his crew sailed the boats to Pond Inlet.",
+      "clue": "Wrecked on the islands, not in the channel between them. A ship that strikes lies on the rocks she struck: search the shoal water against the shore, not the deep water offshore.",
+      "hint": {
+        "bearing": "E",
+        "shore": true
+      },
+      "sources": [
+        "E512",
+        "V:Windward"
+      ],
+      "bibkey": "bernier1909report",
+      "boxKm": 4
+    },
+    {
+      "id": "erebus",
+      "ship": "HMS Erebus",
+      "kind": "bomb vessel, Franklin's flagship",
+      "year": 1848,
+      "date": "1848-04-22",
+      "lat": 68.23,
+      "lon": -98.71,
+      "place": "Wilmot and Crampton Bay, Utjulik",
+      "positionNote": "The archive's wreck-site pin (P:Wilmot and Crampton Bay); Parks Canada publishes a protected zone, not a position. Found 2 September 2014.",
+      "depth": {
+        "m": 11,
+        "source": "archive",
+        "note": "About 11 m (P:Wilmot and Crampton Bay). The site lies just off the game's GEBCO grid."
+      },
+      "found": 2014,
+      "story": "Abandoned off King William Island in April 1848, she was found in 2014 on the second survey line of a search box moved south after a davit pintle turned up on the shore, in the water Inuit had pointed to since 1869.",
+      "clue": "In-nook-poo-zhee-jook pointed on McClintock's chart to the water just east of the north end of O'Reilly Island; the 2014 box was moved south to match the beach find. Search the eastern side, toward the peninsula.",
+      "hint": {
+        "bearing": "E"
+      },
+      "sources": [
+        "E78",
+        "E206",
+        "A:franklin-1845-016",
+        "A:wrecks-disasters-012",
+        "P:Wilmot and Crampton Bay",
+        "V:HMS Erebus"
+      ],
+      "bibkey": "parkscanada2023wrecks",
+      "boxKm": 3
+    },
+    {
+      "id": "terror",
+      "ship": "HMS Terror",
+      "kind": "bomb vessel, Franklin expedition",
+      "year": 1848,
+      "date": "1848-04-22",
+      "lat": 68.9,
+      "lon": -98.93,
+      "place": "Terror Bay, King William Island",
+      "positionNote": "The archive's wreck-site pin in the middle of the bay (P:Terror Bay). Found 3 September 2016.",
+      "depth": {
+        "m": 24,
+        "source": "archive",
+        "note": "About 24 m (P:Terror Bay)."
+      },
+      "found": 2016,
+      "story": "Sammy Kogvik of Uqsuqtuuq described a mast standing out of the ice in the bay; the Martin Bergmann turned aside, dropped a sonar and found a three-masted ship sitting upright in the middle of Terror Bay.",
+      "clue": "A mast standing out of the ice, seen from a snowmobile, in the middle of the bay. The wreck sits upright near the centre of the box.",
+      "hint": {
+        "bearing": "centre"
+      },
+      "sources": [
+        "E79",
+        "E208",
+        "P:Terror Bay",
+        "V:HMS Terror"
+      ],
+      "bibkey": "parkscanada2023wrecks",
+      "boxKm": 3
     }
   ]
 }
