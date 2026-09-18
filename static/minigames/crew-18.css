@@ -14,7 +14,8 @@ dialog:has(.c18-game) { max-width: 1160px; width: calc(100vw - 24px); max-height
 .c18-game .c18-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 330px); gap: 16px; align-items: start; }
 .c18-game .c18-stage { min-width: 0; }
 .c18-game canvas.c18-canvas { display: block; width: 100%; min-height: 0; height: auto; border-radius: 10px; background: #183b4a; touch-action: none; cursor: crosshair; }
-.c18-game[data-phase="chart"] canvas.c18-canvas { cursor: pointer; }
+.c18-game[data-phase="pick"] canvas.c18-canvas { cursor: pointer; }
+.c18-game[data-phase="steaming"] canvas.c18-canvas { cursor: default; }
 .c18-game .c18-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 11px; color: var(--c18-muted); margin-top: 8px; align-items: center; }
 .c18-game .c18-legend span { display: inline-flex; align-items: center; gap: 5px; }
 .c18-game .c18-legend i { width: 14px; height: 14px; border-radius: 3px; border: 1px solid #0003; display: inline-block; }
@@ -25,10 +26,14 @@ dialog:has(.c18-game) { max-width: 1160px; width: calc(100vw - 24px); max-height
 .c18-game .c18-list button span { color: var(--c18-muted); font-variant-numeric: tabular-nums; }
 .c18-game .c18-list button small { grid-column: 1 / -1; display: block; font-size: 10.5px; color: var(--c18-muted); }
 .c18-game .c18-list button.c18-picked { background: #dcefe8; outline: 2px solid var(--c18-teal); outline-offset: -2px; }
+.c18-game .c18-warn { color: var(--c18-amber); }
+.c18-game .c18-list button small.c18-warn { font-weight: 600; }
 .c18-game .c18-story { font-size: 12.5px; }
 .c18-game .c18-story b { display: block; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c18-teal); margin-bottom: 3px; }
 .c18-game .c18-story p { margin: 0 0 6px; }
 .c18-game .c18-story small { display: block; color: var(--c18-muted); font-size: 11px; line-height: 1.4; }
+.c18-game .c18-story .c18-clue { margin: 4px 0 8px; }
+.c18-game .c18-story small.c18-warn { color: var(--c18-amber); margin-top: 4px; }
 .c18-game .c18-clue { padding: 9px 12px; border-left: 5px solid var(--c18-amber); background: #fbf4e8; border-radius: 0 10px 10px 0; font-size: 12.5px; line-height: 1.45; }
 .c18-game .c18-clue b { display: block; font-size: 10px; letter-spacing: 1.4px; color: var(--c18-amber); margin-bottom: 3px; }
 .c18-game .c18-readouts { margin: 0; display: grid; gap: 3px; }
