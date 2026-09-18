@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generated": "2026-09-17T23:33:50+00:00",
+ "generated": "2026-09-18T12:16:09+00:00",
  "generator": "tools/pull_world.py",
  "projection": {
   "name": "WGS84 polar stereographic, north",
@@ -11,27 +11,28 @@
   "f": 0.0033528106647474805
  },
  "grid": {
-  "cols": 1300,
-  "rows": 900,
-  "resolution": 2000,
-  "xmin": -1300000,
-  "ymin": -2400000,
-  "xmax": 1300000,
-  "ymax": -600000,
+  "cols": 3080,
+  "rows": 1560,
+  "resolution": 3000,
+  "xmin": -4620000,
+  "ymin": -4620000,
+  "xmax": 4620000,
+  "ymax": 60000,
   "origin": "top-left cell first, rows run north to south",
+  "sector": "longitude 0-180 W, latitude 50-90 N, the pole inside; the corners of the rectangle reach further south",
   "lonLatWindow": [
-   -155.225,
-   65.651,
-   -24.775,
-   84.573
+   -180.0,
+   35.269,
+   180.0,
+   90.0
   ]
  },
  "data": {
   "file": "world.bin.gz",
   "compression": "gzip",
-  "bytes": 1346820,
-  "rawBytes": 5850000,
-  "sha256": "c904e3f07da5c2714850f241c1399251923fd57fa9c0da572732c1b444658e64",
+  "bytes": 5720714,
+  "rawBytes": 24024000,
+  "sha256": "0e4c0aeecb3f090d7af5507a2ecb5fc8a286a090643674ac505fc67fb8bf6c9e",
   "byteOrder": "little-endian",
   "layers": [
    {
@@ -39,28 +40,28 @@
     "dtype": "int16",
     "encoding": "row-delta",
     "offset": 0,
-    "bytes": 2340000
+    "bytes": 9609600
    },
    {
     "name": "iceConcentration",
     "dtype": "uint8",
     "encoding": "raw",
-    "offset": 2340000,
-    "bytes": 1170000
+    "offset": 9609600,
+    "bytes": 4804800
    },
    {
     "name": "iceClass",
     "dtype": "uint8",
     "encoding": "raw",
-    "offset": 3510000,
-    "bytes": 1170000
+    "offset": 14414400,
+    "bytes": 4804800
    },
    {
     "name": "glacier",
     "dtype": "uint8",
     "encoding": "raw",
-    "offset": 4680000,
-    "bytes": 1170000
+    "offset": 19219200,
+    "bytes": 4804800
    }
   ]
  },
@@ -68,7 +69,7 @@
   "elevation": "metres; land is >= 1, water is <= -2",
   "iceConcentration": "percent of the sea surface (CIS total concentration, tenths x 10); 255 = land or no chart",
   "iceClass": "index into ice.classes: stage of development and floe form of the dominant partial concentration",
-  "glacier": "1 where Natural Earth maps glacier or ice cap over land"
+  "glacier": "1 where Natural Earth maps glacier or ice cap over land, within longitude -150 to -15 only"
  },
  "ice": {
   "classes": [
@@ -154,519 +155,6292 @@
  },
  "places": [
   {
+   "name": "Aalatsivik",
+   "lon": -52.8333,
+   "lat": 68.1667,
+   "pop": 0
+  },
+  {
    "name": "Aallaaniarfinnguaq",
    "lon": -54.5833,
-   "lat": 70.7
+   "lat": 70.7,
+   "pop": 0
   },
   {
    "name": "Aappilattoq",
    "lon": -55.6,
-   "lat": 72.8833
+   "lat": 72.8833,
+   "pop": 149
+  },
+  {
+   "name": "Aappilattoq",
+   "lon": -44.285,
+   "lat": 60.1503,
+   "pop": 100
+  },
+  {
+   "name": "Aappilattorq",
+   "lon": -44.5,
+   "lat": 60.1667,
+   "pop": 0
+  },
+  {
+   "name": "Aasiaat",
+   "lon": -52.8637,
+   "lat": 68.7087,
+   "pop": 3005
+  },
+  {
+   "name": "Aasivik",
+   "lon": -49.3333,
+   "lat": 62.2,
+   "pop": 0
+  },
+  {
+   "name": "Abram-Village",
+   "lon": -64.082,
+   "lat": 46.4501,
+   "pop": 340
+  },
+  {
+   "name": "Adeytown",
+   "lon": -53.934,
+   "lat": 48.0744,
+   "pop": 307
+  },
+  {
+   "name": "Admirals Beach",
+   "lon": -53.6362,
+   "lat": 47.0088,
+   "pop": 97
+  },
+  {
+   "name": "Aguanish",
+   "lon": -62.0818,
+   "lat": 50.2168,
+   "pop": 245
+  },
+  {
+   "name": "Akuliaruseq",
+   "lon": -45.4833,
+   "lat": 60.4667,
+   "pop": 7
+  },
+  {
+   "name": "Akulivik",
+   "lon": -78.1993,
+   "lat": 60.8006,
+   "pop": 642
+  },
+  {
+   "name": "Akulliit",
+   "lon": -51.25,
+   "lat": 68.6667,
+   "pop": 0
+  },
+  {
+   "name": "Akulliit",
+   "lon": -53.3333,
+   "lat": 68.3833,
+   "pop": 0
+  },
+  {
+   "name": "Akunnaaq",
+   "lon": -52.3299,
+   "lat": 68.7442,
+   "pop": 66
+  },
+  {
+   "name": "Alberton",
+   "lon": -64.0654,
+   "lat": 46.8169,
+   "pop": 1301
   },
   {
    "name": "Alert",
    "lon": -62.3473,
-   "lat": 82.5017
+   "lat": 82.5017,
+   "pop": 0
+  },
+  {
+   "name": "Alert Bay",
+   "lon": -126.9271,
+   "lat": 50.5838,
+   "pop": 449
+  },
+  {
+   "name": "Alexandra",
+   "lon": -63.0306,
+   "lat": 46.1959,
+   "pop": 252
   },
   {
    "name": "Alexandra Fiord",
    "lon": -75.7966,
-   "lat": 78.8852
+   "lat": 78.8852,
+   "pop": 0
+  },
+  {
+   "name": "Alluitsup Paa",
+   "lon": -45.5695,
+   "lat": 60.4627,
+   "pop": 202
+  },
+  {
+   "name": "Alnwick",
+   "lon": -65.1806,
+   "lat": 47.2157,
+   "pop": 3575
+  },
+  {
+   "name": "Amadjuak",
+   "lon": -72.6483,
+   "lat": 64.0173,
+   "pop": 0
+  },
+  {
+   "name": "Amherst",
+   "lon": -64.1987,
+   "lat": 45.8334,
+   "pop": 9404
+  },
+  {
+   "name": "Ammassivik",
+   "lon": -45.3863,
+   "lat": 60.5967,
+   "pop": 32
+  },
+  {
+   "name": "Anchor Point",
+   "lon": -56.7981,
+   "lat": 51.2334,
+   "pop": 305
+  },
+  {
+   "name": "Anderson River",
+   "lon": -128.9812,
+   "lat": 69.7064,
+   "pop": 0
+  },
+  {
+   "name": "Anmore",
+   "lon": -122.8526,
+   "lat": 49.3164,
+   "pop": 2210
+  },
+  {
+   "name": "Anorliuitsoq",
+   "lon": -44.2167,
+   "lat": 60.0833,
+   "pop": 0
+  },
+  {
+   "name": "Anse-Bleue",
+   "lon": -65.0815,
+   "lat": 47.8283,
+   "pop": 338
+  },
+  {
+   "name": "Apex",
+   "lon": -68.4467,
+   "lat": 63.7228,
+   "pop": 0
   },
   {
    "name": "Appaarsuit",
    "lon": -72.6667,
-   "lat": 77.4167
+   "lat": 77.4167,
+   "pop": 0
+  },
+  {
+   "name": "Appamiut",
+   "lon": -53.1833,
+   "lat": 65.6667,
+   "pop": 0
+  },
+  {
+   "name": "Appat",
+   "lon": -52.1667,
+   "lat": 70.9167,
+   "pop": 0
+  },
+  {
+   "name": "Aputiteeq",
+   "lon": -32.2833,
+   "lat": 67.7833,
+   "pop": 0
+  },
+  {
+   "name": "Aqisserniaq",
+   "lon": -53.6,
+   "lat": 67.8667,
+   "pop": 0
+  },
+  {
+   "name": "Aquaforte",
+   "lon": -52.955,
+   "lat": 47.008,
+   "pop": 74
+  },
+  {
+   "name": "Aquiatulavik Point",
+   "lon": -74.6984,
+   "lat": 64.3674,
+   "pop": 0
   },
   {
    "name": "Arctic Bay",
    "lon": -85.1506,
-   "lat": 73.0375
+   "lat": 73.0375,
+   "pop": 841
+  },
+  {
+   "name": "Ardmore",
+   "lon": -123.4693,
+   "lat": 48.6385,
+   "pop": 1014
+  },
+  {
+   "name": "Arnold's Cove",
+   "lon": -53.987,
+   "lat": 47.7693,
+   "pop": 916
+  },
+  {
+   "name": "Arsivik",
+   "lon": -50.7,
+   "lat": 69.85,
+   "pop": 0
+  },
+  {
+   "name": "Arsuk",
+   "lon": -48.4512,
+   "lat": 61.1746,
+   "pop": 73
+  },
+  {
+   "name": "Arviat",
+   "lon": -94.0585,
+   "lat": 61.1088,
+   "pop": 2864
+  },
+  {
+   "name": "Aspen Cove",
+   "lon": -54.1014,
+   "lat": 49.4574,
+   "pop": 215
+  },
+  {
+   "name": "Assaqutaq",
+   "lon": -53.4667,
+   "lat": 66.9167,
+   "pop": 0
+  },
+  {
+   "name": "Ataa",
+   "lon": -50.95,
+   "lat": 69.7667,
+   "pop": 0
+  },
+  {
+   "name": "Atammik",
+   "lon": -52.2167,
+   "lat": 64.8,
+   "pop": 196
+  },
+  {
+   "name": "Atholville",
+   "lon": -66.7125,
+   "lat": 47.9894,
+   "pop": 3290
+  },
+  {
+   "name": "Attu",
+   "lon": -53.6236,
+   "lat": 67.941,
+   "pop": 203
+  },
+  {
+   "name": "Aupaluk",
+   "lon": -69.5985,
+   "lat": 59.3004,
+   "pop": 233
+  },
+  {
+   "name": "Avondale",
+   "lon": -53.1981,
+   "lat": 47.4166,
+   "pop": 584
+  },
+  {
+   "name": "Baddeck",
+   "lon": -60.7485,
+   "lat": 46.1001,
+   "pop": 818
+  },
+  {
+   "name": "Baie Ste. Anne",
+   "lon": -64.9536,
+   "lat": 47.0523,
+   "pop": 1319
+  },
+  {
+   "name": "Baie Verte",
+   "lon": -64.1032,
+   "lat": 46.0148,
+   "pop": 421
+  },
+  {
+   "name": "Baie du Petit-Pokemouche",
+   "lon": -64.7338,
+   "lat": 47.7069,
+   "pop": 162
+  },
+  {
+   "name": "Baie-Comeau",
+   "lon": -68.1489,
+   "lat": 49.2168,
+   "pop": 21536
+  },
+  {
+   "name": "Baie-Sainte-Catherine",
+   "lon": -69.7283,
+   "lat": 48.1062,
+   "pop": 200
+  },
+  {
+   "name": "Baie-Trinité",
+   "lon": -67.304,
+   "lat": 49.42,
+   "pop": 419
+  },
+  {
+   "name": "Baine Harbour",
+   "lon": -54.8983,
+   "lat": 47.3666,
+   "pop": 126
+  },
+  {
+   "name": "Balls Creek",
+   "lon": -60.3112,
+   "lat": 46.15,
+   "pop": 757
+  },
+  {
+   "name": "Bamfield",
+   "lon": -125.1402,
+   "lat": 48.8358,
+   "pop": 251
+  },
+  {
+   "name": "Barryville-New Jersey",
+   "lon": -65.2242,
+   "lat": 47.1829,
+   "pop": 214
+  },
+  {
+   "name": "Bas-Caraquet",
+   "lon": -64.832,
+   "lat": 47.8006,
+   "pop": 1311
+  },
+  {
+   "name": "Bathurst",
+   "lon": -65.6511,
+   "lat": 47.6181,
+   "pop": 11897
+  },
+  {
+   "name": "Bathurst Inlet",
+   "lon": -108.102,
+   "lat": 66.861,
+   "pop": 0
+  },
+  {
+   "name": "Bauline",
+   "lon": -52.8314,
+   "lat": 47.7166,
+   "pop": 412
+  },
+  {
+   "name": "Bay Bulls",
+   "lon": -52.8147,
+   "lat": 47.3166,
+   "pop": 1566
+  },
+  {
+   "name": "Bay L'Argent",
+   "lon": -54.8982,
+   "lat": 47.5499,
+   "pop": 234
+  },
+  {
+   "name": "Bay Roberts",
+   "lon": -53.2648,
+   "lat": 47.5999,
+   "pop": 6012
+  },
+  {
+   "name": "Bay St. George South",
+   "lon": -58.8416,
+   "lat": 48.2278,
+   "pop": 1103
+  },
+  {
+   "name": "Bay de Verde",
+   "lon": -52.898,
+   "lat": 48.0832,
+   "pop": 347
+  },
+  {
+   "name": "Bayfield",
+   "lon": -63.8177,
+   "lat": 46.1368,
+   "pop": 42
+  },
+  {
+   "name": "Baytona",
+   "lon": -54.7648,
+   "lat": 49.3332,
+   "pop": 251
+  },
+  {
+   "name": "Beachside",
+   "lon": -55.8982,
+   "lat": 49.6333,
+   "pop": 73
+  },
+  {
+   "name": "Beaubassin East",
+   "lon": -64.418,
+   "lat": 46.2092,
+   "pop": 6718
+  },
+  {
+   "name": "Beausoleil",
+   "lon": -64.6033,
+   "lat": 46.2983,
+   "pop": 8620
+  },
+  {
+   "name": "Belcarra",
+   "lon": -122.9304,
+   "lat": 49.3178,
+   "pop": 687
+  },
+  {
+   "name": "Belfast",
+   "lon": -62.882,
+   "lat": 46.0834,
+   "pop": 1687
+  },
+  {
+   "name": "Bella Bella",
+   "lon": -128.144,
+   "lat": 52.1631,
+   "pop": 1193
+  },
+  {
+   "name": "Bella Coola",
+   "lon": -126.7539,
+   "lat": 52.3718,
+   "pop": 2163
+  },
+  {
+   "name": "Bellburns",
+   "lon": -57.5316,
+   "lat": 50.3333,
+   "pop": 52
+  },
+  {
+   "name": "Belle-Baie",
+   "lon": -65.745,
+   "lat": 47.7653,
+   "pop": 14335
+  },
+  {
+   "name": "Belledune",
+   "lon": -65.8113,
+   "lat": 47.8858,
+   "pop": 1325
+  },
+  {
+   "name": "Belleoram",
+   "lon": -55.415,
+   "lat": 47.5166,
+   "pop": 348
+  },
+  {
+   "name": "Bellevue",
+   "lon": -53.7314,
+   "lat": 47.6332,
+   "pop": 237
+  },
+  {
+   "name": "Bellevue Beach",
+   "lon": -53.7751,
+   "lat": 47.6157,
+   "pop": 87
+  },
+  {
+   "name": "Benoit",
+   "lon": -64.9608,
+   "lat": 47.4864,
+   "pop": 161
+  },
+  {
+   "name": "Beresford",
+   "lon": -65.6989,
+   "lat": 47.6913,
+   "pop": 4294
+  },
+  {
+   "name": "Bertrand",
+   "lon": -65.0655,
+   "lat": 47.7567,
+   "pop": 1153
+  },
+  {
+   "name": "Betsiamites",
+   "lon": -68.646,
+   "lat": 48.9413,
+   "pop": 2428
+  },
+  {
+   "name": "Bide Arm",
+   "lon": -56.0981,
+   "lat": 50.8168,
+   "pop": 192
+  },
+  {
+   "name": "Big River",
+   "lon": -65.674,
+   "lat": 47.5786,
+   "pop": 791
+  },
+  {
+   "name": "Birchy Bay",
+   "lon": -54.7314,
+   "lat": 49.3499,
+   "pop": 511
+  },
+  {
+   "name": "Bird Cove",
+   "lon": -56.9314,
+   "lat": 51.0501,
+   "pop": 175
+  },
+  {
+   "name": "Bishop's Cove",
+   "lon": -53.2317,
+   "lat": 47.6363,
+   "pop": 252
+  },
+  {
+   "name": "Black Duck Brook and Winterhouse",
+   "lon": -58.9135,
+   "lat": 48.6956,
+   "pop": 172
+  },
+  {
+   "name": "Black Duck Cove",
+   "lon": -56.7969,
+   "lat": 51.1942,
+   "pop": 155
+  },
+  {
+   "name": "Black River-Hardwicke",
+   "lon": -65.2076,
+   "lat": 47.0212,
+   "pop": 1067
+  },
+  {
+   "name": "Blaketown",
+   "lon": -53.5648,
+   "lat": 47.4832,
+   "pop": 605
+  },
+  {
+   "name": "Bloomfield",
+   "lon": -53.8981,
+   "lat": 48.3832,
+   "pop": 523
+  },
+  {
+   "name": "Boat Harbour",
+   "lon": -54.8453,
+   "lat": 47.431,
+   "pop": 73
+  },
+  {
+   "name": "Bois-Joli",
+   "lon": -66.5116,
+   "lat": 47.991,
+   "pop": 3900
+  },
+  {
+   "name": "Bonaventure",
+   "lon": -65.4926,
+   "lat": 48.0457,
+   "pop": 2673
+  },
+  {
+   "name": "Bonavista",
+   "lon": -53.1147,
+   "lat": 48.6499,
+   "pop": 3448
+  },
+  {
+   "name": "Borden-Carleton",
+   "lon": -63.6726,
+   "lat": 46.2618,
+   "pop": 788
+  },
+  {
+   "name": "Botwood",
+   "lon": -55.3482,
+   "lat": 49.1499,
+   "pop": 2778
+  },
+  {
+   "name": "Bouctouche",
+   "lon": -64.7391,
+   "lat": 46.4684,
+   "pop": 2361
+  },
+  {
+   "name": "Boudreau-Ouest",
+   "lon": -64.4895,
+   "lat": 46.2268,
+   "pop": 360
+  },
+  {
+   "name": "Bowen Island",
+   "lon": -123.3362,
+   "lat": 49.3847,
+   "pop": 4256
+  },
+  {
+   "name": "Bowser",
+   "lon": -124.6886,
+   "lat": 49.4447,
+   "pop": 1729
+  },
+  {
+   "name": "Boyd's Cove",
+   "lon": -54.6593,
+   "lat": 49.4419,
+   "pop": 187
+  },
+  {
+   "name": "Branch",
+   "lon": -53.9481,
+   "lat": 46.8832,
+   "pop": 223
+  },
+  {
+   "name": "Brantville",
+   "lon": -64.9712,
+   "lat": 47.3692,
+   "pop": 891
+  },
+  {
+   "name": "Bras d'Or",
+   "lon": -60.2895,
+   "lat": 46.2533,
+   "pop": 91
+  },
+  {
+   "name": "Brent's Cove",
+   "lon": -55.7148,
+   "lat": 49.9333,
+   "pop": 119
+  },
+  {
+   "name": "Brentwood Bay",
+   "lon": -123.4526,
+   "lat": 48.5829,
+   "pop": 7581
+  },
+  {
+   "name": "Bridgeport",
+   "lon": -54.8726,
+   "lat": 49.5515,
+   "pop": 99
+  },
+  {
+   "name": "Brig Bay",
+   "lon": -56.9148,
+   "lat": 51.0668,
+   "pop": 101
+  },
+  {
+   "name": "Brighton",
+   "lon": -55.6315,
+   "lat": 49.5499,
+   "pop": 163
+  },
+  {
+   "name": "Brigus",
+   "lon": -53.2106,
+   "lat": 47.5249,
+   "pop": 699
+  },
+  {
+   "name": "Britannia Beach",
+   "lon": -123.2048,
+   "lat": 49.6274,
+   "pop": 384
+  },
+  {
+   "name": "Brule Shore",
+   "lon": -63.2379,
+   "lat": 45.7407,
+   "pop": 592
+  },
+  {
+   "name": "Bryant's Cove",
+   "lon": -53.1898,
+   "lat": 47.6763,
+   "pop": 343
+  },
+  {
+   "name": "Bunyan's Cove",
+   "lon": -54.0179,
+   "lat": 48.396,
+   "pop": 330
+  },
+  {
+   "name": "Burgeo",
+   "lon": -57.6152,
+   "lat": 47.6167,
+   "pop": 1307
+  },
+  {
+   "name": "Burgoyne's Cove",
+   "lon": -53.7157,
+   "lat": 48.1712,
+   "pop": 126
+  },
+  {
+   "name": "Burin",
+   "lon": -55.1907,
+   "lat": 47.0829,
+   "pop": 2237
+  },
+  {
+   "name": "Burlington",
+   "lon": -56.0149,
+   "lat": 49.75,
+   "pop": 304
+  },
+  {
+   "name": "Burnaby",
+   "lon": -122.9526,
+   "lat": 49.2664,
+   "pop": 249125
+  },
+  {
+   "name": "Burnside",
+   "lon": -53.7981,
+   "lat": 48.7166,
+   "pop": 79
+  },
+  {
+   "name": "Burnt Church",
+   "lon": -65.1396,
+   "lat": 47.1989,
+   "pop": 1715
+  },
+  {
+   "name": "Burnt Cove",
+   "lon": -52.8481,
+   "lat": 47.1999,
+   "pop": 260
+  },
+  {
+   "name": "Burnt Islands",
+   "lon": -58.8819,
+   "lat": 47.6,
+   "pop": 540
+  },
+  {
+   "name": "Burquitlam",
+   "lon": -122.8833,
+   "lat": 49.2667,
+   "pop": 14896
+  },
+  {
+   "name": "Cacouna",
+   "lon": -69.5005,
+   "lat": 47.9166,
+   "pop": 1939
   },
   {
    "name": "Cambridge Bay",
    "lon": -105.0548,
-   "lat": 69.1149
+   "lat": 69.1149,
+   "pop": 1760
+  },
+  {
+   "name": "Camp Lloyd",
+   "lon": -50.9292,
+   "lat": 66.9727,
+   "pop": 0
+  },
+  {
+   "name": "Campbell River",
+   "lon": -125.2446,
+   "lat": 50.0163,
+   "pop": 33430
+  },
+  {
+   "name": "Campbellton",
+   "lon": -66.6727,
+   "lat": 48.0075,
+   "pop": 6883
+  },
+  {
+   "name": "Campbellton",
+   "lon": -54.9314,
+   "lat": 49.2832,
+   "pop": 459
+  },
+  {
+   "name": "Cap-Acadie",
+   "lon": -64.3242,
+   "lat": 46.2014,
+   "pop": 9165
+  },
+  {
+   "name": "Cap-Bateau",
+   "lon": -64.5375,
+   "lat": 47.812,
+   "pop": 229
+  },
+  {
+   "name": "Cap-Chat",
+   "lon": -66.6851,
+   "lat": 49.0974,
+   "pop": 1466
+  },
+  {
+   "name": "Cap-Pele",
+   "lon": -64.2784,
+   "lat": 46.2129,
+   "pop": 2441
+  },
+  {
+   "name": "Cap-aux-Meules",
+   "lon": -61.8597,
+   "lat": 47.3821,
+   "pop": 12190
+  },
+  {
+   "name": "Cap-de-Richibucto",
+   "lon": -64.7793,
+   "lat": 46.5946,
+   "pop": 1067
+  },
+  {
+   "name": "Cape Broyle",
+   "lon": -52.9532,
+   "lat": 47.0986,
+   "pop": 499
   },
   {
    "name": "Cape Dyer",
    "lon": -61.3583,
-   "lat": 66.6658
+   "lat": 66.6658,
+   "pop": 0
   },
   {
    "name": "Cape Parry",
    "lon": -124.6718,
-   "lat": 70.1505
+   "lat": 70.1505,
+   "pop": 0
+  },
+  {
+   "name": "Cape Smith",
+   "lon": -78.4661,
+   "lat": 60.7339,
+   "pop": 0
+  },
+  {
+   "name": "Cape St. George",
+   "lon": -59.177,
+   "lat": 48.4918,
+   "pop": 809
+  },
+  {
+   "name": "Cape Tormentine",
+   "lon": -63.7924,
+   "lat": 46.1272,
+   "pop": 97
+  },
+  {
+   "name": "Caplan",
+   "lon": -65.6843,
+   "lat": 48.1026,
+   "pop": 1966
+  },
+  {
+   "name": "Caraquet",
+   "lon": -64.9386,
+   "lat": 47.7941,
+   "pop": 4285
+  },
+  {
+   "name": "Carbonear",
+   "lon": -53.2272,
+   "lat": 47.7392,
+   "pop": 4838
+  },
+  {
+   "name": "Cardigan",
+   "lon": -62.6153,
+   "lat": 46.2334,
+   "pop": 269
+  },
+  {
+   "name": "Caribou",
+   "lon": -62.6964,
+   "lat": 45.7328,
+   "pop": 103
+  },
+  {
+   "name": "Carleton",
+   "lon": -66.1196,
+   "lat": 48.1025,
+   "pop": 1101
+  },
+  {
+   "name": "Carleton-sur-Mer",
+   "lon": -66.128,
+   "lat": 48.1075,
+   "pop": 4077
+  },
+  {
+   "name": "Carmanville",
+   "lon": -54.2981,
+   "lat": 49.3999,
+   "pop": 784
+  },
+  {
+   "name": "Cartwright",
+   "lon": -57.018,
+   "lat": 53.7082,
+   "pop": 439
+  },
+  {
+   "name": "Catalina",
+   "lon": -53.0814,
+   "lat": 48.5166,
+   "pop": 845
+  },
+  {
+   "name": "Cavendish",
+   "lon": -63.382,
+   "lat": 46.4834,
+   "pop": 323
+  },
+  {
+   "name": "Cavendish",
+   "lon": -53.4814,
+   "lat": 47.7166,
+   "pop": 301
+  },
+  {
+   "name": "Cedar",
+   "lon": -123.8527,
+   "lat": 49.1163,
+   "pop": 2836
+  },
+  {
+   "name": "Central Bedeque",
+   "lon": -63.6987,
+   "lat": 46.3334,
+   "pop": 159
+  },
+  {
+   "name": "Central Saanich",
+   "lon": -123.4193,
+   "lat": 48.5663,
+   "pop": 17385
+  },
+  {
+   "name": "Centreville-Wareham-Trinity",
+   "lon": -53.889,
+   "lat": 49.011,
+   "pop": 1116
+  },
+  {
+   "name": "Chance Cove",
+   "lon": -53.8314,
+   "lat": 47.6832,
+   "pop": 213
+  },
+  {
+   "name": "Chandler",
+   "lon": -64.6793,
+   "lat": 48.3494,
+   "pop": 7914
+  },
+  {
+   "name": "Channel-Port aux Basques",
+   "lon": -59.1381,
+   "lat": 47.5729,
+   "pop": 3547
+  },
+  {
+   "name": "Chapel Arm",
+   "lon": -53.6693,
+   "lat": 47.5169,
+   "pop": 446
+  },
+  {
+   "name": "Charlo",
+   "lon": -66.3287,
+   "lat": 48.0007,
+   "pop": 1323
+  },
+  {
+   "name": "Charlottetown",
+   "lon": -63.1256,
+   "lat": 46.2346,
+   "pop": 38809
+  },
+  {
+   "name": "Charlottetown",
+   "lon": -56.1201,
+   "lat": 52.7696,
+   "pop": 292
+  },
+  {
+   "name": "Charlottetown",
+   "lon": -54.0148,
+   "lat": 48.4332,
+   "pop": 227
+  },
+  {
+   "name": "Charlton Depot",
+   "lon": -79.3161,
+   "lat": 51.9669,
+   "pop": 0
+  },
+  {
+   "name": "Chemainus",
+   "lon": -123.7194,
+   "lat": 48.9163,
+   "pop": 3021
+  },
+  {
+   "name": "Cherry Point",
+   "lon": -123.5587,
+   "lat": 48.7122,
+   "pop": 582
+  },
+  {
+   "name": "Chesterfield Inlet",
+   "lon": -90.705,
+   "lat": 63.3421,
+   "pop": 397
+  },
+  {
+   "name": "Chiasson-Savoy",
+   "lon": -64.656,
+   "lat": 47.7459,
+   "pop": 462
+  },
+  {
+   "name": "Churchill",
+   "lon": -94.1667,
+   "lat": 58.7681,
+   "pop": 899
+  },
+  {
+   "name": "Chute-aux-Outardes",
+   "lon": -68.399,
+   "lat": 49.1168,
+   "pop": 2000
+  },
+  {
+   "name": "Clarenville",
+   "lon": -53.9648,
+   "lat": 48.1666,
+   "pop": 6704
+  },
+  {
+   "name": "Clarenville-Shoal Harbour",
+   "lon": -53.9698,
+   "lat": 48.1805,
+   "pop": 3478
+  },
+  {
+   "name": "Clarke's Beach",
+   "lon": -53.2839,
+   "lat": 47.5425,
+   "pop": 1400
   },
   {
    "name": "Clyde River",
    "lon": -68.5899,
-   "lat": 70.4723
+   "lat": 70.4723,
+   "pop": 1181
+  },
+  {
+   "name": "Clyde River",
+   "lon": -63.2654,
+   "lat": 46.2168,
+   "pop": 614
+  },
+  {
+   "name": "Coachman's Cove",
+   "lon": -56.1148,
+   "lat": 50.0667,
+   "pop": 111
+  },
+  {
+   "name": "Coal Harbour",
+   "lon": -127.5822,
+   "lat": 50.5991,
+   "pop": 91
+  },
+  {
+   "name": "Cobb's Arm",
+   "lon": -54.5722,
+   "lat": 49.6184,
+   "pop": 129
+  },
+  {
+   "name": "Cocagne",
+   "lon": -64.615,
+   "lat": 46.3349,
+   "pop": 2757
+  },
+  {
+   "name": "Codroy",
+   "lon": -59.3936,
+   "lat": 47.8823,
+   "pop": 258
+  },
+  {
+   "name": "Colinet",
+   "lon": -53.5481,
+   "lat": 47.2166,
+   "pop": 103
+  },
+  {
+   "name": "Colliers",
+   "lon": -53.2315,
+   "lat": 47.453,
+   "pop": 613
+  },
+  {
+   "name": "Colwood",
+   "lon": -123.4859,
+   "lat": 48.4329,
+   "pop": 16859
+  },
+  {
+   "name": "Come By Chance",
+   "lon": -53.9814,
+   "lat": 47.8499,
+   "pop": 208
+  },
+  {
+   "name": "Comfort Cove-Newstead",
+   "lon": -54.8648,
+   "lat": 49.3999,
+   "pop": 345
+  },
+  {
+   "name": "Comox",
+   "lon": -124.9361,
+   "lat": 49.6829,
+   "pop": 14806
+  },
+  {
+   "name": "Conception Bay South",
+   "lon": -52.9981,
+   "lat": 47.4999,
+   "pop": 27168
+  },
+  {
+   "name": "Conception Harbour",
+   "lon": -53.2181,
+   "lat": 47.4427,
+   "pop": 624
+  },
+  {
+   "name": "Conche",
+   "lon": -55.8981,
+   "lat": 50.8834,
+   "pop": 149
+  },
+  {
+   "name": "Cook's Harbour",
+   "lon": -55.8647,
+   "lat": 51.6001,
+   "pop": 118
+  },
+  {
+   "name": "Coral Harbour",
+   "lon": -83.1654,
+   "lat": 64.1383,
+   "pop": 1035
+  },
+  {
+   "name": "Corner Brook",
+   "lon": -57.952,
+   "lat": 48.95,
+   "pop": 19316
+  },
+  {
+   "name": "Cornwall",
+   "lon": -63.2181,
+   "lat": 46.2265,
+   "pop": 6574
+  },
+  {
+   "name": "Coteau Road",
+   "lon": -64.5578,
+   "lat": 47.8359,
+   "pop": 393
+  },
+  {
+   "name": "Cottlesville",
+   "lon": -54.8481,
+   "lat": 49.4999,
+   "pop": 246
+  },
+  {
+   "name": "Courtenay",
+   "lon": -124.9936,
+   "lat": 49.6866,
+   "pop": 28420
+  },
+  {
+   "name": "Cow Head",
+   "lon": -57.815,
+   "lat": 49.9167,
+   "pop": 398
+  },
+  {
+   "name": "Cowichan Bay",
+   "lon": -123.6174,
+   "lat": 48.7337,
+   "pop": 2799
+  },
+  {
+   "name": "Cox's Cove",
+   "lon": -58.0817,
+   "lat": 49.1167,
+   "pop": 664
+  },
+  {
+   "name": "Coxheath",
+   "lon": -60.2317,
+   "lat": 46.1168,
+   "pop": 2333
   },
   {
    "name": "Craig Harbour",
    "lon": -80.9984,
-   "lat": 76.2086
+   "lat": 76.2086,
+   "pop": 0
+  },
+  {
+   "name": "Crapaud",
+   "lon": -63.4987,
+   "lat": 46.2334,
+   "pop": 361
+  },
+  {
+   "name": "Crofton",
+   "lon": -123.6527,
+   "lat": 48.8663,
+   "pop": 1446
+  },
+  {
+   "name": "Croque",
+   "lon": -55.829,
+   "lat": 51.0586,
+   "pop": 45
+  },
+  {
+   "name": "Crow Head",
+   "lon": -54.7982,
+   "lat": 49.6832,
+   "pop": 156
+  },
+  {
+   "name": "Côte-Nord-du-Golfe-du-Saint-Laurent",
+   "lon": -59.616,
+   "lat": 50.48,
+   "pop": 787
+  },
+  {
+   "name": "Daajing Giids",
+   "lon": -132.0879,
+   "lat": 53.2549,
+   "pop": 964
+  },
+  {
+   "name": "Dalhousie",
+   "lon": -66.3749,
+   "lat": 48.0644,
+   "pop": 3223
+  },
+  {
+   "name": "Dalhousie Junction",
+   "lon": -66.497,
+   "lat": 48.0443,
+   "pop": 402
+  },
+  {
+   "name": "Daniel's Harbour",
+   "lon": -57.5816,
+   "lat": 50.2333,
+   "pop": 220
+  },
+  {
+   "name": "Dashwood",
+   "lon": -124.5195,
+   "lat": 49.3663,
+   "pop": 982
+  },
+  {
+   "name": "Deadman's Bay",
+   "lon": -53.6921,
+   "lat": 49.3497,
+   "pop": 130
+  },
+  {
+   "name": "Deep Bight",
+   "lon": -53.9466,
+   "lat": 48.0955,
+   "pop": 271
+  },
+  {
+   "name": "Deep Cove",
+   "lon": -123.4667,
+   "lat": 48.6833,
+   "pop": 1177
+  },
+  {
+   "name": "Delta",
+   "lon": -123.0532,
+   "lat": 49.0892,
+   "pop": 101668
+  },
+  {
+   "name": "Denman Island",
+   "lon": -124.8195,
+   "lat": 49.5329,
+   "pop": 1020
+  },
+  {
+   "name": "Denman Island Trust Area",
+   "lon": -124.7988,
+   "lat": 49.5519,
+   "pop": 1165
+  },
+  {
+   "name": "Dildo",
+   "lon": -53.5481,
+   "lat": 47.5666,
+   "pop": 803
+  },
+  {
+   "name": "Dingwall",
+   "lon": -60.4652,
+   "lat": 46.9001,
+   "pop": 600
+  },
+  {
+   "name": "Diskofjord",
+   "lon": -53.95,
+   "lat": 69.4833,
+   "pop": 11
+  },
+  {
+   "name": "Dominion",
+   "lon": -60.0151,
+   "lat": 46.2168,
+   "pop": 1953
+  },
+  {
+   "name": "Donkin",
+   "lon": -59.8651,
+   "lat": 46.1834,
+   "pop": 532
+  },
+  {
+   "name": "Doting Cove",
+   "lon": -53.9481,
+   "lat": 49.4499,
+   "pop": 247
+  },
+  {
+   "name": "Dover",
+   "lon": -53.9648,
+   "lat": 48.8666,
+   "pop": 579
+  },
+  {
+   "name": "Dugas",
+   "lon": -65.1152,
+   "lat": 47.8038,
+   "pop": 67
   },
   {
    "name": "Dundas",
    "lon": -68.7836,
-   "lat": 76.5625
+   "lat": 76.5625,
+   "pop": 0
   },
   {
    "name": "Dundas Harbour",
    "lon": -82.3679,
-   "lat": 74.5326
+   "lat": 74.5326,
+   "pop": 0
   },
   {
-   "name": "Echo Bay",
-   "lon": -118.0408,
-   "lat": 66.0866
+   "name": "Dunlop",
+   "lon": -65.7339,
+   "lat": 47.6871,
+   "pop": 930
+  },
+  {
+   "name": "Duntara",
+   "lon": -53.3648,
+   "lat": 48.5999,
+   "pop": 36
+  },
+  {
+   "name": "East Sooke",
+   "lon": -123.6836,
+   "lat": 48.3664,
+   "pop": 1500
+  },
+  {
+   "name": "Eastern Kings",
+   "lon": -62.0986,
+   "lat": 46.4334,
+   "pop": 687
+  },
+  {
+   "name": "Eastport",
+   "lon": -53.7481,
+   "lat": 48.6499,
+   "pop": 462
+  },
+  {
+   "name": "Eddies Cove West",
+   "lon": -57.1649,
+   "lat": 50.7501,
+   "pop": 30
+  },
+  {
+   "name": "Edwardsville",
+   "lon": -60.2317,
+   "lat": 46.1668,
+   "pop": 287
+  },
+  {
+   "name": "Eel River Crossing",
+   "lon": -66.422,
+   "lat": 48.0159,
+   "pop": 1844
+  },
+  {
+   "name": "Elliston",
+   "lon": -53.048,
+   "lat": 48.6332,
+   "pop": 315
+  },
+  {
+   "name": "Embree",
+   "lon": -55.0426,
+   "lat": 49.3027,
+   "pop": 679
+  },
+  {
+   "name": "Englee",
+   "lon": -56.0981,
+   "lat": 50.7334,
+   "pop": 489
+  },
+  {
+   "name": "English Harbour East",
+   "lon": -54.8982,
+   "lat": 47.6332,
+   "pop": 117
+  },
+  {
+   "name": "Englishman River South",
+   "lon": -124.2816,
+   "lat": 49.2821,
+   "pop": 748
+  },
+  {
+   "name": "Eqalugaarsuit",
+   "lon": -45.91,
+   "lat": 60.6232,
+   "pop": 49
+  },
+  {
+   "name": "Eqi",
+   "lon": -51.0833,
+   "lat": 69.1333,
+   "pop": 0
+  },
+  {
+   "name": "Escuminac",
+   "lon": -64.9142,
+   "lat": 47.0769,
+   "pop": 152
+  },
+  {
+   "name": "Eskasoni 3",
+   "lon": -60.6162,
+   "lat": 45.9452,
+   "pop": 3521
+  },
+  {
+   "name": "Esperanza",
+   "lon": -126.7441,
+   "lat": 49.8724,
+   "pop": 250
+  },
+  {
+   "name": "Esquimalt",
+   "lon": -123.4117,
+   "lat": 48.4357,
+   "pop": 17655
+  },
+  {
+   "name": "Evangeline",
+   "lon": -64.8451,
+   "lat": 47.6924,
+   "pop": 340
+  },
+  {
+   "name": "Fairbanks-Hillgrade",
+   "lon": -54.7045,
+   "lat": 49.5671,
+   "pop": 143
+  },
+  {
+   "name": "Fairhaven",
+   "lon": -53.8981,
+   "lat": 47.5349,
+   "pop": 55
+  },
+  {
+   "name": "Fairisle",
+   "lon": -65.1244,
+   "lat": 47.2789,
+   "pop": 895
+  },
+  {
+   "name": "Fairwinds",
+   "lon": -124.1278,
+   "lat": 49.2759,
+   "pop": 1147
+  },
+  {
+   "name": "Fanny Bay",
+   "lon": -124.8119,
+   "lat": 49.49,
+   "pop": 921
+  },
+  {
+   "name": "Fermeuse",
+   "lon": -52.9564,
+   "lat": 46.9763,
+   "pop": 266
+  },
+  {
+   "name": "Ferryland",
+   "lon": -52.8814,
+   "lat": 47.0332,
+   "pop": 371
+  },
+  {
+   "name": "Finnsbu",
+   "lon": -41.3,
+   "lat": 63.3833,
+   "pop": 0
+  },
+  {
+   "name": "Flat Bay",
+   "lon": -58.5818,
+   "lat": 48.4,
+   "pop": 162
+  },
+  {
+   "name": "Flatrock",
+   "lon": -52.7148,
+   "lat": 47.6999,
+   "pop": 1722
+  },
+  {
+   "name": "Fleur de Lys",
+   "lon": -56.1314,
+   "lat": 50.1167,
+   "pop": 207
+  },
+  {
+   "name": "Florence",
+   "lon": -60.2659,
+   "lat": 46.2599,
+   "pop": 1684
+  },
+  {
+   "name": "Flower's Cove",
+   "lon": -56.7409,
+   "lat": 51.3003,
+   "pop": 272
+  },
+  {
+   "name": "Fogo Island",
+   "lon": -54.1698,
+   "lat": 49.7165,
+   "pop": 2117
+  },
+  {
+   "name": "Forestville",
+   "lon": -69.0848,
+   "lat": 48.7381,
+   "pop": 2333
+  },
+  {
+   "name": "Forresters Point",
+   "lon": -56.8054,
+   "lat": 51.1844,
+   "pop": 207
   },
   {
    "name": "Fort Collinson",
    "lon": -117.8885,
-   "lat": 71.6176
+   "lat": 71.6176,
+   "pop": 0
+  },
+  {
+   "name": "Fort Hope",
+   "lon": -86.6993,
+   "lat": 66.5342,
+   "pop": 0
+  },
+  {
+   "name": "Forteau",
+   "lon": -56.9648,
+   "lat": 51.4668,
+   "pop": 377
+  },
+  {
+   "name": "Fortune",
+   "lon": -55.8316,
+   "lat": 47.0667,
+   "pop": 1285
+  },
+  {
+   "name": "Fox Cove-Mortier",
+   "lon": -55.115,
+   "lat": 47.0832,
+   "pop": 252
+  },
+  {
+   "name": "Fox Island River-Point au Mal",
+   "lon": -58.6769,
+   "lat": 48.6694,
+   "pop": 173
+  },
+  {
+   "name": "Fox Roost-Margaree",
+   "lon": -59.055,
+   "lat": 47.5735,
+   "pop": 327
+  },
+  {
+   "name": "Francois",
+   "lon": -56.7417,
+   "lat": 47.5683,
+   "pop": 64
+  },
+  {
+   "name": "Franquelin",
+   "lon": -67.8437,
+   "lat": 49.3001,
+   "pop": 324
+  },
+  {
+   "name": "Frederickton",
+   "lon": -54.3648,
+   "lat": 49.4332,
+   "pop": 126
+  },
+  {
+   "name": "French Creek",
+   "lon": -124.3554,
+   "lat": 49.3412,
+   "pop": 1024
+  },
+  {
+   "name": "Frenchman's Cove",
+   "lon": -58.1794,
+   "lat": 49.0551,
+   "pop": 159
+  },
+  {
+   "name": "Freshwater",
+   "lon": -53.2031,
+   "lat": 47.7587,
+   "pop": 145
+  },
+  {
+   "name": "Furry Creek",
+   "lon": -123.2113,
+   "lat": 49.5831,
+   "pop": 270
+  },
+  {
+   "name": "Gabriola",
+   "lon": -123.8499,
+   "lat": 49.1704,
+   "pop": 4500
+  },
+  {
+   "name": "Gambo",
+   "lon": -54.2148,
+   "lat": 48.7832,
+   "pop": 1978
+  },
+  {
+   "name": "Gamle Egedesminde",
+   "lon": -53.5833,
+   "lat": 67.65,
+   "pop": 0
+  },
+  {
+   "name": "Gander Bay North",
+   "lon": -54.4814,
+   "lat": 49.3499,
+   "pop": 853
+  },
+  {
+   "name": "Ganges",
+   "lon": -123.5003,
+   "lat": 48.8534,
+   "pop": 6000
+  },
+  {
+   "name": "Garden Cove",
+   "lon": -54.1573,
+   "lat": 47.8523,
+   "pop": 32
+  },
+  {
+   "name": "Gardiner Mines",
+   "lon": -60.0475,
+   "lat": 46.2085,
+   "pop": 613
+  },
+  {
+   "name": "Garnish",
+   "lon": -55.356,
+   "lat": 47.23,
+   "pop": 542
+  },
+  {
+   "name": "Gaskiers-Point La Haye",
+   "lon": -53.605,
+   "lat": 46.874,
+   "pop": 189
+  },
+  {
+   "name": "Gaspé",
+   "lon": -64.4819,
+   "lat": 48.8334,
+   "pop": 14819
+  },
+  {
+   "name": "Gaultois",
+   "lon": -55.9044,
+   "lat": 47.609,
+   "pop": 100
+  },
+  {
+   "name": "George's Brook-Milton",
+   "lon": -53.9627,
+   "lat": 48.2206,
+   "pop": 719
+  },
+  {
+   "name": "Georges Brook",
+   "lon": -53.9648,
+   "lat": 48.2332,
+   "pop": 358
+  },
+  {
+   "name": "Georges River",
+   "lon": -60.3152,
+   "lat": 46.2131,
+   "pop": 711
+  },
+  {
+   "name": "Georgetown",
+   "lon": -62.532,
+   "lat": 46.1834,
+   "pop": 544
+  },
+  {
+   "name": "Gibsons",
+   "lon": -123.5055,
+   "lat": 49.3954,
+   "pop": 6821
+  },
+  {
+   "name": "Gillams",
+   "lon": -58.0651,
+   "lat": 49.0167,
+   "pop": 429
   },
   {
    "name": "Gjoa Haven",
    "lon": -95.8784,
-   "lat": 68.626
+   "lat": 68.626,
+   "pop": 1349
+  },
+  {
+   "name": "Glace Bay",
+   "lon": -59.957,
+   "lat": 46.197,
+   "pop": 16915
+  },
+  {
+   "name": "Glenburnie-Birchy Head-Shoal Brook",
+   "lon": -57.915,
+   "lat": 49.45,
+   "pop": 241
+  },
+  {
+   "name": "Glovertown",
+   "lon": -54.0314,
+   "lat": 48.6832,
+   "pop": 1948
+  },
+  {
+   "name": "Godbout",
+   "lon": -67.5989,
+   "lat": 49.3168,
+   "pop": 298
+  },
+  {
+   "name": "Goulds",
+   "lon": -52.7755,
+   "lat": 47.4553,
+   "pop": 4418
+  },
+  {
+   "name": "Grand Bank",
+   "lon": -55.765,
+   "lat": 47.0999,
+   "pop": 4623
+  },
+  {
+   "name": "Grand Beach",
+   "lon": -55.515,
+   "lat": 47.1332,
+   "pop": 71
+  },
+  {
+   "name": "Grand Le Pierre",
+   "lon": -54.7815,
+   "lat": 47.6832,
+   "pop": 176
+  },
+  {
+   "name": "Grand-Bouctouche",
+   "lon": -64.7103,
+   "lat": 46.4889,
+   "pop": 2513
+  },
+  {
+   "name": "Grande-Anse",
+   "lon": -65.1945,
+   "lat": 47.8078,
+   "pop": 731
+  },
+  {
+   "name": "Grande-Digue",
+   "lon": -64.5655,
+   "lat": 46.3001,
+   "pop": 2261
+  },
+  {
+   "name": "Grande-Riviere",
+   "lon": -64.5011,
+   "lat": 48.4003,
+   "pop": 3384
+  },
+  {
+   "name": "Grates Cove",
+   "lon": -52.9379,
+   "lat": 48.1629,
+   "pop": 180
+  },
+  {
+   "name": "Great Brehat",
+   "lon": -55.498,
+   "lat": 51.4334,
+   "pop": 78
+  },
+  {
+   "name": "Great Codroy",
+   "lon": -59.2664,
+   "lat": 47.8394,
+   "pop": 107
+  },
+  {
+   "name": "Greektown",
+   "lon": -123.1757,
+   "lat": 49.2641,
+   "pop": 4836
+  },
+  {
+   "name": "Green Island Brook",
+   "lon": -56.528,
+   "lat": 51.3977,
+   "pop": 135
+  },
+  {
+   "name": "Green Island Cove",
+   "lon": -56.5818,
+   "lat": 51.3815,
+   "pop": 185
+  },
+  {
+   "name": "Green's Harbour",
+   "lon": -53.4981,
+   "lat": 47.6332,
+   "pop": 642
+  },
+  {
+   "name": "Greenspond",
+   "lon": -53.5648,
+   "lat": 49.0666,
+   "pop": 257
   },
   {
    "name": "Grise Fiord",
    "lon": -82.8947,
-   "lat": 76.4184
+   "lat": 76.4184,
+   "pop": 144
   },
   {
-   "name": "Hazen Camp",
-   "lon": -71.3279,
-   "lat": 81.8188
+   "name": "Guysborough",
+   "lon": -61.4985,
+   "lat": 45.3835,
+   "pop": 397
+  },
+  {
+   "name": "Halfmoon Bay",
+   "lon": -123.9087,
+   "lat": 49.5129,
+   "pop": 2800
+  },
+  {
+   "name": "Hampden",
+   "lon": -56.8483,
+   "lat": 49.55,
+   "pop": 439
+  },
+  {
+   "name": "Hant's Harbour",
+   "lon": -53.2648,
+   "lat": 48.0166,
+   "pop": 318
+  },
+  {
+   "name": "Happy Adventure",
+   "lon": -53.7648,
+   "lat": 48.6332,
+   "pop": 183
+  },
+  {
+   "name": "Happy Valley-Goose Bay",
+   "lon": -60.3258,
+   "lat": 53.3038,
+   "pop": 7572
+  },
+  {
+   "name": "Harbour Breton",
+   "lon": -55.7983,
+   "lat": 47.4832,
+   "pop": 1898
+  },
+  {
+   "name": "Harbour Grace",
+   "lon": -53.2326,
+   "lat": 47.6865,
+   "pop": 2796
+  },
+  {
+   "name": "Harbour Main-Chapel's Cove-Lakeview",
+   "lon": -53.1648,
+   "lat": 47.4166,
+   "pop": 1065
+  },
+  {
+   "name": "Hare Bay",
+   "lon": -54.0148,
+   "lat": 48.8499,
+   "pop": 968
+  },
+  {
+   "name": "Harewood",
+   "lon": -123.9474,
+   "lat": 49.1474,
+   "pop": 8769
+  },
+  {
+   "name": "Harrington Harbour",
+   "lon": -59.478,
+   "lat": 50.5001,
+   "pop": 205
+  },
+  {
+   "name": "Harry's Harbour",
+   "lon": -55.9266,
+   "lat": 49.7006,
+   "pop": 77
+  },
+  {
+   "name": "Haut-Sheila",
+   "lon": -64.9115,
+   "lat": 47.7464,
+   "pop": 752
+  },
+  {
+   "name": "Hauterive",
+   "lon": -68.2581,
+   "lat": 49.1957,
+   "pop": 11549
+  },
+  {
+   "name": "Havre Boucher",
+   "lon": -61.5318,
+   "lat": 45.6834,
+   "pop": 281
+  },
+  {
+   "name": "Havre-Saint-Pierre",
+   "lon": -63.6026,
+   "lat": 50.2434,
+   "pop": 3460
+  },
+  {
+   "name": "Hawke's Bay",
+   "lon": -57.1649,
+   "lat": 50.6001,
+   "pop": 297
+  },
+  {
+   "name": "Hazelbrook",
+   "lon": -62.9987,
+   "lat": 46.2168,
+   "pop": 220
+  },
+  {
+   "name": "Heart's Content",
+   "lon": -53.3648,
+   "lat": 47.8832,
+   "pop": 330
+  },
+  {
+   "name": "Heart's Delight-Islington",
+   "lon": -53.4814,
+   "lat": 47.7666,
+   "pop": 646
+  },
+  {
+   "name": "Heart's Desire",
+   "lon": -53.4481,
+   "lat": 47.8166,
+   "pop": 184
+  },
+  {
+   "name": "Hebron",
+   "lon": -62.6314,
+   "lat": 58.2003,
+   "pop": 0
+  },
+  {
+   "name": "Heriot Bay",
+   "lon": -125.2135,
+   "lat": 50.1007,
+   "pop": 594
+  },
+  {
+   "name": "Hermitage-Sandyville",
+   "lon": -55.9316,
+   "lat": 47.5333,
+   "pop": 404
+  },
+  {
+   "name": "Heron Bay",
+   "lon": -66.396,
+   "lat": 48.0219,
+   "pop": 5536
+  },
+  {
+   "name": "Herring Neck",
+   "lon": -54.6162,
+   "lat": 49.6414,
+   "pop": 56
+  },
+  {
+   "name": "Herschel",
+   "lon": -138.911,
+   "lat": 69.5687,
+   "pop": 0
+  },
+  {
+   "name": "Hickman's Harbour-Robinson Bight",
+   "lon": -53.7488,
+   "lat": 48.1043,
+   "pop": 379
+  },
+  {
+   "name": "Hillside",
+   "lon": -62.64,
+   "lat": 45.629,
+   "pop": 122
+  },
+  {
+   "name": "Hodge's Cove",
+   "lon": -53.7436,
+   "lat": 48.0087,
+   "pop": 225
+  },
+  {
+   "name": "Holyrood",
+   "lon": -53.1314,
+   "lat": 47.3832,
+   "pop": 2471
+  },
+  {
+   "name": "Hopeall",
+   "lon": -53.506,
+   "lat": 47.6117,
+   "pop": 242
+  },
+  {
+   "name": "Hopedale",
+   "lon": -60.2032,
+   "lat": 55.4674,
+   "pop": 625
+  },
+  {
+   "name": "Hornby Island",
+   "lon": -124.6692,
+   "lat": 49.5345,
+   "pop": 1100
+  },
+  {
+   "name": "Horwood",
+   "lon": -54.5221,
+   "lat": 49.4568,
+   "pop": 210
+  },
+  {
+   "name": "Hughes Brook",
+   "lon": -57.8817,
+   "lat": 49.0,
+   "pop": 236
+  },
+  {
+   "name": "Humber Arm South",
+   "lon": -58.1348,
+   "lat": 49.0091,
+   "pop": 1537
+  },
+  {
+   "name": "Igaliku",
+   "lon": -45.4207,
+   "lat": 60.9877,
+   "pop": 21
+  },
+  {
+   "name": "Iginniarfik",
+   "lon": -53.1716,
+   "lat": 68.1479,
+   "pop": 76
   },
   {
    "name": "Igloolik",
    "lon": -81.7999,
-   "lat": 69.3777
+   "lat": 69.3777,
+   "pop": 2049
+  },
+  {
+   "name": "Igssalik",
+   "lon": -39.0167,
+   "lat": 65.5167,
+   "pop": 0
+  },
+  {
+   "name": "Ikamiut",
+   "lon": -51.8254,
+   "lat": 68.6342,
+   "pop": 86
+  },
+  {
+   "name": "Ikerasaarsuk",
+   "lon": -53.4456,
+   "lat": 68.1402,
+   "pop": 98
   },
   {
    "name": "Ikerasaarsuk",
    "lon": -56.4523,
-   "lat": 73.5262
+   "lat": 73.5262,
+   "pop": 0
+  },
+  {
+   "name": "Ikerasaarsuk",
+   "lon": -53.1,
+   "lat": 66.8167,
+   "pop": 0
+  },
+  {
+   "name": "Ikerasak",
+   "lon": -51.3025,
+   "lat": 70.5016,
+   "pop": 233
+  },
+  {
+   "name": "Ikerasak",
+   "lon": -53.4333,
+   "lat": 66.8667,
+   "pop": 0
+  },
+  {
+   "name": "Ikerasak",
+   "lon": -52.2833,
+   "lat": 65.1833,
+   "pop": 0
+  },
+  {
+   "name": "Ikigaat",
+   "lon": -44.7,
+   "lat": 59.9833,
+   "pop": 0
+  },
+  {
+   "name": "Ikkamiut",
+   "lon": -52.8,
+   "lat": 65.6333,
+   "pop": 0
+  },
+  {
+   "name": "Ikorfat",
+   "lon": -51.4333,
+   "lat": 69.9833,
+   "pop": 0
+  },
+  {
+   "name": "Ilimanaq",
+   "lon": -51.1148,
+   "lat": 69.0811,
+   "pop": 84
+  },
+  {
+   "name": "Illorpaat",
+   "lon": -45.3333,
+   "lat": 60.45,
+   "pop": 0
   },
   {
    "name": "Illorsuit",
    "lon": -53.5647,
-   "lat": 71.2417
+   "lat": 71.2417,
+   "pop": 97
+  },
+  {
+   "name": "Illorsuit",
+   "lon": -46.25,
+   "lat": 61.0667,
+   "pop": 4
   },
   {
    "name": "Illulik",
    "lon": -56.7,
-   "lat": 74.35
+   "lat": 74.35,
+   "pop": 0
+  },
+  {
+   "name": "Ilulissat",
+   "lon": -51.0986,
+   "lat": 69.2198,
+   "pop": 4413
+  },
+  {
+   "name": "Indian Bay",
+   "lon": -53.8481,
+   "lat": 49.0332,
+   "pop": 172
+  },
+  {
+   "name": "Ingonish",
+   "lon": -60.3652,
+   "lat": 46.7001,
+   "pop": 2673
+  },
+  {
+   "name": "Inkerman",
+   "lon": -64.8248,
+   "lat": 47.6672,
+   "pop": 712
+  },
+  {
+   "name": "Innalik",
+   "lon": -53.5,
+   "lat": 68.45,
+   "pop": 0
   },
   {
    "name": "Innarsuit Settlement",
    "lon": -56.0125,
-   "lat": 73.1991
+   "lat": 73.1991,
+   "pop": 0
+  },
+  {
+   "name": "Inukjuak",
+   "lon": -78.1014,
+   "lat": 58.4547,
+   "pop": 1821
+  },
+  {
+   "name": "Inverness",
+   "lon": -61.2985,
+   "lat": 46.2334,
+   "pop": 1228
+  },
+  {
+   "name": "Iqaluit",
+   "lon": -68.5173,
+   "lat": 63.747,
+   "pop": 7429
+  },
+  {
+   "name": "Irishtown-Summerside",
+   "lon": -57.9817,
+   "lat": 48.9833,
+   "pop": 1260
   },
   {
    "name": "Isachsen",
    "lon": -103.5048,
-   "lat": 78.7853
+   "lat": 78.7853,
+   "pop": 0
+  },
+  {
+   "name": "Isle aux Morts",
+   "lon": -58.9819,
+   "lat": 47.5833,
+   "pop": 578
+  },
+  {
+   "name": "Isortoq",
+   "lon": -38.9756,
+   "lat": 65.5485,
+   "pop": 64
+  },
+  {
+   "name": "Iterlak",
+   "lon": -45.3,
+   "lat": 60.9167,
+   "pop": 2
+  },
+  {
+   "name": "Itilleq",
+   "lon": -53.5,
+   "lat": 66.5833,
+   "pop": 89
+  },
+  {
+   "name": "Itilleq",
+   "lon": -43.7333,
+   "lat": 59.8833,
+   "pop": 0
   },
   {
    "name": "Itilleq",
    "lon": -69.4892,
-   "lat": 77.2244
+   "lat": 77.2244,
+   "pop": 0
+  },
+  {
+   "name": "Ittoqqortoormiit",
+   "lon": -21.9622,
+   "lat": 70.4846,
+   "pop": 345
+  },
+  {
+   "name": "Ittorisseq",
+   "lon": -22.45,
+   "lat": 70.45,
+   "pop": 0
+  },
+  {
+   "name": "Ittumiit",
+   "lon": -37.5833,
+   "lat": 65.5833,
+   "pop": 0
+  },
+  {
+   "name": "Ivittuut",
+   "lon": -48.1722,
+   "lat": 61.2069,
+   "pop": 11
+  },
+  {
+   "name": "Ivujivik",
+   "lon": -77.9159,
+   "lat": 62.4174,
+   "pop": 414
+  },
+  {
+   "name": "Jackson's Cove-Langdon's Cove-Silverdale",
+   "lon": -55.9851,
+   "lat": 49.6854,
+   "pop": 123
+  },
+  {
+   "name": "Jamestown",
+   "lon": -53.7981,
+   "lat": 48.4332,
+   "pop": 89
+  },
+  {
+   "name": "Joe Batt's Arm-Barr'd Islands-Shoal Bay",
+   "lon": -54.1814,
+   "lat": 49.7166,
+   "pop": 778
+  },
+  {
+   "name": "Journois",
+   "lon": -58.6812,
+   "lat": 48.3566,
+   "pop": 14
+  },
+  {
+   "name": "Judique",
+   "lon": -61.4912,
+   "lat": 45.8763,
+   "pop": 700
+  },
+  {
+   "name": "Kamouraska",
+   "lon": -69.8663,
+   "lat": 47.5659,
+   "pop": 589
+  },
+  {
+   "name": "Kangaamiut",
+   "lon": -53.3428,
+   "lat": 65.825,
+   "pop": 293
   },
   {
    "name": "Kangaarsuk",
    "lon": -55.6,
-   "lat": 72.0
+   "lat": 72.0,
+   "pop": 0
+  },
+  {
+   "name": "Kangaatsiaq",
+   "lon": -53.4641,
+   "lat": 68.3065,
+   "pop": 520
+  },
+  {
+   "name": "Kangeq",
+   "lon": -52.05,
+   "lat": 64.1167,
+   "pop": 0
+  },
+  {
+   "name": "Kangerluarsoruseq",
+   "lon": -51.5445,
+   "lat": 63.6978,
+   "pop": 6
+  },
+  {
+   "name": "Kangerluarsuk",
+   "lon": -52.5333,
+   "lat": 65.4167,
+   "pop": 0
   },
   {
    "name": "Kangersuatsiaq",
    "lon": -55.5483,
-   "lat": 72.3796
+   "lat": 72.3796,
+   "pop": 130
+  },
+  {
+   "name": "Kangigdlermiut",
+   "lon": -50.4,
+   "lat": 62.8167,
+   "pop": 0
+  },
+  {
+   "name": "Kangikasîk",
+   "lon": -45.65,
+   "lat": 60.5167,
+   "pop": 0
+  },
+  {
+   "name": "Kangikitsoq",
+   "lon": -44.7833,
+   "lat": 60.45,
+   "pop": 0
+  },
+  {
+   "name": "Kangilineq",
+   "lon": -49.4667,
+   "lat": 61.95,
+   "pop": 0
+  },
+  {
+   "name": "Kangilinnguit",
+   "lon": -48.096,
+   "lat": 61.2324,
+   "pop": 164
+  },
+  {
+   "name": "Kangiqsualujjuaq",
+   "lon": -65.9525,
+   "lat": 58.6914,
+   "pop": 956
+  },
+  {
+   "name": "Kangiqsujuaq",
+   "lon": -71.9603,
+   "lat": 61.5985,
+   "pop": 837
+  },
+  {
+   "name": "Kangirsuk",
+   "lon": -70.0263,
+   "lat": 60.0185,
+   "pop": 0
+  },
+  {
+   "name": "Kap Hope",
+   "lon": -22.3298,
+   "lat": 70.4588,
+   "pop": 9
+  },
+  {
+   "name": "Kap Tobin",
+   "lon": -21.9466,
+   "lat": 70.4114,
+   "pop": 0
+  },
+  {
+   "name": "Kapisillit",
+   "lon": -50.2713,
+   "lat": 64.4352,
+   "pop": 52
+  },
+  {
+   "name": "Keating",
+   "lon": -123.4,
+   "lat": 48.5667,
+   "pop": 1403
+  },
+  {
+   "name": "Keels",
+   "lon": -53.3981,
+   "lat": 48.5999,
+   "pop": 46
+  },
+  {
+   "name": "Kegaska",
+   "lon": -61.271,
+   "lat": 50.1837,
+   "pop": 124
+  },
+  {
+   "name": "Kekerten",
+   "lon": -65.825,
+   "lat": 65.716,
+   "pop": 0
   },
   {
    "name": "Kiatak",
    "lon": -71.4667,
-   "lat": 77.35
+   "lat": 77.35,
+   "pop": 0
+  },
+  {
+   "name": "Kiinnarissoq",
+   "lon": -49.3,
+   "lat": 62.1667,
+   "pop": 0
+  },
+  {
+   "name": "Killiat",
+   "lon": -53.7833,
+   "lat": 68.2833,
+   "pop": 0
+  },
+  {
+   "name": "Killuusat",
+   "lon": -52.7667,
+   "lat": 69.3833,
+   "pop": 0
+  },
+  {
+   "name": "Kimmirut",
+   "lon": -69.8701,
+   "lat": 62.8473,
+   "pop": 426
+  },
+  {
+   "name": "King's Cove",
+   "lon": -53.3314,
+   "lat": 48.5666,
+   "pop": 75
+  },
+  {
+   "name": "King's Point",
+   "lon": -56.1815,
+   "lat": 49.5833,
+   "pop": 653
+  },
+  {
+   "name": "Kinngait",
+   "lon": -76.5437,
+   "lat": 64.2338,
+   "pop": 1396
+  },
+  {
+   "name": "Kipisa",
+   "lon": -66.9474,
+   "lat": 65.2006,
+   "pop": 0
+  },
+  {
+   "name": "Kippens",
+   "lon": -58.6318,
+   "lat": 48.55,
+   "pop": 1842
+  },
+  {
+   "name": "Kitimat",
+   "lon": -128.6534,
+   "lat": 54.0524,
+   "pop": 8987
+  },
+  {
+   "name": "Kitsissuarsuit",
+   "lon": -53.122,
+   "lat": 68.8568,
+   "pop": 50
+  },
+  {
+   "name": "Kittigazuit",
+   "lon": -133.7,
+   "lat": 69.3403,
+   "pop": 0
   },
   {
    "name": "Kittorsaq",
    "lon": -56.7333,
-   "lat": 73.95
+   "lat": 73.95,
+   "pop": 0
   },
   {
    "name": "Kivitoo",
    "lon": -64.8846,
-   "lat": 67.9349
+   "lat": 67.9349,
+   "pop": 0
+  },
+  {
+   "name": "Klemtu",
+   "lon": -128.5213,
+   "lat": 52.5885,
+   "pop": 420
+  },
+  {
+   "name": "Koksilah",
+   "lon": -123.6833,
+   "lat": 48.7667,
+   "pop": 4000
+  },
+  {
+   "name": "Kronprinsen Ejland",
+   "lon": -53.3167,
+   "lat": 69.0167,
+   "pop": 0
   },
   {
    "name": "Kugaaruk",
    "lon": -89.825,
-   "lat": 68.5341
+   "lat": 68.5341,
+   "pop": 0
   },
   {
    "name": "Kugluktuk",
    "lon": -115.0965,
-   "lat": 67.8274
+   "lat": 67.8274,
+   "pop": 1382
   },
   {
    "name": "Kullorsuaq",
    "lon": -57.2209,
-   "lat": 74.5785
+   "lat": 74.5785,
+   "pop": 453
+  },
+  {
+   "name": "Kulusuk",
+   "lon": -37.1847,
+   "lat": 65.5754,
+   "pop": 241
+  },
+  {
+   "name": "Kuujjuaq",
+   "lon": -68.3997,
+   "lat": 58.1073,
+   "pop": 2668
+  },
+  {
+   "name": "Kuujjuarapik",
+   "lon": -77.7624,
+   "lat": 55.2759,
+   "pop": 686
+  },
+  {
+   "name": "Kuummiit",
+   "lon": -37.0048,
+   "lat": 65.8647,
+   "pop": 248
+  },
+  {
+   "name": "L'Anse-au-Loup",
+   "lon": -56.8314,
+   "lat": 51.5168,
+   "pop": 692
+  },
+  {
+   "name": "L'Isle-Verte",
+   "lon": -69.3406,
+   "lat": 48.0135,
+   "pop": 1356
+  },
+  {
+   "name": "La Malbaie",
+   "lon": -70.1527,
+   "lat": 47.654,
+   "pop": 8959
+  },
+  {
+   "name": "La Poile",
+   "lon": -58.3955,
+   "lat": 47.6849,
+   "pop": 87
+  },
+  {
+   "name": "LaScie",
+   "lon": -55.5981,
+   "lat": 49.95,
+   "pop": 970
+  },
+  {
+   "name": "Ladysmith",
+   "lon": -123.817,
+   "lat": 48.9902,
+   "pop": 8537
+  },
+  {
+   "name": "Lamaline",
+   "lon": -55.815,
+   "lat": 46.8666,
+   "pop": 218
+  },
+  {
+   "name": "Lamèque",
+   "lon": -64.6475,
+   "lat": 47.7936,
+   "pop": 1301
+  },
+  {
+   "name": "Langdale",
+   "lon": -123.4798,
+   "lat": 49.4339,
+   "pop": 2407
+  },
+  {
+   "name": "Langford",
+   "lon": -123.5026,
+   "lat": 48.4496,
+   "pop": 46584
+  },
+  {
+   "name": "Lantzville",
+   "lon": -124.0755,
+   "lat": 49.2454,
+   "pop": 3817
+  },
+  {
+   "name": "Laplante",
+   "lon": -65.775,
+   "lat": 47.7689,
+   "pop": 320
+  },
+  {
+   "name": "Lark Harbour",
+   "lon": -58.367,
+   "lat": 49.1025,
+   "pop": 508
+  },
+  {
+   "name": "Lawn",
+   "lon": -55.5316,
+   "lat": 46.9499,
+   "pop": 583
+  },
+  {
+   "name": "Le Bic",
+   "lon": -68.6941,
+   "lat": 48.3755,
+   "pop": 1115
+  },
+  {
+   "name": "Le Canton",
+   "lon": -64.3418,
+   "lat": 49.8128,
+   "pop": 17
+  },
+  {
+   "name": "Le Goulet",
+   "lon": -64.7128,
+   "lat": 47.7057,
+   "pop": 749
+  },
+  {
+   "name": "Leading Tickles",
+   "lon": -55.4218,
+   "lat": 49.4841,
+   "pop": 296
+  },
+  {
+   "name": "Leech",
+   "lon": -64.9818,
+   "lat": 47.4531,
+   "pop": 608
+  },
+  {
+   "name": "Les Escoumins",
+   "lon": -69.4072,
+   "lat": 48.3519,
+   "pop": 1339
+  },
+  {
+   "name": "Lethbridge",
+   "lon": -53.8648,
+   "lat": 48.3666,
+   "pop": 635
   },
   {
    "name": "Letty Harbour",
    "lon": -124.4276,
-   "lat": 69.8512
+   "lat": 69.8512,
+   "pop": 0
+  },
+  {
+   "name": "Lewin's Cove",
+   "lon": -55.215,
+   "lat": 47.0832,
+   "pop": 546
+  },
+  {
+   "name": "Lewisporte",
+   "lon": -55.062,
+   "lat": 49.2434,
+   "pop": 3288
+  },
+  {
+   "name": "Lichtenau",
+   "lon": -45.4667,
+   "lat": 60.55,
+   "pop": 6
+  },
+  {
+   "name": "Lingan",
+   "lon": -60.0614,
+   "lat": 46.2304,
+   "pop": 229
+  },
+  {
+   "name": "Lingan Road",
+   "lon": -60.1332,
+   "lat": 46.1825,
+   "pop": 440
+  },
+  {
+   "name": "Lions Bay",
+   "lon": -123.2376,
+   "lat": 49.4522,
+   "pop": 1334
+  },
+  {
+   "name": "Little Bay",
+   "lon": -55.9482,
+   "lat": 49.6,
+   "pop": 110
+  },
+  {
+   "name": "Little Bay East",
+   "lon": -54.8483,
+   "lat": 47.5499,
+   "pop": 84
+  },
+  {
+   "name": "Little Bras d'Or",
+   "lon": -60.2968,
+   "lat": 46.2399,
+   "pop": 148
+  },
+  {
+   "name": "Little Burnt Bay",
+   "lon": -55.084,
+   "lat": 49.3407,
+   "pop": 238
+  },
+  {
+   "name": "Little Catalina",
+   "lon": -53.0314,
+   "lat": 48.5499,
+   "pop": 458
+  },
+  {
+   "name": "Little Harbour East",
+   "lon": -53.9354,
+   "lat": 47.6451,
+   "pop": 91
+  },
+  {
+   "name": "Little St. Lawrence",
+   "lon": -55.3611,
+   "lat": 46.9297,
+   "pop": 117
+  },
+  {
+   "name": "Logy Bay-Middle Cove-Outer Cove",
+   "lon": -52.6813,
+   "lat": 47.6332,
+   "pop": 2364
+  },
+  {
+   "name": "Long Harbour-Mount Arlington Heights",
+   "lon": -53.8481,
+   "lat": 47.4332,
+   "pop": 185
+  },
+  {
+   "name": "Loon Bay",
+   "lon": -54.8314,
+   "lat": 49.2666,
+   "pop": 130
+  },
+  {
+   "name": "Lord's Cove",
+   "lon": -55.665,
+   "lat": 46.8832,
+   "pop": 155
+  },
+  {
+   "name": "Louisbourg",
+   "lon": -59.971,
+   "lat": 45.9205,
+   "pop": 1265
+  },
+  {
+   "name": "Louisdale",
+   "lon": -61.0664,
+   "lat": 45.6069,
+   "pop": 1770
+  },
+  {
+   "name": "Lourdes",
+   "lon": -58.9985,
+   "lat": 48.65,
+   "pop": 502
+  },
+  {
+   "name": "Lower Lance Cove",
+   "lon": -53.7056,
+   "lat": 48.1453,
+   "pop": 85
+  },
+  {
+   "name": "Luceville",
+   "lon": -68.3966,
+   "lat": 48.545,
+   "pop": 1112
+  },
+  {
+   "name": "Lumsden",
+   "lon": -53.598,
+   "lat": 49.2999,
+   "pop": 535
+  },
+  {
+   "name": "Lund",
+   "lon": -124.7607,
+   "lat": 49.9809,
+   "pop": 292
+  },
+  {
+   "name": "Maarmorilik",
+   "lon": -51.2833,
+   "lat": 71.1333,
+   "pop": 50
+  },
+  {
+   "name": "Mabou",
+   "lon": -61.3818,
+   "lat": 46.0668,
+   "pop": 1207
+  },
+  {
+   "name": "Madeira Park",
+   "lon": -124.0232,
+   "lat": 49.6197,
+   "pop": 3039
+  },
+  {
+   "name": "Madran",
+   "lon": -65.772,
+   "lat": 47.8167,
+   "pop": 260
+  },
+  {
+   "name": "Maguse River",
+   "lon": -94.0627,
+   "lat": 61.2811,
+   "pop": 0
+  },
+  {
+   "name": "Main Brook",
+   "lon": -56.0148,
+   "lat": 51.1834,
+   "pop": 246
+  },
+  {
+   "name": "Main Point-Davidsville",
+   "lon": -54.4183,
+   "lat": 49.3494,
+   "pop": 302
+  },
+  {
+   "name": "Maisonnette",
+   "lon": -64.9984,
+   "lat": 47.8236,
+   "pop": 535
+  },
+  {
+   "name": "Makkovik",
+   "lon": -59.1776,
+   "lat": 55.0866,
+   "pop": 365
+  },
+  {
+   "name": "Maliotenam",
+   "lon": -66.1816,
+   "lat": 50.2112,
+   "pop": 1316
+  },
+  {
+   "name": "Manermiut",
+   "lon": -53.1333,
+   "lat": 68.6,
+   "pop": 0
+  },
+  {
+   "name": "Maniitsoq",
+   "lon": -52.8982,
+   "lat": 65.4151,
+   "pop": 2534
+  },
+  {
+   "name": "Maple Bay",
+   "lon": -123.6194,
+   "lat": 48.8163,
+   "pop": 2640
+  },
+  {
+   "name": "Margaree Harbour",
+   "lon": -61.1152,
+   "lat": 46.4334,
+   "pop": 78
+  },
+  {
+   "name": "Maria",
+   "lon": -65.986,
+   "lat": 48.1749,
+   "pop": 1124
+  },
+  {
+   "name": "Marraat",
+   "lon": -52.7833,
+   "lat": 69.3667,
+   "pop": 0
+  },
+  {
+   "name": "Mary's Harbour",
+   "lon": -55.837,
+   "lat": 52.3055,
+   "pop": 312
+  },
+  {
+   "name": "Marystown",
+   "lon": -55.1483,
+   "lat": 47.1666,
+   "pop": 5204
+  },
+  {
+   "name": "Marysvale",
+   "lon": -53.2232,
+   "lat": 47.4889,
+   "pop": 419
+  },
+  {
+   "name": "Masset",
+   "lon": -132.1471,
+   "lat": 54.0114,
+   "pop": 838
+  },
+  {
+   "name": "Massey Drive",
+   "lon": -57.8984,
+   "lat": 48.9333,
+   "pop": 1606
+  },
+  {
+   "name": "Matane",
+   "lon": -67.522,
+   "lat": 48.8286,
+   "pop": 14812
+  },
+  {
+   "name": "McCallum",
+   "lon": -56.2288,
+   "lat": 47.6311,
+   "pop": 45
+  },
+  {
+   "name": "McIver's",
+   "lon": -58.1317,
+   "lat": 49.0833,
+   "pop": 513
+  },
+  {
+   "name": "McLeods",
+   "lon": -66.5736,
+   "lat": 48.0184,
+   "pop": 383
+  },
+  {
+   "name": "Meadows",
+   "lon": -58.0478,
+   "lat": 48.9948,
+   "pop": 560
+  },
+  {
+   "name": "Merritt's Harbour",
+   "lon": -54.6484,
+   "lat": 49.6313,
+   "pop": 29
+  },
+  {
+   "name": "Metchosin",
+   "lon": -123.5359,
+   "lat": 48.3829,
+   "pop": 5067
+  },
+  {
+   "name": "Middle Arm",
+   "lon": -56.1065,
+   "lat": 49.7042,
+   "pop": 443
+  },
+  {
+   "name": "Middleton",
+   "lon": -63.1793,
+   "lat": 45.7166,
+   "pop": 1391
+  },
+  {
+   "name": "Miles Cove",
+   "lon": -55.7815,
+   "lat": 49.5333,
+   "pop": 97
+  },
+  {
+   "name": "Mill Bay",
+   "lon": -123.55,
+   "lat": 48.65,
+   "pop": 7200
+  },
+  {
+   "name": "Milltown-Head of Bay D'Espoir",
+   "lon": -55.7275,
+   "lat": 47.9277,
+   "pop": 669
+  },
+  {
+   "name": "Milton",
+   "lon": -53.9567,
+   "lat": 48.2064,
+   "pop": 410
+  },
+  {
+   "name": "Ming's Bight",
+   "lon": -56.0482,
+   "lat": 49.9833,
+   "pop": 298
+  },
+  {
+   "name": "Mingan",
+   "lon": -64.032,
+   "lat": 50.292,
+   "pop": 407
+  },
+  {
+   "name": "Miscou",
+   "lon": -64.5711,
+   "lat": 47.944,
+   "pop": 530
+  },
+  {
+   "name": "Mobile",
+   "lon": -52.8481,
+   "lat": 47.2499,
+   "pop": 494
+  },
+  {
+   "name": "Mont-Joli",
+   "lon": -68.1921,
+   "lat": 48.5839,
+   "pop": 6568
+  },
+  {
+   "name": "Montague",
+   "lon": -62.6487,
+   "lat": 46.1668,
+   "pop": 2027
+  },
+  {
+   "name": "Montague Harbour",
+   "lon": -123.3917,
+   "lat": 48.8945,
+   "pop": 200
+  },
+  {
+   "name": "Moores Harbour",
+   "lon": -61.7481,
+   "lat": 57.5335,
+   "pop": 0
+  },
+  {
+   "name": "Morell",
+   "lon": -62.6987,
+   "lat": 46.4168,
+   "pop": 269
+  },
+  {
+   "name": "Moreton's Harbour",
+   "lon": -54.8642,
+   "lat": 49.5691,
+   "pop": 111
+  },
+  {
+   "name": "Morrisville",
+   "lon": -55.765,
+   "lat": 47.8666,
+   "pop": 93
   },
   {
    "name": "Mould Bay",
    "lon": -119.3387,
-   "lat": 76.2422
+   "lat": 76.2422,
+   "pop": 0
+  },
+  {
+   "name": "Mount Carmel-Mitchells Brook-St. Catherines",
+   "lon": -53.4814,
+   "lat": 47.1499,
+   "pop": 382
+  },
+  {
+   "name": "Mount Moriah",
+   "lon": -58.0317,
+   "lat": 48.9667,
+   "pop": 700
+  },
+  {
+   "name": "Mount Stewart",
+   "lon": -62.8654,
+   "lat": 46.3668,
+   "pop": 226
+  },
+  {
+   "name": "Mud Bay",
+   "lon": -124.8028,
+   "lat": 49.4663,
+   "pop": 222
+  },
+  {
+   "name": "Mulgrave",
+   "lon": -61.3912,
+   "lat": 45.6125,
+   "pop": 627
+  },
+  {
+   "name": "Murray Corner",
+   "lon": -63.9588,
+   "lat": 46.1718,
+   "pop": 371
+  },
+  {
+   "name": "Murray River",
+   "lon": -62.6153,
+   "lat": 46.0168,
+   "pop": 337
+  },
+  {
+   "name": "Musgrave Harbour",
+   "lon": -53.9648,
+   "lat": 49.4499,
+   "pop": 946
+  },
+  {
+   "name": "Musgravetown",
+   "lon": -53.8876,
+   "lat": 48.4062,
+   "pop": 561
+  },
+  {
+   "name": "Myggbukta",
+   "lon": -21.5564,
+   "lat": 73.49,
+   "pop": 0
+  },
+  {
+   "name": "Myrtle Point",
+   "lon": -124.4816,
+   "lat": 49.7981,
+   "pop": 537
   },
   {
    "name": "Naajat",
    "lon": -55.8167,
-   "lat": 73.15
+   "lat": 73.15,
+   "pop": 49
+  },
+  {
+   "name": "Nain",
+   "lon": -61.6955,
+   "lat": 56.5419,
+   "pop": 1204
+  },
+  {
+   "name": "Nanaimo",
+   "lon": -123.94,
+   "lat": 49.1664,
+   "pop": 90504
+  },
+  {
+   "name": "Nanoose Bay",
+   "lon": -124.1933,
+   "lat": 49.2724,
+   "pop": 6540
+  },
+  {
+   "name": "Nanortalik",
+   "lon": -45.2407,
+   "lat": 60.1417,
+   "pop": 1185
+  },
+  {
+   "name": "Napasoq",
+   "lon": -52.4,
+   "lat": 65.05,
+   "pop": 80
+  },
+  {
+   "name": "Narsalik",
+   "lon": -49.35,
+   "lat": 61.6167,
+   "pop": 0
+  },
+  {
+   "name": "Narsaq",
+   "lon": -46.0506,
+   "lat": 60.913,
+   "pop": 1346
+  },
+  {
+   "name": "Narsaq",
+   "lon": -51.6338,
+   "lat": 64.0017,
+   "pop": 0
   },
   {
    "name": "Narsaq",
    "lon": -68.8654,
-   "lat": 77.296
+   "lat": 77.296,
+   "pop": 0
+  },
+  {
+   "name": "Narsarmijit",
+   "lon": -44.6653,
+   "lat": 60.0049,
+   "pop": 66
+  },
+  {
+   "name": "Narsarsuaq",
+   "lon": -45.4254,
+   "lat": 61.1567,
+   "pop": 123
+  },
+  {
+   "name": "Narsatsiaat",
+   "lon": -49.3667,
+   "lat": 62.1,
+   "pop": 0
+  },
+  {
+   "name": "Narssarmiut",
+   "lon": -53.3,
+   "lat": 65.8833,
+   "pop": 0
+  },
+  {
+   "name": "Natashquan",
+   "lon": -61.8191,
+   "lat": 50.1851,
+   "pop": 246
   },
   {
    "name": "Natsilivik",
    "lon": -70.7375,
-   "lat": 77.175
+   "lat": 77.175,
+   "pop": 0
+  },
+  {
+   "name": "Natuashish",
+   "lon": -61.1242,
+   "lat": 55.9156,
+   "pop": 856
+  },
+  {
+   "name": "Naujaat",
+   "lon": -86.2437,
+   "lat": 66.5291,
+   "pop": 1225
+  },
+  {
+   "name": "Neguac",
+   "lon": -65.0741,
+   "lat": 47.2489,
+   "pop": 1692
+  },
+  {
+   "name": "Neils Harbour",
+   "lon": -60.3228,
+   "lat": 46.8086,
+   "pop": 300
+  },
+  {
+   "name": "Neria",
+   "lon": -49.1167,
+   "lat": 61.6167,
+   "pop": 0
+  },
+  {
+   "name": "Neriunaq",
+   "lon": -50.3167,
+   "lat": 64.4667,
+   "pop": 7
+  },
+  {
+   "name": "New Carlisle",
+   "lon": -65.3362,
+   "lat": 48.0096,
+   "pop": 1358
+  },
+  {
+   "name": "New Chelsea-New Melbourne-Brownsdale-Sibley's Cove-Lead Cove",
+   "lon": -53.1671,
+   "lat": 48.0372,
+   "pop": 491
+  },
+  {
+   "name": "New Glasgow",
+   "lon": -62.6486,
+   "lat": 45.5834,
+   "pop": 18665
+  },
+  {
+   "name": "New Harbour",
+   "lon": -53.5314,
+   "lat": 47.5832,
+   "pop": 491
+  },
+  {
+   "name": "New Perlican",
+   "lon": -53.3481,
+   "lat": 47.8999,
+   "pop": 200
+  },
+  {
+   "name": "New Victoria",
+   "lon": -60.1278,
+   "lat": 46.2537,
+   "pop": 1093
+  },
+  {
+   "name": "New Waterford",
+   "lon": -60.0817,
+   "lat": 46.2501,
+   "pop": 6723
+  },
+  {
+   "name": "New-Richmond",
+   "lon": -65.8582,
+   "lat": 48.1606,
+   "pop": 3748
+  },
+  {
+   "name": "New-Wes-Valley",
+   "lon": -53.5647,
+   "lat": 49.1499,
+   "pop": 2044
+  },
+  {
+   "name": "Newman's Cove",
+   "lon": -53.1981,
+   "lat": 48.5832,
+   "pop": 111
+  },
+  {
+   "name": "Niaqornaarsuk",
+   "lon": -52.8618,
+   "lat": 68.233,
+   "pop": 249
+  },
+  {
+   "name": "Niaqornaq",
+   "lon": -46.1333,
+   "lat": 61.0,
+   "pop": 0
   },
   {
    "name": "Niaqornat",
    "lon": -53.6643,
-   "lat": 70.7894
+   "lat": 70.7894,
+   "pop": 35
+  },
+  {
+   "name": "Nigadoo",
+   "lon": -65.7123,
+   "lat": 47.7395,
+   "pop": 997
+  },
+  {
+   "name": "Ninstints",
+   "lon": -131.2172,
+   "lat": 52.0998,
+   "pop": 1
+  },
+  {
+   "name": "Nivaaq",
+   "lon": -52.4167,
+   "lat": 68.6167,
+   "pop": 0
+  },
+  {
+   "name": "Noggin Cove",
+   "lon": -54.318,
+   "lat": 49.4144,
+   "pop": 180
+  },
+  {
+   "name": "Nordre Huse",
+   "lon": -51.0833,
+   "lat": 69.1167,
+   "pop": 0
+  },
+  {
+   "name": "Norman's Cove-Long Cove",
+   "lon": -53.671,
+   "lat": 47.5667,
+   "pop": 647
+  },
+  {
+   "name": "Norris Arm",
+   "lon": -55.2482,
+   "lat": 49.0832,
+   "pop": 708
+  },
+  {
+   "name": "Norris Point",
+   "lon": -57.8846,
+   "lat": 49.5272,
+   "pop": 602
+  },
+  {
+   "name": "North Cowichan",
+   "lon": -123.686,
+   "lat": 48.8413,
+   "pop": 29676
+  },
+  {
+   "name": "North Harbour",
+   "lon": -53.6645,
+   "lat": 47.1507,
+   "pop": 62
+  },
+  {
+   "name": "North Oyster/Yellow Point",
+   "lon": -123.834,
+   "lat": 49.0481,
+   "pop": 1320
+  },
+  {
+   "name": "North River",
+   "lon": -94.6868,
+   "lat": 58.8829,
+   "pop": 0
+  },
+  {
+   "name": "North Rustico",
+   "lon": -63.3154,
+   "lat": 46.4501,
+   "pop": 648
+  },
+  {
+   "name": "North Saanich",
+   "lon": -123.4193,
+   "lat": 48.6663,
+   "pop": 11089
+  },
+  {
+   "name": "North Sydney",
+   "lon": -60.2549,
+   "lat": 46.2078,
+   "pop": 5699
+  },
+  {
+   "name": "North Vancouver",
+   "lon": -123.0693,
+   "lat": 49.3164,
+   "pop": 88168
+  },
+  {
+   "name": "North West River",
+   "lon": -60.1315,
+   "lat": 53.5335,
+   "pop": 560
+  },
+  {
+   "name": "Northern Arm",
+   "lon": -55.3815,
+   "lat": 49.1666,
+   "pop": 371
+  },
+  {
+   "name": "Northwest Brook-Ivany's Cove-Queens Cove",
+   "lon": -53.9481,
+   "lat": 48.0142,
+   "pop": 391
+  },
+  {
+   "name": "Nottingham Island",
+   "lon": -77.9327,
+   "lat": 63.1173,
+   "pop": 0
+  },
+  {
+   "name": "Nunalla",
+   "lon": -94.828,
+   "lat": 59.9245,
+   "pop": 0
   },
   {
    "name": "Nunat",
    "lon": -67.5297,
-   "lat": 77.3894
+   "lat": 77.3894,
+   "pop": 0
   },
   {
    "name": "Nunatami",
    "lon": -66.0,
-   "lat": 80.0
+   "lat": 80.0,
+   "pop": 0
   },
   {
    "name": "Nunatarsuaq",
    "lon": -66.5747,
-   "lat": 77.4239
+   "lat": 77.4239,
+   "pop": 0
   },
   {
    "name": "Nutaarmiut",
    "lon": -56.4264,
-   "lat": 73.519
+   "lat": 73.519,
+   "pop": 0
+  },
+  {
+   "name": "Nuugaaq",
+   "lon": -51.2667,
+   "lat": 69.9667,
+   "pop": 0
   },
   {
    "name": "Nuugaatsiaq",
    "lon": -53.2124,
-   "lat": 71.5356
+   "lat": 71.5356,
+   "pop": 99
+  },
+  {
+   "name": "Nuuk",
+   "lon": -51.7216,
+   "lat": 64.1835,
+   "pop": 14798
   },
   {
    "name": "Nuussuaq",
    "lon": -57.0596,
-   "lat": 74.1112
+   "lat": 74.1112,
+   "pop": 181
+  },
+  {
+   "name": "Nuwata",
+   "lon": -77.615,
+   "lat": 65.134,
+   "pop": 0
+  },
+  {
+   "name": "O'Donnells",
+   "lon": -53.5661,
+   "lat": 47.0692,
+   "pop": 108
+  },
+  {
+   "name": "Oak Bay",
+   "lon": -123.3026,
+   "lat": 48.4496,
+   "pop": 18015
+  },
+  {
+   "name": "Oak Point - Bartibog Bridge",
+   "lon": -65.2982,
+   "lat": 47.1157,
+   "pop": 272
+  },
+  {
+   "name": "Old Massett",
+   "lon": -132.1893,
+   "lat": 54.0403,
+   "pop": 107
+  },
+  {
+   "name": "Old Perlican",
+   "lon": -53.0068,
+   "lat": 48.0804,
+   "pop": 608
+  },
+  {
+   "name": "Open Hall-Red Cliffe",
+   "lon": -53.4831,
+   "lat": 48.5572,
+   "pop": 54
+  },
+  {
+   "name": "Oqaatsut",
+   "lon": -51.0067,
+   "lat": 69.3425,
+   "pop": 29
+  },
+  {
+   "name": "Oyster River",
+   "lon": -125.1333,
+   "lat": 49.8667,
+   "pop": 1500
+  },
+  {
+   "name": "Paamiut",
+   "lon": -49.6678,
+   "lat": 61.994,
+   "pop": 1308
+  },
+  {
+   "name": "Paarnakajiit",
+   "lon": -37.6333,
+   "lat": 66.0833,
+   "pop": 0
+  },
+  {
+   "name": "Pacquet",
+   "lon": -55.8815,
+   "lat": 49.9833,
+   "pop": 145
   },
   {
    "name": "Padloping Island",
    "lon": -62.7302,
-   "lat": 67.034
+   "lat": 67.034,
+   "pop": 0
+  },
+  {
+   "name": "Pangnirtung",
+   "lon": -65.7,
+   "lat": 66.1464,
+   "pop": 1504
+  },
+  {
+   "name": "Paradise",
+   "lon": -52.8814,
+   "lat": 47.5291,
+   "pop": 22957
+  },
+  {
+   "name": "Paradise River",
+   "lon": -57.2393,
+   "lat": 53.4174,
+   "pop": 5
+  },
+  {
+   "name": "Parkers Cove",
+   "lon": -54.865,
+   "lat": 47.3999,
+   "pop": 233
+  },
+  {
+   "name": "Parksville",
+   "lon": -124.3157,
+   "lat": 49.3195,
+   "pop": 12000
+  },
+  {
+   "name": "Parson's Pond",
+   "lon": -57.715,
+   "lat": 50.0333,
+   "pop": 368
+  },
+  {
+   "name": "Patrick's Cove-Angels Cove",
+   "lon": -54.1147,
+   "lat": 47.0367,
+   "pop": 56
   },
   {
    "name": "Paulatuk",
    "lon": -124.0689,
-   "lat": 69.351
+   "lat": 69.351,
+   "pop": 298
+  },
+  {
+   "name": "Pemberton Heights",
+   "lon": -123.1083,
+   "lat": 49.3306,
+   "pop": 2090
+  },
+  {
+   "name": "Perce",
+   "lon": -64.2985,
+   "lat": 48.4879,
+   "pop": 3095
   },
   {
    "name": "Perlernerit",
    "lon": -66.4489,
-   "lat": 75.9272
+   "lat": 75.9272,
+   "pop": 0
+  },
+  {
+   "name": "Perry Island",
+   "lon": -102.5516,
+   "lat": 67.8009,
+   "pop": 0
+  },
+  {
+   "name": "Peterview",
+   "lon": -55.3482,
+   "lat": 49.1166,
+   "pop": 723
+  },
+  {
+   "name": "Petit-Rocher",
+   "lon": -65.7175,
+   "lat": 47.7827,
+   "pop": 1954
+  },
+  {
+   "name": "Petit-Rocher-Nord",
+   "lon": -65.7325,
+   "lat": 47.8092,
+   "pop": 572
+  },
+  {
+   "name": "Petley",
+   "lon": -53.7465,
+   "lat": 48.1534,
+   "pop": 88
+  },
+  {
+   "name": "Petty Harbour-Maddox Cove",
+   "lon": -52.7053,
+   "lat": 47.4695,
+   "pop": 947
+  },
+  {
+   "name": "Phillips Head",
+   "lon": -55.3069,
+   "lat": 49.2262,
+   "pop": 112
+  },
+  {
+   "name": "Piccadilly",
+   "lon": -58.9152,
+   "lat": 48.55,
+   "pop": 350
+  },
+  {
+   "name": "Pictou",
+   "lon": -62.7094,
+   "lat": 45.6788,
+   "pop": 3107
+  },
+  {
+   "name": "Pictou Island",
+   "lon": -62.5539,
+   "lat": 45.8094,
+   "pop": 28
+  },
+  {
+   "name": "Pictou Landing",
+   "lon": -62.678,
+   "lat": 45.6721,
+   "pop": 673
+  },
+  {
+   "name": "Pidgeon Cove-St. Barbe",
+   "lon": -56.7709,
+   "lat": 51.198,
+   "pop": 121
+  },
+  {
+   "name": "Pigeon Hill",
+   "lon": -64.5114,
+   "lat": 47.8474,
+   "pop": 443
+  },
+  {
+   "name": "Pilley's Island",
+   "lon": -55.7315,
+   "lat": 49.5166,
+   "pop": 286
+  },
+  {
+   "name": "Pinware",
+   "lon": -56.6981,
+   "lat": 51.6168,
+   "pop": 64
+  },
+  {
+   "name": "Pitorqeq",
+   "lon": -51.1193,
+   "lat": 69.2152,
+   "pop": 0
+  },
+  {
+   "name": "Placentia",
+   "lon": -53.9648,
+   "lat": 47.2332,
+   "pop": 3289
+  },
+  {
+   "name": "Plate Cove East",
+   "lon": -53.4814,
+   "lat": 48.5166,
+   "pop": 78
+  },
+  {
+   "name": "Plate Cove West",
+   "lon": -53.4981,
+   "lat": 48.4999,
+   "pop": 191
+  },
+  {
+   "name": "Pleasantview",
+   "lon": -55.3237,
+   "lat": 49.3607,
+   "pop": 42
+  },
+  {
+   "name": "Plum Point",
+   "lon": -56.8816,
+   "lat": 51.0758,
+   "pop": 90
+  },
+  {
+   "name": "Point Aconi",
+   "lon": -60.2985,
+   "lat": 46.3334,
+   "pop": 134
+  },
+  {
+   "name": "Point Edward",
+   "lon": -60.2766,
+   "lat": 46.1627,
+   "pop": 396
+  },
+  {
+   "name": "Point Lance",
+   "lon": -54.0815,
+   "lat": 46.8166,
+   "pop": 87
+  },
+  {
+   "name": "Point Leamington",
+   "lon": -55.3982,
+   "lat": 49.3332,
+   "pop": 574
+  },
+  {
+   "name": "Point May",
+   "lon": -55.9316,
+   "lat": 46.8999,
+   "pop": 254
+  },
+  {
+   "name": "Point au Gaul",
+   "lon": -55.7483,
+   "lat": 46.8666,
+   "pop": 67
+  },
+  {
+   "name": "Point of Bay",
+   "lon": -55.2482,
+   "lat": 49.2499,
+   "pop": 137
+  },
+  {
+   "name": "Pointe-Alexandre",
+   "lon": -64.6676,
+   "lat": 47.8053,
+   "pop": 303
+  },
+  {
+   "name": "Pointe-Brûlée",
+   "lon": -64.7304,
+   "lat": 47.7557,
+   "pop": 221
+  },
+  {
+   "name": "Pointe-Canot",
+   "lon": -64.6945,
+   "lat": 47.8334,
+   "pop": 247
+  },
+  {
+   "name": "Pointe-Ouest",
+   "lon": -64.5225,
+   "lat": 49.8639,
+   "pop": 2
+  },
+  {
+   "name": "Pointe-Sapin",
+   "lon": -64.8298,
+   "lat": 46.9639,
+   "pop": 475
+  },
+  {
+   "name": "Pointe-Verte",
+   "lon": -65.7662,
+   "lat": 47.8542,
+   "pop": 865
+  },
+  {
+   "name": "Pointe-du-Chêne",
+   "lon": -64.5166,
+   "lat": 46.236,
+   "pop": 761
+  },
+  {
+   "name": "Pointe-à-la-Croix",
+   "lon": -66.6819,
+   "lat": 48.0163,
+   "pop": 1344
+  },
+  {
+   "name": "Pokemouche",
+   "lon": -64.8765,
+   "lat": 47.6683,
+   "pop": 490
+  },
+  {
+   "name": "Pokesudie",
+   "lon": -64.7651,
+   "lat": 47.7977,
+   "pop": 228
   },
   {
    "name": "Polaris",
    "lon": -96.8823,
-   "lat": 75.396
+   "lat": 75.396,
+   "pop": 0
   },
   {
    "name": "Pond Inlet",
    "lon": -77.9595,
-   "lat": 72.6992
+   "lat": 72.6992,
+   "pop": 1555
+  },
+  {
+   "name": "Pool's Cove",
+   "lon": -55.4316,
+   "lat": 47.6832,
+   "pop": 188
+  },
+  {
+   "name": "Port Alberni",
+   "lon": -124.8028,
+   "lat": 49.2413,
+   "pop": 20712
+  },
+  {
+   "name": "Port Alice",
+   "lon": -127.451,
+   "lat": 50.3845,
+   "pop": 739
+  },
+  {
+   "name": "Port Anson",
+   "lon": -55.8315,
+   "lat": 49.5333,
+   "pop": 110
+  },
+  {
+   "name": "Port Blandford",
+   "lon": -54.1648,
+   "lat": 48.3499,
+   "pop": 513
+  },
+  {
+   "name": "Port Burwell",
+   "lon": -64.8317,
+   "lat": 60.4252,
+   "pop": 0
+  },
+  {
+   "name": "Port Caledonia",
+   "lon": -59.902,
+   "lat": 46.1822,
+   "pop": 212
+  },
+  {
+   "name": "Port Clements",
+   "lon": -132.1844,
+   "lat": 53.6868,
+   "pop": 340
+  },
+  {
+   "name": "Port Edward",
+   "lon": -130.2921,
+   "lat": 54.2226,
+   "pop": 470
+  },
+  {
+   "name": "Port Elgin",
+   "lon": -64.0868,
+   "lat": 46.0487,
+   "pop": 381
+  },
+  {
+   "name": "Port Hardy",
+   "lon": -127.4923,
+   "lat": 50.7209,
+   "pop": 3902
+  },
+  {
+   "name": "Port Hastings",
+   "lon": -61.3985,
+   "lat": 45.6501,
+   "pop": 90
+  },
+  {
+   "name": "Port Hawkesbury",
+   "lon": -61.3564,
+   "lat": 45.6165,
+   "pop": 3210
+  },
+  {
+   "name": "Port Hood",
+   "lon": -61.5318,
+   "lat": 46.0168,
+   "pop": 1300
+  },
+  {
+   "name": "Port Hope Simpson",
+   "lon": -56.298,
+   "lat": 52.5501,
+   "pop": 403
+  },
+  {
+   "name": "Port Howe",
+   "lon": -63.753,
+   "lat": 45.8535,
+   "pop": 492
+  },
+  {
+   "name": "Port McNeill",
+   "lon": -127.0864,
+   "lat": 50.59,
+   "pop": 2234
+  },
+  {
+   "name": "Port Moody",
+   "lon": -122.8246,
+   "lat": 49.2812,
+   "pop": 27512
+  },
+  {
+   "name": "Port Morien",
+   "lon": -59.874,
+   "lat": 46.1342,
+   "pop": 700
+  },
+  {
+   "name": "Port Nelson",
+   "lon": -92.5984,
+   "lat": 57.055,
+   "pop": 0
+  },
+  {
+   "name": "Port Renfrew",
+   "lon": -124.4221,
+   "lat": 48.5528,
+   "pop": 190
+  },
+  {
+   "name": "Port Rexton",
+   "lon": -53.3314,
+   "lat": 48.3902,
+   "pop": 361
+  },
+  {
+   "name": "Port Saunders",
+   "lon": -57.2982,
+   "lat": 50.6501,
+   "pop": 678
+  },
+  {
+   "name": "Port au Choix",
+   "lon": -57.3649,
+   "lat": 50.7168,
+   "pop": 742
+  },
+  {
+   "name": "Port au Port East",
+   "lon": -58.7024,
+   "lat": 48.5548,
+   "pop": 413
+  },
+  {
+   "name": "Port au Port West-Aguathuna-Felix Cove",
+   "lon": -58.7518,
+   "lat": 48.5554,
+   "pop": 384
+  },
+  {
+   "name": "Port de Grave",
+   "lon": -53.2117,
+   "lat": 47.5868,
+   "pop": 874
+  },
+  {
+   "name": "Port-Cartier",
+   "lon": -66.8654,
+   "lat": 50.0334,
+   "pop": 6516
+  },
+  {
+   "name": "Port-Menier",
+   "lon": -64.352,
+   "lat": 49.8184,
+   "pop": 177
+  },
+  {
+   "name": "Portland Creek",
+   "lon": -57.6174,
+   "lat": 50.1585,
+   "pop": 86
+  },
+  {
+   "name": "Portugal Cove South",
+   "lon": -53.2648,
+   "lat": 46.6999,
+   "pop": 86
+  },
+  {
+   "name": "Portusooq",
+   "lon": -45.2333,
+   "lat": 60.55,
+   "pop": 0
+  },
+  {
+   "name": "Postville",
+   "lon": -59.7726,
+   "lat": 54.9079,
+   "pop": 188
+  },
+  {
+   "name": "Pouch Cove",
+   "lon": -52.7647,
+   "lat": 47.7666,
+   "pop": 2063
+  },
+  {
+   "name": "Powell River",
+   "lon": -124.5237,
+   "lat": 49.8328,
+   "pop": 13157
+  },
+  {
+   "name": "Prince Rupert",
+   "lon": -130.321,
+   "lat": 54.3151,
+   "pop": 14708
+  },
+  {
+   "name": "Princeton",
+   "lon": -53.5981,
+   "lat": 48.4166,
+   "pop": 55
+  },
+  {
+   "name": "Prins Christians Sund",
+   "lon": -43.1592,
+   "lat": 60.0559,
+   "pop": 4
+  },
+  {
+   "name": "Pugwash",
+   "lon": -63.6654,
+   "lat": 45.8501,
+   "pop": 746
+  },
+  {
+   "name": "Puntledge",
+   "lon": -125.0291,
+   "lat": 49.6732,
+   "pop": 1387
+  },
+  {
+   "name": "Puvirnituq",
+   "lon": -77.2741,
+   "lat": 60.0357,
+   "pop": 2129
   },
   {
    "name": "Qaanaaq",
    "lon": -69.2315,
-   "lat": 77.4667
+   "lat": 77.4667,
+   "pop": 646
+  },
+  {
+   "name": "Qaarsut",
+   "lon": -52.65,
+   "lat": 70.7333,
+   "pop": 174
+  },
+  {
+   "name": "Qallimiut",
+   "lon": -45.3333,
+   "lat": 60.7,
+   "pop": 12
   },
   {
    "name": "Qangattaat",
    "lon": -72.4667,
-   "lat": 77.3833
+   "lat": 77.3833,
+   "pop": 0
+  },
+  {
+   "name": "Qaqortoq",
+   "lon": -46.0356,
+   "lat": 60.7184,
+   "pop": 3224
+  },
+  {
+   "name": "Qasigiannguit",
+   "lon": -51.1922,
+   "lat": 68.8193,
+   "pop": 1081
+  },
+  {
+   "name": "Qassiarsuk",
+   "lon": -45.5145,
+   "lat": 61.1496,
+   "pop": 39
+  },
+  {
+   "name": "Qassimiut",
+   "lon": -47.1667,
+   "lat": 60.7833,
+   "pop": 20
   },
   {
    "name": "Qassisalik",
    "lon": -71.5333,
-   "lat": 77.3333
+   "lat": 77.3333,
+   "pop": 0
+  },
+  {
+   "name": "Qeertartivatsiaq",
+   "lon": -38.0167,
+   "lat": 65.8333,
+   "pop": 0
+  },
+  {
+   "name": "Qeqertaq",
+   "lon": -51.3025,
+   "lat": 69.9974,
+   "pop": 114
   },
   {
    "name": "Qeqertaq",
    "lon": -65.9864,
-   "lat": 76.0344
+   "lat": 76.0344,
+   "pop": 0
+  },
+  {
+   "name": "Qeqertarsuaq",
+   "lon": -49.7833,
+   "lat": 62.1167,
+   "pop": 986
+  },
+  {
+   "name": "Qeqertarsuaq",
+   "lon": -53.5368,
+   "lat": 69.2472,
+   "pop": 839
   },
   {
    "name": "Qeqertarsuaq",
    "lon": -70.1892,
-   "lat": 77.4275
+   "lat": 77.4275,
+   "pop": 2
+  },
+  {
+   "name": "Qeqertarsuatsiaat",
+   "lon": -50.6777,
+   "lat": 63.0881,
+   "pop": 169
+  },
+  {
+   "name": "Qeqertarsuatsiaq",
+   "lon": -53.25,
+   "lat": 68.4167,
+   "pop": 0
   },
   {
    "name": "Qeqertat",
    "lon": -66.6478,
-   "lat": 77.5097
+   "lat": 77.5097,
+   "pop": 23
+  },
+  {
+   "name": "Qernertuarssuit",
+   "lon": -37.3,
+   "lat": 65.7167,
+   "pop": 1
   },
   {
    "name": "Qikiqtarjuaq",
    "lon": -64.0294,
-   "lat": 67.5571
+   "lat": 67.5571,
+   "pop": 0
+  },
+  {
+   "name": "Qooqqut",
+   "lon": -50.9,
+   "lat": 64.2667,
+   "pop": 1
+  },
+  {
+   "name": "Qoornoq",
+   "lon": -51.1,
+   "lat": 64.5333,
+   "pop": 2
+  },
+  {
+   "name": "Qualicum Beach",
+   "lon": -124.4423,
+   "lat": 49.3478,
+   "pop": 9303
+  },
+  {
+   "name": "Quaqtaq",
+   "lon": -69.6147,
+   "lat": 61.0337,
+   "pop": 453
+  },
+  {
+   "name": "Quathiaski Cove",
+   "lon": -125.2201,
+   "lat": 50.0515,
+   "pop": 516
+  },
+  {
+   "name": "Qullissaaqqat",
+   "lon": -52.95,
+   "lat": 70.0333,
+   "pop": 0
+  },
+  {
+   "name": "Qunnermiut",
+   "lon": -45.25,
+   "lat": 60.45,
+   "pop": 0
   },
   {
    "name": "Quínissut",
    "lon": -67.7672,
-   "lat": 77.5325
+   "lat": 77.5325,
+   "pop": 0
+  },
+  {
+   "name": "Qíngeq",
+   "lon": -37.1167,
+   "lat": 65.9667,
+   "pop": 0
+  },
+  {
+   "name": "Raleigh",
+   "lon": -55.7313,
+   "lat": 51.5668,
+   "pop": 150
+  },
+  {
+   "name": "Ramea",
+   "lon": -57.386,
+   "lat": 47.525,
+   "pop": 388
+  },
+  {
+   "name": "Rankin Inlet",
+   "lon": -92.0853,
+   "lat": 62.8091,
+   "pop": 2975
   },
   {
    "name": "Read Island",
    "lon": -113.8336,
-   "lat": 69.2068
+   "lat": 69.2068,
+   "pop": 0
+  },
+  {
+   "name": "Red Bay",
+   "lon": -56.4147,
+   "lat": 51.7334,
+   "pop": 142
+  },
+  {
+   "name": "Red Harbour",
+   "lon": -54.9816,
+   "lat": 47.2999,
+   "pop": 177
+  },
+  {
+   "name": "Rencontre East",
+   "lon": -55.215,
+   "lat": 47.6332,
+   "pop": 115
+  },
+  {
+   "name": "Renews-Cappahayden",
+   "lon": -52.939,
+   "lat": 46.931,
+   "pop": 280
+  },
+  {
+   "name": "Reserve Mines",
+   "lon": -60.0196,
+   "lat": 46.1803,
+   "pop": 2402
   },
   {
    "name": "Resolute",
    "lon": -94.8306,
-   "lat": 74.6974
+   "lat": 74.6974,
+   "pop": 183
+  },
+  {
+   "name": "Rexton",
+   "lon": -64.8829,
+   "lat": 46.6498,
+   "pop": 874
+  },
+  {
+   "name": "Richibucto",
+   "lon": -64.8804,
+   "lat": 46.6807,
+   "pop": 1411
+  },
+  {
+   "name": "Richmond",
+   "lon": -123.1368,
+   "lat": 49.17,
+   "pop": 209937
+  },
+  {
+   "name": "Riley Park",
+   "lon": -123.0932,
+   "lat": 49.243,
+   "pop": 22555
+  },
+  {
+   "name": "Rimouski",
+   "lon": -68.524,
+   "lat": 48.4488,
+   "pop": 42240
+  },
+  {
+   "name": "Ritenbenk",
+   "lon": -51.3001,
+   "lat": 69.7615,
+   "pop": 0
+  },
+  {
+   "name": "River John",
+   "lon": -63.0487,
+   "lat": 45.7501,
+   "pop": 2399
+  },
+  {
+   "name": "River Ryan",
+   "lon": -60.0864,
+   "lat": 46.2233,
+   "pop": 239
+  },
+  {
+   "name": "River of Ponds",
+   "lon": -57.378,
+   "lat": 50.535,
+   "pop": 173
+  },
+  {
+   "name": "Riverhead",
+   "lon": -53.5148,
+   "lat": 46.9666,
+   "pop": 165
+  },
+  {
+   "name": "Rivière-du-Loup",
+   "lon": -69.5424,
+   "lat": 47.827,
+   "pop": 18586
+  },
+  {
+   "name": "Robert's Arm",
+   "lon": -55.8149,
+   "lat": 49.4832,
+   "pop": 722
+  },
+  {
+   "name": "Roberts Creek",
+   "lon": -123.6478,
+   "lat": 49.4236,
+   "pop": 1949
+  },
+  {
+   "name": "Robertville",
+   "lon": -65.7734,
+   "lat": 47.6962,
+   "pop": 969
+  },
+  {
+   "name": "Rock Harbour",
+   "lon": -55.045,
+   "lat": 47.1749,
+   "pop": 54
+  },
+  {
+   "name": "Rocky Harbour",
+   "lon": -57.915,
+   "lat": 49.6,
+   "pop": 937
+  },
+  {
+   "name": "Roddickton",
+   "lon": -56.1314,
+   "lat": 50.8668,
+   "pop": 911
+  },
+  {
+   "name": "Rose Blanche-Harbour Le Cou",
+   "lon": -58.6818,
+   "lat": 47.6167,
+   "pop": 344
+  },
+  {
+   "name": "Royston",
+   "lon": -124.9467,
+   "lat": 49.647,
+   "pop": 1616
+  },
+  {
+   "name": "Rushoon",
+   "lon": -54.915,
+   "lat": 47.3499,
+   "pop": 229
+  },
+  {
+   "name": "Saanich",
+   "lon": -123.3693,
+   "lat": 48.5496,
+   "pop": 117735
+  },
+  {
+   "name": "Saanichton",
+   "lon": -123.4167,
+   "lat": 48.6,
+   "pop": 1565
+  },
+  {
+   "name": "Saarloq",
+   "lon": -46.0277,
+   "lat": 60.5376,
+   "pop": 21
+  },
+  {
+   "name": "Saattut",
+   "lon": -51.6313,
+   "lat": 70.8112,
+   "pop": 226
   },
   {
    "name": "Sachs Harbour",
    "lon": -125.2467,
-   "lat": 71.9849
+   "lat": 71.9849,
+   "pop": 90
+  },
+  {
+   "name": "Sackville",
+   "lon": -64.3684,
+   "lat": 45.8987,
+   "pop": 2963
+  },
+  {
+   "name": "Saint Irénée and Alderwood",
+   "lon": -64.9869,
+   "lat": 47.4989,
+   "pop": 847
+  },
+  {
+   "name": "Saint-Alexandre",
+   "lon": -66.8615,
+   "lat": 50.0254,
+   "pop": 1093
+  },
+  {
+   "name": "Saint-André",
+   "lon": -69.7223,
+   "lat": 47.6783,
+   "pop": 690
+  },
+  {
+   "name": "Saint-Augustin",
+   "lon": -58.6502,
+   "lat": 51.226,
+   "pop": 3961
+  },
+  {
+   "name": "Saint-Léolin",
+   "lon": -65.1731,
+   "lat": 47.7693,
+   "pop": 615
+  },
+  {
+   "name": "Saint-Pons",
+   "lon": -64.9609,
+   "lat": 47.4774,
+   "pop": 319
+  },
+  {
+   "name": "Saint-Simon",
+   "lon": -64.8412,
+   "lat": 47.7366,
+   "pop": 700
+  },
+  {
+   "name": "Saint-Siméon",
+   "lon": -69.8784,
+   "lat": 47.8443,
+   "pop": 1300
+  },
+  {
+   "name": "Saint-Ulric",
+   "lon": -67.7023,
+   "lat": 48.787,
+   "pop": 1567
+  },
+  {
+   "name": "Sainte-Anne-des-Monts",
+   "lon": -66.4924,
+   "lat": 49.124,
+   "pop": 5602
+  },
+  {
+   "name": "Sainte-Cécile",
+   "lon": -64.6649,
+   "lat": 47.8547,
+   "pop": 732
+  },
+  {
+   "name": "Sainte-Hélène-de-Kamouraska",
+   "lon": -69.7301,
+   "lat": 47.5904,
+   "pop": 891
+  },
+  {
+   "name": "Sainte-Marie-Saint-Raphaël",
+   "lon": -64.5656,
+   "lat": 47.7847,
+   "pop": 820
+  },
+  {
+   "name": "Salluit",
+   "lon": -75.6434,
+   "lat": 62.2041,
+   "pop": 1075
+  },
+  {
+   "name": "Salmon Cove",
+   "lon": -53.1648,
+   "lat": 47.7832,
+   "pop": 764
+  },
+  {
+   "name": "Saltair",
+   "lon": -123.7694,
+   "lat": 48.9496,
+   "pop": 2069
+  },
+  {
+   "name": "Salvage",
+   "lon": -53.6314,
+   "lat": 48.6832,
+   "pop": 108
+  },
+  {
+   "name": "Sammisoq",
+   "lon": -43.9322,
+   "lat": 59.9908,
+   "pop": 0
+  },
+  {
+   "name": "Sandringham",
+   "lon": -53.8314,
+   "lat": 48.6666,
+   "pop": 205
+  },
+  {
+   "name": "Sandspit",
+   "lon": -131.8272,
+   "lat": 53.2435,
+   "pop": 310
+  },
+  {
+   "name": "Sandy Cove",
+   "lon": -53.7314,
+   "lat": 48.6332,
+   "pop": 120
+  },
+  {
+   "name": "Sanikiluaq",
+   "lon": -79.2258,
+   "lat": 56.5411,
+   "pop": 1010
   },
   {
    "name": "Sanirajak",
    "lon": -81.236,
-   "lat": 68.7913
+   "lat": 68.7913,
+   "pop": 891
+  },
+  {
+   "name": "Saqqamiut",
+   "lon": -47.4167,
+   "lat": 60.8167,
+   "pop": 5
+  },
+  {
+   "name": "Saqqaq",
+   "lon": -51.9453,
+   "lat": 70.0096,
+   "pop": 132
+  },
+  {
+   "name": "Saqqarliit",
+   "lon": -52.4667,
+   "lat": 66.8667,
+   "pop": 0
+  },
+  {
+   "name": "Sarfannguit",
+   "lon": -52.8599,
+   "lat": 66.8979,
+   "pop": 96
+  },
+  {
+   "name": "Savage Cove-Sandy Cove-Shoal Cove East",
+   "lon": -56.6648,
+   "lat": 51.3501,
+   "pop": 385
   },
   {
    "name": "Savissivik",
    "lon": -65.1149,
-   "lat": 76.0197
+   "lat": 76.0197,
+   "pop": 55
+  },
+  {
+   "name": "Sayward",
+   "lon": -125.9611,
+   "lat": 50.3832,
+   "pop": 334
+  },
+  {
+   "name": "Scotchtown",
+   "lon": -60.0997,
+   "lat": 46.2389,
+   "pop": 1082
+  },
+  {
+   "name": "Seal Cove",
+   "lon": -56.3815,
+   "lat": 49.9333,
+   "pop": 315
+  },
+  {
+   "name": "Seal Cove",
+   "lon": -56.065,
+   "lat": 47.4832,
+   "pop": 215
+  },
+  {
+   "name": "Searston",
+   "lon": -59.3152,
+   "lat": 47.8263,
+   "pop": 128
+  },
+  {
+   "name": "Sechelt",
+   "lon": -123.759,
+   "lat": 49.4751,
+   "pop": 8832
+  },
+  {
+   "name": "Seldom-Little Seldom",
+   "lon": -54.1981,
+   "lat": 49.5999,
+   "pop": 444
+  },
+  {
+   "name": "Sept-Îles",
+   "lon": -66.3821,
+   "lat": 50.2001,
+   "pop": 28534
+  },
+  {
+   "name": "Sermiarsuit",
+   "lon": -52.1,
+   "lat": 70.5667,
+   "pop": 0
+  },
+  {
+   "name": "Sermiligaaq",
+   "lon": -36.3798,
+   "lat": 65.9073,
+   "pop": 209
+  },
+  {
+   "name": "Shawnigan Lake",
+   "lon": -123.6449,
+   "lat": 48.6506,
+   "pop": 3908
+  },
+  {
+   "name": "Shearwater",
+   "lon": -128.0922,
+   "lat": 52.1481,
+   "pop": 100
+  },
+  {
+   "name": "Shediac",
+   "lon": -64.5411,
+   "lat": 46.2198,
+   "pop": 7535
+  },
+  {
+   "name": "Shediac Bridge-Shediac River",
+   "lon": -64.6005,
+   "lat": 46.2689,
+   "pop": 1177
+  },
+  {
+   "name": "Shediac Cape",
+   "lon": -64.5654,
+   "lat": 46.2334,
+   "pop": 838
+  },
+  {
+   "name": "Sheshatshiu",
+   "lon": -60.1459,
+   "lat": 53.5187,
+   "pop": 1049
+  },
+  {
+   "name": "Shippagan",
+   "lon": -64.708,
+   "lat": 47.7442,
+   "pop": 2580
+  },
+  {
+   "name": "Shirley",
+   "lon": -123.9049,
+   "lat": 48.3891,
+   "pop": 485
+  },
+  {
+   "name": "Sidney",
+   "lon": -123.4026,
+   "lat": 48.6496,
+   "pop": 12318
+  },
+  {
+   "name": "Simiutaq",
+   "lon": -37.0333,
+   "lat": 65.8667,
+   "pop": 0
   },
   {
    "name": "Siorapaluk",
    "lon": -70.6316,
-   "lat": 77.7853
+   "lat": 77.7853,
+   "pop": 43
+  },
+  {
+   "name": "Sisimiut",
+   "lon": -53.6735,
+   "lat": 66.9395,
+   "pop": 5227
+  },
+  {
+   "name": "Six Mile",
+   "lon": -123.4609,
+   "lat": 48.4577,
+   "pop": 1031
+  },
+  {
+   "name": "Skansen",
+   "lon": -52.45,
+   "lat": 69.4333,
+   "pop": 0
+  },
+  {
+   "name": "Skidegate",
+   "lon": -131.9907,
+   "lat": 53.2661,
+   "pop": 837
+  },
+  {
+   "name": "Skjoldungen",
+   "lon": -41.4028,
+   "lat": 63.2195,
+   "pop": 0
+  },
+  {
+   "name": "Sliammon",
+   "lon": -124.6079,
+   "lat": 49.8972,
+   "pop": 797
+  },
+  {
+   "name": "Small Point-Adam's Cove-Blackhead-Broad Cove",
+   "lon": -53.1033,
+   "lat": 47.8454,
+   "pop": 414
+  },
+  {
+   "name": "Smith's Harbour",
+   "lon": -55.9706,
+   "lat": 49.7409,
+   "pop": 131
+  },
+  {
+   "name": "Sointula",
+   "lon": -127.0178,
+   "lat": 50.6308,
+   "pop": 513
+  },
+  {
+   "name": "Sooke",
+   "lon": -123.7276,
+   "lat": 48.3746,
+   "pop": 15086
+  },
+  {
+   "name": "Souris",
+   "lon": -62.2486,
+   "lat": 46.3501,
+   "pop": 1079
+  },
+  {
+   "name": "Souris West",
+   "lon": -62.2819,
+   "lat": 46.3668,
+   "pop": 379
+  },
+  {
+   "name": "South Bar",
+   "lon": -60.201,
+   "lat": 46.2017,
+   "pop": 673
+  },
+  {
+   "name": "South Brook",
+   "lon": -56.0815,
+   "lat": 49.4333,
+   "pop": 420
+  },
+  {
+   "name": "South Dildo",
+   "lon": -53.5573,
+   "lat": 47.5151,
+   "pop": 195
+  },
+  {
+   "name": "South Pender Harbour",
+   "lon": -124.0248,
+   "lat": 49.622,
+   "pop": 1187
+  },
+  {
+   "name": "South River",
+   "lon": -53.2785,
+   "lat": 47.5226,
+   "pop": 674
+  },
+  {
+   "name": "Southern Harbour",
+   "lon": -53.9648,
+   "lat": 47.7166,
+   "pop": 313
+  },
+  {
+   "name": "Spaniard's Bay",
+   "lon": -53.2814,
+   "lat": 47.6166,
+   "pop": 2630
+  },
+  {
+   "name": "Springdale",
+   "lon": -56.0649,
+   "lat": 49.4999,
+   "pop": 2080
+  },
+  {
+   "name": "Squamish",
+   "lon": -123.1563,
+   "lat": 49.6992,
+   "pop": 23819
+  },
+  {
+   "name": "St. Alban's",
+   "lon": -55.8483,
+   "lat": 47.8666,
+   "pop": 1189
+  },
+  {
+   "name": "St. Andrew's",
+   "lon": -59.273,
+   "lat": 47.7776,
+   "pop": 284
+  },
+  {
+   "name": "St. Anthony",
+   "lon": -55.5974,
+   "lat": 51.3704,
+   "pop": 2049
+  },
+  {
+   "name": "St. Bernard's-Jacques Fontaine",
+   "lon": -54.915,
+   "lat": 47.5193,
+   "pop": 433
+  },
+  {
+   "name": "St. Bride's",
+   "lon": -54.1649,
+   "lat": 46.9166,
+   "pop": 272
+  },
+  {
+   "name": "St. George's",
+   "lon": -58.4815,
+   "lat": 48.4285,
+   "pop": 1139
+  },
+  {
+   "name": "St. Jacques-Coomb's Cove",
+   "lon": -55.515,
+   "lat": 47.4666,
+   "pop": 546
+  },
+  {
+   "name": "St. John's",
+   "lon": -52.7093,
+   "lat": 47.5649,
+   "pop": 110525
+  },
+  {
+   "name": "St. Joseph's",
+   "lon": -53.5148,
+   "lat": 47.1166,
+   "pop": 86
+  },
+  {
+   "name": "St. Joseph's Cove-St. Veronica's",
+   "lon": -55.7908,
+   "lat": 47.9325,
+   "pop": 85
+  },
+  {
+   "name": "St. Lawrence",
+   "lon": -55.3983,
+   "lat": 46.9166,
+   "pop": 1115
+  },
+  {
+   "name": "St. Lewis",
+   "lon": -55.6846,
+   "lat": 52.3689,
+   "pop": 181
+  },
+  {
+   "name": "St. Lunaire-Griquet",
+   "lon": -55.4646,
+   "lat": 51.5168,
+   "pop": 603
+  },
+  {
+   "name": "St. Mary's",
+   "lon": -53.5814,
+   "lat": 46.9166,
+   "pop": 313
+  },
+  {
+   "name": "St. Pauls",
+   "lon": -57.815,
+   "lat": 49.8667,
+   "pop": 202
+  },
+  {
+   "name": "St. Peter's",
+   "lon": -60.8742,
+   "lat": 45.6566,
+   "pop": 2634
+  },
+  {
+   "name": "St. Peters Bay",
+   "lon": -62.5819,
+   "lat": 46.4168,
+   "pop": 253
+  },
+  {
+   "name": "St. Shott's",
+   "lon": -53.5814,
+   "lat": 46.6332,
+   "pop": 55
+  },
+  {
+   "name": "St. Vincent's-St. Stephen's-Peter's River",
+   "lon": -53.6148,
+   "lat": 46.7666,
+   "pop": 263
+  },
+  {
+   "name": "Stanley Bridge",
+   "lon": -63.4487,
+   "lat": 46.4668,
+   "pop": 359
+  },
+  {
+   "name": "Stanton",
+   "lon": -128.6886,
+   "lat": 69.8002,
+   "pop": 0
+  },
+  {
+   "name": "Steady Brook",
+   "lon": -57.825,
+   "lat": 48.954,
+   "pop": 416
+  },
+  {
+   "name": "Stephenville",
+   "lon": -58.5818,
+   "lat": 48.55,
+   "pop": 6540
+  },
+  {
+   "name": "Stephenville Crossing",
+   "lon": -58.4375,
+   "lat": 48.5037,
+   "pop": 1634
+  },
+  {
+   "name": "Stewart",
+   "lon": -129.9866,
+   "lat": 55.936,
+   "pop": 517
+  },
+  {
+   "name": "Stoneville",
+   "lon": -54.5456,
+   "lat": 49.4576,
+   "pop": 274
+  },
+  {
+   "name": "Strait Shores",
+   "lon": -64.0764,
+   "lat": 46.0897,
+   "pop": 2077
+  },
+  {
+   "name": "Stratford",
+   "lon": -63.0795,
+   "lat": 46.2179,
+   "pop": 10927
+  },
+  {
+   "name": "Strawberry Hill",
+   "lon": -122.8833,
+   "lat": 49.1333,
+   "pop": 41000
+  },
+  {
+   "name": "Summerford",
+   "lon": -54.7814,
+   "lat": 49.4832,
+   "pop": 805
+  },
+  {
+   "name": "Summerside",
+   "lon": -63.7887,
+   "lat": 46.3912,
+   "pop": 14829
+  },
+  {
+   "name": "Summerville-Princeton-Southern Bay",
+   "lon": -53.5713,
+   "lat": 48.4325,
+   "pop": 267
+  },
+  {
+   "name": "Sunset Beach",
+   "lon": -123.2484,
+   "lat": 49.3998,
+   "pop": 424
+  },
+  {
+   "name": "Surrey",
+   "lon": -122.8251,
+   "lat": 49.1063,
+   "pop": 568322
+  },
+  {
+   "name": "Swift Current",
+   "lon": -54.2093,
+   "lat": 47.8853,
+   "pop": 207
+  },
+  {
+   "name": "Sydney",
+   "lon": -60.1831,
+   "lat": 46.1351,
+   "pop": 105968
+  },
+  {
+   "name": "Sydney Mines",
+   "lon": -60.2177,
+   "lat": 46.2367,
+   "pop": 12353
+  },
+  {
+   "name": "Sydney River",
+   "lon": -60.2152,
+   "lat": 46.1168,
+   "pop": 455
+  },
+  {
+   "name": "Søndre Igaliku",
+   "lon": -45.2833,
+   "lat": 60.9,
+   "pop": 0
+  },
+  {
+   "name": "Tabusintac",
+   "lon": -65.0114,
+   "lat": 47.3278,
+   "pop": 861
+  },
+  {
+   "name": "Tadoussac",
+   "lon": -69.7167,
+   "lat": 48.15,
+   "pop": 858
   },
   {
    "name": "Taloyoak",
    "lon": -93.5211,
-   "lat": 69.5372
+   "lat": 69.5372,
+   "pop": 0
   },
   {
    "name": "Tanquary Camp",
    "lon": -76.8963,
-   "lat": 81.4021
+   "lat": 81.4021,
+   "pop": 0
+  },
+  {
+   "name": "Tartunaq",
+   "lon": -52.2167,
+   "lat": 70.0333,
+   "pop": 0
+  },
+  {
+   "name": "Tasiilaq",
+   "lon": -37.6368,
+   "lat": 65.6145,
+   "pop": 1985
+  },
+  {
+   "name": "Tasiujaq",
+   "lon": -69.9276,
+   "lat": 58.6959,
+   "pop": 420
   },
   {
    "name": "Tasiusaq",
    "lon": -56.0575,
-   "lat": 73.369
+   "lat": 73.369,
+   "pop": 252
+  },
+  {
+   "name": "Tasiusaq",
+   "lon": -44.8172,
+   "lat": 60.194,
+   "pop": 53
+  },
+  {
+   "name": "Tatamagouche",
+   "lon": -63.2987,
+   "lat": 45.7169,
+   "pop": 691
+  },
+  {
+   "name": "Tavani",
+   "lon": -93.1001,
+   "lat": 62.0673,
+   "pop": 0
+  },
+  {
+   "name": "Terrenceville",
+   "lon": -54.7315,
+   "lat": 47.6666,
+   "pop": 446
+  },
+  {
+   "name": "The Beaches",
+   "lon": -56.8316,
+   "lat": 49.5833,
+   "pop": 38
   },
   {
    "name": "Thom Bay",
    "lon": -92.4002,
-   "lat": 70.1512
+   "lat": 70.1512,
+   "pop": 0
+  },
+  {
+   "name": "Thornlea",
+   "lon": -53.72,
+   "lat": 47.6087,
+   "pop": 61
+  },
+  {
+   "name": "Three Rivers",
+   "lon": -62.5679,
+   "lat": 46.1845,
+   "pop": 7883
+  },
+  {
+   "name": "Tidnish",
+   "lon": -64.0095,
+   "lat": 45.9937,
+   "pop": 1327
+  },
+  {
+   "name": "Tignish",
+   "lon": -64.032,
+   "lat": 46.9501,
+   "pop": 744
   },
   {
    "name": "Tikeraasaq",
    "lon": -68.4642,
-   "lat": 77.3614
+   "lat": 77.3614,
+   "pop": 0
+  },
+  {
+   "name": "Tillicum",
+   "lon": -123.4,
+   "lat": 48.45,
+   "pop": 10080
+  },
+  {
+   "name": "Tilt Cove",
+   "lon": -55.6314,
+   "lat": 49.8832,
+   "pop": 4
+  },
+  {
+   "name": "Tilting",
+   "lon": -54.0648,
+   "lat": 49.6999,
+   "pop": 248
+  },
+  {
+   "name": "Timerliit",
+   "lon": -53.25,
+   "lat": 65.8333,
+   "pop": 7
+  },
+  {
+   "name": "Timmiarmiut",
+   "lon": -42.2167,
+   "lat": 62.5333,
+   "pop": 0
+  },
+  {
+   "name": "Tiniteqilaaq",
+   "lon": -37.7787,
+   "lat": 65.8887,
+   "pop": 96
+  },
+  {
+   "name": "Tiniteqilaarmiit",
+   "lon": -41.1167,
+   "lat": 63.3833,
+   "pop": 0
+  },
+  {
+   "name": "Tizzard's Harbour",
+   "lon": -54.803,
+   "lat": 49.5951,
+   "pop": 58
+  },
+  {
+   "name": "Tlell",
+   "lon": -131.93,
+   "lat": 53.562,
+   "pop": 180
+  },
+  {
+   "name": "Tofino",
+   "lon": -125.9074,
+   "lat": 49.1531,
+   "pop": 2516
+  },
+  {
+   "name": "Toqqusaq",
+   "lon": -52.2,
+   "lat": 64.8667,
+   "pop": 0
+  },
+  {
+   "name": "Torbay",
+   "lon": -52.7313,
+   "lat": 47.6666,
+   "pop": 7852
+  },
+  {
+   "name": "Tors Cove",
+   "lon": -52.8481,
+   "lat": 47.2166,
+   "pop": 377
+  },
+  {
+   "name": "Tracadie-Sheila",
+   "lon": -64.9181,
+   "lat": 47.5144,
+   "pop": 3184
+  },
+  {
+   "name": "Traytown",
+   "lon": -53.9648,
+   "lat": 48.6666,
+   "pop": 279
+  },
+  {
+   "name": "Tremblay",
+   "lon": -65.7578,
+   "lat": 47.7479,
+   "pop": 463
+  },
+  {
+   "name": "Trenton",
+   "lon": -62.6374,
+   "lat": 45.6155,
+   "pop": 2407
+  },
+  {
+   "name": "Trepassey",
+   "lon": -53.3648,
+   "lat": 46.7332,
+   "pop": 405
+  },
+  {
+   "name": "Trinity",
+   "lon": -53.3605,
+   "lat": 48.3689,
+   "pop": 182
+  },
+  {
+   "name": "Trinity Bay North",
+   "lon": -53.0713,
+   "lat": 48.5221,
+   "pop": 1649
+  },
+  {
+   "name": "Triton",
+   "lon": -55.6149,
+   "lat": 49.5166,
+   "pop": 896
+  },
+  {
+   "name": "Trois Pistoles",
+   "lon": -69.1667,
+   "lat": 48.1167,
+   "pop": 3115
+  },
+  {
+   "name": "Trout River",
+   "lon": -58.1317,
+   "lat": 49.4833,
+   "pop": 508
+  },
+  {
+   "name": "Tuapaat",
+   "lon": -45.1667,
+   "lat": 60.1167,
+   "pop": 0
+  },
+  {
+   "name": "Tuktoyaktuk",
+   "lon": -133.0342,
+   "lat": 69.4447,
+   "pop": 978
+  },
+  {
+   "name": "Tununngasoq",
+   "lon": -53.1833,
+   "lat": 68.1,
+   "pop": 0
   },
   {
    "name": "Tussaaq",
    "lon": -56.1796,
-   "lat": 73.0483
+   "lat": 73.0483,
+   "pop": 0
+  },
+  {
+   "name": "Twillingate",
+   "lon": -54.7649,
+   "lat": 49.6499,
+   "pop": 2121
+  },
+  {
+   "name": "Ucluelet",
+   "lon": -125.5464,
+   "lat": 48.9415,
+   "pop": 2066
+  },
+  {
+   "name": "Ujaraat",
+   "lon": -49.3833,
+   "lat": 62.1167,
+   "pop": 0
+  },
+  {
+   "name": "Ujarasussuk",
+   "lon": -52.4361,
+   "lat": 69.8622,
+   "pop": 0
+  },
+  {
+   "name": "Ukkusissat",
+   "lon": -51.8869,
+   "lat": 71.0496,
+   "pop": 154
+  },
+  {
+   "name": "Ukîverajik",
+   "lon": -37.9167,
+   "lat": 65.75,
+   "pop": 0
   },
   {
    "name": "Ulukhaktok",
    "lon": -117.7716,
-   "lat": 70.7364
+   "lat": 70.7364,
+   "pop": 396
   },
   {
    "name": "Ulussat",
    "lon": -71.0667,
-   "lat": 77.3833
+   "lat": 77.3833,
+   "pop": 0
+  },
+  {
+   "name": "Umiattuartivit",
+   "lon": -37.9833,
+   "lat": 65.9,
+   "pop": 0
+  },
+  {
+   "name": "Umiujaq",
+   "lon": -76.5495,
+   "lat": 56.553,
+   "pop": 541
+  },
+  {
+   "name": "Union Bay",
+   "lon": -124.8861,
+   "lat": 49.5838,
+   "pop": 1200
+  },
+  {
+   "name": "Upernaviarsuk",
+   "lon": -45.8833,
+   "lat": 60.75,
+   "pop": 13
   },
   {
    "name": "Upernavik",
    "lon": -56.1493,
-   "lat": 72.7836
+   "lat": 72.7836,
+   "pop": 1129
   },
   {
    "name": "Upernavik Kujalleq",
    "lon": -55.5241,
-   "lat": 72.1551
+   "lat": 72.1551,
+   "pop": 205
   },
   {
    "name": "Upernavissuaq",
    "lon": -71.8333,
-   "lat": 77.3167
+   "lat": 77.3167,
+   "pop": 0
+  },
+  {
+   "name": "Upper Amherst Cove",
+   "lon": -53.2323,
+   "lat": 48.5583,
+   "pop": 58
+  },
+  {
+   "name": "Upper Ferry",
+   "lon": -59.2486,
+   "lat": 47.85,
+   "pop": 173
+  },
+  {
+   "name": "Upper Island Cove",
+   "lon": -53.2148,
+   "lat": 47.6499,
+   "pop": 1142
+  },
+  {
+   "name": "Upper North Sydney",
+   "lon": -60.2865,
+   "lat": 46.1806,
+   "pop": 387
+  },
+  {
+   "name": "Utoqqarmiut",
+   "lon": -51.4667,
+   "lat": 63.8,
+   "pop": 0
+  },
+  {
+   "name": "Uummannaarsuk",
+   "lon": -53.5833,
+   "lat": 66.85,
+   "pop": 0
+  },
+  {
+   "name": "Uummannaq",
+   "lon": -52.1255,
+   "lat": 70.6744,
+   "pop": 1407
+  },
+  {
+   "name": "Uummannaq",
+   "lon": -50.7833,
+   "lat": 64.4833,
+   "pop": 0
+  },
+  {
+   "name": "Uummannatsiaq",
+   "lon": -51.6833,
+   "lat": 70.5667,
+   "pop": 0
+  },
+  {
+   "name": "Uunartoq",
+   "lon": -21.976,
+   "lat": 70.4147,
+   "pop": 0
+  },
+  {
+   "name": "Uunartoq",
+   "lon": -52.6,
+   "lat": 69.9,
+   "pop": 0
+  },
+  {
+   "name": "Valley Pond",
+   "lon": -54.8986,
+   "lat": 49.5714,
+   "pop": 42
+  },
+  {
+   "name": "Van Anda",
+   "lon": -124.5575,
+   "lat": 49.7587,
+   "pop": 362
+  },
+  {
+   "name": "Vancouver",
+   "lon": -123.1193,
+   "lat": 49.2497,
+   "pop": 662248
+  },
+  {
+   "name": "Vandreblokken",
+   "lon": -24.0,
+   "lat": 70.65,
+   "pop": 0
+  },
+  {
+   "name": "Vester Ejland",
+   "lon": -53.524,
+   "lat": 68.6234,
+   "pop": 0
+  },
+  {
+   "name": "Vesuvius",
+   "lon": -123.5721,
+   "lat": 48.8814,
+   "pop": 100
+  },
+  {
+   "name": "Victoria",
+   "lon": -123.3516,
+   "lat": 48.4359,
+   "pop": 289625
+  },
+  {
+   "name": "Victoria",
+   "lon": -53.2314,
+   "lat": 47.7666,
+   "pop": 1658
+  },
+  {
+   "name": "Victoria",
+   "lon": -63.482,
+   "lat": 46.2168,
+   "pop": 139
+  },
+  {
+   "name": "Vieux-Fort",
+   "lon": -57.818,
+   "lat": 51.4256,
+   "pop": 256
+  },
+  {
+   "name": "View Royal",
+   "lon": -123.4526,
+   "lat": 48.4579,
+   "pop": 11575
+  },
+  {
+   "name": "Village-Blanchard",
+   "lon": -64.9009,
+   "lat": 47.7269,
+   "pop": 396
+  },
+  {
+   "name": "Virgin Arm-Carter's Cove",
+   "lon": -54.7814,
+   "lat": 49.5332,
+   "pop": 615
+  },
+  {
+   "name": "Wabana",
+   "lon": -52.9481,
+   "lat": 47.6332,
+   "pop": 2146
+  },
+  {
+   "name": "Waskaganish",
+   "lon": -78.75,
+   "lat": 51.4833,
+   "pop": 1839
+  },
+  {
+   "name": "Welcome Beach",
+   "lon": -123.8924,
+   "lat": 49.4796,
+   "pop": 1125
+  },
+  {
+   "name": "West Bay",
+   "lon": -58.9702,
+   "lat": 48.6177,
+   "pop": 235
+  },
+  {
+   "name": "West St. Modeste",
+   "lon": -56.6981,
+   "lat": 51.6001,
+   "pop": 102
+  },
+  {
+   "name": "West Vancouver",
+   "lon": -123.1602,
+   "lat": 49.3286,
+   "pop": 45487
+  },
+  {
+   "name": "Western Bay",
+   "lon": -53.0814,
+   "lat": 47.8832,
+   "pop": 395
+  },
+  {
+   "name": "Westmount",
+   "lon": -60.2192,
+   "lat": 46.1355,
+   "pop": 3000
+  },
+  {
+   "name": "Westport",
+   "lon": -56.6315,
+   "lat": 49.7833,
+   "pop": 185
+  },
+  {
+   "name": "Westridge",
+   "lon": -122.95,
+   "lat": 49.2833,
+   "pop": 2521
+  },
+  {
+   "name": "Whale Cove",
+   "lon": -92.5778,
+   "lat": 62.1714,
+   "pop": 0
+  },
+  {
+   "name": "Whapmagoostui",
+   "lon": -77.7495,
+   "lat": 55.2503,
+   "pop": 0
+  },
+  {
+   "name": "Whisky Creek",
+   "lon": -124.5056,
+   "lat": 49.3083,
+   "pop": 890
+  },
+  {
+   "name": "White Rock",
+   "lon": -122.7951,
+   "lat": 49.0205,
+   "pop": 23670
+  },
+  {
+   "name": "Whitefish Station",
+   "lon": -136.8576,
+   "lat": 68.8775,
+   "pop": 0
+  },
+  {
+   "name": "Whitefish Station",
+   "lon": -133.6223,
+   "lat": 69.3792,
+   "pop": 0
+  },
+  {
+   "name": "Whiteway",
+   "lon": -53.4814,
+   "lat": 47.6832,
+   "pop": 351
+  },
+  {
+   "name": "Whitney Pier",
+   "lon": -60.1866,
+   "lat": 46.1593,
+   "pop": 4612
+  },
+  {
+   "name": "Whycocomagh",
+   "lon": -61.1152,
+   "lat": 45.9834,
+   "pop": 854
+  },
+  {
+   "name": "Winisk",
+   "lon": -85.1997,
+   "lat": 55.2669,
+   "pop": 0
+  },
+  {
+   "name": "Winterton",
+   "lon": -53.328,
+   "lat": 47.956,
+   "pop": 436
+  },
+  {
+   "name": "Witless Bay",
+   "lon": -52.8314,
+   "lat": 47.2832,
+   "pop": 1640
+  },
+  {
+   "name": "Woodstock",
+   "lon": -55.8815,
+   "lat": 49.9667,
+   "pop": 195
+  },
+  {
+   "name": "Woody Point",
+   "lon": -57.9316,
+   "lat": 49.5,
+   "pop": 244
+  },
+  {
+   "name": "York Factory",
+   "lon": -92.3059,
+   "lat": 57.002,
+   "pop": 0
+  },
+  {
+   "name": "York Harbour",
+   "lon": -58.3817,
+   "lat": 49.0667,
+   "pop": 395
+  },
+  {
+   "name": "Zeballos",
+   "lon": -126.8465,
+   "lat": 49.9814,
+   "pop": 126
+  },
+  {
+   "name": "Íkáteq",
+   "lon": -36.6676,
+   "lat": 65.9465,
+   "pop": 0
+  },
+  {
+   "name": "Île-de-Lamèque",
+   "lon": -64.5961,
+   "lat": 47.8466,
+   "pop": 5627
   }
  ],
  "shipTrack": {
   "span": {
-   "start": "2025-09-17T23:30:02+00:00",
-   "end": "2026-09-17T23:11:38.093632768+00:00"
+   "start": "2025-09-18T12:10:01+00:00",
+   "end": "2026-09-18T12:07:00+00:00"
   },
   "spacing": 8000,
   "lonLat": [
    [
-    -82.412,
-    80.484
+    -82.701,
+    80.446
    ],
    [
-    -82.857,
-    80.424
+    -83.062,
+    80.395
    ],
    [
-    -83.266,
-    80.365
+    -83.473,
+    80.337
    ],
    [
-    -83.512,
-    80.293
+    -83.396,
+    80.253
    ],
    [
-    -83.255,
-    80.216
+    -83.097,
+    80.18
    ],
    [
-    -82.945,
-    80.144
+    -82.78,
+    80.109
    ],
    [
-    -82.61,
-    80.075
+    -82.46,
+    80.038
    ],
    [
-    -82.338,
-    79.998
+    -82.205,
+    79.96
    ],
    [
-    -82.055,
-    79.924
+    -81.944,
+    79.883
    ],
    [
-    -81.931,
-    79.855
+    -81.835,
+    79.797
    ],
    [
-    -81.813,
-    79.753
+    -81.699,
+    79.713
    ],
    [
-    -81.502,
-    79.686
+    -81.281,
+    79.665
    ],
    [
-    -81.057,
-    79.644
+    -80.818,
+    79.634
    ],
    [
-    -80.584,
-    79.637
+    -80.35,
+    79.653
    ],
    [
-    -80.106,
-    79.664
+    -79.863,
+    79.673
    ],
    [
-    -80.645,
-    79.633
+    -80.416,
+    79.649
    ],
    [
-    -81.12,
-    79.65
+    -80.885,
+    79.636
    ],
    [
-    -81.563,
-    79.692
+    -81.342,
+    79.67
    ],
    [
-    -81.823,
-    79.765
+    -81.74,
+    79.723
    ],
    [
-    -81.857,
-    79.852
+    -81.858,
+    79.809
    ],
    [
-    -82.074,
-    79.93
+    -81.928,
+    79.88
    ],
    [
-    -82.357,
-    80.004
+    -82.226,
+    79.966
    ],
    [
-    -82.645,
-    80.079
+    -82.492,
+    80.043
    ],
    [
-    -82.928,
-    80.152
+    -82.758,
+    80.118
    ],
    [
-    -83.284,
-    80.218
+    -83.106,
+    80.185
    ],
    [
-    -83.49,
-    80.287
+    -83.364,
+    80.247
    ],
    [
-    -83.963,
-    80.326
+    -83.717,
+    80.309
    ],
    [
-    -84.445,
-    80.366
+    -84.205,
+    80.346
    ],
    [
-    -84.93,
-    80.405
+    -84.688,
+    80.385
    ],
    [
-    -85.421,
-    80.442
+    -85.134,
+    80.42
    ],
    [
-    -85.916,
+    -85.669,
+    80.46
+   ],
+   [
+    -86.169,
+    80.496
+   ],
+   [
+    -86.63,
+    80.543
+   ],
+   [
+    -86.839,
     80.479
-   ],
-   [
-    -86.394,
-    80.52
-   ],
-   [
-    -86.852,
-    80.486
    ],
    [
     -86.923,
@@ -1421,88 +7195,2888 @@
     74.721
    ],
    [
-    -60.93,
-    66.158
+    -69.627,
+    48.043
    ],
    [
-    -60.973,
-    66.246
+    -69.567,
+    48.122
    ],
    [
-    -61.024,
-    66.334
+    -69.474,
+    48.187
    ],
    [
-    -61.088,
-    66.42
+    -69.362,
+    48.237
    ],
    [
-    -61.159,
-    66.505
+    -69.257,
+    48.294
    ],
    [
-    -61.192,
-    66.594
+    -69.175,
+    48.342
    ],
    [
-    -60.946,
-    66.628
+    -69.054,
+    48.411
    ],
    [
-    -60.724,
-    66.644
+    -68.946,
+    48.465
    ],
    [
-    -60.503,
-    66.666
+    -68.831,
+    48.513
    ],
    [
-    -60.301,
-    66.68
+    -68.716,
+    48.561
    ],
    [
-    -53.716,
-    70.31
+    -68.605,
+    48.612
+   ],
+   [
+    -68.492,
+    48.662
+   ],
+   [
+    -68.398,
+    48.701
+   ],
+   [
+    -68.263,
+    48.759
+   ],
+   [
+    -68.146,
+    48.805
+   ],
+   [
+    -68.054,
+    48.843
+   ],
+   [
+    -67.976,
+    48.881
+   ],
+   [
+    -67.876,
+    48.942
+   ],
+   [
+    -67.79,
+    49.003
+   ],
+   [
+    -67.873,
+    49.074
+   ],
+   [
+    -67.957,
+    49.145
+   ],
+   [
+    -68.045,
+    49.214
+   ],
+   [
+    -68.118,
+    49.26
+   ],
+   [
+    -68.041,
+    49.205
+   ],
+   [
+    -68.008,
+    49.117
+   ],
+   [
+    -67.974,
+    49.03
+   ],
+   [
+    -68.041,
+    48.953
+   ],
+   [
+    -68.149,
+    48.898
+   ],
+   [
+    -68.258,
+    48.843
+   ],
+   [
+    -68.374,
+    48.797
+   ],
+   [
+    -68.473,
+    48.755
+   ],
+   [
+    -68.602,
+    48.698
+   ],
+   [
+    -68.705,
+    48.649
+   ],
+   [
+    -68.824,
+    48.594
+   ],
+   [
+    -68.936,
+    48.543
+   ],
+   [
+    -69.05,
+    48.494
+   ],
+   [
+    -69.158,
+    48.44
+   ],
+   [
+    -69.258,
+    48.379
+   ],
+   [
+    -69.347,
+    48.312
+   ],
+   [
+    -69.425,
+    48.239
+   ],
+   [
+    -69.511,
+    48.169
+   ],
+   [
+    -69.611,
+    48.118
+   ],
+   [
+    -69.742,
+    48.135
+   ],
+   [
+    -69.864,
+    48.168
+   ],
+   [
+    -69.934,
+    48.232
+   ],
+   [
+    -70.056,
+    48.252
+   ],
+   [
+    -70.17,
+    48.259
+   ],
+   [
+    -70.275,
+    48.31
+   ],
+   [
+    -70.156,
+    48.265
+   ],
+   [
+    -70.025,
+    48.258
+   ],
+   [
+    -69.9,
+    48.227
+   ],
+   [
+    -69.837,
+    48.154
+   ],
+   [
+    -69.709,
+    48.128
+   ],
+   [
+    -69.593,
+    48.101
+   ],
+   [
+    -69.644,
+    48.031
+   ],
+   [
+    -69.718,
+    47.942
+   ],
+   [
+    -69.788,
+    47.866
+   ],
+   [
+    -69.856,
+    47.788
+   ],
+   [
+    -69.936,
+    47.717
+   ],
+   [
+    -70.034,
+    47.656
+   ],
+   [
+    -70.12,
+    47.588
+   ],
+   [
+    -69.954,
+    47.643
+   ],
+   [
+    -69.876,
+    47.732
+   ],
+   [
+    -69.717,
+    47.925
+   ],
+   [
+    -69.656,
+    48.002
+   ],
+   [
+    -69.586,
+    48.087
+   ],
+   [
+    -69.512,
+    48.152
+   ],
+   [
+    -69.408,
+    48.22
+   ],
+   [
+    -69.301,
+    48.274
+   ],
+   [
+    -69.197,
+    48.332
+   ],
+   [
+    -69.093,
+    48.389
+   ],
+   [
+    -68.99,
+    48.447
+   ],
+   [
+    -68.874,
+    48.494
+   ],
+   [
+    -68.775,
+    48.539
+   ],
+   [
+    -68.651,
+    48.596
+   ],
+   [
+    -68.539,
+    48.647
+   ],
+   [
+    -68.427,
+    48.698
+   ],
+   [
+    -68.313,
+    48.747
+   ],
+   [
+    -68.2,
+    48.797
+   ],
+   [
+    -68.081,
+    48.842
+   ],
+   [
+    -67.961,
+    48.885
+   ],
+   [
+    -67.844,
+    48.931
+   ],
+   [
+    -67.728,
+    48.979
+   ],
+   [
+    -67.613,
+    49.027
+   ],
+   [
+    -67.506,
+    49.083
+   ],
+   [
+    -67.423,
+    49.121
+   ],
+   [
+    -67.335,
+    49.158
+   ],
+   [
+    -67.216,
+    49.204
+   ],
+   [
+    -67.101,
+    49.252
+   ],
+   [
+    -66.982,
+    49.298
+   ],
+   [
+    -66.86,
+    49.339
+   ],
+   [
+    -66.732,
+    49.371
+   ],
+   [
+    -66.617,
+    49.402
+   ],
+   [
+    -66.477,
+    49.442
+   ],
+   [
+    -66.352,
+    49.48
+   ],
+   [
+    -66.224,
+    49.514
+   ],
+   [
+    -66.096,
+    49.548
+   ],
+   [
+    -65.969,
+    49.584
+   ],
+   [
+    -65.844,
+    49.623
+   ],
+   [
+    -65.721,
+    49.662
+   ],
+   [
+    -65.598,
+    49.685
+   ],
+   [
+    -65.458,
+    49.71
+   ],
+   [
+    -65.347,
+    49.741
+   ],
+   [
+    -65.204,
+    49.785
+   ],
+   [
+    -65.079,
+    49.824
+   ],
+   [
+    -64.953,
+    49.862
+   ],
+   [
+    -64.845,
+    49.894
+   ],
+   [
+    -64.701,
+    49.94
+   ],
+   [
+    -64.572,
+    49.974
+   ],
+   [
+    -64.447,
+    50.014
+   ],
+   [
+    -64.311,
+    50.029
+   ],
+   [
+    -64.19,
+    50.027
+   ],
+   [
+    -64.032,
+    50.023
+   ],
+   [
+    -63.892,
+    50.013
+   ],
+   [
+    -63.753,
+    50.005
+   ],
+   [
+    -63.614,
+    49.999
+   ],
+   [
+    -63.482,
+    49.991
+   ],
+   [
+    -63.335,
+    49.983
+   ],
+   [
+    -63.196,
+    49.973
+   ],
+   [
+    -63.057,
+    49.963
+   ],
+   [
+    -62.918,
+    49.956
+   ],
+   [
+    -62.779,
+    49.949
+   ],
+   [
+    -62.664,
+    49.942
+   ],
+   [
+    -62.5,
+    49.934
+   ],
+   [
+    -62.362,
+    49.924
+   ],
+   [
+    -62.222,
+    49.917
+   ],
+   [
+    -62.083,
+    49.911
+   ],
+   [
+    -61.944,
+    49.902
+   ],
+   [
+    -61.805,
+    49.895
+   ],
+   [
+    -61.685,
+    49.89
+   ],
+   [
+    -61.526,
+    49.885
+   ],
+   [
+    -61.387,
+    49.885
+   ],
+   [
+    -61.247,
+    49.886
+   ],
+   [
+    -61.108,
+    49.888
+   ],
+   [
+    -60.968,
+    49.889
+   ],
+   [
+    -60.829,
+    49.888
+   ],
+   [
+    -60.69,
+    49.887
+   ],
+   [
+    -60.55,
+    49.891
+   ],
+   [
+    -60.445,
+    49.891
+   ],
+   [
+    -60.341,
+    49.891
+   ],
+   [
+    -60.201,
+    49.889
+   ],
+   [
+    -60.062,
+    49.889
+   ],
+   [
+    -59.922,
+    49.895
+   ],
+   [
+    -59.823,
+    49.894
+   ],
+   [
+    -59.713,
+    49.892
+   ],
+   [
+    -59.574,
+    49.892
+   ],
+   [
+    -59.434,
+    49.894
+   ],
+   [
+    -59.295,
+    49.897
+   ],
+   [
+    -59.198,
+    49.918
+   ],
+   [
+    -59.066,
+    49.979
+   ],
+   [
+    -58.971,
+    50.045
+   ],
+   [
+    -58.876,
+    50.111
+   ],
+   [
+    -58.782,
+    50.178
+   ],
+   [
+    -58.689,
+    50.245
+   ],
+   [
+    -58.591,
+    50.31
+   ],
+   [
+    -58.494,
+    50.375
+   ],
+   [
+    -58.397,
+    50.44
+   ],
+   [
+    -58.302,
+    50.506
+   ],
+   [
+    -58.206,
+    50.572
+   ],
+   [
+    -58.107,
+    50.637
+   ],
+   [
+    -58.012,
+    50.703
+   ],
+   [
+    -57.915,
+    50.769
+   ],
+   [
+    -57.818,
+    50.835
+   ],
+   [
+    -57.721,
+    50.901
+   ],
+   [
+    -57.648,
+    50.949
+   ],
+   [
+    -57.572,
+    50.998
+   ],
+   [
+    -57.474,
+    51.063
+   ],
+   [
+    -57.358,
+    51.115
+   ],
+   [
+    -57.24,
+    51.166
+   ],
+   [
+    -57.134,
+    51.21
+   ],
+   [
+    -57.003,
+    51.267
+   ],
+   [
+    -56.883,
+    51.317
+   ],
+   [
+    -56.763,
+    51.366
+   ],
+   [
+    -56.647,
+    51.419
+   ],
+   [
+    -56.549,
+    51.458
+   ],
+   [
+    -56.403,
+    51.516
+   ],
+   [
+    -56.283,
+    51.566
+   ],
+   [
+    -56.164,
+    51.617
+   ],
+   [
+    -56.045,
+    51.668
+   ],
+   [
+    -55.944,
+    51.711
+   ],
+   [
+    -55.815,
+    51.776
+   ],
+   [
+    -55.716,
+    51.842
+   ],
+   [
+    -55.622,
+    51.911
+   ],
+   [
+    -55.526,
+    51.979
+   ],
+   [
+    -55.431,
+    52.047
+   ],
+   [
+    -55.339,
+    52.116
+   ],
+   [
+    -55.274,
+    52.196
+   ],
+   [
+    -55.209,
+    52.277
+   ],
+   [
+    -55.132,
+    52.353
+   ],
+   [
+    -55.047,
+    52.426
+   ],
+   [
+    -54.982,
+    52.507
+   ],
+   [
+    -54.922,
+    52.589
+   ],
+   [
+    -54.864,
+    52.672
+   ],
+   [
+    -54.807,
+    52.755
+   ],
+   [
+    -54.738,
+    52.835
+   ],
+   [
+    -54.665,
+    52.913
+   ],
+   [
+    -54.592,
+    52.992
+   ],
+   [
+    -54.521,
+    53.071
+   ],
+   [
+    -54.449,
+    53.15
+   ],
+   [
+    -54.381,
+    53.23
+   ],
+   [
+    -54.313,
+    53.31
+   ],
+   [
+    -54.244,
+    53.39
+   ],
+   [
+    -54.184,
+    53.458
+   ],
+   [
+    -54.105,
+    53.549
+   ],
+   [
+    -54.037,
+    53.63
    ],
    [
     -53.97,
-    70.338
+    53.71
    ],
    [
-    -54.204,
-    70.38
+    -53.897,
+    53.789
    ],
    [
-    -54.38,
-    70.448
+    -53.82,
+    53.867
    ],
    [
-    -54.573,
-    70.51
+    -53.751,
+    53.947
    ],
    [
-    -54.757,
-    70.576
+    -53.68,
+    54.027
    ],
    [
-    -54.938,
-    70.643
+    -53.611,
+    54.107
    ],
    [
-    -55.072,
-    70.721
+    -53.541,
+    54.179
    ],
    [
-    -55.2,
-    70.796
+    -53.462,
+    54.264
    ],
    [
-    -55.347,
-    70.876
+    -53.396,
+    54.345
    ],
    [
-    -55.567,
-    70.867
+    -53.337,
+    54.411
+   ],
+   [
+    -53.273,
+    54.48
+   ],
+   [
+    -53.199,
+    54.559
+   ],
+   [
+    -53.124,
+    54.638
+   ],
+   [
+    -53.052,
+    54.718
+   ],
+   [
+    -52.987,
+    54.799
+   ],
+   [
+    -53.126,
+    54.838
+   ],
+   [
+    -53.239,
+    54.881
+   ],
+   [
+    -53.388,
+    54.936
+   ],
+   [
+    -53.517,
+    54.973
+   ],
+   [
+    -53.671,
+    55.013
+   ],
+   [
+    -53.831,
+    55.046
+   ],
+   [
+    -53.944,
+    55.066
+   ],
+   [
+    -54.057,
+    55.084
+   ],
+   [
+    -54.21,
+    55.106
+   ],
+   [
+    -54.362,
+    55.127
+   ],
+   [
+    -54.533,
+    55.147
+   ],
+   [
+    -54.653,
+    55.155
+   ],
+   [
+    -54.768,
+    55.162
+   ],
+   [
+    -54.925,
+    55.168
+   ],
+   [
+    -55.082,
+    55.176
+   ],
+   [
+    -55.239,
+    55.183
+   ],
+   [
+    -55.396,
+    55.191
+   ],
+   [
+    -55.553,
+    55.197
+   ],
+   [
+    -55.71,
+    55.201
+   ],
+   [
+    -55.868,
+    55.206
+   ],
+   [
+    -56.025,
+    55.21
+   ],
+   [
+    -56.182,
+    55.217
+   ],
+   [
+    -56.339,
+    55.223
+   ],
+   [
+    -56.476,
+    55.231
+   ],
+   [
+    -56.653,
+    55.241
+   ],
+   [
+    -56.795,
+    55.25
+   ],
+   [
+    -56.967,
+    55.259
+   ],
+   [
+    -57.124,
+    55.261
+   ],
+   [
+    -57.28,
+    55.275
+   ],
+   [
+    -57.436,
+    55.285
+   ],
+   [
+    -57.593,
+    55.295
+   ],
+   [
+    -57.746,
+    55.318
+   ],
+   [
+    -57.89,
+    55.354
+   ],
+   [
+    -58.043,
+    55.373
+   ],
+   [
+    -58.162,
+    55.381
+   ],
+   [
+    -58.279,
+    55.388
+   ],
+   [
+    -58.434,
+    55.404
+   ],
+   [
+    -58.592,
+    55.416
+   ],
+   [
+    -58.749,
+    55.427
+   ],
+   [
+    -58.869,
+    55.432
+   ],
+   [
+    -58.775,
+    55.364
+   ],
+   [
+    -58.634,
+    55.325
+   ],
+   [
+    -58.478,
+    55.321
+   ],
+   [
+    -58.607,
+    55.336
+   ],
+   [
+    -58.724,
+    55.368
+   ],
+   [
+    -58.861,
+    55.412
+   ],
+   [
+    -58.969,
+    55.441
+   ],
+   [
+    -58.864,
+    55.378
+   ],
+   [
+    -58.725,
+    55.37
+   ],
+   [
+    -58.595,
+    55.34
+   ],
+   [
+    -58.451,
+    55.327
+   ],
+   [
+    -58.548,
+    55.375
+   ],
+   [
+    -58.667,
+    55.406
+   ],
+   [
+    -58.764,
+    55.446
+   ],
+   [
+    -58.891,
+    55.5
+   ],
+   [
+    -58.936,
+    55.432
+   ],
+   [
+    -59.035,
+    55.524
+   ],
+   [
+    -59.109,
+    55.603
+   ],
+   [
+    -59.25,
+    55.625
+   ],
+   [
+    -59.404,
+    55.622
+   ],
+   [
+    -59.513,
+    55.557
+   ],
+   [
+    -59.433,
+    55.609
+   ],
+   [
+    -59.418,
+    55.68
+   ],
+   [
+    -59.474,
+    55.764
+   ],
+   [
+    -59.527,
+    55.849
+   ],
+   [
+    -59.583,
+    55.933
+   ],
+   [
+    -59.637,
+    56.017
+   ],
+   [
+    -59.693,
+    56.101
+   ],
+   [
+    -59.75,
+    56.186
+   ],
+   [
+    -59.804,
+    56.271
+   ],
+   [
+    -59.953,
+    56.341
+   ],
+   [
+    -60.028,
+    56.397
+   ],
+   [
+    -60.18,
+    56.462
+   ],
+   [
+    -60.333,
+    56.492
+   ],
+   [
+    -60.46,
+    56.518
+   ],
+   [
+    -60.64,
+    56.55
+   ],
+   [
+    -60.79,
+    56.527
+   ],
+   [
+    -60.953,
+    56.528
+   ],
+   [
+    -61.107,
+    56.536
+   ],
+   [
+    -61.267,
+    56.548
+   ],
+   [
+    -59.807,
+    56.245
+   ],
+   [
+    -59.837,
+    56.318
+   ],
+   [
+    -59.772,
+    56.258
+   ],
+   [
+    -59.893,
+    56.279
+   ],
+   [
+    -59.944,
+    56.34
+   ],
+   [
+    -59.892,
+    56.25
+   ],
+   [
+    -59.972,
+    56.315
+   ],
+   [
+    -59.84,
+    56.319
+   ],
+   [
+    -59.821,
+    56.226
+   ],
+   [
+    -59.899,
+    56.283
+   ],
+   [
+    -59.985,
+    56.36
+   ],
+   [
+    -60.056,
+    56.447
+   ],
+   [
+    -60.12,
+    56.53
+   ],
+   [
+    -60.192,
+    56.611
+   ],
+   [
+    -60.242,
+    56.679
+   ],
+   [
+    -60.099,
+    56.707
+   ],
+   [
+    -60.244,
+    56.696
+   ],
+   [
+    -60.363,
+    56.741
+   ],
+   [
+    -60.392,
+    56.83
+   ],
+   [
+    -60.424,
+    56.918
+   ],
+   [
+    -60.448,
+    56.991
+   ],
+   [
+    -60.477,
+    57.095
+   ],
+   [
+    -60.509,
+    57.184
+   ],
+   [
+    -60.544,
+    57.271
+   ],
+   [
+    -60.58,
+    57.359
+   ],
+   [
+    -60.614,
+    57.447
+   ],
+   [
+    -60.642,
+    57.524
+   ],
+   [
+    -60.685,
+    57.623
+   ],
+   [
+    -60.781,
+    57.706
+   ],
+   [
+    -60.893,
+    57.788
+   ],
+   [
+    -60.99,
+    57.862
+   ],
+   [
+    -61.089,
+    57.934
+   ],
+   [
+    -61.191,
+    58.006
+   ],
+   [
+    -61.29,
+    58.079
+   ],
+   [
+    -61.392,
+    58.151
+   ],
+   [
+    -61.498,
+    58.222
+   ],
+   [
+    -61.588,
+    58.29
+   ],
+   [
+    -61.698,
+    58.367
+   ],
+   [
+    -61.804,
+    58.438
+   ],
+   [
+    -61.904,
+    58.511
+   ],
+   [
+    -62.005,
+    58.584
+   ],
+   [
+    -62.11,
+    58.656
+   ],
+   [
+    -62.213,
+    58.727
+   ],
+   [
+    -62.319,
+    58.799
+   ],
+   [
+    -62.423,
+    58.871
+   ],
+   [
+    -62.529,
+    58.926
+   ],
+   [
+    -62.69,
+    58.963
+   ],
+   [
+    -62.864,
+    58.965
+   ],
+   [
+    -63.033,
+    58.962
+   ],
+   [
+    -63.126,
+    58.894
+   ],
+   [
+    -63.266,
+    58.868
+   ],
+   [
+    -63.126,
+    58.898
+   ],
+   [
+    -63.036,
+    58.963
+   ],
+   [
+    -63.089,
+    59.042
+   ],
+   [
+    -63.222,
+    59.074
+   ],
+   [
+    -63.404,
+    59.101
+   ],
+   [
+    -63.534,
+    59.071
+   ],
+   [
+    -63.727,
+    59.038
+   ],
+   [
+    -63.873,
+    59.059
+   ],
+   [
+    -63.887,
+    58.977
+   ],
+   [
+    -63.884,
+    59.049
+   ],
+   [
+    -63.742,
+    59.028
+   ],
+   [
+    -63.55,
+    59.065
+   ],
+   [
+    -63.41,
+    59.11
+   ],
+   [
+    -63.311,
+    59.181
+   ],
+   [
+    -63.203,
+    59.25
+   ],
+   [
+    -63.131,
+    59.333
+   ],
+   [
+    -63.036,
+    59.407
+   ],
+   [
+    -62.915,
+    59.472
+   ],
+   [
+    -62.78,
+    59.53
+   ],
+   [
+    -62.64,
+    59.586
+   ],
+   [
+    -62.527,
+    59.636
+   ],
+   [
+    -62.369,
+    59.702
+   ],
+   [
+    -62.242,
+    59.764
+   ],
+   [
+    -62.146,
+    59.84
+   ],
+   [
+    -62.056,
+    59.917
+   ],
+   [
+    -62.171,
+    59.878
+   ],
+   [
+    -62.08,
+    59.935
+   ],
+   [
+    -61.98,
+    59.998
+   ],
+   [
+    -61.874,
+    60.062
+   ],
+   [
+    -61.75,
+    60.137
+   ],
+   [
+    -61.638,
+    60.207
+   ],
+   [
+    -61.522,
+    60.284
+   ],
+   [
+    -61.421,
+    60.358
+   ],
+   [
+    -61.311,
+    60.43
+   ],
+   [
+    -61.188,
+    60.498
+   ],
+   [
+    -61.27,
+    60.563
+   ],
+   [
+    -61.418,
+    60.556
+   ],
+   [
+    -61.397,
+    60.469
+   ],
+   [
+    -61.3,
+    60.393
+   ],
+   [
+    -61.352,
+    60.468
+   ],
+   [
+    -61.199,
+    60.535
+   ],
+   [
+    -61.145,
+    60.621
+   ],
+   [
+    -61.086,
+    60.706
+   ],
+   [
+    -61.035,
+    60.779
+   ],
+   [
+    -60.971,
+    60.877
+   ],
+   [
+    -60.914,
+    60.962
+   ],
+   [
+    -60.853,
+    61.047
+   ],
+   [
+    -60.806,
+    61.119
+   ],
+   [
+    -60.972,
+    61.127
+   ],
+   [
+    -60.812,
+    61.107
+   ],
+   [
+    -60.961,
+    61.103
+   ],
+   [
+    -60.8,
+    61.089
+   ],
+   [
+    -60.655,
+    61.066
+   ],
+   [
+    -60.505,
+    61.061
+   ],
+   [
+    -60.319,
+    61.061
+   ],
+   [
+    -60.162,
+    61.066
+   ],
+   [
+    -60.222,
+    61.144
+   ],
+   [
+    -60.334,
+    61.222
+   ],
+   [
+    -60.437,
+    61.297
+   ],
+   [
+    -60.548,
+    61.37
+   ],
+   [
+    -60.64,
+    61.436
+   ],
+   [
+    -60.521,
+    61.388
+   ],
+   [
+    -60.344,
+    61.358
+   ],
+   [
+    -60.168,
+    61.328
+   ],
+   [
+    -59.997,
+    61.291
+   ],
+   [
+    -59.848,
+    61.256
+   ],
+   [
+    -59.661,
+    61.213
+   ],
+   [
+    -59.489,
+    61.177
+   ],
+   [
+    -59.322,
+    61.137
+   ],
+   [
+    -59.157,
+    61.096
+   ],
+   [
+    -59.0,
+    61.061
+   ],
+   [
+    -58.841,
+    61.026
+   ],
+   [
+    -58.851,
+    61.111
+   ],
+   [
+    -58.838,
+    61.201
+   ],
+   [
+    -58.824,
+    61.291
+   ],
+   [
+    -58.81,
+    61.381
+   ],
+   [
+    -58.798,
+    61.47
+   ],
+   [
+    -58.79,
+    61.552
+   ],
+   [
+    -58.781,
+    61.65
+   ],
+   [
+    -58.774,
+    61.74
+   ],
+   [
+    -58.765,
+    61.83
+   ],
+   [
+    -58.76,
+    61.92
+   ],
+   [
+    -58.746,
+    62.009
+   ],
+   [
+    -58.739,
+    62.099
+   ],
+   [
+    -58.736,
+    62.189
+   ],
+   [
+    -58.73,
+    62.279
+   ],
+   [
+    -58.721,
+    62.349
+   ],
+   [
+    -58.709,
+    62.458
+   ],
+   [
+    -58.697,
+    62.548
+   ],
+   [
+    -58.685,
+    62.638
+   ],
+   [
+    -58.676,
+    62.728
+   ],
+   [
+    -58.67,
+    62.818
+   ],
+   [
+    -58.672,
+    62.908
+   ],
+   [
+    -58.669,
+    62.99
+   ],
+   [
+    -58.654,
+    63.087
+   ],
+   [
+    -58.642,
+    63.177
+   ],
+   [
+    -58.637,
+    63.267
+   ],
+   [
+    -58.625,
+    63.356
+   ],
+   [
+    -58.619,
+    63.446
+   ],
+   [
+    -58.612,
+    63.536
+   ],
+   [
+    -58.604,
+    63.626
+   ],
+   [
+    -58.591,
+    63.716
+   ],
+   [
+    -58.585,
+    63.8
+   ],
+   [
+    -58.578,
+    63.895
+   ],
+   [
+    -58.56,
+    63.985
+   ],
+   [
+    -58.562,
+    64.075
+   ],
+   [
+    -58.559,
+    64.165
+   ],
+   [
+    -58.551,
+    64.255
+   ],
+   [
+    -58.543,
+    64.335
+   ],
+   [
+    -58.53,
+    64.434
+   ],
+   [
+    -58.516,
+    64.524
+   ],
+   [
+    -58.508,
+    64.614
+   ],
+   [
+    -58.503,
+    64.689
+   ],
+   [
+    -58.497,
+    64.793
+   ],
+   [
+    -58.486,
+    64.883
+   ],
+   [
+    -58.471,
+    64.973
+   ],
+   [
+    -58.454,
+    65.063
+   ],
+   [
+    -58.446,
+    64.979
+   ],
+   [
+    -58.43,
+    64.889
+   ],
+   [
+    -58.418,
+    64.799
+   ],
+   [
+    -58.407,
+    64.709
+   ],
+   [
+    -58.39,
+    64.62
+   ],
+   [
+    -58.373,
+    64.531
+   ],
+   [
+    -58.344,
+    64.442
+   ],
+   [
+    -58.323,
+    64.353
+   ],
+   [
+    -58.442,
+    64.304
+   ],
+   [
+    -58.469,
+    64.222
+   ],
+   [
+    -58.467,
+    64.132
+   ],
+   [
+    -58.463,
+    64.043
+   ],
+   [
+    -58.461,
+    63.953
+   ],
+   [
+    -58.349,
+    63.898
+   ],
+   [
+    -58.218,
+    63.847
+   ],
+   [
+    -58.222,
+    63.761
+   ],
+   [
+    -58.236,
+    63.667
+   ],
+   [
+    -58.243,
+    63.578
+   ],
+   [
+    -58.222,
+    63.488
+   ],
+   [
+    -58.197,
+    63.399
+   ],
+   [
+    -58.192,
+    63.309
+   ],
+   [
+    -58.192,
+    63.379
+   ],
+   [
+    -58.382,
+    63.397
+   ],
+   [
+    -58.536,
+    63.455
+   ],
+   [
+    -58.69,
+    63.512
+   ],
+   [
+    -58.852,
+    63.566
+   ],
+   [
+    -58.898,
+    63.643
+   ],
+   [
+    -58.878,
+    63.732
+   ],
+   [
+    -59.026,
+    63.787
+   ],
+   [
+    -59.2,
+    63.833
+   ],
+   [
+    -59.067,
+    63.891
+   ],
+   [
+    -58.937,
+    63.941
+   ],
+   [
+    -58.813,
+    63.863
+   ],
+   [
+    -58.719,
+    63.783
+   ],
+   [
+    -58.643,
+    63.714
+   ],
+   [
+    -58.537,
+    63.623
+   ],
+   [
+    -58.442,
+    63.543
+   ],
+   [
+    -58.347,
+    63.464
+   ],
+   [
+    -58.247,
+    63.386
+   ],
+   [
+    -58.387,
+    63.463
+   ],
+   [
+    -58.513,
+    63.533
+   ],
+   [
+    -58.641,
+    63.603
+   ],
+   [
+    -58.767,
+    63.673
+   ],
+   [
+    -58.885,
+    63.739
+   ],
+   [
+    -58.954,
+    63.666
+   ],
+   [
+    -59.04,
+    63.585
+   ],
+   [
+    -59.153,
+    63.511
+   ],
+   [
+    -59.266,
+    63.436
+   ],
+   [
+    -59.381,
+    63.363
+   ],
+   [
+    -59.486,
+    63.299
+   ],
+   [
+    -59.624,
+    63.22
+   ],
+   [
+    -59.786,
+    63.172
+   ],
+   [
+    -59.97,
+    63.138
+   ],
+   [
+    -60.15,
+    63.1
+   ],
+   [
+    -60.328,
+    63.06
+   ],
+   [
+    -60.508,
+    63.021
+   ],
+   [
+    -60.689,
+    62.986
+   ],
+   [
+    -60.868,
+    62.947
+   ],
+   [
+    -61.045,
+    62.907
+   ],
+   [
+    -61.224,
+    62.869
+   ],
+   [
+    -61.4,
+    62.829
+   ],
+   [
+    -61.577,
+    62.79
+   ],
+   [
+    -61.755,
+    62.751
+   ],
+   [
+    -61.933,
+    62.713
+   ],
+   [
+    -62.109,
+    62.674
+   ],
+   [
+    -62.285,
+    62.634
+   ],
+   [
+    -62.462,
+    62.596
+   ],
+   [
+    -62.64,
+    62.559
+   ],
+   [
+    -62.814,
+    62.519
+   ],
+   [
+    -62.983,
+    62.474
+   ],
+   [
+    -63.145,
+    62.437
+   ],
+   [
+    -63.334,
+    62.398
+   ],
+   [
+    -63.513,
+    62.363
+   ],
+   [
+    -63.688,
+    62.325
+   ],
+   [
+    -63.857,
+    62.281
+   ],
+   [
+    -64.029,
+    62.24
+   ],
+   [
+    -64.198,
+    62.196
+   ],
+   [
+    -64.375,
+    62.161
+   ],
+   [
+    -64.563,
+    62.168
+   ],
+   [
+    -64.753,
+    62.18
+   ],
+   [
+    -64.942,
+    62.199
+   ],
+   [
+    -65.114,
+    62.235
+   ],
+   [
+    -65.273,
+    62.279
+   ],
+   [
+    -65.427,
+    62.337
+   ],
+   [
+    -65.583,
+    62.39
+   ],
+   [
+    -65.754,
+    62.43
+   ],
+   [
+    -65.918,
+    62.469
+   ],
+   [
+    -66.073,
+    62.523
+   ],
+   [
+    -66.224,
+    62.58
+   ],
+   [
+    -66.343,
+    62.631
+   ],
+   [
+    -66.529,
+    62.691
+   ],
+   [
+    -66.711,
+    62.724
+   ],
+   [
+    -66.836,
+    62.792
+   ],
+   [
+    -66.933,
+    62.853
+   ],
+   [
+    -67.095,
+    62.926
+   ],
+   [
+    -67.242,
+    62.986
+   ],
+   [
+    -67.361,
+    63.057
+   ],
+   [
+    -67.504,
+    63.093
+   ],
+   [
+    -67.725,
+    63.118
+   ],
+   [
+    -67.896,
+    63.16
+   ],
+   [
+    -67.984,
+    63.221
+   ],
+   [
+    -68.109,
+    63.311
+   ],
+   [
+    -68.212,
+    63.385
+   ],
+   [
+    -68.286,
+    63.46
+   ],
+   [
+    -68.212,
+    63.377
+   ],
+   [
+    -68.289,
+    63.467
+   ],
+   [
+    -68.369,
+    63.55
+   ],
+   [
+    -68.449,
+    63.632
+   ],
+   [
+    -68.491,
+    63.699
+   ],
+   [
+    -68.443,
+    63.634
+   ],
+   [
+    -68.362,
+    63.542
+   ],
+   [
+    -68.284,
+    63.459
+   ],
+   [
+    -68.204,
+    63.376
+   ],
+   [
+    -68.095,
+    63.3
+   ],
+   [
+    -67.991,
+    63.224
+   ],
+   [
+    -67.877,
+    63.152
+   ],
+   [
+    -67.697,
+    63.114
+   ],
+   [
+    -67.503,
+    63.094
+   ],
+   [
+    -67.342,
+    63.049
+   ],
+   [
+    -67.204,
+    62.984
+   ],
+   [
+    -67.07,
+    62.918
+   ],
+   [
+    -66.93,
+    62.855
+   ],
+   [
+    -66.778,
+    62.798
+   ],
+   [
+    -66.644,
+    62.733
+   ],
+   [
+    -66.513,
+    62.666
+   ],
+   [
+    -66.365,
+    62.607
+   ],
+   [
+    -66.229,
+    62.557
+   ],
+   [
+    -66.044,
+    62.523
+   ],
+   [
+    -65.882,
+    62.473
+   ],
+   [
+    -65.743,
+    62.41
+   ],
+   [
+    -65.579,
+    62.364
+   ],
+   [
+    -65.403,
+    62.335
+   ],
+   [
+    -65.252,
+    62.279
+   ],
+   [
+    -65.087,
+    62.232
+   ],
+   [
+    -64.916,
+    62.193
+   ],
+   [
+    -64.771,
+    62.18
+   ],
+   [
+    -64.538,
+    62.159
+   ],
+   [
+    -64.354,
+    62.159
+   ],
+   [
+    -64.179,
+    62.198
+   ],
+   [
+    -64.012,
+    62.242
+   ],
+   [
+    -63.846,
+    62.288
+   ],
+   [
+    -63.674,
+    62.329
+   ],
+   [
+    -63.561,
+    62.379
+   ],
+   [
+    -63.46,
+    62.465
+   ],
+   [
+    -63.395,
+    62.55
+   ],
+   [
+    -63.343,
+    62.636
+   ],
+   [
+    -63.296,
+    62.723
+   ],
+   [
+    -63.241,
+    62.81
+   ],
+   [
+    -63.181,
+    62.895
+   ],
+   [
+    -63.12,
+    62.981
+   ],
+   [
+    -63.055,
+    63.066
+   ],
+   [
+    -62.994,
+    63.151
+   ],
+   [
+    -62.932,
+    63.237
+   ],
+   [
+    -62.844,
+    63.317
+   ],
+   [
+    -62.734,
+    63.392
+   ],
+   [
+    -62.649,
+    63.461
+   ],
+   [
+    -62.578,
+    63.554
+   ],
+   [
+    -62.594,
+    63.634
+   ],
+   [
+    -62.627,
+    63.723
+   ],
+   [
+    -62.601,
+    63.812
+   ],
+   [
+    -62.561,
+    63.9
+   ],
+   [
+    -62.525,
+    63.989
+   ],
+   [
+    -62.476,
+    64.076
+   ],
+   [
+    -62.42,
+    64.157
+   ],
+   [
+    -62.357,
+    64.248
+   ],
+   [
+    -62.301,
+    64.335
+   ],
+   [
+    -62.258,
+    64.423
+   ],
+   [
+    -62.217,
+    64.511
+   ],
+   [
+    -62.191,
+    64.6
+   ],
+   [
+    -62.176,
+    64.689
+   ],
+   [
+    -62.138,
+    64.762
+   ],
+   [
+    -62.069,
+    64.863
+   ],
+   [
+    -61.994,
+    64.947
+   ],
+   [
+    -61.884,
+    65.024
+   ],
+   [
+    -61.701,
+    65.06
+   ],
+   [
+    -61.538,
+    65.116
+   ],
+   [
+    -61.345,
+    65.155
+   ],
+   [
+    -61.15,
+    65.193
+   ],
+   [
+    -60.996,
+    65.255
+   ],
+   [
+    -60.858,
+    65.323
+   ],
+   [
+    -60.769,
+    65.4
+   ],
+   [
+    -60.771,
+    65.489
+   ],
+   [
+    -60.784,
+    65.579
+   ],
+   [
+    -60.79,
+    65.669
+   ],
+   [
+    -60.828,
+    65.756
+   ],
+   [
+    -60.853,
+    65.845
+   ],
+   [
+    -60.874,
+    65.935
+   ],
+   [
+    -60.89,
+    66.024
+   ],
+   [
+    -60.907,
+    66.114
+   ],
+   [
+    -60.952,
+    66.202
+   ],
+   [
+    -60.997,
+    66.29
+   ],
+   [
+    -61.06,
+    66.376
+   ],
+   [
+    -61.121,
+    66.463
+   ],
+   [
+    -61.177,
+    66.549
+   ],
+   [
+    -61.051,
+    66.62
+   ],
+   [
+    -60.835,
+    66.636
+   ],
+   [
+    -60.612,
+    66.654
+   ],
+   [
+    -60.399,
+    66.674
+   ],
+   [
+    -60.189,
+    66.686
+   ],
+   [
+    -59.968,
+    66.706
+   ],
+   [
+    -59.749,
+    66.73
+   ],
+   [
+    -59.569,
+    66.745
+   ],
+   [
+    -59.336,
+    66.75
+   ],
+   [
+    -59.113,
+    66.768
+   ],
+   [
+    -58.89,
+    66.788
+   ],
+   [
+    -58.677,
+    66.808
+   ],
+   [
+    -58.479,
+    66.82
+   ],
+   [
+    -58.227,
+    66.838
+   ],
+   [
+    -58.004,
+    66.857
+   ],
+   [
+    -57.803,
+    66.874
+   ],
+   [
+    -57.576,
+    66.886
+   ],
+   [
+    -57.349,
+    66.899
+   ],
+   [
+    -56.963,
+    66.924
+   ],
+   [
+    -56.683,
+    66.941
+   ],
+   [
+    -56.456,
+    66.954
+   ],
+   [
+    -56.229,
+    66.966
+   ],
+   [
+    -56.044,
+    66.972
+   ],
+   [
+    -55.816,
+    66.984
+   ],
+   [
+    -55.59,
+    67.0
+   ],
+   [
+    -55.363,
+    67.015
+   ],
+   [
+    -55.135,
+    67.027
+   ],
+   [
+    -54.915,
+    67.038
+   ],
+   [
+    -54.687,
+    67.051
+   ],
+   [
+    -54.458,
+    67.062
+   ],
+   [
+    -54.274,
+    67.073
+   ],
+   [
+    -54.09,
+    67.081
+   ],
+   [
+    -54.086,
+    67.166
+   ],
+   [
+    -54.066,
+    67.255
+   ],
+   [
+    -54.059,
+    67.327
+   ],
+   [
+    -51.518,
+    69.457
+   ],
+   [
+    -51.571,
+    69.535
+   ],
+   [
+    -51.645,
+    69.631
+   ],
+   [
+    -51.736,
+    69.715
+   ],
+   [
+    -51.834,
+    69.798
+   ],
+   [
+    -51.976,
+    69.873
+   ],
+   [
+    -52.147,
+    69.941
+   ],
+   [
+    -52.368,
+    69.988
+   ],
+   [
+    -52.562,
+    70.048
+   ],
+   [
+    -52.672,
+    70.13
+   ],
+   [
+    -52.868,
+    70.181
+   ],
+   [
+    -53.107,
+    70.221
+   ],
+   [
+    -53.346,
+    70.259
+   ],
+   [
+    -53.592,
+    70.295
+   ],
+   [
+    -53.845,
+    70.323
+   ],
+   [
+    -54.09,
+    70.357
+   ],
+   [
+    -54.294,
+    70.413
+   ],
+   [
+    -54.465,
+    70.475
+   ],
+   [
+    -54.667,
+    70.542
+   ],
+   [
+    -54.848,
+    70.609
+   ],
+   [
+    -55.006,
+    70.682
+   ],
+   [
+    -55.137,
+    70.76
+   ],
+   [
+    -55.272,
+    70.839
+   ],
+   [
+    -55.518,
+    70.87
    ],
    [
     -55.837,
@@ -3919,18 +12493,53 @@
    [
     -86.64,
     80.458
+   ],
+   [
+    -87.164,
+    80.485
+   ],
+   [
+    -87.688,
+    80.508
+   ],
+   [
+    -87.301,
+    80.464
+   ],
+   [
+    -86.973,
+    80.394
+   ],
+   [
+    -87.007,
+    80.312
+   ],
+   [
+    -87.008,
+    80.222
+   ],
+   [
+    -86.983,
+    80.136
+   ],
+   [
+    -86.858,
+    80.052
    ]
   ]
  },
  "stats": {
-  "landCells": 530028,
-  "waterCells": 639972,
-  "iceChartedWaterCells": 541063,
-  "iceCells40": 190998,
-  "deepest": -3916,
-  "highest": 2267
+  "landCells": 1731899,
+  "waterCells": 3072901,
+  "seaComponents": 1900,
+  "startSeaCells": 3067001,
+  "iceChartedWaterCells": 544403,
+  "iceCells40": 111245,
+  "deepest": -7333,
+  "highest": 5464,
+  "cellsBeyondOsmShore": 1503890
  },
- "method": "GEBCO 15 arc-second cells averaged onto the grid (gdalwarp -r average). Shore: OSM land polygons rasterised at 500 m; a cell is land when more than 55% of it is land. Ice: newest chart per region burned in region order; water polygons are 0, no-data polygons leave 255.",
+ "method": "GEBCO 15 arc-second cells averaged onto the grid (gdalwarp -r average). Shore: OSM land polygons inside longitude -150 to -15, latitude 45 to 86, Natural Earth land and minor islands beyond, rasterised at 750 m; a cell is land when more than 55% of it is land. Ice: newest chart per region burned in region order; water polygons are 0, no-data polygons leave 255. Places: GeoNames populated places with water within 2 cells.",
  "sources": [
   {
    "role": "GEBCO 2024 sub-ice topography and bathymetry, 15 arc-second GeoTIFF release",
@@ -3940,16 +12549,38 @@
    "modified": "2026-09-04T04:56:02+00:00",
    "tiles": [
     "gebco_2024_sub_ice_n90.0_s0.0_w-180.0_e-90.0.tif",
-    "gebco_2024_sub_ice_n90.0_s0.0_w-90.0_e0.0.tif"
+    "gebco_2024_sub_ice_n90.0_s0.0_w-90.0_e0.0.tif",
+    "gebco_2024_sub_ice_n90.0_s0.0_w0.0_e90.0.tif",
+    "gebco_2024_sub_ice_n90.0_s0.0_w90.0_e180.0.tif"
    ]
   },
   {
-   "role": "OSM land polygons (shore)",
+   "role": "OSM land polygons (shore inside the extract window)",
    "path": "/data/gis/shoreline/arctic_coast.gpkg",
    "bytes": 540057600,
    "sha256": "719e27dc9e6d100712713781ca2e9713aac49a80e7cafc14968370ec262a9a29",
    "modified": "2026-09-09T02:08:19+00:00",
-   "layer": "land"
+   "layer": "land",
+   "window": [
+    -150.0,
+    45.0,
+    -15.0,
+    86.0
+   ]
+  },
+  {
+   "role": "Natural Earth 10 m land (shore beyond the OSM window)",
+   "path": "/data/gis/naturalearth/ne_10m_land.shp",
+   "bytes": 7166824,
+   "sha256": "4cad3a49bc75c1a4c2f3d7efae04f2f8e63151c96764b2658effabf524331fa6",
+   "modified": "2022-05-09T04:46:17+00:00"
+  },
+  {
+   "role": "Natural Earth 10 m minor islands (shore beyond the OSM window)",
+   "path": "/data/gis/naturalearth/ne_10m_minor_islands.shp",
+   "bytes": 724812,
+   "sha256": "efc446b18c3496c88ccec8cfe937f1af3f3f8c2dd1b63d9722a153b0744f0b48",
+   "modified": "2017-09-28T04:54:41+00:00"
   },
   {
    "role": "Natural Earth glaciated areas",
@@ -3959,25 +12590,34 @@
    "modified": "2026-09-09T05:16:09+00:00"
   },
   {
-   "role": "Communities",
-   "path": "/data/underway_server/www/static/geo/communities.geojson",
-   "bytes": 91230,
-   "sha256": "703e71f4a36c8a8a9a1a933844fb94f1092147d323dd06bc015a0bb089551c1d",
-   "modified": "2026-09-09T05:16:09+00:00"
+   "role": "GeoNames country dump, populated places (CC BY 4.0)",
+   "path": "/data/gis/geonames/CA.zip",
+   "bytes": 8104190,
+   "sha256": "727f04eaa90747d59bee1f098294e1d95a70e3f0610a717786838b41bc05a731",
+   "modified": "2026-09-05T01:56:15+00:00",
+   "country": "CA"
+  },
+  {
+   "role": "GeoNames country dump, populated places (CC BY 4.0)",
+   "path": "/data/gis/geonames/GL.zip",
+   "bytes": 224853,
+   "sha256": "f61b1f9795f7ce7cb28162ffb315f2431cb9e0ae67e34610964eacddcd1a2a8e",
+   "modified": "2026-09-05T01:57:26+00:00",
+   "country": "GL"
   },
   {
    "role": "CCGS Amundsen underway track, past year",
    "path": "/data/underway_server/www/data/w-1y.json",
-   "bytes": 1495806,
-   "sha256": "bdb839f7dac1b89ed995a8438442d0c00bad01bcc673a02e2f54097885bdbd35",
-   "modified": "2026-09-17T23:30:25+00:00"
+   "bytes": 1499773,
+   "sha256": "936ddb5532e4905ee76ab99af7452dbd1c1dda2c5153866e794290717c73cccc",
+   "modified": "2026-09-18T12:10:24+00:00"
   },
   {
    "role": "Leg 3 cruise plan (starting position)",
    "path": "/data/underway_server/www/data/plan.json",
    "bytes": 34773,
    "sha256": "91fcd339923c58414754e7222390bc8dda73c7a62c0f92a56ca328dbf3023ed9",
-   "modified": "2026-09-17T23:33:13+00:00"
+   "modified": "2026-09-18T12:15:14+00:00"
   },
   {
    "region": "Eastern Arctic",

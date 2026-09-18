@@ -1,11 +1,27 @@
-// The open world: GEBCO elevation, the OSM shore and the CIS ice charts on one polar stereographic grid
-// (built by tools/pull_world.py). Positions are in cell units: u runs east from the left edge, v runs
-// south from the top edge, and cell (c, r) has its centre at (c + .5, r + .5).
+// The open world: GEBCO elevation, the OSM and Natural Earth shore, GeoNames places and the CIS ice charts on
+// one polar stereographic grid over the sector 0-180 W, 50-90 N (built by tools/pull_world.py). Positions are in
+// cell units: u runs east from the left edge, v runs south from the top edge, and cell (c, r) has its centre at
+// (c + .5, r + .5).
 const DATA = new URL('./data/world/', import.meta.url);
 // An ice station needs a floe to stand on: open drift (4/10) or more.
 export const ICE_STATION_MIN = 40;
-// Communities with a sealift fuel supply and a charted approach on this grid; the ship bunkers at their berth.
-export const BUNKER_PORTS = ['Arctic Bay', 'Cambridge Bay', 'Clyde River', 'Dundas', 'Gjoa Haven', 'Grise Fiord', 'Igloolik', 'Kugaaruk', 'Kugluktuk', 'Kullorsuaq', 'Paulatuk', 'Pond Inlet', 'Qaanaaq', 'Qikiqtarjuaq', 'Resolute', 'Sachs Harbour', 'Sanirajak', 'Ulukhaktok', 'Upernavik'];
+// Communities with a fuel supply and a charted approach on this grid; the ship bunkers at their berth. Where
+// several places share a name (Clyde River on Baffin Island and on Prince Edward Island) the most populous is the port.
+export const BUNKER_PORTS = [
+  // Canadian Arctic Archipelago and the Beaufort coast
+  'Arctic Bay', 'Cambridge Bay', 'Clyde River', 'Gjoa Haven', 'Grise Fiord', 'Igloolik', 'Kugaaruk', 'Kugluktuk', 'Paulatuk', 'Pond Inlet',
+  'Qikiqtarjuaq', 'Resolute', 'Sachs Harbour', 'Sanirajak', 'Tuktoyaktuk', 'Ulukhaktok',
+  // Baffin Island south, Hudson Strait, Hudson Bay and Ungava
+  'Arviat', 'Chesterfield Inlet', 'Churchill', 'Coral Harbour', 'Inukjuak', 'Iqaluit', 'Kimmirut', 'Kinngait', 'Kuujjuarapik',
+  'Naujaat', 'Pangnirtung', 'Puvirnituq', 'Rankin Inlet', 'Salluit', 'Sanikiluaq', 'Whale Cove',
+  // Labrador and Newfoundland (Nain, Goose Bay and Kuujjuaq lie up channels the 3 km grid closes)
+  'Cartwright', 'Hopedale', 'Makkovik', "St. John's",
+  // Greenland
+  'Aasiaat', 'Dundas', 'Ilulissat', 'Ittoqqortoormiit', 'Kullorsuaq', 'Maniitsoq', 'Nanortalik', 'Nuuk', 'Paamiut', 'Qaanaaq',
+  'Qaqortoq', 'Qeqertarsuaq', 'Sisimiut', 'Tasiilaq', 'Upernavik', 'Uummannaq',
+  // Pacific coast
+  'Prince Rupert',
+];
 const SQRT2 = Math.SQRT2;
 
 function projection(p, grid) {
@@ -176,7 +192,8 @@ export function createWorld(meta, layers) {
     }
     return best;
   }
-  const ports = places.filter(place => BUNKER_PORTS.includes(place.name)).map(place => ({ ...place, berth: berth(place.u, place.v) })).filter(place => place.berth);
+  const ports = BUNKER_PORTS.map(name => places.filter(place => place.name === name).sort((a, b) => (b.pop ?? 0) - (a.pop ?? 0))[0])
+    .filter(Boolean).map(place => ({ ...place, berth: berth(place.u, place.v) })).filter(place => place.berth);
   const start = proj.project(meta.start.lon, meta.start.lat);
   return {
     meta, cols, rows, km, elevation, sign, iceConcentration, iceClass, glacier, places, ports, ...proj,
