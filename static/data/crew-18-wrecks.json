@@ -1,0 +1,121 @@
+{
+  "provenance": {
+    "source": "Underway local history archive",
+    "files": [
+      {
+        "path": "/data/underway_server/www/data/history/places.json",
+        "sha256": "bd4315070ceae8f7b759101a71d5bd8ff628eea353ca45a5a2dff3963ef1138e"
+      },
+      {
+        "path": "/data/underway_server/www/data/history/vessels.json",
+        "sha256": "02020cec2e8c7ee16c4c4f8cfbb015563fd841198f6cd11fea43157250f544f9"
+      }
+    ],
+    "coordinateMeaning": "Regional archive positions; Investigator is an approximate historic berth. Search-grid cells and sonar ranges are generated game geometry.",
+    "retrieved": "2026-09-18"
+  },
+  "sites": [
+    {
+      "ship": "HMS Erebus",
+      "place": "Wilmot and Crampton Bay",
+      "lat": 68.23,
+      "lon": -98.71,
+      "story": "Inuit accounts of a ship in Utjulik helped guide the search. Erebus was found in 2014 off the Adelaide Peninsula.",
+      "placeRecord": {
+        "name": "Wilmot and Crampton Bay",
+        "historic": "",
+        "inuktitut": "",
+        "lat": 68.23,
+        "lon": -98.71,
+        "kind": "wreck",
+        "note": "The wreck of HMS Erebus lies here in about 11 m of water off the Adelaide Peninsula, found on 2 September 2014. The area is closed to the public; Parks Canada gives a bounded protected zone rather than a position. The Inuit name for the district is Utjulik.",
+        "bibkey": "raymond2019qiniqtiryuaq",
+        "topic": "franklin-1845",
+        "page": "place/wilmot-and-crampton-bay"
+      },
+      "vesselRecord": {
+        "name": "HMS Erebus",
+        "kind": "bomb-vessel",
+        "kind_note": "",
+        "also": "",
+        "role": "Sir John Franklin's flagship, 1845-1848; earlier, with the Terror, James Clark Ross's Antarctic ship, 1839-1843",
+        "built": "1826, Pembroke Dock",
+        "lost": "abandoned off King William Island 22 April 1848; wreck found in Wilmot and Crampton Bay, 2 September 2014",
+        "affiliation": "Royal Navy",
+        "tonnage": "372 tons",
+        "note": "Fitted with a converted railway locomotive engine and a screw that could be lifted, steam heating, and three years of tinned provisions. She and the [[vessel:HMS Terror]] were last seen by whalers in Baffin Bay in July 1845. Inuit testimony collected by Rae, Hall and Schwatka describes a ship that sank in deep water and one that was boarded; the 2014 find in Utjulik matched the oral record. See [[topic:franklin-1845]], [[place:Wilmot and Crampton Bay]] and [[artifact:franklin-1845-001]].",
+        "topic": "vessels",
+        "kind_label": "bomb vessel",
+        "page": "vessel/hms-erebus"
+      }
+    },
+    {
+      "ship": "HMS Terror",
+      "place": "Terror Bay",
+      "lat": 68.9,
+      "lon": -98.93,
+      "story": "Sammy Kogvik of Gjoa Haven recalled a mast protruding through the ice. Terror was found in 2016 in the bay named for her.",
+      "placeRecord": {
+        "name": "Terror Bay",
+        "historic": "",
+        "inuktitut": "",
+        "lat": 68.9,
+        "lon": -98.93,
+        "kind": "wreck",
+        "note": "On the south-west coast of King William Island. The wreck of HMS Terror was found in the middle of the bay on 3 September 2016 in about 24 m of water. The bay was named in 1910, long before the ship was found in it. A large camp site with human remains was recorded on its shore by the search parties.",
+        "bibkey": "gilder1881schwatkas",
+        "topic": "franklin-1845",
+        "page": "place/terror-bay"
+      },
+      "vesselRecord": {
+        "name": "HMS Terror",
+        "kind": "bomb-vessel",
+        "kind_note": "",
+        "also": "",
+        "role": "Crozier's ship in the Franklin expedition, 1845-1848; earlier at Baffin Island under George Back, 1836-37, and in the Antarctic with the Erebus",
+        "built": "1813, Topsham, Devon",
+        "lost": "abandoned off King William Island 22 April 1848; wreck found in Terror Bay, 3 September 2016",
+        "affiliation": "Royal Navy",
+        "tonnage": "325 tons",
+        "note": "Older than the Erebus and already an ice veteran: Back nearly lost her in Frozen Strait in 1836-37 and brought her home sinking. Found in 2016 in the bay that had been named for her in 1910, before anyone knew she was in it, after Sammy Kogvik of Gjoa Haven told the searchers about a mast he had seen through the ice. See [[topic:franklin-1845]], [[place:Terror Bay]] and [[topic:inuit-oral-history]].",
+        "topic": "vessels",
+        "kind_label": "bomb vessel",
+        "page": "vessel/hms-terror"
+      }
+    },
+    {
+      "ship": "HMS Investigator",
+      "place": "Wreck of HMS Investigator",
+      "lat": 74.117,
+      "lon": -117.9,
+      "story": "Trapped at Mercy Bay, the crew left the ship in 1853. Parks Canada located the upright hull with side-scan sonar in 2010.",
+      "placeRecord": {
+        "name": "Wreck of HMS Investigator",
+        "historic": "",
+        "inuktitut": "",
+        "lat": 74.117,
+        "lon": -117.9,
+        "kind": "wreck",
+        "note": "On the bed of Mercy Bay, upright in about eleven metres of water with the upper deck about eight metres down, just outside the boundary of Aulavik National Park. Found by Parks Canada side-scan sonar in July 2010, dived in 2011, and surveyed again by remotely operated vehicle through two metres of sea ice in May 2026. The position given here is the ship's berth as reported in 1853 and is approximate to within a kilometre; Parks Canada has not published a precise wreck position.",
+        "bibkey": "parkscanada2026investigator",
+        "topic": "mcclure-investigator",
+        "page": "place/wreck-of-hms-investigator"
+      },
+      "vesselRecord": {
+        "name": "HMS Investigator",
+        "kind": "barque",
+        "kind_note": "purchased into the Navy",
+        "also": "",
+        "role": "Robert McClure's ship, 1850-1853; the first vessel to be taken through the Northwest Passage, though not in one hull",
+        "built": "1848, Greenock",
+        "lost": "abandoned in the Bay of Mercy, Banks Island, 3 June 1853; wreck found on the bed of Mercy Bay by Parks Canada, July 2010",
+        "affiliation": "Royal Navy",
+        "tonnage": "422 tons",
+        "note": "McClure entered from Bering Strait, saw the last link of the passage from Banks Island in October 1850, and was then held three winters at Mercy Bay while his people starved. Lieutenant Bedford Pim walked over the ice from the [[vessel:HMS Resolute]] in April 1853 and the crew walked out to her. She sits upright in about eleven metres of water and was surveyed again by remotely operated vehicle in May 2026. See [[topic:mcclure-investigator]], [[place:Wreck of HMS Investigator]] and [[artifact:mcclure-investigator-023]].",
+        "topic": "vessels",
+        "kind_label": "barque",
+        "page": "vessel/hms-investigator"
+      }
+    }
+  ]
+}
