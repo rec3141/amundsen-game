@@ -84,7 +84,9 @@ The Python server is intended for a trusted ship intranet, not public hosting.
 - Score, chart, track and discoveries are saved per browser. Restart clears that
   voyage; the crew's shared ideas stay on the server.
 - Crew ideas opens a shared phone-friendly form and board, refreshed every five
-  seconds. Names are optional; all ideas are visible to the crew.
+  seconds. Names are optional; all ideas are visible to the crew. Each idea has a
+  comment thread: teams iterate on an idea there, and a badge shows whether it is
+  being built, in review, or in the game.
 
 ## Underway CTD profiles
 
@@ -104,7 +106,7 @@ gaps break the curves and the gradient calculation. Scoring decreases from 100
 at the target to zero at a 20 dbar error. Source profiles, methods and results
 are testable in `tests/test_ctd.mjs`.
 
-Suggestions are stored in `runtime/suggestions.sqlite`, independent of the
+Suggestions and comments are stored in `runtime/suggestions.sqlite`, independent of the
 browser. Set `AMUNDSEN_GAME_DB` to choose another database path. Back up this file
 with the server stopped or use SQLite's backup API. Source edits and browser
 refreshes preserve the board. The API exposes the newest 200 ideas; older ideas
@@ -173,7 +175,10 @@ python3 tools/crew_watch.py          # Queue current board once
 ```
 
 `amundsen-game-crew.service` currently watches the suggestion board every 15
-seconds, launching a worker for every new idea with no concurrency cap. It runs for the meeting;
+seconds, launching a worker for every new idea with no concurrency cap. Comments
+posted on an idea after its latest run merged start a revision run
+(`idea-<id>-r<n>`) that edits the merged game in place; the coordinator merges it
+without re-registering. It runs for the meeting;
 it is not enabled at boot. The watcher continues after a chat turn ends. Workers
 commit their branch and stop; they do not deploy or merge. Merges require the
 coordinating session to be active. Logs, exact task briefs, process IDs, and final

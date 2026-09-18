@@ -283,6 +283,38 @@ async function boot() {
     $('#navigation').textContent = `BRIDGE / The chart could not be loaded: ${error.message}`;
   }
 }
-async function loadIdeas() { try { const response = await fetch('api/suggestions'); if (!response.ok) throw Error(); const ideas = await response.json(); $('#idea-count').textContent = ideas.length; $('#board-status').textContent = 'Updates every 5 seconds'; $('#idea-list').replaceChildren(); if (!ideas.length) { const empty = document.createElement('div'); empty.className = 'empty'; empty.textContent = 'The next adventure starts with an idea. Be the first to share yours.'; $('#idea-list').append(empty); } for (const idea of ideas) { const article = document.createElement('article'); article.className = 'idea'; const title = document.createElement('h3'); title.textContent = idea.title; const p = document.createElement('p'); p.textContent = idea.description; const meta = document.createElement('small'); meta.textContent = `${idea.name} · Idea #${idea.id}`; article.append(title, p, meta); $('#idea-list').append(article); } } catch { $('#board-status').textContent = 'Cannot reach the server. Retrying…'; } }
+const BUILD_LABEL = { building: 'Being built', review: 'In review', live: 'In the game', failed: 'Build stalled' };
+function el(tag, className, text) { const node = document.createElement(tag); if (className) node.className = className; if (text != null) node.textContent = text; return node; }
+let crewName = ''; try { crewName = localStorage.getItem('amundsen-crew-name') || ''; } catch {}
+function commentForm(idea) {
+  const form = el('form', 'comment-form'); form.innerHTML = '<input name="name" maxlength="60" placeholder="Name or team (optional)"><textarea name="body" required maxlength="1500" rows="2" placeholder="Add to this idea: a twist, a rule, a fix…"></textarea><div class="comment-actions"><button type="submit" class="secondary">Add comment</button><span role="status"></span></div>';
+  form.name.value = crewName;
+  form.onsubmit = async e => {
+    e.preventDefault(); const button = form.querySelector('button'), status = form.querySelector('span'); button.disabled = true; status.textContent = 'Sending…';
+    try {
+      const response = await fetch(`api/suggestions/${idea.id}/comments`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: form.name.value, body: form.body.value }) });
+      if (!response.ok) throw Error((await response.json()).error || 'Could not save comment');
+      crewName = form.name.value.trim(); try { localStorage.setItem('amundsen-crew-name', crewName); } catch {}
+      form.body.value = ''; status.textContent = ''; await loadIdeas(true);
+    } catch (error) { status.textContent = error.message === 'Failed to fetch' ? 'Connection lost; your comment is still here.' : error.message; }
+    finally { button.disabled = false; }
+  };
+  return form;
+}
+const summaryText = idea => `${idea.comments?.length || 0} comment${idea.comments?.length === 1 ? '' : 's'} · iterate on this idea`;
+function commentList(idea, thread) { thread.replaceChildren(); for (const c of idea.comments || []) { const item = el('div', 'comment'); item.append(el('b', '', c.name), el('span', '', c.body)); thread.append(item); } }
+function ideaCard(idea) {
+  const article = el('article', 'idea'); article.dataset.id = idea.id;
+  const head = el('div', 'idea-head'); head.append(el('h3', '', idea.title));
+  if (idea.build) head.append(el('span', `build build-${idea.build}`, BUILD_LABEL[idea.build] || idea.build));
+  const meta = el('small', '', `${idea.name} · Idea #${idea.id}`);
+  const thread = el('div', 'comments'); commentList(idea, thread);
+  const details = el('details', 'thread');
+  details.append(el('summary', '', summaryText(idea)), thread, commentForm(idea));
+  article.append(head, el('p', '', idea.description), meta, details);
+  return article;
+}
+// A refresh never replaces a card whose thread is open or being typed in, so drafts survive the 5 s poll.
+async function loadIdeas(force = false) { try { const response = await fetch('api/suggestions'); if (!response.ok) throw Error(); const ideas = await response.json(); $('#idea-count').textContent = ideas.length; $('#board-status').textContent = 'Updates every 5 seconds'; const list = $('#idea-list'); const keep = new Map(); for (const card of list.querySelectorAll('.idea')) { const details = card.querySelector('details'); if (!force && (details?.open || card.contains(document.activeElement))) keep.set(card.dataset.id, card); } list.replaceChildren(); if (!ideas.length) { list.append(el('div', 'empty', 'The next adventure starts with an idea. Be the first to share yours.')); } for (const idea of ideas) { const kept = keep.get(String(idea.id)); if (kept) { kept.querySelector('summary').textContent = summaryText(idea); commentList(idea, kept.querySelector('.comments')); list.append(kept); } else list.append(ideaCard(idea)); } } catch { $('#board-status').textContent = 'Cannot reach the server. Retrying…'; } }
 $('#idea-form').onsubmit = async e => { e.preventDefault(); const form = e.currentTarget, button = form.querySelector('button'); button.disabled = true; $('#form-status').textContent = 'Sending…'; try { const response = await fetch('api/suggestions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) }); if (!response.ok) throw Error((await response.json()).error || 'Could not save idea'); form.reset(); $('#form-status').textContent = 'Your idea is on the crew board. Thank you!'; await loadIdeas(); } catch (error) { $('#form-status').textContent = error.message === 'Failed to fetch' ? 'Connection lost. Your draft is still here; try again.' : error.message; } finally { button.disabled = false; } };
 setInterval(() => { if (!document.hidden) loadIdeas(); if (world) save(); }, 5000); updateUI(); loadIdeas(); resize(); requestAnimationFrame(loop); boot();
