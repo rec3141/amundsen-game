@@ -174,12 +174,13 @@ function sightPlaces() {
   toast(`Sighted: ${seen.map(place => place.name).join(', ')}`);
 }
 function aground() {
-  const u = shipU(), v = shipV(), { lon, lat } = world.unproject(u, v), lost = state.score;
+  const u = shipU(), v = shipV(), { lon, lat } = world.unproject(u, v);
   const record = runAground(state, { x: state.x, y: state.y, lon, lat }, world.nearestPlace(u, v)?.name ?? '');
+  const lost = record.lost;
   waypoints = []; keys.clear(); holdUntil = performance.now() + 1200; shake = 1;
   $('.map-panel').classList.remove('aground'); void $('.map-panel').offsetWidth; $('.map-panel').classList.add('aground');
   save(); updateUI();
-  toast(`${record.title}. ${lost ? `${lost} science points lost` : 'Nothing left to lose'} · back to safe water, chart and log intact.`, true);
+  toast(`${record.title}. ${lost ? `${lost} science points lost, the last operation's worth` : 'Nothing to lose yet'} · back to safe water, chart and log intact.`, true);
 }
 // The helicopter crosses land freely; every ship movement checks the shore and maps its swept fan.
 function move(du, dv) {

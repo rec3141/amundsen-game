@@ -90,10 +90,11 @@ export function operationRecorder(state, activity, location, onAward = () => {})
     },
   };
 }
-// Touching land costs every science point; the chart, the log and the discoveries stay.
+// Touching land costs the points of the most recent scoring operation; the chart, the log and the discoveries stay.
 export function runAground(state, location, place = '') {
-  const lost = state.score;
-  state.score = 0;
+  const lastOperation = [...state.discoveries].reverse().find(d => d.activity !== 'grounding' && d.points > 0);
+  const lost = Math.min(state.score, lastOperation?.points ?? 0);
+  state.score -= lost;
   state.groundings = Math.min(Number.MAX_SAFE_INTEGER, state.groundings + 1);
   const record = entry({ ...location, title: place ? `Ran aground near ${place}` : 'Ran aground', activity: 'grounding', points: 0, lost, date: new Date().toISOString() });
   state.discoveries.push(record);

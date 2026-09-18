@@ -51,10 +51,10 @@ test('operations award once at launch position and accept arbitrary metadata', (
   assert.equal(state.discoveries[0].title,detail.title);
   const second=e.operationRecorder(state,{id:'ctd',title:'CTD cast'},state);second.complete(10);
   assert.equal(state.score,52);assert.equal(state.operations,2);
-  // Grounding takes every point, logs the event and returns the ship to the last safe water.
+  // Grounding takes the last operation's points, logs the event and returns the ship to the last safe water.
   state.safe={x:.5,y:.5};const grounded=e.runAground(state,{x:.91,y:.3,lon:-80,lat:77},'Grise Fiord');
-  assert.equal(state.score,0);assert.equal(state.groundings,1);assert.equal(state.operations,2);assert.deepEqual({x:state.x,y:state.y},{x:.5,y:.5});
-  assert.equal(grounded.lost,52);assert.equal(grounded.activity,'grounding');assert.equal(grounded.title,'Ran aground near Grise Fiord');assert.equal(state.discoveries.length,3);assert.equal(state.discoveries[2].x,.91);
+  assert.equal(state.score,42);assert.equal(state.groundings,1);assert.equal(state.operations,2);assert.deepEqual({x:state.x,y:state.y},{x:.5,y:.5});
+  assert.equal(grounded.lost,10);assert.equal(grounded.activity,'grounding');assert.equal(grounded.title,'Ran aground near Grise Fiord');assert.equal(state.discoveries.length,3);assert.equal(state.discoveries[2].x,.91);
 });
 test('cancelled operations cannot award and excessive metadata does not break saving', () => {
   const state=e.newVoyage(),activity={id:'ctd',title:'CTD cast'};

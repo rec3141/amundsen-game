@@ -6,7 +6,7 @@
 - Never add disclaimer or warning copy such as "not for navigation", "not an instrument simulator", "only a game", or similar hedging about the game's scientific purpose. Remove such copy when encountered. Ordinary actionable error messages are fine.
 - Aim for exploration and chart-making in the spirit of Pirates! Gold.
 - Minigames launch anywhere through keyboard shortcuts or buttons. Do not gate them on predetermined stations or markers.
-- The world is built from the underway DEMs and ice charts. Land blocks the ship; running aground costs the whole score. Ice stations need ice under the ship; that is the only location gate.
+- The world is built from the underway DEMs and ice charts. Land blocks the ship; running aground costs the points of the last operation. Ice stations need ice under the ship; that is the only location gate.
 - When the user says "pull data", use the data on the underway server. Local published data is at /data/underway_server/www; project context is /data/dev/underway. Prefer read-only access to these sources. Do not replace real measurements with invented values.
 - All game runtime assets and data must work without internet access.
 
