@@ -205,6 +205,4470 @@
     },
     "ui.operations": {
       "text": "SHIPBOARD OPERATIONS"
+    },
+    "crew2.title": {
+      "text": "Where is the old ice?"
+    },
+    "crew3.title": {
+      "text": "Cliceify"
+    },
+    "crew4.title": {
+      "text": "Ice Patrol"
+    },
+    "crew5.title": {
+      "text": "Seep-Seeker"
+    },
+    "crew6.title": {
+      "text": "Contaminants"
+    },
+    "crew7.title": {
+      "text": "Find Clement's stuff"
+    },
+    "crew8.title": {
+      "text": "The Raft"
+    },
+    "crew9.title": {
+      "text": "Crazy Net"
+    },
+    "crew6.aria.game": {
+      "text": "Contaminants: trace-metal clean sampling"
+    },
+    "crew6.kicker": {
+      "text": "TRACE-METAL ROSETTE / FOREDECK"
+    },
+    "crew6.heading": {
+      "text": "Everyone is dirty."
+    },
+    "crew6.elapsed": {
+      "text": "elapsed"
+    },
+    "crew6.instructions": {
+      "text": "Five pieces of clean suit are scattered through the container maze. Find them all, then get back to the rosette without touching anything: the ship is iron, zinc and copper from the keel up."
+    },
+    "crew6.aria.canvas": {
+      "text": "Container maze on the foredeck"
+    },
+    "crew6.tia.shout": {
+      "text": "DON'T TOUCH IT — YOU'RE DIRTY!"
+    },
+    "crew6.tia.who": {
+      "text": "Tia, from the clean bubble"
+    },
+    "crew6.retry": {
+      "text": "Change gloves and try again"
+    },
+    "crew6.cleanSuit": {
+      "text": "Clean suit"
+    },
+    "crew6.dirtyMeter": {
+      "text": "Dirty meter"
+    },
+    "crew6.legend.heading": {
+      "text": "What is on the walls"
+    },
+    "crew6.legend.brushing": {
+      "text": "Brushing along a surface keeps adding. Tia calls it at {threshold}."
+    },
+    "crew6.aria.move": {
+      "text": "Move the sampler"
+    },
+    "crew6.aria.up": {
+      "text": "Up (arrow up or W)"
+    },
+    "crew6.aria.left": {
+      "text": "Left (arrow left or A)"
+    },
+    "crew6.aria.down": {
+      "text": "Down (arrow down or S)"
+    },
+    "crew6.aria.right": {
+      "text": "Right (arrow right or D)"
+    },
+    "crew6.reward": {
+      "text": "Up to 100 for a clean arrival · +40 for speed · +20 for a blank-grade run with no touch at all"
+    },
+    "crew6.status.start": {
+      "text": "Arrows or WASD to move. Hold a pad button or tap it for a short step."
+    },
+    "crew6.surface.hull": {
+      "text": "Painted bulkhead"
+    },
+    "crew6.surface.steel": {
+      "text": "Container wall"
+    },
+    "crew6.surface.rust": {
+      "text": "Rust streak"
+    },
+    "crew6.surface.paint": {
+      "text": "Fresh antifouling"
+    },
+    "crew6.surface.grease": {
+      "text": "Greased hydraulic line"
+    },
+    "crew6.surface.anode": {
+      "text": "Zinc anode"
+    },
+    "crew6.surface.deckhand": {
+      "text": "Deckhand's work gloves"
+    },
+    "crew6.surface.drip": {
+      "text": "Hydraulic drip"
+    },
+    "crew6.kit.coverall": {
+      "text": "Tyvek coverall"
+    },
+    "crew6.kit.hood": {
+      "text": "Hood"
+    },
+    "crew6.kit.booties": {
+      "text": "Boot covers"
+    },
+    "crew6.kit.inner": {
+      "text": "Nitrile gloves"
+    },
+    "crew6.kit.outer": {
+      "text": "Polyethylene overgloves"
+    },
+    "crew6.meter.value": {
+      "text": "{dirty} of {threshold}"
+    },
+    "crew6.meter.unsuited": {
+      "text": "Suit up first — the float coat can touch what it likes."
+    },
+    "crew6.meter.dirty": {
+      "text": "{dirty} / {threshold}"
+    },
+    "crew6.meter.dirtyChanges": {
+      "text": "{dirty} / {threshold} · glove change {count}"
+    },
+    "crew6.brushing": {
+      "text": "Brushing along surfaces"
+    },
+    "crew6.rosette": {
+      "text": "TM rosette"
+    },
+    "crew6.status.found": {
+      "text": "{item} found. {count} pieces to go."
+    },
+    "crew6.status.foundAll": {
+      "text": "{item} found. Suit up."
+    },
+    "crew6.flash.suited": {
+      "text": "Suited up. Touch nothing."
+    },
+    "crew6.status.suited": {
+      "text": "Suited up in {time}. Back to the rosette now: every surface counts, so does the deckhand, so do the drips."
+    },
+    "crew6.status.touch": {
+      "text": "{surface} — {dirty} / {threshold}."
+    },
+    "crew6.tia.detail": {
+      "text": "{count} touches: {surfaces}. Nobody wants a rusty blank."
+    },
+    "crew6.tia.detailBrushing": {
+      "text": "{count} touches: {surfaces}, plus brushing along the way. Nobody wants a rusty blank."
+    },
+    "crew6.status.busted": {
+      "text": "Tia: don't touch it, you're dirty. {count} touches. Change gloves and go again from where you suited up."
+    },
+    "crew6.result.blankTitle": {
+      "text": "Trace-metal cast: blank-grade sample"
+    },
+    "crew6.result.title": {
+      "text": "Trace-metal cast: {cleanliness}% clean"
+    },
+    "crew6.result.kicker": {
+      "text": "SAMPLE TAKEN"
+    },
+    "crew6.result.cleanliness": {
+      "text": "Cleanliness"
+    },
+    "crew6.result.speed": {
+      "text": "Speed · {time}"
+    },
+    "crew6.result.noTouch": {
+      "text": "No touch at all"
+    },
+    "crew6.result.changes": {
+      "text": "Glove changes · {count}"
+    },
+    "crew6.result.points": {
+      "text": "Science points"
+    },
+    "crew6.result.blankNote": {
+      "text": "Blank-grade: nothing on the bottles but seawater."
+    },
+    "crew6.result.touchedNote": {
+      "text": "Tia logs what you brushed against the sample."
+    },
+    "crew6.result.brushedNote": {
+      "text": "A few brushes on the way, noted on the sample sheet."
+    },
+    "crew6.status.finished": {
+      "text": "Sample taken: {cleanliness}% clean in {time} · {points} points."
+    },
+    "crew6.flash.fresh": {
+      "text": "Fresh gloves. Go."
+    },
+    "crew6.status.fresh": {
+      "text": "Fresh gloves from Tia. Back to the rosette from where you suited up."
+    },
+    "early.points": {
+      "text": "points"
+    },
+    "early.score": {
+      "text": "Score"
+    },
+    "early.finish": {
+      "text": "Finish"
+    },
+    "early.logged": {
+      "text": "Logged ✓"
+    },
+    "early.loading": {
+      "text": "Loading…"
+    },
+    "early.closeRetry": {
+      "text": "Close and reopen to try again."
+    },
+    "crew2.aria": {
+      "text": "Old ice survey"
+    },
+    "crew2.heading": {
+      "text": "Pick the old ice from the radar, then go prove it with an auger."
+    },
+    "crew2.sceneLoaded": {
+      "text": "Scene loaded. Smooth and bright, or rough and bright? Mark your floes."
+    },
+    "crew2.sceneError": {
+      "text": "The radar scene could not be loaded. Close and reopen the operation."
+    },
+    "crew2.begin": {
+      "text": "Begin survey"
+    },
+    "crew2.resume": {
+      "text": "Resume survey"
+    },
+    "crew2.sail": {
+      "text": "Sail to mark"
+    },
+    "crew2.end": {
+      "text": "End survey · {points} pts"
+    },
+    "crew2.back": {
+      "text": "Back on the image. Add marks, then resume."
+    },
+    "crew2.scale": {
+      "text": "10 km"
+    },
+    "crew3.aria": {
+      "text": "Cliceify ice classification"
+    },
+    "crew3.heading": {
+      "text": "Call the ice: first-year or multi-year, as fast as you can."
+    },
+    "crew3.platforms": {
+      "text": "Platforms"
+    },
+    "crew3.time": {
+      "text": "Time left"
+    },
+    "crew3.classification": {
+      "text": "Classification"
+    },
+    "crew3.firstYear": {
+      "text": "First-year"
+    },
+    "crew3.multiYear": {
+      "text": "Multi-year"
+    },
+    "crew3.fieldGuide": {
+      "text": "Field guide · "
+    },
+    "crew3.log": {
+      "text": "Log results"
+    },
+    "crew3.callLog": {
+      "text": "Call log "
+    },
+    "crew3.correct": {
+      "text": "Correct"
+    },
+    "crew3.mean": {
+      "text": "Mean"
+    },
+    "crew3.start": {
+      "text": "Level 1 waits on the surface. Press Space to start."
+    },
+    "crew3.outOfTime": {
+      "text": "Out of time: {answer}"
+    },
+    "crew3.scene": {
+      "text": "Scene {current} of {total}."
+    },
+    "crew4.aria": {
+      "text": "Ice field seen from the helicopter. The status line below reports what happens."
+    },
+    "crew4.fuel": {
+      "text": "Fuel"
+    },
+    "crew4.controls": {
+      "text": "Flight controls"
+    },
+    "crew4.left": {
+      "text": "Move left"
+    },
+    "crew4.right": {
+      "text": "Move right"
+    },
+    "crew4.rotate": {
+      "text": "Rotate"
+    },
+    "crew4.softDrop": {
+      "text": "Soft drop"
+    },
+    "crew4.hardDrop": {
+      "text": "Hard drop"
+    },
+    "crew4.drop": {
+      "text": "Drop"
+    },
+    "crew4.loaded": {
+      "text": "Chart loaded. Lift off when ready."
+    },
+    "crew4.chartError": {
+      "text": "The ice chart could not be read."
+    },
+    "crew4.airborne": {
+      "text": "Airborne. Fit the floes ten tenths across to chart a band."
+    },
+    "crew4.shore": {
+      "text": "SHORE"
+    },
+    "crew4.packAhead": {
+      "text": "PACK AHEAD"
+    },
+    "crew5.aria": {
+      "text": "Seep-Seeker sediment coring survey"
+    },
+    "crew5.time": {
+      "text": "Ship time remaining, hours"
+    },
+    "crew5.sites": {
+      "text": "Coring sites"
+    },
+    "crew5.equipment": {
+      "text": "Coring equipment"
+    },
+    "crew5.coreDescription": {
+      "text": "Core description"
+    },
+    "crew5.noRecord": {
+      "text": "No record yet"
+    },
+    "crew5.shipTime": {
+      "text": "Ship time {hours} h of {total}"
+    },
+    "crew5.longest": {
+      "text": "Longest record {length} · {age} · {points} pts"
+    },
+    "crew5.found": {
+      "text": "Seep found ✓"
+    },
+    "crew5.spent": {
+      "text": "Ship time spent"
+    },
+    "crew5.sailOn": {
+      "text": "Sail on · {points} pts"
+    },
+    "crew7.aria": {
+      "text": "Helicopter search for Clement's lost gear"
+    },
+    "crew7.fuel": {
+      "text": "Fuel remaining, seconds of flight"
+    },
+    "crew7.takeOff": {
+      "text": "Take off"
+    },
+    "crew7.land": {
+      "text": "Land on deck"
+    },
+    "crew7.slow": {
+      "text": "Slow down to search"
+    },
+    "crew7.hover": {
+      "text": "Hover over gear"
+    },
+    "crew7.aboard": {
+      "text": "aboard"
+    },
+    "crew7.cleared": {
+      "text": "cleared"
+    },
+    "crew7.empty": {
+      "text": "Cross a floe to read its chart line."
+    },
+    "crew7.wind": {
+      "text": "WIND"
+    },
+    "crew8.aria": {
+      "text": "Lake sediment coring from a raft"
+    },
+    "crew8.tension": {
+      "text": "Line tension, kilograms"
+    },
+    "crew8.handling": {
+      "text": "Core handling"
+    },
+    "crew8.refusal": {
+      "text": "Refusal"
+    },
+    "crew8.stone": {
+      "text": "Stone"
+    },
+    "crew8.drive": {
+      "text": "Drive"
+    },
+    "crew8.leave": {
+      "text": "Leave core"
+    },
+    "crew8.paddle": {
+      "text": "Paddle in"
+    },
+    "crew8.gameOver": {
+      "text": "Game over"
+    },
+    "crew8.ashore": {
+      "text": "Ashore ✓"
+    },
+    "crew8.noCore": {
+      "text": "Pull needed: no core logged yet"
+    },
+    "crew8.raftGone": {
+      "text": "Raft gone"
+    },
+    "crew8.paddled": {
+      "text": "Paddled in"
+    },
+    "crew9.aria": {
+      "text": "Crazy Net plankton tow"
+    },
+    "crew9.depthPresets": {
+      "text": "Start depth presets"
+    },
+    "crew9.surface": {
+      "text": "Surface"
+    },
+    "crew9.fluorescence": {
+      "text": "Fluorescence max"
+    },
+    "crew9.deep": {
+      "text": "Deep"
+    },
+    "crew9.seabed": {
+      "text": "Seabed"
+    },
+    "crew9.sell": {
+      "text": "Sell samples"
+    },
+    "crew9.haul": {
+      "text": "Haul now"
+    },
+    "crew9.stationLogged": {
+      "text": "Station logged"
+    },
+    "crew9.noTime": {
+      "text": "No ship time left"
+    },
+    "crew9.reading": {
+      "text": "Reading station…"
+    },
+    "crew9.finish": {
+      "text": "Finish station · {points} pts"
+    },
+    "crew9.onBottom": {
+      "text": "on the seabed"
+    },
+    "crew9.torn": {
+      "text": "net torn"
+    },
+    "crew9.bumps": {
+      "text": "bumps"
+    },
+    "crew9.themeOn": {
+      "text": "♫ Theme on"
+    },
+    "crew9.theme": {
+      "text": "♪ Theme"
+    },
+    "activity.crew2.description": {
+      "text": "Read the radar, then go drill it"
+    },
+    "activity.crew3.description": {
+      "text": "Classify ice from deck to satellite"
+    },
+    "activity.crew4.description": {
+      "text": "Read the ice from a helicopter"
+    },
+    "activity.crew5.description": {
+      "text": "Core the shelf to find the methane vent"
+    },
+    "activity.crew6.description": {
+      "text": "Suit up and reach the rosette clean"
+    },
+    "activity.crew7.description": {
+      "text": "Fly the old floes for lost gear"
+    },
+    "activity.crew8.description": {
+      "text": "Core an uplifted lake bed"
+    },
+    "activity.crew9.description": {
+      "text": "Tow a net through keels and boulders"
+    },
+    "late.51413fc5e2f6": {
+      "text": "\"Something that acts as a person\": stone cairns that mark routes, caches and caribou drives. Plural inuksuit."
+    },
+    "late.d7fe615d62e8": {
+      "text": "\"The bearded one.\" Its underwool, qiviut, is warmer than sheep’s wool by weight."
+    },
+    "late.f3700245c463": {
+      "text": "({value0} day{value1}, {value2} grievance{value3})"
+    },
+    "late.88aa827c6ccb": {
+      "text": "+2 °C at 30 salinity"
+    },
+    "late.0f7772f2edd3": {
+      "text": "+{value0}"
+    },
+    "late.962c7057da94": {
+      "text": "0 L/s"
+    },
+    "late.3d4f79fc3b64": {
+      "text": "0 points."
+    },
+    "late.6fcf4f9416d3": {
+      "text": "0 °C at 28 salinity"
+    },
+    "late.f5e9c8f78aa5": {
+      "text": "0.0 cm"
+    },
+    "late.1b4230d3dfd3": {
+      "text": "0.0 kn"
+    },
+    "late.8fc18a624e53": {
+      "text": "0.0 °C"
+    },
+    "late.b0995f4c15f9": {
+      "text": "0.3 °C"
+    },
+    "late.f9ff81056843": {
+      "text": "0h 00m"
+    },
+    "late.67012501d868": {
+      "text": "1 nmi"
+    },
+    "late.b6d7cd6dffc5": {
+      "text": "40 water stopped · {value0} for the gear on the deck · 25 drained · 25 under 10 cm"
+    },
+    "late.f8e594e850dd": {
+      "text": "48 h"
+    },
+    "late.e72e97bbd43f": {
+      "text": "A 4σ heave of 1.7 m means, roughly:"
+    },
+    "late.47bcff8d6b71": {
+      "text": "A RIVAL HAILS YOU"
+    },
+    "late.8c7861618f6a": {
+      "text": "A fierce battle of science"
+    },
+    "late.0b1f7ea2e41f": {
+      "text": "A final: the small raised form of the {value0} row, {value1}."
+    },
+    "late.b7ce0fde8d06": {
+      "text": "A headland. Charts across the Arctic carry the name Nuvuk where a point juts into the current."
+    },
+    "late.b81c8c80cb62": {
+      "text": "A large seal that feeds on the bottom; its skin makes boot soles and boat covers."
+    },
+    "late.7663e9d795e1": {
+      "text": "A long first vowel and a held k. Both length contrasts change meaning in Inuktitut."
+    },
+    "late.bc77eb9c482d": {
+      "text": "A long vowel. Raised eyebrows mean the same thing; a wrinkled nose means no."
+    },
+    "late.a7521a7bf13e": {
+      "text": "A parka with a pouch at the back for carrying a baby against the skin."
+    },
+    "late.7f573c953063": {
+      "text": "A roll put the rosette rinse tote on its side."
+    },
+    "late.5700c8c1f706": {
+      "text": "A short greeting. Tunngasugit, \"welcome\", is the formal one you hear at the airport."
+    },
+    "late.30e4caeb4f91": {
+      "text": "AFT LAB"
+    },
+    "late.96618846da50": {
+      "text": "AFT LAB / DAMAGE CONTROL"
+    },
+    "late.988474e9b839": {
+      "text": "AIS fix −{value0} h"
+    },
+    "late.b9504b700c67": {
+      "text": "Aakka."
+    },
+    "late.c68fef03d53e": {
+      "text": "Accept the challenge"
+    },
+    "late.e919ceb040fa": {
+      "text": "Across the water: {value0}"
+    },
+    "late.138a104b733f": {
+      "text": "Act"
+    },
+    "late.b8a930e5ff2d": {
+      "text": "Aft lab"
+    },
+    "late.d1cd398e280a": {
+      "text": "Air-drop a profiler"
+    },
+    "late.cfc18fab7460": {
+      "text": "Altimeter freeboard"
+    },
+    "late.f9818754c4e1": {
+      "text": "Amundsen"
+    },
+    "late.dc09d75e8842": {
+      "text": "Amundsen party"
+    },
+    "late.8ccc2182820d": {
+      "text": "Amundsen science party"
+    },
+    "late.8f4f3d5b002d": {
+      "text": "An affectionate diminutive: nunakuluk, dear little land."
+    },
+    "late.700de107742f": {
+      "text": "Another one"
+    },
+    "late.c87ffc4d0d7d": {
+      "text": "Answer below"
+    },
+    "late.38aac7d79ba3": {
+      "text": "Any house, snow or otherwise. Iglulik is \"the place with houses\"; sod-and-whalebone houses stood there for a thousand years."
+    },
+    "late.50dd1b2740f9": {
+      "text": "Aput is snow lying on the ground; qanik is snow falling. Snow depth on a floe controls how fast the ice below it grows."
+    },
+    "late.56560febdb74": {
+      "text": "Arctic fox"
+    },
+    "late.766e7ee7342e": {
+      "text": "Arctic hare"
+    },
+    "late.6eec4fbb53a7": {
+      "text": "Arctic tern"
+    },
+    "late.c8f1106abdb7": {
+      "text": "Arctic wolves follow the caribou herds; the Tuktu and Amaruq of stories hold the tundra in balance."
+    },
+    "late.f7d3b2f916eb": {
+      "text": "Arrow keys or"
+    },
+    "late.2213590392e6": {
+      "text": "Arrows or"
+    },
+    "late.b5e2c3f4104a": {
+      "text": "Arrows or W A S D"
+    },
+    "late.4b956a4627bc": {
+      "text": "Arviat"
+    },
+    "late.2a1d3e194cee": {
+      "text": "Arviat, on Hudson Bay, is the place of bowheads. Bowheads live longer than any other mammal, past 200 years."
+    },
+    "late.69f253184338": {
+      "text": "Assimilating {value0} observation{value1}."
+    },
+    "late.e5463e125966": {
+      "text": "At 30 salinity, my water freezes near what temperature?"
+    },
+    "late.9949af21d9af": {
+      "text": "Aupaluk"
+    },
+    "late.8be00be3a481": {
+      "text": "Ausuittuq"
+    },
+    "late.185ddf19fcef": {
+      "text": "BENCH"
+    },
+    "late.26f8fadacbe5": {
+      "text": "BRIDGE / SEARCH AND RESCUE"
+    },
+    "late.7ebf1aeb7c61": {
+      "text": "BRIDGE WING / WILDLIFE WATCH"
+    },
+    "late.b52b36b7269f": {
+      "text": "Back"
+    },
+    "late.68dbd12b8c80": {
+      "text": "Back to the watch"
+    },
+    "late.88d130a66de8": {
+      "text": "Backspace"
+    },
+    "late.b81b8efa3959": {
+      "text": "Bag of bubble wrap"
+    },
+    "late.ee78eff9b7da": {
+      "text": "Basin-Scale Modelling Lab"
+    },
+    "late.704c0721a95f": {
+      "text": "Battle log"
+    },
+    "late.b0ba5b78de25": {
+      "text": "Bearded seal"
+    },
+    "late.b157f9096488": {
+      "text": "Bearing"
+    },
+    "late.62f85a785ac1": {
+      "text": "Bearing {value0} · 7×50"
+    },
+    "late.f29678eeb956": {
+      "text": "Bearing {value0} · eye"
+    },
+    "late.4dcf827e3fb8": {
+      "text": "Begin the watch"
+    },
+    "late.940fc0d9383a": {
+      "text": "Beluga"
+    },
+    "late.3c1cf57c3393": {
+      "text": "Beluga and narwhal summer in the deep sounds and fjords; watch for pale backs and a tusk between the waves."
+    },
+    "late.4822b466cd82": {
+      "text": "Benchtop fluorometer"
+    },
+    "late.2693ea2831b1": {
+      "text": "Best of the watch: {value0}."
+    },
+    "late.9c52711df593": {
+      "text": "Bigger"
+    },
+    "late.96e258945229": {
+      "text": "Bigger box"
+    },
+    "late.8bfa5c57e6fa": {
+      "text": "Binoculars"
+    },
+    "late.302024beffd6": {
+      "text": "Bird cliffs"
+    },
+    "late.11c820ee316e": {
+      "text": "Black guillemot"
+    },
+    "late.b00b0ed01f87": {
+      "text": "Black-legged kittiwake"
+    },
+    "late.28dba0171ba0": {
+      "text": "Blue nose"
+    },
+    "late.43c2b06d4573": {
+      "text": "Boat drill"
+    },
+    "late.980e5ae475a5": {
+      "text": "Boat drill & muster"
+    },
+    "late.ee664e267411": {
+      "text": "Borealis Star"
+    },
+    "late.cb8fa991d6c5": {
+      "text": "Borealis Star science party"
+    },
+    "late.0ddfa9851960": {
+      "text": "Bowhead whale"
+    },
+    "late.239ca5767afa": {
+      "text": "Box"
+    },
+    "late.fbd745f80a5d": {
+      "text": "Box core"
+    },
+    "late.fb3384e490e7": {
+      "text": "Box drawn: {value0} lines. Enter runs them."
+    },
+    "late.779c1eeeaf99": {
+      "text": "Box marked RECYCLING"
+    },
+    "late.413715b9c3f8": {
+      "text": "Box of GF/F filters"
+    },
+    "late.a47a73c84988": {
+      "text": "Bridge controls"
+    },
+    "late.5c5f5c908ef3": {
+      "text": "Brine drains from young ice into the water below, one reason winter shelf water is dense."
+    },
+    "late.f36ade17a513": {
+      "text": "CHIEF SCIENTIST / PLAN OF THE DAY"
+    },
+    "late.6b19d295d072": {
+      "text": "CROSSING THE LINE / NEPTUNE'S"
+    },
+    "late.cc334cdc30e9": {
+      "text": "CTD"
+    },
+    "late.86e4ee524412": {
+      "text": "CTD battery pack"
+    },
+    "late.b6c77404bc3a": {
+      "text": "CTD-Rosette"
+    },
+    "late.d59ebba26be7": {
+      "text": "Charted water is {value0} from the datum{value1}."
+    },
+    "late.b8b4c632d46c": {
+      "text": "Chlorophyll filtration rig"
+    },
+    "late.f487fe7ef96f": {
+      "text": "Choose a lookout"
+    },
+    "late.70c1cf840eb9": {
+      "text": "Choose a request"
+    },
+    "late.9e9743d6e82d": {
+      "text": "Choose a target"
+    },
+    "late.49adb486e24a": {
+      "text": "Choose another"
+    },
+    "late.3f4c23f01f7c": {
+      "text": "Cite my paper"
+    },
+    "late.be28d6d04a95": {
+      "text": "Classified dataset"
+    },
+    "late.52fd81ab38b9": {
+      "text": "Clear watch"
+    },
+    "late.bbfa773e5a63": {
+      "text": "Close"
+    },
+    "late.ac74290c9fbf": {
+      "text": "Close and launch again to try this or another wreck."
+    },
+    "late.e6a927dd9367": {
+      "text": "Close and relaunch to take the call again."
+    },
+    "late.2d2d62370075": {
+      "text": "Close this window to return to the bridge."
+    },
+    "late.47624d241e27": {
+      "text": "Close this window to return to the bridge; launch again ("
+    },
+    "late.0da64bc7a15e": {
+      "text": "Close under a headland in shallow water, a colony on the ledges above."
+    },
+    "late.1f53a05a9fc0": {
+      "text": "Cold, fresh, deep"
+    },
+    "late.473fb552f319": {
+      "text": "Cold, fresh, shallow"
+    },
+    "late.f610c5e431c2": {
+      "text": "Come on, go ahead. Heard when the helicopter is turning and the science party is still zipping suits."
+    },
+    "late.511ab8b8d481": {
+      "text": "Common eider"
+    },
+    "late.a1e327c20874": {
+      "text": "Common raven"
+    },
+    "late.d04d53d6039b": {
+      "text": "Contact. {value0} in sight, beset in {value1}. Come alongside to cut them free, then lead them west; they can only follow a channel you have broken."
+    },
+    "late.11f2d2bfc758": {
+      "text": "Controls: {value0}, or the buttons below."
+    },
+    "late.53a1e895cd79": {
+      "text": "Counting in Inuktitut is base 20 on fingers and toes: tallimat, five, is one hand."
+    },
+    "late.d71975a92c4b": {
+      "text": "Credibility +{value0}."
+    },
+    "late.de463ba892c2": {
+      "text": "Crew"
+    },
+    "late.d7cbc6d101b5": {
+      "text": "Critical finding! {value0}"
+    },
+    "late.27e77c7898c2": {
+      "text": "Damage control log"
+    },
+    "late.d732b65d6c12": {
+      "text": "Data request"
+    },
+    "late.df5c3008c765": {
+      "text": "Datum"
+    },
+    "late.d65ea44926bc": {
+      "text": "Day reports and grievances"
+    },
+    "late.3704d4b4445c": {
+      "text": "Day {value0} · {value1} · {value2} · ×{value3}"
+    },
+    "late.e9d6e3c8a081": {
+      "text": "Day {value0}, {value1}, watch {value2}"
+    },
+    "late.237faa5b23b4": {
+      "text": "Deal the cards"
+    },
+    "late.f0f192ee3746": {
+      "text": "Decisive. {value0}"
+    },
+    "late.b35e0445f231": {
+      "text": "Deck drained"
+    },
+    "late.7a71176080fe": {
+      "text": "Deep water in a sound, a glacier front at the head and steep land on both sides."
+    },
+    "late.264f8f63dec4": {
+      "text": "Defeated {value0}"
+    },
+    "late.15e508616848": {
+      "text": "Depth call"
+    },
+    "late.9e44ce9a519b": {
+      "text": "Discharge valve"
+    },
+    "late.b86826c2f89f": {
+      "text": "Dive weight belt"
+    },
+    "late.bf93e5ce8bc1": {
+      "text": "Down"
+    },
+    "late.2ef985bd430d": {
+      "text": "Drift ice, 4 to 7 tenths, leads opening and closing between the floes."
+    },
+    "late.9dc581145569": {
+      "text": "Drifting snow driven by wind. A piqsiq erases the horizon; the bridge relies on radar and the ice pilot waits."
+    },
+    "late.5b35fdf87400": {
+      "text": "Drinking water. Meltwater pools on old floes are imiq; the sea beneath them is imaq."
+    },
+    "late.a6efd7142e5b": {
+      "text": "Drop ROV"
+    },
+    "late.5b66f7f6c9a2": {
+      "text": "Dry-ice shipper"
+    },
+    "late.0dac6dbf5093": {
+      "text": "Dual endings: marruuk itself is dual, and nouns for two things end in -k."
+    },
+    "late.241a5b4c369c": {
+      "text": "EM flight line"
+    },
+    "late.79f8065f3a2a": {
+      "text": "EM thickness line"
+    },
+    "late.a9b1802d38db": {
+      "text": "Each shape is a consonant. Turn it and the vowel changes: ᐱ pi, ᐳ pu, ᐸ pa. A dot above makes the vowel long; a small raised shape is a consonant with no vowel. Name the sound, find the glyph, then spell two words."
+    },
+    "late.0e968a2fab4e": {
+      "text": "Eiders winter in polynyas and at the floe edge, diving for mussels and urchins."
+    },
+    "late.6f347362bfeb": {
+      "text": "Empty cooler"
+    },
+    "late.7c77ef9167fc": {
+      "text": "End watch"
+    },
+    "late.fedae4f75a2d": {
+      "text": "Ensemble run"
+    },
+    "late.2b9eceb7a86a": {
+      "text": "Enter"
+    },
+    "late.a025b62e11cb": {
+      "text": "Enter accepts the challenge"
+    },
+    "late.1f7a4f9e2f70": {
+      "text": "Esc"
+    },
+    "late.9705540112dc": {
+      "text": "Escape closes the operation"
+    },
+    "late.299b6ef4a2a6": {
+      "text": "Every wave returned"
+    },
+    "late.354ec2fca35a": {
+      "text": "Explore the Arctic wreck archive"
+    },
+    "late.a28a73a982cb": {
+      "text": "Extension cord reel"
+    },
+    "late.ba025c7163fe": {
+      "text": "External hard drive"
+    },
+    "late.4db5affe432c": {
+      "text": "FROM THE RECORD"
+    },
+    "late.1607075420ab": {
+      "text": "Falling snowflakes. Once settled the snow is aput; wind-packed it is another word again."
+    },
+    "late.c326a4660b67": {
+      "text": "Field"
+    },
+    "late.a80ca4d3526e": {
+      "text": "Field laptop"
+    },
+    "late.c0729aab7814": {
+      "text": "Field notebook"
+    },
+    "late.d5f0faa79839": {
+      "text": "Find a beset ship and break her out"
+    },
+    "late.27424cb4120d": {
+      "text": "Five trials before the sea king"
+    },
+    "late.017322b98576": {
+      "text": "Fjord head"
+    },
+    "late.49517a32f7e0": {
+      "text": "Float array"
+    },
+    "late.b405f04d5e18": {
+      "text": "Floe photogrammetry"
+    },
+    "late.3ca7a1d1eaca": {
+      "text": "Flood the aft lab"
+    },
+    "late.3cb7abe0d945": {
+      "text": "Formalin carboy"
+    },
+    "late.fe0af9ab96d5": {
+      "text": "Found {value0} ({value1})"
+    },
+    "late.5efb2482691d": {
+      "text": "Four days of station work is sitamat ullut."
+    },
+    "late.c2dd2cc8c8c8": {
+      "text": "Four standard deviations brackets almost the whole vertical motion of the hull."
+    },
+    "late.64bb383b6705": {
+      "text": "Foxes range far onto the sea ice in winter, trailing polar bears for leftovers."
+    },
+    "late.dd3f70917316": {
+      "text": "Freezing point falls about 0.054 °C per unit of salinity; at 30 it sits near −1.6 °C."
+    },
+    "late.6e29522b1991": {
+      "text": "Fresh surface water in my Arctic realm comes mostly from:"
+    },
+    "late.68cd74ed7513": {
+      "text": "From three upward the noun takes the plural -t."
+    },
+    "late.9c3cd8846fd7": {
+      "text": "From ullaaq, morning. Unnusakkut is good afternoon; unnukkut good evening."
+    },
+    "late.17219fbf49b4": {
+      "text": "Geology"
+    },
+    "late.96ead420d232": {
+      "text": "Glaucous gull"
+    },
+    "late.43c9fa671d79": {
+      "text": "Glider section"
+    },
+    "late.02c33a0c9794": {
+      "text": "Grievances"
+    },
+    "late.d961e6e4caa7": {
+      "text": "Grievances before mutiny"
+    },
+    "late.474c681e861c": {
+      "text": "Gyrfalcon"
+    },
+    "late.d9f920aa2370": {
+      "text": "Hares stay white all year in the High Arctic and turn grey-brown in summer further south."
+    },
+    "late.807e66dce64a": {
+      "text": "Harp seal"
+    },
+    "late.9c41a13f4040": {
+      "text": "He drops a purse of {value0} points on the deck. \"On loan. {value1} trials. We shall see how much of it you keep.\""
+    },
+    "late.a3089b7fae27": {
+      "text": "Heading"
+    },
+    "late.a2073fa9180a": {
+      "text": "Held for {value0} s"
+    },
+    "late.fda201fd52a2": {
+      "text": "Helicopter"
+    },
+    "late.cd0bab9bdd62": {
+      "text": "Helicopter land sampling"
+    },
+    "late.15ef4a18c8e9": {
+      "text": "Hindcast"
+    },
+    "late.2284d040f509": {
+      "text": "Hint"
+    },
+    "late.859c229eb13c": {
+      "text": "Hint."
+    },
+    "late.2ccc65de09ad": {
+      "text": "Hold ← / →"
+    },
+    "late.938645d687ce": {
+      "text": "How deep was the deepest sounding of this leg?"
+    },
+    "late.b8e2c390b3cf": {
+      "text": "How far has the ship steamed this leg?"
+    },
+    "late.1dd6a17cb403": {
+      "text": "How it works"
+    },
+    "late.ca0299459d30": {
+      "text": "How the syllabics work"
+    },
+    "late.7769f8fcf60e": {
+      "text": "How the system works"
+    },
+    "late.8f0a3cc1678a": {
+      "text": "How the system works, page {value0} of {value1}: {value2}. {value3}"
+    },
+    "late.0c391021299f": {
+      "text": "How the writing works"
+    },
+    "late.44bb6fccbdb4": {
+      "text": "IAPSO standard seawater"
+    },
+    "late.f4e813b1276c": {
+      "text": "Ice chart: your ship, the search datum and the pack"
+    },
+    "late.e1a8ae187945": {
+      "text": "Ice core"
+    },
+    "late.2c6fc8db0de7": {
+      "text": "Ice crystals thick in the water before they knit into a sheet. Brash and slush foul intakes and slow a CTD wire."
+    },
+    "late.14ecb1cac5a4": {
+      "text": "Ice frozen to the shore and held still. Travel routes and seal hunting follow the tuvaq; the ship cannot follow it far."
+    },
+    "late.1e380676c47e": {
+      "text": "Ice piled up where floes collide. The verb ivu-, to pile up, names the community of Ivujivik, where currents heap the ice."
+    },
+    "late.1d1e56bc06b6": {
+      "text": "Ice station"
+    },
+    "late.d1869a351f70": {
+      "text": "Ice, sea, weather, animals, gear and greetings from a working coast. A doubled letter is held twice as long, and length changes meaning: imaq is the sea, imiq drinking water."
+    },
+    "late.502d64eb7de8": {
+      "text": "Igluligaarjuk"
+    },
+    "late.c1ca6af79086": {
+      "text": "Iglulik"
+    },
+    "late.b20d862dda45": {
+      "text": "Iglulik is the place with houses; tuugaalik, the one with a tusk, is the narwhal."
+    },
+    "late.670ee54081cf": {
+      "text": "Ikaahuk"
+    },
+    "late.14d614fc51e9": {
+      "text": "Ikpiarjuk"
+    },
+    "late.23d5f5788ba7": {
+      "text": "Imaq is the sea as a body of water; imiq, one vowel different, is fresh water to drink."
+    },
+    "late.aef36502d67b": {
+      "text": "In"
+    },
+    "late.18ca87afec42": {
+      "text": "Inspect"
+    },
+    "late.ef37d1c49284": {
+      "text": "Into the atmosphere"
+    },
+    "late.2213870df65c": {
+      "text": "Into the brine beneath the ice"
+    },
+    "late.3be0ec8473cc": {
+      "text": "Inuk is one person; Inuuk two; Inuit three or more. Inuktitut means \"in the manner of an Inuk\"."
+    },
+    "late.6e7bc59c12fd": {
+      "text": "Inukjuak"
+    },
+    "late.6e2247ad8907": {
+      "text": "Inuktitut"
+    },
+    "late.83a13361b111": {
+      "text": "Inuktitut builds words by stacking suffixes on a root: umiaq, boat, plus -rjuaq, big, is umiarjuaq, a ship. The names on the chart are built the same way. Read them, then build a few."
+    },
+    "late.25dd86f0ab08": {
+      "text": "Inuktitut watch: {value0}/{value1} first time"
+    },
+    "late.d0cf1bf51c07": {
+      "text": "Iqaluit"
+    },
+    "late.e4e17795317d": {
+      "text": "Iqaluit means \"many fish\": char run up the Sylvia Grinnell River there each summer."
+    },
+    "late.545a43b1e9e6": {
+      "text": "Iqaluit: many fish. Inuit: many people."
+    },
+    "late.5c6d6066a7ff": {
+      "text": "Iqaluktuuttiaq"
+    },
+    "late.4afc265264fa": {
+      "text": "Iqalummiut are the people of Iqaluit."
+    },
+    "late.e74a950cd9cd": {
+      "text": "Issue plan of the day"
+    },
+    "late.ffe14a0751dd": {
+      "text": "It stays in the ice for good"
+    },
+    "late.344aa3cc906f": {
+      "text": "Ivory gull"
+    },
+    "late.66b1fd64258f": {
+      "text": "Ivujivik"
+    },
+    "late.41db5ea81408": {
+      "text": "Ivujivik: the place where the ice piles up."
+    },
+    "late.8d051dbe9540": {
+      "text": "Kangiqliniq"
+    },
+    "late.7277d3c8809a": {
+      "text": "Kangiqsualujjuaq"
+    },
+    "late.6585808d8c2b": {
+      "text": "Kangiqsujuaq"
+    },
+    "late.c893e992ac93": {
+      "text": "Kangiqsujuaq, Kangirsuk, Kangiqliniq (Rankin Inlet): the same root in bays from Ungava to Hudson Bay."
+    },
+    "late.4702e4ea200e": {
+      "text": "Kangiqtugaapik"
+    },
+    "late.6fbe1fba437a": {
+      "text": "Keep watching"
+    },
+    "late.376df01ba798": {
+      "text": "Killer whale"
+    },
+    "late.2b49734bc9a1": {
+      "text": "Kimmirut"
+    },
+    "late.1ab1e5b09158": {
+      "text": "Kinngait"
+    },
+    "late.20a801ad8772": {
+      "text": "Kuugaarjuk"
+    },
+    "late.3dbfb212b060": {
+      "text": "Kuujjuaq"
+    },
+    "late.2a5d2cb802b2": {
+      "text": "Kuujjuaraapik"
+    },
+    "late.ec13d1075804": {
+      "text": "Kuuk plus -juaq, big, gives Kuujjuaq, the great river of Ungava Bay."
+    },
+    "late.85e16e28e1c6": {
+      "text": "L explains the writing · Escape closes the operation"
+    },
+    "late.2642f1289356": {
+      "text": "LANGUAGE WATCH"
+    },
+    "late.5ec092bc8f88": {
+      "text": "Lab clock"
+    },
+    "late.fc86e5506840": {
+      "text": "Label printer"
+    },
+    "late.f22c6e6979b8": {
+      "text": "Land and core"
+    },
+    "late.7d277a9572cf": {
+      "text": "Laser scanner"
+    },
+    "late.9c3900e943be": {
+      "text": "Learned this watch"
+    },
+    "late.1aa2f31ee7cc": {
+      "text": "Ledger"
+    },
+    "late.8ae1c34bd37f": {
+      "text": "Left"
+    },
+    "late.2f1deb2beea9": {
+      "text": "Leg record loading…"
+    },
+    "late.f9f7ca58c8b0": {
+      "text": "Leg record unavailable; the riddles fall back to sea lore and the sounding to the water beneath the keel."
+    },
+    "late.644cd3304388": {
+      "text": "Leg record {value0} to {value1}: {value2} km steamed, deepest sounding {value3} m, coldest surface {value4} °C, strongest wind {value5} kn, worst roll and pitch {value6}° RMS. His riddles draw on it."
+    },
+    "late.c3cafd5842d5": {
+      "text": "Line warming between intake and sensor adds a few tenths; the record tracks it as excess heat."
+    },
+    "late.c6fd3870c86e": {
+      "text": "Lines"
+    },
+    "late.97539d1a5177": {
+      "text": "Liquid nitrogen dewar"
+    },
+    "late.0cef4cff670d": {
+      "text": "Literally \"the one with a tusk\": tuugaaq, tusk, plus -lik, having."
+    },
+    "late.4f58007d2545": {
+      "text": "Live zooplankton cooler"
+    },
+    "late.09ffbae53a01": {
+      "text": "Loading local data…"
+    },
+    "late.4ca302b59183": {
+      "text": "Loading the seawater loop…"
+    },
+    "late.7c979035bdc4": {
+      "text": "Loading the watch record…"
+    },
+    "late.39b5278a4ea9": {
+      "text": "Log sighting"
+    },
+    "late.e6e46159a07b": {
+      "text": "Logged {value0} points: {value1}."
+    },
+    "late.a34f5bb77d10": {
+      "text": "Long vowel: dot"
+    },
+    "late.c73a3498a3f7": {
+      "text": "Loop valve"
+    },
+    "late.915689549c24": {
+      "text": "Loop water"
+    },
+    "late.abcc99e6cf73": {
+      "text": "L{value0} {value1}"
+    },
+    "late.0664fa29600e": {
+      "text": "MAYDAY RELAY · MCTS IQALUIT"
+    },
+    "late.e6cda88848f3": {
+      "text": "Major revision"
+    },
+    "late.40d3c9126de9": {
+      "text": "Marine geology"
+    },
+    "late.9ad3a14e5a20": {
+      "text": "Marks make new rows"
+    },
+    "late.d03e3e3ba42e": {
+      "text": "Minke whale"
+    },
+    "late.7dc6a13e16b1": {
+      "text": "Mittimatalik"
+    },
+    "late.a7b93d2128e8": {
+      "text": "Mode"
+    },
+    "late.68c2cc7f0cea": {
+      "text": "Model"
+    },
+    "late.00343064716d": {
+      "text": "Model run"
+    },
+    "late.14ef18abe0f4": {
+      "text": "Modelling Lab"
+    },
+    "late.8503e4f5db6c": {
+      "text": "Mooring"
+    },
+    "late.e3b6b7b90f8e": {
+      "text": "Mooring recovery"
+    },
+    "late.124b1ae199d3": {
+      "text": "Mooring team"
+    },
+    "late.d064eb512eb9": {
+      "text": "Moorings"
+    },
+    "late.10ab0b82ddf6": {
+      "text": "Mop bucket"
+    },
+    "late.76cdb9507216": {
+      "text": "Move"
+    },
+    "late.9efc509bb771": {
+      "text": "Move and act"
+    },
+    "late.9a0521e71589": {
+      "text": "Multibeam survey"
+    },
+    "late.1832168b0348": {
+      "text": "Murres and kittiwakes stream off the cliff, eiders and walrus work the shallows, and things move on the tundra."
+    },
+    "late.c539bb74a220": {
+      "text": "Muskox"
+    },
+    "late.b8588ebfc604": {
+      "text": "Mutiny: the mess deck takes the plan out of your hands."
+    },
+    "late.f9996ac13bdb": {
+      "text": "Nakurmiik, qujannamiik, quana: three ways to say thank you, from Nunavik to the Kitikmeot."
+    },
+    "late.68a70123b95c": {
+      "text": "Name the species"
+    },
+    "late.dbc7a64b0ba3": {
+      "text": "Name the {value0}."
+    },
+    "late.88ecd30f7043": {
+      "text": "Nanuq hunts ringed seals at the floe edge and at breathing holes; ice stations post a bear watch for the same reason."
+    },
+    "late.c4f6301d8970": {
+      "text": "Narwhal"
+    },
+    "late.be0dbd7963cf": {
+      "text": "Narwhal in the log. A tusk in the glass is a sighting to be spoken of at dinner."
+    },
+    "late.4cd3e7a09e9e": {
+      "text": "Narwhal. {value0} of them, logged at {value1}. +{value2}."
+    },
+    "late.7e7d6c54fc50": {
+      "text": "Naujaat"
+    },
+    "late.6ae1323a16ac": {
+      "text": "Naujaat, \"gull nesting place\", is the community at Repulse Bay on the Arctic Circle."
+    },
+    "late.476a2a31a2a5": {
+      "text": "Near freezing, salt sets density; the saltiest, coldest parcel is the heaviest."
+    },
+    "late.cde4f15ec930": {
+      "text": "Nearly all heave stays within ±1.7 m"
+    },
+    "late.1163a38d1f8e": {
+      "text": "Neptune asks how much water lies beneath your keel. Set your call on a log scale from 5 to 3000 m. Within a third of the truth passes; within a tenth pleases him.{value0}"
+    },
+    "late.86f757979958": {
+      "text": "Neptune nods: the sea remembers, and so do you."
+    },
+    "late.9cb79b7dd426": {
+      "text": "Neptune's Wrath"
+    },
+    "late.d453659f54f6": {
+      "text": "Neptune's court"
+    },
+    "late.e0ca83a3243c": {
+      "text": "Neptune's court: {value0} of {value1} trials passed"
+    },
+    "late.26c3b6a2b8ec": {
+      "text": "Neptune's temper"
+    },
+    "late.906fdf224b64": {
+      "text": "Neptune's wrath: {value0} of {value1} trials before he lost patience"
+    },
+    "late.35191ef1901b": {
+      "text": "Nets"
+    },
+    "late.852d49e469e7": {
+      "text": "New rival"
+    },
+    "late.5595b1f0e443": {
+      "text": "New watch"
+    },
+    "late.bc981983e7f5": {
+      "text": "Next"
+    },
+    "late.9106dbf62ed9": {
+      "text": "Niskin sample crate"
+    },
+    "late.12dcd0d51a10": {
+      "text": "No points for a withdrawal. A fresh rival is waiting."
+    },
+    "late.371467b261bc": {
+      "text": "Northern fulmar"
+    },
+    "late.26f04c24ef7a": {
+      "text": "Not a {value0}: {value1}, {value2}. −{value3}."
+    },
+    "late.848ecb4df8d1": {
+      "text": "Not much. {value0}"
+    },
+    "late.dfce80c3ca2c": {
+      "text": "Now planning day {value0}."
+    },
+    "late.8f3f5c258621": {
+      "text": "Nuna plus -vut, our, gives Nunavut. Nunavik and Nunatsiavut carry the same root across Quebec and Labrador."
+    },
+    "late.1ecc65841c0d": {
+      "text": "Nunavut"
+    },
+    "late.76f5db1b0ca3": {
+      "text": "Nunavut: our land."
+    },
+    "late.76022a00a16b": {
+      "text": "Ocean"
+    },
+    "late.a9edc5e78a11": {
+      "text": "Offshore, deep water, a long swell and nothing between the ship and the horizon."
+    },
+    "late.a8c47c75c90f": {
+      "text": "Often -rjuaq after a vowel: umiaq, boat, gives umiarjuaq, ship."
+    },
+    "late.1c55db55e128": {
+      "text": "On the bottom · {value0}"
+    },
+    "late.e91fd0042674": {
+      "text": "On the bridge wing, {value0}. Bearings are relative to the bow: 000 ahead, 090 to starboard."
+    },
+    "late.3fcd0f7a8392": {
+      "text": "One glyph is one syllable"
+    },
+    "late.b597ed27201b": {
+      "text": "One hand. Ten is qulit; twenty, avatit, is a whole person of digits."
+    },
+    "late.bd4b78664c66": {
+      "text": "One hard roll, and the seawater loop let go."
+    },
+    "late.7ddf172d6c0a": {
+      "text": "Open data release"
+    },
+    "late.7c5e8ca8901e": {
+      "text": "Open water"
+    },
+    "late.38f64bec0529": {
+      "text": "Open water that stays open in winter, kept clear by currents or wind. The oceanographer’s \"polynya\" is a Russian loan; this is the local name."
+    },
+    "late.6d75b2f4f702": {
+      "text": "Optical satellite pass"
+    },
+    "late.c1cf3b585499": {
+      "text": "Orbital Consortium"
+    },
+    "late.9e883dc0c760": {
+      "text": "Orbital Cryosphere Consortium"
+    },
+    "late.220e06ba2fee": {
+      "text": "Out"
+    },
+    "late.cdf6dd00acf0": {
+      "text": "Overboard at {value0} s"
+    },
+    "late.44b232a8365d": {
+      "text": "Pack edge"
+    },
+    "late.cc5afcd7d78a": {
+      "text": "Pan left"
+    },
+    "late.ec164868991d": {
+      "text": "Pan right"
+    },
+    "late.8f93c8e601dd": {
+      "text": "Pangniqtuuq"
+    },
+    "late.893a0ce13b43": {
+      "text": "Parasitic jaeger"
+    },
+    "late.d157a09e51b2": {
+      "text": "Parts: {value0}."
+    },
+    "late.b57788c4aa13": {
+      "text": "Paulatuuq"
+    },
+    "late.2631e91452f4": {
+      "text": "Peak depth"
+    },
+    "late.bcbb3dfd4a2a": {
+      "text": "Peer review"
+    },
+    "late.82232ed70def": {
+      "text": "Pelican case"
+    },
+    "late.16f434c4f05a": {
+      "text": "Peristaltic pump"
+    },
+    "late.67636878dbb0": {
+      "text": "Physical oceanography"
+    },
+    "late.2dddd64cd29d": {
+      "text": "Piston"
+    },
+    "late.7e4d816c6f91": {
+      "text": "Piston core"
+    },
+    "late.c32a0147f2e4": {
+      "text": "Place"
+    },
+    "late.385015bc7d6f": {
+      "text": "Plan box"
+    },
+    "late.8fc9988d85b6": {
+      "text": "Plan of the day"
+    },
+    "late.dd249f91b067": {
+      "text": "Plan the week as chief scientist"
+    },
+    "late.d97a01b00c87": {
+      "text": "Plan the {value0} transit first."
+    },
+    "late.0bafc1bbb34d": {
+      "text": "Plankton"
+    },
+    "late.7c138638ef76": {
+      "text": "Plankton ecology"
+    },
+    "late.d2c511f99dfe": {
+      "text": "Plankton nets"
+    },
+    "late.9c76bea961dd": {
+      "text": "Planner actions"
+    },
+    "late.ef67c2b94a25": {
+      "text": "Planning day {value0} of {value1}"
+    },
+    "late.6d9a6e81dce9": {
+      "text": "Points were banked on the earlier win; this one was for pride."
+    },
+    "late.9815a2dc69a1": {
+      "text": "Points were banked on the first watch; this one was for the words."
+    },
+    "late.0542d7569207": {
+      "text": "Polar bear"
+    },
+    "late.dd6074f3125d": {
+      "text": "Power bar"
+    },
+    "late.6d234a17fecd": {
+      "text": "Press release"
+    },
+    "late.f51133fe2d9e": {
+      "text": "Pronunciation: q is a k made far back in the throat; doubled letters are held long; ng as in singer. Spellings follow the Inuit Cultural Institute standard used in Nunavut; Inuinnaqtun and Inuvialuktun to the west are written in Roman letters, and Nunavik forms differ a little."
+    },
+    "late.801ad0d72dee": {
+      "text": "Purse"
+    },
+    "late.f31fa693853d": {
+      "text": "Push the mug left"
+    },
+    "late.48136be5892b": {
+      "text": "Push the mug right"
+    },
+    "late.4d8b387b8801": {
+      "text": "Qamani’tuaq"
+    },
+    "late.3811b97d4a5a": {
+      "text": "Qausuittuq"
+    },
+    "late.df6b2587ae6f": {
+      "text": "Qausuittuq, Resolute, means \"the place with no dawn\": the sun stays down there for about three months."
+    },
+    "late.b71681d7bb8c": {
+      "text": "Qikiqtaaluk"
+    },
+    "late.0b4c08595167": {
+      "text": "Qikiqtaaluk, Baffin Island, is the huge island."
+    },
+    "late.46819d54c1be": {
+      "text": "Qikiqtaaluk, the big island, is Baffin Island. Qikiqtarjuaq, another big island, is a community off its east coast."
+    },
+    "late.1cec48b562ec": {
+      "text": "Qikiqtarjuaq"
+    },
+    "late.25fbf4814f65": {
+      "text": "Question words come first. Nami umiarjuaq: where is the ship?"
+    },
+    "late.084226bf4657": {
+      "text": "Qurluqtuq"
+    },
+    "late.e96b646d443f": {
+      "text": "R deals a new watch"
+    },
+    "late.174d35853adc": {
+      "text": "R hails a different rival"
+    },
+    "late.80715d0cc4fb": {
+      "text": "RBR logger"
+    },
+    "late.d9f601cfb1fc": {
+      "text": "ROV descending · {value0} m"
+    },
+    "late.c7174f7c86f2": {
+      "text": "ROV dive"
+    },
+    "late.aad82db2cb77": {
+      "text": "Radar"
+    },
+    "late.bd45ba80613b": {
+      "text": "Radio bearing"
+    },
+    "late.70599d26f661": {
+      "text": "Radio bearing {value0}° ({value1}), give or take {value2}°. A second bearing from somewhere else crosses it."
+    },
+    "late.0a858c95bc97": {
+      "text": "Rain"
+    },
+    "late.c06b087876f8": {
+      "text": "Ram"
+    },
+    "late.a16c5bbe4bf9": {
+      "text": "Range"
+    },
+    "late.9adc056f3dd4": {
+      "text": "Range plot and sonar display"
+    },
+    "late.0afb2e689b6c": {
+      "text": "Ready…"
+    },
+    "late.aaa989eaf4a3": {
+      "text": "Recalibrate"
+    },
+    "late.ead32deee1dd": {
+      "text": "Red phalarope"
+    },
+    "late.1037525aaf28": {
+      "text": "Reject without review"
+    },
+    "late.c93f6536dcfb": {
+      "text": "Remote"
+    },
+    "late.e2658a43ed12": {
+      "text": "Request more data"
+    },
+    "late.f7194e6a0d0b": {
+      "text": "Requests"
+    },
+    "late.5faa59d4bc37": {
+      "text": "Result"
+    },
+    "late.04bc281df512": {
+      "text": "RetroSeep"
+    },
+    "late.e29a79fe0c34": {
+      "text": "Review"
+    },
+    "late.3f5062a2ba62": {
+      "text": "Reviewer 2"
+    },
+    "late.558d7d2cde8c": {
+      "text": "Reviewer 2 has opinions. {value0} must revise: attacks weakened, credibility bleeding."
+    },
+    "late.0c4c32fa6d41": {
+      "text": "Riddle {value0} of {value1}: {value2}"
+    },
+    "late.954daa8b0033": {
+      "text": "Right"
+    },
+    "late.ff76861fc04f": {
+      "text": "Ringed seal"
+    },
+    "late.8734f5749e33": {
+      "text": "Rival Researchers"
+    },
+    "late.d56ba4d6ddd7": {
+      "text": "Rival credibility"
+    },
+    "late.ce0e33741057": {
+      "text": "Rivers and melting ice"
+    },
+    "late.71d45746acc9": {
+      "text": "Rivers and summer melt cap the Arctic with a fresh, light layer."
+    },
+    "late.5ae788e0c4e7": {
+      "text": "Roman letters"
+    },
+    "late.e96857c58f71": {
+      "text": "Root"
+    },
+    "late.3284d0c2d786": {
+      "text": "Ross's gull"
+    },
+    "late.712b32fdc44f": {
+      "text": "Round {value0}: watch {value1} waves."
+    },
+    "late.19ea508212fe": {
+      "text": "Round {value0}: your turn, {value1} waves."
+    },
+    "late.1e975193e087": {
+      "text": "Run survey"
+    },
+    "late.7cb65d3eae78": {
+      "text": "Running {value0} line{value1} at {value2} kn. Watch the waterfall for a hard return with a shadow."
+    },
+    "late.55a90e622e47": {
+      "text": "SAR pass"
+    },
+    "late.8381e9bd2991": {
+      "text": "SCUPPER"
+    },
+    "late.8afffa267014": {
+      "text": "SEABED / SHIPWRECKS"
+    },
+    "late.5d6e52bc2e9c": {
+      "text": "SUMP PUMP"
+    },
+    "late.2032c7b688cc": {
+      "text": "Sabine's gull"
+    },
+    "late.4a90ec26f816": {
+      "text": "Said to one person leaving; tavvauvusi to several."
+    },
+    "late.aadd69c95094": {
+      "text": "Said to one person; tunngasugitsi to several. The root is \"feel at home\"."
+    },
+    "late.5dd8f74af203": {
+      "text": "Salinity raises temperature"
+    },
+    "late.3998f674ab3c": {
+      "text": "Salliq"
+    },
+    "late.60a58d9b59c8": {
+      "text": "Salluit"
+    },
+    "late.72e4d08b5e9f": {
+      "text": "Salt rejected from growing sea ice goes where?"
+    },
+    "late.498a0e1561ca": {
+      "text": "Sanikiluaq"
+    },
+    "late.844015c37958": {
+      "text": "Sanirajak"
+    },
+    "late.eb7bb2d3e45b": {
+      "text": "Scupper"
+    },
+    "late.79ffdc139bd7": {
+      "text": "Sea ice"
+    },
+    "late.4333dbe5219d": {
+      "text": "Sea-ice team"
+    },
+    "late.27da0c9fffee": {
+      "text": "Seal fat, and the lamp oil rendered from it. Uqsuqtuuq, Gjoa Haven, is \"the place of much blubber\"."
+    },
+    "late.173839517f9b": {
+      "text": "Seals haul out on the floes, bears walk the edge, ivory gulls follow both."
+    },
+    "late.e0c47b9f787b": {
+      "text": "Search and Rescue"
+    },
+    "late.2d766386138f": {
+      "text": "Search called off"
+    },
+    "late.2455463748a1": {
+      "text": "Search for {value0} called off"
+    },
+    "late.780e7a0fc43e": {
+      "text": "Seawater snapshot {value0}"
+    },
+    "late.9b6d44b7494f": {
+      "text": "Sediment trap"
+    },
+    "late.58bfb6f4c942": {
+      "text": "Seep box core"
+    },
+    "late.4da1be0b2690": {
+      "text": "Seep core"
+    },
+    "late.7fb3a9b5101b": {
+      "text": "Settled"
+    },
+    "late.c94c7cb8f662": {
+      "text": "Seven days, three watches a day, and every team wants the deck. Pick a request, put it on a watch the forecast can carry, and issue the plan of the day"
+    },
+    "late.76d50c67bd02": {
+      "text": "Shallower ← · Deeper → · Call it Space"
+    },
+    "late.469d5b183fdc": {
+      "text": "Shift"
+    },
+    "late.a620e2ccee74": {
+      "text": "Ship in {value0}, bound for {value1} and {value2}. {value3} requests on the board. Arrow keys move the planner cursor; Z and X or the numbers choose a request; Enter places it."
+    },
+    "late.a8acbb0f3437": {
+      "text": "Ship in {value0}."
+    },
+    "late.ef555f318566": {
+      "text": "Ship time"
+    },
+    "late.eb023dce09e8": {
+      "text": "Shipwrecks"
+    },
+    "late.946ffb6e97b8": {
+      "text": "Shipwrecks of the archive"
+    },
+    "late.abc451d1b9b5": {
+      "text": "Ship’s crew"
+    },
+    "late.4b2cca6162cd": {
+      "text": "Sighting log"
+    },
+    "late.e9dbbff38c51": {
+      "text": "Siku is the general word for sea ice. The Nunavut ice glossary runs to dozens of finer terms; the ice chart’s \"tenths\" flatten most of them."
+    },
+    "late.0c1c5b7b6650": {
+      "text": "Siku plus -aq: young ice a few centimetres thick, still dark, that bends under the ship’s bow wave rather than breaking."
+    },
+    "late.2d3f85ca24d7": {
+      "text": "Sila is weather, air and the world outside at once; in older thought it is the breath and intelligence of the world."
+    },
+    "late.8bb73c329b7f": {
+      "text": "Skin boots; sealskin for wet ice, caribou for dry cold. Plural kamiik, a pair."
+    },
+    "late.302190228652": {
+      "text": "Smaller"
+    },
+    "late.da7007faabc7": {
+      "text": "Smaller box"
+    },
+    "late.e2c4814d09bf": {
+      "text": "Snow bunting"
+    },
+    "late.80c4f20cd5f2": {
+      "text": "Somebody left the wash-down hose running in the sink."
+    },
+    "late.edcad8e4e85e": {
+      "text": "Something is rising alongside. Press Space to face him."
+    },
+    "late.659d0296c03b": {
+      "text": "Sonar"
+    },
+    "late.a6d4466ebac7": {
+      "text": "Sound speed rises with temperature, salinity and pressure."
+    },
+    "late.f0481060287a": {
+      "text": "Sound travels fastest in which water?"
+    },
+    "late.6d8c9b124d52": {
+      "text": "Space"
+    },
+    "late.2d2cb022bc3d": {
+      "text": "Speed"
+    },
+    "late.c54387e026e2": {
+      "text": "Spell it in syllabics · {value0}"
+    },
+    "late.006ff1552e12": {
+      "text": "Stars gave direction in the dark months; the snow ridges left by the prevailing wind gave it by day."
+    },
+    "late.fbee9828cb09": {
+      "text": "Start the watch"
+    },
+    "late.e59b689406ae": {
+      "text": "Stations along the lab"
+    },
+    "late.bde38411ee40": {
+      "text": "Steaming to {value0}"
+    },
+    "late.02f4a3c6aac9": {
+      "text": "Steer"
+    },
+    "late.da62be2f68c4": {
+      "text": "Steer east"
+    },
+    "late.3f5f26e1db4c": {
+      "text": "Steer north"
+    },
+    "late.01dfed5e914a": {
+      "text": "Steer south"
+    },
+    "late.95ac06a00acc": {
+      "text": "Steer west"
+    },
+    "late.be62fe79eed0": {
+      "text": "Stereo microscope"
+    },
+    "late.8932900cabe6": {
+      "text": "Strike Space"
+    },
+    "late.91f2c8fe4468": {
+      "text": "Strike {value0} of 3"
+    },
+    "late.1f524529659b": {
+      "text": "Strike {value0}: hit{value1}. {value2} of {value3}."
+    },
+    "late.294ad1aebc78": {
+      "text": "Strike {value0}: the point slid off. {value1} of {value2}."
+    },
+    "late.885db975a310": {
+      "text": "Suffix"
+    },
+    "late.50785a140da9": {
+      "text": "Sump pump"
+    },
+    "late.88cf49473dfa": {
+      "text": "Surveyed"
+    },
+    "late.d6a1c6964075": {
+      "text": "Swell from {value0}"
+    },
+    "late.e87f424f9a7b": {
+      "text": "Syllabary"
+    },
+    "late.04757c404276": {
+      "text": "Syllabics"
+    },
+    "late.68f4ddeea318": {
+      "text": "Syllabics, words and names on the chart"
+    },
+    "late.c9a08425aa5b": {
+      "text": "TRIAL OF THE DEEP"
+    },
+    "late.becb7b9cf59b": {
+      "text": "TRIAL OF THE FOUR WINDS"
+    },
+    "late.7c6cab9ca845": {
+      "text": "TRIAL OF THE LEAD LINE"
+    },
+    "late.447aa21bf129": {
+      "text": "TRIAL OF THE ROLLING TABLE"
+    },
+    "late.ecec26d1c06a": {
+      "text": "TRIAL OF THE STRIKE"
+    },
+    "late.2f7506f2c39d": {
+      "text": "TRIAL {value0} · {value1}"
+    },
+    "late.6b8357098636": {
+      "text": "Take a watch on the bridge"
+    },
+    "late.697168d47920": {
+      "text": "Tallurutiup Imanga"
+    },
+    "late.48afdb2193ce": {
+      "text": "Talurjuaq"
+    },
+    "late.1ab11d1b771a": {
+      "text": "Tank feed valve"
+    },
+    "late.8820bca1391e": {
+      "text": "Taqqiq is also the month. The traditional calendar follows the moon and the animals’ seasons together."
+    },
+    "late.1f6075554714": {
+      "text": "Tasiujaq"
+    },
+    "late.46da470099a2": {
+      "text": "Tasiujaq looks like a lake; Umiujaq looks like a boat."
+    },
+    "late.edf2b370fe58": {
+      "text": "Tasiujaq, a Nunavik community, means \"resembles a lake\": a bay so enclosed it might be one."
+    },
+    "late.fc1f24e00c63": {
+      "text": "That was {value0}, not a hull. The ROV is back aboard."
+    },
+    "late.fa2e2d91d040": {
+      "text": "The Canadian Inuit dog pulls the qamutiik; a team is a qimuksiq."
+    },
+    "late.f039d18b2e2e": {
+      "text": "The Riddles"
+    },
+    "late.862833d79ad2": {
+      "text": "The Sounding"
+    },
+    "late.96dc20d0fa83": {
+      "text": "The South Baffin form; nakurmiik in Nunavik, quana in Inuinnaqtun, koana in the west."
+    },
+    "late.a84e3dac7595": {
+      "text": "The Swell"
+    },
+    "late.0524e9382ebe": {
+      "text": "The Trident"
+    },
+    "late.66812708c156": {
+      "text": "The Wardroom Mug"
+    },
+    "late.188a5c8c4375": {
+      "text": "The answer is qanuinngittunga, \"I am fine\", literally \"I am not in any way\"."
+    },
+    "late.f036a33ad429": {
+      "text": "The aurora, plural. Under the auroral oval the display is more often overhead than to the north."
+    },
+    "late.9fd47b66b79e": {
+      "text": "The biggest 4σ heave the hull felt this leg?"
+    },
+    "late.f5a724ba7482": {
+      "text": "The chart"
+    },
+    "late.16354fcf930e": {
+      "text": "The coldest sea surface my realm showed you this leg?"
+    },
+    "late.a784d65f1bed": {
+      "text": "The court"
+    },
+    "late.77693e81f03b": {
+      "text": "The crescent knife. Ulukhaktok, in the west, is the place where ulu blade stone is found."
+    },
+    "late.5590c4a40760": {
+      "text": "The dot is length"
+    },
+    "late.e4ca06877836": {
+      "text": "The edge where landfast ice meets open water. Seals, birds and hunters gather there; so do polar bears."
+    },
+    "late.560e1315876a": {
+      "text": "The freshest surface water this leg had a salinity of about:"
+    },
+    "late.8556ce53dbbe": {
+      "text": "The hull is heated"
+    },
+    "late.84505160ef98": {
+      "text": "The ice opens up: {value0} tenths."
+    },
+    "late.2676a88c61af": {
+      "text": "The incubation tank has split along a seam."
+    },
+    "late.fb3f3652f80d": {
+      "text": "The largest wave was 1.7 m"
+    },
+    "late.4996d4e42aef": {
+      "text": "The lead found {value0} m {value1}."
+    },
+    "late.786317e1ae6a": {
+      "text": "The long runner sled, lashed rather than nailed so it flexes over rough ice. The word is dual: two runners."
+    },
+    "late.7cd9544a9b94": {
+      "text": "The loop discharge is backing up over a blocked scupper."
+    },
+    "late.c645e1321ed5": {
+      "text": "The mean wave height"
+    },
+    "late.694b52e3e5ea": {
+      "text": "The most common Arctic seal. It keeps breathing holes open through the ice all winter with its claws."
+    },
+    "late.6c0ee2cf9a98": {
+      "text": "The mug stayed in the middle third {value0}% of the time."
+    },
+    "late.62ae54550e33": {
+      "text": "The open skin boat; umiarjuaq, big boat, is any ship, including this one."
+    },
+    "late.80e448e7222d": {
+      "text": "The open-water season, when the ship can reach the coast. The root au- is melting."
+    },
+    "late.cd343406d91b": {
+      "text": "The pack closes in: {value0} tenths."
+    },
+    "late.2f4001f8dd15": {
+      "text": "The pump warms the sample"
+    },
+    "late.a10066308083": {
+      "text": "The root tariuq is salt; the same word names the ocean and the salinity your CTD measures."
+    },
+    "late.8e51963d87e4": {
+      "text": "The sea king boards with a purse. Pass his trials and it grows; fail them and he takes it back."
+    },
+    "late.7ecf5fc2ef28": {
+      "text": "The seawater loop let go"
+    },
+    "late.397ac6cda68d": {
+      "text": "The shape is the consonant"
+    },
+    "late.6cd36ad53b6f": {
+      "text": "The ship has left {value0} by then."
+    },
+    "late.6b1949ef0377": {
+      "text": "The ship is still in {value0} on that watch. Plan the transit first."
+    },
+    "late.5ff7ea1ec387": {
+      "text": "The ship never made the {value0} passage; the leg schedule slips."
+    },
+    "late.383cea3bff1f": {
+      "text": "The ship reaches {value0} only after the first transit."
+    },
+    "late.cf367e966f77": {
+      "text": "The small glyph is a bare consonant"
+    },
+    "late.edeb82171d20": {
+      "text": "The strongest relative wind logged this leg?"
+    },
+    "late.064699c4c321": {
+      "text": "The suffix means \"{value0}\"; the root is the word for the thing itself."
+    },
+    "late.a2a99a1d1b03": {
+      "text": "The tether comes up wrapped in weed and slush. {value0}'s instruments are fouled."
+    },
+    "late.c566305ab9e5": {
+      "text": "The trap keeps collecting on {value0}{value1}. −{value2}."
+    },
+    "late.062ee2f50238": {
+      "text": "The turn is the vowel"
+    },
+    "late.7e11406e3671": {
+      "text": "The white whale of the estuaries. In some dialects the same word, qualified, covers the narwhal."
+    },
+    "late.97531ccb5b4a": {
+      "text": "The word entered English through Greenland and Denmark; the design is the Inuit hunter’s."
+    },
+    "late.ecd9b077b71d": {
+      "text": "The {value0} is floating. {value1}"
+    },
+    "late.fcb89bebcd2f": {
+      "text": "The {value0} row reads {value1} for {value2}; the syllabary is lit for it."
+    },
+    "late.6a937cfc6b06": {
+      "text": "Thermosalinograph, {value0}"
+    },
+    "late.5a4eefbd1a06": {
+      "text": "Thick-billed murre"
+    },
+    "late.0b69495a265a": {
+      "text": "Those lines need {value0}; only {value1} of ship time is left. Shrink the box."
+    },
+    "late.921a88c00c6f": {
+      "text": "Three legs of a language watch: the writing, the words, the names on the chart."
+    },
+    "late.1fdc5a1ac677": {
+      "text": "Three legs, eight cards each. A card missed comes back once for half its points; a hint halves them too. Every fifth card in a row is a 10-point bonus. The primer on how the writing works is free, and open at any time."
+    },
+    "late.4961389682c8": {
+      "text": "Tikirarjuaq"
+    },
+    "late.b25928c69902": {
+      "text": "Total"
+    },
+    "late.c122250ac5ce": {
+      "text": "Tote feed tap"
+    },
+    "late.0e61fd2503c2": {
+      "text": "Tote on the drain"
+    },
+    "late.53d366bb6674": {
+      "text": "Transit"
+    },
+    "late.5f7537cf06ca": {
+      "text": "Trial"
+    },
+    "late.f31a89fabe8e": {
+      "text": "Trial {value0} of {value1}: {value2}. Space to begin."
+    },
+    "late.3dcdcafebd57": {
+      "text": "Trials"
+    },
+    "late.894b3be4f136": {
+      "text": "Tribute"
+    },
+    "late.7ddd66b689c9": {
+      "text": "Try it"
+    },
+    "late.3b3ad2945601": {
+      "text": "Tube-noses and kittiwakes work the swell; whales, harp seals and the odd pod of narwhal pass through."
+    },
+    "late.78234cd8195a": {
+      "text": "Tuktoyaktuk, in Inuvialuktun, means \"it looks like a caribou\": the reef there resembles one."
+    },
+    "late.b3993d480265": {
+      "text": "Tuktuujaqtuuq"
+    },
+    "late.a4fdcbcfb610": {
+      "text": "Tune the parameterisation"
+    },
+    "late.e3a7da892546": {
+      "text": "Tunngasugit"
+    },
+    "late.28913c51332f": {
+      "text": "Type a word to see it written glyph by glyph."
+    },
+    "late.6b207ec27b21": {
+      "text": "UNDERWAY ENCOUNTER ·"
+    },
+    "late.32ac4735baac": {
+      "text": "UNDERWAY · {value0}"
+    },
+    "late.979fe91b5525": {
+      "text": "UPS"
+    },
+    "late.d3ae35160b1c": {
+      "text": "Uluksaq is stone for an ulu; Uluksaqtuuq the place with much of it."
+    },
+    "late.7472328b17fb": {
+      "text": "Uluksaqtuuq"
+    },
+    "late.aba98268ad9c": {
+      "text": "Umiaq plus -rjuaq, big. The icebreaker is an umiarjuaq to everyone watching from shore."
+    },
+    "late.fb2065b7eda3": {
+      "text": "Umiujaq"
+    },
+    "late.d8052ee59bac": {
+      "text": "Under the hull"
+    },
+    "late.1f73cdd2da46": {
+      "text": "Under way"
+    },
+    "late.cd6c977a7bfd": {
+      "text": "Under-ice multibeam"
+    },
+    "late.2038bdec9210": {
+      "text": "Up"
+    },
+    "late.6f5e6c9a6846": {
+      "text": "Upward-looking sonar"
+    },
+    "late.088566363a71": {
+      "text": "Upwelling"
+    },
+    "late.ae519d66dcdb": {
+      "text": "Uqsuqtuuq"
+    },
+    "late.66de4f4f0c8e": {
+      "text": "Uqsuqtuuq has much blubber; Panniqtuuq many bull caribou."
+    },
+    "late.761f7a4313db": {
+      "text": "V-shaped bushy blow"
+    },
+    "late.f514361dfe9a": {
+      "text": "View from the bridge wing"
+    },
+    "late.99524e452fc8": {
+      "text": "WASD"
+    },
+    "late.74b82ec07d22": {
+      "text": "WATCH COMPLETE"
+    },
+    "late.727cbc30ace5": {
+      "text": "WRATH"
+    },
+    "late.5f37dde9ec0b": {
+      "text": "Walk left, left arrow"
+    },
+    "late.488432191f8b": {
+      "text": "Walk right, right arrow"
+    },
+    "late.4f91af64c940": {
+      "text": "Walk with"
+    },
+    "late.9786a2ec3e5f": {
+      "text": "Walrus"
+    },
+    "late.ed7256f90124": {
+      "text": "Walrus haul out on ice over shallow clam beds; they rarely feed deeper than 80 m."
+    },
+    "late.5b543c57838a": {
+      "text": "Warm, salty, deep"
+    },
+    "late.b01ad65d16ca": {
+      "text": "Wash-down tap"
+    },
+    "late.d91ebf5887cf": {
+      "text": "Watch"
+    },
+    "late.0587c136e342": {
+      "text": "Watch again"
+    },
+    "late.85d6b3291673": {
+      "text": "Watch conditions are the ship’s own underway record for {value0} – {value1} (Leg 3, 2026), binned to 8-hour watches: relative wind as logged, air temperature, 4σ heave, humidity and short-wave radiation. Stations come from the Leg 3 cruise plan ({value2}). Forecast bands widen with lead time; what happens on the day is what was recorded."
+    },
+    "late.de9b1be49dae": {
+      "text": "Water"
+    },
+    "late.6a65d73ac40c": {
+      "text": "Water stopped"
+    },
+    "late.1988dceb1e1f": {
+      "text": "Wave {value0} came from {value1}, not {value2}."
+    },
+    "late.568aac57e417": {
+      "text": "Wave {value0} of round {value1} came from the {value2}."
+    },
+    "late.d95adcdb0c33": {
+      "text": "Week planner: days across, watches down"
+    },
+    "late.65b308fc4b4a": {
+      "text": "Welcome aboard. Inuktitut is spoken from Greenland to the Bering Strait in a chain of dialects; the coast the ship works speaks it every day, and its charts carry a thousand years of place names. The Nunavut standard writes it in syllabics: shapes for consonants, turned for vowels."
+    },
+    "late.b59bc4ec67ca": {
+      "text": "Whatever that was at {value0} is gone."
+    },
+    "late.bca70bf7a9fa": {
+      "text": "What’s next?"
+    },
+    "late.384a2ede1f3d": {
+      "text": "What’s next? Plan of the day"
+    },
+    "late.7531c7e9da4c": {
+      "text": "Where the chart came from"
+    },
+    "late.ca97399dacad": {
+      "text": "Which parcel sinks beneath the other?"
+    },
+    "late.f3792715e832": {
+      "text": "Why does the seawater loop read warmer than the sea?"
+    },
+    "late.8ca4648757d7": {
+      "text": "Wildlife Observer"
+    },
+    "late.acabbc66a68b": {
+      "text": "Wildlife observer"
+    },
+    "late.8c86b581f82b": {
+      "text": "Wind direction names differ by community, because they describe where a wind comes from across local land."
+    },
+    "late.9ff1c8124d88": {
+      "text": "Winter and year share one word; a life is counted in winters."
+    },
+    "late.d26d55c7f815": {
+      "text": "Words"
+    },
+    "late.bb107a2d83e3": {
+      "text": "Words learned"
+    },
+    "late.c8d5e89af011": {
+      "text": "XBT from the tube"
+    },
+    "late.b3ec6ce81554": {
+      "text": "You are at"
+    },
+    "late.9cf405a2341e": {
+      "text": "Your call: {value0} m {value1}."
+    },
+    "late.b15e5360a67f": {
+      "text": "Your credibility"
+    },
+    "late.22ea72574abb": {
+      "text": "Your moves"
+    },
+    "late.00962387f4ef": {
+      "text": "a blow, a big back"
+    },
+    "late.0841a82a21c1": {
+      "text": "a dark shape on the slope"
+    },
+    "late.d5b0b51a91d1": {
+      "text": "a head in the water"
+    },
+    "late.fb553b47a790": {
+      "text": "a heap on the ice"
+    },
+    "late.9e8e0974ecef": {
+      "text": "a large seal"
+    },
+    "late.786bc9c6f45f": {
+      "text": "a pod porpoising"
+    },
+    "late.7f1c802627d3": {
+      "text": "a small, quick back"
+    },
+    "late.6ffeb258f60d": {
+      "text": "a spiral tusk lifted on surfacing"
+    },
+    "late.9fc654479a0e": {
+      "text": "a white spot on the slope"
+    },
+    "late.8bf7bcdc8e38": {
+      "text": "after transit {value0}"
+    },
+    "late.c8c7a27cfa38": {
+      "text": "air {value0}{value1} °C, floe too soft"
+    },
+    "late.9a45ae3071f9": {
+      "text": "air ≤ {value0} °C"
+    },
+    "late.d96e7e9f960b": {
+      "text": "airborne EM survey team"
+    },
+    "late.935f8d8fa5ee": {
+      "text": "airborne team"
+    },
+    "late.899754144d64": {
+      "text": "all black, broad wings"
+    },
+    "late.849d0e2fad64": {
+      "text": "all dark"
+    },
+    "late.0ccb1e7cb5aa": {
+      "text": "are on it and held steady; holding steady reveals field marks. Log it"
+    },
+    "late.0719939c468f": {
+      "text": "autonomous glider fleet"
+    },
+    "late.34bf81298c21": {
+      "text": "back and charge"
+    },
+    "late.18245e594e52": {
+      "text": "backing up, {value0} s"
+    },
+    "late.8d354606b03a": {
+      "text": "backs rolling in a pod"
+    },
+    "late.4d48390c5f6b": {
+      "text": "bench(a, b)).join('')}"
+    },
+    "late.a42768585e34": {
+      "text": "beneath the keel at {value0}°N {value1}°W on {value2} {value3}"
+    },
+    "late.1c4241db2d27": {
+      "text": "beset, {value0} nmi off"
+    },
+    "late.06a1f5c4ac7d": {
+      "text": "beyond radar"
+    },
+    "late.b745fc8a1236": {
+      "text": "big dark eyes, short muzzle"
+    },
+    "late.9fa2bfef4b9d": {
+      "text": "big ears"
+    },
+    "late.55051533bb3a": {
+      "text": "big falcon along the cliff"
+    },
+    "late.9616162e9b72": {
+      "text": "big, heavy gull"
+    },
+    "late.ed6875eba2f8": {
+      "text": "black above, white below"
+    },
+    "late.b840bf086174": {
+      "text": "black and white"
+    },
+    "late.a83765d5291b": {
+      "text": "black cap, red bill"
+    },
+    "late.9c046e99ade7": {
+      "text": "black ear tips"
+    },
+    "late.ecc1ff060fcf": {
+      "text": "black face"
+    },
+    "late.f86ffba64eca": {
+      "text": "black harp-shaped saddle on a silver back"
+    },
+    "late.9031cbcd827d": {
+      "text": "black legs"
+    },
+    "late.2addc8f067a1": {
+      "text": "blown loop fitting"
+    },
+    "late.beb3dd7ba001": {
+      "text": "bold white patch on the wing"
+    },
+    "late.2ec26a52bce6": {
+      "text": "bounding flight"
+    },
+    "late.62c30c118a44": {
+      "text": "bright red feet trailing"
+    },
+    "late.39b442301302": {
+      "text": "broad pointed wings"
+    },
+    "late.c07f5ed8782f": {
+      "text": "buff and white, heading for the deck"
+    },
+    "late.ee139cd60cb4": {
+      "text": "buoyant, dipping to the surface"
+    },
+    "late.8336ead5d135": {
+      "text": "buoyant, light flight"
+    },
+    "late.a98e182f31d8": {
+      "text": "burst of pale whiskers"
+    },
+    "late.cd09183edddb": {
+      "text": "bushy tail"
+    },
+    "late.34bb39c0ba62": {
+      "text": "cardMarkup(c, keys.has(c.id) ? keys.get(c.id) : null)).join('')}"
+    },
+    "late.fbe7d7baacdd": {
+      "text": "channel"
+    },
+    "late.24674fe08975": {
+      "text": "choose ·"
+    },
+    "late.3aa0ad9c2127": {
+      "text": "chunky, flying low and straight"
+    },
+    "late.e283e1df945b": {
+      "text": "cm"
+    },
+    "late.1605d6acf1d7": {
+      "text": "commit or next ·"
+    },
+    "late.34db71e79458": {
+      "text": "commit ·"
+    },
+    "late.396399fc594e": {
+      "text": "cracked incubation tank"
+    },
+    "late.2fb2800e4e19": {
+      "text": "cream-yellow against the ice"
+    },
+    "late.a447a8fe6b96": {
+      "text": "crew"
+    },
+    "late.d3b992428a15": {
+      "text": "dark, powerful flight"
+    },
+    "late.34117b8ea553": {
+      "text": "datum"
+    },
+    "late.33af4c3b6dd9": {
+      "text": "deeply forked tail"
+    },
+    "late.89ea1a8b0c44": {
+      "text": "dies at {value0} cm"
+    },
+    "late.0514e6810ed0": {
+      "text": "down-curved horns"
+    },
+    "late.b962599f6b56": {
+      "text": "drakes white above, black below"
+    },
+    "late.a91015f51776": {
+      "text": "eDNA sample"
+    },
+    "late.2b26ebd725ca": {
+      "text": "entirely white, no grey mantle"
+    },
+    "late.be887505ea82": {
+      "text": "escort under way"
+    },
+    "late.b04e85738360": {
+      "text": "falcate dorsal fin late in the roll"
+    },
+    "late.ddb470686bc0": {
+      "text": "falcon-like, pointed wings"
+    },
+    "late.f9063fd57c41": {
+      "text": "fast, shallow wingbeats"
+    },
+    "late.b61dcf739659": {
+      "text": "fast, travelling together"
+    },
+    "late.d594c2cc0a53": {
+      "text": "final"
+    },
+    "late.ac59f1baf7ca": {
+      "text": "fingered wingtips"
+    },
+    "late.ec4470a0e7e2": {
+      "text": "floats at {value0} cm"
+    },
+    "late.3ac43a16214d": {
+      "text": "following, {value0} nmi astern"
+    },
+    "late.578460a2a458": {
+      "text": "forecast wind {value0} knots, air {value1} degrees{value2}"
+    },
+    "late.872bec5009cb": {
+      "text": "glider fleet"
+    },
+    "late.ee54b2cefb8f": {
+      "text": "grey above, white below"
+    },
+    "late.3b52d65543e4": {
+      "text": "grey calves alongside"
+    },
+    "late.e70736700dfc": {
+      "text": "grey mantle, white body"
+    },
+    "late.1ae0538befc0": {
+      "text": "grey-white ice"
+    },
+    "late.a19b8b67c24a": {
+      "text": "gusts {value0} kn"
+    },
+    "late.861a5ff7d1a1": {
+      "text": "gusts ≤ {value0} kn"
+    },
+    "late.eaef97f16bf3": {
+      "text": "heave {value0} m"
+    },
+    "late.fc635921a76b": {
+      "text": "heave ≤ {value0} m"
+    },
+    "late.d77ccecc2c46": {
+      "text": "heavy ducks in a low line"
+    },
+    "late.8e562b2c7fd0": {
+      "text": "hint (half points) ·"
+    },
+    "late.68db3f4e643d": {
+      "text": "holding, {value0} nmi off"
+    },
+    "late.4f2062ddb269": {
+      "text": "hose in the sink"
+    },
+    "late.bb0e719e8150": {
+      "text": "huge arched jawline, white chin"
+    },
+    "late.f5e3ec114b84": {
+      "text": "hull multibeam"
+    },
+    "late.219487920ad3": {
+      "text": "ice {value0}/10"
+    },
+    "late.1adbcc344b31": {
+      "text": "idle"
+    },
+    "late.9026347b544a": {
+      "text": "in the purse"
+    },
+    "late.392c7ed089d1": {
+      "text": "keep watching"
+    },
+    "late.c8ba39ef020a": {
+      "text": "large white flashes in the wing"
+    },
+    "late.d71766505c77": {
+      "text": "left to reach them"
+    },
+    "late.321d6cc5177a": {
+      "text": "leg"
+    },
+    "late.96ddd9d6114d": {
+      "text": "lent"
+    },
+    "late.3dd3164fb4c1": {
+      "text": "likely"
+    },
+    "late.7c6f5aa201f0": {
+      "text": "located"
+    },
+    "late.7332b76a893e": {
+      "text": "long neck, small head"
+    },
+    "late.fd6027cbf334": {
+      "text": "long, heavy body"
+    },
+    "late.908897f614cc": {
+      "text": "marginal"
+    },
+    "late.322934164e1f": {
+      "text": "medium first-year ice"
+    },
+    "late.131ef301b275": {
+      "text": "mottled grey-brown, small bulbous head"
+    },
+    "late.6a572dcb780b": {
+      "text": "move the box;"
+    },
+    "late.5c800a0817b6": {
+      "text": "move the cursor ·"
+    },
+    "late.904b8634d9a1": {
+      "text": "move ·"
+    },
+    "late.98fe87457bf5": {
+      "text": "name it ·"
+    },
+    "late.3b128ddb33e2": {
+      "text": "nanuq, tuktu, siku…"
+    },
+    "late.f16ae8518928": {
+      "text": "needs {value0}, {value1} left"
+    },
+    "late.f806427cf83a": {
+      "text": "never found"
+    },
+    "late.564878a232f2": {
+      "text": "next consonant"
+    },
+    "late.eb2e0422c84d": {
+      "text": "no contact"
+    },
+    "late.ffa8844e174c": {
+      "text": "no dorsal fin"
+    },
+    "late.109583a91275": {
+      "text": "no dorsal fin at all"
+    },
+    "late.9d0c04966dae": {
+      "text": "no targets"
+    },
+    "late.7efa5bf90984": {
+      "text": "obligations"
+    },
+    "late.854b3a410c5e": {
+      "text": "old ice"
+    },
+    "late.f4b88d940e34": {
+      "text": "on the cursor"
+    },
+    "late.855b642d8c8a": {
+      "text": "on the floor, dies at {value0} cm"
+    },
+    "late.583620516f9d": {
+      "text": "optionButton(o, i)).join('')}"
+    },
+    "late.1758356db217": {
+      "text": "or"
+    },
+    "late.71a401906c9f": {
+      "text": "over shallow water, a clam bed below"
+    },
+    "late.fb44f10adb82": {
+      "text": "own channel through {value0}"
+    },
+    "late.2bee3e427899": {
+      "text": "pale grey mantle"
+    },
+    "late.3a57eeeccb88": {
+      "text": "pale grey, barred below"
+    },
+    "late.88da8df73334": {
+      "text": "pale saddle on the back"
+    },
+    "late.3d2d5ad788dd": {
+      "text": "patchy, turning white for winter"
+    },
+    "late.209c8d61a16e": {
+      "text": "pick a method ·"
+    },
+    "late.136e17610500": {
+      "text": "pick with 1–4"
+    },
+    "late.444515170d9c": {
+      "text": "pick ·"
+    },
+    "late.31327feaa4cb": {
+      "text": "pigeon-like gull"
+    },
+    "late.7d5d1cb5a9a2": {
+      "text": "pigeon-toed, unhurried"
+    },
+    "late.7dfa3a36b80d": {
+      "text": "pink legs, heavy pale bill"
+    },
+    "late.901dbffcb486": {
+      "text": "pink-brown, wrinkled"
+    },
+    "late.8fbbeb4b6151": {
+      "text": "planned box"
+    },
+    "late.43b3f4b185dd": {
+      "text": "pointed central tail feathers"
+    },
+    "late.e268dec7f435": {
+      "text": "power {value0}"
+    },
+    "late.ded3f6b54d56": {
+      "text": "previous consonant"
+    },
+    "late.82259209065c": {
+      "text": "pure white"
+    },
+    "late.c6eac8a33ba8": {
+      "text": "q: a k made far back, against the uvula"
+    },
+    "late.83ec74cd8794": {
+      "text": "recorded wind {value0} knots, gusts {value1}, air {value2} degrees"
+    },
+    "late.27bc4b18cb5d": {
+      "text": "retuning, {value0} s"
+    },
+    "late.9bf72f5189ea": {
+      "text": "rings: great-circle range, square-root scale"
+    },
+    "late.9ba5eef5f0cb": {
+      "text": "rival"
+    },
+    "late.22630fdac92d": {
+      "text": "roll {value0}°"
+    },
+    "late.5c23eaa3446c": {
+      "text": "rolling in the cliff updraught"
+    },
+    "late.df3462469ba6": {
+      "text": "rosette tote tipped in a roll"
+    },
+    "late.83cc66ba3a08": {
+      "text": "rosy flush on the breast"
+    },
+    "late.7f380307672e": {
+      "text": "row: consonant · column: vowel · click a glyph to turn it"
+    },
+    "late.ca27ceb0b103": {
+      "text": "saved {value0} of {value1}"
+    },
+    "late.2e10e6400234": {
+      "text": "science points"
+    },
+    "late.d36b88babd46": {
+      "text": "scupper blocked with bubble wrap"
+    },
+    "late.7febce039c4c": {
+      "text": "seconds"
+    },
+    "late.720cf3189584": {
+      "text": "shaggy, block-like"
+    },
+    "late.614145e0cb75": {
+      "text": "shallow forked tail"
+    },
+    "late.d9e686e7bec0": {
+      "text": "sharply pointed snout"
+    },
+    "late.edfc3832f9bb": {
+      "text": "shearing low over the swell"
+    },
+    "late.ed43a8a09e9b": {
+      "text": "ship"
+    },
+    "late.e5be6d47c85e": {
+      "text": "ship time"
+    },
+    "late.40671aea7cff": {
+      "text": "ship time left"
+    },
+    "late.24dc631636ba": {
+      "text": "shore"
+    },
+    "late.58d563ea8161": {
+      "text": "short pointed bill, white line on the gape"
+    },
+    "late.7f379c5925ae": {
+      "text": "since the call"
+    },
+    "late.2fa390e34acf": {
+      "text": "sitting upright"
+    },
+    "late.114363eff0a8": {
+      "text": "sleek, dark"
+    },
+    "late.10dc98d500ab": {
+      "text": "slim, narrow-winged"
+    },
+    "late.00fa5e447ba5": {
+      "text": "slips under with no splash"
+    },
+    "late.762de48e03df": {
+      "text": "slow, powerful wingbeats"
+    },
+    "late.cb7770ba15c1": {
+      "text": "small auk, whirring low"
+    },
+    "late.5282e67037ff": {
+      "text": "small songbird"
+    },
+    "late.14abf28698db": {
+      "text": "small yellow bill, black legs"
+    },
+    "late.8e2c29024c45": {
+      "text": "small, buoyant gull"
+    },
+    "late.503675774786": {
+      "text": "small, fast, tern-like gull"
+    },
+    "late.d05a347ecf59": {
+      "text": "small, on the tideline"
+    },
+    "late.22f0c7320a05": {
+      "text": "small, round head"
+    },
+    "late.2e95603f1d20": {
+      "text": "sonar mosaic"
+    },
+    "late.cd8fae810f3e": {
+      "text": "spinning on the spot"
+    },
+    "late.63bb2b8f1966": {
+      "text": "square fore-flippers"
+    },
+    "late.a43521bfaa26": {
+      "text": "steer; hold two for a diagonal. Speed follows the chart: 13 kn in open water, about 3 kn breaking a metre of first-year ice, a crawl in old ice."
+    },
+    "late.7271b1bb8c54": {
+      "text": "stiff, straight wings"
+    },
+    "late.21e978895190": {
+      "text": "streak"
+    },
+    "late.44da6dee55ef": {
+      "text": "striking wing pattern"
+    },
+    "late.aacf218cde23": {
+      "text": "submarine crew"
+    },
+    "late.cfca71a113ca": {
+      "text": "submarine survey crew"
+    },
+    "late.656b3cd791f6": {
+      "text": "syllabary ·"
+    },
+    "late.191b16b02ade": {
+      "text": "t.glyph).join('')) || ' '}"
+    },
+    "late.9533107f7a1c": {
+      "text": "tall fins in a pod"
+    },
+    "late.49450f7aa59c": {
+      "text": "tall triangular dorsal fin"
+    },
+    "late.d7547dc1df9e": {
+      "text": "the door"
+    },
+    "late.1bfd9513a57f": {
+      "text": "the dot over {value0} makes the vowel long"
+    },
+    "late.d3035c2da8af": {
+      "text": "the {value0}"
+    },
+    "late.9a234c408083": {
+      "text": "the {value0} shape ({value1})"
+    },
+    "late.a2452bd2011b": {
+      "text": "then 1–4 again"
+    },
+    "late.f7350d322f75": {
+      "text": "thick first-year ice"
+    },
+    "late.6694e7e73c64": {
+      "text": "thick neck, no black wingtip"
+    },
+    "late.5698849eb4fe": {
+      "text": "thick straight bill, dark eye patch"
+    },
+    "late.d2820afad9df": {
+      "text": "thin first-year ice"
+    },
+    "late.e59f98f54177": {
+      "text": "three triangles: grey, white, black"
+    },
+    "late.1bda4ebff08c": {
+      "text": "tiny, sitting on the water"
+    },
+    "late.1bace380efda": {
+      "text": "towed side-scan"
+    },
+    "late.a8d628c3ba7e": {
+      "text": "trotting, short legs"
+    },
+    "late.3949bc110f8c": {
+      "text": "tube on the bill, grey above and white below"
+    },
+    "late.b09c738b5976": {
+      "text": "turn"
+    },
+    "late.b15b710f2ada": {
+      "text": "two white tusks"
+    },
+    "late.d9e9e130d95d": {
+      "text": "under way"
+    },
+    "late.eff8ec10351a": {
+      "text": "unlikely"
+    },
+    "late.2e1aec584567": {
+      "text": "unpick ·"
+    },
+    "late.5e3282fa2441": {
+      "text": "unsurveyed"
+    },
+    "late.a332d0afc6cb": {
+      "text": "very pale mantle"
+    },
+    "late.d82eb29c4860": {
+      "text": "walking the floe"
+    },
+    "late.35c7c5278e2a": {
+      "text": "walking to the {value0}"
+    },
+    "late.30b8b635ef22": {
+      "text": "water still running, saved {value0} of {value1}"
+    },
+    "late.8661c13e39be": {
+      "text": "wedge-shaped head and bill"
+    },
+    "late.2ed629bc8750": {
+      "text": "wedge-shaped tail"
+    },
+    "late.ba93078fbe0d": {
+      "text": "whirring, fast wingbeats"
+    },
+    "late.a4011c391f4e": {
+      "text": "white eye patch, grey saddle"
+    },
+    "late.65ac1293e8b1": {
+      "text": "white flash at the base of the primaries"
+    },
+    "late.9a8919c8045c": {
+      "text": "wind {value0} kn"
+    },
+    "late.59ad91a82458": {
+      "text": "wind ≤ {value0} kn"
+    },
+    "late.8cd4ec145507": {
+      "text": "wingtips solid black, as if dipped in ink"
+    },
+    "late.a8ca977388a3": {
+      "text": "wingtips white, no black at all"
+    },
+    "late.f24fa79d4c74": {
+      "text": "working the ice edge, dropping to floes"
+    },
+    "late.38d2d86388dd": {
+      "text": "{ const slot = d * WATCHES + w; const card = cardById(state, state.grid[slot]); const area = shipArea(state, slot); const classes = ['c11-cell']; let odds = null; if (slot"
+    },
+    "late.3b8303661382": {
+      "text": "{ const slot = d * WATCHES; const cls = d + 1"
+    },
+    "late.3d2dd67cf41e": {
+      "text": "{value0} % of the box · {value1} run"
+    },
+    "late.c189e8bc98e6": {
+      "text": "{value0} ({value1})"
+    },
+    "late.75e15cc3767a": {
+      "text": "{value0} + {value1} → {value2} {value3}. {value4}"
+    },
+    "late.6d514ac8057f": {
+      "text": "{value0} + {value1}. Enter commits."
+    },
+    "late.ad92047f2414": {
+      "text": "{value0} +{value1}."
+    },
+    "late.985a6b77c72a": {
+      "text": "{value0} / {value1}"
+    },
+    "late.9eea7a6b4187": {
+      "text": "{value0} L already across the deck and {value1} L/s still coming"
+    },
+    "late.1dbb441dfe25": {
+      "text": "{value0} L/s"
+    },
+    "late.1110d5a55299": {
+      "text": "{value0} L/s onto the deck"
+    },
+    "late.f0ccb0a18010": {
+      "text": "{value0} L1100 {value1} Z"
+    },
+    "late.2a2e0f6b93bc": {
+      "text": "{value0} a small final {value1}"
+    },
+    "late.f02e2cd53d7d": {
+      "text": "{value0} already holds that watch."
+    },
+    "late.5ec596d97e6c": {
+      "text": "{value0} at {value1} already holds that watch."
+    },
+    "late.a861940108ea": {
+      "text": "{value0} at {value1} is back on the board.{value2}"
+    },
+    "late.2dcb9efee508": {
+      "text": "{value0} at {value1} is planned for day {value2}, {value3}. Choose another watch to move it, or clear it."
+    },
+    "late.6dc5d79082aa": {
+      "text": "{value0} at {value1} lost its window ({value2})."
+    },
+    "late.ba16b1084c32": {
+      "text": "{value0} at {value1} lost its window: {value2}."
+    },
+    "late.fbaeb0b2b157": {
+      "text": "{value0} at {value1} never happened before the ship left {value2}."
+    },
+    "late.a4e2db400d69": {
+      "text": "{value0} at {value1} planned, {value2} likely, times {value3}"
+    },
+    "late.e14af8ce87e7": {
+      "text": "{value0} at {value1} was still on the board when the week ended."
+    },
+    "late.bdd1b500d2d5": {
+      "text": "{value0} at {value1} {value2} day {value3}, {value4}:{value5} ×{value6} if it holds.{value7}"
+    },
+    "late.f2b8933525db": {
+      "text": "{value0} back on the bench, dry. Its owner need never know it was on the floor."
+    },
+    "late.15d8edb4f1e6": {
+      "text": "{value0} cm"
+    },
+    "late.02de81941a2a": {
+      "text": "{value0} cm on the deck already, {value1} L/s more arriving"
+    },
+    "late.8dd6d503a931": {
+      "text": "{value0} concedes the station."
+    },
+    "late.1ef3fdc4e1c1": {
+      "text": "{value0} found"
+    },
+    "late.ef8e3203d074": {
+      "text": "{value0} grievances: the mess deck votes and the plan is no longer yours. No points this week."
+    },
+    "late.bae3d3e68eb6": {
+      "text": "{value0} h"
+    },
+    "late.00063902cfd3": {
+      "text": "{value0} h ship time"
+    },
+    "late.38d5a3c0b397": {
+      "text": "{value0} has no dot, so its vowel is short"
+    },
+    "late.3d5f1586c79b": {
+      "text": "{value0} hit{value1}"
+    },
+    "late.85b3f3e1f454": {
+      "text": "{value0} hours gone. The tasking passes to a helicopter out of Resolute."
+    },
+    "late.c403af6f3eda": {
+      "text": "{value0} is a bare {value1} with no vowel"
+    },
+    "late.70adaed9483e": {
+      "text": "{value0} is a full syllable {value1}; a bare {value2} is the small raised {value3}"
+    },
+    "late.3b82384bdcae": {
+      "text": "{value0} is afloat at {value1} cm and drifting."
+    },
+    "late.bf1d17d798f5": {
+      "text": "{value0} is being sampled. It keeps collecting."
+    },
+    "late.70f5a4e8503f": {
+      "text": "{value0} is beset again: the channel closed behind you. Go back and pass within a cable of their hull."
+    },
+    "late.d46267a04c51": {
+      "text": "{value0} is fixed on that watch."
+    },
+    "late.3a56cd8ef5f3": {
+      "text": "{value0} is free of the ice and will follow in your wake at up to 6 kn. Pressure closes a channel in close pack within a few hours, so do not run too far ahead."
+    },
+    "late.96bdbd6efdeb": {
+      "text": "{value0} is in open water and under her own power."
+    },
+    "late.c0901f2c692a": {
+      "text": "{value0} is moving again."
+    },
+    "late.9ece05ca0078": {
+      "text": "{value0} is soaked through. Nobody will miss it."
+    },
+    "late.df64cc324ba8": {
+      "text": "{value0} is the {value1} shape turned for {value2}"
+    },
+    "late.264d540cc85f": {
+      "text": "{value0} is the {value1} shape, not {value2}"
+    },
+    "late.0260370d1378": {
+      "text": "{value0} is under water. Its owner is going to ask why it was on the floor."
+    },
+    "late.96caa8af1e7e": {
+      "text": "{value0} is under water. {value1}"
+    },
+    "late.6499b84b6746": {
+      "text": "{value0} km"
+    },
+    "late.b0ff65803e35": {
+      "text": "{value0} km in {value1} hours of record."
+    },
+    "late.9c156a8d1c3d": {
+      "text": "{value0} kn"
+    },
+    "late.99b468d14bf8": {
+      "text": "{value0} kn over the deck on {value1}."
+    },
+    "late.6172f5f7f6d8": {
+      "text": "{value0} likely for the selected request"
+    },
+    "late.c59fc68619e0": {
+      "text": "{value0} likely,"
+    },
+    "late.591b7584c2b4": {
+      "text": "{value0} logged."
+    },
+    "late.067ee12cc480": {
+      "text": "{value0} m"
+    },
+    "late.666a72b7e106": {
+      "text": "{value0} m on {value1}, with roll and pitch RMS of {value2}°."
+    },
+    "late.38ca488bc454": {
+      "text": "{value0} m under the keel on {value1} at {value2}°N {value3}°W."
+    },
+    "late.4983f63b4be3": {
+      "text": "{value0} m: {value1}"
+    },
+    "late.f4ca9e226f9c": {
+      "text": "{value0} of 3 rounds"
+    },
+    "late.0eab35666446": {
+      "text": "{value0} of 3 strikes{value1}"
+    },
+    "late.f580dacb7b08": {
+      "text": "{value0} of ship time"
+    },
+    "late.f38ef4e69403": {
+      "text": "{value0} of {value1}"
+    },
+    "late.27bb25f9d7b6": {
+      "text": "{value0} of {value1} riddles"
+    },
+    "late.702e086a7bd4": {
+      "text": "{value0} on the bench, dry."
+    },
+    "late.f4b66eafec31": {
+      "text": "{value0} on the bench. {value1}"
+    },
+    "late.3548181c57ff": {
+      "text": "{value0} on the lab clock"
+    },
+    "late.3a1d02210787": {
+      "text": "{value0} on {value1}: meltwater and river water riding on top."
+    },
+    "late.6a24ae854dc8": {
+      "text": "{value0} o’clock"
+    },
+    "late.561e1682058b": {
+      "text": "{value0} points"
+    },
+    "late.ad90bd8e3c51": {
+      "text": "{value0} request{value1} missed."
+    },
+    "late.7b38b9b19c2a": {
+      "text": "{value0} revises under the curse. −{value1}.{value2}"
+    },
+    "late.a58fcc71c077": {
+      "text": "{value0} right"
+    },
+    "late.5787d62bbee5": {
+      "text": "{value0} rotate({value1})"
+    },
+    "late.db958ca9f802": {
+      "text": "{value0} s"
+    },
+    "late.d9a1c1149f75": {
+      "text": "{value0} s to go."
+    },
+    "late.a431e99cb7fa": {
+      "text": "{value0} seconds. Hold a direction to push."
+    },
+    "late.4662516c4d0f": {
+      "text": "{value0} shut"
+    },
+    "late.ffa190c22323": {
+      "text": "{value0} shut."
+    },
+    "late.bf9ef5c63e3b": {
+      "text": "{value0} takes the station"
+    },
+    "late.9534f87b46d9": {
+      "text": "{value0} tipped over. {value1}"
+    },
+    "late.68f0256d5365": {
+      "text": "{value0} unidentified target{value1}"
+    },
+    "late.91c4c4cf551d": {
+      "text": "{value0} unplanned · {value1} planned"
+    },
+    "late.d27ad1506bdb": {
+      "text": "{value0} uses {value1}."
+    },
+    "late.dca59cc0575d": {
+      "text": "{value0} {value1}"
+    },
+    "late.30445e315404": {
+      "text": "{value0} {value1} {value2}"
+    },
+    "late.130a8555d426": {
+      "text": "{value0} {value1} · tier {value2}"
+    },
+    "late.4bfc73309bc8": {
+      "text": "{value0} {value1}: {value2}. Purse {value3}. {value4}"
+    },
+    "late.8a3e1f0716e8": {
+      "text": "{value0} {value1}{value2}"
+    },
+    "late.11e9d4e15bce": {
+      "text": "{value0} °C"
+    },
+    "late.fed8215e238a": {
+      "text": "{value0} °C on {value1} near {value2}°N; seawater cannot get much colder without freezing."
+    },
+    "late.178fd66057ec": {
+      "text": "{value0} °C · {value1} PSU · {value2} kg/m³"
+    },
+    "late.f5d96de37525": {
+      "text": "{value0} · {value1}"
+    },
+    "late.d9e880a937ce": {
+      "text": "{value0} · ×{value1}"
+    },
+    "late.8feaab7c43e3": {
+      "text": "{value0} × {value1} km"
+    },
+    "late.53f73d4c09d9": {
+      "text": "{value0} × {value1} · {value2}"
+    },
+    "late.26270c990d26": {
+      "text": "{value0} ×{value1}"
+    },
+    "late.b706db25f9f0": {
+      "text": "{value0} → {value1}"
+    },
+    "late.a8ba44f07d53": {
+      "text": "{value0} −{value1}."
+    },
+    "late.8c5f2c0e0527": {
+      "text": "{value0}%"
+    },
+    "late.dc9a8e229010": {
+      "text": "{value0}% sure"
+    },
+    "late.5886321f51c9": {
+      "text": "{value0}'s defence falls."
+    },
+    "late.717edad9e502": {
+      "text": "{value0}'s defence rises."
+    },
+    "late.a9eb10d23009": {
+      "text": "{value0}'s sensors have cleared."
+    },
+    "late.ee14f6d46e3e": {
+      "text": "{value0})"
+    },
+    "late.a050b1bd8733": {
+      "text": "{value0}, {value1} ({value2})"
+    },
+    "late.753b4f85ea72": {
+      "text": "{value0}, {value1} {value2} of the ship"
+    },
+    "late.b4171da9a522": {
+      "text": "{value0}, {value1} · {value2}"
+    },
+    "late.4f496db48f6f": {
+      "text": "{value0}. {value1}"
+    },
+    "late.6a93e06f5e34": {
+      "text": "{value0}/10 close pack"
+    },
+    "late.a938fcff0325": {
+      "text": "{value0}/10 open drift"
+    },
+    "late.4fee8b8f38c3": {
+      "text": "{value0}/10 very close pack"
+    },
+    "late.e15045b38871": {
+      "text": "{value0}/10 very open drift"
+    },
+    "late.f09e9dc3b6dc": {
+      "text": "{value0}/3"
+    },
+    "late.2512d2b7c56a": {
+      "text": "{value0}/{value1} turns"
+    },
+    "late.a5709ec34538": {
+      "text": "{value0}: a small raised {value1}, a consonant with no vowel after it."
+    },
+    "late.cd0f5032b793": {
+      "text": "{value0}: not an Inuktitut sound, so no glyph. The vowels are i, u and a; there is no b, c, d, e, f, h, o, w, x, y or z (y is written j, w is v)."
+    },
+    "late.0f13dbb76ee1": {
+      "text": "{value0}: {value1}"
+    },
+    "late.0008f8c89a6d": {
+      "text": "{value0}: {value1} turned for {value2}{value3}: {value4}."
+    },
+    "late.45ca5fd7d658": {
+      "text": "{value0}: {value1} · {value2}"
+    },
+    "late.36bc3a4053b0": {
+      "text": "{value0}: {value1}."
+    },
+    "late.b23549372a4e": {
+      "text": "{value0}:relief"
+    },
+    "late.c5df583bac21": {
+      "text": "{value0}:shore"
+    },
+    "late.f6df5a24e21e": {
+      "text": "{value0}:texture"
+    },
+    "late.8157c96a7c92": {
+      "text": "{value0}:{value1}"
+    },
+    "late.888eb40396c3": {
+      "text": "{value0}:{value1}:{value2}"
+    },
+    "late.07a5bf541b50": {
+      "text": "{value0}:{value1}:{value2}:{value3}"
+    },
+    "late.cfc525c51584": {
+      "text": "{value0}>{value1}"
+    },
+    "late.769169f33675": {
+      "text": "{value0}a · {value1}"
+    },
+    "late.058d9dcd8242": {
+      "text": "{value0}h {value1}m"
+    },
+    "late.a8618e4a8104": {
+      "text": "{value0}{value1}"
+    },
+    "late.0db1d0a9af62": {
+      "text": "{value0}{value1}, logged. +{value2}."
+    },
+    "late.d1fd60fd4f47": {
+      "text": "{value0}{value1}, {value2}."
+    },
+    "late.39c1eb2041d9": {
+      "text": "{value0}°"
+    },
+    "late.dec619ef98b7": {
+      "text": "{value0}° ({value1}) at {value2} kn"
+    },
+    "late.0659d5cf06ae": {
+      "text": "{value0}°{value1} {value2}°{value3}"
+    },
+    "late.5843c1d67e29": {
+      "text": "{value0}°{value1}′{value2}"
+    },
+    "late.382bcd254475": {
+      "text": "{value0}…"
+    },
+    "late.7c75a7d41979": {
+      "text": "} {value0}"
+    },
+    "late.908442933c3a": {
+      "text": "} {value0} °C and {value1} PSU. {value2}. Go."
+    },
+    "late.eb53de35e98f": {
+      "text": "±{value0}° on their VHF, {value1} s to retune"
+    },
+    "late.48afe802a5d7": {
+      "text": "· {value0}"
+    },
+    "late.429b61df4931": {
+      "text": "×3 for {value0} s, then {value1} s astern"
+    },
+    "late.5e438deb3363": {
+      "text": "×{value0}"
+    },
+    "late.d2c44762e23f": {
+      "text": "↕ {value0} m"
+    },
+    "late.43da9923db13": {
+      "text": "−1 °C at 32 salinity"
+    },
+    "late.f38b84d1da61": {
+      "text": "−1.6 °C"
+    },
+    "late.8ece608373b3": {
+      "text": "−4.0 °C"
+    },
+    "late.83d84044d1bb": {
+      "text": "−4.5 °C"
+    },
+    "late.23ef7b65dc34": {
+      "text": "−{value0}"
+    },
+    "late.142c9ce9e20c": {
+      "text": "◂ Previous"
+    },
+    "late.66f19fb72bc3": {
+      "text": "☀ daylight · ☾ dark · ≋ fog · ↕ heave · past watches: mean (gust) kn"
+    },
+    "late.e90fb32fc22a": {
+      "text": "✓ {value0}"
+    },
+    "late.92f3f6c444b1": {
+      "text": "✓ {value0} pts"
+    },
+    "late.d692b6499cdd": {
+      "text": "A mast standing out of the ice, seen from a snowmobile, in the middle of the bay. The wreck sits upright near the centre of the box."
+    },
+    "late.16bd7524fb9b": {
+      "text": "A small harbour; the GEBCO cell is land."
+    },
+    "late.ab350b4c6c35": {
+      "text": "A small harbour; the GEBCO cell reads 2 m at the shore."
+    },
+    "late.5939a44ddf0d": {
+      "text": "Abandoned in the pack beside the Resolute on Belcher's written order; the Resolute drifted a thousand miles east and was found afloat sixteen months later, the Intrepid was never seen again."
+    },
+    "late.4315f0e18793": {
+      "text": "Abandoned off King William Island in April 1848, she was found in 2014 on the second survey line of a search box moved south after a davit pintle turned up on the shore, in the water Inuit had pointed to since 1869."
+    },
+    "late.110310135da7": {
+      "text": "About 100 m (P:Breadalbane wreck site); the GEBCO cell gives 97 m."
+    },
+    "late.9a5d94e14dad": {
+      "text": "About 11 m (P:Wilmot and Crampton Bay). The site lies just off the game's GEBCO grid."
+    },
+    "late.4549e4baf5e7": {
+      "text": "About 24 m (P:Terror Bay)."
+    },
+    "late.76e8bdeb9c4d": {
+      "text": "American whaler"
+    },
+    "late.e2c176e01de3": {
+      "text": "Approximate. The archive pins the loss off Cape Fry from Inuit testimony (E673); the artifact record pins it at Cape Searle because the wreck position is not fixed (A:wrecks-disasters-021)."
+    },
+    "late.82dce7f70367": {
+      "text": "Approximate: 'about 75 degrees 10 minutes north, 60 degrees 30 minutes west, some forty miles south of Cape York' (A:wrecks-disasters-017). No individual wreck has a fixed position; the named ships are listed in A:wrecks-disasters-044."
+    },
+    "late.af16df5536ce": {
+      "text": "Approximate: the archive gives only Melville Bay (E1202)."
+    },
+    "late.4ba2f1ee0873": {
+      "text": "Approximate: the gazetteer pin off Cape Sabine (A:wrecks-disasters-005); the event record pins Kane Basin at 79.0 −71.0 and says 'position approximate' (E419)."
+    },
+    "late.4f3f1e2f0cd3": {
+      "text": "Approximate; the archive places the loss in Melville Bay (E680). McDougall's plate of the loss is pinned at 75.0 −64.0 (A:mcclure-investigator-073)."
+    },
+    "late.c8e54aa26fa9": {
+      "text": "Beach and shallows; the GEBCO cell straddles the inlet (254 m) and does not describe the shore."
+    },
+    "late.9130ee2cd23e": {
+      "text": "Belcher's flagship, abandoned with the Pioneer in Wellington Channel with her colours nailed to the mast, 'as if we had encoffined some cherished object'."
+    },
+    "late.e7bc5a73f543": {
+      "text": "Chartered to carry Garlington's party north to relieve Greely, she was nipped in Kane Basin and sank with most of her stores; the relief party's retreat left Greely's men to winter at Cape Sabine on almost nothing."
+    },
+    "late.7fcf09ac095d": {
+      "text": "Crushed in Melville Bay on 23 June 1840 alongside the Bon Accord; the record says no more than that."
+    },
+    "late.29a160837525": {
+      "text": "Driven ashore on Somerset Island in August 1825 and abandoned with her stores under canvas; seven years later those stores kept John Ross's Victory crew alive."
+    },
+    "late.e7d8c142714b": {
+      "text": "Dundee whaler, earlier Peary's expedition ship"
+    },
+    "late.32306689fc0c": {
+      "text": "Fast in the harbour ice from 1830 and abandoned where she lay. Search the harbour itself, close under the shore, not the open coast outside it."
+    },
+    "late.a65899e146fe": {
+      "text": "Frozen in at her winter berth inside a small, shoal harbour and abandoned there. The box is small; search close under the shore."
+    },
+    "late.eed8facf059b": {
+      "text": "Her consort drifted east the length of Barrow Strait and Lancaster Sound. If the Intrepid went down near where she was left, she lies east of the abandonment position, down the drift."
+    },
+    "late.acde809e77e2": {
+      "text": "Her engine useless from the first season, she spent four winters on the Boothia coast; on 29 May 1832 her colours were nailed to the mast and Ross went last over the side."
+    },
+    "late.7a53be1932c5": {
+      "text": "Hull whaler"
+    },
+    "late.7761b2806807": {
+      "text": "In-nook-poo-zhee-jook pointed on McClintock's chart to the water just east of the north end of O'Reilly Island; the 2014 box was moved south to match the beach find. Search the eastern side, toward the peninsula."
+    },
+    "late.0d383143b442": {
+      "text": "Kane's brig was frozen into Rensselaer Harbour for two winters; every man signed the paper to leave her, the flags were hoisted and hauled down, and the party walked once round the brig before setting off south by boat."
+    },
+    "late.50a0261fbdec": {
+      "text": "Landing stores for Belcher's squadron with the Phoenix, she was nipped by a driving floe half a mile from Beechey Island and crushed in fifteen minutes; her people walked off onto the ice."
+    },
+    "late.2a94fc553e15": {
+      "text": "Last seen 16 October 1835 drifting south in the pack; Inuit told Captain Harrison in 1840 that she was crushed off Cape Fry in December and that twenty-two sick men left ashore all died."
+    },
+    "late.d78707d7d6c2": {
+      "text": "Last seen forty-five miles south-east of Cape Searle, drifting south in the pack, and crushed some weeks later. A ship crushed in a drifting pack goes down along the drift: look south of the datum."
+    },
+    "late.fa0113f9ed6a": {
+      "text": "Leading a file of whalers and naval search ships through a crack in the ice she was nipped; two days later the repair was stove in and Belcher bought her for a hundred pounds for her oil and timber."
+    },
+    "late.17301d97e9bb": {
+      "text": "Left at her winter berth in the bay with her colours flying. In 2010 side-scan sonar picked her up within fifteen minutes of the first line: she is close to where she was left, and the box is small."
+    },
+    "late.8c23bf0b53a8": {
+      "text": "Left in the pack of Wellington Channel, which streams south into Barrow Strait. A ship crushed in that drift lies south of where she was left."
+    },
+    "late.5e1e186ca40f": {
+      "text": "McClure took her into Mercy Bay in September 1851 and never got her out; after three winters and two scurvy deaths, Bedford Pim walked in over the ice and the crew abandoned her for the Resolute."
+    },
+    "late.bcc160458e33": {
+      "text": "Newfoundland sealer, Greely relief"
+    },
+    "late.0737751829cd": {
+      "text": "Nipped about half a mile from the island, and found in 1980 upright in about 100 m half a mile south of it. Search the deep water south of the island, not the shallows under it."
+    },
+    "late.7128b4ccf61d": {
+      "text": "Nipped in Smith Sound on 15 October 1872, she broke away from nineteen people left on a floe; the fourteen still aboard ran her into the land, wintered in a hut built from her, and the Tigress found her sunk the next August."
+    },
+    "late.242f191241c8": {
+      "text": "Nipped in the pack north-east of Cape Sabine and gone in the afternoon; the party retreated south by boat. The pack in Kane Basin sets south toward Smith Sound: look south of the datum."
+    },
+    "late.2f5867a9e905": {
+      "text": "Parry fixed the spot at 72°42′30″N 91°50′05″W. The ice drove her onto the beach, so whatever is left lies inshore, along the shore, not out in the inlet."
+    },
+    "late.8afce8a29a0f": {
+      "text": "Parry's own fix, 72°42′30″N 91°50′05″W (E247). The hull broke up on the beach and nothing of it has been found since; the search is for what the ice pushed into the shallows."
+    },
+    "late.2e392aa67fc4": {
+      "text": "Position from James Clark Ross's magnetic table (A:ross-victory-054). Never seen again after 1832."
+    },
+    "late.b07b7467ca29": {
+      "text": "Rensselaer Harbour as pinned in the archive (E18). Never seen again."
+    },
+    "late.1e13db7a0119": {
+      "text": "Run into the land at the cove and broken up by her people for a hut and a boat; the Tigress found her 'sunk about a mile and a half offshore'. Search offshore of the cove, to the west, out toward Littleton Island."
+    },
+    "late.9aa69598240c": {
+      "text": "Sammy Kogvik of Uqsuqtuuq described a mast standing out of the ice in the bay; the Martin Bergmann turned aside, dropped a sonar and found a three-masted ship sitting upright in the middle of Terror Bay."
+    },
+    "late.199455e62b1c": {
+      "text": "She was leading the file north through a crack toward Cape York when she was nipped, and went down in the same crack two days later. Look north of the datum, along the lead."
+    },
+    "late.fc1d1fa8e360": {
+      "text": "The Carey Islands as pinned in the archive (E512). Which island she struck is not recorded."
+    },
+    "late.79adaf70ef55": {
+      "text": "The abandonment position, 74°41′N 101°22′W (E1973). The ship drifted in the pack afterwards and was never seen again; where she went down is unknown."
+    },
+    "late.3132dfc3cc67": {
+      "text": "The abandonment position, 75°31′14″N 92°21′55″W (A:wrecks-disasters-024). Never seen again."
+    },
+    "late.a2a1daa1273e": {
+      "text": "The archive's Life Boat Cove pin opposite Littleton Island (P:Life Boat Cove). The Tigress logged the winter camp at 78°23′N 73°46′W (E168), a different longitude; the pin is used here."
+    },
+    "late.4aef56028ce1": {
+      "text": "The archive's wreck-site pin (P:Wilmot and Crampton Bay); Parks Canada publishes a protected zone, not a position. Found 2 September 2014."
+    },
+    "late.02a37eb98d68": {
+      "text": "The archive's wreck-site pin (P:Wreck of HMS Investigator); Parks Canada located her in July 2010."
+    },
+    "late.db4ac4b976a8": {
+      "text": "The archive's wreck-site pin in the middle of the bay (P:Terror Bay). Found 3 September 2016."
+    },
+    "late.2eaa942f661b": {
+      "text": "The cell at the pin; the islands' shoals run to the surface within 2 km."
+    },
+    "late.464d69b04bbd": {
+      "text": "The cell at the pin; the neighbourhood runs from the shore to 210 m."
+    },
+    "late.121e17a351d8": {
+      "text": "The fleet lay stem to stern against the land floe when the pack came in from seaward. The land ice, and Cape York, were to the north: the wrecks lie along the floe edge north of the datum."
+    },
+    "late.cfe7a5c177e5": {
+      "text": "The record gives the bay and the date and nothing else. There is no clue to narrow the box; cover it."
+    },
+    "late.22daef2b916b": {
+      "text": "The rounded position published for the protected wreck site (P:Breadalbane wreck site). Found by side-scan sonar on 13 August 1980."
+    },
+    "late.3b8c9dd42d2b": {
+      "text": "The same Windward that carried Peary north in 1898, wrecked on the Carey Islands in June 1907; Captain Cooney and his crew sailed the boats to Pond Inlet."
+    },
+    "late.3960315eef2a": {
+      "text": "The worst week the Davis Strait fishery ever had: a gale on 19 June 1830 drove the pack onto the fleet lying along the land floe, nineteen ships were crushed and a thousand men camped on the ice with no lives lost."
+    },
+    "late.7e7d6f21b66f": {
+      "text": "Upright in about eleven metres, the upper deck about eight metres down (E894)."
+    },
+    "late.27766c23a9a9": {
+      "text": "Wrecked on the islands, not in the channel between them. A ship that strikes lies on the rocks she struck: search the shoal water against the shore, not the deep water offshore."
+    },
+    "late.86b970d389cb": {
+      "text": "barque, Admiralty transport"
+    },
+    "late.9558c50aa2f6": {
+      "text": "barque, Royal Navy"
+    },
+    "late.4209b38ebf9a": {
+      "text": "barque, Royal Navy (with her tender Pioneer)"
+    },
+    "late.09807d130dde": {
+      "text": "bomb vessel, Franklin expedition"
+    },
+    "late.a08a4bbe682b": {
+      "text": "bomb vessel, Franklin's flagship"
+    },
+    "late.286fe92da074": {
+      "text": "bomb vessel, Royal Navy"
+    },
+    "late.38ee8f494b66": {
+      "text": "brig, Second Grinnell Expedition"
+    },
+    "late.4ba0202f9dba": {
+      "text": "one of nineteen or twenty whalers crushed together"
+    },
+    "late.b847dd9e6574": {
+      "text": "paddle steamer, John Ross's private expedition"
+    },
+    "late.d2d3db02bf2f": {
+      "text": "steam tender, Royal Navy"
+    },
+    "late.34244970a0d2": {
+      "text": "steamer, United States North Polar Expedition"
+    },
+    "late.7c4410a071eb": {
+      "text": "whaler"
+    },
+    "core.auto.5a2220267bcc": {
+      "text": "The expedition"
+    },
+    "core.auto.d62efd50cc00": {
+      "text": "Crew ideas"
+    },
+    "core.auto.31b471215872": {
+      "text": "Leaderboard"
+    },
+    "core.auto.47d1836b94de": {
+      "text": "ABOARD & OFFLINE-READY"
+    },
+    "core.auto.311bc6ca8cae": {
+      "text": "EXPEDITION / FIELD SEASON 2026"
+    },
+    "core.auto.ff3491733988": {
+      "text": "SCIENCE IS AN ADVENTURE"
+    },
+    "core.auto.5524333340a5": {
+      "text": "Your ship. Our expedition."
+    },
+    "core.auto.e34791dded3e": {
+      "text": "Follow your curiosity. Unfold the chart. Leave a trail of discoveries."
+    },
+    "core.auto.f64d0e6f2738": {
+      "text": "＋ Suggest a minigame"
+    },
+    "core.auto.022127539fb5": {
+      "text": "FREE VOYAGE"
+    },
+    "core.auto.94862b3a6752": {
+      "text": "CAPTAIN’S CHART"
+    },
+    "core.auto.f03c9f5c5c67": {
+      "text": "BRIDGE / Ready to sail"
+    },
+    "core.auto.8a1702a7ef7d": {
+      "text": "2 · LEGEND"
+    },
+    "core.auto.92e9013cd285": {
+      "text": "Chart legend"
+    },
+    "core.auto.4f226f49771f": {
+      "text": "EXPEDITION CHART"
+    },
+    "core.auto.1213c8be5e40": {
+      "text": "Tap the chart to sail"
+    },
+    "core.auto.d21bb537725d": {
+      "text": "zoom"
+    },
+    "core.auto.87408ec8a05f": {
+      "text": "land grounds the ship"
+    },
+    "core.auto.c7a396e3dd94": {
+      "text": "dry tanks drift, then a tow south"
+    },
+    "core.auto.e598bfff1c53": {
+      "text": "YOUR VESSEL"
+    },
+    "core.auto.7b08f3593801": {
+      "text": "Research icebreaker · Canadian Coast Guard · Canada"
+    },
+    "core.auto.bd34d2a79ccd": {
+      "text": "SCIENCE POINTS"
+    },
+    "core.auto.3855ab050361": {
+      "text": "OPERATIONS LOGGED"
+    },
+    "core.auto.a02f938797fa": {
+      "text": "M³ DIESEL"
+    },
+    "core.auto.b21378411239": {
+      "text": "Diesel aboard"
+    },
+    "core.auto.0ed7444381bd": {
+      "text": "Full tanks · U bunkers at a fuel port or the tanker"
+    },
+    "core.auto.d27c7d015bcd": {
+      "text": "Q · Ship's stores"
+    },
+    "core.auto.ab33e5a2546b": {
+      "text": "Your name or team"
+    },
+    "core.auto.b3723c3c9c9d": {
+      "text": "Sign the log for the leaderboard"
+    },
+    "core.auto.fb74a9888643": {
+      "text": "The fleet"
+    },
+    "core.auto.e858374cf8c1": {
+      "text": "Finding the fleet relay…"
+    },
+    "core.auto.1daa04ce04dc": {
+      "text": "4 · Choose icebreaker"
+    },
+    "core.auto.e5729d014d78": {
+      "text": "5 · Next ship"
+    },
+    "core.auto.a4b151d0d2d3": {
+      "text": "Show my ship to the fleet"
+    },
+    "core.auto.ab67362454f7": {
+      "text": "Choose your icebreaker"
+    },
+    "core.auto.4f8ac04b9289": {
+      "text": "Ships at sea"
+    },
+    "core.auto.35dc3ca90787": {
+      "text": "Seafloor mapped"
+    },
+    "core.auto.376ebd3a95a9": {
+      "text": "Ochre hatching · ice coverage unknown; open water is charted"
+    },
+    "core.auto.acf0f757d4d2": {
+      "text": "Chart & log saved on this device"
+    },
+    "core.auto.7be9be0cf869": {
+      "text": "Ship's stores"
+    },
+    "core.auto.8ea608d8eafb": {
+      "text": "SPEND SCIENCE POINTS"
+    },
+    "core.auto.b1d4f10e711f": {
+      "text": "Expedition operations"
+    },
+    "core.auto.a79233d281f4": {
+      "text": "SHIP & HELICOPTER"
+    },
+    "core.auto.4b1782785806": {
+      "text": "Built with the crew"
+    },
+    "core.auto.cf6ffb64a388": {
+      "text": "Your research could be the next minigame. Share an idea from your corner of the ship."
+    },
+    "core.auto.730210d0ddfd": {
+      "text": "Visit the idea board ↗"
+    },
+    "core.auto.6f7842fa50df": {
+      "text": "Restart my expedition"
+    },
+    "core.auto.a20aac730804": {
+      "text": "THE CAPTAIN’S RECORD"
+    },
+    "core.auto.c8a6e8cdf569": {
+      "text": "Discovery log"
+    },
+    "core.auto.6b2c97795c1c": {
+      "text": "Latest 100 entries with position and water depth"
+    },
+    "core.auto.4888a8f073ed": {
+      "text": "THE AMUNDSEN SCIENCE ARCADE"
+    },
+    "core.auto.e2c3d88c89c1": {
+      "text": "A little curiosity. A lot of ocean."
+    },
+    "core.auto.920a83e40db5": {
+      "text": "Made together, aboard."
+    },
+    "core.auto.c93771b6c975": {
+      "text": "FROM THE LAB TO THE GAME"
+    },
+    "core.auto.93460114621b": {
+      "text": "What should we build next?"
+    },
+    "core.auto.90b923bb361e": {
+      "text": "Real research. Playful ideas. Help shape the expedition live."
+    },
+    "core.auto.03245738e467": {
+      "text": "CREW IDEA BOARD"
+    },
+    "core.auto.8736a2ba1720": {
+      "text": "Pitch a minigame"
+    },
+    "core.auto.691ca10610c3": {
+      "text": "What do you do aboard that would make a great challenge?"
+    },
+    "core.auto.0059798b7f70": {
+      "text": "(optional)"
+    },
+    "core.auto.9f8e1fe39a5b": {
+      "text": "Give it a name"
+    },
+    "core.auto.24182483b9fa": {
+      "text": "How would we play?"
+    },
+    "core.auto.6c4bc443bd62": {
+      "text": "What is the science? What does the player do? How do they win?"
+    },
+    "core.auto.1d4213c2a6d2": {
+      "text": "Send to the crew board ↗"
+    },
+    "core.auto.b6b8ed793b54": {
+      "text": "The crew’s ideas"
+    },
+    "core.auto.72021eb70e91": {
+      "text": "Connecting…"
+    },
+    "core.auto.4efbe86d61e7": {
+      "text": "SHIP’S COMPANY"
+    },
+    "core.auto.57158cf8956c": {
+      "text": "Career science points, and the best single run of every operation."
+    },
+    "core.auto.b9a01357b8f1": {
+      "text": "Updates every 10 seconds"
+    },
+    "core.auto.715b1458abbe": {
+      "text": "Overall"
+    },
+    "core.auto.7503323bc28e": {
+      "text": "Every point banked by every player, on every device."
+    },
+    "core.auto.fe846b113274": {
+      "text": "Ice thickness"
+    },
+    "core.auto.49a68f067666": {
+      "text": "Ice thickness transect"
+    },
+    "core.auto.61d47e8d1139": {
+      "text": "FIELD NOTEBOOK / ICE TRANSECT"
+    },
+    "core.auto.94426aa02ba7": {
+      "text": "Core the floe a metre at a time."
+    },
+    "core.auto.8c1273c700b2": {
+      "text": "Press D or tap to turn the Kovacs corer. Its barrel holds 1 m of core: when it fills, pull P, empty E, add an extension X and go back down until you break through."
+    },
+    "core.auto.8adc7cf3a081": {
+      "text": "FLOE SURFACE"
+    },
+    "core.auto.be47a9af980e": {
+      "text": "Core in the 1 metre barrel, centimetres"
+    },
+    "core.auto.0e2113782a3d": {
+      "text": "Drill"
+    },
+    "core.auto.1c63b19a1183": {
+      "text": "Pull corer"
+    },
+    "core.auto.8225c2eea173": {
+      "text": "Empty core"
+    },
+    "core.auto.b00dad0b78c5": {
+      "text": "Add extension"
+    },
+    "core.auto.b66d044181a0": {
+      "text": "Pull"
+    },
+    "core.auto.c6c094bc0054": {
+      "text": "Empty"
+    },
+    "core.auto.496a37e3a10b": {
+      "text": "Extend"
+    },
+    "core.auto.34004f654555": {
+      "text": "Core barrel handling"
+    },
+    "core.auto.8f902241b25c": {
+      "text": "Previous hole, left arrow"
+    },
+    "core.auto.435567b14289": {
+      "text": "← Previous"
+    },
+    "core.auto.6115f1f88a84": {
+      "text": "Next hole, right arrow"
+    },
+    "core.auto.1ace5ec63e3a": {
+      "text": "Next hole →"
+    },
+    "core.auto.c7ef1c8dc9f0": {
+      "text": "Thickness along transect"
+    },
+    "core.auto.5d05a0b327da": {
+      "text": "Ice thickness chart. Measurements are listed below."
+    },
+    "core.auto.18cd4969f033": {
+      "text": "Ice thickness (cm)"
+    },
+    "core.auto.0e7a8a7e82c9": {
+      "text": "Distance along transect (m)"
+    },
+    "core.auto.7b476e26885f": {
+      "text": "Your first breakthrough starts the chart."
+    },
+    "core.auto.9332dc34d36f": {
+      "text": "Transect holes"
+    },
+    "core.auto.91ce7974c8a9": {
+      "text": "Measurement notebook"
+    },
+    "core.auto.5114977a4f61": {
+      "text": "Completed holes"
+    },
+    "core.auto.c4061b600b85": {
+      "text": "Hole"
+    },
+    "core.auto.3e964fab7000": {
+      "text": "Distance (m)"
+    },
+    "core.auto.20346b866fba": {
+      "text": "Thickness (cm)"
+    },
+    "core.auto.c2aabf88a6cf": {
+      "text": "Core runs"
+    },
+    "core.auto.8ce3fe4bda0c": {
+      "text": "25 points per measured hole · +50 for the full transect"
+    },
+    "core.auto.1586e736de28": {
+      "text": "Hole 1 is ready. Each press turns the corer deeper."
+    },
+    "core.auto.4b58f3733b49": {
+      "text": "Finish transect"
+    },
+    "core.auto.0ce3f2e67b26": {
+      "text": "Hole {number} / {total}"
+    },
+    "core.auto.82c6b361c257": {
+      "text": "{distance} m along transect"
+    },
+    "core.auto.f69fd0766245": {
+      "text": "Thickness: {thickness} cm"
+    },
+    "core.auto.20fb824face8": {
+      "text": "Drilled: {depth} cm"
+    },
+    "core.auto.036a219d39ca": {
+      "text": "{runs} core run"
+    },
+    "core.auto.e7236bd22726": {
+      "text": "{runs} core runs"
+    },
+    "core.auto.71b848929598": {
+      "text": "Barrel {core} / {capacity} cm · {extensions} ext"
+    },
+    "core.auto.deb01b77d193": {
+      "text": "{count} / {total} logged"
+    },
+    "core.auto.f7809d7366b4": {
+      "text": "Breakthrough ✓"
+    },
+    "core.auto.22ea9c49717b": {
+      "text": "Transect saved ✓"
+    },
+    "core.auto.5c2adc0a2ab1": {
+      "text": "Finish transect · {points} pts"
+    },
+    "core.auto.338f0d3fabb0": {
+      "text": "All {count} holes logged. Finish to save {points} points."
+    },
+    "core.auto.f6d4d08c9678": {
+      "text": "Barrel full at {depth} cm and still in ice. Pull the corer (P)."
+    },
+    "core.auto.47ce77aa1399": {
+      "text": "Corer on the surface with {capacity} cm of core. Empty the barrel (E)."
+    },
+    "core.auto.d6725af155e7": {
+      "text": "Core {number} laid out on the snow. Add a 1 m extension (X) to reach {depth} cm."
+    },
+    "core.auto.ec3c19d43413": {
+      "text": "Extension {number} pinned. Cutting head back at {depth} cm. Keep drilling."
+    },
+    "core.auto.085f6dd8288c": {
+      "text": "Barrel full. Pull the corer (P) before drilling on."
+    },
+    "core.auto.33cbf0cb2c5b": {
+      "text": "Empty the core barrel (E) before drilling on."
+    },
+    "core.auto.d7d0b1eaa443": {
+      "text": "Add a 1 m extension (X) before drilling on."
+    },
+    "core.auto.3628f048c3e0": {
+      "text": "Ready to drill."
+    },
+    "core.auto.701285059392": {
+      "text": "Transect saved: {holes} holes measured · {points} points."
+    },
+    "core.auto.e08d9aa577e4": {
+      "text": "Chart stays in this tab · storage unavailable"
+    },
+    "core.auto.a9e9b1699745": {
+      "text": "ice coverage unknown · outside CIS chart"
+    },
+    "core.auto.7cb486447c7e": {
+      "text": "bergy water"
+    },
+    "core.auto.5e44ef2ec771": {
+      "text": "Nearest ice {km} km {bearing}{of} · charted ice within {limit} km needed"
+    },
+    "core.auto.5edcae099d81": {
+      "text": "No charted ice within {distance} km"
+    },
+    "core.auto.78dcc0d00d6a": {
+      "text": "No call on the radio"
+    },
+    "core.auto.dda3bb34185a": {
+      "text": "Fly inland over land for The Raft"
+    },
+    "core.auto.86b9670b2ba5": {
+      "text": "No helicopter aboard · hire one in the ship’s stores for {points} science points."
+    },
+    "core.auto.31f8d69fc844": {
+      "text": "Recover the zodiac (Y) before the helicopter lifts."
+    },
+    "core.auto.64020a4ac475": {
+      "text": "Helicopter aboard · refuelled · ship controls resumed."
+    },
+    "core.auto.5db052dfb022": {
+      "text": "No zodiac aboard · buy one in the ship’s stores."
+    },
+    "core.auto.8ee3ab240b3e": {
+      "text": "Land the helicopter (G) before the zodiac goes over the side."
+    },
+    "core.auto.b2d0883b3e40": {
+      "text": "The zodiac needs open water alongside · the ship sits in the pack."
+    },
+    "core.auto.76998081c0c5": {
+      "text": "Zodiac hoisted aboard · ship controls resumed."
+    },
+    "core.auto.8672857a6c8c": {
+      "text": "No AUV aboard · buy one in the ship’s stores."
+    },
+    "core.auto.0636c2faefa7": {
+      "text": "AUV stood down."
+    },
+    "core.auto.ef9b1d25babc": {
+      "text": "No clear water that way for the AUV."
+    },
+    "core.auto.255aa6efa939": {
+      "text": "Bingo fuel · the helicopter turns for the ship."
+    },
+    "core.auto.da6116b625cf": {
+      "text": "Tanks are full."
+    },
+    "core.auto.828c1e6f162f": {
+      "text": "Recover the helicopter or zodiac before bunkering."
+    },
+    "core.auto.bfdfb750a290": {
+      "text": "That is land. The ship stays afloat."
+    },
+    "core.auto.6891c2c15399": {
+      "text": "No sea route there. Holding short of the coast."
+    },
+    "core.auto.eae961851e97": {
+      "text": "Bingo fuel · the helicopter is returning to the ship."
+    },
+    "core.auto.b6e978f304ef": {
+      "text": "Shore ahead · the zodiac holds off the beach."
+    },
+    "core.auto.cd594e6356c8": {
+      "text": "Ice ahead · the zodiac cannot enter the pack."
+    },
+    "core.auto.e5bf51c41bbc": {
+      "text": "The chart is still unrolling. One moment."
+    },
+    "core.auto.1a2a44b5c8e9": {
+      "text": "Unrolling the chart…"
+    },
+    "core.auto.7c0b08b92453": {
+      "text": "Drawing the chart…"
+    },
+    "core.auto.052cc4082b80": {
+      "text": "This operation is unavailable."
+    },
+    "core.auto.dc5d528db77d": {
+      "text": "Could not open this operation. Please try again."
+    },
+    "core.auto.d976b5eb78d7": {
+      "text": "A blank log, an open sea. Complete an operation anywhere afloat to leave your first mark."
+    },
+    "core.auto.1d951e640103": {
+      "text": "Alarms · none this voyage"
+    },
+    "core.auto.704ab5bcaec9": {
+      "text": "Radio · no call · listening on channel 16"
+    },
+    "core.auto.164308988ac8": {
+      "text": "G · Hire helicopter"
+    },
+    "core.auto.8c71d3bfccec": {
+      "text": "G · Launch helicopter"
+    },
+    "core.auto.970d163c27e2": {
+      "text": "G · Return to ship"
+    },
+    "core.auto.431f3a06468d": {
+      "text": "Y · Launch zodiac"
+    },
+    "core.auto.a8a035fa5216": {
+      "text": "Y · Recover zodiac"
+    },
+    "core.auto.d78f1dd07796": {
+      "text": "1 · Send AUV"
+    },
+    "core.auto.ae020fff75f7": {
+      "text": "U · Bunker"
+    },
+    "core.auto.40976a1a6f1f": {
+      "text": "Sign the log with your name to post scores to the leaderboard."
+    },
+    "core.auto.e6a7021affbd": {
+      "text": "No scores yet. Sign the log on the expedition page and complete an operation."
+    },
+    "core.auto.51ce0a3fcf7d": {
+      "text": "Nobody has logged this one yet."
+    },
+    "core.auto.3635711ce224": {
+      "text": "Cannot reach the server. Retrying…"
+    },
+    "core.auto.2c57dcead783": {
+      "text": "Updates every 5 seconds"
+    },
+    "core.auto.b8ed5279e897": {
+      "text": "Sending…"
+    },
+    "core.auto.1fc2f4dc641a": {
+      "text": "Could not save comment"
+    },
+    "core.auto.757c6565d28e": {
+      "text": "Could not save idea"
+    },
+    "core.auto.d8a088ad551a": {
+      "text": "Connection lost; your comment is still here."
+    },
+    "core.auto.aa3e653bb0a1": {
+      "text": "Connection lost. Your draft is still here; try again."
+    },
+    "core.auto.c5a9b2f04a6e": {
+      "text": "Your idea is on the crew board. Thank you!"
+    },
+    "core.auto.97b06c053d20": {
+      "text": "The next adventure starts with an idea. Be the first to share yours."
+    },
+    "core.auto.cae1e757ba0f": {
+      "text": "Being built"
+    },
+    "core.auto.c39059141ced": {
+      "text": "In review"
+    },
+    "core.auto.63734772475c": {
+      "text": "In the game"
+    },
+    "core.auto.5cdc36766f16": {
+      "text": "Build stalled"
+    },
+    "core.auto.051356596cd3": {
+      "text": "Steam to"
+    },
+    "core.auto.3646d09cf2d4": {
+      "text": "Fleet relay unreachable · sailing solo, retrying"
+    },
+    "core.auto.08b48ddb0c7f": {
+      "text": "You are the only ship at sea"
+    },
+    "core.auto.b4d29945a382": {
+      "text": "Your ship is back on the fleet’s charts."
+    },
+    "core.auto.c110e0bfeeda": {
+      "text": "Your ship is off the fleet’s charts · you still see theirs."
+    },
+    "core.auto.7cf32eefc446": {
+      "text": "Helicopter hire"
+    },
+    "core.auto.fbe598869f80": {
+      "text": "Bell 429 and pilot · G flies to Ice Patrol and The Raft"
+    },
+    "core.auto.6ebcd2a68574": {
+      "text": "Zodiac"
+    },
+    "core.auto.dc6127577d02": {
+      "text": "Y launches a fast boat · open water only · sounds its track · 30 km tether"
+    },
+    "core.auto.3b6811ea0b19": {
+      "text": "AUV"
+    },
+    "core.auto.c34aaa5d494a": {
+      "text": "1 sends it on a straight run of up to 60 km · 3 km swath, then back to its launch point"
+    },
+    "core.auto.cfa5d96bbce4": {
+      "text": "Ice-strengthened hull"
+    },
+    "core.auto.f2b82057adb0": {
+      "text": "Keeps more speed in the pack · half the extra burn in ice"
+    },
+    "core.auto.dc4d3f6ffd6b": {
+      "text": "Extra bunker tank"
+    },
+    "core.auto.9a46382908bb": {
+      "text": "+800 m³ of diesel"
+    },
+    "core.auto.600cc1e136ca": {
+      "text": "Wide-swath multibeam"
+    },
+    "core.auto.6fa160d2d2e3": {
+      "text": "Sonar fan 40% wider · more cells per kilometre"
+    },
+    "core.auto.dd15cecd6792": {
+      "text": "Fast winch"
+    },
+    "core.auto.9e3dffaa93c3": {
+      "text": "CTD casts earn 25% more"
+    },
+    "core.auto.9b9df0d68155": {
+      "text": "Radio call"
+    },
+    "core.auto.35cf820e07d0": {
+      "text": "Bunkered"
+    },
+    "core.auto.85c7786e1e46": {
+      "text": "Ran aground"
+    },
+    "core.auto.5f52af03676c": {
+      "text": "Towed"
+    },
+    "core.auto.c8cbc45ccbe6": {
+      "text": "Wreck datum"
+    },
+    "core.auto.a97cc42c40f3": {
+      "text": "Mayday"
+    },
+    "core.auto.833f9894eecb": {
+      "text": "Steaming to"
+    },
+    "core.auto.934d83a750af": {
+      "text": "{core} of {capacity} centimetres of core, hole {depth} centimetres deep"
+    },
+    "core.auto.e26dfeaf8eda": {
+      "text": "{core} of {capacity} centimetres of core, hole {depth} centimetres deep, breakthrough"
+    },
+    "core.auto.14af9632a9a7": {
+      "text": "Hole {number}, {distance} metres, {thickness} centimetres measured"
+    },
+    "core.auto.89628e1d5c54": {
+      "text": "Hole {number}, {distance} metres, in progress"
+    },
+    "core.auto.1b53ab9eae60": {
+      "text": "Hole {number}, {distance} metres, undrilled"
+    },
+    "core.auto.1c035d55c855": {
+      "text": "{distance} m: {thickness} cm"
+    },
+    "core.auto.913576734776": {
+      "text": "Breakthrough! {thickness} cm at {distance} m in {runs} core run. Choose another hole or finish your transect."
+    },
+    "core.auto.ea424e0d01e6": {
+      "text": "Breakthrough! {thickness} cm at {distance} m in {runs} core runs. Choose another hole or finish your transect."
+    },
+    "core.auto.7116620738ed": {
+      "text": "Hole {number}: {thickness} cm logged at {distance} m."
+    },
+    "core.auto.3c3d03f61735": {
+      "text": "Hole {number}, {distance} m. Ready to drill."
+    },
+    "core.auto.f56e88a96396": {
+      "text": "Hole {number}, {distance} m. Resume at {depth} cm: {action}."
+    },
+    "core.auto.2b6f8e42363f": {
+      "text": "drill on"
+    },
+    "core.auto.879d7e9d1ff6": {
+      "text": "pull the corer"
+    },
+    "core.auto.075015da63b2": {
+      "text": "empty the barrel"
+    },
+    "core.auto.87bf3fe24176": {
+      "text": "add an extension"
+    },
+    "core.auto.428290b7bcee": {
+      "text": "Press {drill} or tap to turn the Kovacs corer. Its barrel holds 1 m of core: when it fills, pull {pull}, empty {empty}, add an extension {extend} and go back down until you break through."
+    },
+    "core.shell.hireIcePatrol": {
+      "text": "Hire the helicopter in the ship’s stores (Q) for Ice Patrol"
+    },
+    "core.shell.launchIcePatrol": {
+      "text": "Launch the helicopter (G) for Ice Patrol"
+    },
+    "core.shell.hireRaft": {
+      "text": "Hire the helicopter in the ship’s stores (Q) for The Raft"
+    },
+    "core.shell.launchRaft": {
+      "text": "Launch the helicopter (G) for The Raft"
+    },
+    "core.shell.ofHelicopter": {
+      "text": " of the helicopter"
     }
   }
 }

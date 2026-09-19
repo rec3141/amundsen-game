@@ -1,9 +1,10 @@
-# Canadian French pilot
+# Canadian French game interface
 
-The CTD notebook and its activity entry support English and Canadian French.
-The rest of the expedition and other minigames remain English. Language pickers
-are available in the page header and operation dialog. Changing language during
-a cast preserves pressure, bottles, phase, score, and the one-award rule.
+The expedition shell, ship and fleet controls, stores, log, CTD and ice notebooks,
+and every crew minigame support English and Canadian French. The selected
+`editorial-fr-ca-v2` profile covers all 1,556 source messages. The original
+68-message `editorial-fr-ca-v1` CTD pilot remains available as an independent,
+immutable candidate.
 
 ## Catalogs and translator variants
 
@@ -16,34 +17,27 @@ a cast preserves pressure, bottles, phase, score, and the one-award rule.
   standalone English fallback; `--check` verifies checked-in outputs.
 
 Missing or stale source variants fall back to English; mismatched placeholders
-fail compilation. Catalog provenance records the profile and source SHA-256.
-All 68 pilot keys have an editorial Canadian French candidate. This is a
-lead-assistant translation, not output from the wiki's Gemma profile.
-Review status is metadata; selection is explicit and is not an automatic
-quality gate.
+fail compilation. Catalog provenance records the selected profile and source
+SHA-256. Review status is metadata; selection is explicit and is not an
+automatic quality gate.
 
-The runtime is a standalone copy of Underway's text-only localization runtime.
-It uses `?lang=en|fr-CA`, JSON local storage key `uw:locale`, and
-`uw:localechange` events. The dashboard and game share preferences on the same
-origin. Browser auto-detection is intentionally off; English is the fallback.
-No remote language service is required.
+The standalone runtime uses `?lang=en|fr-CA`, JSON local-storage key
+`uw:locale`, and `uw:localechange` events. The dashboard and game share the
+preference on the same origin. Browser auto-detection is intentionally off;
+English is the fallback. Exact source messages and parameterized source
+patterns can repaint text-only DOM content without rebuilding a game. Canvas
+games explicitly rerender their labels on a locale change.
 
-CTD display strings are translated separately from measurement channel keys.
-Units, data files, scientific algorithms, keyboard codes and persisted score
-payload fields stay unchanged. Human-readable log titles are saved in the
-language used when a cast finishes; historical log entries are not rewritten.
-Translated markup is escaped; fixed HTML structure remains in code.
+Translated markup is never injected as HTML. Scientific values, source data,
+units, keyboard codes, game mechanics, saved field names and scoring remain
+unchanged. Switching locale while an operation is open preserves its state and
+one-award guard. Human-readable log titles are saved in the language used when
+an operation finishes; historical log entries are not rewritten.
 
 ## Verification and publishing
 
-The existing `tests/test_ctd.mjs` checks pass under Node 22 (8 checks), including
-bundled measurement validation and one award across repeat casts. An ad hoc
-real-browser smoke also completed a cast with the actual bundled data, switched
-French/English during ascent, checked pressure and score preservation, translated
-the result, and verified cleanup. No new automated test files were added.
-
-Deploy from committed source. The ship's publisher exports its local HEAD every
-five minutes; GitHub changes alone do not update that checkout. Pull the updated
-main branch aboard before publishing, or a manual public deployment may be
-overwritten by the ship's next scheduled export. Keep targeted backups and
-publish added dependencies before the changed HTML and game modules.
+Run `python3 tools/build-ui-catalog.py --check`, the existing Node/Python checks,
+and a browser smoke in both locales. No localization-specific automated test
+files are added. Deploy from committed source. The ship publisher exports its
+local HEAD every five minutes; pull the updated main branch aboard before
+publishing or a manual public deployment may be overwritten by the next export.

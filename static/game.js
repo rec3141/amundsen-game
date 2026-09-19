@@ -1,4 +1,4 @@
-import { t } from './i18n-text.js';
+import { t, text as localize } from './i18n-text.js';
 import { publicMirror } from './site.js';
 import { minigames, activities } from './minigames/registry.js';
 import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, MAP_KM2, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
@@ -79,7 +79,7 @@ const m3 = value => value < 10 ? value.toFixed(1) : Math.round(value).toLocaleSt
 // Nothing is written until the world has placed the ship, so a slow load cannot overwrite a saved voyage.
 function save() { if (!world) return; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { $('#save-status').textContent = 'Chart stays in this tab · storage unavailable'; } }
 let toastTimer;
-function toast(message, long = false, klaxon = false) { $('#toast').textContent = message; $('#toast').classList.toggle('klaxon', klaxon); $('#toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('show'), long ? 7000 : 3500); }
+function toast(message, long = false, klaxon = false) { $('#toast').textContent = localize(message); $('#toast').classList.toggle('klaxon', klaxon); $('#toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('show'), long ? 7000 : 3500); }
 function showPage(name) { if (publicMirror && name !== 'game') return; page = name; keys.clear(); waypoints = []; $('#game-page').hidden = name !== 'game'; $('#ideas-page').hidden = name !== 'ideas'; $('#board-page').hidden = name !== 'board'; document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.page === name)); if (name === 'ideas') loadIdeas(); else if (name === 'board') loadLeaderboard(); else resize(); }
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => showPage(b.dataset.page));
 $('#suggest-shortcut').onclick = $('#crew-link').onclick = () => showPage('ideas');
@@ -130,7 +130,7 @@ const maydayU = () => state.mayday.x * world.cols, maydayV = () => state.mayday.
 const maydayRange = () => ({ km: kmBetween(shipU(), shipV(), maydayU(), maydayV()), bearing: bearing(shipU(), shipV(), maydayU(), maydayV()) });
 const maydayLine = () => { const r = maydayRange(); return `Answer the Mayday from ${state.mayday.name} · ${Math.round(r.km)} km ${r.bearing}`; };
 function unavailableReason(activity) {
-  if (activity.id === 'patrol') return !state.upgrades.helicopter ? 'Hire the helicopter in the ship’s stores (Q) for Ice Patrol' : !helicopter ? 'Launch the helicopter (G) for Ice Patrol' : !nearIce(pilotU(), pilotV()) ? iceDistance(pilotU(), pilotV(), ' of the helicopter') : '';
+  if (activity.id === 'patrol') return !state.upgrades.helicopter ? 'Hire the helicopter in the ship’s stores (Q) for Ice Patrol' : !helicopter ? 'Launch the helicopter (G) for Ice Patrol' : !nearIce(pilotU(), pilotV()) ? iceDistance(pilotU(), pilotV(), localize(' of the helicopter')) : '';
   if (activity.id === 'raft') return !state.upgrades.helicopter ? 'Hire the helicopter in the ship’s stores (Q) for The Raft' : !helicopter ? 'Launch the helicopter (G) for The Raft' : !world.isLand(pilotU(), pilotV()) ? 'Fly inland over land for The Raft' : '';
   if (activity.id === 'sar') return !state.mayday ? 'No call on the radio' : maydayRange().km > SAR_KM ? maydayLine() : '';
   return activity.requires === 'ice' && !nearIce(shipU(), shipV()) ? iceDistance(shipU(), shipV()) : '';
@@ -674,6 +674,7 @@ function drawGraticule(z, u0, v0) {
 import { drawShip as shipSprite, drawHelicopter as helicopterSprite, drawZodiac as zodiacSprite, drawAUV as auvSprite, drawTanker as tankerSprite } from './sprites.js';
 function drawShip(x, y, px) { shipSprite(ctx, x, y, angle, px); }
 function label(text, x, y, colour = '#1b2a2c', font = 'bold 11px sans-serif') {
+  text = localize(text);
   ctx.font = font; ctx.lineWidth = 3; ctx.strokeStyle = '#ddcca7cc'; ctx.strokeText(text, x, y); ctx.fillStyle = colour; ctx.fillText(text, x, y);
 }
 // A fuel port's berth: a teal drop, gold with a ring when the ship can bunker there.
@@ -743,7 +744,7 @@ function buildLegend() {
     const row = el('span', 'legend-item'), swatch = document.createElement('canvas'); swatch.width = swatch.height = 44;
     const c = swatch.getContext('2d'); c.scale(2, 2); c.translate(11, 11);
     if (item.id === 'datum') drawWreckDatum(c, false); else if (item.id === 'mayday') drawMayday(c, .25); else if (item.id === 'target') drawTargetRing(c, 8); else drawMark(c, item.id, 0, 0);
-    row.append(swatch, el('span', '', item.name)); $('#legend').append(row);
+    row.append(swatch, el('span', '', localize(item.name))); $('#legend').append(row);
   }
 }
 function toggleLegend(open = !!$('#legend').hidden) { $('#legend').hidden = !open; $('#legend-toggle').setAttribute('aria-expanded', String(open)); }
@@ -751,7 +752,7 @@ $('#legend-toggle').onclick = () => toggleLegend();
 function drawLoading() {
   ctx.fillStyle = '#ddcca7'; ctx.fillRect(0, 0, width, height);
   ctx.fillStyle = '#6a5d42'; ctx.font = 'italic 16px Georgia'; ctx.textAlign = 'center';
-  ctx.fillText(world ? 'Drawing the chart…' : 'Unrolling the chart…', width / 2, height / 2 - 8);
+  ctx.fillText(localize(world ? 'Drawing the chart…' : 'Unrolling the chart…'), width / 2, height / 2 - 8);
   ctx.fillStyle = '#9c7a3f'; ctx.fillRect(width / 2 - 90, height / 2 + 8, 180 * progress, 4); ctx.textAlign = 'left';
 }
 function draw() {

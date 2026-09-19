@@ -4,6 +4,402 @@ window.UW_UI_CATALOG = {
     "en": {
       "label": "English",
       "messages": {
+        "activity.crew2.description": "Read the radar, then go drill it",
+        "activity.crew3.description": "Classify ice from deck to satellite",
+        "activity.crew4.description": "Read the ice from a helicopter",
+        "activity.crew5.description": "Core the shelf to find the methane vent",
+        "activity.crew6.description": "Suit up and reach the rosette clean",
+        "activity.crew7.description": "Fly the old floes for lost gear",
+        "activity.crew8.description": "Core an uplifted lake bed",
+        "activity.crew9.description": "Tow a net through keels and boulders",
+        "core.auto.0059798b7f70": "(optional)",
+        "core.auto.022127539fb5": "FREE VOYAGE",
+        "core.auto.03245738e467": "CREW IDEA BOARD",
+        "core.auto.036a219d39ca": "{runs} core run",
+        "core.auto.051356596cd3": "Steam to",
+        "core.auto.052cc4082b80": "This operation is unavailable.",
+        "core.auto.0636c2faefa7": "AUV stood down.",
+        "core.auto.075015da63b2": "empty the barrel",
+        "core.auto.085f6dd8288c": "Barrel full. Pull the corer (P) before drilling on.",
+        "core.auto.08b48ddb0c7f": "You are the only ship at sea",
+        "core.auto.0ce3f2e67b26": "Hole {number} / {total}",
+        "core.auto.0e2113782a3d": "Drill",
+        "core.auto.0e7a8a7e82c9": "Distance along transect (m)",
+        "core.auto.0ed7444381bd": "Full tanks · U bunkers at a fuel port or the tanker",
+        "core.auto.1213c8be5e40": "Tap the chart to sail",
+        "core.auto.14af9632a9a7": "Hole {number}, {distance} metres, {thickness} centimetres measured",
+        "core.auto.1586e736de28": "Hole 1 is ready. Each press turns the corer deeper.",
+        "core.auto.164308988ac8": "G · Hire helicopter",
+        "core.auto.18cd4969f033": "Ice thickness (cm)",
+        "core.auto.1a2a44b5c8e9": "Unrolling the chart…",
+        "core.auto.1ace5ec63e3a": "Next hole →",
+        "core.auto.1b53ab9eae60": "Hole {number}, {distance} metres, undrilled",
+        "core.auto.1c035d55c855": "{distance} m: {thickness} cm",
+        "core.auto.1c63b19a1183": "Pull corer",
+        "core.auto.1d4213c2a6d2": "Send to the crew board ↗",
+        "core.auto.1d951e640103": "Alarms · none this voyage",
+        "core.auto.1daa04ce04dc": "4 · Choose icebreaker",
+        "core.auto.1fc2f4dc641a": "Could not save comment",
+        "core.auto.20346b866fba": "Thickness (cm)",
+        "core.auto.20fb824face8": "Drilled: {depth} cm",
+        "core.auto.22ea9c49717b": "Transect saved ✓",
+        "core.auto.24182483b9fa": "How would we play?",
+        "core.auto.255aa6efa939": "Bingo fuel · the helicopter turns for the ship.",
+        "core.auto.2b6f8e42363f": "drill on",
+        "core.auto.2c57dcead783": "Updates every 5 seconds",
+        "core.auto.311bc6ca8cae": "EXPEDITION / FIELD SEASON 2026",
+        "core.auto.31b471215872": "Leaderboard",
+        "core.auto.31f8d69fc844": "Recover the zodiac (Y) before the helicopter lifts.",
+        "core.auto.338f0d3fabb0": "All {count} holes logged. Finish to save {points} points.",
+        "core.auto.33cbf0cb2c5b": "Empty the core barrel (E) before drilling on.",
+        "core.auto.34004f654555": "Core barrel handling",
+        "core.auto.35cf820e07d0": "Bunkered",
+        "core.auto.35dc3ca90787": "Seafloor mapped",
+        "core.auto.3628f048c3e0": "Ready to drill.",
+        "core.auto.3635711ce224": "Cannot reach the server. Retrying…",
+        "core.auto.3646d09cf2d4": "Fleet relay unreachable · sailing solo, retrying",
+        "core.auto.376ebd3a95a9": "Ochre hatching · ice coverage unknown; open water is charted",
+        "core.auto.3855ab050361": "OPERATIONS LOGGED",
+        "core.auto.3b6811ea0b19": "AUV",
+        "core.auto.3c3d03f61735": "Hole {number}, {distance} m. Ready to drill.",
+        "core.auto.3e964fab7000": "Distance (m)",
+        "core.auto.40976a1a6f1f": "Sign the log with your name to post scores to the leaderboard.",
+        "core.auto.428290b7bcee": "Press {drill} or tap to turn the Kovacs corer. Its barrel holds 1 m of core: when it fills, pull {pull}, empty {empty}, add an extension {extend} and go back down until you break through.",
+        "core.auto.431f3a06468d": "Y · Launch zodiac",
+        "core.auto.435567b14289": "← Previous",
+        "core.auto.47ce77aa1399": "Corer on the surface with {capacity} cm of core. Empty the barrel (E).",
+        "core.auto.47d1836b94de": "ABOARD & OFFLINE-READY",
+        "core.auto.4888a8f073ed": "THE AMUNDSEN SCIENCE ARCADE",
+        "core.auto.496a37e3a10b": "Extend",
+        "core.auto.49a68f067666": "Ice thickness transect",
+        "core.auto.4b1782785806": "Built with the crew",
+        "core.auto.4b58f3733b49": "Finish transect",
+        "core.auto.4efbe86d61e7": "SHIP’S COMPANY",
+        "core.auto.4f226f49771f": "EXPEDITION CHART",
+        "core.auto.4f8ac04b9289": "Ships at sea",
+        "core.auto.5114977a4f61": "Completed holes",
+        "core.auto.51ce0a3fcf7d": "Nobody has logged this one yet.",
+        "core.auto.5524333340a5": "Your ship. Our expedition.",
+        "core.auto.57158cf8956c": "Career science points, and the best single run of every operation.",
+        "core.auto.5a2220267bcc": "The expedition",
+        "core.auto.5c2adc0a2ab1": "Finish transect · {points} pts",
+        "core.auto.5cdc36766f16": "Build stalled",
+        "core.auto.5d05a0b327da": "Ice thickness chart. Measurements are listed below.",
+        "core.auto.5db052dfb022": "No zodiac aboard · buy one in the ship’s stores.",
+        "core.auto.5e44ef2ec771": "Nearest ice {km} km {bearing}{of} · charted ice within {limit} km needed",
+        "core.auto.5edcae099d81": "No charted ice within {distance} km",
+        "core.auto.5f52af03676c": "Towed",
+        "core.auto.600cc1e136ca": "Wide-swath multibeam",
+        "core.auto.6115f1f88a84": "Next hole, right arrow",
+        "core.auto.61d47e8d1139": "FIELD NOTEBOOK / ICE TRANSECT",
+        "core.auto.63734772475c": "In the game",
+        "core.auto.64020a4ac475": "Helicopter aboard · refuelled · ship controls resumed.",
+        "core.auto.6891c2c15399": "No sea route there. Holding short of the coast.",
+        "core.auto.691ca10610c3": "What do you do aboard that would make a great challenge?",
+        "core.auto.6b2c97795c1c": "Latest 100 entries with position and water depth",
+        "core.auto.6c4bc443bd62": "What is the science? What does the player do? How do they win?",
+        "core.auto.6ebcd2a68574": "Zodiac",
+        "core.auto.6f7842fa50df": "Restart my expedition",
+        "core.auto.6fa160d2d2e3": "Sonar fan 40% wider · more cells per kilometre",
+        "core.auto.701285059392": "Transect saved: {holes} holes measured · {points} points.",
+        "core.auto.704ab5bcaec9": "Radio · no call · listening on channel 16",
+        "core.auto.7116620738ed": "Hole {number}: {thickness} cm logged at {distance} m.",
+        "core.auto.715b1458abbe": "Overall",
+        "core.auto.71b848929598": "Barrel {core} / {capacity} cm · {extensions} ext",
+        "core.auto.72021eb70e91": "Connecting…",
+        "core.auto.730210d0ddfd": "Visit the idea board ↗",
+        "core.auto.7503323bc28e": "Every point banked by every player, on every device.",
+        "core.auto.757c6565d28e": "Could not save idea",
+        "core.auto.76998081c0c5": "Zodiac hoisted aboard · ship controls resumed.",
+        "core.auto.78dcc0d00d6a": "No call on the radio",
+        "core.auto.7b08f3593801": "Research icebreaker · Canadian Coast Guard · Canada",
+        "core.auto.7b476e26885f": "Your first breakthrough starts the chart.",
+        "core.auto.7be9be0cf869": "Ship's stores",
+        "core.auto.7c0b08b92453": "Drawing the chart…",
+        "core.auto.7cb486447c7e": "bergy water",
+        "core.auto.7cf32eefc446": "Helicopter hire",
+        "core.auto.8225c2eea173": "Empty core",
+        "core.auto.828c1e6f162f": "Recover the helicopter or zodiac before bunkering.",
+        "core.auto.82c6b361c257": "{distance} m along transect",
+        "core.auto.833f9894eecb": "Steaming to",
+        "core.auto.85c7786e1e46": "Ran aground",
+        "core.auto.8672857a6c8c": "No AUV aboard · buy one in the ship’s stores.",
+        "core.auto.86b9670b2ba5": "No helicopter aboard · hire one in the ship’s stores for {points} science points.",
+        "core.auto.8736a2ba1720": "Pitch a minigame",
+        "core.auto.87408ec8a05f": "land grounds the ship",
+        "core.auto.879d7e9d1ff6": "pull the corer",
+        "core.auto.87bf3fe24176": "add an extension",
+        "core.auto.89628e1d5c54": "Hole {number}, {distance} metres, in progress",
+        "core.auto.8a1702a7ef7d": "2 · LEGEND",
+        "core.auto.8adc7cf3a081": "FLOE SURFACE",
+        "core.auto.8c1273c700b2": "Press D or tap to turn the Kovacs corer. Its barrel holds 1 m of core: when it fills, pull P, empty E, add an extension X and go back down until you break through.",
+        "core.auto.8c71d3bfccec": "G · Launch helicopter",
+        "core.auto.8ce3fe4bda0c": "25 points per measured hole · +50 for the full transect",
+        "core.auto.8ea608d8eafb": "SPEND SCIENCE POINTS",
+        "core.auto.8ee3ab240b3e": "Land the helicopter (G) before the zodiac goes over the side.",
+        "core.auto.8f902241b25c": "Previous hole, left arrow",
+        "core.auto.90b923bb361e": "Real research. Playful ideas. Help shape the expedition live.",
+        "core.auto.913576734776": "Breakthrough! {thickness} cm at {distance} m in {runs} core run. Choose another hole or finish your transect.",
+        "core.auto.91ce7974c8a9": "Measurement notebook",
+        "core.auto.920a83e40db5": "Made together, aboard.",
+        "core.auto.92e9013cd285": "Chart legend",
+        "core.auto.9332dc34d36f": "Transect holes",
+        "core.auto.93460114621b": "What should we build next?",
+        "core.auto.934d83a750af": "{core} of {capacity} centimetres of core, hole {depth} centimetres deep",
+        "core.auto.94426aa02ba7": "Core the floe a metre at a time.",
+        "core.auto.94862b3a6752": "CAPTAIN’S CHART",
+        "core.auto.970d163c27e2": "G · Return to ship",
+        "core.auto.97b06c053d20": "The next adventure starts with an idea. Be the first to share yours.",
+        "core.auto.9a46382908bb": "+800 m³ of diesel",
+        "core.auto.9b9df0d68155": "Radio call",
+        "core.auto.9e3dffaa93c3": "CTD casts earn 25% more",
+        "core.auto.9f8e1fe39a5b": "Give it a name",
+        "core.auto.a02f938797fa": "M³ DIESEL",
+        "core.auto.a20aac730804": "THE CAPTAIN’S RECORD",
+        "core.auto.a4b151d0d2d3": "Show my ship to the fleet",
+        "core.auto.a79233d281f4": "SHIP & HELICOPTER",
+        "core.auto.a8a035fa5216": "Y · Recover zodiac",
+        "core.auto.a97cc42c40f3": "Mayday",
+        "core.auto.a9e9b1699745": "ice coverage unknown · outside CIS chart",
+        "core.auto.aa3e653bb0a1": "Connection lost. Your draft is still here; try again.",
+        "core.auto.ab33e5a2546b": "Your name or team",
+        "core.auto.ab67362454f7": "Choose your icebreaker",
+        "core.auto.acf0f757d4d2": "Chart & log saved on this device",
+        "core.auto.ae020fff75f7": "U · Bunker",
+        "core.auto.b00dad0b78c5": "Add extension",
+        "core.auto.b1d4f10e711f": "Expedition operations",
+        "core.auto.b21378411239": "Diesel aboard",
+        "core.auto.b2d0883b3e40": "The zodiac needs open water alongside · the ship sits in the pack.",
+        "core.auto.b3723c3c9c9d": "Sign the log for the leaderboard",
+        "core.auto.b4d29945a382": "Your ship is back on the fleet’s charts.",
+        "core.auto.b66d044181a0": "Pull",
+        "core.auto.b6b8ed793b54": "The crew’s ideas",
+        "core.auto.b6e978f304ef": "Shore ahead · the zodiac holds off the beach.",
+        "core.auto.b8ed5279e897": "Sending…",
+        "core.auto.b9a01357b8f1": "Updates every 10 seconds",
+        "core.auto.bd34d2a79ccd": "SCIENCE POINTS",
+        "core.auto.be47a9af980e": "Core in the 1 metre barrel, centimetres",
+        "core.auto.bfdfb750a290": "That is land. The ship stays afloat.",
+        "core.auto.c110e0bfeeda": "Your ship is off the fleet’s charts · you still see theirs.",
+        "core.auto.c2aabf88a6cf": "Core runs",
+        "core.auto.c34aaa5d494a": "1 sends it on a straight run of up to 60 km · 3 km swath, then back to its launch point",
+        "core.auto.c39059141ced": "In review",
+        "core.auto.c4061b600b85": "Hole",
+        "core.auto.c5a9b2f04a6e": "Your idea is on the crew board. Thank you!",
+        "core.auto.c6c094bc0054": "Empty",
+        "core.auto.c7a396e3dd94": "dry tanks drift, then a tow south",
+        "core.auto.c7ef1c8dc9f0": "Thickness along transect",
+        "core.auto.c8a6e8cdf569": "Discovery log",
+        "core.auto.c8cbc45ccbe6": "Wreck datum",
+        "core.auto.c93771b6c975": "FROM THE LAB TO THE GAME",
+        "core.auto.cae1e757ba0f": "Being built",
+        "core.auto.cd594e6356c8": "Ice ahead · the zodiac cannot enter the pack.",
+        "core.auto.cf6ffb64a388": "Your research could be the next minigame. Share an idea from your corner of the ship.",
+        "core.auto.cfa5d96bbce4": "Ice-strengthened hull",
+        "core.auto.d21bb537725d": "zoom",
+        "core.auto.d27c7d015bcd": "Q · Ship's stores",
+        "core.auto.d62efd50cc00": "Crew ideas",
+        "core.auto.d6725af155e7": "Core {number} laid out on the snow. Add a 1 m extension (X) to reach {depth} cm.",
+        "core.auto.d78f1dd07796": "1 · Send AUV",
+        "core.auto.d7d0b1eaa443": "Add a 1 m extension (X) before drilling on.",
+        "core.auto.d8a088ad551a": "Connection lost; your comment is still here.",
+        "core.auto.d976b5eb78d7": "A blank log, an open sea. Complete an operation anywhere afloat to leave your first mark.",
+        "core.auto.da6116b625cf": "Tanks are full.",
+        "core.auto.dc4d3f6ffd6b": "Extra bunker tank",
+        "core.auto.dc5d528db77d": "Could not open this operation. Please try again.",
+        "core.auto.dc6127577d02": "Y launches a fast boat · open water only · sounds its track · 30 km tether",
+        "core.auto.dd15cecd6792": "Fast winch",
+        "core.auto.dda3bb34185a": "Fly inland over land for The Raft",
+        "core.auto.deb01b77d193": "{count} / {total} logged",
+        "core.auto.e08d9aa577e4": "Chart stays in this tab · storage unavailable",
+        "core.auto.e26dfeaf8eda": "{core} of {capacity} centimetres of core, hole {depth} centimetres deep, breakthrough",
+        "core.auto.e2c3d88c89c1": "A little curiosity. A lot of ocean.",
+        "core.auto.e34791dded3e": "Follow your curiosity. Unfold the chart. Leave a trail of discoveries.",
+        "core.auto.e5729d014d78": "5 · Next ship",
+        "core.auto.e598bfff1c53": "YOUR VESSEL",
+        "core.auto.e5bf51c41bbc": "The chart is still unrolling. One moment.",
+        "core.auto.e6a7021affbd": "No scores yet. Sign the log on the expedition page and complete an operation.",
+        "core.auto.e7236bd22726": "{runs} core runs",
+        "core.auto.e858374cf8c1": "Finding the fleet relay…",
+        "core.auto.ea424e0d01e6": "Breakthrough! {thickness} cm at {distance} m in {runs} core runs. Choose another hole or finish your transect.",
+        "core.auto.eae961851e97": "Bingo fuel · the helicopter is returning to the ship.",
+        "core.auto.ec3c19d43413": "Extension {number} pinned. Cutting head back at {depth} cm. Keep drilling.",
+        "core.auto.ef9b1d25babc": "No clear water that way for the AUV.",
+        "core.auto.f03c9f5c5c67": "BRIDGE / Ready to sail",
+        "core.auto.f2b82057adb0": "Keeps more speed in the pack · half the extra burn in ice",
+        "core.auto.f56e88a96396": "Hole {number}, {distance} m. Resume at {depth} cm: {action}.",
+        "core.auto.f64d0e6f2738": "＋ Suggest a minigame",
+        "core.auto.f69fd0766245": "Thickness: {thickness} cm",
+        "core.auto.f6d4d08c9678": "Barrel full at {depth} cm and still in ice. Pull the corer (P).",
+        "core.auto.f7809d7366b4": "Breakthrough ✓",
+        "core.auto.fb74a9888643": "The fleet",
+        "core.auto.fbe598869f80": "Bell 429 and pilot · G flies to Ice Patrol and The Raft",
+        "core.auto.fe846b113274": "Ice thickness",
+        "core.auto.ff3491733988": "SCIENCE IS AN ADVENTURE",
+        "core.shell.hireIcePatrol": "Hire the helicopter in the ship’s stores (Q) for Ice Patrol",
+        "core.shell.hireRaft": "Hire the helicopter in the ship’s stores (Q) for The Raft",
+        "core.shell.launchIcePatrol": "Launch the helicopter (G) for Ice Patrol",
+        "core.shell.launchRaft": "Launch the helicopter (G) for The Raft",
+        "core.shell.ofHelicopter": " of the helicopter",
+        "crew2.aria": "Old ice survey",
+        "crew2.back": "Back on the image. Add marks, then resume.",
+        "crew2.begin": "Begin survey",
+        "crew2.end": "End survey · {points} pts",
+        "crew2.heading": "Pick the old ice from the radar, then go prove it with an auger.",
+        "crew2.resume": "Resume survey",
+        "crew2.sail": "Sail to mark",
+        "crew2.scale": "10 km",
+        "crew2.sceneError": "The radar scene could not be loaded. Close and reopen the operation.",
+        "crew2.sceneLoaded": "Scene loaded. Smooth and bright, or rough and bright? Mark your floes.",
+        "crew2.title": "Where is the old ice?",
+        "crew3.aria": "Cliceify ice classification",
+        "crew3.callLog": "Call log ",
+        "crew3.classification": "Classification",
+        "crew3.correct": "Correct",
+        "crew3.fieldGuide": "Field guide · ",
+        "crew3.firstYear": "First-year",
+        "crew3.heading": "Call the ice: first-year or multi-year, as fast as you can.",
+        "crew3.log": "Log results",
+        "crew3.mean": "Mean",
+        "crew3.multiYear": "Multi-year",
+        "crew3.outOfTime": "Out of time: {answer}",
+        "crew3.platforms": "Platforms",
+        "crew3.scene": "Scene {current} of {total}.",
+        "crew3.start": "Level 1 waits on the surface. Press Space to start.",
+        "crew3.time": "Time left",
+        "crew3.title": "Cliceify",
+        "crew4.airborne": "Airborne. Fit the floes ten tenths across to chart a band.",
+        "crew4.aria": "Ice field seen from the helicopter. The status line below reports what happens.",
+        "crew4.chartError": "The ice chart could not be read.",
+        "crew4.controls": "Flight controls",
+        "crew4.drop": "Drop",
+        "crew4.fuel": "Fuel",
+        "crew4.hardDrop": "Hard drop",
+        "crew4.left": "Move left",
+        "crew4.loaded": "Chart loaded. Lift off when ready.",
+        "crew4.packAhead": "PACK AHEAD",
+        "crew4.right": "Move right",
+        "crew4.rotate": "Rotate",
+        "crew4.shore": "SHORE",
+        "crew4.softDrop": "Soft drop",
+        "crew4.title": "Ice Patrol",
+        "crew5.aria": "Seep-Seeker sediment coring survey",
+        "crew5.coreDescription": "Core description",
+        "crew5.equipment": "Coring equipment",
+        "crew5.found": "Seep found ✓",
+        "crew5.longest": "Longest record {length} · {age} · {points} pts",
+        "crew5.noRecord": "No record yet",
+        "crew5.sailOn": "Sail on · {points} pts",
+        "crew5.shipTime": "Ship time {hours} h of {total}",
+        "crew5.sites": "Coring sites",
+        "crew5.spent": "Ship time spent",
+        "crew5.time": "Ship time remaining, hours",
+        "crew5.title": "Seep-Seeker",
+        "crew6.aria.canvas": "Container maze on the foredeck",
+        "crew6.aria.down": "Down (arrow down or S)",
+        "crew6.aria.game": "Contaminants: trace-metal clean sampling",
+        "crew6.aria.left": "Left (arrow left or A)",
+        "crew6.aria.move": "Move the sampler",
+        "crew6.aria.right": "Right (arrow right or D)",
+        "crew6.aria.up": "Up (arrow up or W)",
+        "crew6.brushing": "Brushing along surfaces",
+        "crew6.cleanSuit": "Clean suit",
+        "crew6.dirtyMeter": "Dirty meter",
+        "crew6.elapsed": "elapsed",
+        "crew6.flash.fresh": "Fresh gloves. Go.",
+        "crew6.flash.suited": "Suited up. Touch nothing.",
+        "crew6.heading": "Everyone is dirty.",
+        "crew6.instructions": "Five pieces of clean suit are scattered through the container maze. Find them all, then get back to the rosette without touching anything: the ship is iron, zinc and copper from the keel up.",
+        "crew6.kicker": "TRACE-METAL ROSETTE / FOREDECK",
+        "crew6.kit.booties": "Boot covers",
+        "crew6.kit.coverall": "Tyvek coverall",
+        "crew6.kit.hood": "Hood",
+        "crew6.kit.inner": "Nitrile gloves",
+        "crew6.kit.outer": "Polyethylene overgloves",
+        "crew6.legend.brushing": "Brushing along a surface keeps adding. Tia calls it at {threshold}.",
+        "crew6.legend.heading": "What is on the walls",
+        "crew6.meter.dirty": "{dirty} / {threshold}",
+        "crew6.meter.dirtyChanges": "{dirty} / {threshold} · glove change {count}",
+        "crew6.meter.unsuited": "Suit up first — the float coat can touch what it likes.",
+        "crew6.meter.value": "{dirty} of {threshold}",
+        "crew6.result.blankNote": "Blank-grade: nothing on the bottles but seawater.",
+        "crew6.result.blankTitle": "Trace-metal cast: blank-grade sample",
+        "crew6.result.brushedNote": "A few brushes on the way, noted on the sample sheet.",
+        "crew6.result.changes": "Glove changes · {count}",
+        "crew6.result.cleanliness": "Cleanliness",
+        "crew6.result.kicker": "SAMPLE TAKEN",
+        "crew6.result.noTouch": "No touch at all",
+        "crew6.result.points": "Science points",
+        "crew6.result.speed": "Speed · {time}",
+        "crew6.result.title": "Trace-metal cast: {cleanliness}% clean",
+        "crew6.result.touchedNote": "Tia logs what you brushed against the sample.",
+        "crew6.retry": "Change gloves and try again",
+        "crew6.reward": "Up to 100 for a clean arrival · +40 for speed · +20 for a blank-grade run with no touch at all",
+        "crew6.rosette": "TM rosette",
+        "crew6.status.busted": "Tia: don't touch it, you're dirty. {count} touches. Change gloves and go again from where you suited up.",
+        "crew6.status.finished": "Sample taken: {cleanliness}% clean in {time} · {points} points.",
+        "crew6.status.found": "{item} found. {count} pieces to go.",
+        "crew6.status.foundAll": "{item} found. Suit up.",
+        "crew6.status.fresh": "Fresh gloves from Tia. Back to the rosette from where you suited up.",
+        "crew6.status.start": "Arrows or WASD to move. Hold a pad button or tap it for a short step.",
+        "crew6.status.suited": "Suited up in {time}. Back to the rosette now: every surface counts, so does the deckhand, so do the drips.",
+        "crew6.status.touch": "{surface} — {dirty} / {threshold}.",
+        "crew6.surface.anode": "Zinc anode",
+        "crew6.surface.deckhand": "Deckhand's work gloves",
+        "crew6.surface.drip": "Hydraulic drip",
+        "crew6.surface.grease": "Greased hydraulic line",
+        "crew6.surface.hull": "Painted bulkhead",
+        "crew6.surface.paint": "Fresh antifouling",
+        "crew6.surface.rust": "Rust streak",
+        "crew6.surface.steel": "Container wall",
+        "crew6.tia.detail": "{count} touches: {surfaces}. Nobody wants a rusty blank.",
+        "crew6.tia.detailBrushing": "{count} touches: {surfaces}, plus brushing along the way. Nobody wants a rusty blank.",
+        "crew6.tia.shout": "DON'T TOUCH IT — YOU'RE DIRTY!",
+        "crew6.tia.who": "Tia, from the clean bubble",
+        "crew6.title": "Contaminants",
+        "crew7.aboard": "aboard",
+        "crew7.aria": "Helicopter search for Clement's lost gear",
+        "crew7.cleared": "cleared",
+        "crew7.empty": "Cross a floe to read its chart line.",
+        "crew7.fuel": "Fuel remaining, seconds of flight",
+        "crew7.hover": "Hover over gear",
+        "crew7.land": "Land on deck",
+        "crew7.slow": "Slow down to search",
+        "crew7.takeOff": "Take off",
+        "crew7.title": "Find Clement's stuff",
+        "crew7.wind": "WIND",
+        "crew8.aria": "Lake sediment coring from a raft",
+        "crew8.ashore": "Ashore ✓",
+        "crew8.drive": "Drive",
+        "crew8.gameOver": "Game over",
+        "crew8.handling": "Core handling",
+        "crew8.leave": "Leave core",
+        "crew8.noCore": "Pull needed: no core logged yet",
+        "crew8.paddle": "Paddle in",
+        "crew8.paddled": "Paddled in",
+        "crew8.raftGone": "Raft gone",
+        "crew8.refusal": "Refusal",
+        "crew8.stone": "Stone",
+        "crew8.tension": "Line tension, kilograms",
+        "crew8.title": "The Raft",
+        "crew9.aria": "Crazy Net plankton tow",
+        "crew9.bumps": "bumps",
+        "crew9.deep": "Deep",
+        "crew9.depthPresets": "Start depth presets",
+        "crew9.finish": "Finish station · {points} pts",
+        "crew9.fluorescence": "Fluorescence max",
+        "crew9.haul": "Haul now",
+        "crew9.noTime": "No ship time left",
+        "crew9.onBottom": "on the seabed",
+        "crew9.reading": "Reading station…",
+        "crew9.seabed": "Seabed",
+        "crew9.sell": "Sell samples",
+        "crew9.stationLogged": "Station logged",
+        "crew9.surface": "Surface",
+        "crew9.theme": "♪ Theme",
+        "crew9.themeOn": "♫ Theme on",
+        "crew9.title": "Crazy Net",
+        "crew9.torn": "net torn",
         "ctd.activity": "CTD cast",
         "ctd.ascend": "Begin ascent · Enter",
         "ctd.ascending": "Hauling. Space closes a bottle; the winch does not stop.",
@@ -68,6 +464,1098 @@ window.UW_UI_CATALOG = {
         "ctd.target.warm.rule": "Find the warmest measured layer.",
         "ctd.timeUnknown": "Time unavailable",
         "ctd.title": "Catch the layers",
+        "early.closeRetry": "Close and reopen to try again.",
+        "early.finish": "Finish",
+        "early.loading": "Loading…",
+        "early.logged": "Logged ✓",
+        "early.points": "points",
+        "early.score": "Score",
+        "late.00063902cfd3": "{value0} h ship time",
+        "late.0008f8c89a6d": "{value0}: {value1} turned for {value2}{value3}: {value4}.",
+        "late.00343064716d": "Model run",
+        "late.006ff1552e12": "Stars gave direction in the dark months; the snow ridges left by the prevailing wind gave it by day.",
+        "late.00962387f4ef": "a blow, a big back",
+        "late.00fa5e447ba5": "slips under with no splash",
+        "late.017322b98576": "Fjord head",
+        "late.01dfed5e914a": "Steer south",
+        "late.0260370d1378": "{value0} is under water. Its owner is going to ask why it was on the floor.",
+        "late.02a37eb98d68": "The archive's wreck-site pin (P:Wreck of HMS Investigator); Parks Canada located her in July 2010.",
+        "late.02c33a0c9794": "Grievances",
+        "late.02de81941a2a": "{value0} cm on the deck already, {value1} L/s more arriving",
+        "late.02f4a3c6aac9": "Steer",
+        "late.04757c404276": "Syllabics",
+        "late.04bc281df512": "RetroSeep",
+        "late.0514e6810ed0": "down-curved horns",
+        "late.0524e9382ebe": "The Trident",
+        "late.0542d7569207": "Polar bear",
+        "late.0587c136e342": "Watch again",
+        "late.058d9dcd8242": "{value0}h {value1}m",
+        "late.062ee2f50238": "The turn is the vowel",
+        "late.064699c4c321": "The suffix means \"{value0}\"; the root is the word for the thing itself.",
+        "late.0659d5cf06ae": "{value0}°{value1} {value2}°{value3}",
+        "late.0664fa29600e": "MAYDAY RELAY · MCTS IQALUIT",
+        "late.067ee12cc480": "{value0} m",
+        "late.06a1f5c4ac7d": "beyond radar",
+        "late.0719939c468f": "autonomous glider fleet",
+        "late.0737751829cd": "Nipped about half a mile from the island, and found in 1980 upright in about 100 m half a mile south of it. Search the deep water south of the island, not the shallows under it.",
+        "late.07a5bf541b50": "{value0}:{value1}:{value2}:{value3}",
+        "late.0841a82a21c1": "a dark shape on the slope",
+        "late.084226bf4657": "Qurluqtuq",
+        "late.088566363a71": "Upwelling",
+        "late.09807d130dde": "bomb vessel, Franklin expedition",
+        "late.09ffbae53a01": "Loading local data…",
+        "late.0a858c95bc97": "Rain",
+        "late.0afb2e689b6c": "Ready…",
+        "late.0b1f7ea2e41f": "A final: the small raised form of the {value0} row, {value1}.",
+        "late.0b4c08595167": "Qikiqtaaluk, Baffin Island, is the huge island.",
+        "late.0b69495a265a": "Those lines need {value0}; only {value1} of ship time is left. Shrink the box.",
+        "late.0bafc1bbb34d": "Plankton",
+        "late.0c1c5b7b6650": "Siku plus -aq: young ice a few centimetres thick, still dark, that bends under the ship’s bow wave rather than breaking.",
+        "late.0c391021299f": "How the writing works",
+        "late.0c4c32fa6d41": "Riddle {value0} of {value1}: {value2}",
+        "late.0ccb1e7cb5aa": "are on it and held steady; holding steady reveals field marks. Log it",
+        "late.0cef4cff670d": "Literally \"the one with a tusk\": tuugaaq, tusk, plus -lik, having.",
+        "late.0d383143b442": "Kane's brig was frozen into Rensselaer Harbour for two winters; every man signed the paper to leave her, the flags were hoisted and hauled down, and the party walked once round the brig before setting off south by boat.",
+        "late.0da64bc7a15e": "Close under a headland in shallow water, a colony on the ledges above.",
+        "late.0dac6dbf5093": "Dual endings: marruuk itself is dual, and nouns for two things end in -k.",
+        "late.0db1d0a9af62": "{value0}{value1}, logged. +{value2}.",
+        "late.0ddfa9851960": "Bowhead whale",
+        "late.0e61fd2503c2": "Tote on the drain",
+        "late.0e968a2fab4e": "Eiders winter in polynyas and at the floe edge, diving for mussels and urchins.",
+        "late.0eab35666446": "{value0} of 3 strikes{value1}",
+        "late.0f13dbb76ee1": "{value0}: {value1}",
+        "late.0f7772f2edd3": "+{value0}",
+        "late.1037525aaf28": "Reject without review",
+        "late.109583a91275": "no dorsal fin at all",
+        "late.10ab0b82ddf6": "Mop bucket",
+        "late.10dc98d500ab": "slim, narrow-winged",
+        "late.110310135da7": "About 100 m (P:Breadalbane wreck site); the GEBCO cell gives 97 m.",
+        "late.1110d5a55299": "{value0} L/s onto the deck",
+        "late.114363eff0a8": "sleek, dark",
+        "late.1163a38d1f8e": "Neptune asks how much water lies beneath your keel. Set your call on a log scale from 5 to 3000 m. Within a third of the truth passes; within a tenth pleases him.{value0}",
+        "late.11c820ee316e": "Black guillemot",
+        "late.11e9d4e15bce": "{value0} °C",
+        "late.11f2d2bfc758": "Controls: {value0}, or the buttons below.",
+        "late.121e17a351d8": "The fleet lay stem to stern against the land floe when the pack came in from seaward. The land ice, and Cape York, were to the north: the wrecks lie along the floe edge north of the datum.",
+        "late.124b1ae199d3": "Mooring team",
+        "late.12dcd0d51a10": "No points for a withdrawal. A fresh rival is waiting.",
+        "late.130a8555d426": "{value0} {value1} · tier {value2}",
+        "late.131ef301b275": "mottled grey-brown, small bulbous head",
+        "late.136e17610500": "pick with 1–4",
+        "late.138a104b733f": "Act",
+        "late.142c9ce9e20c": "◂ Previous",
+        "late.14abf28698db": "small yellow bill, black legs",
+        "late.14d614fc51e9": "Ikpiarjuk",
+        "late.14ecb1cac5a4": "Ice frozen to the shore and held still. Travel routes and seal hunting follow the tuvaq; the ship cannot follow it far.",
+        "late.14ef18abe0f4": "Modelling Lab",
+        "late.15d8edb4f1e6": "{value0} cm",
+        "late.15e508616848": "Depth call",
+        "late.15ef4a18c8e9": "Hindcast",
+        "late.1605d6acf1d7": "commit or next ·",
+        "late.1607075420ab": "Falling snowflakes. Once settled the snow is aput; wind-packed it is another word again.",
+        "late.16354fcf930e": "The coldest sea surface my realm showed you this leg?",
+        "late.16bd7524fb9b": "A small harbour; the GEBCO cell is land.",
+        "late.16f434c4f05a": "Peristaltic pump",
+        "late.17219fbf49b4": "Geology",
+        "late.17301d97e9bb": "Left at her winter berth in the bay with her colours flying. In 2010 side-scan sonar picked her up within fifteen minutes of the first line: she is close to where she was left, and the box is small.",
+        "late.173839517f9b": "Seals haul out on the floes, bears walk the edge, ivory gulls follow both.",
+        "late.174d35853adc": "R hails a different rival",
+        "late.1758356db217": "or",
+        "late.178fd66057ec": "{value0} °C · {value1} PSU · {value2} kg/m³",
+        "late.18245e594e52": "backing up, {value0} s",
+        "late.1832168b0348": "Murres and kittiwakes stream off the cliff, eiders and walrus work the shallows, and things move on the tundra.",
+        "late.185ddf19fcef": "BENCH",
+        "late.188a5c8c4375": "The answer is qanuinngittunga, \"I am fine\", literally \"I am not in any way\".",
+        "late.18ca87afec42": "Inspect",
+        "late.191b16b02ade": "t.glyph).join('')) || ' '}",
+        "late.1988dceb1e1f": "Wave {value0} came from {value1}, not {value2}.",
+        "late.199455e62b1c": "She was leading the file north through a crack toward Cape York when she was nipped, and went down in the same crack two days later. Look north of the datum, along the lead.",
+        "late.19ea508212fe": "Round {value0}: your turn, {value1} waves.",
+        "late.1aa2f31ee7cc": "Ledger",
+        "late.1ab11d1b771a": "Tank feed valve",
+        "late.1ab1e5b09158": "Kinngait",
+        "late.1adbcc344b31": "idle",
+        "late.1ae0538befc0": "grey-white ice",
+        "late.1b4230d3dfd3": "0.0 kn",
+        "late.1bace380efda": "towed side-scan",
+        "late.1bda4ebff08c": "tiny, sitting on the water",
+        "late.1bfd9513a57f": "the dot over {value0} makes the vowel long",
+        "late.1c4241db2d27": "beset, {value0} nmi off",
+        "late.1c55db55e128": "On the bottom · {value0}",
+        "late.1cec48b562ec": "Qikiqtarjuaq",
+        "late.1d1e56bc06b6": "Ice station",
+        "late.1dbb441dfe25": "{value0} L/s",
+        "late.1dd6a17cb403": "How it works",
+        "late.1e13db7a0119": "Run into the land at the cove and broken up by her people for a hut and a boat; the Tigress found her 'sunk about a mile and a half offshore'. Search offshore of the cove, to the west, out toward Littleton Island.",
+        "late.1e380676c47e": "Ice piled up where floes collide. The verb ivu-, to pile up, names the community of Ivujivik, where currents heap the ice.",
+        "late.1e975193e087": "Run survey",
+        "late.1ecc65841c0d": "Nunavut",
+        "late.1ef3fdc4e1c1": "{value0} found",
+        "late.1f524529659b": "Strike {value0}: hit{value1}. {value2} of {value3}.",
+        "late.1f53a05a9fc0": "Cold, fresh, deep",
+        "late.1f6075554714": "Tasiujaq",
+        "late.1f73cdd2da46": "Under way",
+        "late.1f7a4f9e2f70": "Esc",
+        "late.1fdc5a1ac677": "Three legs, eight cards each. A card missed comes back once for half its points; a hint halves them too. Every fifth card in a row is a 10-point bonus. The primer on how the writing works is free, and open at any time.",
+        "late.2032c7b688cc": "Sabine's gull",
+        "late.2038bdec9210": "Up",
+        "late.209c8d61a16e": "pick a method ·",
+        "late.20a801ad8772": "Kuugaarjuk",
+        "late.219487920ad3": "ice {value0}/10",
+        "late.21e978895190": "streak",
+        "late.220e06ba2fee": "Out",
+        "late.2213590392e6": "Arrows or",
+        "late.2213870df65c": "Into the brine beneath the ice",
+        "late.22630fdac92d": "roll {value0}°",
+        "late.2284d040f509": "Hint",
+        "late.22daef2b916b": "The rounded position published for the protected wreck site (P:Breadalbane wreck site). Found by side-scan sonar on 13 August 1980.",
+        "late.22ea72574abb": "Your moves",
+        "late.22f0c7320a05": "small, round head",
+        "late.237faa5b23b4": "Deal the cards",
+        "late.239ca5767afa": "Box",
+        "late.23d5f5788ba7": "Imaq is the sea as a body of water; imiq, one vowel different, is fresh water to drink.",
+        "late.23ef7b65dc34": "−{value0}",
+        "late.241a5b4c369c": "EM flight line",
+        "late.242f191241c8": "Nipped in the pack north-east of Cape Sabine and gone in the afternoon; the party retreated south by boat. The pack in Kane Basin sets south toward Smith Sound: look south of the datum.",
+        "late.2455463748a1": "Search for {value0} called off",
+        "late.24674fe08975": "choose ·",
+        "late.24dc631636ba": "shore",
+        "late.2512d2b7c56a": "{value0}/{value1} turns",
+        "late.25dd86f0ab08": "Inuktitut watch: {value0}/{value1} first time",
+        "late.25fbf4814f65": "Question words come first. Nami umiarjuaq: where is the ship?",
+        "late.26270c990d26": "{value0} ×{value1}",
+        "late.2631e91452f4": "Peak depth",
+        "late.2642f1289356": "LANGUAGE WATCH",
+        "late.264d540cc85f": "{value0} is the {value1} shape, not {value2}",
+        "late.264f8f63dec4": "Defeated {value0}",
+        "late.2676a88c61af": "The incubation tank has split along a seam.",
+        "late.2693ea2831b1": "Best of the watch: {value0}.",
+        "late.26c3b6a2b8ec": "Neptune's temper",
+        "late.26f04c24ef7a": "Not a {value0}: {value1}, {value2}. −{value3}.",
+        "late.26f8fadacbe5": "BRIDGE / SEARCH AND RESCUE",
+        "late.27424cb4120d": "Five trials before the sea king",
+        "late.27766c23a9a9": "Wrecked on the islands, not in the channel between them. A ship that strikes lies on the rocks she struck: search the shoal water against the shore, not the deep water offshore.",
+        "late.27bb25f9d7b6": "{value0} of {value1} riddles",
+        "late.27bc4b18cb5d": "retuning, {value0} s",
+        "late.27da0c9fffee": "Seal fat, and the lamp oil rendered from it. Uqsuqtuuq, Gjoa Haven, is \"the place of much blubber\".",
+        "late.27e77c7898c2": "Damage control log",
+        "late.286fe92da074": "bomb vessel, Royal Navy",
+        "late.28913c51332f": "Type a word to see it written glyph by glyph.",
+        "late.28dba0171ba0": "Blue nose",
+        "late.294ad1aebc78": "Strike {value0}: the point slid off. {value1} of {value2}.",
+        "late.299b6ef4a2a6": "Every wave returned",
+        "late.29a160837525": "Driven ashore on Somerset Island in August 1825 and abandoned with her stores under canvas; seven years later those stores kept John Ross's Victory crew alive.",
+        "late.2a1d3e194cee": "Arviat, on Hudson Bay, is the place of bowheads. Bowheads live longer than any other mammal, past 200 years.",
+        "late.2a2e0f6b93bc": "{value0} a small final {value1}",
+        "late.2a5d2cb802b2": "Kuujjuaraapik",
+        "late.2a94fc553e15": "Last seen 16 October 1835 drifting south in the pack; Inuit told Captain Harrison in 1840 that she was crushed off Cape Fry in December and that twenty-two sick men left ashore all died.",
+        "late.2addc8f067a1": "blown loop fitting",
+        "late.2b26ebd725ca": "entirely white, no grey mantle",
+        "late.2b49734bc9a1": "Kimmirut",
+        "late.2b9eceb7a86a": "Enter",
+        "late.2bee3e427899": "pale grey mantle",
+        "late.2c6fc8db0de7": "Ice crystals thick in the water before they knit into a sheet. Brash and slush foul intakes and slow a CTD wire.",
+        "late.2ccc65de09ad": "Hold ← / →",
+        "late.2d2cb022bc3d": "Speed",
+        "late.2d2d62370075": "Close this window to return to the bridge.",
+        "late.2d3f85ca24d7": "Sila is weather, air and the world outside at once; in older thought it is the breath and intelligence of the world.",
+        "late.2d766386138f": "Search called off",
+        "late.2dcb9efee508": "{value0} at {value1} is planned for day {value2}, {value3}. Choose another watch to move it, or clear it.",
+        "late.2dddd64cd29d": "Piston",
+        "late.2e10e6400234": "science points",
+        "late.2e1aec584567": "unpick ·",
+        "late.2e392aa67fc4": "Position from James Clark Ross's magnetic table (A:ross-victory-054). Never seen again after 1832.",
+        "late.2e95603f1d20": "sonar mosaic",
+        "late.2eaa942f661b": "The cell at the pin; the islands' shoals run to the surface within 2 km.",
+        "late.2ec26a52bce6": "bounding flight",
+        "late.2ed629bc8750": "wedge-shaped tail",
+        "late.2ef985bd430d": "Drift ice, 4 to 7 tenths, leads opening and closing between the floes.",
+        "late.2f1deb2beea9": "Leg record loading…",
+        "late.2f4001f8dd15": "The pump warms the sample",
+        "late.2f5867a9e905": "Parry fixed the spot at 72°42′30″N 91°50′05″W. The ice drove her onto the beach, so whatever is left lies inshore, along the shore, not out in the inlet.",
+        "late.2f7506f2c39d": "TRIAL {value0} · {value1}",
+        "late.2fa390e34acf": "sitting upright",
+        "late.2fb2800e4e19": "cream-yellow against the ice",
+        "late.302024beffd6": "Bird cliffs",
+        "late.302190228652": "Smaller",
+        "late.30445e315404": "{value0} {value1} {value2}",
+        "late.30b8b635ef22": "water still running, saved {value0} of {value1}",
+        "late.30e4caeb4f91": "AFT LAB",
+        "late.31327feaa4cb": "pigeon-like gull",
+        "late.3132dfc3cc67": "The abandonment position, 75°31′14″N 92°21′55″W (A:wrecks-disasters-024). Never seen again.",
+        "late.321d6cc5177a": "leg",
+        "late.322934164e1f": "medium first-year ice",
+        "late.32306689fc0c": "Fast in the harbour ice from 1830 and abandoned where she lay. Search the harbour itself, close under the shore, not the open coast outside it.",
+        "late.3284d0c2d786": "Ross's gull",
+        "late.32ac4735baac": "UNDERWAY · {value0}",
+        "late.33af4c3b6dd9": "deeply forked tail",
+        "late.34117b8ea553": "datum",
+        "late.34244970a0d2": "steamer, United States North Polar Expedition",
+        "late.344aa3cc906f": "Ivory gull",
+        "late.34bb39c0ba62": "cardMarkup(c, keys.has(c.id) ? keys.get(c.id) : null)).join('')}",
+        "late.34bf81298c21": "back and charge",
+        "late.34db71e79458": "commit ·",
+        "late.35191ef1901b": "Nets",
+        "late.3548181c57ff": "{value0} on the lab clock",
+        "late.354ec2fca35a": "Explore the Arctic wreck archive",
+        "late.35c7c5278e2a": "walking to the {value0}",
+        "late.36bc3a4053b0": "{value0}: {value1}.",
+        "late.3704d4b4445c": "Day {value0} · {value1} · {value2} · ×{value3}",
+        "late.371467b261bc": "Northern fulmar",
+        "late.376df01ba798": "Killer whale",
+        "late.3811b97d4a5a": "Qausuittuq",
+        "late.382bcd254475": "{value0}…",
+        "late.383cea3bff1f": "The ship reaches {value0} only after the first transit.",
+        "late.384a2ede1f3d": "What’s next? Plan of the day",
+        "late.385015bc7d6f": "Plan box",
+        "late.38aac7d79ba3": "Any house, snow or otherwise. Iglulik is \"the place with houses\"; sod-and-whalebone houses stood there for a thousand years.",
+        "late.38ca488bc454": "{value0} m under the keel on {value1} at {value2}°N {value3}°W.",
+        "late.38d2d86388dd": "{ const slot = d * WATCHES + w; const card = cardById(state, state.grid[slot]); const area = shipArea(state, slot); const classes = ['c11-cell']; let odds = null; if (slot",
+        "late.38d5a3c0b397": "{value0} has no dot, so its vowel is short",
+        "late.38ee8f494b66": "brig, Second Grinnell Expedition",
+        "late.38f64bec0529": "Open water that stays open in winter, kept clear by currents or wind. The oceanographer’s \"polynya\" is a Russian loan; this is the local name.",
+        "late.392c7ed089d1": "keep watching",
+        "late.3949bc110f8c": "tube on the bill, grey above and white below",
+        "late.3960315eef2a": "The worst week the Davis Strait fishery ever had: a gale on 19 June 1830 drove the pack onto the fleet lying along the land floe, nineteen ships were crushed and a thousand men camped on the ice with no lives lost.",
+        "late.396399fc594e": "cracked incubation tank",
+        "late.397ac6cda68d": "The shape is the consonant",
+        "late.3998f674ab3c": "Salliq",
+        "late.39b442301302": "broad pointed wings",
+        "late.39b5278a4ea9": "Log sighting",
+        "late.39c1eb2041d9": "{value0}°",
+        "late.3a1d02210787": "{value0} on {value1}: meltwater and river water riding on top.",
+        "late.3a56cd8ef5f3": "{value0} is free of the ice and will follow in your wake at up to 6 kn. Pressure closes a channel in close pack within a few hours, so do not run too far ahead.",
+        "late.3a57eeeccb88": "pale grey, barred below",
+        "late.3aa0ad9c2127": "chunky, flying low and straight",
+        "late.3ac43a16214d": "following, {value0} nmi astern",
+        "late.3b128ddb33e2": "nanuq, tuktu, siku…",
+        "late.3b3ad2945601": "Tube-noses and kittiwakes work the swell; whales, harp seals and the odd pod of narwhal pass through.",
+        "late.3b52d65543e4": "grey calves alongside",
+        "late.3b82384bdcae": "{value0} is afloat at {value1} cm and drifting.",
+        "late.3b8303661382": "{ const slot = d * WATCHES; const cls = d + 1",
+        "late.3b8c9dd42d2b": "The same Windward that carried Peary north in 1898, wrecked on the Carey Islands in June 1907; Captain Cooney and his crew sailed the boats to Pond Inlet.",
+        "late.3be0ec8473cc": "Inuk is one person; Inuuk two; Inuit three or more. Inuktitut means \"in the manner of an Inuk\".",
+        "late.3c1cf57c3393": "Beluga and narwhal summer in the deep sounds and fjords; watch for pale backs and a tusk between the waves.",
+        "late.3ca7a1d1eaca": "Flood the aft lab",
+        "late.3cb7abe0d945": "Formalin carboy",
+        "late.3d2d5ad788dd": "patchy, turning white for winter",
+        "late.3d2dd67cf41e": "{value0} % of the box · {value1} run",
+        "late.3d4f79fc3b64": "0 points.",
+        "late.3d5f1586c79b": "{value0} hit{value1}",
+        "late.3dbfb212b060": "Kuujjuaq",
+        "late.3dcdcafebd57": "Trials",
+        "late.3dd3164fb4c1": "likely",
+        "late.3f4c23f01f7c": "Cite my paper",
+        "late.3f5062a2ba62": "Reviewer 2",
+        "late.3f5f26e1db4c": "Steer north",
+        "late.3fcd0f7a8392": "One glyph is one syllable",
+        "late.40671aea7cff": "ship time left",
+        "late.40d3c9126de9": "Marine geology",
+        "late.413715b9c3f8": "Box of GF/F filters",
+        "late.41db5ea81408": "Ivujivik: the place where the ice piles up.",
+        "late.4209b38ebf9a": "barque, Royal Navy (with her tender Pioneer)",
+        "late.429b61df4931": "×3 for {value0} s, then {value1} s astern",
+        "late.4315f0e18793": "Abandoned off King William Island in April 1848, she was found in 2014 on the second survey line of a search box moved south after a davit pintle turned up on the shore, in the water Inuit had pointed to since 1869.",
+        "late.4333dbe5219d": "Sea-ice team",
+        "late.43b3f4b185dd": "pointed central tail feathers",
+        "late.43c2b06d4573": "Boat drill",
+        "late.43c9fa671d79": "Glider section",
+        "late.43da9923db13": "−1 °C at 32 salinity",
+        "late.444515170d9c": "pick ·",
+        "late.447aa21bf129": "TRIAL OF THE ROLLING TABLE",
+        "late.44b232a8365d": "Pack edge",
+        "late.44bb6fccbdb4": "IAPSO standard seawater",
+        "late.44da6dee55ef": "striking wing pattern",
+        "late.4549e4baf5e7": "About 24 m (P:Terror Bay).",
+        "late.45ca5fd7d658": "{value0}: {value1} · {value2}",
+        "late.464d69b04bbd": "The cell at the pin; the neighbourhood runs from the shore to 210 m.",
+        "late.4662516c4d0f": "{value0} shut",
+        "late.46819d54c1be": "Qikiqtaaluk, the big island, is Baffin Island. Qikiqtarjuaq, another big island, is a community off its east coast.",
+        "late.469d5b183fdc": "Shift",
+        "late.46da470099a2": "Tasiujaq looks like a lake; Umiujaq looks like a boat.",
+        "late.4702e4ea200e": "Kangiqtugaapik",
+        "late.473fb552f319": "Cold, fresh, shallow",
+        "late.474c681e861c": "Gyrfalcon",
+        "late.47624d241e27": "Close this window to return to the bridge; launch again (",
+        "late.476a2a31a2a5": "Near freezing, salt sets density; the saltiest, coldest parcel is the heaviest.",
+        "late.47bcff8d6b71": "A RIVAL HAILS YOU",
+        "late.48136be5892b": "Push the mug right",
+        "late.4822b466cd82": "Benchtop fluorometer",
+        "late.488432191f8b": "Walk right, right arrow",
+        "late.48afdb2193ce": "Talurjuaq",
+        "late.48afe802a5d7": "· {value0}",
+        "late.49450f7aa59c": "tall triangular dorsal fin",
+        "late.49517a32f7e0": "Float array",
+        "late.4961389682c8": "Tikirarjuaq",
+        "late.4983f63b4be3": "{value0} m: {value1}",
+        "late.498a0e1561ca": "Sanikiluaq",
+        "late.4996d4e42aef": "The lead found {value0} m {value1}.",
+        "late.49adb486e24a": "Choose another",
+        "late.4a90ec26f816": "Said to one person leaving; tavvauvusi to several.",
+        "late.4aef56028ce1": "The archive's wreck-site pin (P:Wilmot and Crampton Bay); Parks Canada publishes a protected zone, not a position. Found 2 September 2014.",
+        "late.4afc265264fa": "Iqalummiut are the people of Iqaluit.",
+        "late.4b2cca6162cd": "Sighting log",
+        "late.4b956a4627bc": "Arviat",
+        "late.4ba0202f9dba": "one of nineteen or twenty whalers crushed together",
+        "late.4ba2f1ee0873": "Approximate: the gazetteer pin off Cape Sabine (A:wrecks-disasters-005); the event record pins Kane Basin at 79.0 −71.0 and says 'position approximate' (E419).",
+        "late.4bfc73309bc8": "{value0} {value1}: {value2}. Purse {value3}. {value4}",
+        "late.4ca302b59183": "Loading the seawater loop…",
+        "late.4cd3e7a09e9e": "Narwhal. {value0} of them, logged at {value1}. +{value2}.",
+        "late.4d48390c5f6b": "bench(a, b)).join('')}",
+        "late.4d8b387b8801": "Qamani’tuaq",
+        "late.4da1be0b2690": "Seep core",
+        "late.4db5affe432c": "FROM THE RECORD",
+        "late.4dcf827e3fb8": "Begin the watch",
+        "late.4f2062ddb269": "hose in the sink",
+        "late.4f3f1e2f0cd3": "Approximate; the archive places the loss in Melville Bay (E680). McDougall's plate of the loss is pinned at 75.0 −64.0 (A:mcclure-investigator-073).",
+        "late.4f496db48f6f": "{value0}. {value1}",
+        "late.4f58007d2545": "Live zooplankton cooler",
+        "late.4f91af64c940": "Walk with",
+        "late.4fee8b8f38c3": "{value0}/10 very close pack",
+        "late.502d64eb7de8": "Igluligaarjuk",
+        "late.503675774786": "small, fast, tern-like gull",
+        "late.50785a140da9": "Sump pump",
+        "late.50a0261fbdec": "Landing stores for Belcher's squadron with the Phoenix, she was nipped by a driving floe half a mile from Beechey Island and crushed in fifteen minutes; her people walked off onto the ice.",
+        "late.50dd1b2740f9": "Aput is snow lying on the ground; qanik is snow falling. Snow depth on a floe controls how fast the ice below it grows.",
+        "late.511ab8b8d481": "Common eider",
+        "late.51413fc5e2f6": "\"Something that acts as a person\": stone cairns that mark routes, caches and caribou drives. Plural inuksuit.",
+        "late.5282e67037ff": "small songbird",
+        "late.52fd81ab38b9": "Clear watch",
+        "late.53a1e895cd79": "Counting in Inuktitut is base 20 on fingers and toes: tallimat, five, is one hand.",
+        "late.53d366bb6674": "Transit",
+        "late.53f73d4c09d9": "{value0} × {value1} · {value2}",
+        "late.545a43b1e9e6": "Iqaluit: many fish. Inuit: many people.",
+        "late.55051533bb3a": "big falcon along the cliff",
+        "late.558d7d2cde8c": "Reviewer 2 has opinions. {value0} must revise: attacks weakened, credibility bleeding.",
+        "late.5590c4a40760": "The dot is length",
+        "late.5595b1f0e443": "New watch",
+        "late.55a90e622e47": "SAR pass",
+        "late.560e1315876a": "The freshest surface water this leg had a salinity of about:",
+        "late.561e1682058b": "{value0} points",
+        "late.564878a232f2": "next consonant",
+        "late.56560febdb74": "Arctic fox",
+        "late.568aac57e417": "Wave {value0} of round {value1} came from the {value2}.",
+        "late.5698849eb4fe": "thick straight bill, dark eye patch",
+        "late.5700c8c1f706": "A short greeting. Tunngasugit, \"welcome\", is the formal one you hear at the airport.",
+        "late.578460a2a458": "forecast wind {value0} knots, air {value1} degrees{value2}",
+        "late.5787d62bbee5": "{value0} rotate({value1})",
+        "late.583620516f9d": "optionButton(o, i)).join('')}",
+        "late.5843c1d67e29": "{value0}°{value1}′{value2}",
+        "late.5886321f51c9": "{value0}'s defence falls.",
+        "late.58bfb6f4c942": "Seep box core",
+        "late.58d563ea8161": "short pointed bill, white line on the gape",
+        "late.591b7584c2b4": "{value0} logged.",
+        "late.5939a44ddf0d": "Abandoned in the pack beside the Resolute on Belcher's written order; the Resolute drifted a thousand miles east and was found afloat sixteen months later, the Intrepid was never seen again.",
+        "late.59ad91a82458": "wind ≤ {value0} kn",
+        "late.5a4eefbd1a06": "Thick-billed murre",
+        "late.5ae788e0c4e7": "Roman letters",
+        "late.5b35fdf87400": "Drinking water. Meltwater pools on old floes are imiq; the sea beneath them is imaq.",
+        "late.5b543c57838a": "Warm, salty, deep",
+        "late.5b66f7f6c9a2": "Dry-ice shipper",
+        "late.5c23eaa3446c": "rolling in the cliff updraught",
+        "late.5c5f5c908ef3": "Brine drains from young ice into the water below, one reason winter shelf water is dense.",
+        "late.5c6d6066a7ff": "Iqaluktuuttiaq",
+        "late.5c800a0817b6": "move the cursor ·",
+        "late.5d6e52bc2e9c": "SUMP PUMP",
+        "late.5dd8f74af203": "Salinity raises temperature",
+        "late.5e1e186ca40f": "McClure took her into Mercy Bay in September 1851 and never got her out; after three winters and two scurvy deaths, Bedford Pim walked in over the ice and the crew abandoned her for the Resolute.",
+        "late.5e3282fa2441": "unsurveyed",
+        "late.5e438deb3363": "×{value0}",
+        "late.5ec092bc8f88": "Lab clock",
+        "late.5ec596d97e6c": "{value0} at {value1} already holds that watch.",
+        "late.5efb2482691d": "Four days of station work is sitamat ullut.",
+        "late.5f37dde9ec0b": "Walk left, left arrow",
+        "late.5f7537cf06ca": "Trial",
+        "late.5faa59d4bc37": "Result",
+        "late.5ff7ea1ec387": "The ship never made the {value0} passage; the leg schedule slips.",
+        "late.60a58d9b59c8": "Salluit",
+        "late.614145e0cb75": "shallow forked tail",
+        "late.6172f5f7f6d8": "{value0} likely for the selected request",
+        "late.62ae54550e33": "The open skin boat; umiarjuaq, big boat, is any ship, including this one.",
+        "late.62c30c118a44": "bright red feet trailing",
+        "late.62f85a785ac1": "Bearing {value0} · 7×50",
+        "late.63bb2b8f1966": "square fore-flippers",
+        "late.644cd3304388": "Leg record {value0} to {value1}: {value2} km steamed, deepest sounding {value3} m, coldest surface {value4} °C, strongest wind {value5} kn, worst roll and pitch {value6}° RMS. His riddles draw on it.",
+        "late.6499b84b6746": "{value0} km",
+        "late.64bb383b6705": "Foxes range far onto the sea ice in winter, trailing polar bears for leftovers.",
+        "late.656b3cd791f6": "syllabary ·",
+        "late.6585808d8c2b": "Kangiqsujuaq",
+        "late.659d0296c03b": "Sonar",
+        "late.65ac1293e8b1": "white flash at the base of the primaries",
+        "late.65b308fc4b4a": "Welcome aboard. Inuktitut is spoken from Greenland to the Bering Strait in a chain of dialects; the coast the ship works speaks it every day, and its charts carry a thousand years of place names. The Nunavut standard writes it in syllabics: shapes for consonants, turned for vowels.",
+        "late.666a72b7e106": "{value0} m on {value1}, with roll and pitch RMS of {value2}°.",
+        "late.66812708c156": "The Wardroom Mug",
+        "late.6694e7e73c64": "thick neck, no black wingtip",
+        "late.66b1fd64258f": "Ivujivik",
+        "late.66de4f4f0c8e": "Uqsuqtuuq has much blubber; Panniqtuuq many bull caribou.",
+        "late.66f19fb72bc3": "☀ daylight · ☾ dark · ≋ fog · ↕ heave · past watches: mean (gust) kn",
+        "late.67012501d868": "1 nmi",
+        "late.670ee54081cf": "Ikaahuk",
+        "late.67636878dbb0": "Physical oceanography",
+        "late.68a70123b95c": "Name the species",
+        "late.68c2cc7f0cea": "Model",
+        "late.68cd74ed7513": "From three upward the noun takes the plural -t.",
+        "late.68db3f4e643d": "holding, {value0} nmi off",
+        "late.68dbd12b8c80": "Back to the watch",
+        "late.68f0256d5365": "{value0} unidentified target{value1}",
+        "late.68f4ddeea318": "Syllabics, words and names on the chart",
+        "late.694b52e3e5ea": "The most common Arctic seal. It keeps breathing holes open through the ice all winter with its claws.",
+        "late.697168d47920": "Tallurutiup Imanga",
+        "late.69f253184338": "Assimilating {value0} observation{value1}.",
+        "late.6a24ae854dc8": "{value0} o’clock",
+        "late.6a572dcb780b": "move the box;",
+        "late.6a65d73ac40c": "Water stopped",
+        "late.6a937cfc6b06": "Thermosalinograph, {value0}",
+        "late.6a93e06f5e34": "{value0}/10 close pack",
+        "late.6ae1323a16ac": "Naujaat, \"gull nesting place\", is the community at Repulse Bay on the Arctic Circle.",
+        "late.6b1949ef0377": "The ship is still in {value0} on that watch. Plan the transit first.",
+        "late.6b19d295d072": "CROSSING THE LINE / NEPTUNE'S",
+        "late.6b207ec27b21": "UNDERWAY ENCOUNTER ·",
+        "late.6b8357098636": "Take a watch on the bridge",
+        "late.6c0ee2cf9a98": "The mug stayed in the middle third {value0}% of the time.",
+        "late.6cd36ad53b6f": "The ship has left {value0} by then.",
+        "late.6d234a17fecd": "Press release",
+        "late.6d514ac8057f": "{value0} + {value1}. Enter commits.",
+        "late.6d75b2f4f702": "Optical satellite pass",
+        "late.6d8c9b124d52": "Space",
+        "late.6d9a6e81dce9": "Points were banked on the earlier win; this one was for pride.",
+        "late.6dc5d79082aa": "{value0} at {value1} lost its window ({value2}).",
+        "late.6e2247ad8907": "Inuktitut",
+        "late.6e29522b1991": "Fresh surface water in my Arctic realm comes mostly from:",
+        "late.6e7bc59c12fd": "Inukjuak",
+        "late.6eec4fbb53a7": "Arctic tern",
+        "late.6f347362bfeb": "Empty cooler",
+        "late.6f5e6c9a6846": "Upward-looking sonar",
+        "late.6fbe1fba437a": "Keep watching",
+        "late.6fcf4f9416d3": "0 °C at 28 salinity",
+        "late.6ffeb258f60d": "a spiral tusk lifted on surfacing",
+        "late.700de107742f": "Another one",
+        "late.702e086a7bd4": "{value0} on the bench, dry.",
+        "late.704c0721a95f": "Battle log",
+        "late.70599d26f661": "Radio bearing {value0}° ({value1}), give or take {value2}°. A second bearing from somewhere else crosses it.",
+        "late.70adaed9483e": "{value0} is a full syllable {value1}; a bare {value2} is the small raised {value3}",
+        "late.70c1cf840eb9": "Choose a request",
+        "late.70f5a4e8503f": "{value0} is beset again: the channel closed behind you. Go back and pass within a cable of their hull.",
+        "late.7128b4ccf61d": "Nipped in Smith Sound on 15 October 1872, she broke away from nineteen people left on a floe; the fourteen still aboard ran her into the land, wintered in a hut built from her, and the Tigress found her sunk the next August.",
+        "late.712b32fdc44f": "Round {value0}: watch {value1} waves.",
+        "late.717edad9e502": "{value0}'s defence rises.",
+        "late.71a401906c9f": "over shallow water, a clam bed below",
+        "late.71d45746acc9": "Rivers and summer melt cap the Arctic with a fresh, light layer.",
+        "late.720cf3189584": "shaggy, block-like",
+        "late.7271b1bb8c54": "stiff, straight wings",
+        "late.7277d3c8809a": "Kangiqsualujjuaq",
+        "late.727cbc30ace5": "WRATH",
+        "late.72e4d08b5e9f": "Salt rejected from growing sea ice goes where?",
+        "late.7332b76a893e": "long neck, small head",
+        "late.7472328b17fb": "Uluksaqtuuq",
+        "late.74b82ec07d22": "WATCH COMPLETE",
+        "late.7531c7e9da4c": "Where the chart came from",
+        "late.753b4f85ea72": "{value0}, {value1} {value2} of the ship",
+        "late.75e15cc3767a": "{value0} + {value1} → {value2} {value3}. {value4}",
+        "late.76022a00a16b": "Ocean",
+        "late.761f7a4313db": "V-shaped bushy blow",
+        "late.762de48e03df": "slow, powerful wingbeats",
+        "late.7663e9d795e1": "A long first vowel and a held k. Both length contrasts change meaning in Inuktitut.",
+        "late.766e7ee7342e": "Arctic hare",
+        "late.769169f33675": "{value0}a · {value1}",
+        "late.76cdb9507216": "Move",
+        "late.76d50c67bd02": "Shallower ← · Deeper → · Call it Space",
+        "late.76e8bdeb9c4d": "American whaler",
+        "late.76f5db1b0ca3": "Nunavut: our land.",
+        "late.7761b2806807": "In-nook-poo-zhee-jook pointed on McClintock's chart to the water just east of the north end of O'Reilly Island; the 2014 box was moved south to match the beach find. Search the eastern side, toward the peninsula.",
+        "late.77693e81f03b": "The crescent knife. Ulukhaktok, in the west, is the place where ulu blade stone is found.",
+        "late.7769f8fcf60e": "How the system works",
+        "late.779c1eeeaf99": "Box marked RECYCLING",
+        "late.780e7a0fc43e": "Seawater snapshot {value0}",
+        "late.78234cd8195a": "Tuktoyaktuk, in Inuvialuktun, means \"it looks like a caribou\": the reef there resembles one.",
+        "late.786317e1ae6a": "The long runner sled, lashed rather than nailed so it flexes over rough ice. The word is dual: two runners.",
+        "late.786bc9c6f45f": "a pod porpoising",
+        "late.79adaf70ef55": "The abandonment position, 74°41′N 101°22′W (E1973). The ship drifted in the pack afterwards and was never seen again; where she went down is unknown.",
+        "late.79f8065f3a2a": "EM thickness line",
+        "late.79ffdc139bd7": "Sea ice",
+        "late.7a53be1932c5": "Hull whaler",
+        "late.7a71176080fe": "Deep water in a sound, a glacier front at the head and steep land on both sides.",
+        "late.7b38b9b19c2a": "{value0} revises under the curse. −{value1}.{value2}",
+        "late.7c138638ef76": "Plankton ecology",
+        "late.7c4410a071eb": "whaler",
+        "late.7c5e8ca8901e": "Open water",
+        "late.7c6cab9ca845": "TRIAL OF THE LEAD LINE",
+        "late.7c6f5aa201f0": "located",
+        "late.7c75a7d41979": "} {value0}",
+        "late.7c77ef9167fc": "End watch",
+        "late.7c979035bdc4": "Loading the watch record…",
+        "late.7cb65d3eae78": "Running {value0} line{value1} at {value2} kn. Watch the waterfall for a hard return with a shadow.",
+        "late.7cd9544a9b94": "The loop discharge is backing up over a blocked scupper.",
+        "late.7d277a9572cf": "Laser scanner",
+        "late.7d5d1cb5a9a2": "pigeon-toed, unhurried",
+        "late.7dc6a13e16b1": "Mittimatalik",
+        "late.7ddd66b689c9": "Try it",
+        "late.7ddf172d6c0a": "Open data release",
+        "late.7dfa3a36b80d": "pink legs, heavy pale bill",
+        "late.7e11406e3671": "The white whale of the estuaries. In some dialects the same word, qualified, covers the narwhal.",
+        "late.7e4d816c6f91": "Piston core",
+        "late.7e7d6c54fc50": "Naujaat",
+        "late.7e7d6f21b66f": "Upright in about eleven metres, the upper deck about eight metres down (E894).",
+        "late.7ebf1aeb7c61": "BRIDGE WING / WILDLIFE WATCH",
+        "late.7ecf5fc2ef28": "The seawater loop let go",
+        "late.7efa5bf90984": "obligations",
+        "late.7f1c802627d3": "a small, quick back",
+        "late.7f379c5925ae": "since the call",
+        "late.7f380307672e": "row: consonant · column: vowel · click a glyph to turn it",
+        "late.7f573c953063": "A roll put the rosette rinse tote on its side.",
+        "late.7fb3a9b5101b": "Settled",
+        "late.7fcf09ac095d": "Crushed in Melville Bay on 23 June 1840 alongside the Bon Accord; the record says no more than that.",
+        "late.7febce039c4c": "seconds",
+        "late.801ad0d72dee": "Purse",
+        "late.80715d0cc4fb": "RBR logger",
+        "late.807e66dce64a": "Harp seal",
+        "late.80c4f20cd5f2": "Somebody left the wash-down hose running in the sink.",
+        "late.80e448e7222d": "The open-water season, when the ship can reach the coast. The root au- is melting.",
+        "late.8157c96a7c92": "{value0}:{value1}",
+        "late.82232ed70def": "Pelican case",
+        "late.82259209065c": "pure white",
+        "late.82dce7f70367": "Approximate: 'about 75 degrees 10 minutes north, 60 degrees 30 minutes west, some forty miles south of Cape York' (A:wrecks-disasters-017). No individual wreck has a fixed position; the named ships are listed in A:wrecks-disasters-044.",
+        "late.8336ead5d135": "buoyant, light flight",
+        "late.8381e9bd2991": "SCUPPER",
+        "late.83a13361b111": "Inuktitut builds words by stacking suffixes on a root: umiaq, boat, plus -rjuaq, big, is umiarjuaq, a ship. The names on the chart are built the same way. Read them, then build a few.",
+        "late.83cc66ba3a08": "rosy flush on the breast",
+        "late.83d84044d1bb": "−4.5 °C",
+        "late.83ec74cd8794": "recorded wind {value0} knots, gusts {value1}, air {value2} degrees",
+        "late.844015c37958": "Sanirajak",
+        "late.84505160ef98": "The ice opens up: {value0} tenths.",
+        "late.848ecb4df8d1": "Not much. {value0}",
+        "late.849d0e2fad64": "all dark",
+        "late.8503e4f5db6c": "Mooring",
+        "late.852d49e469e7": "New rival",
+        "late.854b3a410c5e": "old ice",
+        "late.8556ce53dbbe": "The hull is heated",
+        "late.855b642d8c8a": "on the floor, dies at {value0} cm",
+        "late.859c229eb13c": "Hint.",
+        "late.85b3f3e1f454": "{value0} hours gone. The tasking passes to a helicopter out of Resolute.",
+        "late.85d6b3291673": "Watch conditions are the ship’s own underway record for {value0} – {value1} (Leg 3, 2026), binned to 8-hour watches: relative wind as logged, air temperature, 4σ heave, humidity and short-wave radiation. Stations come from the Leg 3 cruise plan ({value2}). Forecast bands widen with lead time; what happens on the day is what was recorded.",
+        "late.85e16e28e1c6": "L explains the writing · Escape closes the operation",
+        "late.861a5ff7d1a1": "gusts ≤ {value0} kn",
+        "late.862833d79ad2": "The Sounding",
+        "late.8661c13e39be": "wedge-shaped head and bill",
+        "late.86b970d389cb": "barque, Admiralty transport",
+        "late.86e4ee524412": "CTD battery pack",
+        "late.86f757979958": "Neptune nods: the sea remembers, and so do you.",
+        "late.872bec5009cb": "glider fleet",
+        "late.8734f5749e33": "Rival Researchers",
+        "late.8820bca1391e": "Taqqiq is also the month. The traditional calendar follows the moon and the animals’ seasons together.",
+        "late.885db975a310": "Suffix",
+        "late.888eb40396c3": "{value0}:{value1}:{value2}",
+        "late.88aa827c6ccb": "+2 °C at 30 salinity",
+        "late.88cf49473dfa": "Surveyed",
+        "late.88d130a66de8": "Backspace",
+        "late.88da8df73334": "pale saddle on the back",
+        "late.88ecd30f7043": "Nanuq hunts ringed seals at the floe edge and at breathing holes; ice stations post a bear watch for the same reason.",
+        "late.8932900cabe6": "Strike Space",
+        "late.893a0ce13b43": "Parasitic jaeger",
+        "late.894b3be4f136": "Tribute",
+        "late.899754144d64": "all black, broad wings",
+        "late.89ea1a8b0c44": "dies at {value0} cm",
+        "late.8a3e1f0716e8": "{value0} {value1}{value2}",
+        "late.8ae1c34bd37f": "Left",
+        "late.8afce8a29a0f": "Parry's own fix, 72°42′30″N 91°50′05″W (E247). The hull broke up on the beach and nothing of it has been found since; the search is for what the ice pushed into the shallows.",
+        "late.8afffa267014": "SEABED / SHIPWRECKS",
+        "late.8bb73c329b7f": "Skin boots; sealskin for wet ice, caribou for dry cold. Plural kamiik, a pair.",
+        "late.8be00be3a481": "Ausuittuq",
+        "late.8bf7bcdc8e38": "after transit {value0}",
+        "late.8bfa5c57e6fa": "Binoculars",
+        "late.8c23bf0b53a8": "Left in the pack of Wellington Channel, which streams south into Barrow Strait. A ship crushed in that drift lies south of where she was left.",
+        "late.8c5f2c0e0527": "{value0}%",
+        "late.8c7861618f6a": "A fierce battle of science",
+        "late.8c86b581f82b": "Wind direction names differ by community, because they describe where a wind comes from across local land.",
+        "late.8ca4648757d7": "Wildlife Observer",
+        "late.8ccc2182820d": "Amundsen science party",
+        "late.8cd4ec145507": "wingtips solid black, as if dipped in ink",
+        "late.8d051dbe9540": "Kangiqliniq",
+        "late.8d354606b03a": "backs rolling in a pod",
+        "late.8dd6d503a931": "{value0} concedes the station.",
+        "late.8e2c29024c45": "small, buoyant gull",
+        "late.8e51963d87e4": "The sea king boards with a purse. Pass his trials and it grows; fail them and he takes it back.",
+        "late.8e562b2c7fd0": "hint (half points) ·",
+        "late.8ece608373b3": "−4.0 °C",
+        "late.8f0a3cc1678a": "How the system works, page {value0} of {value1}: {value2}. {value3}",
+        "late.8f3f5c258621": "Nuna plus -vut, our, gives Nunavut. Nunavik and Nunatsiavut carry the same root across Quebec and Labrador.",
+        "late.8f4f3d5b002d": "An affectionate diminutive: nunakuluk, dear little land.",
+        "late.8f93c8e601dd": "Pangniqtuuq",
+        "late.8fbbeb4b6151": "planned box",
+        "late.8fc18a624e53": "0.0 °C",
+        "late.8fc9988d85b6": "Plan of the day",
+        "late.8feaab7c43e3": "{value0} × {value1} km",
+        "late.901dbffcb486": "pink-brown, wrinkled",
+        "late.9026347b544a": "in the purse",
+        "late.9031cbcd827d": "black legs",
+        "late.904b8634d9a1": "move ·",
+        "late.906fdf224b64": "Neptune's wrath: {value0} of {value1} trials before he lost patience",
+        "late.908442933c3a": "} {value0} °C and {value1} PSU. {value2}. Go.",
+        "late.908897f614cc": "marginal",
+        "late.9106dbf62ed9": "Niskin sample crate",
+        "late.9130ee2cd23e": "Belcher's flagship, abandoned with the Pioneer in Wellington Channel with her colours nailed to the mast, 'as if we had encoffined some cherished object'.",
+        "late.915689549c24": "Loop water",
+        "late.91c4c4cf551d": "{value0} unplanned · {value1} planned",
+        "late.91f2c8fe4468": "Strike {value0} of 3",
+        "late.921a88c00c6f": "Three legs of a language watch: the writing, the words, the names on the chart.",
+        "late.92f3f6c444b1": "✓ {value0} pts",
+        "late.935f8d8fa5ee": "airborne team",
+        "late.938645d687ce": "How deep was the deepest sounding of this leg?",
+        "late.940fc0d9383a": "Beluga",
+        "late.946ffb6e97b8": "Shipwrecks of the archive",
+        "late.9533107f7a1c": "tall fins in a pod",
+        "late.9534f87b46d9": "{value0} tipped over. {value1}",
+        "late.954daa8b0033": "Right",
+        "late.9558c50aa2f6": "barque, Royal Navy",
+        "late.95ac06a00acc": "Steer west",
+        "late.9616162e9b72": "big, heavy gull",
+        "late.962c7057da94": "0 L/s",
+        "late.96618846da50": "AFT LAB / DAMAGE CONTROL",
+        "late.96bdbd6efdeb": "{value0} is in open water and under her own power.",
+        "late.96caa8af1e7e": "{value0} is under water. {value1}",
+        "late.96dc20d0fa83": "The South Baffin form; nakurmiik in Nunavik, quana in Inuinnaqtun, koana in the west.",
+        "late.96ddd9d6114d": "lent",
+        "late.96e258945229": "Bigger box",
+        "late.96ead420d232": "Glaucous gull",
+        "late.9705540112dc": "Escape closes the operation",
+        "late.97531ccb5b4a": "The word entered English through Greenland and Denmark; the design is the Inuit hunter’s.",
+        "late.97539d1a5177": "Liquid nitrogen dewar",
+        "late.9786a2ec3e5f": "Walrus",
+        "late.979fe91b5525": "UPS",
+        "late.980e5ae475a5": "Boat drill & muster",
+        "late.9815a2dc69a1": "Points were banked on the first watch; this one was for the words.",
+        "late.985a6b77c72a": "{value0} / {value1}",
+        "late.988474e9b839": "AIS fix −{value0} h",
+        "late.98fe87457bf5": "name it ·",
+        "late.9949af21d9af": "Aupaluk",
+        "late.99524e452fc8": "WASD",
+        "late.99b468d14bf8": "{value0} kn over the deck on {value1}.",
+        "late.9a0521e71589": "Multibeam survey",
+        "late.9a234c408083": "the {value0} shape ({value1})",
+        "late.9a45ae3071f9": "air ≤ {value0} °C",
+        "late.9a5d94e14dad": "About 11 m (P:Wilmot and Crampton Bay). The site lies just off the game's GEBCO grid.",
+        "late.9a8919c8045c": "wind {value0} kn",
+        "late.9aa69598240c": "Sammy Kogvik of Uqsuqtuuq described a mast standing out of the ice in the bay; the Martin Bergmann turned aside, dropped a sonar and found a three-masted ship sitting upright in the middle of Terror Bay.",
+        "late.9ad3a14e5a20": "Marks make new rows",
+        "late.9adc056f3dd4": "Range plot and sonar display",
+        "late.9b6d44b7494f": "Sediment trap",
+        "late.9ba5eef5f0cb": "rival",
+        "late.9bf72f5189ea": "rings: great-circle range, square-root scale",
+        "late.9c046e99ade7": "black ear tips",
+        "late.9c156a8d1c3d": "{value0} kn",
+        "late.9c3900e943be": "Learned this watch",
+        "late.9c3cd8846fd7": "From ullaaq, morning. Unnusakkut is good afternoon; unnukkut good evening.",
+        "late.9c41a13f4040": "He drops a purse of {value0} points on the deck. \"On loan. {value1} trials. We shall see how much of it you keep.\"",
+        "late.9c52711df593": "Bigger",
+        "late.9c76bea961dd": "Planner actions",
+        "late.9cb79b7dd426": "Neptune's Wrath",
+        "late.9cf405a2341e": "Your call: {value0} m {value1}.",
+        "late.9d0c04966dae": "no targets",
+        "late.9dc581145569": "Drifting snow driven by wind. A piqsiq erases the horizon; the bridge relies on radar and the ice pilot waits.",
+        "late.9e44ce9a519b": "Discharge valve",
+        "late.9e883dc0c760": "Orbital Cryosphere Consortium",
+        "late.9e8e0974ecef": "a large seal",
+        "late.9e9743d6e82d": "Choose a target",
+        "late.9ece05ca0078": "{value0} is soaked through. Nobody will miss it.",
+        "late.9eea7a6b4187": "{value0} L already across the deck and {value1} L/s still coming",
+        "late.9efc509bb771": "Move and act",
+        "late.9fa2bfef4b9d": "big ears",
+        "late.9fc654479a0e": "a white spot on the slope",
+        "late.9fd47b66b79e": "The biggest 4σ heave the hull felt this leg?",
+        "late.9ff1c8124d88": "Winter and year share one word; a life is counted in winters.",
+        "late.a025b62e11cb": "Enter accepts the challenge",
+        "late.a050b1bd8733": "{value0}, {value1} ({value2})",
+        "late.a08a4bbe682b": "bomb vessel, Franklin's flagship",
+        "late.a10066308083": "The root tariuq is salt; the same word names the ocean and the salinity your CTD measures.",
+        "late.a16c5bbe4bf9": "Range",
+        "late.a19b8b67c24a": "gusts {value0} kn",
+        "late.a1e327c20874": "Common raven",
+        "late.a2073fa9180a": "Held for {value0} s",
+        "late.a2452bd2011b": "then 1–4 again",
+        "late.a28a73a982cb": "Extension cord reel",
+        "late.a2a1daa1273e": "The archive's Life Boat Cove pin opposite Littleton Island (P:Life Boat Cove). The Tigress logged the winter camp at 78°23′N 73°46′W (E168), a different longitude; the pin is used here.",
+        "late.a2a99a1d1b03": "The tether comes up wrapped in weed and slush. {value0}'s instruments are fouled.",
+        "late.a3089b7fae27": "Heading",
+        "late.a332d0afc6cb": "very pale mantle",
+        "late.a34f5bb77d10": "Long vowel: dot",
+        "late.a4011c391f4e": "white eye patch, grey saddle",
+        "late.a42768585e34": "beneath the keel at {value0}°N {value1}°W on {value2} {value3}",
+        "late.a431e99cb7fa": "{value0} seconds. Hold a direction to push.",
+        "late.a43521bfaa26": "steer; hold two for a diagonal. Speed follows the chart: 13 kn in open water, about 3 kn breaking a metre of first-year ice, a crawl in old ice.",
+        "late.a447a8fe6b96": "crew",
+        "late.a47a73c84988": "Bridge controls",
+        "late.a4e2db400d69": "{value0} at {value1} planned, {value2} likely, times {value3}",
+        "late.a4fdcbcfb610": "Tune the parameterisation",
+        "late.a5709ec34538": "{value0}: a small raised {value1}, a consonant with no vowel after it.",
+        "late.a58fcc71c077": "{value0} right",
+        "late.a620e2ccee74": "Ship in {value0}, bound for {value1} and {value2}. {value3} requests on the board. Arrow keys move the planner cursor; Z and X or the numbers choose a request; Enter places it.",
+        "late.a65899e146fe": "Frozen in at her winter berth inside a small, shoal harbour and abandoned there. The box is small; search close under the shore.",
+        "late.a6d4466ebac7": "Sound speed rises with temperature, salinity and pressure.",
+        "late.a6efd7142e5b": "Drop ROV",
+        "late.a7521a7bf13e": "A parka with a pouch at the back for carrying a baby against the skin.",
+        "late.a784d65f1bed": "The court",
+        "late.a7b93d2128e8": "Mode",
+        "late.a80ca4d3526e": "Field laptop",
+        "late.a83765d5291b": "black cap, red bill",
+        "late.a84e3dac7595": "The Swell",
+        "late.a8618e4a8104": "{value0}{value1}",
+        "late.a861940108ea": "{value0} at {value1} is back on the board.{value2}",
+        "late.a8acbb0f3437": "Ship in {value0}.",
+        "late.a8ba44f07d53": "{value0} −{value1}.",
+        "late.a8c47c75c90f": "Often -rjuaq after a vowel: umiaq, boat, gives umiarjuaq, ship.",
+        "late.a8ca977388a3": "wingtips white, no black at all",
+        "late.a8d628c3ba7e": "trotting, short legs",
+        "late.a91015f51776": "eDNA sample",
+        "late.a938fcff0325": "{value0}/10 open drift",
+        "late.a98e182f31d8": "burst of pale whiskers",
+        "late.a9b1802d38db": "Each shape is a consonant. Turn it and the vowel changes: ᐱ pi, ᐳ pu, ᐸ pa. A dot above makes the vowel long; a small raised shape is a consonant with no vowel. Name the sound, find the glyph, then spell two words.",
+        "late.a9eb10d23009": "{value0}'s sensors have cleared.",
+        "late.a9edc5e78a11": "Offshore, deep water, a long swell and nothing between the ship and the horizon.",
+        "late.aaa989eaf4a3": "Recalibrate",
+        "late.aacf218cde23": "submarine crew",
+        "late.aad82db2cb77": "Radar",
+        "late.aadd69c95094": "Said to one person; tunngasugitsi to several. The root is \"feel at home\".",
+        "late.ab350b4c6c35": "A small harbour; the GEBCO cell reads 2 m at the shore.",
+        "late.aba98268ad9c": "Umiaq plus -rjuaq, big. The icebreaker is an umiarjuaq to everyone watching from shore.",
+        "late.abc451d1b9b5": "Ship’s crew",
+        "late.abcc99e6cf73": "L{value0} {value1}",
+        "late.ac59f1baf7ca": "fingered wingtips",
+        "late.ac74290c9fbf": "Close and launch again to try this or another wreck.",
+        "late.acabbc66a68b": "Wildlife observer",
+        "late.acde809e77e2": "Her engine useless from the first season, she spent four winters on the Boothia coast; on 29 May 1832 her colours were nailed to the mast and Ross went last over the side.",
+        "late.ad90bd8e3c51": "{value0} request{value1} missed.",
+        "late.ad92047f2414": "{value0} +{value1}.",
+        "late.ae519d66dcdb": "Uqsuqtuuq",
+        "late.aef36502d67b": "In",
+        "late.af16df5536ce": "Approximate: the archive gives only Melville Bay (E1202).",
+        "late.b00b0ed01f87": "Black-legged kittiwake",
+        "late.b01ad65d16ca": "Wash-down tap",
+        "late.b04e85738360": "falcate dorsal fin late in the roll",
+        "late.b07b7467ca29": "Rensselaer Harbour as pinned in the archive (E18). Never seen again.",
+        "late.b0995f4c15f9": "0.3 °C",
+        "late.b09c738b5976": "turn",
+        "late.b0ba5b78de25": "Bearded seal",
+        "late.b0ff65803e35": "{value0} km in {value1} hours of record.",
+        "late.b157f9096488": "Bearing",
+        "late.b15b710f2ada": "two white tusks",
+        "late.b15e5360a67f": "Your credibility",
+        "late.b20d862dda45": "Iglulik is the place with houses; tuugaalik, the one with a tusk, is the narwhal.",
+        "late.b23549372a4e": "{value0}:relief",
+        "late.b25928c69902": "Total",
+        "late.b35e0445f231": "Deck drained",
+        "late.b3993d480265": "Tuktuujaqtuuq",
+        "late.b3ec6ce81554": "You are at",
+        "late.b405f04d5e18": "Floe photogrammetry",
+        "late.b4171da9a522": "{value0}, {value1} · {value2}",
+        "late.b52b36b7269f": "Back",
+        "late.b57788c4aa13": "Paulatuuq",
+        "late.b597ed27201b": "One hand. Ten is qulit; twenty, avatit, is a whole person of digits.",
+        "late.b59bc4ec67ca": "Whatever that was at {value0} is gone.",
+        "late.b5e2c3f4104a": "Arrows or W A S D",
+        "late.b61dcf739659": "fast, travelling together",
+        "late.b6c77404bc3a": "CTD-Rosette",
+        "late.b6d7cd6dffc5": "40 water stopped · {value0} for the gear on the deck · 25 drained · 25 under 10 cm",
+        "late.b706db25f9f0": "{value0} → {value1}",
+        "late.b71681d7bb8c": "Qikiqtaaluk",
+        "late.b745fc8a1236": "big dark eyes, short muzzle",
+        "late.b7ce0fde8d06": "A headland. Charts across the Arctic carry the name Nuvuk where a point juts into the current.",
+        "late.b81b8efa3959": "Bag of bubble wrap",
+        "late.b81c8c80cb62": "A large seal that feeds on the bottom; its skin makes boot soles and boat covers.",
+        "late.b840bf086174": "black and white",
+        "late.b847dd9e6574": "paddle steamer, John Ross's private expedition",
+        "late.b8588ebfc604": "Mutiny: the mess deck takes the plan out of your hands.",
+        "late.b86826c2f89f": "Dive weight belt",
+        "late.b8a930e5ff2d": "Aft lab",
+        "late.b8b4c632d46c": "Chlorophyll filtration rig",
+        "late.b8e2c390b3cf": "How far has the ship steamed this leg?",
+        "late.b9504b700c67": "Aakka.",
+        "late.b962599f6b56": "drakes white above, black below",
+        "late.ba025c7163fe": "External hard drive",
+        "late.ba16b1084c32": "{value0} at {value1} lost its window: {value2}.",
+        "late.ba93078fbe0d": "whirring, fast wingbeats",
+        "late.bae3d3e68eb6": "{value0} h",
+        "late.bb0e719e8150": "huge arched jawline, white chin",
+        "late.bb107a2d83e3": "Words learned",
+        "late.bbfa773e5a63": "Close",
+        "late.bc77eb9c482d": "A long vowel. Raised eyebrows mean the same thing; a wrinkled nose means no.",
+        "late.bc981983e7f5": "Next",
+        "late.bca70bf7a9fa": "What’s next?",
+        "late.bcbb3dfd4a2a": "Peer review",
+        "late.bcc160458e33": "Newfoundland sealer, Greely relief",
+        "late.bd45ba80613b": "Radio bearing",
+        "late.bd4b78664c66": "One hard roll, and the seawater loop let go.",
+        "late.bdd1b500d2d5": "{value0} at {value1} {value2} day {value3}, {value4}:{value5} ×{value6} if it holds.{value7}",
+        "late.bde38411ee40": "Steaming to {value0}",
+        "late.be0dbd7963cf": "Narwhal in the log. A tusk in the glass is a sighting to be spoken of at dinner.",
+        "late.be28d6d04a95": "Classified dataset",
+        "late.be62fe79eed0": "Stereo microscope",
+        "late.be887505ea82": "escort under way",
+        "late.beb3dd7ba001": "bold white patch on the wing",
+        "late.becb7b9cf59b": "TRIAL OF THE FOUR WINDS",
+        "late.bf1d17d798f5": "{value0} is being sampled. It keeps collecting.",
+        "late.bf93e5ce8bc1": "Down",
+        "late.bf9ef5c63e3b": "{value0} takes the station",
+        "late.c06b087876f8": "Ram",
+        "late.c0729aab7814": "Field notebook",
+        "late.c07f5ed8782f": "buff and white, heading for the deck",
+        "late.c0901f2c692a": "{value0} is moving again.",
+        "late.c122250ac5ce": "Tote feed tap",
+        "late.c189e8bc98e6": "{value0} ({value1})",
+        "late.c1ca6af79086": "Iglulik",
+        "late.c1cf3b585499": "Orbital Consortium",
+        "late.c2dd2cc8c8c8": "Four standard deviations brackets almost the whole vertical motion of the hull.",
+        "late.c326a4660b67": "Field",
+        "late.c32a0147f2e4": "Place",
+        "late.c3cafd5842d5": "Line warming between intake and sensor adds a few tenths; the record tracks it as excess heat.",
+        "late.c403af6f3eda": "{value0} is a bare {value1} with no vowel",
+        "late.c4f6301d8970": "Narwhal",
+        "late.c539bb74a220": "Muskox",
+        "late.c54387e026e2": "Spell it in syllabics · {value0}",
+        "late.c566305ab9e5": "The trap keeps collecting on {value0}{value1}. −{value2}.",
+        "late.c59fc68619e0": "{value0} likely,",
+        "late.c5df583bac21": "{value0}:shore",
+        "late.c645e1321ed5": "The mean wave height",
+        "late.c68fef03d53e": "Accept the challenge",
+        "late.c6eac8a33ba8": "q: a k made far back, against the uvula",
+        "late.c6fd3870c86e": "Lines",
+        "late.c7174f7c86f2": "ROV dive",
+        "late.c73a3498a3f7": "Loop valve",
+        "late.c87ffc4d0d7d": "Answer below",
+        "late.c893e992ac93": "Kangiqsujuaq, Kangirsuk, Kangiqliniq (Rankin Inlet): the same root in bays from Ungava to Hudson Bay.",
+        "late.c8ba39ef020a": "large white flashes in the wing",
+        "late.c8c7a27cfa38": "air {value0}{value1} °C, floe too soft",
+        "late.c8d5e89af011": "XBT from the tube",
+        "late.c8e54aa26fa9": "Beach and shallows; the GEBCO cell straddles the inlet (254 m) and does not describe the shore.",
+        "late.c8f1106abdb7": "Arctic wolves follow the caribou herds; the Tuktu and Amaruq of stories hold the tundra in balance.",
+        "late.c93f6536dcfb": "Remote",
+        "late.c94c7cb8f662": "Seven days, three watches a day, and every team wants the deck. Pick a request, put it on a watch the forecast can carry, and issue the plan of the day",
+        "late.c9a08425aa5b": "TRIAL OF THE DEEP",
+        "late.ca0299459d30": "How the syllabics work",
+        "late.ca27ceb0b103": "saved {value0} of {value1}",
+        "late.ca97399dacad": "Which parcel sinks beneath the other?",
+        "late.cb7770ba15c1": "small auk, whirring low",
+        "late.cb8fa991d6c5": "Borealis Star science party",
+        "late.cc334cdc30e9": "CTD",
+        "late.cc5afcd7d78a": "Pan left",
+        "late.cd09183edddb": "bushy tail",
+        "late.cd0bab9bdd62": "Helicopter land sampling",
+        "late.cd0f5032b793": "{value0}: not an Inuktitut sound, so no glyph. The vowels are i, u and a; there is no b, c, d, e, f, h, o, w, x, y or z (y is written j, w is v).",
+        "late.cd343406d91b": "The pack closes in: {value0} tenths.",
+        "late.cd6c977a7bfd": "Under-ice multibeam",
+        "late.cd8fae810f3e": "spinning on the spot",
+        "late.cde4f15ec930": "Nearly all heave stays within ±1.7 m",
+        "late.cdf6dd00acf0": "Overboard at {value0} s",
+        "late.ce0e33741057": "Rivers and melting ice",
+        "late.cf367e966f77": "The small glyph is a bare consonant",
+        "late.cfc18fab7460": "Altimeter freeboard",
+        "late.cfc525c51584": "{value0}>{value1}",
+        "late.cfca71a113ca": "submarine survey crew",
+        "late.cfe7a5c177e5": "The record gives the bay and the date and nothing else. There is no clue to narrow the box; cover it.",
+        "late.d03e3e3ba42e": "Minke whale",
+        "late.d04d53d6039b": "Contact. {value0} in sight, beset in {value1}. Come alongside to cut them free, then lead them west; they can only follow a channel you have broken.",
+        "late.d05a347ecf59": "small, on the tideline",
+        "late.d064eb512eb9": "Moorings",
+        "late.d0cf1bf51c07": "Iqaluit",
+        "late.d157a09e51b2": "Parts: {value0}.",
+        "late.d1869a351f70": "Ice, sea, weather, animals, gear and greetings from a working coast. A doubled letter is held twice as long, and length changes meaning: imaq is the sea, imiq drinking water.",
+        "late.d1cd398e280a": "Air-drop a profiler",
+        "late.d1fd60fd4f47": "{value0}{value1}, {value2}.",
+        "late.d26d55c7f815": "Words",
+        "late.d27ad1506bdb": "{value0} uses {value1}.",
+        "late.d2820afad9df": "thin first-year ice",
+        "late.d2c44762e23f": "↕ {value0} m",
+        "late.d2c511f99dfe": "Plankton nets",
+        "late.d2d3db02bf2f": "steam tender, Royal Navy",
+        "late.d3035c2da8af": "the {value0}",
+        "late.d36b88babd46": "scupper blocked with bubble wrap",
+        "late.d3ae35160b1c": "Uluksaq is stone for an ulu; Uluksaqtuuq the place with much of it.",
+        "late.d3b992428a15": "dark, powerful flight",
+        "late.d453659f54f6": "Neptune's court",
+        "late.d46267a04c51": "{value0} is fixed on that watch.",
+        "late.d56ba4d6ddd7": "Rival credibility",
+        "late.d594c2cc0a53": "final",
+        "late.d59ebba26be7": "Charted water is {value0} from the datum{value1}.",
+        "late.d5b0b51a91d1": "a head in the water",
+        "late.d5f0faa79839": "Find a beset ship and break her out",
+        "late.d65ea44926bc": "Day reports and grievances",
+        "late.d692b6499cdd": "A mast standing out of the ice, seen from a snowmobile, in the middle of the bay. The wreck sits upright near the centre of the box.",
+        "late.d6a1c6964075": "Swell from {value0}",
+        "late.d71766505c77": "left to reach them",
+        "late.d71975a92c4b": "Credibility +{value0}.",
+        "late.d732b65d6c12": "Data request",
+        "late.d7547dc1df9e": "the door",
+        "late.d77ccecc2c46": "heavy ducks in a low line",
+        "late.d78707d7d6c2": "Last seen forty-five miles south-east of Cape Searle, drifting south in the pack, and crushed some weeks later. A ship crushed in a drifting pack goes down along the drift: look south of the datum.",
+        "late.d7cbc6d101b5": "Critical finding! {value0}",
+        "late.d7fe615d62e8": "\"The bearded one.\" Its underwool, qiviut, is warmer than sheep’s wool by weight.",
+        "late.d8052ee59bac": "Under the hull",
+        "late.d82eb29c4860": "walking the floe",
+        "late.d91ebf5887cf": "Watch",
+        "late.d95adcdb0c33": "Week planner: days across, watches down",
+        "late.d961e6e4caa7": "Grievances before mutiny",
+        "late.d96e7e9f960b": "airborne EM survey team",
+        "late.d97a01b00c87": "Plan the {value0} transit first.",
+        "late.d9a1c1149f75": "{value0} s to go.",
+        "late.d9e686e7bec0": "sharply pointed snout",
+        "late.d9e880a937ce": "{value0} · ×{value1}",
+        "late.d9e9e130d95d": "under way",
+        "late.d9f601cfb1fc": "ROV descending · {value0} m",
+        "late.d9f920aa2370": "Hares stay white all year in the High Arctic and turn grey-brown in summer further south.",
+        "late.da62be2f68c4": "Steer east",
+        "late.da7007faabc7": "Smaller box",
+        "late.db4ac4b976a8": "The archive's wreck-site pin in the middle of the bay (P:Terror Bay). Found 3 September 2016.",
+        "late.db958ca9f802": "{value0} s",
+        "late.dbc7a64b0ba3": "Name the {value0}.",
+        "late.dc09d75e8842": "Amundsen party",
+        "late.dc9a8e229010": "{value0}% sure",
+        "late.dca59cc0575d": "{value0} {value1}",
+        "late.dd249f91b067": "Plan the week as chief scientist",
+        "late.dd3f70917316": "Freezing point falls about 0.054 °C per unit of salinity; at 30 it sits near −1.6 °C.",
+        "late.dd6074f3125d": "Power bar",
+        "late.ddb470686bc0": "falcon-like, pointed wings",
+        "late.de463ba892c2": "Crew",
+        "late.de9b1be49dae": "Water",
+        "late.dec619ef98b7": "{value0}° ({value1}) at {value2} kn",
+        "late.ded3f6b54d56": "previous consonant",
+        "late.df3462469ba6": "rosette tote tipped in a roll",
+        "late.df5c3008c765": "Datum",
+        "late.df64cc324ba8": "{value0} is the {value1} shape turned for {value2}",
+        "late.df6b2587ae6f": "Qausuittuq, Resolute, means \"the place with no dawn\": the sun stays down there for about three months.",
+        "late.dfce80c3ca2c": "Now planning day {value0}.",
+        "late.e0c47b9f787b": "Search and Rescue",
+        "late.e0ca83a3243c": "Neptune's court: {value0} of {value1} trials passed",
+        "late.e14af8ce87e7": "{value0} at {value1} was still on the board when the week ended.",
+        "late.e15045b38871": "{value0}/10 very open drift",
+        "late.e1a8ae187945": "Ice core",
+        "late.e2658a43ed12": "Request more data",
+        "late.e268dec7f435": "power {value0}",
+        "late.e283e1df945b": "cm",
+        "late.e29a79fe0c34": "Review",
+        "late.e2c176e01de3": "Approximate. The archive pins the loss off Cape Fry from Inuit testimony (E673); the artifact record pins it at Cape Searle because the wreck position is not fixed (A:wrecks-disasters-021).",
+        "late.e2c4814d09bf": "Snow bunting",
+        "late.e3a7da892546": "Tunngasugit",
+        "late.e3b6b7b90f8e": "Mooring recovery",
+        "late.e4ca06877836": "The edge where landfast ice meets open water. Seals, birds and hunters gather there; so do polar bears.",
+        "late.e4e17795317d": "Iqaluit means \"many fish\": char run up the Sylvia Grinnell River there each summer.",
+        "late.e5463e125966": "At 30 salinity, my water freezes near what temperature?",
+        "late.e59b689406ae": "Stations along the lab",
+        "late.e59f98f54177": "three triangles: grey, white, black",
+        "late.e5be6d47c85e": "ship time",
+        "late.e6a927dd9367": "Close and relaunch to take the call again.",
+        "late.e6cda88848f3": "Major revision",
+        "late.e6e46159a07b": "Logged {value0} points: {value1}.",
+        "late.e70736700dfc": "grey mantle, white body",
+        "late.e72e97bbd43f": "A 4σ heave of 1.7 m means, roughly:",
+        "late.e74a950cd9cd": "Issue plan of the day",
+        "late.e7bc5a73f543": "Chartered to carry Garlington's party north to relieve Greely, she was nipped in Kane Basin and sank with most of her stores; the relief party's retreat left Greely's men to winter at Cape Sabine on almost nothing.",
+        "late.e7d8c142714b": "Dundee whaler, earlier Peary's expedition ship",
+        "late.e87f424f9a7b": "Syllabary",
+        "late.e90fb32fc22a": "✓ {value0}",
+        "late.e919ceb040fa": "Across the water: {value0}",
+        "late.e91fd0042674": "On the bridge wing, {value0}. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+        "late.e96857c58f71": "Root",
+        "late.e96b646d443f": "R deals a new watch",
+        "late.e9d6e3c8a081": "Day {value0}, {value1}, watch {value2}",
+        "late.e9dbbff38c51": "Siku is the general word for sea ice. The Nunavut ice glossary runs to dozens of finer terms; the ice chart’s \"tenths\" flatten most of them.",
+        "late.ead32deee1dd": "Red phalarope",
+        "late.eaef97f16bf3": "heave {value0} m",
+        "late.eb023dce09e8": "Shipwrecks",
+        "late.eb2e0422c84d": "no contact",
+        "late.eb53de35e98f": "±{value0}° on their VHF, {value1} s to retune",
+        "late.eb7bb2d3e45b": "Scupper",
+        "late.ec13d1075804": "Kuuk plus -juaq, big, gives Kuujjuaq, the great river of Ungava Bay.",
+        "late.ec164868991d": "Pan right",
+        "late.ec4470a0e7e2": "floats at {value0} cm",
+        "late.ecc1ff060fcf": "black face",
+        "late.ecd9b077b71d": "The {value0} is floating. {value1}",
+        "late.ecec26d1c06a": "TRIAL OF THE STRIKE",
+        "late.ed43a8a09e9b": "ship",
+        "late.ed6875eba2f8": "black above, white below",
+        "late.ed7256f90124": "Walrus haul out on ice over shallow clam beds; they rarely feed deeper than 80 m.",
+        "late.edcad8e4e85e": "Something is rising alongside. Press Space to face him.",
+        "late.edeb82171d20": "The strongest relative wind logged this leg?",
+        "late.edf2b370fe58": "Tasiujaq, a Nunavik community, means \"resembles a lake\": a bay so enclosed it might be one.",
+        "late.edfc3832f9bb": "shearing low over the swell",
+        "late.ee139cd60cb4": "buoyant, dipping to the surface",
+        "late.ee14f6d46e3e": "{value0})",
+        "late.ee54b2cefb8f": "grey above, white below",
+        "late.ee664e267411": "Borealis Star",
+        "late.ee78eff9b7da": "Basin-Scale Modelling Lab",
+        "late.eed8facf059b": "Her consort drifted east the length of Barrow Strait and Lancaster Sound. If the Intrepid went down near where she was left, she lies east of the abandonment position, down the drift.",
+        "late.ef37d1c49284": "Into the atmosphere",
+        "late.ef555f318566": "Ship time",
+        "late.ef67c2b94a25": "Planning day {value0} of {value1}",
+        "late.ef8e3203d074": "{value0} grievances: the mess deck votes and the plan is no longer yours. No points this week.",
+        "late.eff8ec10351a": "unlikely",
+        "late.f02e2cd53d7d": "{value0} already holds that watch.",
+        "late.f036a33ad429": "The aurora, plural. Under the auroral oval the display is more often overhead than to the north.",
+        "late.f039d18b2e2e": "The Riddles",
+        "late.f0481060287a": "Sound travels fastest in which water?",
+        "late.f09e9dc3b6dc": "{value0}/3",
+        "late.f0ccb0a18010": "{value0} L1100 {value1} Z",
+        "late.f0f192ee3746": "Decisive. {value0}",
+        "late.f16ae8518928": "needs {value0}, {value1} left",
+        "late.f22c6e6979b8": "Land and core",
+        "late.f24fa79d4c74": "working the ice edge, dropping to floes",
+        "late.f29678eeb956": "Bearing {value0} · eye",
+        "late.f2b8933525db": "{value0} back on the bench, dry. Its owner need never know it was on the floor.",
+        "late.f31a89fabe8e": "Trial {value0} of {value1}: {value2}. Space to begin.",
+        "late.f31fa693853d": "Push the mug left",
+        "late.f36ade17a513": "CHIEF SCIENTIST / PLAN OF THE DAY",
+        "late.f3700245c463": "({value0} day{value1}, {value2} grievance{value3})",
+        "late.f3792715e832": "Why does the seawater loop read warmer than the sea?",
+        "late.f38b84d1da61": "−1.6 °C",
+        "late.f38ef4e69403": "{value0} of {value1}",
+        "late.f487fe7ef96f": "Choose a lookout",
+        "late.f4b66eafec31": "{value0} on the bench. {value1}",
+        "late.f4b88d940e34": "on the cursor",
+        "late.f4ca9e226f9c": "{value0} of 3 rounds",
+        "late.f4e813b1276c": "Ice chart: your ship, the search datum and the pack",
+        "late.f51133fe2d9e": "Pronunciation: q is a k made far back in the throat; doubled letters are held long; ng as in singer. Spellings follow the Inuit Cultural Institute standard used in Nunavut; Inuinnaqtun and Inuvialuktun to the west are written in Roman letters, and Nunavik forms differ a little.",
+        "late.f514361dfe9a": "View from the bridge wing",
+        "late.f580dacb7b08": "{value0} of ship time",
+        "late.f5a724ba7482": "The chart",
+        "late.f5d96de37525": "{value0} · {value1}",
+        "late.f5e3ec114b84": "hull multibeam",
+        "late.f5e9c8f78aa5": "0.0 cm",
+        "late.f610c5e431c2": "Come on, go ahead. Heard when the helicopter is turning and the science party is still zipping suits.",
+        "late.f6df5a24e21e": "{value0}:texture",
+        "late.f7194e6a0d0b": "Requests",
+        "late.f7350d322f75": "thick first-year ice",
+        "late.f7d3b2f916eb": "Arrow keys or",
+        "late.f806427cf83a": "never found",
+        "late.f86ffba64eca": "black harp-shaped saddle on a silver back",
+        "late.f8e594e850dd": "48 h",
+        "late.f9063fd57c41": "fast, shallow wingbeats",
+        "late.f9818754c4e1": "Amundsen",
+        "late.f9996ac13bdb": "Nakurmiik, qujannamiik, quana: three ways to say thank you, from Nunavik to the Kitikmeot.",
+        "late.f9f7ca58c8b0": "Leg record unavailable; the riddles fall back to sea lore and the sounding to the water beneath the keel.",
+        "late.f9ff81056843": "0h 00m",
+        "late.fa0113f9ed6a": "Leading a file of whalers and naval search ships through a crack in the ice she was nipped; two days later the repair was stove in and Belcher bought her for a hundred pounds for her oil and timber.",
+        "late.fa2e2d91d040": "The Canadian Inuit dog pulls the qamutiik; a team is a qimuksiq.",
+        "late.fb2065b7eda3": "Umiujaq",
+        "late.fb3384e490e7": "Box drawn: {value0} lines. Enter runs them.",
+        "late.fb3f3652f80d": "The largest wave was 1.7 m",
+        "late.fb44f10adb82": "own channel through {value0}",
+        "late.fb553b47a790": "a heap on the ice",
+        "late.fbaeb0b2b157": "{value0} at {value1} never happened before the ship left {value2}.",
+        "late.fbd745f80a5d": "Box core",
+        "late.fbe7d7baacdd": "channel",
+        "late.fbee9828cb09": "Start the watch",
+        "late.fc1d1fa8e360": "The Carey Islands as pinned in the archive (E512). Which island she struck is not recorded.",
+        "late.fc1f24e00c63": "That was {value0}, not a hull. The ROV is back aboard.",
+        "late.fc635921a76b": "heave ≤ {value0} m",
+        "late.fc86e5506840": "Label printer",
+        "late.fcb89bebcd2f": "The {value0} row reads {value1} for {value2}; the syllabary is lit for it.",
+        "late.fd6027cbf334": "long, heavy body",
+        "late.fda201fd52a2": "Helicopter",
+        "late.fe0af9ab96d5": "Found {value0} ({value1})",
+        "late.fed8215e238a": "{value0} °C on {value1} near {value2}°N; seawater cannot get much colder without freezing.",
+        "late.fedae4f75a2d": "Ensemble run",
+        "late.ff76861fc04f": "Ringed seal",
+        "late.ffa190c22323": "{value0} shut.",
+        "late.ffa8844e174c": "no dorsal fin",
+        "late.ffe14a0751dd": "It stays in the ice for good",
         "ui.close": "Close operation",
         "ui.coverage": "French pilot: CTD notebook. Other operations remain in English.",
         "ui.language": "Language",
@@ -77,6 +1565,402 @@ window.UW_UI_CATALOG = {
     "fr-CA": {
       "label": "Français (Canada)",
       "messages": {
+        "activity.crew2.description": "Lisez le radar, puis allez forer la glace",
+        "activity.crew3.description": "Classez la glace, du pont jusqu'au satellite",
+        "activity.crew4.description": "Observez la glace depuis un hélicoptère",
+        "activity.crew5.description": "Carottez le plateau pour trouver le suintement de méthane",
+        "activity.crew6.description": "Enfilez la tenue et rejoignez la rosette sans la contaminer",
+        "activity.crew7.description": "Survolez les vieux floes à la recherche du matériel perdu",
+        "activity.crew8.description": "Carottez le fond d'un lac soulevé",
+        "activity.crew9.description": "Remorquez un filet entre les quilles de glace et les blocs rocheux",
+        "core.auto.0059798b7f70": "(facultatif)",
+        "core.auto.022127539fb5": "NAVIGATION LIBRE",
+        "core.auto.03245738e467": "TABLEAU D’IDÉES DE L’ÉQUIPAGE",
+        "core.auto.036a219d39ca": "{runs} passe de carottage",
+        "core.auto.051356596cd3": "Faire route vers",
+        "core.auto.052cc4082b80": "Cette opération n’est pas disponible.",
+        "core.auto.0636c2faefa7": "AUV désarmé.",
+        "core.auto.075015da63b2": "vider le tube",
+        "core.auto.085f6dd8288c": "Tube plein. Remontez la tarière (P) avant de continuer.",
+        "core.auto.08b48ddb0c7f": "Votre navire est seul en mer",
+        "core.auto.0ce3f2e67b26": "Trou {number} / {total}",
+        "core.auto.0e2113782a3d": "Forer",
+        "core.auto.0e7a8a7e82c9": "Distance le long du transect (m)",
+        "core.auto.0ed7444381bd": "Réservoirs pleins · U permet de mazouter à un port ou au pétrolier",
+        "core.auto.1213c8be5e40": "Touchez la carte pour naviguer",
+        "core.auto.14af9632a9a7": "Trou {number}, à {distance} mètres, épaisseur mesurée de {thickness} centimètres",
+        "core.auto.1586e736de28": "Le trou 1 est prêt. Chaque pression enfonce la tarière.",
+        "core.auto.164308988ac8": "G · Louer un hélicoptère",
+        "core.auto.18cd4969f033": "Épaisseur de glace (cm)",
+        "core.auto.1a2a44b5c8e9": "Déploiement de la carte…",
+        "core.auto.1ace5ec63e3a": "Trou suivant →",
+        "core.auto.1b53ab9eae60": "Trou {number}, à {distance} mètres, non foré",
+        "core.auto.1c035d55c855": "{distance} m : {thickness} cm",
+        "core.auto.1c63b19a1183": "Remonter la tarière",
+        "core.auto.1d4213c2a6d2": "Envoyer au tableau de l’équipage ↗",
+        "core.auto.1d951e640103": "Alarmes · aucune pendant ce voyage",
+        "core.auto.1daa04ce04dc": "4 · Choisir un brise-glace",
+        "core.auto.1fc2f4dc641a": "Impossible d’enregistrer le commentaire",
+        "core.auto.20346b866fba": "Épaisseur (cm)",
+        "core.auto.20fb824face8": "Foré : {depth} cm",
+        "core.auto.22ea9c49717b": "Transect enregistré ✓",
+        "core.auto.24182483b9fa": "Comment y jouerait-on?",
+        "core.auto.255aa6efa939": "Carburant bingo · l’hélicoptère retourne au navire.",
+        "core.auto.2b6f8e42363f": "continuer à forer",
+        "core.auto.2c57dcead783": "Mise à jour toutes les 5 secondes",
+        "core.auto.311bc6ca8cae": "EXPÉDITION / SAISON DE TERRAIN 2026",
+        "core.auto.31b471215872": "Classement",
+        "core.auto.31f8d69fc844": "Remontez le zodiac (Y) avant le décollage de l’hélicoptère.",
+        "core.auto.338f0d3fabb0": "Les {count} trous sont consignés. Terminez pour enregistrer {points} points.",
+        "core.auto.33cbf0cb2c5b": "Videz le tube carottier (E) avant de continuer.",
+        "core.auto.34004f654555": "Manipulation du tube carottier",
+        "core.auto.35cf820e07d0": "Mazoutage",
+        "core.auto.35dc3ca90787": "Fond marin cartographié",
+        "core.auto.3628f048c3e0": "Prêt à forer.",
+        "core.auto.3635711ce224": "Serveur inaccessible. Nouvelle tentative…",
+        "core.auto.3646d09cf2d4": "Relais de la flotte inaccessible · navigation en solo, nouvelle tentative",
+        "core.auto.376ebd3a95a9": "Hachures ocre · couverture de glace inconnue; l’eau libre est cartographiée",
+        "core.auto.3855ab050361": "OPÉRATIONS CONSIGNÉES",
+        "core.auto.3b6811ea0b19": "AUV",
+        "core.auto.3c3d03f61735": "Trou {number}, à {distance} m. Prêt à forer.",
+        "core.auto.3e964fab7000": "Distance (m)",
+        "core.auto.40976a1a6f1f": "Signez le journal de votre nom pour publier vos scores au classement.",
+        "core.auto.428290b7bcee": "Appuyez sur {drill} ou touchez pour tourner la tarière Kovacs. Son tube contient 1 m de carotte : lorsqu’il est plein, remontez-la avec {pull}, videz-la avec {empty}, ajoutez une rallonge avec {extend}, puis redescendez jusqu’à percer la glace.",
+        "core.auto.431f3a06468d": "Y · Mettre le zodiac à l’eau",
+        "core.auto.435567b14289": "← Précédent",
+        "core.auto.47ce77aa1399": "Tarière en surface avec {capacity} cm de carotte. Videz le tube (E).",
+        "core.auto.47d1836b94de": "À BORD ET PRÊT HORS LIGNE",
+        "core.auto.4888a8f073ed": "L’ARCADE SCIENTIFIQUE DE L’AMUNDSEN",
+        "core.auto.496a37e3a10b": "Ajouter une rallonge",
+        "core.auto.49a68f067666": "Transect d’épaisseur de glace",
+        "core.auto.4b1782785806": "Créé avec l’équipage",
+        "core.auto.4b58f3733b49": "Terminer le transect",
+        "core.auto.4efbe86d61e7": "ÉQUIPAGE DU NAVIRE",
+        "core.auto.4f226f49771f": "CARTE DE L’EXPÉDITION",
+        "core.auto.4f8ac04b9289": "Navires en mer",
+        "core.auto.5114977a4f61": "Trous terminés",
+        "core.auto.51ce0a3fcf7d": "Personne n’a encore consigné cette opération.",
+        "core.auto.5524333340a5": "Votre navire. Notre expédition.",
+        "core.auto.57158cf8956c": "Points de science en carrière et meilleure partie de chaque opération.",
+        "core.auto.5a2220267bcc": "L’expédition",
+        "core.auto.5c2adc0a2ab1": "Terminer le transect · {points} pts",
+        "core.auto.5cdc36766f16": "Construction interrompue",
+        "core.auto.5d05a0b327da": "Graphique de l’épaisseur de glace. Les mesures sont énumérées ci-dessous.",
+        "core.auto.5db052dfb022": "Aucun zodiac à bord · achetez-en un au magasin du bord.",
+        "core.auto.5e44ef2ec771": "Glace la plus proche à {km} km {bearing}{of} · de la glace cartographiée est requise dans un rayon de {limit} km",
+        "core.auto.5edcae099d81": "Aucune glace cartographiée dans un rayon de {distance} km",
+        "core.auto.5f52af03676c": "Remorquage",
+        "core.auto.600cc1e136ca": "Sondeur multifaisceaux à large fauchée",
+        "core.auto.6115f1f88a84": "Trou suivant, flèche droite",
+        "core.auto.61d47e8d1139": "CARNET DE TERRAIN / TRANSECT DE GLACE",
+        "core.auto.63734772475c": "Dans le jeu",
+        "core.auto.64020a4ac475": "Hélicoptère à bord · ravitaillé · commandes du navire rétablies.",
+        "core.auto.6891c2c15399": "Aucune route maritime jusque-là. Arrêt avant la côte.",
+        "core.auto.691ca10610c3": "Quelle activité à bord ferait un excellent défi?",
+        "core.auto.6b2c97795c1c": "Les 100 dernières entrées avec position et profondeur d’eau",
+        "core.auto.6c4bc443bd62": "Quelle est la science? Que fait la personne qui joue? Comment gagne-t-elle?",
+        "core.auto.6ebcd2a68574": "Zodiac",
+        "core.auto.6f7842fa50df": "Recommencer mon expédition",
+        "core.auto.6fa160d2d2e3": "Faisceau sonar 40 % plus large · davantage de cellules par kilomètre",
+        "core.auto.701285059392": "Transect enregistré : {holes} trous mesurés · {points} points.",
+        "core.auto.704ab5bcaec9": "Radio · aucun appel · veille sur le canal 16",
+        "core.auto.7116620738ed": "Trou {number} : {thickness} cm consignés à {distance} m.",
+        "core.auto.715b1458abbe": "Classement général",
+        "core.auto.71b848929598": "Tube {core} / {capacity} cm · {extensions} rall.",
+        "core.auto.72021eb70e91": "Connexion…",
+        "core.auto.730210d0ddfd": "Visiter le tableau d’idées ↗",
+        "core.auto.7503323bc28e": "Tous les points accumulés par chaque personne, sur chaque appareil.",
+        "core.auto.757c6565d28e": "Impossible d’enregistrer l’idée",
+        "core.auto.76998081c0c5": "Zodiac remonté à bord · commandes du navire rétablies.",
+        "core.auto.78dcc0d00d6a": "Aucun appel radio",
+        "core.auto.7b08f3593801": "Brise-glace de recherche · Garde côtière canadienne · Canada",
+        "core.auto.7b476e26885f": "Votre premier perçage amorce le graphique.",
+        "core.auto.7be9be0cf869": "Magasin du bord",
+        "core.auto.7c0b08b92453": "Tracé de la carte…",
+        "core.auto.7cb486447c7e": "eaux avec fragments de glace",
+        "core.auto.7cf32eefc446": "Location d’hélicoptère",
+        "core.auto.8225c2eea173": "Vider la carotte",
+        "core.auto.828c1e6f162f": "Récupérez l’hélicoptère ou le zodiac avant de mazouter.",
+        "core.auto.82c6b361c257": "{distance} m le long du transect",
+        "core.auto.833f9894eecb": "En route vers",
+        "core.auto.85c7786e1e46": "Échouement",
+        "core.auto.8672857a6c8c": "Aucun AUV à bord · achetez-en un au magasin du bord.",
+        "core.auto.86b9670b2ba5": "Aucun hélicoptère à bord · louez-en un au magasin du bord pour {points} points de science.",
+        "core.auto.8736a2ba1720": "Proposer un minijeu",
+        "core.auto.87408ec8a05f": "la terre fait échouer le navire",
+        "core.auto.879d7e9d1ff6": "remonter la tarière",
+        "core.auto.87bf3fe24176": "ajouter une rallonge",
+        "core.auto.89628e1d5c54": "Trou {number}, à {distance} mètres, en cours",
+        "core.auto.8a1702a7ef7d": "2 · LÉGENDE",
+        "core.auto.8adc7cf3a081": "SURFACE DE LA BANQUISE",
+        "core.auto.8c1273c700b2": "Appuyez sur D ou touchez pour tourner la tarière Kovacs. Son tube contient 1 m de carotte : lorsqu’il est plein, remontez avec P, videz avec E, ajoutez une rallonge avec X, puis redescendez jusqu’à percer la glace.",
+        "core.auto.8c71d3bfccec": "G · Décoller en hélicoptère",
+        "core.auto.8ce3fe4bda0c": "25 points par trou mesuré · +50 pour le transect complet",
+        "core.auto.8ea608d8eafb": "DÉPENSER DES POINTS DE SCIENCE",
+        "core.auto.8ee3ab240b3e": "Posez l’hélicoptère (G) avant de mettre le zodiac à l’eau.",
+        "core.auto.8f902241b25c": "Trou précédent, flèche gauche",
+        "core.auto.90b923bb361e": "De vraies recherches. Des idées ludiques. Façonnez l’expédition en direct.",
+        "core.auto.913576734776": "Percée! {thickness} cm à {distance} m en {runs} passe de carottage. Choisissez un autre trou ou terminez votre transect.",
+        "core.auto.91ce7974c8a9": "Carnet de mesures",
+        "core.auto.920a83e40db5": "Créé ensemble, à bord.",
+        "core.auto.92e9013cd285": "Légende de la carte",
+        "core.auto.9332dc34d36f": "Trous du transect",
+        "core.auto.93460114621b": "Que devrions-nous créer ensuite?",
+        "core.auto.934d83a750af": "{core} centimètres de carotte sur {capacity}, trou profond de {depth} centimètres",
+        "core.auto.94426aa02ba7": "Carottez la banquise un mètre à la fois.",
+        "core.auto.94862b3a6752": "CARTE DU COMMANDANT",
+        "core.auto.970d163c27e2": "G · Retourner au navire",
+        "core.auto.97b06c053d20": "La prochaine aventure commence par une idée. Soyez la première personne à proposer la vôtre.",
+        "core.auto.9a46382908bb": "+800 m³ de diesel",
+        "core.auto.9b9df0d68155": "Appel radio",
+        "core.auto.9e3dffaa93c3": "Les profils CTD rapportent 25 % de plus",
+        "core.auto.9f8e1fe39a5b": "Donnez-lui un nom",
+        "core.auto.a02f938797fa": "M³ DE DIESEL",
+        "core.auto.a20aac730804": "JOURNAL DU COMMANDANT",
+        "core.auto.a4b151d0d2d3": "Montrer mon navire à la flotte",
+        "core.auto.a79233d281f4": "NAVIRE ET HÉLICOPTÈRE",
+        "core.auto.a8a035fa5216": "Y · Remonter le zodiac",
+        "core.auto.a97cc42c40f3": "Mayday",
+        "core.auto.a9e9b1699745": "couverture de glace inconnue · hors de la carte du SCG",
+        "core.auto.aa3e653bb0a1": "Connexion perdue. Votre brouillon est toujours ici; réessayez.",
+        "core.auto.ab33e5a2546b": "Votre nom ou votre équipe",
+        "core.auto.ab67362454f7": "Choisissez votre brise-glace",
+        "core.auto.acf0f757d4d2": "Carte et journal enregistrés sur cet appareil",
+        "core.auto.ae020fff75f7": "U · Mazouter",
+        "core.auto.b00dad0b78c5": "Ajouter une rallonge",
+        "core.auto.b1d4f10e711f": "Opérations de l’expédition",
+        "core.auto.b21378411239": "Diesel à bord",
+        "core.auto.b2d0883b3e40": "Le zodiac a besoin d’eau libre le long du bord · le navire est dans la banquise.",
+        "core.auto.b3723c3c9c9d": "Signez le journal pour le classement",
+        "core.auto.b4d29945a382": "Votre navire est de retour sur les cartes de la flotte.",
+        "core.auto.b66d044181a0": "Remonter",
+        "core.auto.b6b8ed793b54": "Les idées de l’équipage",
+        "core.auto.b6e978f304ef": "Rivage devant · le zodiac s’arrête au large de la plage.",
+        "core.auto.b8ed5279e897": "Envoi…",
+        "core.auto.b9a01357b8f1": "Mise à jour toutes les 10 secondes",
+        "core.auto.bd34d2a79ccd": "POINTS DE SCIENCE",
+        "core.auto.be47a9af980e": "Carotte dans le tube de 1 mètre, en centimètres",
+        "core.auto.bfdfb750a290": "C’est la terre. Le navire reste à flot.",
+        "core.auto.c110e0bfeeda": "Votre navire n’apparaît plus sur les cartes de la flotte · vous voyez toujours les leurs.",
+        "core.auto.c2aabf88a6cf": "Passes de carottage",
+        "core.auto.c34aaa5d494a": "1 l’envoie en ligne droite jusqu’à 60 km · fauchée de 3 km, puis retour au point de lancement",
+        "core.auto.c39059141ced": "En révision",
+        "core.auto.c4061b600b85": "Trou",
+        "core.auto.c5a9b2f04a6e": "Votre idée est affichée au tableau de l’équipage. Merci!",
+        "core.auto.c6c094bc0054": "Vider",
+        "core.auto.c7a396e3dd94": "réservoirs vides : dérive, puis remorquage vers le sud",
+        "core.auto.c7ef1c8dc9f0": "Épaisseur le long du transect",
+        "core.auto.c8a6e8cdf569": "Journal des découvertes",
+        "core.auto.c8cbc45ccbe6": "Position d’épave",
+        "core.auto.c93771b6c975": "DU LABO AU JEU",
+        "core.auto.cae1e757ba0f": "En construction",
+        "core.auto.cd594e6356c8": "Glace devant · le zodiac ne peut pas entrer dans la banquise.",
+        "core.auto.cf6ffb64a388": "Vos recherches pourraient devenir le prochain minijeu. Proposez une idée depuis votre coin du navire.",
+        "core.auto.cfa5d96bbce4": "Coque renforcée pour la glace",
+        "core.auto.d21bb537725d": "zoom",
+        "core.auto.d27c7d015bcd": "Q · Magasin du bord",
+        "core.auto.d62efd50cc00": "Idées de l’équipage",
+        "core.auto.d6725af155e7": "Carotte {number} déposée sur la neige. Ajoutez une rallonge de 1 m (X) pour atteindre {depth} cm.",
+        "core.auto.d78f1dd07796": "1 · Envoyer l’AUV",
+        "core.auto.d7d0b1eaa443": "Ajoutez une rallonge de 1 m (X) avant de continuer.",
+        "core.auto.d8a088ad551a": "Connexion perdue; votre commentaire est toujours ici.",
+        "core.auto.d976b5eb78d7": "Un journal vierge, une mer ouverte. Terminez une opération n’importe où à flot pour laisser votre première marque.",
+        "core.auto.da6116b625cf": "Les réservoirs sont pleins.",
+        "core.auto.dc4d3f6ffd6b": "Réservoir de carburant supplémentaire",
+        "core.auto.dc5d528db77d": "Impossible d’ouvrir cette opération. Réessayez.",
+        "core.auto.dc6127577d02": "Y met une embarcation rapide à l’eau · eau libre seulement · sonde sa route · rayon de 30 km",
+        "core.auto.dd15cecd6792": "Treuil rapide",
+        "core.auto.dda3bb34185a": "Volez au-dessus des terres pour Le Radeau",
+        "core.auto.deb01b77d193": "{count} / {total} consignés",
+        "core.auto.e08d9aa577e4": "La carte reste dans cet onglet · stockage indisponible",
+        "core.auto.e26dfeaf8eda": "{core} centimètres de carotte sur {capacity}, trou profond de {depth} centimètres, percée",
+        "core.auto.e2c3d88c89c1": "Un peu de curiosité. Beaucoup d’océan.",
+        "core.auto.e34791dded3e": "Suivez votre curiosité. Déployez la carte. Tracez un sillage de découvertes.",
+        "core.auto.e5729d014d78": "5 · Navire suivant",
+        "core.auto.e598bfff1c53": "VOTRE NAVIRE",
+        "core.auto.e5bf51c41bbc": "La carte se déploie encore. Un instant.",
+        "core.auto.e6a7021affbd": "Aucun score pour l’instant. Signez le journal à la page de l’expédition et terminez une opération.",
+        "core.auto.e7236bd22726": "{runs} passes de carottage",
+        "core.auto.e858374cf8c1": "Recherche du relais de la flotte…",
+        "core.auto.ea424e0d01e6": "Percée! {thickness} cm à {distance} m en {runs} passes de carottage. Choisissez un autre trou ou terminez votre transect.",
+        "core.auto.eae961851e97": "Carburant bingo · l’hélicoptère retourne au navire.",
+        "core.auto.ec3c19d43413": "Rallonge {number} fixée. La tête de coupe est revenue à {depth} cm. Continuez à forer.",
+        "core.auto.ef9b1d25babc": "Aucun passage libre dans cette direction pour l’AUV.",
+        "core.auto.f03c9f5c5c67": "PASSERELLE / Prêt à appareiller",
+        "core.auto.f2b82057adb0": "Maintient une meilleure vitesse dans la banquise · réduit de moitié la surconsommation dans la glace",
+        "core.auto.f56e88a96396": "Trou {number}, à {distance} m. Reprenez à {depth} cm : {action}.",
+        "core.auto.f64d0e6f2738": "＋ Proposer un minijeu",
+        "core.auto.f69fd0766245": "Épaisseur : {thickness} cm",
+        "core.auto.f6d4d08c9678": "Tube plein à {depth} cm, toujours dans la glace. Remontez la tarière (P).",
+        "core.auto.f7809d7366b4": "Percée ✓",
+        "core.auto.fb74a9888643": "La flotte",
+        "core.auto.fbe598869f80": "Bell 429 et pilote · G mène à Patrouille des glaces et au Radeau",
+        "core.auto.fe846b113274": "Épaisseur de la glace",
+        "core.auto.ff3491733988": "LA SCIENCE EST UNE AVENTURE",
+        "core.shell.hireIcePatrol": "Louez l’hélicoptère au magasin du bord (Q) pour la Patrouille des glaces",
+        "core.shell.hireRaft": "Louez l’hélicoptère au magasin du bord (Q) pour Le radeau",
+        "core.shell.launchIcePatrol": "Décollez en hélicoptère (G) pour la Patrouille des glaces",
+        "core.shell.launchRaft": "Décollez en hélicoptère (G) pour Le radeau",
+        "core.shell.ofHelicopter": " de l’hélicoptère",
+        "crew2.aria": "Relevé de la vieille glace",
+        "crew2.back": "De retour à l'image. Ajoutez des repères, puis reprenez.",
+        "crew2.begin": "Commencer le relevé",
+        "crew2.end": "Terminer le relevé · {points} pts",
+        "crew2.heading": "Repérez la vieille glace au radar, puis allez la confirmer à la tarière.",
+        "crew2.resume": "Reprendre le relevé",
+        "crew2.sail": "Naviguer vers le repère",
+        "crew2.scale": "10 km",
+        "crew2.sceneError": "Impossible de charger la scène radar. Fermez et rouvrez l'opération.",
+        "crew2.sceneLoaded": "Scène chargée. Lisse et brillante, ou rugueuse et brillante? Marquez vos floes.",
+        "crew2.title": "Où est la vieille glace?",
+        "crew3.aria": "Classification des glaces Classi-glace",
+        "crew3.callLog": "Journal des identifications ",
+        "crew3.classification": "Classification",
+        "crew3.correct": "Bonnes réponses",
+        "crew3.fieldGuide": "Guide de terrain · ",
+        "crew3.firstYear": "Première année",
+        "crew3.heading": "Identifiez la glace : première année ou pluriannuelle, le plus vite possible.",
+        "crew3.log": "Consigner les résultats",
+        "crew3.mean": "Moyenne",
+        "crew3.multiYear": "Pluriannuelle",
+        "crew3.outOfTime": "Temps écoulé : {answer}",
+        "crew3.platforms": "Plateformes",
+        "crew3.scene": "Scène {current} sur {total}.",
+        "crew3.start": "Le niveau 1 vous attend à la surface. Appuyez sur Espace pour commencer.",
+        "crew3.time": "Temps restant",
+        "crew3.title": "Classi-glace",
+        "crew4.airborne": "En vol. Ajustez les floes sur dix dixièmes pour cartographier une bande.",
+        "crew4.aria": "Champ de glace vu de l'hélicoptère. La ligne d'état ci-dessous décrit ce qui se passe.",
+        "crew4.chartError": "Impossible de lire la carte des glaces.",
+        "crew4.controls": "Commandes de vol",
+        "crew4.drop": "Larguer",
+        "crew4.fuel": "Carburant",
+        "crew4.hardDrop": "Descente rapide",
+        "crew4.left": "Déplacer vers la gauche",
+        "crew4.loaded": "Carte chargée. Décollez quand vous êtes prêt.",
+        "crew4.packAhead": "BANQUISE DEVANT",
+        "crew4.right": "Déplacer vers la droite",
+        "crew4.rotate": "Tourner",
+        "crew4.shore": "RIVAGE",
+        "crew4.softDrop": "Descente douce",
+        "crew4.title": "Patrouille des glaces",
+        "crew5.aria": "Relevé de carottage sédimentaire À la recherche des suintements",
+        "crew5.coreDescription": "Description de la carotte",
+        "crew5.equipment": "Matériel de carottage",
+        "crew5.found": "Suintement trouvé ✓",
+        "crew5.longest": "Séquence la plus longue : {length} · {age} · {points} pts",
+        "crew5.noRecord": "Aucun record pour l'instant",
+        "crew5.sailOn": "Poursuivre la route · {points} pts",
+        "crew5.shipTime": "Temps-navire : {hours} h sur {total}",
+        "crew5.sites": "Sites de carottage",
+        "crew5.spent": "Temps-navire épuisé",
+        "crew5.time": "Temps-navire restant, en heures",
+        "crew5.title": "À la recherche des suintements",
+        "crew6.aria.canvas": "Labyrinthe de conteneurs sur le pont avant",
+        "crew6.aria.down": "Bas (flèche vers le bas ou S)",
+        "crew6.aria.game": "Contaminants : échantillonnage propre des métaux traces",
+        "crew6.aria.left": "Gauche (flèche vers la gauche ou A)",
+        "crew6.aria.move": "Déplacer l'échantillonneur",
+        "crew6.aria.right": "Droite (flèche vers la droite ou D)",
+        "crew6.aria.up": "Haut (flèche vers le haut ou W)",
+        "crew6.brushing": "Frottement contre les surfaces",
+        "crew6.cleanSuit": "Tenue propre",
+        "crew6.dirtyMeter": "Indicateur de contamination",
+        "crew6.elapsed": "écoulé",
+        "crew6.flash.fresh": "Gants propres. Allez-y.",
+        "crew6.flash.suited": "Tenue enfilée. Ne touchez à rien.",
+        "crew6.heading": "Tout le monde est contaminé.",
+        "crew6.instructions": "Cinq morceaux de la tenue propre sont dispersés dans le labyrinthe de conteneurs. Trouvez-les tous, puis revenez à la rosette sans rien toucher : le navire est fait de fer, de zinc et de cuivre, de la quille jusqu'en haut.",
+        "crew6.kicker": "ROSETTE POUR MÉTAUX TRACES / PONT AVANT",
+        "crew6.kit.booties": "Couvre-bottes",
+        "crew6.kit.coverall": "Combinaison Tyvek",
+        "crew6.kit.hood": "Cagoule",
+        "crew6.kit.inner": "Gants de nitrile",
+        "crew6.kit.outer": "Surgants de polyéthylène",
+        "crew6.legend.brushing": "Le frottement contre une surface continue d'en ajouter. Tia arrête tout à {threshold}.",
+        "crew6.legend.heading": "Ce qu'il y a sur les parois",
+        "crew6.meter.dirty": "{dirty} / {threshold}",
+        "crew6.meter.dirtyChanges": "{dirty} / {threshold} · changement de gants {count}",
+        "crew6.meter.unsuited": "Enfilez d'abord la tenue — le manteau de flottaison peut toucher ce qu'il veut.",
+        "crew6.meter.value": "{dirty} sur {threshold}",
+        "crew6.result.blankNote": "Qualité blanc : rien sur les bouteilles, sauf de l'eau de mer.",
+        "crew6.result.blankTitle": "Profil de métaux traces : échantillon de qualité blanc",
+        "crew6.result.brushedNote": "Quelques frottements en chemin, notés sur la fiche d'échantillon.",
+        "crew6.result.changes": "Changements de gants · {count}",
+        "crew6.result.cleanliness": "Propreté",
+        "crew6.result.kicker": "ÉCHANTILLON PRÉLEVÉ",
+        "crew6.result.noTouch": "Aucun contact",
+        "crew6.result.points": "Points scientifiques",
+        "crew6.result.speed": "Rapidité · {time}",
+        "crew6.result.title": "Profil de métaux traces : propreté de {cleanliness} %",
+        "crew6.result.touchedNote": "Tia consigne ce que vous avez frotté contre l'échantillon.",
+        "crew6.retry": "Changez de gants et réessayez",
+        "crew6.reward": "Jusqu'à 100 pour une arrivée propre · +40 pour la rapidité · +20 pour un trajet de qualité blanc sans aucun contact",
+        "crew6.rosette": "Rosette MT",
+        "crew6.status.busted": "Tia : n'y touche pas, tu es contaminé. {count} contacts. Changez de gants et repartez de l'endroit où vous avez enfilé la tenue.",
+        "crew6.status.finished": "Échantillon prélevé : propreté de {cleanliness} % en {time} · {points} points.",
+        "crew6.status.found": "{item} trouvé. Il reste {count} morceaux.",
+        "crew6.status.foundAll": "{item} trouvé. Enfilez la tenue.",
+        "crew6.status.fresh": "Gants propres de Tia. Retournez à la rosette depuis l'endroit où vous avez enfilé la tenue.",
+        "crew6.status.start": "Utilisez les flèches ou WASD pour vous déplacer. Maintenez un bouton ou touchez-le pour faire un petit pas.",
+        "crew6.status.suited": "Tenue enfilée en {time}. Retournez maintenant à la rosette : chaque surface compte, tout comme le matelot et les gouttes.",
+        "crew6.status.touch": "{surface} — {dirty} / {threshold}.",
+        "crew6.surface.anode": "Anode de zinc",
+        "crew6.surface.deckhand": "Gants de travail du matelot",
+        "crew6.surface.drip": "Goutte hydraulique",
+        "crew6.surface.grease": "Conduite hydraulique graissée",
+        "crew6.surface.hull": "Cloison peinte",
+        "crew6.surface.paint": "Antisalissure fraîche",
+        "crew6.surface.rust": "Coulure de rouille",
+        "crew6.surface.steel": "Paroi de conteneur",
+        "crew6.tia.detail": "{count} contacts : {surfaces}. Personne ne veut d'un blanc rouillé.",
+        "crew6.tia.detailBrushing": "{count} contacts : {surfaces}, en plus des frottements en chemin. Personne ne veut d'un blanc rouillé.",
+        "crew6.tia.shout": "N'Y TOUCHE PAS — TU ES CONTAMINÉ!",
+        "crew6.tia.who": "Tia, depuis la bulle propre",
+        "crew6.title": "Contaminants",
+        "crew7.aboard": "à bord",
+        "crew7.aria": "Recherche en hélicoptère du matériel perdu de Clement",
+        "crew7.cleared": "dégagé",
+        "crew7.empty": "Traversez un floe pour lire sa ligne sur la carte.",
+        "crew7.fuel": "Carburant restant, en secondes de vol",
+        "crew7.hover": "Faites du vol stationnaire au-dessus du matériel",
+        "crew7.land": "Atterrir sur le pont",
+        "crew7.slow": "Ralentissez pour chercher",
+        "crew7.takeOff": "Décoller",
+        "crew7.title": "Retrouver les affaires de Clement",
+        "crew7.wind": "VENT",
+        "crew8.aria": "Carottage de sédiments lacustres depuis un radeau",
+        "crew8.ashore": "À terre ✓",
+        "crew8.drive": "Enfoncer",
+        "crew8.gameOver": "Partie terminée",
+        "crew8.handling": "Manutention des carottes",
+        "crew8.leave": "Abandonner la carotte",
+        "crew8.noCore": "Traction requise : aucune carotte consignée",
+        "crew8.paddle": "Revenir à la pagaie",
+        "crew8.paddled": "Revenu à la pagaie",
+        "crew8.raftGone": "Radeau perdu",
+        "crew8.refusal": "Refus",
+        "crew8.stone": "Pierre",
+        "crew8.tension": "Tension du câble, en kilogrammes",
+        "crew8.title": "Le radeau",
+        "crew9.aria": "Trait de plancton Filet fou",
+        "crew9.bumps": "chocs",
+        "crew9.deep": "Profondeur",
+        "crew9.depthPresets": "Préréglages de profondeur initiale",
+        "crew9.finish": "Terminer la station · {points} pts",
+        "crew9.fluorescence": "Maximum de fluorescence",
+        "crew9.haul": "Remonter maintenant",
+        "crew9.noTime": "Plus de temps-navire",
+        "crew9.onBottom": "sur le fond marin",
+        "crew9.reading": "Lecture de la station…",
+        "crew9.seabed": "Des fonds marins",
+        "crew9.sell": "Vendre les échantillons",
+        "crew9.stationLogged": "Station consignée",
+        "crew9.surface": "Surface",
+        "crew9.theme": "♪ Thème",
+        "crew9.themeOn": "♫ Thème activé",
+        "crew9.title": "Filet fou",
+        "crew9.torn": "filet déchiré",
         "ctd.activity": "Profil CTD",
         "ctd.ascend": "Commencer la remontée · Entrée",
         "ctd.ascending": "Remontée en cours. Espace ferme une bouteille; le treuil ne s’arrête pas.",
@@ -141,282 +2025,7326 @@ window.UW_UI_CATALOG = {
         "ctd.target.warm.rule": "Repérez la couche mesurée la plus chaude.",
         "ctd.timeUnknown": "Heure non disponible",
         "ctd.title": "Échantillonnez les couches",
+        "early.closeRetry": "Fermez et rouvrez pour réessayer.",
+        "early.finish": "Terminer",
+        "early.loading": "Chargement…",
+        "early.logged": "Consigné ✓",
+        "early.points": "points",
+        "early.score": "Pointage",
+        "late.00063902cfd3": "{value0} h heure d'expédition",
+        "late.0008f8c89a6d": "{value0} : {value1} activé pour {value2}{value3} : {value4}.",
+        "late.00343064716d": "Exécution du modèle",
+        "late.006ff1552e12": "Les étoiles donnaient la direction dans les mois sombres ; les crêtes de neige laissées par le vent dominant la donnaient de jour.",
+        "late.00962387f4ef": "un coup, un grand dos",
+        "late.00fa5e447ba5": "se glisse sous le sol sans éclaboussures",
+        "late.017322b98576": "Fond du fjord",
+        "late.01dfed5e914a": "Diriger vers le sud",
+        "late.0260370d1378": "{value0} est sous l'eau. Son propriétaire va demander pourquoi il était sur le sol.",
+        "late.02a37eb98d68": "La broche du site de l'épave des archives (P :épave de l'enquêteur du HMS) ; Parcs Canada l'a localisée en juillet 2010.",
+        "late.02c33a0c9794": "Griefs",
+        "late.02de81941a2a": "{value0} cm sur le pont déjà, {value1} L/s de plus arrivant",
+        "late.02f4a3c6aac9": "Direction",
+        "late.04757c404276": "Syllabe",
+        "late.04bc281df512": "RetroSeep",
+        "late.0514e6810ed0": "cornes courbées vers le bas",
+        "late.0524e9382ebe": "Le Trident",
+        "late.0542d7569207": "Ours polaire",
+        "late.0587c136e342": "Revoir la vidéo.",
+        "late.058d9dcd8242": "{value0}h {value1}m",
+        "late.062ee2f50238": "Le tour est la voyelle",
+        "late.064699c4c321": "Le suffixe signifie « {value0} » ; la racine est le mot pour la chose elle-même.",
+        "late.0659d5cf06ae": "{value0}°{value1} {value2}°{value3}",
+        "late.0664fa29600e": "RELAIS MAYDAY · SCTM IQALUIT",
+        "late.067ee12cc480": "{value0} m",
+        "late.06a1f5c4ac7d": "au-delà du radar",
+        "late.0719939c468f": "flotte de planeurs autonomes",
+        "late.0737751829cd": "Piqué à environ un demi-mille de l'île, et trouvé en 1980 debout à environ 100 m au sud de celle-ci. Fouillez les eaux profondes au sud de l'île, pas les eaux peu profondes en dessous.",
+        "late.07a5bf541b50": "{value0} :{value1} :{value2} :{value3}",
+        "late.0841a82a21c1": "une forme sombre sur la pente",
+        "late.084226bf4657": "Qurluqtuq",
+        "late.088566363a71": "Remontée d'eau",
+        "late.09807d130dde": "navire bombardier, expédition Franklin",
+        "late.09ffbae53a01": "Chargement des données locales…",
+        "late.0a858c95bc97": "Pluie",
+        "late.0afb2e689b6c": "Prêt",
+        "late.0b1f7ea2e41f": "Une finale : la petite forme en relief de la ligne {value0}, {value1}.",
+        "late.0b4c08595167": "Qikiqtaaluk, l'île de Baffin, est l'immense île.",
+        "late.0b69495a265a": "Ces lignes nécessitent {value0} ; il ne reste que {value1} du temps d'expédition. Rétrécissez la boîte.",
+        "late.0bafc1bbb34d": "Plancton",
+        "late.0c1c5b7b6650": "Siku plus -aq : jeune glace de quelques centimètres d'épaisseur, encore sombre, qui se plie sous la vague de proue du navire plutôt que de se briser.",
+        "late.0c391021299f": "Comment fonctionne l'écriture",
+        "late.0c4c32fa6d41": "Devinette {value0} sur {value1} : {value2}",
+        "late.0ccb1e7cb5aa": "sont dessus et maintenus stables ; le maintien stable révèle des marques de champ. Enregistrez-le",
+        "late.0cef4cff670d": "Littéralement « celui avec une défense » : tuugaaq, défense, plus -lik, ayant.",
+        "late.0d383143b442": "Le brick de Kane a été gelé dans le port de Rensselaer pendant deux hivers ; chaque homme a signé le papier pour la quitter, les drapeaux ont été hissés et hissés, et le groupe a marché une fois autour du brick avant de partir vers le sud en bateau.",
+        "late.0da64bc7a15e": "Fermez sous un promontoire en eau peu profonde, une colonie sur les rebords au-dessus.",
+        "late.0dac6dbf5093": "Finalité double : marruuk lui-même est double, et les noms de deux choses se terminent par -k.",
+        "late.0db1d0a9af62": "{value0}{value1}, enregistré. +{value2}.",
+        "late.0ddfa9851960": "Balaena mysticetus",
+        "late.0e61fd2503c2": "Fourre-tout sur le drain",
+        "late.0e968a2fab4e": "Les Eiders hivernent dans les polynies et au bord des floes, plongeant pour les moules et les oursins.",
+        "late.0eab35666446": "{value0} sur 3 coups{value1}",
+        "late.0f13dbb76ee1": "{value0} : {value1}",
+        "late.0f7772f2edd3": "+{value0}",
+        "late.1037525aaf28": "Rejeter sans examen",
+        "late.109583a91275": "pas de nageoire dorsale du tout",
+        "late.10ab0b82ddf6": "Seau pour serpillère",
+        "late.10dc98d500ab": "mince, à ailes étroites",
+        "late.110310135da7": "Environ 100 m (P : site de l'épave de Breadalbane) ; la cellule GEBCO donne 97 m.",
+        "late.1110d5a55299": "{value0} L/s sur le pont",
+        "late.114363eff0a8": "élégant, foncé",
+        "late.1163a38d1f8e": "Neptune demande combien d'eau se trouve sous votre quille. Réglez votre appel sur une échelle de 5 à 3000 m. Dans un tiers de la vérité passe ; dans un dixième lui plaît.{value0}",
+        "late.11c820ee316e": "guillemot à miroir blanc",
+        "late.11e9d4e15bce": "{value0} °C",
+        "late.11f2d2bfc758": "Contrôles : {value0}, ou les boutons ci-dessous.",
+        "late.121e17a351d8": "La flotte s'étendait de la poupe à la poupe contre la floe terrestre lorsque la meute arrivait du large. La glace terrestre et le cap York se trouvaient au nord : les épaves se trouvaient le long du bord de la banquise au nord du point de référence.",
+        "late.124b1ae199d3": "- Équipe d'amarrage ",
+        "late.12dcd0d51a10": "Aucun point pour un retrait. Un nouveau rival vous attend.",
+        "late.130a8555d426": "{value0} {value1} · niveau {value2}",
+        "late.131ef301b275": "petite tête bulbeuse marbrée gris-brun",
+        "late.136e17610500": "choisir avec 1–4",
+        "late.138a104b733f": "Acte",
+        "late.142c9ce9e20c": "◂ Précédent",
+        "late.14abf28698db": "petit bec jaune, pattes noires",
+        "late.14d614fc51e9": "Ikpiarjuk",
+        "late.14ecb1cac5a4": "Glace gelée sur le rivage et immobilisée. Les itinéraires de voyage et la chasse au phoque suivent le tuvaq ; le navire ne peut pas le suivre loin.",
+        "late.14ef18abe0f4": "Labo de modélisation",
+        "late.15d8edb4f1e6": "{value0} cm",
+        "late.15e508616848": "Estimation de la profondeur",
+        "late.15ef4a18c8e9": "Prévision rétrospective",
+        "late.1605d6acf1d7": "commit ou next ·",
+        "late.1607075420ab": "Chute de flocons de neige. Une fois installée, la neige est sortie ; emballée par le vent, c'est encore un autre mot.",
+        "late.16354fcf930e": "La surface de la mer la plus froide de mon royaume vous a montré cette jambe ?",
+        "late.16bd7524fb9b": "Un petit port ; la cellule GEBCO est terrestre.",
+        "late.16f434c4f05a": "Pompe péristaltique",
+        "late.17219fbf49b4": "Géologie",
+        "late.17301d97e9bb": "Laissée à son poste d'hiver dans la baie avec ses couleurs qui volent. En 2010, le sonar à balayage latéral l'a récupérée dans les quinze minutes suivant la première ligne : elle est proche de l'endroit où elle a été laissée, et la boîte est petite.",
+        "late.173839517f9b": "Les phoques traînent sur les floes, les ours marchent sur le bord, les mouettes d'ivoire suivent les deux.",
+        "late.174d35853adc": "R salue un rival différent",
+        "late.1758356db217": "ou",
+        "late.178fd66057ec": "{value0} °C · {value1} PSU · {value2} kg/m³",
+        "late.18245e594e52": "sauvegarde, {value0} s",
+        "late.1832168b0348": "Les guillemots et les mouettes tridactyles affluent de la falaise, les eiders et les morses travaillent les bas-fonds et les choses bougent dans la toundra.",
+        "late.185ddf19fcef": "BANCS",
+        "late.188a5c8c4375": "La réponse est qanuinngittunga, « Je vais bien », littéralement « Je ne suis en aucune façon ».",
+        "late.18ca87afec42": "Inspection",
+        "late.191b16b02ade": "t.glyph).join('')) || ' '}",
+        "late.1988dceb1e1f": "La vague {value0} provient de {value1} et non de {value2}.",
+        "late.199455e62b1c": "Elle conduisait le dossier vers le nord à travers une fissure vers Cape York quand elle a été pincée, et elle est descendue dans la même fissure deux jours plus tard. Regardez au nord de la référence, le long de la laisse.",
+        "late.19ea508212fe": "Tour {value0} : votre tour, {value1} vagues.",
+        "late.1aa2f31ee7cc": "Ledger",
+        "late.1ab11d1b771a": "Vanne d'alimentation du réservoir",
+        "late.1ab1e5b09158": "Kinngait",
+        "late.1adbcc344b31": "inactif",
+        "late.1ae0538befc0": "glace blanchâtre",
+        "late.1b4230d3dfd3": "0,0 kn",
+        "late.1bace380efda": "balayage latéral remorqué",
+        "late.1bda4ebff08c": "minuscule, assis sur l'eau",
+        "late.1bfd9513a57f": "le point sur {value0} rend la voyelle longue",
+        "late.1c4241db2d27": "assèchement, {value0} nmi off",
+        "late.1c55db55e128": "En bas · {value0}",
+        "late.1cec48b562ec": "Qikiqtarjuaq",
+        "late.1d1e56bc06b6": "Poste de glace",
+        "late.1dbb441dfe25": "{value0} L/s",
+        "late.1dd6a17cb403": "Comment cela fonctionne-t-il?",
+        "late.1e13db7a0119": "Courir dans la terre à la crique et rompu par son peuple pour une hutte et un bateau ; la tigresse l'a trouvée « coulée à environ un mile et demi au large ». Cherchez au large de la crique, à l'ouest, vers l'île Littleton.",
+        "late.1e380676c47e": "La glace s'accumule là où les floes se heurtent. Le verbe ivu-, pour empiler, nomme la communauté d'Ivujivik, où les courants entassent la glace.",
+        "late.1e975193e087": "Exécuter l'enquête",
+        "late.1ecc65841c0d": "Nunavut",
+        "late.1ef3fdc4e1c1": "{value0} trouvé",
+        "late.1f524529659b": "Frappe {value0} : touche{value1}. {value2} sur {value3}.",
+        "late.1f53a05a9fc0": "Froid, frais, profond",
+        "late.1f6075554714": "Tasiujaq",
+        "late.1f73cdd2da46": "En route",
+        "late.1f7a4f9e2f70": "Échap",
+        "late.1fdc5a1ac677": "Trois jambes, huit cartes chacune. Une carte manquée revient une fois pour la moitié de ses points ; un indice les divise également par deux. Chaque cinquième carte d'affilée est un bonus de 10 points. L'introduction sur le fonctionnement de l'écriture est gratuite et ouverte à tout moment.",
+        "late.2032c7b688cc": "Mouette de Sabine",
+        "late.2038bdec9210": "MONTER",
+        "late.209c8d61a16e": "choisir une méthode ·",
+        "late.20a801ad8772": "Kuugaarjuk",
+        "late.219487920ad3": "glace {value0}/10",
+        "late.21e978895190": "trace/ la séquence/la série/traînée/stries /strier /periode/passer en courant",
+        "late.220e06ba2fee": "Retrait",
+        "late.2213590392e6": "Flèches ou",
+        "late.2213870df65c": "Dans la saumure sous la glace",
+        "late.22630fdac92d": "rouler {value0}°",
+        "late.2284d040f509": "Indice",
+        "late.22daef2b916b": "La position arrondie publiée pour le site de l'épave protégée (P : site de l'épave de Breadalbane). Trouvé par sonar à balayage latéral le 13 août 1980.",
+        "late.22ea72574abb": "Vos déménagements",
+        "late.22f0c7320a05": "Rondes de petite taille",
+        "late.237faa5b23b4": "Distribuez les cartes",
+        "late.239ca5767afa": "Boîtes",
+        "late.23d5f5788ba7": "Imaq est la mer en tant que plan d'eau ; imiq, une voyelle différente, est de l'eau douce à boire.",
+        "late.23ef7b65dc34": "−{value0}",
+        "late.241a5b4c369c": "Ligne DE vol EM",
+        "late.242f191241c8": "Embarqué dans la meute au nord-est du cap Sabine et parti dans l'après-midi ; le groupe se retira vers le sud en bateau. La meute de Kane Basin se dirige vers le sud en direction de Smith Sound : regardez au sud du datum.",
+        "late.2455463748a1": "Recherche de {value0} annulée",
+        "late.24674fe08975": "choisissez",
+        "late.24dc631636ba": "côte",
+        "late.2512d2b7c56a": "{value0}/{value1} tours",
+        "late.25dd86f0ab08": "Quart inuktitut : {value0}/{value1} première fois",
+        "late.25fbf4814f65": "Les mots de question viennent en premier. Nami umiarjuaq : où est le navire ?",
+        "late.26270c990d26": "{value0} ×{value1}",
+        "late.2631e91452f4": "Profondeur de crête",
+        "late.2642f1289356": "MONTRE LINGUISTIQUE",
+        "late.264d540cc85f": "{value0} est la forme {value1}, pas {value2}",
+        "late.264f8f63dec4": "Vaincu {value0}",
+        "late.2676a88c61af": "Le réservoir d'incubation s'est divisé le long d'une couture.",
+        "late.2693ea2831b1": "Le meilleur de la quart : {value0}.",
+        "late.26c3b6a2b8ec": "Le tempérament de Neptune",
+        "late.26f04c24ef7a": "Pas une {value0} : {value1}, {value2}. −{value3}.",
+        "late.26f8fadacbe5": "PONT / RECHERCHE ET SAUVETAGE",
+        "late.27424cb4120d": "Cinq épreuves devant le roi des mers",
+        "late.27766c23a9a9": "A fait naufrage sur les îles, pas dans le chenal entre elles. Un navire qui frappe repose sur les rochers qu'il a heurtés : fouillez l'eau du haut-fond contre le rivage, pas l'eau profonde au large.",
+        "late.27bb25f9d7b6": "{value0} énigmes sur {value1}",
+        "late.27bc4b18cb5d": "réajustement, {value0} s",
+        "late.27da0c9fffee": "Scellez la graisse et l'huile de lampe qui en est extraite. Uqsuqtuuq, Gjoa Haven, est « le lieu de beaucoup de graisse ».",
+        "late.27e77c7898c2": "limiter les dégâts",
+        "late.286fe92da074": "navire-bombardier, Royal Navy",
+        "late.28913c51332f": "Tapez un mot pour le voir écrit glyphe par glyphe.",
+        "late.28dba0171ba0": "Nez bleu",
+        "late.294ad1aebc78": "Frapper {value0} : le point a glissé. {value1} de {value2}.",
+        "late.299b6ef4a2a6": "Chaque vague retournée",
+        "late.29a160837525": "Débarquée sur l'île Somerset en août 1825 et abandonnée avec ses magasins sous toile ; sept ans plus tard, ces magasins ont permis à l'équipe Victory de John Ross de rester en vie.",
+        "late.2a1d3e194cee": "Arviat, sur la baie d'Hudson, est le lieu des baleines boréales. Les baleines boréales vivent plus longtemps que tout autre mammifère, au cours des 200 dernières années.",
+        "late.2a2e0f6b93bc": "{value0} une petite {value1} finale",
+        "late.2a5d2cb802b2": "Kuujjuaraapik",
+        "late.2a94fc553e15": "Vu pour la dernière fois le 16 octobre 1835 dérivant vers le sud dans la meute ; Inuit dit au capitaine Harrison en 1840 qu'elle a été écrasée au large du cap Fry en décembre et que vingt-deux hommes malades partis à terre sont tous morts.",
+        "late.2addc8f067a1": "raccord de boucle soufflé",
+        "late.2b26ebd725ca": "entièrement blanc, pas de manteau gris",
+        "late.2b49734bc9a1": "Kimmirut",
+        "late.2b9eceb7a86a": "Entrer",
+        "late.2bee3e427899": "manteau gris pâle",
+        "late.2c6fc8db0de7": "Cristaux de glace épais dans l'eau avant de tricoter en feuille. Brassez et débarrassez les entrées sales et ralentissez un fil CTD.",
+        "late.2ccc65de09ad": "Soute",
+        "late.2d2cb022bc3d": "Vitesse",
+        "late.2d2d62370075": "Fermez cette fenêtre pour revenir au pont.",
+        "late.2d3f85ca24d7": "Sila est à la fois le temps, l'air et le monde extérieur ; dans la pensée plus ancienne, c'est le souffle et l'intelligence du monde.",
+        "late.2d766386138f": "Recherche annulée",
+        "late.2dcb9efee508": "{value0} à {value1} est prévu pour le jour {value2}, {value3}. Choisissez une autre quart pour la déplacer ou effacez-la.",
+        "late.2dddd64cd29d": "Piston",
+        "late.2e10e6400234": "points de science",
+        "late.2e1aec584567": "décocher ·",
+        "late.2e392aa67fc4": "Position de la table magnétique de James Clark Ross (A :ross-victory-054). Jamais revu après 1832.",
+        "late.2e95603f1d20": "mosaïque sonar",
+        "late.2eaa942f661b": "La cellule à l'épingle ; les hauts-fonds des îles remontent à la surface à moins de 2 km.",
+        "late.2ec26a52bce6": "vol de délimitation",
+        "late.2ed629bc8750": "cunéiforme",
+        "late.2ef985bd430d": "La glace de dérive, de 4 à 7 dixièmes, conduit à l'ouverture et à la fermeture entre les floes.",
+        "late.2f1deb2beea9": "Chargement de l'enregistrement de la jambe…",
+        "late.2f4001f8dd15": "La pompe réchauffe l'échantillon",
+        "late.2f5867a9e905": "Parry a fixé l'endroit à 72 °42′30″N 91 °50′05″O. La glace l'a conduite sur la plage, donc tout ce qui reste se trouve sur la côte, le long du rivage, pas dans l'entrée.",
+        "late.2f7506f2c39d": "ESSAI {value0} · {value1}",
+        "late.2fa390e34acf": "assis à la verticale",
+        "late.2fb2800e4e19": "crème-jaune contre la glace",
+        "late.302024beffd6": "Falaises à oiseaux",
+        "late.302190228652": "Plus petit",
+        "late.30445e315404": "{value0} {value1} {value2}",
+        "late.30b8b635ef22": "l'eau coule toujours, économisé {value0} sur {value1}",
+        "late.30e4caeb4f91": "LABORATOIRE ARRIÈRE",
+        "late.31327feaa4cb": "mouette ressemblant à un pigeon",
+        "late.3132dfc3cc67": "La position d'abandon, 75 °31′14″N 92 °21′55″O (A :épaves-disasters-024). Jamais revu.",
+        "late.321d6cc5177a": "jambe",
+        "late.322934164e1f": "glace moyenne de première année",
+        "late.32306689fc0c": "Rapide dans la glace du port à partir de 1830 et abandonnée là où elle gisait. Fouillez le port lui-même, près du rivage, pas la côte ouverte à l'extérieur.",
+        "late.3284d0c2d786": "mouette rosée",
+        "late.32ac4735baac": "EN COURS · {value0}",
+        "late.33af4c3b6dd9": "queue profondément fourchue",
+        "late.34117b8ea553": "date",
+        "late.34244970a0d2": "vapeur, expédition polaire nord des États-Unis",
+        "late.344aa3cc906f": "mouette ivoire",
+        "late.34bb39c0ba62": "cardMarkup(c, keys.has(cid) ? keys.get(cid) : null)).join('')}",
+        "late.34bf81298c21": "retour et charge",
+        "late.34db71e79458": "affecter",
+        "late.35191ef1901b": "Les filets",
+        "late.3548181c57ff": "{value0} sur l'horloge du laboratoire",
+        "late.354ec2fca35a": "Explorez les archives des épaves de l’Arctique",
+        "late.35c7c5278e2a": "à pied jusqu'au {value0}",
+        "late.36bc3a4053b0": "{value0} : {value1}.",
+        "late.3704d4b4445c": "Jour {value0} · {value1} · {value2} · ×{value3}",
+        "late.371467b261bc": "Fulmar boréal",
+        "late.376df01ba798": "Orque",
+        "late.3811b97d4a5a": "Qausuittuq",
+        "late.382bcd254475": "{value0}...",
+        "late.383cea3bff1f": "Le navire n'atteint {value0} qu'après le premier transit.",
+        "late.384a2ede1f3d": "Quelle est la prochaine étape ? Plan du jour",
+        "late.385015bc7d6f": "Boîte de plan",
+        "late.38aac7d79ba3": "Toute maison, neige ou autre. Iglulik est « l'endroit avec des maisons » ; les maisons en gazon et en os de baleine y sont restées pendant mille ans.",
+        "late.38ca488bc454": "{value0} m sous la quille sur {value1} à {value2}°N {value3}°O.",
+        "late.38d2d86388dd": "{ const slot = d * WATCHES + w ; const card = cardById(state, state.grid[slot]) ; const area = shipArea(state, slot) ; const classes = ['c11-cell'] ; let odds = null ; if (slot",
+        "late.38d5a3c0b397": "{value0} n'a pas de point, donc sa voyelle est courte",
+        "late.38ee8f494b66": "brick, deuxième expédition Grinnell",
+        "late.38f64bec0529": "Eau libre qui reste ouverte en hiver, maintenue dégagée par les courants ou le vent. La « polynie » de l'océanographe est un prêt russe ; c'est le nom local.",
+        "late.392c7ed089d1": "Continue à regarder.",
+        "late.3949bc110f8c": "tube sur la facture, gris au-dessus et blanc au-dessous",
+        "late.3960315eef2a": "La pire semaine que la pêche dans le détroit de Davis ait jamais connue : une tempête le 19 juin 1830 a poussé la meute sur la flotte gisant le long de la banquise, dix-neuf navires ont été écrasés et un millier d'hommes ont campé sur la glace sans aucune vie perdue.",
+        "late.396399fc594e": "cuve d'incubation fissurée",
+        "late.397ac6cda68d": "La forme est la consonne",
+        "late.3998f674ab3c": "Salliq",
+        "late.39b442301302": "larges ailes pointues",
+        "late.39b5278a4ea9": "Observation des bûches",
+        "late.39c1eb2041d9": "{value0}°",
+        "late.3a1d02210787": "{value0} sur {value1} : eau de fonte et eau de rivière sur le dessus.",
+        "late.3a56cd8ef5f3": "{value0} est libre de glace et suivra dans votre sillage jusqu'à 6 kn. La pression ferme un canal en paquet serré en quelques heures, alors ne courez pas trop loin devant.",
+        "late.3a57eeeccb88": "gris pâle, barré ci-dessous",
+        "late.3aa0ad9c2127": "gros, volant bas et droit",
+        "late.3ac43a16214d": "suivant, {value0} nmi astern",
+        "late.3b128ddb33e2": "nanuq, tuktu, siku…",
+        "late.3b3ad2945601": "Les nez tubulaires et les mouettes minettes travaillent la houle ; les baleines, les phoques du Groenland et l'étrange gousse de narval passent à travers.",
+        "late.3b52d65543e4": "veaux gris aux côtés",
+        "late.3b82384bdcae": "{value0} est à flot à {value1} cm et dérive.",
+        "late.3b8303661382": "{ const slot = d * MONTRES ; const cls = d + 1",
+        "late.3b8c9dd42d2b": "Le même Windward qui transporta Peary vers le nord en 1898 fit naufrage sur les îles Carey en juin 1907 ; le capitaine Cooney et son équipage firent naviguer les bateaux jusqu'à Pond Inlet.",
+        "late.3be0ec8473cc": "Inuk est une personne ; Inuuk deux ; Inuit trois ou plus. Inuktitut signifie « à la manière d'un Inuk ».",
+        "late.3c1cf57c3393": "L'été des bélugas et des narvals dans les sons profonds et les fjords ; surveillez les dos pâles et une défense entre les vagues.",
+        "late.3ca7a1d1eaca": "Inondation au laboratoire arrière",
+        "late.3cb7abe0d945": "Carboy de formol",
+        "late.3d2d5ad788dd": "inégal, devenant blanc pour l'hiver",
+        "late.3d2dd67cf41e": "{value0} % de la boîte · {value1} run",
+        "late.3d4f79fc3b64": "0 points",
+        "late.3d5f1586c79b": "{value0} a atteint{value1}",
+        "late.3dbfb212b060": "Rivièr",
+        "late.3dcdcafebd57": "Procès",
+        "late.3dd3164fb4c1": "probable",
+        "late.3f4c23f01f7c": "Citer mon article",
+        "late.3f5062a2ba62": "Relecteur 2",
+        "late.3f5f26e1db4c": "Diriger vers le nord",
+        "late.3fcd0f7a8392": "Un glyphe est une syllabe",
+        "late.40671aea7cff": "temps restant pour l'expédition",
+        "late.40d3c9126de9": "Géologie marine",
+        "late.413715b9c3f8": "Boîte de filtres GF/F",
+        "late.41db5ea81408": "Ivujivik : l'endroit où la glace s'accumule.",
+        "late.4209b38ebf9a": "barque, Royal Navy (avec son tendre Pioneer)",
+        "late.429b61df4931": "×3 pendant {value0} s, puis {value1} s en arrière",
+        "late.4315f0e18793": "Abandonnée au large de l'île du Roi-Guillaume en avril 1848, elle a été trouvée en 2014 sur la deuxième ligne d'arpentage d'une boîte de recherche déplacée vers le sud après qu'un davet ait été relevé sur le rivage, dans l'eau que les Inuits avaient pointée depuis 1869.",
+        "late.4333dbe5219d": "Équipe de glace de mer",
+        "late.43b3f4b185dd": "plumes centrales pointues de la queue",
+        "late.43c2b06d4573": "exercice de poste d'abandon",
+        "late.43c9fa671d79": "Section planeur",
+        "late.43da9923db13": "−1 °C à une salinité de 32",
+        "late.444515170d9c": "prendre",
+        "late.447aa21bf129": "ESSAI DE LA TABLE ROULANTE",
+        "late.44b232a8365d": "Lisière de la banquise",
+        "late.44bb6fccbdb4": "Eau DE mer standard IAPSO",
+        "late.44da6dee55ef": "motif d'aile frappante",
+        "late.4549e4baf5e7": "Environ 24 m (P :Terror Bay).",
+        "late.45ca5fd7d658": "{value0} : {value1} · {value2}",
+        "late.464d69b04bbd": "La cellule à l'épingle ; le quartier s'étend du rivage à 210 m.",
+        "late.4662516c4d0f": "{value0} fermé",
+        "late.46819d54c1be": "Qikiqtaaluk, la grande île, est l'île de Baffin. Qikiqtarjuaq, une autre grande île, est une communauté au large de sa côte est.",
+        "late.469d5b183fdc": "Quart de travail",
+        "late.46da470099a2": "Tasiujaq ressemble à un lac ; Umiujaq ressemble à un bateau.",
+        "late.4702e4ea200e": "Kangiqtugaapik",
+        "late.473fb552f319": "Froid, frais, peu profond",
+        "late.474c681e861c": "Faucon gerfaut",
+        "late.47624d241e27": "Fermez cette fenêtre pour revenir au pont ; relancez (",
+        "late.476a2a31a2a5": "Près de la congélation, le sel fixe la densité ; le colis le plus salé et le plus froid est le plus lourd.",
+        "late.47bcff8d6b71": "UN RIVAL VOUS SALUE",
+        "late.48136be5892b": "Poussez la tasse vers la droite",
+        "late.4822b466cd82": "Fluoromètre de table",
+        "late.488432191f8b": "Marcher à droite, flèche droite",
+        "late.48afdb2193ce": "Talurjuaq",
+        "late.48afe802a5d7": "· {value0}",
+        "late.49450f7aa59c": "grande nageoire dorsale triangulaire",
+        "late.49517a32f7e0": "Réseau flottant",
+        "late.4961389682c8": "Tikirarjuaq",
+        "late.4983f63b4be3": "{value0} m : {value1}",
+        "late.498a0e1561ca": "Sanikiluaq",
+        "late.4996d4e42aef": "Le prospect a trouvé {value0} m {value1}.",
+        "late.49adb486e24a": "CHOISISSEZ UN AUTRE",
+        "late.4a90ec26f816": "Dit à une personne qui partait ; tavvauvusi à plusieurs.",
+        "late.4aef56028ce1": "L'épingle du site de l'épave des archives (P :Wilmot et Crampton Bay) ; Parcs Canada publie une zone protégée, et non une position. Trouvé le 2 septembre 2014.",
+        "late.4afc265264fa": "Les Iqalummiut sont les habitants d'Iqaluit.",
+        "late.4b2cca6162cd": "Journal de visée",
+        "late.4b956a4627bc": "Ba",
+        "late.4ba0202f9dba": "l'un des dix-neuf ou vingt baleiniers écrasés ensemble",
+        "late.4ba2f1ee0873": "Approximatif : l'épingle de la nomenclature au large du cap Sabine (A : wrecks-disasters-005) ; l'enregistrement de l'événement épingle le bassin de Kane à 79,0 −71,0 et indique « position approximative » (E419).",
+        "late.4bfc73309bc8": "{value0} {value1} : {value2}. Porte-monnaie {value3}. {value4}",
+        "late.4ca302b59183": "Chargement de la boucle d'eau de mer…",
+        "late.4cd3e7a09e9e": "Narval. {value0} d'entre eux, enregistrés à {value1}. +{value2}.",
+        "late.4d48390c5f6b": "banc(a, b)).join('')}",
+        "late.4d8b387b8801": "Qamani'tuaq",
+        "late.4da1be0b2690": "Seep Core",
+        "late.4db5affe432c": "Masquer dans le dossier",
+        "late.4dcf827e3fb8": "Commencer la quart",
+        "late.4f2062ddb269": "tuyau dans l'évier",
+        "late.4f3f1e2f0cd3": "Approximatif ; les archives placent la perte dans la baie de Melville (E680). La plaque de McDougall de la perte est épinglée à 75,0 −64,0 (A :mcclure-investigator-073).",
+        "late.4f496db48f6f": "{value0}. {value1}",
+        "late.4f58007d2545": "Refroidisseur de zooplancton en direct",
+        "late.4f91af64c940": "Marchez avec",
+        "late.4fee8b8f38c3": "{value0}/10 paquet très serré",
+        "late.502d64eb7de8": "Igluligaarjuk",
+        "late.503675774786": "petit goéland rapide ressemblant à une sterne",
+        "late.50785a140da9": "Pompe de puisard",
+        "late.50a0261fbdec": "Débarquant des magasins pour l'escadron de Belcher avec le Phoenix, elle a été pincée par un floe à un demi-mille de l'île de Beechey et écrasée en quinze minutes ; son peuple est parti sur la glace.",
+        "late.50dd1b2740f9": "Aput est de la neige couchée sur le sol ; qanik est de la neige qui tombe. La profondeur de la neige sur un floe contrôle la vitesse de croissance de la glace en dessous.",
+        "late.511ab8b8d481": "Eider à duvet.",
+        "late.51413fc5e2f6": "« Quelque chose qui agit comme une personne » : des cairns de pierre qui jalonnent les routes, les caches et les promenades des caribous. Inuksuit pluriel.",
+        "late.5282e67037ff": "petit oiseau chanteur",
+        "late.52fd81ab38b9": "Effacer la quart",
+        "late.53a1e895cd79": "Compter en inuktitut est la base 20 sur les doigts et les orteils : le tallimat, cinq ans, est une main.",
+        "late.53d366bb6674": "Transport en commun",
+        "late.53f73d4c09d9": "{value0} × {value1} · {value2}",
+        "late.545a43b1e9e6": "Iqaluit : beaucoup de poissons. Inuits : beaucoup de gens.",
+        "late.55051533bb3a": "grand faucon le long de la falaise",
+        "late.558d7d2cde8c": "Le réviseur 2 a des opinions. {value0} doit réviser : attaques affaiblies, saignement de crédibilité.",
+        "late.5590c4a40760": "Le point est la longueur",
+        "late.5595b1f0e443": "Nouvelle quart",
+        "late.55a90e622e47": "Pass SAR",
+        "late.560e1315876a": "L’eau de surface la moins salée de cette étape avait une salinité d’environ :",
+        "late.561e1682058b": "{value0} points",
+        "late.564878a232f2": "consonne suivante",
+        "late.56560febdb74": "Renard polaire",
+        "late.568aac57e417": "La vague {value0} du tour {value1} provient de la {value2}.",
+        "late.5698849eb4fe": "bec droit épais, cache-œil foncé",
+        "late.5700c8c1f706": "Une courte salutation. Tunngasugit, « bienvenue », est la salutation formelle que vous entendez à l'aéroport.",
+        "late.578460a2a458": "vent prévisionnel {value0} nœuds, air {value1} degrés{value2}",
+        "late.5787d62bbee5": "Rotation de {value0} ({value1})",
+        "late.583620516f9d": "optionButton(o, i)).join('')}",
+        "late.5843c1d67e29": "{value0}°{value1}′{value2}",
+        "late.5886321f51c9": "La défense de {value0} tombe.",
+        "late.58bfb6f4c942": "Noyau de boîte d'infiltration",
+        "late.58d563ea8161": "bec pointu court, ligne blanche sur l'entrejambe",
+        "late.591b7584c2b4": "{value0} enregistrées.",
+        "late.5939a44ddf0d": "Abandonné dans la meute à côté du Resolute sur ordre écrit de Belcher ; le Resolute a dérivé à mille miles à l'est et a été retrouvé à flot seize mois plus tard, l'Intrepid n'a jamais été revu.",
+        "late.59ad91a82458": "vent ≤ {value0} kn",
+        "late.5a4eefbd1a06": "marmette de Brunnich",
+        "late.5ae788e0c4e7": "Lettres romaines",
+        "late.5b35fdf87400": "Eau potable. Les piscines d'eau de fonte sur les vieilles floes sont imiq ; la mer en dessous d'elles est imaq.",
+        "late.5b543c57838a": "Chaud, salé, profond",
+        "late.5b66f7f6c9a2": "Expéditeur de glace sèche",
+        "late.5c23eaa3446c": "rouler dans la falaise à vide",
+        "late.5c5f5c908ef3": "La saumure s'écoule de la jeune glace dans l'eau en dessous, une raison pour laquelle l'eau de la plate-forme hivernale est dense.",
+        "late.5c6d6066a7ff": "Iqaluktuuttiaq",
+        "late.5c800a0817b6": "Déplacez le curseur.",
+        "late.5d6e52bc2e9c": "POMPE DE PUISARD",
+        "late.5dd8f74af203": "La salinité augmente la température",
+        "late.5e1e186ca40f": "McClure l'emmena à Mercy Bay en septembre 1851 et ne l'en sortit jamais ; après trois hivers et deux décès dus au scorbut, Bedford Pim entra sur la glace et l'équipage l'abandonna pour le Resolute.",
+        "late.5e3282fa2441": "non levé",
+        "late.5e438deb3363": "×{value0}",
+        "late.5ec092bc8f88": "Horloge de laboratoire",
+        "late.5ec596d97e6c": "{value0} à {value1} détient déjà cette quart.",
+        "late.5efb2482691d": "Quatre jours de travail à la station est sitamat ullut.",
+        "late.5f37dde9ec0b": "Marcher à gauche, flèche gauche",
+        "late.5f7537cf06ca": "Procès",
+        "late.5faa59d4bc37": "Résultat",
+        "late.5ff7ea1ec387": "Le navire n'a jamais fait le passage de {value0} ; l'horaire des étapes glisse.",
+        "late.60a58d9b59c8": "Salluit",
+        "late.614145e0cb75": "queue fourchue peu profonde",
+        "late.6172f5f7f6d8": "{value0} probable pour la demande sélectionnée",
+        "late.62ae54550e33": "Le bateau à ciel ouvert ; umiarjuaq, grand bateau, est n'importe quel navire, y compris celui-ci.",
+        "late.62c30c118a44": "pieds rouges vifs traînant",
+        "late.62f85a785ac1": "Relèvement {value0} · 7×50",
+        "late.63bb2b8f1966": "nageoires avant carrées",
+        "late.644cd3304388": "Relevé de l’étape {value0} à {value1} : {value2} km parcourus, sondage le plus profond {value3} m, surface la plus froide {value4} °C, vent le plus fort {value5} kn, pire roulis et tangage {value6}° RMS. Ses énigmes s'y dessinent.",
+        "late.6499b84b6746": "{value0} km",
+        "late.64bb383b6705": "Les renards s'étendent loin sur la glace de mer en hiver, traînant les ours polaires pour les restes.",
+        "late.656b3cd791f6": "Syllabaire",
+        "late.6585808d8c2b": "Kangiqsujuaq",
+        "late.659d0296c03b": "Sonar",
+        "late.65ac1293e8b1": "flash blanc à la base des primaires",
+        "late.65b308fc4b4a": "Bienvenue à bord. L'inuktitut est parlé du Groenland au détroit de Béring dans une chaîne de dialectes ; la côte où travaille le navire le parle tous les jours, et ses cartes portent mille ans de noms de lieux. La norme du Nunavut l'écrit en syllabique : formes pour les consonnes, tournées pour les voyelles.",
+        "late.666a72b7e106": "{value0} m sur {value1}, avec un roulis et un tangage RMS de {value2}°.",
+        "late.66812708c156": "Tasse The Wardroom",
+        "late.6694e7e73c64": "cou épais, pas de bout d'aile noir",
+        "late.66b1fd64258f": "Ivujivik",
+        "late.66de4f4f0c8e": "Uqsuqtuuq a beaucoup de graisse ; Panniqtuuq beaucoup de caribous taureaux.",
+        "late.66f19fb72bc3": "☀ lumière du jour · ☾ obscurité · brouillard · ↕ soulèvement · quarts passées : moyenne (rafale) kn",
+        "late.67012501d868": "1 nmi",
+        "late.670ee54081cf": "Ikaahuk",
+        "late.67636878dbb0": "Océanographie physique",
+        "late.68a70123b95c": "Nommez l'espèce",
+        "late.68c2cc7f0cea": "Modèle",
+        "late.68cd74ed7513": "De trois vers le haut, le nom prend le pluriel -t.",
+        "late.68db3f4e643d": "tenant, {value0} nmi off",
+        "late.68dbd12b8c80": "Retour à la quart",
+        "late.68f0256d5365": "{value0} cible non identifiée {value1}",
+        "late.68f4ddeea318": "Syllabique, mots et noms sur la carte",
+        "late.694b52e3e5ea": "Le phoque arctique le plus courant. Il garde les trous de respiration ouverts à travers la glace tout l'hiver avec ses griffes.",
+        "late.697168d47920": "Tallurutiup Imanga",
+        "late.69f253184338": "Assimilation de {value0} observation{value1}.",
+        "late.6a24ae854dc8": "{value0} heures",
+        "late.6a572dcb780b": "déplacer la boîte ;",
+        "late.6a65d73ac40c": "Eau arrêtée",
+        "late.6a937cfc6b06": "Thermosalinographe, {value0}",
+        "late.6a93e06f5e34": "{value0}/10 paquet fermé",
+        "late.6ae1323a16ac": "Naujaat, « lieu de nidification des goélands », est la communauté de Repulse Bay sur le cercle polaire arctique.",
+        "late.6b1949ef0377": "Le navire est toujours en {value0} sur cette quart. Planifiez d'abord le transport en commun.",
+        "late.6b19d295d072": "FRANCHIR LA LIGNE / NEPTUNE'S",
+        "late.6b207ec27b21": "RENCONTRE EN COURS ·",
+        "late.6b8357098636": "Montez le quart à la passerelle",
+        "late.6c0ee2cf9a98": "La tasse est restée dans le tiers moyen {value0}% du temps.",
+        "late.6cd36ad53b6f": "Le navire a quitté {value0} d'ici là.",
+        "late.6d234a17fecd": "Communiqué de presse",
+        "late.6d514ac8057f": "{value0} + {value1}. Saisissez les validations.",
+        "late.6d75b2f4f702": "Passe satellite optique",
+        "late.6d8c9b124d52": "Espace",
+        "late.6d9a6e81dce9": "Les points ont été mis en banque sur la victoire précédente ; celle-ci était pour la fierté.",
+        "late.6dc5d79082aa": "{value0} à {value1} a perdu sa fenêtre ({value2}).",
+        "late.6e2247ad8907": "Inuktitut",
+        "late.6e29522b1991": "L'eau douce de surface dans mon royaume arctique provient principalement de :",
+        "late.6e7bc59c12fd": "Inukjuak",
+        "late.6eec4fbb53a7": "sterne arctique",
+        "late.6f347362bfeb": "Refroidisseur vide",
+        "late.6f5e6c9a6846": "Sonar orienté vers le haut",
+        "late.6fbe1fba437a": "Continue à regarder.",
+        "late.6fcf4f9416d3": "0 °C à une salinité de 28",
+        "late.6ffeb258f60d": "une défense en spirale soulevée sur le revêtement",
+        "late.700de107742f": "Un autre",
+        "late.702e086a7bd4": "{value0} sur le banc, sec.",
+        "late.704c0721a95f": "Journal de bataille",
+        "late.70599d26f661": "Radio portant {value0}° ({value1}), donner ou prendre {value2}°. Un deuxième relèvement venant d'ailleurs le traverse.",
+        "late.70adaed9483e": "{value0} est une syllabe complète {value1} ; une {value2} nue est la petite {value3} surélevée",
+        "late.70c1cf840eb9": "Choisir une demande",
+        "late.70f5a4e8503f": "{value0} est à nouveau en proie : le canal est fermé derrière vous. Revenez en arrière et passez à l'intérieur d'un câble de leur coque.",
+        "late.7128b4ccf61d": "Plongée dans le détroit de Smith le 15 octobre 1872, elle s'est séparée de dix-neuf personnes laissées sur un floe ; les quatorze encore à bord l'ont courue dans la terre, ont hiverné dans une hutte construite à partir d'elle, et la Tigresse l'a trouvée coulée le mois d'août suivant.",
+        "late.712b32fdc44f": "Round {value0} : regardez {value1} vagues.",
+        "late.717edad9e502": "La défense de {value0} s'élève.",
+        "late.71a401906c9f": "au-dessus de l'eau peu profonde, un lit de palourdes en dessous",
+        "late.71d45746acc9": "Les rivières et la fonte estivale coiffent l'Arctique d'une couche fraîche et légère.",
+        "late.720cf3189584": "poilu, en forme de bloc",
+        "late.7271b1bb8c54": "ailes raides et droites",
+        "late.7277d3c8809a": "Kangiqsualujjuaq",
+        "late.727cbc30ace5": "Colère",
+        "late.72e4d08b5e9f": "Le sel rejeté de la glace de mer en croissance va où ?",
+        "late.7332b76a893e": "long cou, petite tête",
+        "late.7472328b17fb": "Uluksaqtuuq",
+        "late.74b82ec07d22": "REGARDER TERMINÉ",
+        "late.7531c7e9da4c": "D'où vient le graphique",
+        "late.753b4f85ea72": "{value0}, {value1} {value2} du navire",
+        "late.75e15cc3767a": "{value0} + {value1} → {value2} {value3}. {value4}",
+        "late.76022a00a16b": "Océan",
+        "late.761f7a4313db": "Soufflage touffu en forme de V",
+        "late.762de48e03df": "battements d'ailes lents et puissants",
+        "late.7663e9d795e1": "Une longue première voyelle et un k maintenu. Les deux contrastes de longueur changent de signification en inuktitut.",
+        "late.766e7ee7342e": "Lièvre arctique",
+        "late.769169f33675": "{value0}a · {value1}",
+        "late.76cdb9507216": "Déplacer",
+        "late.76d50c67bd02": "Moins profond ← · Plus profond → · Appelez cela de l'espace",
+        "late.76e8bdeb9c4d": "Baleinier américain",
+        "late.76f5db1b0ca3": "Nunavut : notre terre.",
+        "late.7761b2806807": "In-nook-poo-zhee-jook pointait sur la carte de McClintock vers l'eau juste à l'est de l'extrémité nord de l'île O'Reilly ; la boîte de 2014 a été déplacée vers le sud pour correspondre à la découverte de la plage. Fouillez le côté est, vers la péninsule.",
+        "late.77693e81f03b": "Le couteau en croissant. Ulukhaktok, à l'ouest, est l'endroit où se trouve la pierre à lame ulu.",
+        "late.7769f8fcf60e": "Comment fonctionne le système",
+        "late.779c1eeeaf99": "RECYCLAGE marqué boîte",
+        "late.780e7a0fc43e": "Instantané de l'eau de mer {value0}",
+        "late.78234cd8195a": "Tuktoyaktuk, en Inuvialuktun, signifie « ça ressemble à un caribou » : le récif y ressemble à un.",
+        "late.786317e1ae6a": "La longue luge, fouettée plutôt que clouée, fléchit sur la glace rugueuse. Le mot est double : deux coureurs.",
+        "late.786bc9c6f45f": "un porpoising de gousse",
+        "late.79adaf70ef55": "La position d'abandon, 74 °41′N 101 °22′O (E1973). Le navire a dérivé dans la meute par la suite et n'a jamais été revu ; l'endroit où il est descendu est inconnu.",
+        "late.79f8065f3a2a": "Ligne d'épaisseur EM",
+        "late.79ffdc139bd7": "Glace de mer",
+        "late.7a53be1932c5": "Baleinier à coque",
+        "late.7a71176080fe": "De l'eau profonde dans un détroit, un front de glacier au fond et des terres escarpées des deux côtés.",
+        "late.7b38b9b19c2a": "{value0} révise sous la malédiction. −{value1}.{value2}",
+        "late.7c138638ef76": "Écologie du plancton",
+        "late.7c4410a071eb": "baleinière",
+        "late.7c5e8ca8901e": "Eau libre",
+        "late.7c6cab9ca845": "ESSAI DE LA LIGNE DE DÉRIVATION",
+        "late.7c6f5aa201f0": "située(s)",
+        "late.7c75a7d41979": "} {value0}",
+        "late.7c77ef9167fc": "Terminer la quart",
+        "late.7c979035bdc4": "Chargement de l'enregistrement de la quart…",
+        "late.7cb65d3eae78": "Exécution de la ligne{value0} {value1} à {value2} kn. Observez la cascade pour un retour difficile avec une ombre.",
+        "late.7cd9544a9b94": "La décharge de la boucle est sauvegardée sur un scupper bloqué.",
+        "late.7d277a9572cf": "Scanner laser",
+        "late.7d5d1cb5a9a2": "à bout de pigeon, sans hâte",
+        "late.7dc6a13e16b1": "Mittimatalik",
+        "late.7ddd66b689c9": "Essayez-le",
+        "late.7ddf172d6c0a": "Libération de données ouvertes",
+        "late.7dfa3a36b80d": "pattes roses, gros bec pâle",
+        "late.7e11406e3671": "La baleine blanche des estuaires. Dans certains dialectes, le même mot, qualifié, couvre le narval.",
+        "late.7e4d816c6f91": "Noyau du piston",
+        "late.7e7d6c54fc50": "Naujaat;",
+        "late.7e7d6f21b66f": "Monté à environ onze mètres, le pont supérieur à environ huit mètres plus bas (E894).",
+        "late.7ebf1aeb7c61": "AILE DE PONT/SURVEILLANCE DE LA FAUNE",
+        "late.7ecf5fc2ef28": "Le circuit d’eau de mer a lâché",
+        "late.7efa5bf90984": "obligations",
+        "late.7f1c802627d3": "un petit retour rapide",
+        "late.7f379c5925ae": "depuis l'appel",
+        "late.7f380307672e": "row : consonant · column : vowel · click a glyph to turn it",
+        "late.7f573c953063": "Un rouleau met le sac de rinçage rosette sur le côté.",
+        "late.7fb3a9b5101b": "Réglé",
+        "late.7fcf09ac095d": "Écrasé dans la baie de Melville le 23 juin 1840 le long du Bon Accord ; le dossier n'en dit pas plus.",
+        "late.7febce039c4c": "secondes",
+        "late.801ad0d72dee": "Bourse",
+        "late.80715d0cc4fb": "Enregistreur RBR",
+        "late.807e66dce64a": "Phoque du Groenland",
+        "late.80c4f20cd5f2": "Quelqu'un a laissé le tuyau de lavage couler dans l'évier.",
+        "late.80e448e7222d": "La saison en eau libre, lorsque le navire peut atteindre la côte. La racine au- fond.",
+        "late.8157c96a7c92": "{value0} :{value1}",
+        "late.82232ed70def": "Étui pélican",
+        "late.82259209065c": "Blanc Pur",
+        "late.82dce7f70367": "Approximativement : « environ 75 degrés 10 minutes au nord, 60 degrés 30 minutes à l'ouest, à une quarantaine de kilomètres au sud du cap York » (A :épaves-disasters-017). Aucune épave individuelle n'a de position fixe ; les navires nommés sont répertoriés en A :épaves-disasters-044.",
+        "late.8336ead5d135": "vol léger et flottant",
+        "late.8381e9bd2991": "dalot",
+        "late.83a13361b111": "L'inuktitut construit des mots en empilant des suffixes sur une racine : umiaq, bateau, plus -rjuaq, grand, est umiarjuaq, un navire. Les noms sur le graphique sont construits de la même manière. Lisez-les, puis construisez-en quelques-uns.",
+        "late.83cc66ba3a08": "rougeur rosée sur la poitrine",
+        "late.83d84044d1bb": "−4,5 °C",
+        "late.83ec74cd8794": "vent enregistré {value0} nœuds, rafales {value1}, air {value2} degrés",
+        "late.844015c37958": "Sanirajak",
+        "late.84505160ef98": "La glace s'ouvre : {value0} dixièmes.",
+        "late.848ecb4df8d1": "Pas grand-chose. {value0}",
+        "late.849d0e2fad64": "tout foncé",
+        "late.8503e4f5db6c": "Amarrage",
+        "late.852d49e469e7": "Nouveau rival",
+        "late.854b3a410c5e": "vieille glace",
+        "late.8556ce53dbbe": "La coque est chauffée",
+        "late.855b642d8c8a": "au sol, meurt à {value0} cm",
+        "late.859c229eb13c": "Indice",
+        "late.85b3f3e1f454": "Il reste {value0} heures. La tâche est transférée à un hélicoptère de Resolute.",
+        "late.85d6b3291673": "Les conditions de surveillance sont le propre record en cours du navire pour {value0} – {value1} (étape 3, 2026), regroupées en quarts de 8 heures : vent relatif tel que consigné, température de l'air, soulèvement 4σ, humidité et rayonnement à ondes courtes. Les stations proviennent du plan de croisière Leg 3 ({value2}). Les bandes de prévision s'élargissent avec le délai ; ce qui se passe le jour est ce qui a été enregistré.",
+        "late.85e16e28e1c6": "L explique l'écriture · Escape ferme l'opération",
+        "late.861a5ff7d1a1": "rafales ≤ {value0} kn",
+        "late.862833d79ad2": "The Sounding",
+        "late.8661c13e39be": "tête et bec en forme de coin",
+        "late.86b970d389cb": "barque, transport de l'Amirauté",
+        "late.86e4ee524412": "Bloc-batterie CTD",
+        "late.86f757979958": "Neptune hoche la tête : la mer se souvient, et vous aussi.",
+        "late.872bec5009cb": "flotte de planeurs",
+        "late.8734f5749e33": "Chercheurs rivaux",
+        "late.8820bca1391e": "Le Taqqiq est aussi le mois. Le calendrier traditionnel suit la lune et les saisons des animaux ensemble.",
+        "late.885db975a310": "Suffixe",
+        "late.888eb40396c3": "{value0} :{value1} :{value2}",
+        "late.88aa827c6ccb": "+2 °C à une salinité de 30",
+        "late.88cf49473dfa": "ENQUETEES",
+        "late.88d130a66de8": "Retour en arrière",
+        "late.88da8df73334": "selle pâle à l'arrière",
+        "late.88ecd30f7043": "Nanuq chasse les phoques annelés au bord de la banquise et aux trous de respiration ; les stations de glace affichent une quart d'ours pour la même raison.",
+        "late.8932900cabe6": "Espace de frappe",
+        "late.893a0ce13b43": "Labbe parasite",
+        "late.894b3be4f136": "Hommage",
+        "late.899754144d64": "toutes les ailes noires et larges",
+        "late.89ea1a8b0c44": "matrices à {value0} cm",
+        "late.8a3e1f0716e8": "{value0} {value1}{value2}",
+        "late.8ae1c34bd37f": "Restant",
+        "late.8afce8a29a0f": "Fixation propre de Parry, 72 °42′30″N 91 °50′05″O (E247). La coque s'est brisée sur la plage et rien de tout cela n'a été trouvé depuis ; la recherche porte sur ce que la glace a poussé dans les bas-fonds.",
+        "late.8afffa267014": "FOND MARIN / ÉPAVES",
+        "late.8bb73c329b7f": "Bottes en peau ; peau de phoque pour la glace humide, caribou pour le froid sec. Kamiik pluriel, une paire.",
+        "late.8be00be3a481": "Ausuittuq",
+        "late.8bf7bcdc8e38": "après transit {value0}",
+        "late.8bfa5c57e6fa": "Jumelles",
+        "late.8c23bf0b53a8": "Il reste dans la meute du canal de Wellington, qui coule vers le sud dans le détroit de Barrow. Un navire écrasé dans cette dérive se trouve au sud de l'endroit où il a été laissé.",
+        "late.8c5f2c0e0527": "{value0}%",
+        "late.8c7861618f6a": "Un duel scientifique acharné",
+        "late.8c86b581f82b": "Les noms de direction du vent diffèrent selon la communauté, car ils décrivent d'où vient un vent sur les terres locales.",
+        "late.8ca4648757d7": "Observateur de la faune",
+        "late.8ccc2182820d": "Amundsen science party",
+        "late.8cd4ec145507": "ailerons noirs pleins, comme trempés dans de l'encre",
+        "late.8d051dbe9540": "Kangiqliniq",
+        "late.8d354606b03a": "dos roulant dans une nacelle",
+        "late.8dd6d503a931": "{value0} concède la station.",
+        "late.8e2c29024c45": "petite mouette flottante",
+        "late.8e51963d87e4": "Les planches Sea King avec un bourse. Passez ses épreuves et il grandit ; échouez-leur et il les reprend.",
+        "late.8e562b2c7fd0": "indice (demi-points) ·",
+        "late.8ece608373b3": "4,0(C)",
+        "late.8f0a3cc1678a": "Fonctionnement du système, page {value0} sur {value1} : {value2}. {value3}",
+        "late.8f3f5c258621": "Nuna plus -vut, notre, donne au Nunavut. Nunavik et Nunatsiavut ont la même racine au Québec et au Labrador.",
+        "late.8f4f3d5b002d": "Un diminutif affectueux : nunakuluk, chère petite terre.",
+        "late.8f93c8e601dd": "Pangniqtuuq",
+        "late.8fbbeb4b6151": "boîte prévue",
+        "late.8fc18a624e53": "0,0 °C",
+        "late.8fc9988d85b6": "Plan de la journée",
+        "late.8feaab7c43e3": "{value0} × {value1} km",
+        "late.901dbffcb486": "rose-brun, ridée",
+        "late.9026347b544a": "dans le bourse",
+        "late.9031cbcd827d": "Pieds noirs",
+        "late.904b8634d9a1": "déplacer",
+        "late.906fdf224b64": "Colère de Neptune : {value0} sur {value1} épreuves avant qu'il ne perde patience",
+        "late.908442933c3a": "} {value0} °C et {value1} PSU. {value2}. Allez-y.",
+        "late.908897f614cc": "marge",
+        "late.9106dbf62ed9": "Caisse d'échantillons Niskin",
+        "late.9130ee2cd23e": "Le vaisseau amiral de Belcher, abandonné avec le Pioneer dans le canal de Wellington avec ses couleurs clouées au mât, « comme si nous avions encoffré un objet précieux ».",
+        "late.915689549c24": "Bouclez l'eau",
+        "late.91c4c4cf551d": "{value0} imprévue · {value1} planifiée",
+        "late.91f2c8fe4468": "Frappe {value0} sur 3",
+        "late.921a88c00c6f": "Trois jambes d'une quart de langue : l'écriture, les mots, les noms sur le tableau.",
+        "late.92f3f6c444b1": "✓ {value0} pts",
+        "late.935f8d8fa5ee": "équipe aéroportée",
+        "late.938645d687ce": "Quelle était la profondeur du son le plus profond de cette jambe ?",
+        "late.940fc0d9383a": "Beluga",
+        "late.946ffb6e97b8": "Naufrages des archives",
+        "late.9533107f7a1c": "grandes nageoires dans une nacelle",
+        "late.9534f87b46d9": "{value0} a basculé. {value1}",
+        "late.954daa8b0033": "Droite",
+        "late.9558c50aa2f6": "barque, Royal Navy",
+        "late.95ac06a00acc": "Diriger vers l'ouest",
+        "late.9616162e9b72": "grosse, grosse mouette",
+        "late.962c7057da94": "0 L/s",
+        "late.96618846da50": "LABORATOIRE ARRIÈRE/CONTRÔLE DES DOMMAGES",
+        "late.96bdbd6efdeb": "{value0} est en eau libre et sous son propre pouvoir.",
+        "late.96caa8af1e7e": "{value0} est sous l'eau. {value1}",
+        "late.96dc20d0fa83": "La forme South Baffin ; nakurmiik au Nunavik, quana à Inuinnaqtun, koana à l'ouest.",
+        "late.96ddd9d6114d": "lent",
+        "late.96e258945229": "Boîte plus grande",
+        "late.96ead420d232": "goéland bourgmestre",
+        "late.9705540112dc": "L'échappement ferme l'opération",
+        "late.97531ccb5b4a": "Le mot est entré en anglais par le Groenland et le Danemark ; le dessin est celui du chasseur inuit.",
+        "late.97539d1a5177": "Dewar d'azote liquide",
+        "late.9786a2ec3e5f": "Morse",
+        "late.979fe91b5525": "ONDULEUR",
+        "late.980e5ae475a5": "Perceuse et rassemblement de bateaux",
+        "late.9815a2dc69a1": "Des points ont été accumulés sur la première quart ; celle-ci était pour les mots.",
+        "late.985a6b77c72a": "{value0} / {value1}",
+        "late.988474e9b839": "Correction AIS −{value0} h",
+        "late.98fe87457bf5": "Mettez un nom dessus ",
+        "late.9949af21d9af": "Aupaluk",
+        "late.99524e452fc8": "WASD ",
+        "late.99b468d14bf8": "{value0} renversez le pont sur {value1}.",
+        "late.9a0521e71589": "Enquête multifaisceaux",
+        "late.9a234c408083": "la forme {value0} ({value1})",
+        "late.9a45ae3071f9": "air ≤ {value0} °C",
+        "late.9a5d94e14dad": "Environ 11 m (P :Wilmot et Crampton Bay). Le site se trouve juste à côté de la grille GEBCO du jeu.",
+        "late.9a8919c8045c": "vent {value0} kn",
+        "late.9aa69598240c": "Sammy Kogvik d'Uqsuqtuuq a décrit un mât se tenant hors de la glace dans la baie ; le Martin Bergmann s'est détourné, a lâché un sonar et a trouvé un navire à trois mâts assis debout au milieu de Terror Bay.",
+        "late.9ad3a14e5a20": "Les marques créent de nouvelles lignes",
+        "late.9adc056f3dd4": "Tracé de distance et affichage du sonar",
+        "late.9b6d44b7494f": "dépotoir à alluvions",
+        "late.9ba5eef5f0cb": "concurrent",
+        "late.9bf72f5189ea": "anneaux : gamme grand cercle, échelle à racine carrée",
+        "late.9c046e99ade7": "embouts d'oreille noirs",
+        "late.9c156a8d1c3d": "{value0} kn",
+        "late.9c3900e943be": "J'ai appris cette quart",
+        "late.9c3cd8846fd7": "De ullaaq, le matin. Unnusakkut est bon après-midi ; unnukkut bonsoir.",
+        "late.9c41a13f4040": "Il laisse tomber un bourse de {value0} points sur le pont. « En prêt. {value1} épreuves. Nous verrons combien vous en gardez. »",
+        "late.9c52711df593": "Plus",
+        "late.9c76bea961dd": "Actions du planificateur",
+        "late.9cb79b7dd426": "La colère de Neptune",
+        "late.9cf405a2341e": "Votre appel : {value0} m {value1}.",
+        "late.9d0c04966dae": "aucune cible",
+        "late.9dc581145569": "Neige à la dérive entraînée par le vent. Un piqsiq efface l'horizon ; le pont s'appuie sur le radar et le pilote de glace attend.",
+        "late.9e44ce9a519b": "Vanne de décharge",
+        "late.9e883dc0c760": "Consortium sur la cryosphère orbitale",
+        "late.9e8e0974ecef": "un grand sceau",
+        "late.9e9743d6e82d": "Choisir une cible",
+        "late.9ece05ca0078": "{value0} est trempé. Personne ne le manquera.",
+        "late.9eea7a6b4187": "{value0} L déjà sur le pont et {value1} L/s encore à venir",
+        "late.9efc509bb771": "Bouger et agir",
+        "late.9fa2bfef4b9d": "Oreille",
+        "late.9fc654479a0e": "une tache blanche sur la pente",
+        "late.9fd47b66b79e": "Le plus gros soulèvement 4σ de la coque a senti cette jambe ?",
+        "late.9ff1c8124d88": "Hiver et année partagent un mot ; une vie se compte en hiver.",
+        "late.a025b62e11cb": "Entrée accepte le défi",
+        "late.a050b1bd8733": "{value0}, {value1} ({value2})",
+        "late.a08a4bbe682b": "navire-bombardier, navire amiral de Franklin",
+        "late.a10066308083": "La racine tariuq est le sel ; le même mot nomme l'océan et la salinité que votre CTD mesure.",
+        "late.a16c5bbe4bf9": "Plage",
+        "late.a19b8b67c24a": "rafales {value0} kn",
+        "late.a1e327c20874": "Grand Corbeau",
+        "late.a2073fa9180a": "Détenu pendant {value0} s",
+        "late.a2452bd2011b": "puis 1–4 à nouveau",
+        "late.a28a73a982cb": "Enrouleur de rallonge",
+        "late.a2a1daa1273e": "L'épingle Life Boat Cove des archives en face de Littleton Island (P :Life Boat Cove). La Tigresse a enregistré le camp d'hiver à 78 °23′N 73 °46′O (E168), une longitude différente ; la goupille est utilisée ici.",
+        "late.a2a99a1d1b03": "La longe arrive enveloppée dans de l'herbe et de la neige fondante. Les instruments de {value0} sont encrassés.",
+        "late.a3089b7fae27": "Titre",
+        "late.a332d0afc6cb": "manteau très pâle",
+        "late.a34f5bb77d10": "Voyelle longue : point",
+        "late.a4011c391f4e": "cache-œil blanc, selle grise",
+        "late.a42768585e34": "sous la quille à {value0}°N {value1}°O sur {value2} {value3}",
+        "late.a431e99cb7fa": "{value0} secondes. Maintenez une direction pour pousser.",
+        "late.a43521bfaa26": "diriger ; maintenez deux pour une diagonale. La vitesse suit le graphique : 13 nœuds en eau libre, environ 3 nœuds brisant un mètre de glace de première année, une rampe dans de la vieille glace.",
+        "late.a447a8fe6b96": "équipage",
+        "late.a47a73c84988": "Commandes de pont",
+        "late.a4e2db400d69": "{value0} à {value1} prévu, {value2} probable, fois {value3}",
+        "late.a4fdcbcfb610": "Régler le paramétrage",
+        "late.a5709ec34538": "{value0} : une petite {value1} surélevée, une consonne sans voyelle après elle.",
+        "late.a58fcc71c077": "{value0} à droite",
+        "late.a620e2ccee74": "Expédier à {value0}, à destination de {value1} et {value2}. {value3} demandes sur le tableau. Les touches fléchées déplacent le curseur du planificateur ; Z et X ou les chiffres choisissent une demande ; Entrez la place.",
+        "late.a65899e146fe": "Gelé à son poste d'hiver à l'intérieur d'un petit port sur les hauts-fonds et abandonné là-bas. La boîte est petite ; cherchez près du rivage.",
+        "late.a6d4466ebac7": "La vitesse du son augmente avec la température, la salinité et la pression.",
+        "late.a6efd7142e5b": "Collectez ROV",
+        "late.a7521a7bf13e": "Une parka avec une pochette dans le dos pour porter un bébé contre la peau.",
+        "late.a784d65f1bed": "Le tribunal",
+        "late.a7b93d2128e8": "Mode",
+        "late.a80ca4d3526e": "Ordinateur portable de terrain",
+        "late.a83765d5291b": "casquette noire, bec rouge",
+        "late.a84e3dac7595": "La houle",
+        "late.a8618e4a8104": "{value0}{value1}",
+        "late.a861940108ea": "{value0} à {value1} est de retour sur le plateau.{value2}",
+        "late.a8acbb0f3437": "Expédier dans {value0}.",
+        "late.a8ba44f07d53": "{value0} −{value1}.",
+        "late.a8c47c75c90f": "Souvent -rjuaq après une voyelle : umiaq, bateau, donne umiarjuaq, navire.",
+        "late.a8ca977388a3": "ailerons blancs, pas de noir du tout",
+        "late.a8d628c3ba7e": "trot, jambes courtes",
+        "late.a91015f51776": "échantillon d'ADNe",
+        "late.a938fcff0325": "{value0}/10 dérive ouverte",
+        "late.a98e182f31d8": "explosion de moustaches pâles",
+        "late.a9b1802d38db": "Chaque forme est une consonne. Tournez-le et la voyelle change : pi, pu, pa. Un point au-dessus rend la voyelle longue ; une petite forme en relief est une consonne sans voyelle. Nommez le son, trouvez le glyphe, puis épellez deux mots.",
+        "late.a9eb10d23009": "Les capteurs de {value0} se sont effacés.",
+        "late.a9edc5e78a11": "Au large, en eau profonde, une longue houle et rien entre le navire et l'horizon.",
+        "late.aaa989eaf4a3": "Réétalonner",
+        "late.aacf218cde23": "Équipage du sous-marin",
+        "late.aad82db2cb77": "Radar",
+        "late.aadd69c95094": "Dit à une personne ; tunngasugitsi à plusieurs. La racine est « se sentir chez soi ».",
+        "late.ab350b4c6c35": "Un petit port ; la cellule GEBCO lit 2 m à terre.",
+        "late.aba98268ad9c": "Umiaq plus -rjuaq, grand. Le brise-glace est un umiarjuaq pour tous ceux qui regardent depuis le rivage.",
+        "late.abc451d1b9b5": "Équipage de navire",
+        "late.abcc99e6cf73": "L{value0} {value1}",
+        "late.ac59f1baf7ca": "bouts d'ailes à doigts",
+        "late.ac74290c9fbf": "Fermez et lancez à nouveau pour essayer cette épave ou une autre.",
+        "late.acabbc66a68b": "Observation de la faune",
+        "late.acde809e77e2": "Son moteur inutile dès la première saison, elle passe quatre hivers sur la côte de Boothia ; le 29 mai 1832, ses couleurs sont clouées au mât et Ross passe en dernier sur le côté.",
+        "late.ad90bd8e3c51": "{value0} demande{value1} manquée.",
+        "late.ad92047f2414": "{value0} +{value1}.",
+        "late.ae519d66dcdb": "Uqsuqtuuq",
+        "late.aef36502d67b": "Entrée",
+        "late.af16df5536ce": "Approximatif : l'archive ne donne que Melville Bay (E1202).",
+        "late.b00b0ed01f87": "Mouette tridactyle",
+        "late.b01ad65d16ca": "Robinet de lavage",
+        "late.b04e85738360": "falque la nageoire dorsale tard dans le rouleau",
+        "late.b07b7467ca29": "Rensselaer Harbour tel qu'épinglé dans les archives (E18). Jamais revu.",
+        "late.b0995f4c15f9": "0,3 °C",
+        "late.b09c738b5976": "tournez",
+        "late.b0ba5b78de25": "Phoque barbu",
+        "late.b0ff65803e35": "{value0} km en {value1} heures d'enregistrement.",
+        "late.b157f9096488": "Relèvement",
+        "late.b15b710f2ada": "deux défenses blanches",
+        "late.b15e5360a67f": "Votre crédibilité.",
+        "late.b20d862dda45": "Iglulik est l'endroit avec des maisons ; tuugaalik, celui avec une défense, est le narval.",
+        "late.b23549372a4e": "{value0} :soulagement",
+        "late.b25928c69902": "Total",
+        "late.b35e0445f231": "Pont asséché",
+        "late.b3993d480265": "Tuktuujaqtuuq",
+        "late.b3ec6ce81554": "Vous êtes dans :",
+        "late.b405f04d5e18": "Photogrammétrie Floe",
+        "late.b4171da9a522": "{value0}, {value1} · {value2}",
+        "late.b52b36b7269f": "Retour",
+        "late.b57788c4aa13": "Paulatuuq",
+        "late.b597ed27201b": "Une main. Dix est qulit ; vingt, avatit, est une personne entière de chiffres.",
+        "late.b59bc4ec67ca": "Tout ce qui était à {value0} a disparu.",
+        "late.b5e2c3f4104a": "Flèches ou W A S D",
+        "late.b61dcf739659": "Voyager ensemble ",
+        "late.b6c77404bc3a": "CTD-Rosette",
+        "late.b6d7cd6dffc5": "40 eau arrêtée · {value0} pour l'équipement sur le pont · 25 égoutté · 25 moins de 10 cm",
+        "late.b706db25f9f0": "{value0} → {value1}",
+        "late.b71681d7bb8c": "Qikiqtaaluk",
+        "late.b745fc8a1236": "gros yeux foncés, museau court",
+        "late.b7ce0fde8d06": "Un promontoire. Les cartes à travers l'Arctique portent le nom de Nuvuk où un point fait saillie dans le courant.",
+        "late.b81b8efa3959": "Sac de papier bulle",
+        "late.b81c8c80cb62": "Un grand joint qui se nourrit sur le fond ; sa peau fait des semelles de bottes et des housses de bateau.",
+        "late.b840bf086174": "noir et blanc",
+        "late.b847dd9e6574": "paddle steamer, l'expédition privée de John Ross",
+        "late.b8588ebfc604": "Mutinerie : le mess vous enlève le plan des mains.",
+        "late.b86826c2f89f": "Ceinture de poids de plongée",
+        "late.b8a930e5ff2d": "Laboratoire arrière",
+        "late.b8b4c632d46c": "Plate-forme de filtration de chlorophylle",
+        "late.b8e2c390b3cf": "Jusqu'où le navire a-t-il fait cuire cette jambe parcourus ?",
+        "late.b9504b700c67": "Aakka.",
+        "late.b962599f6b56": "drakes blanc au-dessus, noir au-dessous",
+        "late.ba025c7163fe": "Disque Dur Externe",
+        "late.ba16b1084c32": "{value0} à {value1} a perdu sa fenêtre : {value2}.",
+        "late.ba93078fbe0d": "bourdonnement, battements d'ailes rapides",
+        "late.bae3d3e68eb6": "{value0} h",
+        "late.bb0e719e8150": "énorme mâchoire arquée, menton blanc",
+        "late.bb107a2d83e3": "Mots appris",
+        "late.bbfa773e5a63": "Fermer",
+        "late.bc77eb9c482d": "Une longue voyelle. Les sourcils surélevés signifient la même chose ; un nez ridé signifie non.",
+        "late.bc981983e7f5": "Suivant",
+        "late.bca70bf7a9fa": "Et maintenant?",
+        "late.bcbb3dfd4a2a": "Évaluations par les pairs",
+        "late.bcc160458e33": "Scelleuse terre-neuvienne, Greely relief",
+        "late.bd45ba80613b": "relèvement radiogoniométrique",
+        "late.bd4b78664c66": "Un rouleau dur, et la boucle d'eau de mer a lâché.",
+        "late.bdd1b500d2d5": "{value0} à {value1} {value2} jour {value3}, {value4} :{value5} ×{value6} si elle tient.{value7}",
+        "late.bde38411ee40": "Cuire parcourus jusqu'à {value0}",
+        "late.be0dbd7963cf": "Narval dans le journal. Une défense dans le verre est une observation dont il faut parler au dîner.",
+        "late.be28d6d04a95": "Ensemble de données classifiées",
+        "late.be62fe79eed0": "Microscope stéreoscopique",
+        "late.be887505ea82": "escorte en cours",
+        "late.beb3dd7ba001": "écusson blanc audacieux sur l'aile",
+        "late.becb7b9cf59b": "ESSAI DES QUATRE VENTS",
+        "late.bf1d17d798f5": "{value0} est en cours d'échantillonnage. Il continue de s'accumuler.",
+        "late.bf93e5ce8bc1": "En Panne",
+        "late.bf9ef5c63e3b": "{value0} prend la station",
+        "late.c06b087876f8": "Ram",
+        "late.c0729aab7814": "carnet de terrain",
+        "late.c07f5ed8782f": "chamois et blanc, direction le pont",
+        "late.c0901f2c692a": "{value0} déménage à nouveau.",
+        "late.c122250ac5ce": "Robinet d'alimentation fourre-tout",
+        "late.c189e8bc98e6": "{value0} ({value1})",
+        "late.c1ca6af79086": "Iglulik",
+        "late.c1cf3b585499": "Orbital Consortium",
+        "late.c2dd2cc8c8c8": "Quatre écarts types encadrent presque tout le mouvement vertical de la coque.",
+        "late.c326a4660b67": "Parcelle",
+        "late.c32a0147f2e4": "Collaborateur",
+        "late.c3cafd5842d5": "Le réchauffement de la ligne entre l'admission et le capteur ajoute quelques dixièmes ; l'enregistrement le suit comme un excès de chaleur.",
+        "late.c403af6f3eda": "{value0} est un {value1} nu sans voyelle",
+        "late.c4f6301d8970": "Narval",
+        "late.c539bb74a220": "Bœuf musqué",
+        "late.c54387e026e2": "L'épeler en syllabique · {value0}",
+        "late.c566305ab9e5": "Le piège continue de s'accumuler sur {value0}{value1}. −{value2}.",
+        "late.c59fc68619e0": "{value0} probable,",
+        "late.c5df583bac21": "{value0} :rivage",
+        "late.c645e1321ed5": "La hauteur moyenne des vagues",
+        "late.c68fef03d53e": "relever le gant",
+        "late.c6eac8a33ba8": "q : a k fait loin en arrière, contre la luette",
+        "late.c6fd3870c86e": "Lignes",
+        "late.c7174f7c86f2": "Plongée ROV",
+        "late.c73a3498a3f7": "Vanne en boucle",
+        "late.c87ffc4d0d7d": "Réponse ci-dessous.",
+        "late.c893e992ac93": "Kangiqsujuaq, Kangirsuk, Kangiqliniq (Rankin Inlet) : la même racine dans les baies d'Ungava à la baie d'Hudson.",
+        "late.c8ba39ef020a": "grands éclairs blancs dans l'aile",
+        "late.c8c7a27cfa38": "air {value0}{value1} °C, floe trop doux",
+        "late.c8d5e89af011": "XBT du tube",
+        "late.c8e54aa26fa9": "Plage et bas-fonds ; la cellule GEBCO chevauche l'entrée (254 m) et ne décrit pas le rivage.",
+        "late.c8f1106abdb7": "Les loups arctiques suivent les troupeaux de caribous ; les Tuktu et les Amaruq des histoires maintiennent la toundra en équilibre.",
+        "late.c93f6536dcfb": "À distance",
+        "late.c94c7cb8f662": "Sept jours, trois quarts par jour, et chaque équipe veut le deck. Choisissez une demande, mettez-la sur une quart que la prévision peut transporter, et émettez le plan du jour",
+        "late.c9a08425aa5b": "ESSAI DES PROFONDEURS",
+        "late.ca0299459d30": "Fonctionnement de la syllabe",
+        "late.ca27ceb0b103": "a enregistré {value0} sur {value1}",
+        "late.ca97399dacad": "Quel colis coule sous l'autre ?",
+        "late.cb7770ba15c1": "petite pingouine, tourbillonnant bas",
+        "late.cb8fa991d6c5": "Borealis Star science party",
+        "late.cc334cdc30e9": "CTD",
+        "late.cc5afcd7d78a": "Pan left",
+        "late.cd09183edddb": "queue touffue",
+        "late.cd0bab9bdd62": "Échantillonnage terrestre en hélicoptère",
+        "late.cd0f5032b793": "{value0} : pas un son inuktitut, donc pas de glyphe. Les voyelles sont i, u et a ; il n'y a pas de b, c, d, e, f, h, o, w, x, y ou z (y est écrit j, w est v).",
+        "late.cd343406d91b": "Le pack se termine dans : {value0} dixièmes.",
+        "late.cd6c977a7bfd": "Multi-faisceaux sous la glace",
+        "late.cd8fae810f3e": "filature sur place",
+        "late.cde4f15ec930": "Presque tout le soulèvement reste à ±1,7 m",
+        "late.cdf6dd00acf0": "Par-dessus bord à {value0} s",
+        "late.ce0e33741057": "Rivières et glace fondante",
+        "late.cf367e966f77": "Le petit glyphe est une consonne nue",
+        "late.cfc18fab7460": "Altimètre franc-bord",
+        "late.cfc525c51584": "{value0}>{value1}",
+        "late.cfca71a113ca": "équipage d'arpentage sous-marin",
+        "late.cfe7a5c177e5": "Le dossier donne la baie et la date et rien d'autre. Il n'y a aucun indice pour rétrécir la boîte ; couvrez-la.",
+        "late.d03e3e3ba42e": "Balaenoptera acutorostrata",
+        "late.d04d53d6039b": "Contact. {value0} en vue, prisonnier des glaces dans {value1}. Rejoignez-les pour les libérer, puis dirigez-les vers l'ouest ; ils ne peuvent suivre qu'un canal que vous avez brisé.",
+        "late.d05a347ecf59": "petit, sur la ligne de marée",
+        "late.d064eb512eb9": "Amarres",
+        "late.d0cf1bf51c07": "Whale Cove",
+        "late.d157a09e51b2": "Pièces : {value0}.",
+        "late.d1869a351f70": "Glace, mer, météo, animaux, équipement et salutations d'une côte de travail. Une lettre doublée est tenue deux fois plus longtemps, et la longueur change de sens : imaq est la mer, imiq l'eau potable.",
+        "late.d1cd398e280a": "Air-drop un profileur",
+        "late.d1fd60fd4f47": "{value0}{value1}, {value2}.",
+        "late.d26d55c7f815": "Mots",
+        "late.d27ad1506bdb": "{value0} utilise {value1}.",
+        "late.d2820afad9df": "glace de première année",
+        "late.d2c44762e23f": "↕ {value0} m",
+        "late.d2c511f99dfe": "Filets de plancton",
+        "late.d2d3db02bf2f": "steam tender, Royal Navy",
+        "late.d3035c2da8af": "la {value0}",
+        "late.d36b88babd46": "scupper bloqué avec du papier bulle",
+        "late.d3ae35160b1c": "Uluksaq est la pierre d'un ulu ; Uluksaqtuuq est l'endroit où il y en a le plus.",
+        "late.d3b992428a15": "vol sombre et puissant",
+        "late.d453659f54f6": "Cour de Neptune",
+        "late.d46267a04c51": "{value0} est fixé sur cette quart.",
+        "late.d56ba4d6ddd7": "Crédibilité rivale",
+        "late.d594c2cc0a53": "finale",
+        "late.d59ebba26be7": "L'eau cartographiée est {value0} à partir de la donnée{value1}.",
+        "late.d5b0b51a91d1": "une tête dans l'eau",
+        "late.d5f0faa79839": "Repérez un navire prisonnier des glaces et dégagez-le",
+        "late.d65ea44926bc": "Rapports journaliers et griefs",
+        "late.d692b6499cdd": "Un mât sortant de la glace, vu d'une motoneige, au milieu de la baie. L'épave se trouve debout près du centre de la boîte.",
+        "late.d6a1c6964075": "Gonflement à partir de {value0}",
+        "late.d71766505c77": "Pour les joindre",
+        "late.d71975a92c4b": "Crédibilité +{value0}.",
+        "late.d732b65d6c12": "Demande de données",
+        "late.d7547dc1df9e": "la nuit",
+        "late.d77ccecc2c46": "canards lourds en ligne basse",
+        "late.d78707d7d6c2": "Vu pour la dernière fois à quarante-cinq milles au sud-est du cap Searle, dérivant vers le sud dans la meute, et écrasé quelques semaines plus tard. Un navire écrasé dans une meute à la dérive descend le long de la dérive : regardez au sud de la référence.",
+        "late.d7cbc6d101b5": "Conclusion critique ! {value0}",
+        "late.d7fe615d62e8": "« Le barbu. » Sa sous laine, qiviut, est plus chaude que la laine de mouton en poids.",
+        "late.d8052ee59bac": "Sous la coque",
+        "late.d82eb29c4860": "marcher sur le floe",
+        "late.d91ebf5887cf": "Quart",
+        "late.d95adcdb0c33": "Planificateur de semaine : jours à travers, surveille",
+        "late.d961e6e4caa7": "Les griefs avant la mutinerie",
+        "late.d96e7e9f960b": "équipe d'enquête EM aéroportée",
+        "late.d97a01b00c87": "Planifiez d'abord le transit de {value0}.",
+        "late.d9a1c1149f75": "Plus que {value0} s.",
+        "late.d9e686e7bec0": "museau pointu",
+        "late.d9e880a937ce": "{value0} · ×{value1}",
+        "late.d9e9e130d95d": "En cours",
+        "late.d9f601cfb1fc": "ROV descendant · {value0} m",
+        "late.d9f920aa2370": "Les lièvres restent blancs toute l'année dans l'Extrême-Arctique et deviennent gris-brun en été plus au sud.",
+        "late.da62be2f68c4": "Diriger vers l'est",
+        "late.da7007faabc7": "Boîte plus petite",
+        "late.db4ac4b976a8": "La broche du site de l'épave des archives au milieu de la baie (P :Terror Bay). Trouvé le 3 septembre 2016.",
+        "late.db958ca9f802": "{value0} s",
+        "late.dbc7a64b0ba3": "Nommez la {value0}.",
+        "late.dc09d75e8842": "Fête Amundsen",
+        "late.dc9a8e229010": "{value0}% sûr",
+        "late.dca59cc0575d": "{value0} {value1}",
+        "late.dd249f91b067": "Planifiez la semaine comme scientifique en chef",
+        "late.dd3f70917316": "Le point de congélation baisse d’environ 0,054 °C par unité de salinité; à 30, il se situe près de −1,6 °C.",
+        "late.dd6074f3125d": "Power Bar",
+        "late.ddb470686bc0": "ailes pointues en forme de faucon",
+        "late.de463ba892c2": "Équipe",
+        "late.de9b1be49dae": "Eau",
+        "late.dec619ef98b7": "{value0}° ({value1}) à {value2} kn",
+        "late.ded3f6b54d56": "consonne précédente",
+        "late.df3462469ba6": "fourre-tout rosette basculé en rouleau",
+        "late.df5c3008c765": "Date",
+        "late.df64cc324ba8": "{value0} est la forme {value1} tournée pour {value2}",
+        "late.df6b2587ae6f": "Qausuittuq, Resolute, signifie « l'endroit sans aube » : le soleil y reste pendant environ trois mois.",
+        "late.dfce80c3ca2c": "Planifiez maintenant le jour {value0}.",
+        "late.e0c47b9f787b": "Recherche et sauvetage",
+        "late.e0ca83a3243c": "Tribunal de Neptune : {value0} procès sur {value1} passés",
+        "late.e14af8ce87e7": "{value0} à {value1} était toujours sur le tableau à la fin de la semaine.",
+        "late.e15045b38871": "{value0}/10 dérive très ouverte",
+        "late.e1a8ae187945": "Noyau de glace",
+        "late.e2658a43ed12": "Demander plus de données",
+        "late.e268dec7f435": "puissance {value0}",
+        "late.e283e1df945b": "cm",
+        "late.e29a79fe0c34": "Avis",
+        "late.e2c176e01de3": "Approximatif. Les archives épinglent la perte au large du cap Fry à partir du témoignage inuit (E673) ; le dossier d'artefact l'épingle au cap Searle parce que la position de l'épave n'est pas fixe (A :épaves-disasters-021).",
+        "late.e2c4814d09bf": "bruant des neiges",
+        "late.e3a7da892546": "Tunngasugit",
+        "late.e3b6b7b90f8e": "Récupération de l'amar",
+        "late.e4ca06877836": "Le bord où la glace terrestre rencontre l'eau libre. Les phoques, les oiseaux et les chasseurs s'y rassemblent ; les ours polaires aussi.",
+        "late.e4e17795317d": "Iqaluit signifie « beaucoup de poissons » : l'omble remonte la rivière Sylvia Grinnell chaque été.",
+        "late.e5463e125966": "À une salinité de 30, près de quelle température mon eau gèle-t-elle?",
+        "late.e59b689406ae": "Stations le long du laboratoire",
+        "late.e59f98f54177": "trois triangles : gris, blanc, noir",
+        "late.e5be6d47c85e": "heure d'expédition",
+        "late.e6a927dd9367": "Fermez et relancez pour reprendre l'appel.",
+        "late.e6cda88848f3": "Révision majeure. ",
+        "late.e6e46159a07b": "{value0} points enregistrés : {value1}.",
+        "late.e70736700dfc": "manteau gris, corps blanc",
+        "late.e72e97bbd43f": "Un soulèvement de 4σ de 1,7 m signifie, à peu près :",
+        "late.e74a950cd9cd": "Publier le plan de la journée",
+        "late.e7bc5a73f543": "Chargé de transporter le groupe de Garlington vers le nord pour soulager Greely, il a été pincé dans le bassin de Kane et a coulé avec la plupart de ses magasins ; la retraite du groupe de secours a laissé les hommes de Greely passer l'hiver au cap Sabine sur presque rien.",
+        "late.e7d8c142714b": "Dundee Whaler, ancien navire d'expédition de Peary",
+        "late.e87f424f9a7b": "Syllabaire",
+        "late.e90fb32fc22a": "✓ {value0}",
+        "late.e919ceb040fa": "De l'autre côté de l'eau : {value0}",
+        "late.e91fd0042674": "Sur l'aile du pont, {value0}. Les relèvements sont relatifs à l'étrave : 000 en avant, 090 à tribord.",
+        "late.e96857c58f71": "La racine",
+        "late.e96b646d443f": "R distribue une nouvelle quart",
+        "late.e9d6e3c8a081": "Jour {value0}, {value1}, regarder {value2}",
+        "late.e9dbbff38c51": "Siku est le mot général pour la glace de mer. Le glossaire des glaces du Nunavut comporte des dizaines de termes plus fins ; les « dixièmes » de la carte des glaces en aplatissent la plupart.",
+        "late.ead32deee1dd": "phalarope roux",
+        "late.eaef97f16bf3": "soulèvement {value0} m",
+        "late.eb023dce09e8": "Épaves",
+        "late.eb2e0422c84d": "aucun contact",
+        "late.eb53de35e98f": "±{value0}° sur leur VHF, {value1} s pour réajuster",
+        "late.eb7bb2d3e45b": "Dalot",
+        "late.ec13d1075804": "Kuuk plus -juaq, grand, donne Kuujjuaq, la grande rivière de la baie d'Ungava.",
+        "late.ec164868991d": "Pan right",
+        "late.ec4470a0e7e2": "flotteurs à {value0} cm",
+        "late.ecc1ff060fcf": "Blackface",
+        "late.ecd9b077b71d": "La {value0} est flottante. {value1}",
+        "late.ecec26d1c06a": "PROCÈS DE LA GRÈVE",
+        "late.ed43a8a09e9b": "ship",
+        "late.ed6875eba2f8": "noir au-dessus, blanc au-dessous",
+        "late.ed7256f90124": "Les morses se déplacent sur la glace au-dessus des bancs de palourdes peu profonds ; ils se nourrissent rarement à plus de 80 m de profondeur.",
+        "late.edcad8e4e85e": "Quelque chose se lève à côté. Appuyez sur Espace pour lui faire face.",
+        "late.edeb82171d20": "Le vent relatif le plus fort a enregistré cette jambe ?",
+        "late.edf2b370fe58": "Tasiujaq, une communauté du Nunavik, signifie « ressemble à un lac » : une baie si fermée qu'elle pourrait en être une.",
+        "late.edfc3832f9bb": "cisaillement bas au-dessus de la houle",
+        "late.ee139cd60cb4": "flottant, plongeant à la surface",
+        "late.ee14f6d46e3e": "{value0})",
+        "late.ee54b2cefb8f": "gris au-dessus, blanc au-dessous",
+        "late.ee664e267411": "Étoile Borealis",
+        "late.ee78eff9b7da": "Labo de modélisation à l'échelle du bassin",
+        "late.eed8facf059b": "Son épouse dérivait vers l'est le long du détroit de Barrow et du détroit de Lancaster. Si l'intrépide est descendue près de l'endroit où elle a été laissée, elle se trouve à l'est de la position d'abandon, en bas de la dérive.",
+        "late.ef37d1c49284": "dans l'atmosphère.",
+        "late.ef555f318566": "Heure d'expédition",
+        "late.ef67c2b94a25": "Jour de planification {value0} de {value1}",
+        "late.ef8e3203d074": "{value0} griefs : le mess deck vote et le plan n'est plus le vôtre. Aucun point cette semaine.",
+        "late.eff8ec10351a": "peu probable",
+        "late.f02e2cd53d7d": "{value0} détient déjà cette quart.",
+        "late.f036a33ad429": "L'aurore, au pluriel. Sous l'ovale auroral, l'affichage est plus souvent au-dessus de la tête que vers le nord.",
+        "late.f039d18b2e2e": "Les énigmes",
+        "late.f0481060287a": "Le son voyage-t-il le plus vite dans quelle eau ?",
+        "late.f09e9dc3b6dc": "{value0}/3",
+        "late.f0ccb0a18010": "{value0} L1100 {value1} Z",
+        "late.f0f192ee3746": "Décisif. {value0}",
+        "late.f16ae8518928": "nécessite {value0}, {value1} restantes",
+        "late.f22c6e6979b8": "Terrain et noyau",
+        "late.f24fa79d4c74": "travailler le bord de la glace, tomber sur les floes",
+        "late.f29678eeb956": "Relèvement {value0} · œil",
+        "late.f2b8933525db": "{value0} de retour sur le banc, sec. Son propriétaire n'a jamais besoin de savoir qu'il était sur le sol.",
+        "late.f31a89fabe8e": "Essai {value0} sur {value1} : {value2}. Espace pour commencer.",
+        "late.f31fa693853d": "Poussez la tasse vers la gauche",
+        "late.f36ade17a513": "CHEF SCIENTIFIQUE / PLAN DU JOUR",
+        "late.f3700245c463": "({value0} jour{value1}, {value2} grief{value3})",
+        "late.f3792715e832": "Pourquoi la boucle d'eau de mer est-elle plus chaude que la mer ?",
+        "late.f38b84d1da61": "1,6 °C",
+        "late.f38ef4e69403": "{value0} sur {value1}",
+        "late.f487fe7ef96f": "Choisissez un belvédère",
+        "late.f4b66eafec31": "{value0} sur le banc. {value1}",
+        "late.f4b88d940e34": "sur le curseur",
+        "late.f4ca9e226f9c": "{value0} sur 3 tours",
+        "late.f4e813b1276c": "Carte des glaces : votre navire, la donnée de recherche et le pack",
+        "late.f51133fe2d9e": "Prononciation : q est un k fait loin dans la gorge ; les lettres doublées sont tenues longtemps ; ng comme dans chanteur. L'orthographe suit la norme de l'Institut culturel inuit utilisée au Nunavut ; Inuinnaqtun et Inuvialuktun à l'ouest sont écrits en lettres romaines, et les formes Nunavik diffèrent un peu.",
+        "late.f514361dfe9a": "Vue depuis l'aile du pont",
+        "late.f580dacb7b08": "{value0} du temps d'expédition",
+        "late.f5a724ba7482": "La carte",
+        "late.f5d96de37525": "{value0} · {value1}",
+        "late.f5e3ec114b84": "coque multifaisceaux",
+        "late.f5e9c8f78aa5": "0,0 cm",
+        "late.f610c5e431c2": "Allez, vas-y. Entendu quand l'hélicoptère tourne et que la fête de la science zippe toujours les costumes.",
+        "late.f6df5a24e21e": "{value0} :texture",
+        "late.f7194e6a0d0b": "Requêtes",
+        "late.f7350d322f75": "glace épaisse de première année",
+        "late.f7d3b2f916eb": "Touches fléchées ou , , ,",
+        "late.f806427cf83a": "never found",
+        "late.f86ffba64eca": "selle en forme de harpe noire sur un dos argenté",
+        "late.f8e594e850dd": "48 h",
+        "late.f9063fd57c41": "battements d'ailes rapides et peu profonds",
+        "late.f9818754c4e1": "Amundsen",
+        "late.f9996ac13bdb": "Nakurmiik, qujannamiik, quana : trois façons de dire merci, du Nunavik au Kitikmeot.",
+        "late.f9f7ca58c8b0": "Relevé de l’étape indisponible ; les énigmes retombent à la tradition marine et le son à l'eau sous la quille.",
+        "late.f9ff81056843": "0h 00m",
+        "late.fa0113f9ed6a": "Menant une file de baleiniers et de navires de recherche navale à travers une fissure dans la glace, elle a été pincée ; deux jours plus tard, la réparation a été cuite et Belcher l'a achetée pour cent livres sterling pour son pétrole et son bois.",
+        "late.fa2e2d91d040": "Le chien inuit canadien tire le qamutiik ; une équipe est un qimuksiq.",
+        "late.fb2065b7eda3": "Umiujaq",
+        "late.fb3384e490e7": "Encadré dessiné : {value0} lignes. Entrée les exécute.",
+        "late.fb3f3652f80d": "La plus grande vague était de 1,7 m",
+        "late.fb44f10adb82": "propre canal à travers {value0}",
+        "late.fb553b47a790": "un tas sur la glace",
+        "late.fbaeb0b2b157": "{value0} à {value1} ne s'est jamais produit avant le départ du navire de {value2}.",
+        "late.fbd745f80a5d": "Noyau de boîte",
+        "late.fbe7d7baacdd": "channel",
+        "late.fbee9828cb09": "Démarrer la quart",
+        "late.fc1d1fa8e360": "Les îles Carey telles qu'épinglées dans les archives (E512). L'île qu'elle a frappée n'est pas enregistrée.",
+        "late.fc1f24e00c63": "C'était {value0}, pas une coque. Le ROV est de retour à bord.",
+        "late.fc635921a76b": "soulèvement ≤ {value0} m",
+        "late.fc86e5506840": "Imprimante d'étiquettes",
+        "late.fcb89bebcd2f": "La ligne {value0} indique {value1} pour {value2} ; le syllabaire est allumé pour cela.",
+        "late.fd6027cbf334": "corps long et lourd",
+        "late.fda201fd52a2": "l' hélicoptère",
+        "late.fe0af9ab96d5": "{value0} ({value1}) trouvées",
+        "late.fed8215e238a": "{value0} °C sur {value1} près de {value2}°N ; l'eau de mer ne peut pas être beaucoup plus froide sans geler.",
+        "late.fedae4f75a2d": "Ensemble Run",
+        "late.ff76861fc04f": "Phoque annelé",
+        "late.ffa190c22323": "{value0} fermé.",
+        "late.ffa8844e174c": "pas de nageoire dorsale",
+        "late.ffe14a0751dd": "Il reste dans la glace pour de bon",
         "ui.close": "Fermer l’opération",
-        "ui.coverage": "Version pilote en français : carnet CTD. Les autres opérations restent en anglais.",
+        "ui.coverage": "Interface complète en français canadien.",
         "ui.language": "Langue",
         "ui.operations": "OPÉRATIONS À BORD"
       },
       "provenance": {
+        "activity.crew2.description": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4d45b238d3ab70b7a1c300d88353c1c5912ff086f3bc468a73499d89eaf5aaec"
+        },
+        "activity.crew3.description": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bce69455be961ed33e7be0a1d3f872702529ac2d60033f63f8957cd9605deb3c"
+        },
+        "activity.crew4.description": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "296ccea4c55b2a30aa03668dc50cc922258ff6756e8e2aa8dacaf721d4b4ebbd"
+        },
+        "activity.crew5.description": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "688c1b8a16ce8c1e32487d359e1d9e0dc8d15140ad60bf21ea1405c3f144a806"
+        },
+        "activity.crew6.description": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1830954d222dedfa8be6f44feab9e8ec62d4adc972c4ee408bdbc3cb980c2bc6"
+        },
+        "activity.crew7.description": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "499e715c373ce1ecbdc4a48c83f33b7f5623654480ff093fad0debdb48113464"
+        },
+        "activity.crew8.description": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6543d34f6a462b6a6b277e9c52482729a83ff3c40cdc92cc5a063789f6c96d4f"
+        },
+        "activity.crew9.description": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "60d3c294b5d8bf6cdf8e8f8f2a8676f01ddcc36a7a5b58be7cd488feb404ad94"
+        },
+        "core.auto.0059798b7f70": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9e356962480276207be793f19ec9350fc1842ce5aac359810581be610afb7bdf"
+        },
+        "core.auto.022127539fb5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b869b0a38605bd81bbe600b3ca3292fd007c266cde64f3db32ecea049ff96d8a"
+        },
+        "core.auto.03245738e467": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a5613c97a365379d93c77d24ebb977d595d748aa8efcb7d9ac4101f992665854"
+        },
+        "core.auto.036a219d39ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d3d7d2ecd352b2bbc411933b4b7e2429a91d1cc6d12a8aef7a666a649f003494"
+        },
+        "core.auto.051356596cd3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "37c2d7b5f6fda6339a7173886e501c33b4caf09bd259e30cd2a6caaed7362dab"
+        },
+        "core.auto.052cc4082b80": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2dca748e570924e6b7a00bf851dad067f3dce92e620f4dc6ccb99c8d3e1a0905"
+        },
+        "core.auto.0636c2faefa7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "980230b3a1fc8927c795a31a8b24748a34ce6d67f68926d32635e75b100d5f72"
+        },
+        "core.auto.075015da63b2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aaf8cdfe363aa6e6d474764bf565d3f3d00e34e287c3509a4c55ffb0e1272fab"
+        },
+        "core.auto.085f6dd8288c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4e792ddcfc3c65d42258ddb38f51b18c5925e15364712d6dc82cc1f32bc9d263"
+        },
+        "core.auto.08b48ddb0c7f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "eca02e676c31c3faf6c45151a9fe2bc088223c2c83a8b268a12089419f9b780f"
+        },
+        "core.auto.0ce3f2e67b26": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e1c5cc161b89bc5124b4692ad6765f658079296246e00a0f3351543dbdd2ca08"
+        },
+        "core.auto.0e2113782a3d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "784dcbcd54525732ffe6425b3558ab537c3d9467c0a9aeb65c2cf8e6aef33720"
+        },
+        "core.auto.0e7a8a7e82c9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6553406a60143577934d54963a9777cbd704300d7bdcf43f0b8d6eeb9b5e97ca"
+        },
+        "core.auto.0ed7444381bd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e91e3d6714b1f92a3877ff270c5a27e5ef1c1a293bf65ef1aede66ee3a5886b"
+        },
+        "core.auto.1213c8be5e40": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "54e77b46f84391375094d55e02dc9d3210e2ac0a08a7c81bafb7cf522ad231d5"
+        },
+        "core.auto.14af9632a9a7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aeec098a7451a66f34df5c0115f79faa844cb565c2f7239c73203e606fe203a3"
+        },
+        "core.auto.1586e736de28": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "40616eddba60d51c8c5536fa450023b422d8e15c71a1e6344ff1c41c75f180eb"
+        },
+        "core.auto.164308988ac8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "88779aac566543c2ec70fddf9319bda2371fc52a12f47460760e2486ce0b01d1"
+        },
+        "core.auto.18cd4969f033": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e6aba6e5755309ba1ee4f079b7d7e51011b9116ae55dbe97ba843d063d08b080"
+        },
+        "core.auto.1a2a44b5c8e9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ee5ff82c90449380c008c8b87c348caa83de0130663beb4d6974ababf48c38cd"
+        },
+        "core.auto.1ace5ec63e3a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9c892deab71d983acdf6a290f65ddd1c465e0d1e0ace0a4b863ea25e6fb33204"
+        },
+        "core.auto.1b53ab9eae60": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "597a84e144f69aed6ea64b76314a63d2557d71f3674812672f1441c22766fab7"
+        },
+        "core.auto.1c035d55c855": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "151b1541e450fbeff650235765b3fdd19d4c77b67968b8284b5f631dd56d8ae8"
+        },
+        "core.auto.1c63b19a1183": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "80f004dd8f353c87ecce591f3cf369cf4148598d611567985afac2aaa0abd2af"
+        },
+        "core.auto.1d4213c2a6d2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "990afad7295cda8fd3128fa250ba733b221d90c97fe1a6636b1e73c1b31687d2"
+        },
+        "core.auto.1d951e640103": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6ad9ed6dcc303bf831f2d502c6bc5d47d4cfbc6eec44a22e5dbfda86ac291151"
+        },
+        "core.auto.1daa04ce04dc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9daf7c13698add5692f83106e2ad7e304381c4749f6f81f17d43e9e1135099a2"
+        },
+        "core.auto.1fc2f4dc641a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c6d7ba8ccda17e17a61cb850efeb098d0d75d1e9dbc9ed52f8ac0817e51c1274"
+        },
+        "core.auto.20346b866fba": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0f3ad16f9d3eeab56f4124fc0f8a2d811b579217d582bad0fe7d81f8274ba382"
+        },
+        "core.auto.20fb824face8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b7caffb31e04dc6bb68c6b018ee403f997c36fde849fe14528f5927f9d8a0346"
+        },
+        "core.auto.22ea9c49717b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dec6db71ffbff055d638db9cdf94285deecd3e919fa8fe9b8fa7eb984ad29d33"
+        },
+        "core.auto.24182483b9fa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "13015bb66c2c4bde2b1ca40eca51c3251c2254c1718e0480e80542b98865bbca"
+        },
+        "core.auto.255aa6efa939": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f9b7bbeccc5c07b5bda049fd510c8d916f939ba75bd4b8ad6756a29025035d91"
+        },
+        "core.auto.2b6f8e42363f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1915518886d29ddc46a755ed93cf4f547a5edc2e77c7a27962d71ef882d8a30c"
+        },
+        "core.auto.2c57dcead783": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "800f0d9a6c666e73f434b0c4308aca30e4cf276c8dbd6042a1eac05a3828adef"
+        },
+        "core.auto.311bc6ca8cae": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "25bdd9dbe60075755fc99c407e1b365ebdf48b064159d72e6e28f263dd0a790f"
+        },
+        "core.auto.31b471215872": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "21895cffe40d2adacbf011f1d72a0daa58ca3f9da106ded799feff62b3aee766"
+        },
+        "core.auto.31f8d69fc844": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a0a8be7dfcc8ebb10f241621c453cd5b5223e92a2351ed80a00b09151d8f9184"
+        },
+        "core.auto.338f0d3fabb0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ef5adbaf95d41ea577b385990776b5790b1af89ea555c307bec84311ba60e762"
+        },
+        "core.auto.33cbf0cb2c5b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6eef7a43153b49fde03b69b350443599ed6a3281b2da10ca33a975cbe9885a14"
+        },
+        "core.auto.34004f654555": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae9edd427724143866b2cb102ce8bcb529e17ca44e0c776ad0ffec233eecd0e0"
+        },
+        "core.auto.35cf820e07d0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1daf6a97c0c5788859eb4786b7e86553fbc707096b5f399cd2aa325221a3b3bf"
+        },
+        "core.auto.35dc3ca90787": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c094fbe74edb37c7d6b7d328b753604f7da58be3ebcc4c853b12d6f897194a5"
+        },
+        "core.auto.3628f048c3e0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f310ab53b84e607011d9f5392b0f445a7ae04abe5d1709fd8a58a19ca4b7206a"
+        },
+        "core.auto.3635711ce224": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "97a0b476299f2cf1d2cb174d7ce1ef41534c12511f25ae9af0ff66d71767d4bb"
+        },
+        "core.auto.3646d09cf2d4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "591a7da55cf926920e6ab08d7330299178b0c68f5227673777280b8b3b56fbea"
+        },
+        "core.auto.376ebd3a95a9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4356d6f2d6788e4acf3f801a5197b8998ca25c1fd28d0a1490f6c3a1a181dc1b"
+        },
+        "core.auto.3855ab050361": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1b2bbd0da887771a73f52f022526282e29a7783352a81254d7ffa1024d217ba0"
+        },
+        "core.auto.3b6811ea0b19": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "34411aff314dd71a0da5434dda179fb40c3e2b836f58229015b5994494028490"
+        },
+        "core.auto.3c3d03f61735": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4e90079ead532816f1182eca5c6d664c1a9036c806e950053461fd51a7afd699"
+        },
+        "core.auto.3e964fab7000": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "973a13af79ff1b5298ac87b807fb7acb5af4b047bcecfb28efa425220c311a95"
+        },
+        "core.auto.40976a1a6f1f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8f5aaf3099ba5e2025637fba6475063fedfb5ba641155bc085e327545485a725"
+        },
+        "core.auto.428290b7bcee": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "847bc875f692538f6c557f9a83ddea4f4dbf56c0fb9fe8af4bad2cabdbbd0a30"
+        },
+        "core.auto.431f3a06468d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8437b2d2e715c778a40275e9d579ca1904b09f6c3c8dee9161c88de510560ad1"
+        },
+        "core.auto.435567b14289": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c2be0fdfb23357b45d1d1b2c3210adf12bb748da2eb56a6fe65a38ca40d8ec59"
+        },
+        "core.auto.47ce77aa1399": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "31a68e3a7d041a24c1887ca6eaf2e455117906afe77ee9827d9de7be7b352eac"
+        },
+        "core.auto.47d1836b94de": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "21531153c04694968af08d053dceb888553d0a4035d37ba4bd3c7771fe568a29"
+        },
+        "core.auto.4888a8f073ed": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6a71ca7471aef46a34ec10792339a00ce2b9cb3a7547778ac14ae98376bcf20a"
+        },
+        "core.auto.496a37e3a10b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "34fc29c630686f8696453251c9f847394967b03c22a965c95769516bfb7dc944"
+        },
+        "core.auto.49a68f067666": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fa19590745f2d1abe905221809846fcd67feb802f185f17cf58f2633877c5165"
+        },
+        "core.auto.4b1782785806": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0026427bb940810483a4b1a5c21101b2f43813e6a5f16645e25ef2ae3f54f04f"
+        },
+        "core.auto.4b58f3733b49": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "825d7c002fcff170f54cd0ed4af69f1434d12a2f9b3d66d9468ee7c8cc0a043c"
+        },
+        "core.auto.4efbe86d61e7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "89fcb49a5a2751d4455efd7c5521987c09ba76fbe4947dce4ee3deaeb0d4df6d"
+        },
+        "core.auto.4f226f49771f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "457ec5808927c7aa22cdc11e0ef8ef1356ebc1ddc408b889f79ab9c1a2a51af4"
+        },
+        "core.auto.4f8ac04b9289": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f9929e0b8a692a61a4c566bbc72853266e9f00abbdb974ff14b410fee17f1988"
+        },
+        "core.auto.5114977a4f61": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1552a6d683ebc5c9793f5b7bcbca7530f72ac3e2b5e265f182b907fd930f44a9"
+        },
+        "core.auto.51ce0a3fcf7d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b5d3ea3469e3460714c50e65f67a1aeeab9751a87f1b9fd97f4cd4b8947ed77a"
+        },
+        "core.auto.5524333340a5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d0356362a8c641c3db06ab9fb9455ec3d9a268f387d7ad87fd8e81122ce398ca"
+        },
+        "core.auto.57158cf8956c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5eab0a9cc112909a280975caf5195ff47457221b1ae0bce4d7716859c273fa36"
+        },
+        "core.auto.5a2220267bcc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "342bbfdaa4097821159ada8acd0ec980763d86d76fdb9e973c70573482ac8a41"
+        },
+        "core.auto.5c2adc0a2ab1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "40eaf4ab228cfe46325428dffabed12151a64e08566b97649eeb3220e27b0f81"
+        },
+        "core.auto.5cdc36766f16": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "680526a7750302b8d301ea3c77cb2aa4c26806db5f0aea6d8940253670b945d7"
+        },
+        "core.auto.5d05a0b327da": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aa223e231fce5145365b670788456d1b0ae32ec1a61311860c90fb5e5e8a371e"
+        },
+        "core.auto.5db052dfb022": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2a27e964c88f4e2742e1cf004cefd6b5412124a5739dc7c0b59824a524c52e3c"
+        },
+        "core.auto.5e44ef2ec771": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6630cc536eb9c79bd29ff27ffcb0a73861938db19bd0d1c70dcb91cac79b14b6"
+        },
+        "core.auto.5edcae099d81": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3a8847d80b3af9150b132ec873ef4c02ae4703792b701941b4370c5b42fa5a58"
+        },
+        "core.auto.5f52af03676c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c0ef4bf15fc9399524ad28f79c06354788fef6e4e3c750252cd249712232fdb"
+        },
+        "core.auto.600cc1e136ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "00ed0c12272d070bafbe2b133b89b946b8fafc7162cf941574616a7ceed0a73d"
+        },
+        "core.auto.6115f1f88a84": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "09c5c0025c5f4f952a29523a1010702d01b2883d3d1d1f4b1bffa7584aff796c"
+        },
+        "core.auto.61d47e8d1139": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "17f49bcd5a840995ebc7aac5233870b5d9bda191ccfe62b558438d0fef145831"
+        },
+        "core.auto.63734772475c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d83e481f277d4f4933caea53574905cec8191b5718106d3760d11950707a3127"
+        },
+        "core.auto.64020a4ac475": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1158ee837311751c3599b52177eb9b7d546b93e39ba456ca9972bc4c9e72d05b"
+        },
+        "core.auto.6891c2c15399": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b91cfd148cf5f31d26c0d313192c546bfeeb21901e3639e28e1e39f14766dcad"
+        },
+        "core.auto.691ca10610c3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ee65d77fb54b186cdea82b061cc17ebf7c47f02ca7418cdbe117eb2bc6986ea8"
+        },
+        "core.auto.6b2c97795c1c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "230ea1d8257e28f98ca066b389dd9293e05b42aceff0e4b1d89aa5c73c33ead6"
+        },
+        "core.auto.6c4bc443bd62": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "40cc9806a29925a6f4139c4e3b29ba402b652e743edaf9aafb00766d9d8ea1d3"
+        },
+        "core.auto.6ebcd2a68574": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b1c32773ef7418a098e4c3ea86afcf3549e351c0e32ae5fbb79fc39d54448dc7"
+        },
+        "core.auto.6f7842fa50df": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d49514be6a4139a722c42f15da2efebb3ed3075e4938fd7e9c6d5d36c0e8e8e4"
+        },
+        "core.auto.6fa160d2d2e3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "41fa3ac6d8eb3bbf0fd147e2327188ef20cb9442fbf4865b2bc52b92a3adab1b"
+        },
+        "core.auto.701285059392": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a14f9a6b67eb37fc494200a1da5a0ed7745923d7cee14f9f2eec70e27fe7a7fa"
+        },
+        "core.auto.704ab5bcaec9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "153db556dab21d7107e0125661929f96fea0456961510ae0f0d16a31cced919c"
+        },
+        "core.auto.7116620738ed": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9d929e6a455e6dbe6fd93e7d0709a50b06946759f2d235619e405c197d8031d4"
+        },
+        "core.auto.715b1458abbe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7c0eeac4ac3faa30df93f1aa27b170b6bedcd54db93204159fea21f006586309"
+        },
+        "core.auto.71b848929598": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0ecae78f2fd3fd6c0c9617da5a26bed7fd65cc4a752b419cc1ccedb1f35e7e2c"
+        },
+        "core.auto.72021eb70e91": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c461411bac27bea17a03c2cb83e80f2fd35aeb6bfa76bc4593dff48255c62bfc"
+        },
+        "core.auto.730210d0ddfd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "83381cca827700b0dbf413bebfe10794ac045cbe11dcd8104da2600d6ed8abd5"
+        },
+        "core.auto.7503323bc28e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "588af8082fb45cca346fe10484ef07adcaea6f3ec5effd1d65be472ebda5e310"
+        },
+        "core.auto.757c6565d28e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c843b13493fb324afddda4462dd28cf92e0e83607ead83055b8934e2c9befed9"
+        },
+        "core.auto.76998081c0c5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "03b073cc2b57bbdfd7493066d27844615bbbcd42f1f9243a4c8cb3b93432c652"
+        },
+        "core.auto.78dcc0d00d6a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d16c14934f3d43914d1cbe773635bd34f1e9075ea2402cde1341395bd3f7416b"
+        },
+        "core.auto.7b08f3593801": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6884874dc7b4e60462b213ead0e71262ff99fd85e2560d20b2bb297c62534fcc"
+        },
+        "core.auto.7b476e26885f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "12964e82a74235e6c60aa43844ce54825d1673f9695a7e81e3946f07f12c102e"
+        },
+        "core.auto.7be9be0cf869": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "605b54523f5a5832b694c61769547e5ca67be08ef4b3d78d8748c918d6072d78"
+        },
+        "core.auto.7c0b08b92453": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5627f9a0ff52636d7cf06645f9a017ff7a7a5218707a49cbfeaddac224043b01"
+        },
+        "core.auto.7cb486447c7e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6734bdf183c7531f7ea4f0d8f12c256836c28c0b1b989a6d622d9d8ef081faff"
+        },
+        "core.auto.7cf32eefc446": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a77b2c533762e3f04ecc7b7c0048a04f1bb0e1b74d9dddbe12de9315e276fa89"
+        },
+        "core.auto.8225c2eea173": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "317854710dc21f620b470439e607c6bbebad1989966e65afa3af9eee38b0df7d"
+        },
+        "core.auto.828c1e6f162f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c1f7572943791926efa62c2afbc4f0115c68b8d505b1fd173a17e1b138f4f669"
+        },
+        "core.auto.82c6b361c257": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "090788662d05edae5cb3b0f4044efd100295da88ed6c6211df794081a18a16e2"
+        },
+        "core.auto.833f9894eecb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "af812319af1af08548d04165805f195a6bc8da2737017480ec387ec4174f8cb1"
+        },
+        "core.auto.85c7786e1e46": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d3fa77eada6935bb04ff41a8b7c1c0246fa233f4f281b44b5334e8f9699e2677"
+        },
+        "core.auto.8672857a6c8c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d67352ded2b222b55d3aabcb493d2cb4bec010a9db4017c8b33d4a16ffda9735"
+        },
+        "core.auto.86b9670b2ba5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a7f9ab09e3765e73377f249607519c34ecd91c42c91dadb2754c3739cb0debaa"
+        },
+        "core.auto.8736a2ba1720": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a548e8b3c388f312974e942158d71088f16470b045603783db1adf1827c28fb6"
+        },
+        "core.auto.87408ec8a05f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "244727642be150cb5714a4680ebfed7c35117e8f50e15838b66fe08519c8f6df"
+        },
+        "core.auto.879d7e9d1ff6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "943389331e21ee7e7dd0ced9e0633d5544f2954b7b7196938c8b6e61fba8cefe"
+        },
+        "core.auto.87bf3fe24176": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e5df04d110facfd26c8e3fcb10a5da3c4f5d3a7190430cd22457298d81b856b2"
+        },
+        "core.auto.89628e1d5c54": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "963f9e930d60589092fc622af2a84b006aeae49360fb4c7631b06ee3d0836504"
+        },
+        "core.auto.8a1702a7ef7d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "26db1d9e252f974503037e50363264e168b89b1ebb113303de5bc833be1ce9c6"
+        },
+        "core.auto.8adc7cf3a081": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "23cb75233b8653f7e9545d2b20c61e4f3dafd70e3704094c1330ab1d0ec23b57"
+        },
+        "core.auto.8c1273c700b2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bff22ca6d1903b2d624c9dd6c5e93919099b33af49ba2784074944342f52aee8"
+        },
+        "core.auto.8c71d3bfccec": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4894efc644c05e7aef66da5c6737e7b19012b80d829b73acfabfa7871c69e7ac"
+        },
+        "core.auto.8ce3fe4bda0c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bbcda5c73d4390e6d6e7ffc82de4601dad9ff34495b43c88d9989ff9b4a527ef"
+        },
+        "core.auto.8ea608d8eafb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c09bfc6d0b6c87857aeca616ab84ca1c7c003fff36f2de6d83e752944a93d7bd"
+        },
+        "core.auto.8ee3ab240b3e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "92de818bd3153b373a78da6b367d44944a91dc28bbce9679582981428e0e8dd9"
+        },
+        "core.auto.8f902241b25c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3e01379cc18fea151f1c8f4d4b662ea7469dc2042c912decda837e851d803c4a"
+        },
+        "core.auto.90b923bb361e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0b6a175555795858f7f4e436f3e8c2c6d0f99c6aca259f40ea8376e27e2023ad"
+        },
+        "core.auto.913576734776": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f2363ec3fd6e6044869ff2a5f90d00ab29ec23ef3491b2512931a308606331af"
+        },
+        "core.auto.91ce7974c8a9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2f39aa37c7c01dd8b5352b048be1ce636e967a1c85964c220f120785a1756957"
+        },
+        "core.auto.920a83e40db5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2c60b7160a5f2f35f51539ddf7ca97156907b7f96e32d67831f9dab9523ff893"
+        },
+        "core.auto.92e9013cd285": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bff2b3d1837dedd5affbecec13dbe40e89208f9949a3fe81b9cca746a2f54648"
+        },
+        "core.auto.9332dc34d36f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6f7416f9eb09ae2f05a6edc02fbf67e51c5082870beaa42b0d0dc8f640bca873"
+        },
+        "core.auto.93460114621b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c6d93e05a55a490ad9e76b09e82ea1c16eca24cf55e1a22607693dc28559526d"
+        },
+        "core.auto.934d83a750af": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b790f481828fe34e5ea981ed578ba10a8a1d842354f28b0dded420f695ad7c8b"
+        },
+        "core.auto.94426aa02ba7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "14d12507a46b7dc6bb24c3409d91593e6915eeedb17d071a2e6958b41946ce3a"
+        },
+        "core.auto.94862b3a6752": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e30aa643819b4288b23c7896ece768a5d0283ce7fc644f0cab28e2688944fe05"
+        },
+        "core.auto.970d163c27e2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f5550ccbcaf57168a50b5f68157cce19a3b843502fd9c04e297036c94215d697"
+        },
+        "core.auto.97b06c053d20": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a72acb97687a451b55031e4c1ff2ddeea20fb9e9587375a779e099027d88fbe1"
+        },
+        "core.auto.9a46382908bb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ce654e07008ba36ba03c95c76f7bcbd0c55ff77922a80a0cf784b3af3183ea0d"
+        },
+        "core.auto.9b9df0d68155": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "48e236a6403d48921e782c0ae7fa2b8bcb54129fbf07814dbb0ba5c8ef3f25e6"
+        },
+        "core.auto.9e3dffaa93c3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "655cb1f0ab181729a8a6c17bf2b07273994fec8b2f90be8be4f27d3121e3589a"
+        },
+        "core.auto.9f8e1fe39a5b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fd38dae928c32709ccb608079ba0da3ae0f6002781be1fdef764d1376770e944"
+        },
+        "core.auto.a02f938797fa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a933631ffe7dbf4bcc78f8eb940bc6de937650ee2f6233a8cade2c120e3e0bc4"
+        },
+        "core.auto.a20aac730804": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0605c356622b63ba6c624d819cfa6d78553a61939f0de5113a583c60ba7c3b6e"
+        },
+        "core.auto.a4b151d0d2d3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e4532f2fa0bb7bbd12429bfd8a9b38b56ee1f5dd48712a23eb153d7c06ec0053"
+        },
+        "core.auto.a79233d281f4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9a9098976aacb1e95f3b97431d2534c52d756e0901e08c1b2af3bd51b0d4ac5c"
+        },
+        "core.auto.a8a035fa5216": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bf58e2d48e733d7049aade075582054e90b0dba052c79c5a56c0060e569e77a1"
+        },
+        "core.auto.a97cc42c40f3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7550910765dff93107d32405f03dd1f23426bc61e4dfb959c2b566fc518a01a0"
+        },
+        "core.auto.a9e9b1699745": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "42b6013cc22b81b8b0d088c0e9477432f564d18ea488b3a7fc9cc8c24ad26247"
+        },
+        "core.auto.aa3e653bb0a1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e78b110f6af39ab3142d1e829e8298d9968e53b5ba000863f3f8073a2c10e225"
+        },
+        "core.auto.ab33e5a2546b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "da05df05f730be435c4ba2f048b1e67cd5b059134a081d86a827b64704e5efaa"
+        },
+        "core.auto.ab67362454f7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "293f9c781b066caa6495bd120c2ce5a56e43f2c041eba98256731f490e37ea3d"
+        },
+        "core.auto.acf0f757d4d2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7b81bb8ea938f57d815acc61bb745db09f1f4d67e8c37fa41292eb568c08f6bc"
+        },
+        "core.auto.ae020fff75f7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7b510fc6378cd1fc36abae5ebd52c60df545687d9dd649f118e592ec9670057f"
+        },
+        "core.auto.b00dad0b78c5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "631c045403dcbb1434b02a99561ddb28866c0aa4c96ebd4105900adf22b9265d"
+        },
+        "core.auto.b1d4f10e711f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ca051a8381bf5f4ee16a63939b872e3c545b5806fdc95183a59d86cd84db5f42"
+        },
+        "core.auto.b21378411239": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cc695cd3d082b61c4b5d21980fca3d0c7521446003349baf8b3c135c52d39545"
+        },
+        "core.auto.b2d0883b3e40": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cabac7d31577dc6822034d22b577afaa49264fea76d81a44a6b7fdd4fa4be749"
+        },
+        "core.auto.b3723c3c9c9d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e7867e7cb2f2ccf41233b9b8c61893775aa51790671b3321c765f0af77145dcc"
+        },
+        "core.auto.b4d29945a382": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "68a821fd6c8c83d7427351c1c5bf8bbd3f02474d7fc0105cb32afb263a9508a5"
+        },
+        "core.auto.b66d044181a0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "efa6c631e6b9afb96e1f1af842d134a97d4817d9e49b084874eb01c62bfbca0d"
+        },
+        "core.auto.b6b8ed793b54": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c1cf41f93f8fb620b7bdba6a5e194fa4e673be2ec5149cb0fdcf896d81330f7e"
+        },
+        "core.auto.b6e978f304ef": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8885d6bbadf69100eb077d566d399d14705a92cfb3bf9531e2b6b74b7d8e29d8"
+        },
+        "core.auto.b8ed5279e897": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bb2e3496f3e0d7e03ca6af68647bf8e7517845d3a6d1922af16e30c7c89f395d"
+        },
+        "core.auto.b9a01357b8f1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ba4f3eef3caf6131735a677edb05d3b6593874984046159f1833e3a6415ea304"
+        },
+        "core.auto.bd34d2a79ccd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e07d86cd62cf78c152726f11490480e004ca8dc1e8af4842071208550595a69b"
+        },
+        "core.auto.be47a9af980e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "16a26f217a390b7577d1378fa236a962d9323ffca59b7ba3c5dd193ca4328e44"
+        },
+        "core.auto.bfdfb750a290": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cb3c029f020bb788fb196ff5e8339e903d948774cd09489ada3223a644352bac"
+        },
+        "core.auto.c110e0bfeeda": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "036c27e3e9e7c5798e21c12128ac5850e1bff94c822cb237e939f1c7399e2061"
+        },
+        "core.auto.c2aabf88a6cf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4c4ef679bb5886a9c218728a52608eaf98c77647deaf9fd6f5594a26da5668ea"
+        },
+        "core.auto.c34aaa5d494a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4be62e42d67eada328d214ee9b0a694cb62215282728bb653effbd5e955b63b3"
+        },
+        "core.auto.c39059141ced": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d35e486557d7bafb21cf22cd93c0564baab0f97c332bd46e8b22f42710d5a3c3"
+        },
+        "core.auto.c4061b600b85": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "590bfdd02dcdb857a4a13e59918ad71dda819ed07bade63d644a751b4ee2f658"
+        },
+        "core.auto.c5a9b2f04a6e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "61a06c141d632a6a5ff9eb4d249a24ce9506c8f50780d213bc0fe2be5c125fe6"
+        },
+        "core.auto.c6c094bc0054": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "65b1cbba3b92c5b2597926a0d5dcf1fe03cdb5fa8f518dbfc1c66a523473bc7a"
+        },
+        "core.auto.c7a396e3dd94": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bfc749cb3485d1451ea6a58d2bbfaa34f70a54b5fbf37f8c085fcd7020312d1b"
+        },
+        "core.auto.c7ef1c8dc9f0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "519b1588a67c60fc9d05e76d00b95ad5e766cfb17a3a3ddf1f0dff0cf460dcb6"
+        },
+        "core.auto.c8a6e8cdf569": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "35c316984075b958c35c14ba79a4c89e0859228eb2b1c3de2363259c826f4733"
+        },
+        "core.auto.c8cbc45ccbe6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "00f984ec01d895d351435b17e00a97c135dda323ef74d682dfbb6b4dd4359dd8"
+        },
+        "core.auto.c93771b6c975": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8b3df62b148104c8149314dd0c020488929f6ea1736a586027cd50100fa6a3de"
+        },
+        "core.auto.cae1e757ba0f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "881a550fcae89b695b322ca4a70342a32d2be33bfa82622a5210171072b319c5"
+        },
+        "core.auto.cd594e6356c8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c2562fef9d8eacc9f1b2fe7beed99fd1d475160a8575579e1d334be4ebcacfc8"
+        },
+        "core.auto.cf6ffb64a388": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "038663ca1ed2f8286157aea7364d42c8a3a7e0d9f13516bf3144823729c91f47"
+        },
+        "core.auto.cfa5d96bbce4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c08aa2c8ce4e1ff78e3365dfafc5ef4635a4e4b06f45679323801230353deb06"
+        },
+        "core.auto.d21bb537725d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "15de7fef0951cac916edc8982f36199883696dd63088ae8f4502f0d6b7d38aa7"
+        },
+        "core.auto.d27c7d015bcd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "62ff9c01d1c4544253aab25d51e56c67f0dcbcaf8488f4b9b38a9eaff1ff94fd"
+        },
+        "core.auto.d62efd50cc00": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c6434205083cfe76ccd1f3fcfebceebac9492c71ece6d584cb46df2db29d7d3e"
+        },
+        "core.auto.d6725af155e7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9be01770c27a8246a29cda4355dccd6bec2aa6906f6f1eb62c0f285e82f8c090"
+        },
+        "core.auto.d78f1dd07796": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "33c045ffa0b2556d7e5609e1a5395efcc1ecba27688543a7c7252f91ab57dffc"
+        },
+        "core.auto.d7d0b1eaa443": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4a109a56e8a435ea49f7da0dae84d098beca1954928412697e72bcaf1579ce17"
+        },
+        "core.auto.d8a088ad551a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "63ae7a34ef2f9c83f8b64779910d91d0f789e64328857393cc5a2703b55e58a0"
+        },
+        "core.auto.d976b5eb78d7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4b983817728726dfca742823c9ee0159825c1720652da8656c2d35265c2fa72a"
+        },
+        "core.auto.da6116b625cf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8a653ebeae7fddad1231df5c2c892fa810ef662959fbbbeba39b282a77035410"
+        },
+        "core.auto.dc4d3f6ffd6b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ddb8a9b1bfba720efcdc9c455acb3cbf1f45b6b2267864f1ef054ea0772a93b8"
+        },
+        "core.auto.dc5d528db77d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "da90a3283439f6a0d4c134a09ecc29b474a0f1cbfb098f04e518aa7ada397e53"
+        },
+        "core.auto.dc6127577d02": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "410ea9d5d52709d686e1af87418df3f581a2a6905631d3bc888134b34c547a79"
+        },
+        "core.auto.dd15cecd6792": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "beb71493c383e3b79f7879828d5437df88a0834ab975d6326ad529fe906c60c0"
+        },
+        "core.auto.dda3bb34185a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6da200156cb7ee9746528e7536e8b8d443947b2b72bc9c015b3582adfb6edb74"
+        },
+        "core.auto.deb01b77d193": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b77b1860d4c7f7334ba80c0d3766c54d1bc9e2c2b267e975ea3dd04ef0c12da8"
+        },
+        "core.auto.e08d9aa577e4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "06021b8bc99e931a5ca51062837fb386fa4e4f4c69be265577e6ae1670d3b4fb"
+        },
+        "core.auto.e26dfeaf8eda": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3fee6ee47329cbbef5fd7550fc3c598c52167d9c1872e465a061a8a20f844a19"
+        },
+        "core.auto.e2c3d88c89c1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "70e35d52074115d33923fc77313b47dcf7ef181e84a952d9242477f1669ff2f2"
+        },
+        "core.auto.e34791dded3e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a1e872d96f753d8f59b12c7f2c4a1d60cd172f3042fed2ba8ce00420e7072406"
+        },
+        "core.auto.e5729d014d78": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aab307378936c49b48be3f27799b60c97da316f18e151d0ed53fd85a8c5739b5"
+        },
+        "core.auto.e598bfff1c53": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4cc458de9933be248fc48bd9686c61c4701dd01ff8753563807f10560219a192"
+        },
+        "core.auto.e5bf51c41bbc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3bb9528b9923c8fd6df57e52e3957e63ee949a2deae61cf60bf68a022757a129"
+        },
+        "core.auto.e6a7021affbd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "803d352388951d9c8df47e70e9fdaac9621e88c13e92e42e749b522ed70e477f"
+        },
+        "core.auto.e7236bd22726": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4d670157501899d9dd81a76021ffeb5e470a8c052efd1917bb2db46e8b45c84f"
+        },
+        "core.auto.e858374cf8c1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2239ee30e3c74788cf30201b625c1d50ce815c535d94029c498a07d317e53552"
+        },
+        "core.auto.ea424e0d01e6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "886dd895015043fac33883d43f59be90c6da789665dc832f8066d425d7544967"
+        },
+        "core.auto.eae961851e97": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "48c67f463bdcd2bdf3f7b753a895a2418643ea716559a571b31e5f7e5d6ee967"
+        },
+        "core.auto.ec3c19d43413": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "39f709b8364ffac41a35e10d51ba7355ff8670fb1e5079664b174846be94b787"
+        },
+        "core.auto.ef9b1d25babc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "75aae1b7a3076058fac99f24c3e741d26166482ff9270824af3bebae5b41747d"
+        },
+        "core.auto.f03c9f5c5c67": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5ade3de4a5f18882208e9a8ecaf2df6a813a1d243f3bc3905874b337c8a8a3dd"
+        },
+        "core.auto.f2b82057adb0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fef488936e6d618fdbc54067f284eeb7b03c380f4ebdf97809f0fe71ed29b32e"
+        },
+        "core.auto.f56e88a96396": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9279b65f58b154d78704d2e40a20e806288959e839e98a123286b33e2c91cb58"
+        },
+        "core.auto.f64d0e6f2738": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5e6b1b4a1facdc1cbc99a53e05ad1f5cb002c484a6ca2c4df1864da7b8d39af6"
+        },
+        "core.auto.f69fd0766245": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "094ccd7e453a4abf5a48e1fb6d697002271d51e52bc2fc7424a87dafe713dc05"
+        },
+        "core.auto.f6d4d08c9678": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "17c58a40705a4993a1cbc7e3ee2de1b2867265c0fceae82862b162ec164c9663"
+        },
+        "core.auto.f7809d7366b4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6761a40d566656393672350a31212666e70781ca15e0260450fac39a116ad4b9"
+        },
+        "core.auto.fb74a9888643": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "40cc99b98dabfa1a058b24eeec440f1c659a707e2e8991dc08ae51b7f54a9e1e"
+        },
+        "core.auto.fbe598869f80": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2a40c680cb9655dc52629bbc83b927b41b54557f76ea1f201e1256561618ef65"
+        },
+        "core.auto.fe846b113274": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0d16ab30b51e3c8759541dcd37ef6cf0fa9a97d1a3da4f536c16d6d990c321a6"
+        },
+        "core.auto.ff3491733988": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "38cf621f58de4b4aac2377899d5149812333f57f9d244c9cd4c0a5af49572726"
+        },
+        "core.shell.hireIcePatrol": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b961070db43969b280c40e64fda8e9106c2d666dc742b5d91ebbedef85f73315"
+        },
+        "core.shell.hireRaft": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a1b8da022da6028fabcfa9ffd6f59fd18c9ee66e37d9d25479ae58f88de0f19e"
+        },
+        "core.shell.launchIcePatrol": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7b7e7d60c9fd4074c2a5205edba95cd9d736816494cb2cfeac72a13ab48698db"
+        },
+        "core.shell.launchRaft": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8d6443f5ab6b78e42cc9b2bec7ac2a03c3ec3cf58fd8e9a55f6d5f76bab49642"
+        },
+        "core.shell.ofHelicopter": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3c9e572674cf39c91bbfdc2b4f8548cdd24444398301cfd13dbb01a96e3600e7"
+        },
+        "crew2.aria": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "34960024cd415573e83b9fe14c63dee8a1c3b3f292a8d599c573070c7f76dce2"
+        },
+        "crew2.back": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5810fcc04e669de46c7ad466643ade622d3a3c9182b0d6954513278458e99476"
+        },
+        "crew2.begin": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b5d3c1dfaabe14bfc227df3bab798c0e2942a53f52d09abcac21931c2e6576ad"
+        },
+        "crew2.end": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "22cd3ec9458849f427fb404d379072723e4df9f55d49411ba7b79c1582b1b52f"
+        },
+        "crew2.heading": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "130b166d5715005a3d3d5ebc972e4c917be613429b7d94163c4e331353d5ac4c"
+        },
+        "crew2.resume": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7c56036c813a9147ba108d8a5440efd6a8a93db126df673682448d95d69936f2"
+        },
+        "crew2.sail": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5afd95e42dde378d0c368eea3cb951a79cf38bcaf06bada5b3cf0bfc25cfe498"
+        },
+        "crew2.scale": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3b25c035eb1641e322b2a5cb40a065a49bca06ccaa8846eb84ff45b442a0f1cd"
+        },
+        "crew2.sceneError": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8d7c23b200b627918d1f8ded2e2377c711090e0095521eda9b405adf4b9a0922"
+        },
+        "crew2.sceneLoaded": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ce8b2315926b75591bf3e84832d8e19e6246e5beaf0aa247c0ab6241a7de8b62"
+        },
+        "crew2.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "03358aa4d86c96593abbd6bfe2da395f7700e69e8b42f218d6bbd55d24d7b0ca"
+        },
+        "crew3.aria": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c3b9f1b987260fa0e1eec1f606a79f86e30b5e3ba4e8935884c0dcf67b68102"
+        },
+        "crew3.callLog": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e2c324f6f30e5eb22179b1bc02a8f684670c4ca1416ee7c30adec151a59d56a6"
+        },
+        "crew3.classification": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "adf69682abf1759b26f87e664f32f7378d353063d0015f0b2f0d08fc9ed117ea"
+        },
+        "crew3.correct": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "24e401e42541d211bb1b91a5c25297ecb159ac14b9a1fdf711837907782290a9"
+        },
+        "crew3.fieldGuide": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "37ce0bb806f3371abaf5db48884fb6883a1ca2e62237d7d6fcf27df34e3410da"
+        },
+        "crew3.firstYear": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d432c4114df6f39bbcf5880399b1e8906afc3aaff9b408fce88b7c3a58559b8e"
+        },
+        "crew3.heading": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e2fbbdd212d756c7d1edbe9e5ca698b2f4198dfaec13cd26f4533cca33db40a9"
+        },
+        "crew3.log": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "88dcced71e702c986e7bd47d6a71291eb49ed8a34253cac2fd55d481578be176"
+        },
+        "crew3.mean": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ef41c329df563a6cac143f898c7e7df8fd56f48fcde6cc7a21251b38c280b17c"
+        },
+        "crew3.multiYear": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bf8d9276ca1534df7aa4993ead03a96a284d187a9eddd075af8a9a0b7f157851"
+        },
+        "crew3.outOfTime": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c26d1a73039ab956a2d8375c252e9f53a5114b17b96ac9cd490f275ccfbe793b"
+        },
+        "crew3.platforms": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3bd9dada67910e081083ec926c85764ff38884571170055c9b30d3c0bbd5583f"
+        },
+        "crew3.scene": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a872b3497791a31af0ffc58bb998fbea199d196875112b3a6ceba931af5e7fde"
+        },
+        "crew3.start": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2c01920fd006e83d4f04ca29ad432a383d3f589e8f92ba1b1030c34d997e682b"
+        },
+        "crew3.time": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6dafe6a11d2271baf1577df065f052563fdfeb7f1b19fedf15c37e659975502d"
+        },
+        "crew3.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "81635f8e91de218feff2b87a48c6a58fe02f52fe97861de21289361156812652"
+        },
+        "crew4.airborne": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "eb45163ae2d7e82e43540b478b1041ba1c725f49288282edc079935e0b28f502"
+        },
+        "crew4.aria": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f2f16cec87a8196c028606e431aa294349e91e1bb008ef1e2d8470449a1a2aa4"
+        },
+        "crew4.chartError": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "55f18d08a0245c60364af614ba9b908695de925f221505033a372bd9cbf0a1d1"
+        },
+        "crew4.controls": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "03685f640603ad4161a3f222f4d835d5b2495c51974856f58a84eb68890fa32f"
+        },
+        "crew4.drop": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "32da68e3c0b5c74001e836a0e98ccb6fdce3253a53438366b3d35bf11bb10d18"
+        },
+        "crew4.fuel": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "954f5d3b66b7a22b1f807a9dd27dfdb0a0bfc25ef299257f5e9aed2e140b1222"
+        },
+        "crew4.hardDrop": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0f6212811eb26f922c3dfd2e5037aa52373bae9e4c5d6e78f556dba6630e4c4c"
+        },
+        "crew4.left": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5bd942e0cc11bac62e774109e304af6125ae51f11c60debeeaebb6651d5c8a11"
+        },
+        "crew4.loaded": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "09fbee4e9d34b4f4fecc182ab1384bd78b5d8f0f7db5920bbd2f6b0a45a2921e"
+        },
+        "crew4.packAhead": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e2a9f3099c44380a299192d7f037bec5c913811e278370de752e93d3399b401"
+        },
+        "crew4.right": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "59758ebbf3c1967ae1dba0525c175a502be048bbfcbae7dc8a8e3912505ac197"
+        },
+        "crew4.rotate": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "306d409f8a1cf480712874c78f9ea039380b0b045eba2f374bce53768d0ab00f"
+        },
+        "crew4.shore": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "001c7680fc2630db889c1ec9c165a3d82e78dcea72ff326c4f3bdccead576397"
+        },
+        "crew4.softDrop": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a22150557953424487f4e162fa8df8ac7802177da0ab423cecbd9444ffc4c671"
+        },
+        "crew4.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "215c86e3f6ffe228226246dcd4b740f5e2a296e86fcc73322d70d54cf215c13c"
+        },
+        "crew5.aria": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "974e4fe6e5676070a23545768b735d10b1e9c3632e927463cbfdeb8c960bc466"
+        },
+        "crew5.coreDescription": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "609647df7373a7499b369e0f8fdd36a3d244cd147994806cd6cd06b115acc029"
+        },
+        "crew5.equipment": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9d830085f0f24274a7e7a24602cb0b6f150d6d3ce4ad94464532a6fd6c7b2f71"
+        },
+        "crew5.found": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c8c7d80f6c953f9c9bc5224ee7972e7973d7bfd23f0cbad3d43b7258c5a09ad"
+        },
+        "crew5.longest": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d27781aa2131393b0e4cac6cac887a5d46e2dff170b65aeb96e32a5ca514de84"
+        },
+        "crew5.noRecord": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "12e98f3b4018285911b369a5782a5ffb4d9da71b1e43b13a8afe394439ed73af"
+        },
+        "crew5.sailOn": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a0a460f035188cec0485c36ed98749dbd503b7755d4f41edd85f2174f7b026cf"
+        },
+        "crew5.shipTime": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fb0c9b0a3ad7a72edbe4c9abdbafab1c67b83388617e367fdb894f2b61e1f5ae"
+        },
+        "crew5.sites": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9b62cfcf59e684ef742931ecd89af1840903c170c2a338f63cbbbd7d70a9be81"
+        },
+        "crew5.spent": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "97a5068d80602d4e1aae0915365f22bd8109821fb4d41d6fd6996b3f034f2232"
+        },
+        "crew5.time": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d4ec26230fdf4c660dc75b585e931208eaeb1cd911328d67fc63023aa65c56c5"
+        },
+        "crew5.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b8e97004e8e6ea14e23e480990fda246c8e91e9b41b61551703d97221a23dd0f"
+        },
+        "crew6.aria.canvas": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4983a7bf6533f97397cc6c47e06924109824d00eef82200fb1b88581383cfdcf"
+        },
+        "crew6.aria.down": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dcf0f306e3565feb52419730ceb3e4f5469dd606525eb955c38ba49660ee173c"
+        },
+        "crew6.aria.game": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "339d3d1dcf381215b9212479a65147480da0b9b2933cb4e54e6a067bdd2caa46"
+        },
+        "crew6.aria.left": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "31c2a1043275792d52db70fe82e4a0a9e34e39582310435c7cc21b7470a061e2"
+        },
+        "crew6.aria.move": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "042e680b2b8be06ec9d73ab7ffc5e82f2e98c06f121d93f9c27f7b5fac8b1f33"
+        },
+        "crew6.aria.right": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ad5c99bac297c006326d950083a987fa12c2cff99ae382bf19a85d7c8b803769"
+        },
+        "crew6.aria.up": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5f27be13cf9b2937feb57496e58709da813598bd5bcf2174f8781081c050fe8d"
+        },
+        "crew6.brushing": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3c8c84f385b430a1c79a7ab2890e44d3b768f2a3ffeed34e155b8813d8bc0f0a"
+        },
+        "crew6.cleanSuit": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0a10c6d62dbe4ed39ba2a661977062b1171e32f043660e09434c8f78e1292cab"
+        },
+        "crew6.dirtyMeter": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1fdeb9820c26dd0e20ad5533a43a1d7369c0b8a424eadd65b582442d5f1dadc1"
+        },
+        "crew6.elapsed": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6d2b34402b38a075daf051540a7c6eaf05c796b39d65beb001b022118ab6c142"
+        },
+        "crew6.flash.fresh": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "399c3ccd821ea253bee27c0d48cdaa8f58b8b7f2ad1f4defd3525e43f1a07bbe"
+        },
+        "crew6.flash.suited": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f35256550d3d1286e8d16770090a76b0e09763fb3d244e03a873a38149c69e8d"
+        },
+        "crew6.heading": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c94bcc943efefdae8adac49d862937fab6560d48786b54a58116417df85b4a42"
+        },
+        "crew6.instructions": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d6bee7edbd94b6718c1edf246b83432e818b7307319f5deb81e9bbd1a19d301c"
+        },
+        "crew6.kicker": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "09c1225822b45597ff21e2fffa59a3fb1ea9bab6cd48525402d865b0914954bd"
+        },
+        "crew6.kit.booties": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9b36f58cacb499dbc709e7c59ee96d19bd7ec3c75fd4e8a539ed94fe55890217"
+        },
+        "crew6.kit.coverall": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a2873cc1aac68c8651d84c96e7f519bb6c2b142e0c9f9580dbb33f96d7276e77"
+        },
+        "crew6.kit.hood": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "22cd9b3921f6fad4c107dfa5928c60295a3bf22320d493d0222a0388a699ceb0"
+        },
+        "crew6.kit.inner": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8a8a37bad5b813e13a572a7616e45dd92819ee28ce1ac8b3a9b3e3b13f3259f2"
+        },
+        "crew6.kit.outer": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f57d7bf1904c1039e781cb4c353ad56b3afe0d8a77037230e47636538bbe6034"
+        },
+        "crew6.legend.brushing": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6111fdcc51a5f88f1c3235abd05fcbff106a58a62e21b97956ae3c436e72cbe6"
+        },
+        "crew6.legend.heading": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fc876de71e8d4448ef7383bf582508884b970ba5aa87de836928f3b716699bcf"
+        },
+        "crew6.meter.dirty": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3051740ad46c9e8020ada37bde3d90cd4805d430f1a7328891a2968b7dcee3ae"
+        },
+        "crew6.meter.dirtyChanges": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bee6595df5ff4df2b827eadef0fc50a2c31e337b74aaf502e396bcb8df7b53f6"
+        },
+        "crew6.meter.unsuited": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9dfd8dbeac440ecab0c55ddbaab85f47922f728d1298701ae9e24297a7432371"
+        },
+        "crew6.meter.value": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "664be0fca604be6c6d2e555cc9ea6afcfafbb73a940d7a4552657be77077b6f7"
+        },
+        "crew6.result.blankNote": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2b6f5e6f820ccb329c75e264599e46c0eebd8b1e00166f1c74d489c9971c0d78"
+        },
+        "crew6.result.blankTitle": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a6e5f6877a56b422c43ecf2abfafb73c15f933832d19a6b1187a3667ce1b0a57"
+        },
+        "crew6.result.brushedNote": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f3aab175d55c574d9360b4c03b0fd462bc83cf32c98113a1d896ffeb0a10cdac"
+        },
+        "crew6.result.changes": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "54ac78fd5fb9855e2d01bdd96fb84be12bf16fdc2e60ed5bf96434d131605bb3"
+        },
+        "crew6.result.cleanliness": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e69198301f9df1814f353125d7dba1c0995a2ca95e590bebee9c5ee426b72d71"
+        },
+        "crew6.result.kicker": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5786697b7c8a056e7c76e558a8e618e6b185ffa8d859dd342943a754afaa25e3"
+        },
+        "crew6.result.noTouch": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "be3d901022af1c9530d7e6403d18888b3acada213a7ab9c0148450002d16f0b5"
+        },
+        "crew6.result.points": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a4217c606ba47a50eff411ae04e428460c4a5ac563c95ab11300c6b155bb649e"
+        },
+        "crew6.result.speed": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4e7309b70908eb0dcd9f430d3d7dfbf095c930e3e75be7b178876bb0d9e9551f"
+        },
+        "crew6.result.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "36190d0c4455f9172c0d08c97dcb309b9a30581dc649e2aae14739b469edbce2"
+        },
+        "crew6.result.touchedNote": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d8d54141ebc04b0f20217e176fe83a61600ef4ee3fab7c8c7b1feb41c4b728d1"
+        },
+        "crew6.retry": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "66f8e851321c5155f7810d73c07071e1daf33f6faf45f7b441d7f0e7556dc453"
+        },
+        "crew6.reward": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e124567cf99c61a896bd571f2af548fd6936c85200a8ddc4d69ac3aa01f059fa"
+        },
+        "crew6.rosette": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e75f8933c6f74eae4c790b17fb03e1c44e8dbe8e699877ab8d363533cb874088"
+        },
+        "crew6.status.busted": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7a9eacbffca37c4cf997d822f9bd716ea0f96d70698c119cd300b00d0b3e2889"
+        },
+        "crew6.status.finished": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4caab11fe39d1ee128a52b4a916bee4394f04423beeb4006a829db2786587a9f"
+        },
+        "crew6.status.found": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "71e95ab9f17a422578e8d9c5c09de525020f14e0f808ecc19fc609373bfd4408"
+        },
+        "crew6.status.foundAll": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e6b78c57c09fad93427bf6d332d67a93cedaae0075a1d89f4fb95a9305176206"
+        },
+        "crew6.status.fresh": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d4d3428b9d43ae94efd5436b9269e6b7367137c02160825559c3974e8ee4b37b"
+        },
+        "crew6.status.start": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c02f818a911a0882b8b1410a3767bfb7c3bc250d168af6330cdbf1310449270f"
+        },
+        "crew6.status.suited": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "003c592758628daeb669c119ee80d2a67815edf22f825dceb8d3e2575dc27b82"
+        },
+        "crew6.status.touch": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1486da959cebc55784ad70187530a0efec34178687c2e70302220a009ded9074"
+        },
+        "crew6.surface.anode": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5024ba09ef05dcd9a413faabf60d68338babd4c2a15506e3c149fcc81bdf9bf7"
+        },
+        "crew6.surface.deckhand": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "90a427cb9069cd61b4628a22b733f0d66a0b3c060308340d9b9214ed40206467"
+        },
+        "crew6.surface.drip": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "800446931183de8deb9fc12f0d728b21e2af3c20afcef7d4465a80dfdcdff520"
+        },
+        "crew6.surface.grease": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "265686ea282e87785729b590851be65c2deb3d67c66cf739294c9e2f6c524db2"
+        },
+        "crew6.surface.hull": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "183a09020ebdc4cda1065f5d0c3b06b26612128c2f6b1d26310cecff567495ed"
+        },
+        "crew6.surface.paint": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3afdf8c705b586d2dee0aaac0650610af59990843f66e34d427da430a300bf4a"
+        },
+        "crew6.surface.rust": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a8770f41aa36e0e3af781f42462338174beec9a3a623f418f74edcb060ac2930"
+        },
+        "crew6.surface.steel": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2035ffccd5cc25c6168a6ed168e525a79dd1769cc9bd1bb706a14b2da92e94da"
+        },
+        "crew6.tia.detail": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "eaca5bc3189d9d1e47ecfcb8b6235b884bbe06a4ae95e08078bab967fc90ffec"
+        },
+        "crew6.tia.detailBrushing": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9862abf32322727b7b86248beb2a23114fce85f21d3fa23153054d40a7abb581"
+        },
+        "crew6.tia.shout": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "38437c34b21b58562ae5c705fe06cc0c7efe6857c04c25e44d6197aa498a0e18"
+        },
+        "crew6.tia.who": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "738bff448d897a2379463155c9101ff9b487e738cdd5b91044f8ec6b80cc86d8"
+        },
+        "crew6.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "66ab382ddf12d5649e2c799c56819e6f061b34defb111fa72eb2734df8374674"
+        },
+        "crew7.aboard": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4b3f1eccad589e846ca9d7d3cb2a93168480adc2121bc9db38c05224513d8fc4"
+        },
+        "crew7.aria": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c7f34630f530636cfa9d2a31746e555e096041f3bacb1605d1870f7c80ba567e"
+        },
+        "crew7.cleared": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4f60535f3f96828261120d3dc2a95804e4c81ec2e8e7f348bc24fe4fe088c3c6"
+        },
+        "crew7.empty": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "eee7c2baef69f42f2c4ae9949d925028374ce49c8d8fec5e40e0c42756f3e7f1"
+        },
+        "crew7.fuel": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "15d2c12970b9eaafdba2241021f9d290bc97079cbbd35cf4f9e816a0b2d22cca"
+        },
+        "crew7.hover": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4f0cadd54dc4107aaf8841827f4103ec93f89b4eea015132d0040865281427c1"
+        },
+        "crew7.land": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9446727dc35ceca04be689f73be99af9c0320fffb68be0c763f57859e3a3a7fc"
+        },
+        "crew7.slow": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "806dcdc9b755114ec300368afc7c10bbba3b45a263e4d17f429e8c79d75f536e"
+        },
+        "crew7.takeOff": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9fed37a983d3899dde3c782ac81f91978f785b2e751a7de02f506b899baed5e3"
+        },
+        "crew7.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f09f8a5294e3b74dd9bfa127d72cc464af97de1e0b22be0a7023c0a1840c5557"
+        },
+        "crew7.wind": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f8b8db68d240b016a7430960efa4135b4bff8463d8d98251b4de11ce08e45ff5"
+        },
+        "crew8.aria": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5a509632e56f269a661e60900be2dc367a1b8fa064a19f955af063258cee89d8"
+        },
+        "crew8.ashore": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dc5b2907d3b0df45c80fd7098295849b8663dc5975333eed328858d16bb0e5f6"
+        },
+        "crew8.drive": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5d8a71f71bc680c92fd0fe57be402185b903dd3272cb21e5b962b7097fdcae90"
+        },
+        "crew8.gameOver": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ccb52824894f61432a4a5722bc738cb2b7f92b1abc3a377515f6f31b61fa1b3a"
+        },
+        "crew8.handling": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f4bc03ddca13d953e4b3c7e899923e754708affe2c8f5d477e4dd232f5e55739"
+        },
+        "crew8.leave": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fb04c657bc5b282766d81511bc3c564a277576480fc2e5b90dd5bc2dea083c34"
+        },
+        "crew8.noCore": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4b91701a3eecd06867c8a8c7bd81d1e67b01a1ad44c732548c8a2251de813dfb"
+        },
+        "crew8.paddle": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2b2a87614eca012d7b8e03634920aced55bd466ac93033157c5c060ed0223e9d"
+        },
+        "crew8.paddled": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a7e45b640b767919ffe9f5958c5a44d294a8ed218793c474e85272419a629e84"
+        },
+        "crew8.raftGone": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ac4d6f653b4e1f971ede272aee1a8ef6bdd0a748ec2e7594595c6d401ffdbd3a"
+        },
+        "crew8.refusal": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5de425663cc63b89eedf14b9136d69a378ed65b0242ceb7cd4ad61c8ae715316"
+        },
+        "crew8.stone": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "44c6466e6907a0b4b98cd65857742514f3f2dd39215e178f34ef53ad838362ce"
+        },
+        "crew8.tension": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e629f8257469bc89b53502457de7247d1bbc5b8bb1397afaa54f3406f9d592b"
+        },
+        "crew8.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d8a95ba3a22b7bf4b162d84320d4760189fe4aa006baa0538470f9bd0b9fdf74"
+        },
+        "crew9.aria": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c657ad50bb56800d2bf3ff7fc82c334bb3baec04e6482ce36066f0bd20589b0"
+        },
+        "crew9.bumps": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dfe5704c2094d26e251d991f51804594ed2d40f0117fd7033a93886248bece1a"
+        },
+        "crew9.deep": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f007a6e8cd670807188c38785c7624382c597bfc8892c0238e2bfab2a595854a"
+        },
+        "crew9.depthPresets": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2d1f50b2aa7e5e8797fa84be940dc3b982a2dbcfa0c7cb826220a20ff187d8ae"
+        },
+        "crew9.finish": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c89930e9cf516fba1c5c2727be26f5f46f253459e7b4cec28ac0f91330a1e90c"
+        },
+        "crew9.fluorescence": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "841c3e52c40013cb72cf3e0f9b943bf8088e06a61ec93c74613f4b37cf5bc2f0"
+        },
+        "crew9.haul": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "62202ce27a33b6c8ff59df80ddfc8beb6c208635f6c31d6c46bea98d63c26f88"
+        },
+        "crew9.noTime": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "17fa10d7f9a74d59fd274f39c4ccb0f46aaebea9657070338ec470e69d8068a5"
+        },
+        "crew9.onBottom": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1d4b0b113081aadc130a940843198ccf4dc0eb1130268a61f3bc4d48138a4d3e"
+        },
+        "crew9.reading": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7ffbc9795985f86889e26c272dacc7cef43729aaf742a2dab31571e9ad52950d"
+        },
+        "crew9.seabed": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ad4272768df750c5e967287bb074e4cb44315b89a0cae836676a0eb9c692a9cc"
+        },
+        "crew9.sell": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "243d9bd49aea918ab54e4095710e4470cdeb419c480710b19f2f0d41b15deaa2"
+        },
+        "crew9.stationLogged": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6beedabfa894d61abd77c704543e76b70fbea1e540323ecbce19c86f01e95493"
+        },
+        "crew9.surface": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "78a454b7ac7a3cd93307bcc7f8f93f62c99614d264e08a9986cf7909f971b60e"
+        },
+        "crew9.theme": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6cf522634e21224d662b6c6ef9045340d58b1a1753b717f0b339df66ed07fe72"
+        },
+        "crew9.themeOn": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "48152987712c8f56676b519bf8519a1d80825319e8d3f4e575b70b60e793626d"
+        },
+        "crew9.title": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1de1ec3ec5fc06a3248eab3a40d8f5e893ee1c9faa515da09b0e4a3157decb9d"
+        },
+        "crew9.torn": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e4d749bc17efb65aaa38bd91fc357b24ed3604bd8a92009b6fb2468c0627883f"
+        },
         "ctd.activity": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "42408c6b4fdd27a6b84674658e856e48dfa1399da62a5e50bafbaedbd069ad7d"
         },
         "ctd.ascend": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "197118bc20c6b0d45270dad0895f0fb3d1202a654f8ae4de7fafe71dcacc6f50"
         },
         "ctd.ascending": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "da7064c4241f71da77717c010b336ee60c669ff3ba586f6e21a208d8d0281223"
         },
         "ctd.atDepth": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "06ecea07944e32bf043f2089f8da570096e7491b7e22005cbefaa99ac207db78"
         },
         "ctd.bottle": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "0cb60c47a9ca02f9a915b80f12faac6c27ac876e61d03e5d207d3f606fc7eef9"
         },
         "ctd.bottleScore": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "f920ec4e5af4760b0fae7c2bbc93e0a056584f4393c8ea8b42a377ec41ab2c62"
         },
         "ctd.caught": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "5af4fffea41c0cd5549b3658540259fd9c9b8525dea7e892a5a0e25edc0dec8b"
         },
         "ctd.channel.Fluorescence": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "a39c066461edbc95aa4c7fe71c64424bb3de75b4c5071a7fa3441c3808082255"
         },
         "ctd.channel.Oxygen": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "6f6e966d0d1ab030ef41b316a4fbda2b4b4fbc5d73787c8e1345c0b024716442"
         },
         "ctd.channel.Salinity": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "3a95733228aa27d96c772176aa894428c330328a9c6caa7b606b844fb2ca1491"
         },
         "ctd.channel.Sigma-t": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "2024ae64bc2d5a385b16a58f678485155824ca260fb33d87a058252cc08fd189"
         },
         "ctd.channel.Temperature": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "2af7521d862949e1103b80431d74c06a13291382d89d4ad2be5e6001fef7939e"
         },
         "ctd.chartAria": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "bb31fef7cad7d284a40bc6a6da449d6e2c70841f6ff9801de60a752a0fef268d"
         },
         "ctd.closed": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "78af08604a9fc1e2b5bf5aacdac4186cdefa123189c801123f4071c1024f3c3a"
         },
         "ctd.descending": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "49faca460d096b5835e57535f3c00698f1a48c3db89f6d26cf549222f958a2ad"
         },
         "ctd.description": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "f4bdddb5842c4a9cf01f543031b3692fddcfcb98d4d0232d3c2c3b6d46cc5b92"
         },
         "ctd.fire": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "3f215375af2239125984204dbdb7db92bcb1056d5cec5c31b6daff275d816f5f"
         },
         "ctd.intro": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "3ab938b7b19a6e28c75b6e282a51d4f568ce88b4465989150b1cbf0159f18fda"
         },
         "ctd.kicker": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "d02c676b1a09f2864dcd6f075951d17243e004847862d573670a5e91165f2024"
         },
         "ctd.layersAria": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "b18adf5a73faee5fa89c22fd60e1d929f4fbafb2c54c468ec4a0255b3ddabbd9"
         },
         "ctd.legend": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "c0a94c4069234571707014f03cf7794633575f1ede2530881b2c3da7940dce27"
         },
         "ctd.legendReview": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "2ac1dc20e8e22bcb37f429bb4793386ef9085c95a3f3ef98952d9b74df3dffe6"
         },
         "ctd.loading": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "04097f1e0aa93d6a7f6b386eef8cc2f98c6ed4f3ddc0afd42761a1ee5673a199"
         },
         "ctd.log": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "73a35be419dc76a9178df5582fa4f4da63ddd5c3b6a0a32e9c2f6fe736369981"
         },
         "ctd.lower": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "09ee206f0ea047e9093ca786b3f714767fa787c0a6649e97495bf2c975ae2fd5"
         },
         "ctd.missed": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "d937bd30648197beda145cf6e4cd6927c6fbd077a63beed2b2b3467f6f2e2451"
         },
         "ctd.new": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "edbaef34c5da5adb98fe21b417b6834caa3b98711e1cd7282febe16f7a795dc8"
         },
         "ctd.noCasts": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "ac58a7047d12ab78ea76d141cf2449df3bb3391e0be89e8006c4eb3a7c5656cb"
         },
         "ctd.noLayers": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "feb3d607668248cefd44ab2a7b217352a1d991a208203dbc6acf9c90d15b080d"
         },
         "ctd.noMeasurements": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "9d0f216413424fd4134150b379bc1c24b02be2869ea119ab3c847bdd12b3cdbb"
         },
         "ctd.noneClosed": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "b4355d296cec097eac793a36f023f5460549ec103d303e8cba2abe9309b66d8c"
         },
         "ctd.openWater": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "f0b507fd9045a52ef632892c940fac69d6fceb2dad127e0ff4918cbe1674dbe8"
         },
         "ctd.phase.bottom": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "15fb2772fc0ecbede574a6fcd2a4c594803588dfc31a91e746e18618a91a6863"
         },
         "ctd.phase.done": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "7e0fbab3b0b7c96c3303b11c1fc1495aad5c5e3d82373e367802475ecdb5102f"
         },
         "ctd.phase.down": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "38c65f9671b2a743fcafb0de2689cac33f8d705f988709abe0407828fa13caea"
         },
         "ctd.phase.loading": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "ad2a6e55b86a21434685059da86c2c9fdf9612b7c01b28d6d9674728dcf5581f"
         },
         "ctd.phase.ready": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "33e861c09da46c05585a0afaaf3bb0dcb3e3b5313601396911a5c69021308918"
         },
         "ctd.phase.up": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "fd5d29b67893fdd9f8fb4a9ce573e4f6013aa86fbdcc94534f7003ee52fe3e38"
         },
         "ctd.practice": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "55f2a594287ac1dffdcb524278a513d1711cc2a5c70eef07adb33a42fbb9b566"
         },
         "ctd.ready": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "976c5d4e14c35e37ef3a26e73ca8d008ea54238567af5fab580d68e00cc86c4d"
         },
         "ctd.recorded": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "e6de12a7b4aca04fc978a9af9efcf528223de4828ece9869a82b46b1a32f08f6"
         },
         "ctd.remaining": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "9af362c4e6e71a3bdae05c6ad99af9036982266153b1b067ac17c1e0bed48cc0"
         },
         "ctd.requestError": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "fdc8d680a39f8465062c917ced8f40dd976969044bc76dae814d716e525750ef"
         },
         "ctd.retry": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "71a8794feed49bfcd65efc79bae69af70264ef563f344c1a1faa08c45b0baca5"
         },
         "ctd.revealed": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "bafc9f15f1323ff0205b1406eb1e533e74231cf50b20df8c4660be5ef137f2bc"
         },
         "ctd.rigging": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "a3e34025b48f7f376ef6ad84f6760228a1cadcd9d4fd036699244cdc36ef8331"
         },
         "ctd.rules": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "c97575cce3941e7a5a9d0024c9526ae6a4d2742f03d8f6ca5a2c4bd17ace9de4"
         },
         "ctd.source": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "89355f241fc9d0bb243053e534ff718d0b6d6ed3e1e710f1f3141079ceb77fff"
         },
         "ctd.stationUnknown": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "b0199c5dbd179ff4ff1698c3f142ced22b890e6b95ba64ba82e9eb304313e283"
         },
         "ctd.summary": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "38647e769928a74d2209f8380a86968417a15d837e9834023ac59b9795ca48c8"
         },
         "ctd.target.chlorophyll.label": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "ac6415bbf0758e0fd9cc6a2e5eac9b973e7190a345efa0f57be6d9f7c16add9f"
         },
         "ctd.target.chlorophyll.rule": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "bcb9596087d575be462f30bb643036051d092dacd023078d940c661fc7f3fcf1"
         },
         "ctd.target.oxygen.label": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "c7698e02aade6080600cb90c37d04403b58734ed4ac87321706cb886672c7e6e"
         },
         "ctd.target.oxygen.rule": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "e99cc8d97c34d2b3a2850a7e97e6afeccfec9ee5ef08d389bdc8b15ab80d81eb"
         },
         "ctd.target.oxygenMax.label": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "89b46bdd3343498eadaaa0f2e5d85fc868f2f495e0fe00ecc0a624ecabad882d"
         },
         "ctd.target.oxygenMax.rule": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "e1477b56d0c2784876aac2c54016f1d518ed1743f45b3df2ee636431b7ae4f5b"
         },
         "ctd.target.pycnocline.label": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "1ce08405450268d1da249a2f95496c2f57646cf655eab6a466090a3a7e9df8dc"
         },
         "ctd.target.pycnocline.rule": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "9d38e2cc2c9ebc5e702c2c324ec19c706862cab10bb713a7487cb603b45025f8"
         },
         "ctd.target.temperature.label": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "d75b6c87a41f9b6d9b6d33613b000e7519e3a3cd6b1517b0a7c62f14e5a46393"
         },
         "ctd.target.temperature.rule": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "c03048694416ed337022c2e62961a621d3b12a9de654b97bdafa71457013395c"
         },
         "ctd.target.warm.label": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "1fba8ebbefdc286f6da5d8488526dbac6479e6e8539c4e3623111812c960dce9"
         },
         "ctd.target.warm.rule": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "0aae2bc70bbd475eaa84704c8e5176df5150d89fb0c333becbeca072009c39d2"
         },
         "ctd.timeUnknown": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "ebe37f6e9599f31b6a0e95bbae95ed9bae81e7d84b05ba229c9b7c4ee42f23dc"
         },
         "ctd.title": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "4b1f46d02896af2cbb379f6e319bbd68fd65637a89068db328aedfaf54193154"
         },
+        "early.closeRetry": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c3b8246f91f688a2bb82cc3316fc3dfcb290b21dea0c2d9f148b99ab62d02f8f"
+        },
+        "early.finish": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b3907da0ad234f100460a623311ac392a788e4bf4924f7086e4c9e3127a84e19"
+        },
+        "early.loading": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9e84d6d7b9885c4f88789ccd515f1c5d752cf53f88866d80d2814fd63c9630ec"
+        },
+        "early.logged": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d8cdf5bd14908ebcc37614e42ea3f5d5d7efb5cff74a54bf61746b3977813794"
+        },
+        "early.points": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ede225af323cbfae300a64d9b3da8335157afc033071694c59ae8806079f6c47"
+        },
+        "early.score": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ee6251f853e10e7fb27ede4afb9f240c17ecb0b38e1616539efb062c40fbd792"
+        },
+        "late.00063902cfd3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cf2e0d5521eff442625a4f9ddf95a42263ffc90aad8ba26f6af5e8c612e38b78"
+        },
+        "late.0008f8c89a6d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f5fce83c96a664ff2599dc22488d7a8f2836a881aa246622023bd028ecadfb14"
+        },
+        "late.00343064716d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3e6ae213de10f44da71139acc85a8c8bfc031d11b2a4066d16cd9f0637ec6df9"
+        },
+        "late.006ff1552e12": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "055bc6ae199c51afd48d73be9aed9bc6bd6933d313aa1acaf645dbf83c1a1073"
+        },
+        "late.00962387f4ef": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b48cd4e7219173a62aece88fe644375f39da5bfb261bcf68ef6aec896d7fc708"
+        },
+        "late.00fa5e447ba5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "15659dc84bb83223946cf1e8bc01e500cc2ba1f2f09827b0f63ec32667c9d13f"
+        },
+        "late.017322b98576": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "29a8294725d08ac53418e3262701716e5b7d09b152ae2f9e295a92c304ec34e5"
+        },
+        "late.01dfed5e914a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b8f2389bbfd64f66f48c3ddd92897c122f9d5477de1b382eae4d4ada2a3f99cf"
+        },
+        "late.0260370d1378": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "656ed37c46ac8ceb308cc26cd7430539f579a208b8f73c789453dc9051713a98"
+        },
+        "late.02a37eb98d68": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d2a687ad2b0263472c3000acf0acb4eb7178ce2dd204c9c085916c0cc975baf0"
+        },
+        "late.02c33a0c9794": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ba9869fe33cb3d3d535916ed1b0bc3cbbbda1427da1ac5d6d343e4e88007cc40"
+        },
+        "late.02de81941a2a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "097fb0b5196a55104c49569cb37ce5caf38cc7bb7487cb27c8d7211c312df2f5"
+        },
+        "late.02f4a3c6aac9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b8fb8e299dd431c56929657afbc78453085240e9e3c50e5c091a78716cc174ea"
+        },
+        "late.04757c404276": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "27b7c914a41787ee5410f0c68bf846f93d5f47985923a78dd1e8be03f01800fa"
+        },
+        "late.04bc281df512": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a17c354e53acb6a6ebcd26d78ff1a929671d5b367830aecd04697f3ae94ae929"
+        },
+        "late.0514e6810ed0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6c8dc972d3eb3acd5649a51c660b70f2690d5a96a6f7dea20c99fe38016fecea"
+        },
+        "late.0524e9382ebe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "946bb8fa090470c54a7ef4611934c8d9e0d3e8b1e1a70e32c39227111c2a3f0a"
+        },
+        "late.0542d7569207": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9cfd10df47240e64b86da324d6929df1a9ccc2f38f3da3dd72752729b84b1f24"
+        },
+        "late.0587c136e342": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b062fa791d3e869d6bfcf187b3548834afa6e2cbdc052abc2fedb3f02ba86486"
+        },
+        "late.058d9dcd8242": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bc9de2cb20464cc580632b554699bbab354be779073258ba8cad64a1ad1bd537"
+        },
+        "late.062ee2f50238": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0ba3917505e40766ea1e637fc2aafbd6b9ea1ecbbc2754f6e94a971d0bba91b6"
+        },
+        "late.064699c4c321": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1bf23ccef64e5ad42b1fc45aee8bd3a4cd61b96c1a6fc21d47ab0dad43ea969e"
+        },
+        "late.0659d5cf06ae": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a9341e68425724f7d50cef3bab4eb3db78ef190458feeb84b002d222298f26c3"
+        },
+        "late.0664fa29600e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ff8fd5a7856a43ebfedbea1e9863690ceaf7be72edf705bd74a6b0486d365927"
+        },
+        "late.067ee12cc480": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "67037b686f2c55b1f2f23f7c621dcb565907fc6c31206ac1982dd19b1191e4d8"
+        },
+        "late.06a1f5c4ac7d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7a59736a76e77d5a67e7409e8b6a635ed010924a96097cf9af7419d8497c0cc2"
+        },
+        "late.0719939c468f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b10f0f7332bc37511f64b865bdae6feb107f5c799f1913592d7c272f9c8074f3"
+        },
+        "late.0737751829cd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "28e61182fa3c48b9c05aad8ca4c3a6621b465332541a8f63b113fc59706d5d1e"
+        },
+        "late.07a5bf541b50": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "24d5a94c5ddcc390e78e7d90b336127bb00b78254a16086c5606e9e6ad8a9589"
+        },
+        "late.0841a82a21c1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9a9095f6636dae06fc6476125286ff82a79ac8352fbd61a1a19916fca7632f37"
+        },
+        "late.084226bf4657": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b409b1e83e9b2ff6cea6846624815253d8746e68a26a4d48cd86dbf946dc7cf0"
+        },
+        "late.088566363a71": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "65dae2c0de35e512fd22ae2bac85617d8f8046666f6094947ee01fd63a50506b"
+        },
+        "late.09807d130dde": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "77076dcfbc960d712e8a8cc81e82aec21b2985d78eed5a3953bf27229e7067f9"
+        },
+        "late.09ffbae53a01": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c3b004e93c8d920f7dfeb426c8599a4b949bcac99525ee22a11564aa08e0c47e"
+        },
+        "late.0a858c95bc97": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7ea787c8e68e6270ad1807099496e1011dfb0c6e9832bb1ab1436d88beb3f217"
+        },
+        "late.0afb2e689b6c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "61b163f055207b2b8f482962795aae0baa837ccba288ee461f03bfaf4d4ebe18"
+        },
+        "late.0b1f7ea2e41f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d05fdec0c7b71a34a20aa5d0ec1f7db26714d85238caffe3aec8592ea3b8b921"
+        },
+        "late.0b4c08595167": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1f51f078e482c440bafaf1f613928c9bf0d64824bef1af13c3bb98085f2d2721"
+        },
+        "late.0b69495a265a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7d14738b1d6a2620db2752689c8f2dd4d26c3fca2edbef255511f195696bb16f"
+        },
+        "late.0bafc1bbb34d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "381014e255033d3bbe7005277a38e3ed0703b1e91ceb47df3cdac236e008d2fa"
+        },
+        "late.0c1c5b7b6650": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bc2780ddfec25fd274a0cd2ec402c83812e2c823bb73c522ca80967d2d5ff216"
+        },
+        "late.0c391021299f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "493b7fac1b8794842994788efe786d422badd19530b97aa52c6cb32729fe8c93"
+        },
+        "late.0c4c32fa6d41": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4e3bea5531f5617d43e83bb50f433a772943247b9f6a1c3a96fe1704b955947d"
+        },
+        "late.0ccb1e7cb5aa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b648c8db0f72a71c0b5a3fcd2f4edeb3b08b100f668020f5bbd071c67c7d8fa9"
+        },
+        "late.0cef4cff670d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c553f41012b167f23fe38c337a6c367a8520444331cf0c0c58b40003a6b866a3"
+        },
+        "late.0d383143b442": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0646bb35df9b7770a9b2960d78eec7792daf1618565a29101e5be3079269beb9"
+        },
+        "late.0da64bc7a15e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cee8fb36ccd3681af63117515b9c29ade3ff2995350f86ecfd4472ebe1cbb455"
+        },
+        "late.0dac6dbf5093": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7697e22225d9ee3dac35e55c2e6977d82848900bdb7ab3a0022a4a4ee363beb2"
+        },
+        "late.0db1d0a9af62": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4480a7df09bd8d32069ed4e8ca93de4c4633f9e69d4abd366bfa9be34c947ee5"
+        },
+        "late.0ddfa9851960": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "33505002f14553e01af3c3d9289f9d541af036cbb7bfce36dd531fc0f85c71ff"
+        },
+        "late.0e61fd2503c2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e818640efdee23aaec3a8683d47d86ab3e8dc9326da4e2e66fec4a21c2322e10"
+        },
+        "late.0e968a2fab4e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "008528d8c886ad483dc4a843bf949d9920d6d6bb797cc128ab0a6769214b37e0"
+        },
+        "late.0eab35666446": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d561d94d5e9e6c3faae30439f071eadb6633edd633cf6f01787558a01ddd855d"
+        },
+        "late.0f13dbb76ee1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1abc21632bd409c11014eb2ca2b5fecbbfa9b8e767655030612a2ffc03020c72"
+        },
+        "late.0f7772f2edd3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8cce55b54f39293d9dada3fc41c8945a52d81784bc2157c6b8965ba775355657"
+        },
+        "late.1037525aaf28": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "13d59f97c9e077f2e475e88ffb8ef84121ced97a3e23dd52e5a76d58622ac1e6"
+        },
+        "late.109583a91275": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "20b34d9212a5a4a8129a96320cd173e6d6b8d0766e7be3d397b2d06f8e1816ae"
+        },
+        "late.10ab0b82ddf6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "85427e44b45e8645f2bb5c22e58b35e08db7ffab3e816c2cbf498ed291af76c4"
+        },
+        "late.10dc98d500ab": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "18d6e19fbd6a429ec540adf019b5f3be721beaeb824241f51ad3654e54fe77a5"
+        },
+        "late.110310135da7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c2b11511eae74c9ed5bb4879b2c1d0334cc20c53023594be3b437c60f5600862"
+        },
+        "late.1110d5a55299": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a1f9ff500a04295c9dfbc3e8d3b1787a62f2ca492fd29fc421c5c94f211458e4"
+        },
+        "late.114363eff0a8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ff76a9874faeb79d26a3be01d1ffa07310a6a02172a526089e3f8621286e56d7"
+        },
+        "late.1163a38d1f8e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7121b2fff3dde26a0e2c440f75db81f80adc3097654aebb5cb5bb59869157064"
+        },
+        "late.11c820ee316e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7b4242f4fb94d54791e9b04ec9f908b5c51dceff4253e63c033defaddccfd201"
+        },
+        "late.11e9d4e15bce": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2cf9ef0042bc8b2c47a50b9b9899a91a59dfcd0bf66eacb5692fe9c8bc927d0d"
+        },
+        "late.11f2d2bfc758": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "71646959311fc43302b2c6aef80520446913fe47fc64fb47e68f19bcf3a9dc7b"
+        },
+        "late.121e17a351d8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "068793f6073ac5d58b6d13948312ecec3d421211a9768e5c56b57dd4654da0ff"
+        },
+        "late.124b1ae199d3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cb97efc9fbc935022d1cceb5d00d418ebcaed0d936d6c2c279b12cda7deecd53"
+        },
+        "late.12dcd0d51a10": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "91770469e9727ffaedb4d13975bc4bc074970dea34ef4d15ee88bd644c1297cd"
+        },
+        "late.130a8555d426": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c92105451ad4b9203961d934c6ccf35b73c3a075ec6ce95867ded9e53075e821"
+        },
+        "late.131ef301b275": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d6b2d63e8089c4c441abc85962134755c0e7aeb1575cfa0dac99f6f31091353d"
+        },
+        "late.136e17610500": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "eb9957d79bc512ec39991afde3b0ad1021a977e37ba7e24fb7cea0f4fa4e5b98"
+        },
+        "late.138a104b733f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b456e4bb0b26c6f253f16a6778d9a7e02863930988f3197eed81a87d0017dc6e"
+        },
+        "late.142c9ce9e20c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4bd356fbdaa3b94576a7195264be024a2b0fd53226eb12fe76e2ab04eb5cf815"
+        },
+        "late.14abf28698db": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "62b7aa8069c01465a6a3c068982190c7b12c361d49ad7f040b414fe3afcc4eb5"
+        },
+        "late.14d614fc51e9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e61150f350d4d8274bc17924d13d7a1bc3754c288238610cc6b0348ad5405b59"
+        },
+        "late.14ecb1cac5a4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "df63aed3445e7c04e3f30927238789bf7b811988a3dfb138cb54c981decc9354"
+        },
+        "late.14ef18abe0f4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4ec9078b6a0d7b657cfedf6ce5819a8b64edf8ccb59099e2295d50383475a7f7"
+        },
+        "late.15d8edb4f1e6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3d1837229e0458f79789a2854d1d2a75249574506032cd14ff4fa2f112fde4f5"
+        },
+        "late.15e508616848": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7d890a99afab4f4aa89a892ea7cd904e5093d98d194c9355ac7233ebb0596999"
+        },
+        "late.15ef4a18c8e9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5dc2430115d93c5b2b554ce3c0a6e4119cbfc1c8614100add7c564f28e466460"
+        },
+        "late.1605d6acf1d7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6491fca61c939be20555564838f1bfaa32b5079f6a0bc2f1b3f83534e98036b0"
+        },
+        "late.1607075420ab": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "16b3bb6bdd2877d9e551bfdb05c53acd3bb68e92a0866c2394b844a3907ad212"
+        },
+        "late.16354fcf930e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b6f6db34bf7586e182b5a1f82b756253ed67954390ac46c0abbde4cdfee9b29b"
+        },
+        "late.16bd7524fb9b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2802dec1d49ec992e58e0729a6d9b7d0ced52a2318f151668728980820afce5f"
+        },
+        "late.16f434c4f05a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f1736025b76a0ca810bbbd65abd48b53691405741b4179af2a6fcf0ad222ac40"
+        },
+        "late.17219fbf49b4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c64eea9fb50d25816e6919b4696155fea6258149555e3b36a066c35b8abc23ca"
+        },
+        "late.17301d97e9bb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2ebc491315231f8c7daeb70db7fb758c5226048e4d31ccc0f5cc9207438923db"
+        },
+        "late.173839517f9b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c015c7590f4740a060ba4d989c9f4b24731fe4820ba02ebfd5101c815d5edcea"
+        },
+        "late.174d35853adc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "375985a526b7067d2fe1a36fa663807e3db3191aac3259db06b8ba0bf5b93798"
+        },
+        "late.1758356db217": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6f21340b75e3d46cb54b4f7553b40ee3473a764744b4aba3effbfece7f1e729e"
+        },
+        "late.178fd66057ec": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aab1d098a80afc6484a499a7d531e90f7a173ccd2c3ef1ec0a0e86f334a2c845"
+        },
+        "late.18245e594e52": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9b0d1b478eb271716f4263182bc6d115305e100b41924e5b93e23b4b23962dac"
+        },
+        "late.1832168b0348": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b5ed781030e01cc2001299b29d738407c5f52ac986c7733bec73cdb5e2b25f23"
+        },
+        "late.185ddf19fcef": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5435fcc23a45e93d23197121176480391a5b79c374d8776216ab7ddf6bb129f1"
+        },
+        "late.188a5c8c4375": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fedacb2229e65468316ae6b894aa3b504ed23b3ad51c9ba1b689154adb2d7a6b"
+        },
+        "late.18ca87afec42": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ff1e2e26eccb70e182017162d648d8dc31466a7aa61019aa03a0f4cc7b5ff6d2"
+        },
+        "late.191b16b02ade": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ce9e97e9a182b54c55b3a76ca5dd532cabcba3b525d051108c2ad9476739584e"
+        },
+        "late.1988dceb1e1f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5f8b2381392ae4f5eb40c9be814ff28c884711519c9d70d6e2efb43e71b720c3"
+        },
+        "late.199455e62b1c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a722cc54f5099e53d69a5dd793ee4399ef8cb2740adc7d0314939acdd44b3e6f"
+        },
+        "late.19ea508212fe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1f53bb0bedf8f44598f4c852a8b5d391170d811b5677563056c64154a45862b2"
+        },
+        "late.1aa2f31ee7cc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e41b7584e2350adbcc6e64912ef7f874079c909b3111c5cb45281ba372507dba"
+        },
+        "late.1ab11d1b771a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1e3c98b91658cfd09a9361f18a1817597b104e08c0245284e9bef96a996a367d"
+        },
+        "late.1ab1e5b09158": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "77031779d705502289a014e7fc94e11da54c4952ae2d85c437ab12ac6524676d"
+        },
+        "late.1adbcc344b31": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7d124c1a7f40100adef282ef87a08885f5818b6dbb3a186b5fa7208f8774e9ae"
+        },
+        "late.1ae0538befc0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a76a9c8a998957786431e31064bfcc80e871a7c858b1c72a850743c0888cd145"
+        },
+        "late.1b4230d3dfd3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "05965f2625f1c967ce2f899d8051a3730276e37b62d6dc2bc141e68c06fd39e7"
+        },
+        "late.1bace380efda": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "157a0e31cffa6c1ea36bb0e7e43e11a538fc468b95e23473b294fe558093fc46"
+        },
+        "late.1bda4ebff08c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ab9d66192205694da72abf0e464ff6fa06325bf5e2bde2bbd7496a583621d8af"
+        },
+        "late.1bfd9513a57f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c5b3806eaa39da1d354541bf02817ca09a1a58e307ffe74d2cb5a9db16e89117"
+        },
+        "late.1c4241db2d27": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7a5f0cd03ea426d01aefc0b6df1e7e4d6dc506c0737f1fb3b00d77ea7e516305"
+        },
+        "late.1c55db55e128": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a020b3cb76bc2f40ae0cffd61ed030c75a16eb80f910bdadc596f941cdec8cb4"
+        },
+        "late.1cec48b562ec": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5903c51a9ab49389792c17d651ee2e1828715fa8785e7f95a9a131c8c993bd56"
+        },
+        "late.1d1e56bc06b6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0ae22c611ec727b929b79a19c135d5c80d509ada3b90561857feb1f1206d6bd3"
+        },
+        "late.1dbb441dfe25": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7033db7f6ad554056159625df1ca9cc8b3476cfba2fe657485f3f4df21a81e04"
+        },
+        "late.1dd6a17cb403": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8adffc575cbeeb5ad24c63d9eccf99f1374987fc11284c9071d1335bf2457aa8"
+        },
+        "late.1e13db7a0119": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9e265527da84ead82d5ec9d87459d938e438ee9cb45eb9f158201542ba2148bc"
+        },
+        "late.1e380676c47e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cf383f2fe11a4ece49f82afce62c26fd2913a6b3f5c26c42000bcc307729f695"
+        },
+        "late.1e975193e087": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "57d3f409aba405587fc24bb108498c9dde9f72250ae6dff005f8215200062036"
+        },
+        "late.1ecc65841c0d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fedb0752ab333df94e1c6802d60ed20dbdf68d604297b26fe6573eb80d0522ff"
+        },
+        "late.1ef3fdc4e1c1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "74b20fcee4d5c283e3716ba41b2b30b313ab050aa5057911e3a2fcdfbb81f400"
+        },
+        "late.1f524529659b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "616f35c51774543c39140ebad4acd80724f4044b8fa2cedc85bfcaeb94d623fb"
+        },
+        "late.1f53a05a9fc0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "29132a853bd26fddae27ec8ef2aafbd4fbae92adcb2e90e3b3fec26fc918525c"
+        },
+        "late.1f6075554714": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4ffb35f7b1c39cae03a3e58f52e54a7074cf4ad5ba6d40e54c841bbff6f4babf"
+        },
+        "late.1f73cdd2da46": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b0f02dd5567dfcc2c860953dd2793c8790745ded669a32a3919182eda900d388"
+        },
+        "late.1f7a4f9e2f70": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "31b20928b8510fed21497b52d54d19fdaaef654b31182a0d925d1b6e749f59f2"
+        },
+        "late.1fdc5a1ac677": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "be9d60e691582cb23360da39cfc9dcfce42b1cb93146b92e30ab848a4eb23a65"
+        },
+        "late.2032c7b688cc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "949324e4836f2ebf0b99ee23c782d79a4b583042786c54e4321aa1fcf9001d01"
+        },
+        "late.2038bdec9210": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1d732503a54a532f04f83dc245d5a13630a8d721378eb040efc114891a44b3f7"
+        },
+        "late.209c8d61a16e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1f8b6818548ce348307882c5bab5ef7f2c3884d6cecb151c0bdcd43da7003153"
+        },
+        "late.20a801ad8772": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d3b9ddf78e0b61cf665706d47ed2630c39bb16b5e8e656d72a2be7d624672a47"
+        },
+        "late.219487920ad3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cea5a4839adc318449aa068f56f17022bdcd507d643f38930b1808ff1ff7dede"
+        },
+        "late.21e978895190": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2840b2e8f1c8f2d894e172b939021def01e2189996c3f2334b816fa2f9553c35"
+        },
+        "late.220e06ba2fee": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bf83a3d02431edc9873f899c26c657e31313ccccde152f355c0f60537a8e14a5"
+        },
+        "late.2213590392e6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "44c999578e33415a89f5548939f6ea89f61307ba5425dcd539c1d5c7623af9c7"
+        },
+        "late.2213870df65c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3ccc6e8f5dbead5e8554b3b819231835c2ec3271148062bec12d850d0af309c6"
+        },
+        "late.22630fdac92d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "35b0d9b755958a50c593504a74233f612aa0d00a4382b81823a9b950271cca80"
+        },
+        "late.2284d040f509": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "66be42cc8f05843a790b8654548afe202108ee4813ef629d2863256c644b3b47"
+        },
+        "late.22daef2b916b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b08cb7235f377c18e547cc9dd4ebc8e982f08512c935037a2c204483c6daaa2c"
+        },
+        "late.22ea72574abb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c64d879b3cc05c326dab79082e9522a46027f3525cfff701c1af42aa402227dd"
+        },
+        "late.22f0c7320a05": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a7bccb89ef8890f97da988351de5248ebe1900026090c5b4697333b6cd6a6121"
+        },
+        "late.237faa5b23b4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "46156ab5072da90c8808f90a538106e6c6c64b8f46650a772bafbeb15ebf3c4e"
+        },
+        "late.239ca5767afa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e9a89a5e4ac8cd611975db0d5cae8e379580bc3450a3b4c8db7b2f420ce4fcf8"
+        },
+        "late.23d5f5788ba7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "52c6aa38f7a77a035a91d7028889486661311067059e70131fdd660f3cd4e39d"
+        },
+        "late.23ef7b65dc34": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0037fa0e7658fa34647b4cee98b722bf1df409615fb22fab7315c3676e5efc36"
+        },
+        "late.241a5b4c369c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cd0854268d7e99ed7ed2ac846e164f2412b9ebaeaea2a5e028c7020b47dda18d"
+        },
+        "late.242f191241c8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6c43f14dc75337267601c51118a18a1f9f07cea3b5ca2988f8c9032b5763aa4f"
+        },
+        "late.2455463748a1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5986d04d9901e5a0eda7237e034aee3b0daca1ca148b2e93fd7db7325d14988b"
+        },
+        "late.24674fe08975": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "378004ffed99eefe47eb500174a2b83866f68b08c3292b7a2aad88fd8e033e8b"
+        },
+        "late.24dc631636ba": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "45b0defb04580168f6939cabc7e69a34858ed5a4749d5183baad5532d1ac1d50"
+        },
+        "late.2512d2b7c56a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5938a091ef3ddc9ae33327ff6a1be0af2ff9e81e86ee66c5b253ff45cf4c0b5c"
+        },
+        "late.25dd86f0ab08": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3da0957808a15ef6648ef06da02704c1c71ccfca04aa75155b94682d01c6acac"
+        },
+        "late.25fbf4814f65": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f8d3bdca4f09e1ba62cd52f24abb981a8f335c664776f15d7baf90c04c1b1afd"
+        },
+        "late.26270c990d26": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6292c3f43add3fc59fa720e5d047068271e5d4a154403634e31bf4c78292439c"
+        },
+        "late.2631e91452f4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "781602d2181c064b0578ee51f29ec3cdef8f694de9625f6952d13864c7d2eb19"
+        },
+        "late.2642f1289356": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f73a5dca099947f54a14e20ec78b9920a706be3ce8128675b15c74ce3db48d34"
+        },
+        "late.264d540cc85f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "892d3d85b1724d9d64754162fa28b1176b0c5b07dbc1e7ac575cdef6b19fb0fc"
+        },
+        "late.264f8f63dec4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "32d4977ec5e0366c9a29cedd9ccfa56465a8ac9e37c64a6f88b9b14ee77c0a9f"
+        },
+        "late.2676a88c61af": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2800744c6a2dcae15f837c6b428f65890364c601c17f7a3c23f160ce17fd7fe5"
+        },
+        "late.2693ea2831b1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fcf884b6b1806dab25e69e82cc0354f367414468f231c279a6adb748338edb2c"
+        },
+        "late.26c3b6a2b8ec": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "94c49b13bc0e8a72c4db52892c986eedbc09a1596785f811033dd151f29a38e3"
+        },
+        "late.26f04c24ef7a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "46595b4772cc40abe74179ebe4a3c0272099159f021bce0195a3003c5cba9069"
+        },
+        "late.26f8fadacbe5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b75f6318d5ae51bde210a3e92a17b23cf0b3ed973f8e4a29dc67298c061a9868"
+        },
+        "late.27424cb4120d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8db8f007f733090af66ddf2b21bd807519b0ba6f30131e9bf1a863bae28799e1"
+        },
+        "late.27766c23a9a9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1d8cb96fa2ff3eb01339926b82973512e98d09a1a2e24231a18bf15a3ba6658e"
+        },
+        "late.27bb25f9d7b6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cb774c295cd0c3804cb2c24dee7734198a77c1ee67871be3db9ba7231bc0f517"
+        },
+        "late.27bc4b18cb5d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "50ed32a472158d4fb936964cb5a69917409d9725c30bf753d15003872dbbc50a"
+        },
+        "late.27da0c9fffee": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "615067f4cdcd8a3cfb57fbc4014fe9bd4c0f5a8792c8da8a300f95fed4faac63"
+        },
+        "late.27e77c7898c2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c8cdba2c108b2dcaa2ef0d59cabfd5d85cbde596c57619128dd19dd15f868db4"
+        },
+        "late.286fe92da074": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "19a152029c29a72b4ab1d3b451ace593c66b38406ea9d853e35acbc39b396bf9"
+        },
+        "late.28913c51332f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "684233046bcfaa75ee0e9cfda89abe612f5ec1b4c5da39ac4ec1c86a5b23f0d8"
+        },
+        "late.28dba0171ba0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "41e8b7a13a7bcbf8fb08119e923e0569251f88b3f52c584f7efd5343cb4e19b0"
+        },
+        "late.294ad1aebc78": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b827a0df2ec10787dab755fd77fd9a705d028330deb61069b6e74684bd6723e2"
+        },
+        "late.299b6ef4a2a6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aef9638f014c6d98850c30b64440d357208b54260a02d28d6852c4f330f71643"
+        },
+        "late.29a160837525": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6837d7ccfb02f89a4a10e7ca0d3f3a81b8a65fddda3d672f3db48e9ed304c3b8"
+        },
+        "late.2a1d3e194cee": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "32fc68eb64f20048834049e3e134f4db4f7b1975f640fbf9ff5d334b8cf06aba"
+        },
+        "late.2a2e0f6b93bc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "73cf596689200f8e99ccaf126b379a14b0fd1336c3526bd286375ad3330b2c51"
+        },
+        "late.2a5d2cb802b2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fcf767ea0e3d02edc77d8cbfd735ee5bf9dd99df0a7922e12295ef7596dc358a"
+        },
+        "late.2a94fc553e15": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2ced372292fbbbb748f0c2a296143084e4eb2cb84a9b4d9271c3bf7624b37880"
+        },
+        "late.2addc8f067a1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e15935b4ffc87c29a1c6b05c7224d88c234bf4e12b9baea49ae6111ae9d0ab22"
+        },
+        "late.2b26ebd725ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cb5b491c1b6af4927256f5071e6e84c5531eadececd3869c4b53eae99aada78f"
+        },
+        "late.2b49734bc9a1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ec9b5d5cab9d6a466d1f8282f0c1ccac001283943aae7ad2525f686dd3dc0249"
+        },
+        "late.2b9eceb7a86a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ed9140d42148c99bd98add4a4c0029903b21f19b30d06f090a14e6177118cb1a"
+        },
+        "late.2bee3e427899": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ee7b5d52f78186723eba18df1ea56626bcf718713b733b1504cc8f28d69a9c3b"
+        },
+        "late.2c6fc8db0de7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9f3594f99cd7d62df17ed667aa79242b48a8f113cde460169ad4bd0f05d07e2b"
+        },
+        "late.2ccc65de09ad": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9ea2b9053cef2c709a0cde00e1f5b34c3a17fae7ed19d9352297e08402216f46"
+        },
+        "late.2d2cb022bc3d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3b006be0b1f0493f8bb71b1e46c364f5e99fa1afdc2dd1cb63de248f63fd0694"
+        },
+        "late.2d2d62370075": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8e4ea38e35e7016e1e7a3f25c9eae8f5f14d41fa0c44bece0e2d8ce02321c288"
+        },
+        "late.2d3f85ca24d7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "29674a0d264113e28c08f33f6b26518d5adf661c0bb94a51c8adf5b44c1041ba"
+        },
+        "late.2d766386138f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5bb1eb69bfd7b07672e3b5cb6b8450e32df6c750803335e74478e23db00595bc"
+        },
+        "late.2dcb9efee508": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "49ad954e51d3bb142ae5b35e2c5d1f5dca56a8a6284cda2b56a51c46585e9ab5"
+        },
+        "late.2dddd64cd29d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5c79695bc3e1146d4295759ac8eed880839c28ef1569e51249d42d1ea930f338"
+        },
+        "late.2e10e6400234": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "43f1f00db6f72f80c4d9651a7c3582510563da0f40649635501ebc316345472d"
+        },
+        "late.2e1aec584567": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b5ec29fe48b662c0179b71258729d5d31585aa05b01a1e04d3c9a3ce1cc77693"
+        },
+        "late.2e392aa67fc4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a77b339be5e07a4b05f5a5bd6de8dfec48f6a22134b253dcc5ebd8107e5dcd21"
+        },
+        "late.2e95603f1d20": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5b48d37eeed982020b3dc1250058bb389e81f9ae95a12e5741eb342f4e6c5c7b"
+        },
+        "late.2eaa942f661b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "99af3eb4694dbd6d4c4619afdcb4d91aba79656f476f6c018a6f4d8cdd976abf"
+        },
+        "late.2ec26a52bce6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bbb1f81324380753f6b02697cc98d66f2d3a7418acc7e4f5f3c5915436b2641f"
+        },
+        "late.2ed629bc8750": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8a8196494681168c8cac663a690150714df1b7ab1a19c0235447ba8ad87162c5"
+        },
+        "late.2ef985bd430d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d71f37f621131b372dbd300b47c29b33a848d6c35b8d497fca178e464aaffc65"
+        },
+        "late.2f1deb2beea9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f1ad250cc637e2f255ea4b1bff5bbbb55a6e20acfd5deda46534fa225c614cb5"
+        },
+        "late.2f4001f8dd15": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3a957aac429eebf2096c1447e6294fccf0e053f34945cc39aded198556e0aaab"
+        },
+        "late.2f5867a9e905": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "def4be04c066bff91dc780274196788bb30d110a4f845fb41155e2e763df8aec"
+        },
+        "late.2f7506f2c39d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e525ea2359c081beb21d42a74303e763e704ef4304f47587f7c77e5d8338d147"
+        },
+        "late.2fa390e34acf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d69846f34aa9b069883248f85fda3b29fb31c55de0ed8540e035c9cb0b71d8f4"
+        },
+        "late.2fb2800e4e19": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "138f8a03506dccc75e233d9b100246a01e7ab28c74d712d047510a4edd13c4ca"
+        },
+        "late.302024beffd6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e3dc915d004341dcd54d3fc2ee908e4da5687caf8c0dd7e0364d4dff5dc3b949"
+        },
+        "late.302190228652": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "215848cff2f44bafd568aa4a9c1ac2116388da823676b6d86ab00ba8fed05da1"
+        },
+        "late.30445e315404": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1df4693d1f78965e8e5f55048fb62a874dc71f3f6ef00dfabfdff9f208405009"
+        },
+        "late.30b8b635ef22": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8fd657964ca00e81396c0a6c2ae0639b993ea6a2ca50678898042f55d629aace"
+        },
+        "late.30e4caeb4f91": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c802e141f16c4029fd94fddea84ae00ca88bee48f5b5956cfbc6173126f9f329"
+        },
+        "late.31327feaa4cb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e6df29b1fda9532347dc6cb05fcf44a194be8ed7e26a6d117e2c05a3991774b2"
+        },
+        "late.3132dfc3cc67": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f0823f34ba78510462daa9ec8bc0548d0ea5f14818d2fd1ac021f7eb1ed74b74"
+        },
+        "late.321d6cc5177a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6406ce1f5643a827a037ea6d9b6f4987d01c08d239598874c04b3e68ef11d612"
+        },
+        "late.322934164e1f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "67f08b0f101b6bc1998388f5d2ff2f7c678c4a3fb88ee7e63d5dd83f95bd19ea"
+        },
+        "late.32306689fc0c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b28ca996ffd09e006ab19c7165c40869b8a3b331f46302de77cada427126953c"
+        },
+        "late.3284d0c2d786": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7124948d225e725f97c721d1383b9eb4c884e40d651d038ee8afa8aeb8805531"
+        },
+        "late.32ac4735baac": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ebf1b9eeae940129ac9676c01b46a465c34618c5f36227ecd6635f8fe7d04871"
+        },
+        "late.33af4c3b6dd9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d7f2469eaea45c9e705277351c735caa694a93ffef0498a962516db439909f32"
+        },
+        "late.34117b8ea553": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "222f82ae026c8e78f6774bbb1d07ba5ee99632858a15131e385c772bd99fccac"
+        },
+        "late.34244970a0d2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "86d7a8cfdf1935dad7ce892e4d8fe5cfd55c9cce79d13cf5e49f45ad871f516b"
+        },
+        "late.344aa3cc906f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ada47745ff6ed334b48fa1b0ec3db7342ba1cac74107c96d2f63909e5506199e"
+        },
+        "late.34bb39c0ba62": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c6d78d1514aa0766e1569c24b54a9ce2c1814f20201af839425d3647f999f994"
+        },
+        "late.34bf81298c21": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3fe4f733a7743da275f56eef6d78ef906937f1ebe0dd625ec18c2628c8680c60"
+        },
+        "late.34db71e79458": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7f5f98ef053a33f85528fcdd72460f987edd50c622a1fcf3356404b2d7716deb"
+        },
+        "late.35191ef1901b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "74b162a29e16bc9efe5488a4b5917f068b243d2ebe039f141043e3245d2d9cae"
+        },
+        "late.3548181c57ff": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "912a3723f9c41a9ce0b9ded2a5da81430c116783c28253b191cd0faab51aec36"
+        },
+        "late.354ec2fca35a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8fa4b708d33dc25928eefa77ca48ab594e9a7375035fc66027f2f781841f1648"
+        },
+        "late.35c7c5278e2a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0e504d9011ed4dfbd6788231b5b32be769ff59ee6311d1aeff8ddc7f258d777f"
+        },
+        "late.36bc3a4053b0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b1485a845bbac4553f7430263c80602ffc9a6a9f3c08c29a95fa611080600358"
+        },
+        "late.3704d4b4445c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "69c8942c192eda9d967b55d49a8be233884d8c673ed338c19a7a077ff46a45d2"
+        },
+        "late.371467b261bc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8d6b3251daa10fd744fa76f692f73ba8842d31f0f0e1e73b3d300de02174c0c6"
+        },
+        "late.376df01ba798": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4c88c8e8b994e494fdc2d490d369e99f7ddede7406b1e8f40da0321bd2b3335d"
+        },
+        "late.3811b97d4a5a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "af4feaf513764f8f6a686ed27abd5e53a092b14e6559eaf4c0bbea4f5c508135"
+        },
+        "late.382bcd254475": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "72eedf99d16b89d895c71801e55edbd2b0eb381951e7499eef41e05d685ced2c"
+        },
+        "late.383cea3bff1f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "eebe19df57fb41489a982eacb49ce70d927334b394d5af7fda7590fbd6a6c0e1"
+        },
+        "late.384a2ede1f3d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9500d6ea846dfd565684c10163043faa75620cf715ed6401dfdbf0629d3f082f"
+        },
+        "late.385015bc7d6f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "998297cfab11718d9edb338b079ebbf4fccec082e5da628c8fcf8ce34380c4f5"
+        },
+        "late.38aac7d79ba3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9575fcff64d2681856e5b39b790c5758ebcb916e16c0ecb1428db423bb7d708a"
+        },
+        "late.38ca488bc454": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "285f055a01d354e563fd2063d26858a00660a63b1a8b09b3d88a97cd9094d194"
+        },
+        "late.38d2d86388dd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b9f4bcda509c4d11b28579f45471f7d65335f3db4a3e9988b89450d1cba4e596"
+        },
+        "late.38d5a3c0b397": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "78c61dad6474aeba8101b5056b458a46da55d7f1da604b1e74b3a1f1321bc3fe"
+        },
+        "late.38ee8f494b66": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1f032c29cb7ffbd4f4a8b113647a9cd25ed22c29f31ad050e0fb272482224c08"
+        },
+        "late.38f64bec0529": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "efa7f613f9c126c839e8a6a66357184e7747164dc2b589143b7702d3c2981e74"
+        },
+        "late.392c7ed089d1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "57c5d21339c35a89e40fee1248c0a6e47ef6163ca714514e4e9018c3cd011e3e"
+        },
+        "late.3949bc110f8c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2db68120198481ce44f75f6260899a6381a9dfcaa3243a6eaa6ee52e56953460"
+        },
+        "late.3960315eef2a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b60658f41388603e8fd368e051a754dddd2848370795f32c7e482f00f0ca301e"
+        },
+        "late.396399fc594e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "917de0422e9da4cbdb2eea41c9f55c49a471e1803d3fe51a74196f48c7b91060"
+        },
+        "late.397ac6cda68d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d10bbbaa4e952f62755ea2b3a1c7e8b79a4a4af6941f3f185e7878763c3cbb5a"
+        },
+        "late.3998f674ab3c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8fd575ca6e2c462c8246c779d7d29ef2c75ed78d45c232e10ca538fafc611b74"
+        },
+        "late.39b442301302": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d9a50aaad080ae06987221dd945906c9cf5899decd3b83876882fff599ec2697"
+        },
+        "late.39b5278a4ea9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4d25a7336a0ea8d917907d740cf9092d6a00a8c551e00caef1c36a4db9fb28ff"
+        },
+        "late.39c1eb2041d9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5e382bcb46b18e01f86472222e0c87f34caab1e9a8010fba719a4892e7619767"
+        },
+        "late.3a1d02210787": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1d8418b07caec253360f01bcbf424a26c2f4a2773704d32e803bdd4afa24fb9a"
+        },
+        "late.3a56cd8ef5f3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d4ba1587cb3b0057121afcbd5e7243b5cdfc03e45776c8f072526cbda76d3cdd"
+        },
+        "late.3a57eeeccb88": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5f1a0bfdd3e5082be10b592227d683745d029a35afcad02b4badd1a1c09778c3"
+        },
+        "late.3aa0ad9c2127": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "456223fc2344b4d68dff9dbbb287ea9358d7179c798ab8e53d1b1ece0057eb98"
+        },
+        "late.3ac43a16214d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "62e98f324075c4d53988d07d1cd72a69ec1ac1a2382d2d51fa672add5d9f9040"
+        },
+        "late.3b128ddb33e2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2463b7f97dcfd559e441cf03069cf80bc536ad8e43a2c7ef622d349cf1e0d127"
+        },
+        "late.3b3ad2945601": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1e4ea84be8d7fd1f213680326e41d1865a255cc3dfba98facea50ae4f2ba04cc"
+        },
+        "late.3b52d65543e4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "81a0c2d7aa21358caa980692aaf63c276df9d4fbd1548c19792b958d740dc4c4"
+        },
+        "late.3b82384bdcae": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6e38a417121c10a2056631b619d45c201a33adaabaa3aee6e31adeea1ed68f24"
+        },
+        "late.3b8303661382": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "05b24c7130d00006ea1d8c91a950f72a8836ffc844e55333b7e63d3c6b65a6fc"
+        },
+        "late.3b8c9dd42d2b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "092be7ef11dc1b69f6a26faa8437b883a09148ca09f305a5bc98aa4e5ea24f4e"
+        },
+        "late.3be0ec8473cc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "98bc04f456c8bec36d04c7a1e3a6be0f0b5b701547e0ef0551259f6dd4a873f7"
+        },
+        "late.3c1cf57c3393": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e38df7780c80e9bf3a95007b7c38b657a85a9c0aa66162eaaf245e3948d25348"
+        },
+        "late.3ca7a1d1eaca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f9dde0a207e6e1ce0703b6988bc012f6bd78e0fa0f03875d00c8558fda12b2fa"
+        },
+        "late.3cb7abe0d945": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "35a566eceea276c591b8a217c31171795dd3e56b82adacf9dd57b00ed7ab056f"
+        },
+        "late.3d2d5ad788dd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "092e9e1c762fc1130f5044d926776a48c9bd2685face41acd8c53f22262051cf"
+        },
+        "late.3d2dd67cf41e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6d956deb80bdf6243fbbbd004b217fc050c38c9e7605aec8fb573d8b304a1ce0"
+        },
+        "late.3d4f79fc3b64": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b5c2b254b45e1d58743cbff08ddd1c2ae638739d6041f076c6a889022784652b"
+        },
+        "late.3d5f1586c79b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "22fa515a3d0fcd43ac7a792219953e378df996a0d74fff11e08fd13860a65fb3"
+        },
+        "late.3dbfb212b060": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "48d3caff8de4c8725f97eef99ac357a6a97cdc681c2ba3675b13b00c347a5dd0"
+        },
+        "late.3dcdcafebd57": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6ab1ffe5609fb263d99cb6c73f9697ba2706cb4fad54257561434928344e2f8e"
+        },
+        "late.3dd3164fb4c1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0c0767b91f75a3a3bbc6cf3996522c1f10c9b28485b8a2b2de8b976f3dffe240"
+        },
+        "late.3f4c23f01f7c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "34d16ed24d5f02daef33dc3ff401642a4ab7ca2dfb0bf06f04413201367342e5"
+        },
+        "late.3f5062a2ba62": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c510cf0428c8ec85bb2cf16f6e9dd947568a3ff5d2990169ec26a70fb5be6021"
+        },
+        "late.3f5f26e1db4c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5897f1fc02cadc83d539fb307c85596262865365e63d23b65e5cb6fe2b8b6ce6"
+        },
+        "late.3fcd0f7a8392": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4045140fc66282df1f9ea7f13fd6d0b34ea4a0f33bf2ccd1b235f995f09ba60b"
+        },
+        "late.40671aea7cff": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "919e2220730642c70007fbb2a22e87539a5b9e7c5cb4eac6bb6a5f1afd9ca62b"
+        },
+        "late.40d3c9126de9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "91c3b5beefbd09ccfd0fb312e7b55efe1cabc6f9c05a389225a560a78130efdc"
+        },
+        "late.413715b9c3f8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "356c330e7aad2a54cee20fd943be6ae55c881a512a2f262970470b0f260ae277"
+        },
+        "late.41db5ea81408": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c1a866246b91ad61cd4b2e2f722cf90fb380303ef9920546ebd648c76c96ccea"
+        },
+        "late.4209b38ebf9a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "974507a57def8e56741f77ed9f0a504b8fc9ca29cde8859c62ba3e700b2ec1ec"
+        },
+        "late.429b61df4931": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "29c0c25116e52daa298e6c8ac16de13b17ba411408b1514b5c627f66cdeebf3e"
+        },
+        "late.4315f0e18793": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3a05cf8ac5d4c717b515c0cda1a4d6996eef2cbb01500af01056246d7809eb6c"
+        },
+        "late.4333dbe5219d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "87b7b694b99d20b956d14d2915243cc60d3f6ff400f15ee8c1f3bd3bdd46ff5e"
+        },
+        "late.43b3f4b185dd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2da79295766a4589549f8019b5923bf75887864f43244f2131a35bb04056009b"
+        },
+        "late.43c2b06d4573": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "67e0cab34dbdf619e6409eb45090e5f99d66030defd2b50c555b26e4d57b1022"
+        },
+        "late.43c9fa671d79": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "519f6791bcc861dd18c365dc4f99aac44af077fc2e53430c3c516f199923fc72"
+        },
+        "late.43da9923db13": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0eabe50354a4e9ff0d742bdc9649974d2837ddb3344f9e46ec4464f68a3755f5"
+        },
+        "late.444515170d9c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "be1015fcd8539c7f1564f5a4f038cc96637b352644fc5279408688564c64888d"
+        },
+        "late.447aa21bf129": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cf17364be51238caae5c59986ac9bc6a2e367727121063e24de7490d6776084f"
+        },
+        "late.44b232a8365d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fee1d7def65373412297c70e12a013583a262494f4243b9f7ed9ca26a609a306"
+        },
+        "late.44bb6fccbdb4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "719c3967bc764f04c8d78eccff84ccefb32151defc2e96896658a983c87c061a"
+        },
+        "late.44da6dee55ef": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "650ba8746e030acdac20ed5b5ef69cf12043a7f2fb41e4a860c29cc932bb22b4"
+        },
+        "late.4549e4baf5e7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3387a4d81fe364fdb8a944855f006b3da0e7190666604fbe1d7a8a1e6f5fd1b3"
+        },
+        "late.45ca5fd7d658": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f8be6051e234d272244f978173d35d0e661b89c305dcd9ba8d5f9d1f1214db3d"
+        },
+        "late.464d69b04bbd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b8eaeb9676d86a0d729839cf92e0c1b65982c84564c7fa110ffd566da0b585e0"
+        },
+        "late.4662516c4d0f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "038ca014fa5f6e5f846274bc7be9ab5c5cb347412a64bd70c267e56ecc87d8c3"
+        },
+        "late.46819d54c1be": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0c92900a7f3ed87d7985ea832b16c12933b77312644a1a1cf4a109e588e44985"
+        },
+        "late.469d5b183fdc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae16298d64c3e39d9219d60daa44d18a9132c7dd897a5d8226c59716fe99023e"
+        },
+        "late.46da470099a2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3c488e0cc9992a2abac3068a6284a4d030d44a2424fc3a62360518b272117470"
+        },
+        "late.4702e4ea200e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2bed516d6cf08d1d365a77157c3c0c5e0cba7c00b234b6cefb246ca72fa64f64"
+        },
+        "late.473fb552f319": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0eaa898a6e25d3e1829ed7f6399fd73ec38d35f53ae41a8400a44807ce454dac"
+        },
+        "late.474c681e861c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2d97fdd80247bd064c94c1c3bd38c21390376ae302df24f90a11a924dbc6edbd"
+        },
+        "late.47624d241e27": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "453e08232390b4e3bfe13cf784b25cf96a1c45b0c195e38df7b35c2190d1b49b"
+        },
+        "late.476a2a31a2a5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e7539d8673f5fc8615e2aa72910901e7c7cfbfe7b80b754b271d5cf12794d699"
+        },
+        "late.47bcff8d6b71": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a35c6a27302b90fa57e414dd124110d65bed536439f4db41ac54e3bbe7eaa76b"
+        },
+        "late.48136be5892b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e2e53f5c1630f6a9191e510f2d6a04281c08508faf9b0f753ba91dcfa0a0db83"
+        },
+        "late.4822b466cd82": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2c70008ba60ab761f50f8d3d9ed956dcf397724930ec88591e04b07fbd935279"
+        },
+        "late.488432191f8b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d20e8863d71580c1aa2033b88c7bcd878603dfd225590a3bb2c4b3a905206b83"
+        },
+        "late.48afdb2193ce": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "502287bd68f70bdff5a8dd3711eafbbfefc00b86979c502de1b3af8274933a14"
+        },
+        "late.48afe802a5d7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c4e1d2e8b061dbdddec20dad7c326968244cd61afefd1d00cae3a5d2064a30b4"
+        },
+        "late.49450f7aa59c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "023a91702c3d32e4931b86afdc5ff2933a29e4fd5d686fe466429728f002b214"
+        },
+        "late.49517a32f7e0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "64b84fcffcaf47927c87de707e1340c758f3c119bd69e5ccfc2259051dda7173"
+        },
+        "late.4961389682c8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dcf49ebe572c500ae7ebd2924dda64b71383765c172be24b1a32d4366bdf7f5d"
+        },
+        "late.4983f63b4be3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c24b7e99724f9894eef386342f8edb916965c1d6aef26d5a035d44c8e52be2e6"
+        },
+        "late.498a0e1561ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e94d50f43994615e536d8ffa32674066a1bed9ee5d16482133f655dcce8d6ea7"
+        },
+        "late.4996d4e42aef": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "315cf282ff4f1e0e4079b1efa540c303c25500bd0f91cb0a976d3073da3ecb1b"
+        },
+        "late.49adb486e24a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f1874b6b342802aa584a3cb549f3ae90370a529a55a79ce839c72f6b1970e1bf"
+        },
+        "late.4a90ec26f816": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4a6b77ab55756c9a3247c347973c522ef23d1ff4804fd82d6657c02211664811"
+        },
+        "late.4aef56028ce1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ad89e640c838e8ea26fb7f0848d61c3924beb0480bc869c44e50d6ee04ff0a85"
+        },
+        "late.4afc265264fa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b282204a04311dafae04d3a1fa862d89786e72a93edf96b47e8372bd8ba8bdac"
+        },
+        "late.4b2cca6162cd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "db59aeb50a66b2148312d69545156292172ddfc61716502cb3d2d7e01349da7b"
+        },
+        "late.4b956a4627bc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "faeebdb49ec312809ad68ec84cfefc7e83e6f137b9ab22b0cb1f0e92cc9b8267"
+        },
+        "late.4ba0202f9dba": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b8896c6ed120e1f4271f158748eadc15181167d2999ed805aaa0074f1ceef67e"
+        },
+        "late.4ba2f1ee0873": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "79510dec0f2140d31d4f2359ee190109188ed3eee49a31b4e6c9f30b77cb55bf"
+        },
+        "late.4bfc73309bc8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c86a0a8640149c3697bc838e28aa75e1b31727a4289f34932628e1862ac47c3c"
+        },
+        "late.4ca302b59183": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "30d36eb96cc21e01a4a26b4ff3a025ce6e93a613de79c667b44696d558d715df"
+        },
+        "late.4cd3e7a09e9e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "36c6c3146d7ebe54de675e8630c4cdaeedec44609f2dfa4cf2f8955e71ff20f2"
+        },
+        "late.4d48390c5f6b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e52b14ff04fcb0730417d5e1d370e6558b9c3b087330d50631be5e05ef3f347"
+        },
+        "late.4d8b387b8801": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9ee87fc037b0d0a0a93b9ff4a96debf98f827045fca14c1a1fc9cbe185c5c2b1"
+        },
+        "late.4da1be0b2690": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5af3e0134aee9a93c65381c21d0f70a207fa15fcc9c39c0e96a2120806be2265"
+        },
+        "late.4db5affe432c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e5ca80d1ff5ce80b30e2dd79b7ebb8a75115cf49e3f03b62d0c065b457632e8a"
+        },
+        "late.4dcf827e3fb8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "73d8677e30a86bfc7569d88cbc6b9b77c922156fd912dc575c9f292cf4893b89"
+        },
+        "late.4f2062ddb269": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6b5994165f1defe5e5eaac7a6a83ca40ed5dcfd87725aa6dc7942ffb98861d56"
+        },
+        "late.4f3f1e2f0cd3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1866d8d6ec6b0a21f093f7d0951fd7121844b28d709fde681f2418bd9d591b90"
+        },
+        "late.4f496db48f6f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d1e012ee08d45599aae436de1f18358725e811aeac7fbe08926abe89530c158f"
+        },
+        "late.4f58007d2545": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cf38cf85f251fd70caaf5055b25dafd9a6df6bffbf5ba469741af50365b8802e"
+        },
+        "late.4f91af64c940": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7fe76c96d65f64c4c21f9509665cdd064b5e9a6ad75fca811699acc0357192e2"
+        },
+        "late.4fee8b8f38c3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "887845276fb00888530f31c147b3dd9dcd4a838e46cfecea0e685fd8711eb746"
+        },
+        "late.502d64eb7de8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "56f5edb5540fe96723522d47152f83f76930151a13099494bffbf118119b28dc"
+        },
+        "late.503675774786": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ec5126d2baec3017c246872ba99f08f7fe086a3f5ab223563941de15b077dde6"
+        },
+        "late.50785a140da9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bce8b2ffbcb78b2940f45f74a5973beab925d1ab4fa3e4323dccac0406b13e92"
+        },
+        "late.50a0261fbdec": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "de01e4e9511af4f65412e4f8adb8fdad3d7506b7f0571e15b98d60b21833d207"
+        },
+        "late.50dd1b2740f9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b9b469b0dc41ff12ccff9d59fac15f8a310f4907f77e5e834c4deee07f8ddc80"
+        },
+        "late.511ab8b8d481": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "eef5dd2a24304ca70f8ded01a88dabc1981d7cc5c4fd673f2b552fc4bae06a2c"
+        },
+        "late.51413fc5e2f6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8b7cd8f3a3ddecd4db08302e2da2f8e214ab4576bb11f043d64b63d35afa36d6"
+        },
+        "late.5282e67037ff": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dfaaac365326c7521352f8ccf7a7839789cb9c70cc0b1248dbf99c62c6bab7cc"
+        },
+        "late.52fd81ab38b9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b1fcbb78b5cf3b50b08a49a6e7bfc4eb7ad1656cf0728d84ffbcbe1fcb6a12dd"
+        },
+        "late.53a1e895cd79": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "14ad72055280fb1926f1e9894534b0be2547255a303d98ae76702a2cc7cfe510"
+        },
+        "late.53d366bb6674": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7511e92bbb103b427596e2ce0c2bbc38b1b5cf4bc9918c3486dfd45a9df30bbb"
+        },
+        "late.53f73d4c09d9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4b4be2483a83c12af6d98e04d44ebdd5d7412d84fe219a8202528085367bb275"
+        },
+        "late.545a43b1e9e6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6e31b8dda1b40b102e7200786c5d8161c545e146ab37b7eb5b2388a911488ccb"
+        },
+        "late.55051533bb3a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1025dc8af75df18cdf14aefb88f9c03343ee9dd18a54649f6638ea9a8c993ce2"
+        },
+        "late.558d7d2cde8c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "526494ebc94b5623bda63e62335973936f7f204a1166402eba08fa474aace996"
+        },
+        "late.5590c4a40760": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b1cc65fe9452add8584f96f40c5221fd1bdda543ae5ecfcf9321268b9028a109"
+        },
+        "late.5595b1f0e443": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "63edb8998128e67f2e7ea9b27b19230ace825f1dcd2119560721f93b94df585f"
+        },
+        "late.55a90e622e47": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7e650b2f980f75eda0616f477a02db31ea41dd43bdbf16ad2e060626d27776fa"
+        },
+        "late.560e1315876a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b148e5a3d93aa4663eae3029593ca3e79f9f4ad428fad393d27ae734b68babb9"
+        },
+        "late.561e1682058b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dc9b42dd4c3a1a6e514a94c0473105039ba9721e1ef76b25397343a0789eeaee"
+        },
+        "late.564878a232f2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fbec44af3c07b017868d01602d18456bb1f0bed7c914f0fc7e938699f0467519"
+        },
+        "late.56560febdb74": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e1feddfdc4eec5147b51a826febfe845cd4447903cd557db65f27c310e8510cc"
+        },
+        "late.568aac57e417": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c8957e71c5da2275060f840198880f32406022c1d2bd28028c3aa92e1fcff40c"
+        },
+        "late.5698849eb4fe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4f00c0b27f7a45553ae4755796ab2964546cb36e2a71df878b7e172030c35981"
+        },
+        "late.5700c8c1f706": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ef0dcaa5e92c3e280e09529117bbc10eee303769e9353e7726e31f323195ecb3"
+        },
+        "late.578460a2a458": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e3efb94a0c67031bb65823a1927c32bd459c3c9234ef903f0595a25c39a3f9b"
+        },
+        "late.5787d62bbee5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "da84966a39d02447bb253c8dd179f7bad959ce5de01037e74d00e06ee84ebf69"
+        },
+        "late.583620516f9d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1691ca07ff29be471c2fb4130dd931100066c709de5f82fa7454b0e5c3016260"
+        },
+        "late.5843c1d67e29": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e504b5fcded42efa99aa4a1be8d766d3bb65d0db677786f5546fbf09a75e96fb"
+        },
+        "late.5886321f51c9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9c6dd4b64acd87de42905ef0d90f63368c61f1094fb6eb48036d6542a4362b9c"
+        },
+        "late.58bfb6f4c942": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "39c178cbf6a130a55d71c9b92a78455fe15ac8e00e73646d237befc2e260e921"
+        },
+        "late.58d563ea8161": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d3c2b3144c5b2b706c4c3c4c765d75316a402c40a482b463a3c6cd75e7286592"
+        },
+        "late.591b7584c2b4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5a18dcdf5ed16a91e5add3511b8d3118908eeafc6f9b2c5154e3d06ef16ccf31"
+        },
+        "late.5939a44ddf0d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a93d63d69cde9f863286079f1149518c67c2c30431c8948e1cdc3bab306b6b53"
+        },
+        "late.59ad91a82458": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ce3b7a7de95d8e2d7cd0687356b48034184cb9eb84668f9571c617982c272cd6"
+        },
+        "late.5a4eefbd1a06": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a5102dc741274ba0bb3a4028d11d0b80b5aee46422d49b85beb21d03c1900b96"
+        },
+        "late.5ae788e0c4e7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae6b3942d7643d601c79a76f421b3cc6dedb91b2d80d39f624039f7540227805"
+        },
+        "late.5b35fdf87400": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1576b30d53f5b3dc9ef8728ad7a8150322c69ebb8d7138bf40acb373989b6079"
+        },
+        "late.5b543c57838a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ed2a25c3a7d4fe053c1de39d5e1aae93013dd5176ac171199fcbc7fd9fffed0f"
+        },
+        "late.5b66f7f6c9a2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3181b233c32834e93ac12080c3c2aabf3ae416f013d2515f73cd8f2118b62530"
+        },
+        "late.5c23eaa3446c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "738d59abb791321517532d40595e6a5242a2b6b97202e847ce178221e0639ac3"
+        },
+        "late.5c5f5c908ef3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a709d112b530d6a73bea99e33d811a2b24fe4870a7e1b1b9a7df7875a958835f"
+        },
+        "late.5c6d6066a7ff": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a791257971460e5b9c26f5e7be450dafed0a3b7a319db2720e4199da66bb8d36"
+        },
+        "late.5c800a0817b6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b724edf8c291da9390acab78cec32e34afecfd56855ef5c77279cf12b3f8483b"
+        },
+        "late.5d6e52bc2e9c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5388a5d3e520048f1a9f7f0ab413ffc3528fbc0bdf98a763c49c4063fcb7348c"
+        },
+        "late.5dd8f74af203": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "171b267d5b4ac71a1c73276a01733aa771cb43b6e3d7e3c56376d8c65367a01e"
+        },
+        "late.5e1e186ca40f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d3c80373c4e893eef1b8e57bc5b377f0838ece5b1e186bc55e6d6a2844fb3938"
+        },
+        "late.5e3282fa2441": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1f3cecb75782bfef34a93ae14563067619fdbbacbfe58fa790c643fbe0fd092d"
+        },
+        "late.5e438deb3363": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2764ccb68de5a878fa94da7388962c38a0585b3badd5ca4baaedc4772f7cbd9b"
+        },
+        "late.5ec092bc8f88": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "01add6a674bc36ee054ee60f0c727090dcc6c2144c731431330ccb14088a9779"
+        },
+        "late.5ec596d97e6c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "83dcb69ae7d636fb7d2515614ee0fd3e8419cd9c2699dc96435ce0eca2c3eb67"
+        },
+        "late.5efb2482691d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2f043b4e577e54e4e8f69e99459cb5f4ae2e90fd08a6a3d7d47c6aa971324b57"
+        },
+        "late.5f37dde9ec0b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d358aa4d03da673d3a00e1d55dd2ce87b5831dd43359396f62442cca959abc85"
+        },
+        "late.5f7537cf06ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4ec16e39b37bb67c025734d74c3830c5228023dba5c3b393a6d8f0cfc5436aa5"
+        },
+        "late.5faa59d4bc37": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "37d8a40483ed487e2ca2163e9d62b2b8ecdc6287773b240a56da54aa5a851d18"
+        },
+        "late.5ff7ea1ec387": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "355b682ccf770f02f9351ceddd6aa7f036860220f630075642a469959af6f3b8"
+        },
+        "late.60a58d9b59c8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3596bbd9d237a13aab111ae5643852343c6ef3141be079a43aa9b282628ee4e4"
+        },
+        "late.614145e0cb75": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2f9e83b106a56728d36f854af4f09f4fb36d44e543c0f8cfa29d74397c328ab1"
+        },
+        "late.6172f5f7f6d8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "525df56f437c495feec8030569068cef462774155046355dfbdcc831d9c0d93f"
+        },
+        "late.62ae54550e33": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "687da615fd30864510850f25a13f55cfd57b3229cb71ad212b11eb96acfb1a2f"
+        },
+        "late.62c30c118a44": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "92c1086a34eed1a379f756b89a379872f0b9ffa7a3473c9d33c118f105bdf5bb"
+        },
+        "late.62f85a785ac1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c68829e7d236ee7b570950a040a2e2090afe438a40d3cd7fbb791634a1beeb05"
+        },
+        "late.63bb2b8f1966": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4158a23bee54870d72c456f63d99cd260769d47a9fc8544c1c60239a86abfa64"
+        },
+        "late.644cd3304388": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9b3e28e5c3b84764aed2b21fa6db832696560f61480afda6364de72bad384482"
+        },
+        "late.6499b84b6746": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d47ed5ca2ec95669635d0445bba5f5bd86289aa5079aa72e27165337af906c88"
+        },
+        "late.64bb383b6705": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dae3b2cecbb916765bb8b7273f3de226e2d208854ef808d8728367ca73c82980"
+        },
+        "late.656b3cd791f6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "837b9cea77845379572523b0e8bdcbbb2471d5d9395001b89db9e748365a8080"
+        },
+        "late.6585808d8c2b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dcc6dc05918a9f39a89a1b779b895dfbd4682ad280ad7492dec50a46fe1b0c73"
+        },
+        "late.659d0296c03b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fefae84b4a92c22ab5a5087cb42bccb35b55c125fb4d04309551a2ddf67a64b8"
+        },
+        "late.65ac1293e8b1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "976f44cb7d6f73b4c89c979511d0752ad413d7c432086eb394bb2c958995b357"
+        },
+        "late.65b308fc4b4a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "746562652df7ca78a9be5b18254e045295868770378852986a1149def89bf715"
+        },
+        "late.666a72b7e106": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8227d7ee29a8e018a1b6fc7af3ffb9df48d270acda1f645ca48d06334ba5692e"
+        },
+        "late.66812708c156": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e4615b0ca0517be28a1eb842f91ab49004df76559a4971bda2ccb715602311be"
+        },
+        "late.6694e7e73c64": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b3c7f94afe4d0442713fd788812376d9425ee8688f19aa44ee5277633bb1cc13"
+        },
+        "late.66b1fd64258f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e804cbcbdc1a9a4d063a656630614b29e65cbe61c0fee810e46049cd22a2e7b4"
+        },
+        "late.66de4f4f0c8e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "945ecc4351ad08a09247174e9272abbfd2916b0ec71c6e7ad86d10f687640c4a"
+        },
+        "late.66f19fb72bc3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e739d199f96b8e44b9ec551f854f7cec28b5ead4c22f0698bd18ff1095b63f5c"
+        },
+        "late.67012501d868": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fdef3edef461df134455e759301bb2df08ae91897ade2da95c0563f57f68ec92"
+        },
+        "late.670ee54081cf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a28433a11e343bfe73b2d04983ac7d91ae9e67de58671e94816ce10b75c93eba"
+        },
+        "late.67636878dbb0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dccd3015e8ef8dad0c4b60f009183b29bcecb1a70c065003718730bd7e53df28"
+        },
+        "late.68a70123b95c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1f727eb8d7fc50964d8becf3bec8eaf87c157018dc6af1fc3b876e1ef4557539"
+        },
+        "late.68c2cc7f0cea": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9c16c09f0c180580bcc75cd99dc16eb9764abe7902e6a19ba4d7adbd28d66b22"
+        },
+        "late.68cd74ed7513": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ca247829bf2f5e3b879c6fbd44a3f2a26f80c53eb4c4337d3f94b985ac236473"
+        },
+        "late.68db3f4e643d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3d75dd5d560865a148e12d705788cec138c0af186f78a702d2224b0b0d48c10b"
+        },
+        "late.68dbd12b8c80": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "99c4839fa1f2f13e32a0764449108345318c74292141e8890af87dbf72a80352"
+        },
+        "late.68f0256d5365": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "669bae7bba253aeb953f617f268bf5e48e9ccc15e79d3c7db57959e6a6a3250e"
+        },
+        "late.68f4ddeea318": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "142cc52b89db9763c24ba71a2d3b784d4d461963ba972dacbc0025ac0e99d8bf"
+        },
+        "late.694b52e3e5ea": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a262ec5919c0f52e9c1c1018b88619b1f69c5eb1fc86a0e14a5e2085e1550d1d"
+        },
+        "late.697168d47920": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e9172c4b53cdfdac20d776bf9c4b4a7419944b3cd5ac099570bcc28dd21ee7f"
+        },
+        "late.69f253184338": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ab05cf1d64b99cfd64911637749c091e7da927d382876a439da170d99e9172a0"
+        },
+        "late.6a24ae854dc8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ee26aef43ed2a89b5cc9e2c80247737caa1c69eab4e6e391c77ec47dad5f5bd7"
+        },
+        "late.6a572dcb780b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f9c80a98aadbea526b37dcdfb31eb627d360c91a6d8b3d8933695ee468aa6750"
+        },
+        "late.6a65d73ac40c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9642aab1693c28ac182963b44b316974013922eb54641f26ba501b19c3742f11"
+        },
+        "late.6a937cfc6b06": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "94d2f2e8e5c3275e0881160262b47349371fd0ed33975ca971bd7a1c06d7dfc4"
+        },
+        "late.6a93e06f5e34": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "693e0cdba320c4b9dee1f94bfd370abfe394eb624c598a40d50973d9268470a9"
+        },
+        "late.6ae1323a16ac": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "899ca516215967ba2ddbc40de34d20a10320426baba75ea8a146999768585fa6"
+        },
+        "late.6b1949ef0377": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "11054c0c8d29e395717ceae665445439e0c6ac37e65a2e4f0e104b0948ea4b40"
+        },
+        "late.6b19d295d072": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d30577f595231ad1222a209b09642771f25b8b699685d5d4175e20e2cfe1c714"
+        },
+        "late.6b207ec27b21": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9b90d7ca20cf0706b80fccd3f62e3c16fd8299362ef6cae5caaad6873926a984"
+        },
+        "late.6b8357098636": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7659a101c49173e3561a17addff8a8a9670ae132ebc42126049b19c0a78e762f"
+        },
+        "late.6c0ee2cf9a98": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "15eab520cbdf24d340e08c94d431b24e3a451b7c95f7b6f2eb6187ce1434b634"
+        },
+        "late.6cd36ad53b6f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ff860d23047cb686427ab6aa171c789b4120b838c129c9c405dd5ec94a3c689c"
+        },
+        "late.6d234a17fecd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "24e507f2805d30105b376bf51c29fbf807439d7792d183cc5cf09022e8cea4aa"
+        },
+        "late.6d514ac8057f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0381c9d9b70e732b61ff76bd323eab73faf161dc996fead49683272686f8701a"
+        },
+        "late.6d75b2f4f702": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f44eb4bb6c07ab78e1d21402aaa8191121ffd450239dacb961c487fdc758fe68"
+        },
+        "late.6d8c9b124d52": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "82dd231086d87f3b6145829b0128358ea25175120b75c85cbb43e6d2c6967d0e"
+        },
+        "late.6d9a6e81dce9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "13bfbbf714c6ca78bb8021629956e2799128086474ce9f94a6a39d14a800fadd"
+        },
+        "late.6dc5d79082aa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f64c2e11d226309ca9e244c3e5f3edb17c6ba4daeaa70d3fba7de8bf97d62022"
+        },
+        "late.6e2247ad8907": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9938183772d605a27dea7e684c0cd2e310b7cc688d70647973c0a81652d05e50"
+        },
+        "late.6e29522b1991": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c7e11f3a766086eef0dfaf1daea6441b666c71773b9b7442377f238808feb455"
+        },
+        "late.6e7bc59c12fd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bef7913f496b8dbee7ba55a39dcc4641ed06a635f9a177b2aafaf24ebcbd0ae3"
+        },
+        "late.6eec4fbb53a7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d5687d87f0346a0d8182e1e9b13908563ff3827e00003ae246305e226f008f69"
+        },
+        "late.6f347362bfeb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7f5f79cf61c55c6627548360598cf15a927755e6293d7434b3c61b6abdad8fe0"
+        },
+        "late.6f5e6c9a6846": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e4def286de937661011d4895a3b6372d14256f271c40774086a68ac6ce79e461"
+        },
+        "late.6fbe1fba437a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae7bb91771fe96dd94a63ad3113f9b54051fad1c1b4fd3f68a57a6bf1dccef73"
+        },
+        "late.6fcf4f9416d3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "78a18eab7d89b140db4c65854993cbdab14037f743c1c6b7da1083a4ec5f8f3a"
+        },
+        "late.6ffeb258f60d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "545ff32dec98dfcbb29f3924510d0f9ac0644a44927416e595a3cc3fb36d3e39"
+        },
+        "late.700de107742f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "995cd48cf4497beeddb0b5e00654fd75d83161224dc2e7a0fca9f3cff4505209"
+        },
+        "late.702e086a7bd4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c7153d32f7dd18e99a2441ca89c237d6b16ade6da991bde6cf4e959d7295f1bc"
+        },
+        "late.704c0721a95f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fb6ace25e949129ba7dfeacdb4b89bb749ef8c92465c5914554950ae02919781"
+        },
+        "late.70599d26f661": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e3f8ca455e1d6133ed95cee7f5b1cc61e55b8b6c69a13edab552265397ec3229"
+        },
+        "late.70adaed9483e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a8f2220592be00f2410e97ed8a5a6e94bad11284abdc7a8f6a3fc06289dae7e4"
+        },
+        "late.70c1cf840eb9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1a09c3b571c0fa270ddf2705885210407d0e6de7ce971d25741acbcf557a2e89"
+        },
+        "late.70f5a4e8503f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1ae179e6baeda5e56a6ad3b3e8710cca809a5e1964a61dc8d46446c7e94d67f6"
+        },
+        "late.7128b4ccf61d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a2209d948f94472ff8b35850866597463f279d91cfd5eedc8e74ffe3358a7cad"
+        },
+        "late.712b32fdc44f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4c687eb9fe905119c8d09e9dbf0813cb6b68c4c0d140252964538e7b380e70ee"
+        },
+        "late.717edad9e502": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b3edc8195050916b8a21ff97aeac1074ae2cb71f0f8fa230a10fdd089f547d88"
+        },
+        "late.71a401906c9f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aeb9703b5a7963ad7c3929fd0db7485ced11ced7a709b979b8c0376314222eb9"
+        },
+        "late.71d45746acc9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "97ed7a0db3e22556402a7f1b28d80accc6548e6e5eab2cbf02c3c8e28ccf8932"
+        },
+        "late.720cf3189584": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8cec656eeca90bd9cac56edf93b6a819009d9ec11f1a6295502f8075c6854adc"
+        },
+        "late.7271b1bb8c54": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4ee8fffdacf96f8c6abea1cdcf7c4031dc5441dcf947e0bfd7a11e87a22fafa1"
+        },
+        "late.7277d3c8809a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c7b2f4d40f1271aa881b0012022892d824d4799497b9822c0ece91a1d8576cd4"
+        },
+        "late.727cbc30ace5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "26fc87ad1b449e714a421e122ba6079d5720e6770ab10bb10b3f16dddceef0c1"
+        },
+        "late.72e4d08b5e9f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c74792d24530fcdd0749505b383f408d3831948dac3c0bbf96b1dfe5853cc7db"
+        },
+        "late.7332b76a893e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1ea679305d35148c4c00f9b81c998b5b8facc328420ca079a674f42aa3dd634e"
+        },
+        "late.7472328b17fb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8921abfb3727115250f63a5e74b42027117438856a6c60fc8e8953f7e0ab8b78"
+        },
+        "late.74b82ec07d22": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "64e48f14b2d1427f1d13309495a0de6aebde4906f111a91288123240553fed20"
+        },
+        "late.7531c7e9da4c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b0e72fc6980e19759d68ea49aa60b65252d101ac623710df996ddd99cdb909d4"
+        },
+        "late.753b4f85ea72": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f304c1d7136a571faa139e40be4ae672a64dfec8875eba1770b916918d7b03c4"
+        },
+        "late.75e15cc3767a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9d3f9373d2232345858578e766f0b5679edecb049673767563ac2c3913ce0338"
+        },
+        "late.76022a00a16b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "76c0e1dc7111e4b895b4e6c61a9f675151bb230202f97a01bf8b1f167071a9da"
+        },
+        "late.761f7a4313db": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "890475c43524d7c2c7320ca89a7750406afdffe968f21794b349830d095807ee"
+        },
+        "late.762de48e03df": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4cd0b4493375bcd9f8f28aad7a5d66a860f3fcba2a4fc61dc9802fc9c919cb13"
+        },
+        "late.7663e9d795e1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "46dc24d1afc1aeb7fc1fb008823c5fae799729a1cf92955608206a43f81f4855"
+        },
+        "late.766e7ee7342e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "354d8e89a7f1836aaa6dd2abef75ab314c41ef709f9517f14c15daf26838bdf9"
+        },
+        "late.769169f33675": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c77b03d9ac30cd6d388aaccc566e93a0a63e57d839f45b151f01453de05293b5"
+        },
+        "late.76cdb9507216": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bd02c614454fbd2b632f05fb7881b91d198c63176db7d72659b236bcb56f7860"
+        },
+        "late.76d50c67bd02": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "11844986fa319b54b2644e673d10554bdc61032eb4d5cd93fa36fdfc4c44fcb9"
+        },
+        "late.76e8bdeb9c4d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f2b7a974c2fe7e24d83a00ac5ef52984ebef3bc317cc9b3c7abb6af451ff8700"
+        },
+        "late.76f5db1b0ca3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "35067ee0690be866556040d376d20817cb1ae2187fa5273daaa40571cb5a8661"
+        },
+        "late.7761b2806807": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "be4e90b3c66d6ef0be0aa6303cf1ed543b34bdc1b5debc2f30239cbc397a5487"
+        },
+        "late.77693e81f03b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "39118ad9cb7c7d92931ad953645ca6f954acfeacf98a280a9edbaa6f4f7dec10"
+        },
+        "late.7769f8fcf60e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fd764f76b68f3b45d493b60d971ee465fc82487f2a49f1164cff338eeaa33abb"
+        },
+        "late.779c1eeeaf99": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a6d08d995dfc9f27907acf8e25d70885e01cd74369e811ec81d3bd2cb951126a"
+        },
+        "late.780e7a0fc43e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9f580e3e4f1208c548f2caadcd52c2b00e09d745e14b6ad69125e334f0d82f6e"
+        },
+        "late.78234cd8195a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "15a5739faa24773091bb75fd5159282dae77c0bd31617124a3dd3a830ffcda05"
+        },
+        "late.786317e1ae6a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "67de953479f8ddff9484bcfd074fb07384d0e22c3c47b445fd2e5ce1b568be3b"
+        },
+        "late.786bc9c6f45f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d2daa3ef15eb3fac2e409740160950dbc904b13c29cbdf6c5389e7461814c63c"
+        },
+        "late.79adaf70ef55": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "53b2cdbfb8d7a136041fa20cef1446dafe0bd66efa63368ec60280fcff8096e4"
+        },
+        "late.79f8065f3a2a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "392f04a919cc8c2306143d29d9231292916263ea7d45078259367831ed980e0c"
+        },
+        "late.79ffdc139bd7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e3a05122705606db28651dab2da4df2efaa3a30aa60e9baebecd4149c1ce2373"
+        },
+        "late.7a53be1932c5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fec47ce5b0623ffb3b2371852f6b5eb0395c3dff303dd2b567f94b11b7d15a5b"
+        },
+        "late.7a71176080fe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e857c8e3f67be70b1b5de1165cafa993b2e25f571f60889a15ca5157ba5471e"
+        },
+        "late.7b38b9b19c2a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "93f70a0909c301d5fc2cd7bc66abaac6641bcbf20fa5015d7f52c402fa27d290"
+        },
+        "late.7c138638ef76": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "810954d8ae55b78e55d4661a67a29f6c32b827e76c42547b35f44e29eb676812"
+        },
+        "late.7c4410a071eb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "626236cfc4debedb7df24ca88aa19873578806d0859b17e585b251d7703bddd7"
+        },
+        "late.7c5e8ca8901e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fcfc0311968efcefd1270b404e80d56199ce449a01df43d720e005fc5b6e08f5"
+        },
+        "late.7c6cab9ca845": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d24322728ea97929a0db052f5020eb5f5b264e940460da6267dd1d61da626ec6"
+        },
+        "late.7c6f5aa201f0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "421d55c9d9dac45c019ad28489b5a631b3404a57a24062cf73356c18f72f5a9c"
+        },
+        "late.7c75a7d41979": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ccf6599754b601df28ee3e5dd14008b718dc8ebf770869419a34c48710af10a8"
+        },
+        "late.7c77ef9167fc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e147fa0151ea3207c19a1d7c448621b65b849b4e18bc52235d67b1e8fa39456e"
+        },
+        "late.7c979035bdc4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f8845907bf4100c09d70afda704703f615db9ef3983971715f558674700cb283"
+        },
+        "late.7cb65d3eae78": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "af8ddc3eb1e8a86fe0feceef3faf0085976236914d63ec1e9e4c8670674d61e9"
+        },
+        "late.7cd9544a9b94": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a662ed6ab0869314ca841ff22ab78c675132bb883338eb9562c77c287a80462a"
+        },
+        "late.7d277a9572cf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d1d71d54398e884ffccad79c15979bb9481ecf86e3b0b4c05ecde7119df65688"
+        },
+        "late.7d5d1cb5a9a2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2ffe8a17f2bb0ba3fbe5f9dc7451b3033a3faf1964964c8d5bb5182ec6168ff5"
+        },
+        "late.7dc6a13e16b1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "313292fc9bd08e6ad8af9ce2e334b78e7b3898da5a7f39615e50a245f7f0cabd"
+        },
+        "late.7ddd66b689c9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "170978231e15a41b858d2ae10ae6171f3bb73ed845a8b7b332773aa31b9e9f79"
+        },
+        "late.7ddf172d6c0a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "113b528f98e8fda15b988c6c1c121734598d1266d93a2fe3831b075926a7a2ea"
+        },
+        "late.7dfa3a36b80d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "09be1b5793f006538ba482a8f339ff42eb442a4dac02dcc68e68f2f47ab2a2c6"
+        },
+        "late.7e11406e3671": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e5101dded1c0ab1582b2e174821fe0a42795a43cea4f32374c0171d35696507"
+        },
+        "late.7e4d816c6f91": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d8f4d6370217fc80968c7452e4cedeabdfc2130d17a9d5f4119e138f00f135f9"
+        },
+        "late.7e7d6c54fc50": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "65e9eccaa2e3d4a09c5ffe547025cdfb4dffd279d893d1c335bc0650e47fb019"
+        },
+        "late.7e7d6f21b66f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "96c68473d5a87d177ae0bef21cef062dfe39a5a1fb55a2164f2fc62521c00ad7"
+        },
+        "late.7ebf1aeb7c61": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "21c5ed591738766bdb1438cf46bade604480cbbcd92f8867ecc22d6741fadb2b"
+        },
+        "late.7ecf5fc2ef28": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "05b62fde08d5acefde7b75f9b652bc50b110ed7ff8d9d6d46b284ff783829ac9"
+        },
+        "late.7efa5bf90984": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cfc93d1a3e9c9f9998ab790a8d5f73a8e5a166d517753437f9a9558aa26cd305"
+        },
+        "late.7f1c802627d3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "86e933b8493ce9a704887977908b8af3016124ec10e2693cb61bab8b1bbb1f02"
+        },
+        "late.7f379c5925ae": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2eb01bc76ea085a5ef2bf4368ccf810578b71826d54445bf0fa076aa60ed4181"
+        },
+        "late.7f380307672e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f0ffae3064982c55955e9ab1c5d2bd1e8cadb224f55cc881bda758feb15b065a"
+        },
+        "late.7f573c953063": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "63dc6fd18ecd780a3f1d93a828486d2e9372979088c31cd1faf2d40984f2e5ea"
+        },
+        "late.7fb3a9b5101b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8fcb6e0bb2c5325bf0160e369a21128cc8f60c4654fa34f377cb65880bbc1a8a"
+        },
+        "late.7fcf09ac095d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5c13747278bb0a997edc4b477de9cc5e0d7974e279afc5f1cd689c4dbbf9cf28"
+        },
+        "late.7febce039c4c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b0896f3cd563e5ec3e1bab11d176ec301786bb39423a7ce535704c03d71babf9"
+        },
+        "late.801ad0d72dee": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f565ba37157c1bbedfcfebf7c15ef5d9605952ef19cac8e281186b77d6fd9645"
+        },
+        "late.80715d0cc4fb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "029369371595a1bf52283638ea03d5b9b1c593f24ff1e19e1f8a2ed34cc37225"
+        },
+        "late.807e66dce64a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dced9bea74738cca01f7bd4efcabfc7f4a066731fd6b99021f7c81963ddff934"
+        },
+        "late.80c4f20cd5f2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "47ceed750ba7099938e0ee4c32be1222b3251b2066aadc1820ed10e09d19055d"
+        },
+        "late.80e448e7222d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e0dc961208b7a480f4a949cc0ca7e3acb841a9af67fc8cc2d4f9099019252bab"
+        },
+        "late.8157c96a7c92": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c2fefb70082deb99e540fc6ad19ac301f9760fcb1eee271df9b317a9dcbefd30"
+        },
+        "late.82232ed70def": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7520f7b75cc809bffee37442c5fba4d6fd25c1591ec936c88d500a6ee1c61755"
+        },
+        "late.82259209065c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "74384cc0551b2522fc4dc085d9b369c2980334bf0710f4b115857332155f4b8d"
+        },
+        "late.82dce7f70367": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fda5ae477a013fee007df26bf89d7dcbb581d71dc512a06c1d17304049c0aa59"
+        },
+        "late.8336ead5d135": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d1694ea9a81401d6aa93b0975944caf76e9995759c7264afe2ee7f35ed55f0e0"
+        },
+        "late.8381e9bd2991": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "646386c28dfbc4c571597de63a63c00a6d7c439544ed6296a0ca6afcee155701"
+        },
+        "late.83a13361b111": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "55cfc799daa9cc36e49c50c00ac8cf480d30caf0d0165b7afac35139a612944b"
+        },
+        "late.83cc66ba3a08": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f9ed673bdccccdb551d793581be4f2e820f382f9ea3cd5f2c833f0a51320f491"
+        },
+        "late.83d84044d1bb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "778cdbe9045e109ffbb33181538f41c7edf9ccce7e445f74c242914463fc1b53"
+        },
+        "late.83ec74cd8794": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "738eb885343e12997c87b355550491a0e8bc5910259690d6aa21ce2437364514"
+        },
+        "late.844015c37958": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1847f399fba5d932ea801e7cf0fea3d7acbbff8b2923457a8e6001b9c32bebe8"
+        },
+        "late.84505160ef98": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5af7e08076ea70b1ebcc8e40c010de2f9f11a555dea3d39bbeefb062dd11c3b4"
+        },
+        "late.848ecb4df8d1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "56379408cd4f8cf8159f8d21705b8f295c83be595c12eb22e7d5eb3a1620467b"
+        },
+        "late.849d0e2fad64": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9b544ac98794867c25586f97bcb0086a64c06acb1ba124d1378ec14060dfa00d"
+        },
+        "late.8503e4f5db6c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "44f9a9ad206ce0ee38a88698907eb13d2fcb9e1e918b3e1c30aa9ca36599c720"
+        },
+        "late.852d49e469e7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e5d171fb59f4689c5d397e228d985d9cd828c5a5fd9c725c3c68ae5b76aa01c0"
+        },
+        "late.854b3a410c5e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bb59870eab3d1f557d8d62d1df78b61fecb8929e94b44c989658d16d6f56de32"
+        },
+        "late.8556ce53dbbe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d7a566aa706e1aed68daf775cc6a30de88e8437b723d3951b17963df853a0a41"
+        },
+        "late.855b642d8c8a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b6247d120089c8ab8bb0b4b1133508b98deb684fb17150ee594154607f0eaee1"
+        },
+        "late.859c229eb13c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0f82801cec3440d8e9fedea5276cf728999ef2492b2a1922613d3f0f56a94b32"
+        },
+        "late.85b3f3e1f454": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c13e28fd054c073d7d9627bb31d09d1e7d3ba8686cbc99185f7cc22d2087ef08"
+        },
+        "late.85d6b3291673": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "55d219a9d87ba35ed30b7a484387c9d77909975db96151c17c914d099870e3b4"
+        },
+        "late.85e16e28e1c6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "95f6d3ef7baecfc2f933abc58e976e847b16d7299720a3e85114a8cb163b2879"
+        },
+        "late.861a5ff7d1a1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b342134e8309c502fab80c56dc3cc4f1e7b12550138b581e04875912fe66f6bb"
+        },
+        "late.862833d79ad2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "527bfaf3ce7219a0197f618fe7ea69bb8732bdf50403f991e2a8ad40331d0d1a"
+        },
+        "late.8661c13e39be": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ac740a957a1f61ea961f6fdaa8637d6f6e21ea54083a9390f9c68b2d75b96bf3"
+        },
+        "late.86b970d389cb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4ffaeb4203b92721a8561ba04266c6fcd6ec492073837aa1d57ad4dce688beee"
+        },
+        "late.86e4ee524412": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "549d737bf9e0e2c8311de6fa8ca07a99859e6e424d52737a8b3da6f6e9211c16"
+        },
+        "late.86f757979958": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fd6bad2a14ed290f8f9c98c14214b34224760b2df52fc42fca28bdc8d35778c6"
+        },
+        "late.872bec5009cb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ec8f197fb7c6b5501579e78239137dc1115a972a4a1a31fdefba81083e770d0b"
+        },
+        "late.8734f5749e33": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fa5be1a48d6c29ec07e433e89e910a5719bcf3e4d86903c3a5fe578e3be3617e"
+        },
+        "late.8820bca1391e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b9e70fdfa8b99674f553422090951c6b9fb8bd3296e8a666a2fbab8ae7bab4d1"
+        },
+        "late.885db975a310": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dd30774775ec7e6e79c64a81133261c1fa4e904933916db77c1098afa662d16d"
+        },
+        "late.888eb40396c3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8e09da968ebc9cb8b620a02e0cbcf93343b05424e6346112d72440595fb54988"
+        },
+        "late.88aa827c6ccb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0640732d7b55a11e363eb2116c28938df6409b2d202aa81f7cdfe96c0f856a66"
+        },
+        "late.88cf49473dfa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ed88036de85802d18365a2567a5c1ebd1407fdaa0d93a5021b20c522ac8966b3"
+        },
+        "late.88d130a66de8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dd66f883b173fc72575d3c88c60001da44ba02361ae1cc4cb6fd383a51bc360d"
+        },
+        "late.88da8df73334": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae19ee784e1bc23944753f22cc1b07a5f29470293a71c9632afd7ef8de6417e6"
+        },
+        "late.88ecd30f7043": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f28df58d95abb0d7c5592870aea7bccd4f6403c74f3bbf1c567592b40e8ae705"
+        },
+        "late.8932900cabe6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a4a6c636de9c4d174bac407a7ddd59601722b01f862de101e517b00dc9b877f8"
+        },
+        "late.893a0ce13b43": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "33a5443f6f64d08f7ce6482ed01fede898fcc207eadf5b2d542f7049b8e76a96"
+        },
+        "late.894b3be4f136": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3030d6e130a5f18f3fcbfe16ca1c007130e8289bc3f073bd320a8c04b9b3941e"
+        },
+        "late.899754144d64": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6b9d7d503f3314b07c25794f986ffe8f23a5ba4d5f950b6e69f3cc7bb082e5a6"
+        },
+        "late.89ea1a8b0c44": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3dad2e1ba6b2f85325111674b4117ced65a9a0d5ad3be110c9df13cdaf671b56"
+        },
+        "late.8a3e1f0716e8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8eefc530749f5c54d7d20af39573164bf02935a3bae1b74294a8a058f5e06003"
+        },
+        "late.8ae1c34bd37f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f365c6b6dd9ebab91f1a6bf03eeb0b22833982cf4c0eae43440018268d3cbae8"
+        },
+        "late.8afce8a29a0f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "253743d0b284de4837f4754757b7f009ef37efda2484f18f4a2265bd1b4a668c"
+        },
+        "late.8afffa267014": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a9e144cf4d7834d61779224f73e0e457206ed5e3e56332bd5023f5563aceb3cf"
+        },
+        "late.8bb73c329b7f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d686ff554313e329a2db68af4f7631f4399519caf16938d09678c27511c32ded"
+        },
+        "late.8be00be3a481": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0322ce6218608f0f4feb2e19e05e2bb63510c3734fae8a0ac30a432b6e371559"
+        },
+        "late.8bf7bcdc8e38": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fd6131cbb4ef02b3b323e7b0727923667c8fe5c1d6dc63811328785fcc299c93"
+        },
+        "late.8bfa5c57e6fa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a85e6dbb4fce41b3b2cd019ccb6b46516acfde9576e4442df8eff111106c28d6"
+        },
+        "late.8c23bf0b53a8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "68d9087dd5ff06a47eab46d284584544d436fa638c618c44f46e8c7d91d49a78"
+        },
+        "late.8c5f2c0e0527": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b4cc232f1947287556276d32e6b6a76b296e7c96f473467e9d86ac4fa5fde690"
+        },
+        "late.8c7861618f6a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "127565354c72a9cf81aa4037b7f12c7457d386a2a3cffaccdd03d1c0d1961b6c"
+        },
+        "late.8c86b581f82b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c93bc0fc438466b185512f227fe844ff67f6b53b2093d123276aa6d7639e085c"
+        },
+        "late.8ca4648757d7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2618e8577290d1410c8a418255fe13f0e389e23af74d192bb5e960c987fec7b6"
+        },
+        "late.8ccc2182820d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b5d19524eea961bffbcfdec3e69baddb2dfada6b970511507bdb9ef76291e779"
+        },
+        "late.8cd4ec145507": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ee5e39e0e72cc47937681fc4a3a3abab0272645448ed2068edef531860ff8e0c"
+        },
+        "late.8d051dbe9540": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e5a6933816725df555ba98afda82792941ec1ab7abc72c25de35cb3f64ec58e4"
+        },
+        "late.8d354606b03a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d30535858c31f66be924666c1d0dbe0ec5b70c4c07fd2ac82fe22d13219e4080"
+        },
+        "late.8dd6d503a931": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c5719c222f863e8dc30d450b7aea374c3691ac42634a24d7d0ba1e2a41a1e218"
+        },
+        "late.8e2c29024c45": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "75ccb22c7b57ab74771ce2fa9d432e575e88e198bf1a69031f325c06aeed9a52"
+        },
+        "late.8e51963d87e4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "62293fd77368753ec0b6a043293244808564557ac564c2f22441e448619ad1bb"
+        },
+        "late.8e562b2c7fd0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "324e3327c9a30ebaacfcb7c9b24efb540abc7c2f89666f8a175b3e3d567795b0"
+        },
+        "late.8ece608373b3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7c13a1740610781b6faa9271ac0714f8cdf585f5bcfebb0332b2036e3c331ab0"
+        },
+        "late.8f0a3cc1678a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9257cfe8ad992f510cb700dc090356f3b35d4cd1cbd69b9d10a22051a259fbc3"
+        },
+        "late.8f3f5c258621": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "918d00aad46a53a63d21773ddcdaeee33796ee339ff8961403fd42e72255c94d"
+        },
+        "late.8f4f3d5b002d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8e5161eb69495df63aaeff87dc7e051e8ed8c0af3143f85bbd99eb590f3babea"
+        },
+        "late.8f93c8e601dd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "893369973d0992ebc436f011e03b9f24fa32a10d3e384b4c10c5a81621492835"
+        },
+        "late.8fbbeb4b6151": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cec4d01aea9208826fddbb231152cf5b601e76f5a4c6f838eefc650d0cb9a485"
+        },
+        "late.8fc18a624e53": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4497954389cc4fbd9e46ce98dce8a6ba185feff96a2a3306cb8ac01f517fc1cc"
+        },
+        "late.8fc9988d85b6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ea8e8bc6b61c3d90665e7ad8940fab6921ec47e2ac002593e23d7fe609abed43"
+        },
+        "late.8feaab7c43e3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "be5130594dbe956cc849021885942a3e8a7b7565a7b71e6314f6a4cbb886a9ba"
+        },
+        "late.901dbffcb486": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4c24e0792d12f12f0915a1d5fc8afbd60fe526e6cd93ed8b162b2f53790ea737"
+        },
+        "late.9026347b544a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6a91854b4bccadad920b52438d9b857e755efef9a44fbfc2d18972f95770cacd"
+        },
+        "late.9031cbcd827d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6e0063012a8808d58d800bbd5830e2e5ad1aa3f93cb494e57e016ac1466a6964"
+        },
+        "late.904b8634d9a1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "89f1524f7b9a3786468fdfd7123fc26bf571885ad0a87ab41733e1b3e59a26f8"
+        },
+        "late.906fdf224b64": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "362679d8725a8b4049eec6095aefca75f8b306ce823b497cf5800d1dcb1fb258"
+        },
+        "late.908442933c3a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5a396b8f458d64b09fe2219c899f4575117e86a314962307cf0b345bbf8c1502"
+        },
+        "late.908897f614cc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5ec8a2b42b4b4820555880dd05100c86c80957d124465275147e0450cc1180c6"
+        },
+        "late.9106dbf62ed9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "601ba1b68ef6dc4086c2ab1acd751c50bf7cf96d0dde5ae832b08a0405bf1834"
+        },
+        "late.9130ee2cd23e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1c9e389e17ce7252e9bd7676b22674a68df8f0ac93f7f113214b63fed792d60a"
+        },
+        "late.915689549c24": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e558af89e2b5d4fe8d14da57ebf6e552678ff5532565124a80c2268006096448"
+        },
+        "late.91c4c4cf551d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dfd191bcae68eace281003d5cc1d5b7bf1df418fae601d14ba31505048ee67ed"
+        },
+        "late.91f2c8fe4468": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "401cbf41040c45a2ccfe27500d8e320c0c2970a098e451419da8b2a420302ab6"
+        },
+        "late.921a88c00c6f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "814319d7188dc90215746e0b50ca9ba6d538f3ee9a5a057700548d7d96477e4b"
+        },
+        "late.92f3f6c444b1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3cdef6484d7a76b32fc822d882aeeb1e029dc97451353a0313a7d7575cae156b"
+        },
+        "late.935f8d8fa5ee": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a353a6a4074147502732efbbd6274da8ef0d0dfbd77849e672167c94eb5103da"
+        },
+        "late.938645d687ce": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f08970d2759aa8c0351252e23f9da4217780716d5ece4ae3dcbb212116a1c40c"
+        },
+        "late.940fc0d9383a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b0549a974a7aa30201f656e743446954a6e86860bc7806838576893d32a3e9aa"
+        },
+        "late.946ffb6e97b8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0b5d76d831fcadbce26b3d86918f9cbb5d8e8652267d9725b9ed55e89405d20c"
+        },
+        "late.9533107f7a1c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b02cc81ef829b39fa34a872ec1a79acd91094277bc67e417a7f2e0684aaf633a"
+        },
+        "late.9534f87b46d9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "67d12eb4034d3a8b42e02da1aaa7f7ea3e329251d7d519b1757a25502ab98d19"
+        },
+        "late.954daa8b0033": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b34d5ee0f218221d7db099145fe272859cb365e772a0fa23652df83c72b43b7f"
+        },
+        "late.9558c50aa2f6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b996900cdc3fc209532188af638f76915e4627b27bc169ee59375348e68e268d"
+        },
+        "late.95ac06a00acc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "60adee5331f3a78ba007ef2105292f568793a36a5651cb4d28b4f3b41ac028ea"
+        },
+        "late.9616162e9b72": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a9e078ce046891354c34aa4d03ff403cb6db26e5851ea9d8671375c2de6eb5a1"
+        },
+        "late.962c7057da94": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ed573204c27e2225718f34dfe5153c067768d62de30f5ba2610e6f6c821ea19a"
+        },
+        "late.96618846da50": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "74bba7d43c26451d8bee5c8d2cba9a345ee94ca5be3f527978bf3c03fee5abfb"
+        },
+        "late.96bdbd6efdeb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "877232fec582b757caa311650e9df1f226be7c94932e19a29b017b12b5e96d39"
+        },
+        "late.96caa8af1e7e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7b46888202bfabd6b4e3b5480ba363958e5893f89e7c803130b9167a8cc2a3d7"
+        },
+        "late.96dc20d0fa83": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0667fcc71e8774bf157b7749a82c56d2316b726574c87f4d671f77ef0badfd8f"
+        },
+        "late.96ddd9d6114d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3728b6a6b5c466650d8facea2d14b8666de0e163e497d3d23949581e355eb999"
+        },
+        "late.96e258945229": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "105c7be957fdcf071b906be2f2048c5326e6c4302a605e6a0930eeecf92f6a81"
+        },
+        "late.96ead420d232": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "87209440e79b258adef6bbd4ee5f327230b7c9dacc71db56776b608de40a3893"
+        },
+        "late.9705540112dc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bdda967f0f54831a48a5e677e4abbe0f2bf4994c447b17b96c1c4cecfc73198a"
+        },
+        "late.97531ccb5b4a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d79dfffeda784f647689dc2aa1ed9b9e867e426203fb0da4cc9a50a9ed200cf4"
+        },
+        "late.97539d1a5177": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fdbe61c6bf99499cef1e68dc96ba15d033aed1b61c1d6763c54d9375fb988f99"
+        },
+        "late.9786a2ec3e5f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ad38f7a6f6c9b80db6fac8bb1d5b787ce1e18373677e4b8196ee629b193d816c"
+        },
+        "late.979fe91b5525": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a8cbc6d2ce4f9f66dac898b42bb9f714004129de159046e96548f636e5e10c41"
+        },
+        "late.980e5ae475a5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d556eec9614e5a1d23b16ff50b75038575be3ed788b131ace7caa58afd30b3a4"
+        },
+        "late.9815a2dc69a1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "469d28d8993e638822564ba2157f548338b8d37c0377455e7847d362a9aaa53b"
+        },
+        "late.985a6b77c72a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2376321fdab85929bb933cf102a72667fbe0b4d5f8bf55b8c3c7fd8ee7e802f0"
+        },
+        "late.988474e9b839": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8fce2bc26d617d614f6a5b7d65133c3e363f61c511176d221fc70c253083c8c6"
+        },
+        "late.98fe87457bf5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3d0216a132a1d81b30d76a3c53fb86a1737778c9eaa718a70df4d607fc867345"
+        },
+        "late.9949af21d9af": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ef17e7cf302dc4b2b4a0cfa185ff38ba5b78196a4267043aa1a18d74b046202e"
+        },
+        "late.99524e452fc8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cfa35cc99d6ca28e4e50fd8034e70dc06fa683203fe848c7634db667f677f29b"
+        },
+        "late.99b468d14bf8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "398d496d3abba0bbaea8ec0fde6025b0d883e83bc41f15e6c48aa96012124946"
+        },
+        "late.9a0521e71589": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "164653051562daa54d7f48effc172808096a6e8abe974d04c34c4c650cca3c17"
+        },
+        "late.9a234c408083": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e0156bd219cabde6f924c3dc1a8d93ce30d8ffcd2b9ed8f68fbfe99ed89a2ba8"
+        },
+        "late.9a45ae3071f9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8480e4cdbb8995e16841e2a761b7b2f73e5b5b8efb041c1cb7182d0e43e98bc4"
+        },
+        "late.9a5d94e14dad": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ef79b8723f302f192110b942c25841bcea873f6edd90fd69fa44c1310b8d6b98"
+        },
+        "late.9a8919c8045c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "95f22529863550e29c2fcb931ed81a94cae22f456ea5e27a3bbc3ac86a5e2b54"
+        },
+        "late.9aa69598240c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dcd562ccdbb7b0d8994dc1bf8f40cc3d419d95346b5c209a2a0d269ec77a4ba7"
+        },
+        "late.9ad3a14e5a20": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f00f02549d2a5b043a9c13682f586849dd2c34e1949a3dcc9c6f5ffdc0f50927"
+        },
+        "late.9adc056f3dd4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3fbe4cf67b4ffa5ddc1b707e93400e9924da7795d3fd7475006837a9723be67a"
+        },
+        "late.9b6d44b7494f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ac941dfb19c2322d8dab93e0946f9e4dfa1c05c3ca7d328a6f8af26991c4fe94"
+        },
+        "late.9ba5eef5f0cb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "742355310e511bd0cead46467327f34daec0b7dc6111a620a133876a77d46144"
+        },
+        "late.9bf72f5189ea": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5779e8a553f52fe64708e098772a05c7cdfbad0a0527038dd572604d35ddafe3"
+        },
+        "late.9c046e99ade7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a9ee34bd4210b851ada2d2ed3f7a6ca61b5c9538fdcabe3d407af8cad9ca8632"
+        },
+        "late.9c156a8d1c3d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e7c4f4b40287cb9b37949c97cd749d1fa48adbc35a1205ae2c97d63287a0ef13"
+        },
+        "late.9c3900e943be": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae6e5ed1bccdd0b2356c9849352d9f4e656fac346d6510fecb9f7ae1cb35d8df"
+        },
+        "late.9c3cd8846fd7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d4d6a6837ff6239407cf8c0f6a0997a85eb13f9f85a7ed26a4c7d87bce8bc914"
+        },
+        "late.9c41a13f4040": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "23aa9feba98c73c7dca8f245f63f050be16b08374ae564b9ba6d89a342123ed2"
+        },
+        "late.9c52711df593": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2aa34e842044155247fb22fd2855e402b1ab670abde2578c04878b9fe1ae8fef"
+        },
+        "late.9c76bea961dd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "72243c05c0a9af4fcbbb4d927424ac2c522185469571edce3f4006ab8fd6ae3c"
+        },
+        "late.9cb79b7dd426": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae86bde17cb4f7f0858f7a49e0772af541d8e0f5432a48420bb267299851a6cc"
+        },
+        "late.9cf405a2341e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cec133552f5f8ea54c64c03ebf5adeb4d3a794e4b4baa07e613c1c9a9bc1d53c"
+        },
+        "late.9d0c04966dae": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "32e3e104dfb87fcf10d3cd84a39b97d5130730ba17778240b90ac8a458d5ef3c"
+        },
+        "late.9dc581145569": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3486c817ea7e00624a85c1e62bf3016353315b9bae603567662b50d9de11ff06"
+        },
+        "late.9e44ce9a519b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fb692da6bf307e736910bec5e4851d4b9d20f642ecbfac6d63cedffcbad3fedb"
+        },
+        "late.9e883dc0c760": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a0a60eac8bb55b5edcc1852fec9ddd20f6b9cee7a04b548a9fc30dafcda04e48"
+        },
+        "late.9e8e0974ecef": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c0e7d6e45c4c120382ea08c35c84c63c91c9b4cc645428221bf276eb697e9b12"
+        },
+        "late.9e9743d6e82d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b9589f5d9213734bba2c26a55d036753e0dce5592b159273db30ba5dceb6f4f3"
+        },
+        "late.9ece05ca0078": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "289d6cc39c9044e121b5891a640db83154938a1bdc899d561af7c9de8900c0fd"
+        },
+        "late.9eea7a6b4187": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "95b994acca7219894ac282ecc0f18f086e6bfa2fb4dfc822bee8d6b09873aae7"
+        },
+        "late.9efc509bb771": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f84e5109aa4065545ca188705cadb624b2a0044d1f95c89da0d3c25ab906f93f"
+        },
+        "late.9fa2bfef4b9d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "368f55d3bc3b0b320b90f32763cfa004d92edb4084b264d0f643bd3fa91f77e6"
+        },
+        "late.9fc654479a0e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "37f996142fc2e5c02e618d277679a317d9b310300502de6c5928ab0410ca8849"
+        },
+        "late.9fd47b66b79e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3f9edbc4f9d58db004ae9f1ac8b733b7c077f049d5f3a849a8aff960c4fcc19e"
+        },
+        "late.9ff1c8124d88": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "109b9b21504e23506641b6e53438a6479ce47c614e489ab461e16ce5f02a2923"
+        },
+        "late.a025b62e11cb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "634c2d845978175dfc2a6a864c1730d3fba49d93a7e1e4df91ea91f4b60961bf"
+        },
+        "late.a050b1bd8733": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2a57298e0d65864249938c6305d89895cd1c8ef71edd7a10e475e07668e27deb"
+        },
+        "late.a08a4bbe682b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0e5dd37672f7bc5a9c69c9e047afcc243f71f8ac1f5b1aceba05ad564cd0b6d6"
+        },
+        "late.a10066308083": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a44d0fc924a3a28b2be360c8f751b098b966073385d43867820d49321e6880f7"
+        },
+        "late.a16c5bbe4bf9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0ae198904630c3aeb3dd5f92ceeffac852f7fd2e6cba86307638b6a7cec0f006"
+        },
+        "late.a19b8b67c24a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f47cc217cf7f1e4eab749ca38b201356bacbbebbbb3e7ff1343d8c21b2f928b3"
+        },
+        "late.a1e327c20874": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "48e2d7b2d530a7addecd1df6ed67129742de30f37d5e1d1e64cf61f1c392532b"
+        },
+        "late.a2073fa9180a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cbdd1d39d989baaab87f911225a1d7cfb6d2538013f03f5785c9d35ab142079b"
+        },
+        "late.a2452bd2011b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "36d999e8051fe2d151cab10672e7b1521d2dd9a92da25ff012d1671fb6e4bd35"
+        },
+        "late.a28a73a982cb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d184ad27a38f3efae51b0db0bb8af9dbf36e264f324ffd4203e6437f4d5336a9"
+        },
+        "late.a2a1daa1273e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9c5729e454cf373325093ae3dc1cfd9885fbbc8c69caf531d9eaac3ad86dfc79"
+        },
+        "late.a2a99a1d1b03": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c31c51f675b01b2a84b6a253bfb85d724ec3719292a42405fcc51032cec38f73"
+        },
+        "late.a3089b7fae27": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e58d77dcf8b385e6ca424580221174efce566e80434b963190df5e575884b3f7"
+        },
+        "late.a332d0afc6cb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2dad52a6a4c75f94ad6b8743599cff3d9a029c7c596d759ded7930eb7a725ea1"
+        },
+        "late.a34f5bb77d10": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d80da70c37a56db2d259fed9c01072faefb59f7dfb233afa68dea7fb7d13b864"
+        },
+        "late.a4011c391f4e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4a64fbf832c63c5220320fc8f2215a153f135675beb3aeb70ce64e7debeefdbc"
+        },
+        "late.a42768585e34": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d912dfd07cf8455a4255039d88785a95d4d086fc5987ae09e0796e1622a0e1e8"
+        },
+        "late.a431e99cb7fa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "83dce26f7aef8aecb7829c64c5aaa29c5d4f60f0105a70c9e5111a1b19167ba8"
+        },
+        "late.a43521bfaa26": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e29015279269b1029a3e44bbbd1622f60258502019c520e3bf55e3bffa03aad9"
+        },
+        "late.a447a8fe6b96": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3e7a4aa5298f10726a913af54b41f74a4d8fd9beca32efb2e9df1a612386af09"
+        },
+        "late.a47a73c84988": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "014afcb8fededecda4519d2bcbb0207844ff8dc30ed5cfa89cf427cd7ed396d5"
+        },
+        "late.a4e2db400d69": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2c120d223302c5d1ecd96622e6acf7a2248bd58976390138a19b05269f35a936"
+        },
+        "late.a4fdcbcfb610": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ce5589d46107e24e51dc5cdf4cb78a08100de1853a8d4a47e6b426eace8426fa"
+        },
+        "late.a5709ec34538": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bba49db816fc0c88a5ee24d214a218ce94fe71ce891da4bd5841da2bea5281d6"
+        },
+        "late.a58fcc71c077": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2dc4e5dcbda09418210feeec87e11f5f265de678b61898c108ef4ac45e4bfdc7"
+        },
+        "late.a620e2ccee74": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c01aa782a1fe5775280736a76e954ac9a9eb2ade6a4dc15cb181cb591d787ec8"
+        },
+        "late.a65899e146fe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4bf1052cc4752360d391bc360b2a73b524af847ed03bc1f775a3a082e1427cd9"
+        },
+        "late.a6d4466ebac7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3a205bd414517b202f03a6bf8911cb9d478424d91b9f22dc9f382e04c439a8d8"
+        },
+        "late.a6efd7142e5b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c715170b1d6e101955ed788c92db7fb8f905f0e52aefc322cd632f9c4a781715"
+        },
+        "late.a7521a7bf13e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8daa8b58ab1615d18a63ae49a5bcdab06a56c9ed59be05140523c504bfc934f0"
+        },
+        "late.a784d65f1bed": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "53787f4665df6f91d892ba242fd14fa9a242e138a984034650d74bc043dd78f9"
+        },
+        "late.a7b93d2128e8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b47ccf6a866623446835c8cbc9969b65323deae00d4e9b721ed7a40539ddd3f7"
+        },
+        "late.a80ca4d3526e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7183b1e00c3a0b3f63b38aecea58fd504b3958842475762784e53f9c4e7b01e9"
+        },
+        "late.a83765d5291b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "abf73449754d1730df1458fe5277a166e1e37b9ad750ce6b4ff652395ec8a35c"
+        },
+        "late.a84e3dac7595": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b52d185439a8ecb93d33fc3f60f469c0d6fda6fb3647aa614c3ab64c96f4ec62"
+        },
+        "late.a8618e4a8104": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ba410420228f699f3b3de1389228fa5713927c2f2cf634360d56b04d364ea0e3"
+        },
+        "late.a861940108ea": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d804a66ad083067d8c9a8769bbf1acbd74c710b2dfda185740dae6f3a4afb050"
+        },
+        "late.a8acbb0f3437": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9813a7ebbc201602b5d39801b122d06a2bac54679759a188cafbca3884d582e8"
+        },
+        "late.a8ba44f07d53": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0e805602df8c45146c26aff3a3c07f6797a6c3ee204c3fb05d880e8358c409c8"
+        },
+        "late.a8c47c75c90f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "13fe6b2891c63230c8cff0097e4583518d985f1082a6362659ca9cc75eed3280"
+        },
+        "late.a8ca977388a3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5ef2dc83df8c3cbf6c029e1e70b4094801e71eaff58ac93416782d9e7e2ef070"
+        },
+        "late.a8d628c3ba7e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "52c2a6a31f81184d03456a1eda3eb8912d4e5cbda1759468a0d0bc3728158557"
+        },
+        "late.a91015f51776": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "21be96afd341403fc892c56159469efe621162479f7c4f482b8a96392c2a6999"
+        },
+        "late.a938fcff0325": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dc2910b72854abeca9b33d91078d8f8882fbd4255496ee110c807905635add29"
+        },
+        "late.a98e182f31d8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "24ab7ee65853151556aa26e9f2f2526d17e84419e26d02e7262d8a626e39bbd9"
+        },
+        "late.a9b1802d38db": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4d0d445366c268e1476f797853647bc739f31210030c9e05109fe1069c18eb5f"
+        },
+        "late.a9eb10d23009": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a658832bd603af0a3051f1528a2a2837baa9e689df4a032a206c90bc28b41190"
+        },
+        "late.a9edc5e78a11": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "afa3ffa0fe816b7635df2c51674dd66dc284f449966bf70d3e9859c6ea13a4a4"
+        },
+        "late.aaa989eaf4a3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5b04398b94ff0a88154fa6427a080718d01ea30b43e381e11e82fcb1837e85ad"
+        },
+        "late.aacf218cde23": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ed24cc0dda1975dc327af15fd933a70726a4a354e9c4989f7ac63cbee042218c"
+        },
+        "late.aad82db2cb77": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1e53884839f76fdac9671f25bccbb26060852c2e4e878f6220d74aaf59b66d55"
+        },
+        "late.aadd69c95094": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c0fed410a9bdfb979dabac31a0ed9163dbfe0e2ddc1fed148a737b140b8d274"
+        },
+        "late.ab350b4c6c35": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "92508420ca757aa2abe2a0d3f60ab56927391007f544af5026cc358459d7023e"
+        },
+        "late.aba98268ad9c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "11bdbdef8e4e84a49928c5297b1e7e30ae276735ebd1fba88868f6807df660df"
+        },
+        "late.abc451d1b9b5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9202eb3b44ebd79fff561c7cbb8a679fb268478ce852a29ba432943f58ff68eb"
+        },
+        "late.abcc99e6cf73": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c2b68f1c50588ad4e14ed5e6c2708289c1cc4abf0f9f6e1ceb2cf53207b8bcb"
+        },
+        "late.ac59f1baf7ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7562c858df5c36d54c86b5857e5ad8e16bc9a959e165f4f94bb875e5df12952c"
+        },
+        "late.ac74290c9fbf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8e15def92f5acd2e8705093ae0a48efce7d6b650dab2e983800ef8acff8a9702"
+        },
+        "late.acabbc66a68b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3716ffe545c9380c554923cd18c4ff662caa486910035b4d9ad36e6dc931e0bc"
+        },
+        "late.acde809e77e2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6698b95030ca8d7ae2c3b42b0c2ce9f800a8e17e37e83559e8c0398531b241fe"
+        },
+        "late.ad90bd8e3c51": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "55ecbb22de697858cbf9a53e288f41c56d33aaf76b9ec7505a01d43437285962"
+        },
+        "late.ad92047f2414": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f5fae05d5290597e9009a8298d14a312caca3fb8457d4285ce6a01a063cb6071"
+        },
+        "late.ae519d66dcdb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "df4cad927d755e38eb8f1d163552565ca1e738bf46217889dc0ef2a18837f9e0"
+        },
+        "late.aef36502d67b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4dc08fa5817bfd4eef339a4f9a9aaf262a59b7458f93703fbc2ec473ca5f0efa"
+        },
+        "late.af16df5536ce": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5a50959f8c0fd997caba6991c40fe8299cdfb5dd27cf711e1003bd7abec0f425"
+        },
+        "late.b00b0ed01f87": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "246baa14dc50a5d6aaf2fc42d16a0ade84cad7efee61de1a85d5f1c4b713e990"
+        },
+        "late.b01ad65d16ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "15bfa4561739d840655cb045aa4d411789a12c273c2f6319e1bc0fed344b3a47"
+        },
+        "late.b04e85738360": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ba28b03596bc2cc564f34261b768e5d2f91dfb06bf6fedda2f8f6fdfaa9c4ffc"
+        },
+        "late.b07b7467ca29": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "61aaf4574d0bf853e3031ce1e071de3c72eec8d5e32f29ec55b97cf7769a4bf8"
+        },
+        "late.b0995f4c15f9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "46cce2ca76afc4dd732e11b05c91e5f3ceacd097e19183517fa68ee9284a1506"
+        },
+        "late.b09c738b5976": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9cc6dc636ddc4421bbeb7c1c9bfcfe7fb5ea8a2388f76366b245ff06e09e435d"
+        },
+        "late.b0ba5b78de25": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a81e1db36e6e7b0199a72672a9bb1172558629e403a186a6e02e05a18f1b5a0b"
+        },
+        "late.b0ff65803e35": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9c804c3e93db18b6ffa1047623b4a90c27ad252ec53f95d3c714d09681b7136c"
+        },
+        "late.b157f9096488": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e0434a6a94fd43a3343952260edf326727a641d42541db63b6c38480d13818df"
+        },
+        "late.b15b710f2ada": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5a7a7ee468040e86a5722f6f2fc9eb807e9a6758b786039e0918df3911c6816c"
+        },
+        "late.b15e5360a67f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "633ce6de7f2a71721147d2a8832e7759cf9fca35100b8349283e2d3c92bd2d5a"
+        },
+        "late.b20d862dda45": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "40ac6aa75f05bf133bb628d301c015a4179592beea6b4eb9dfb505249351a217"
+        },
+        "late.b23549372a4e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6f988c2a50d00c3cc003b8ed8b172a9c3d4bed89c2e2d6e253b29a590d3d2148"
+        },
+        "late.b25928c69902": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bba745e2169cdf3c7fdd32f89c40fec79d230a8b3b07720a22a9be5aa9086579"
+        },
+        "late.b35e0445f231": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "89a8bfbc6ca4e1f1eba39367e3d9e8c2611be93357b178a6a34c241cba7f4b17"
+        },
+        "late.b3993d480265": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a15dc986a41c4be9b5352705d14f2c5f1580da751fe757bbe989f1db59665000"
+        },
+        "late.b3ec6ce81554": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c2453f2927b38065b99d143663296ed2ceac814605e6cdc01e1085a645ccd177"
+        },
+        "late.b405f04d5e18": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9f5777edc1a939c2dbf2aba555446a8e5dc01b94bf9a8efedf4f76c5c94f2f18"
+        },
+        "late.b4171da9a522": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "89587347e98fe2cd3038c04d87310109068334ea9c888728b27f662207d5a405"
+        },
+        "late.b52b36b7269f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7ceade8f25b58fe9436d9068b6235f8fe4539810f8bc835341078afadb75042a"
+        },
+        "late.b57788c4aa13": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6065606706f9c95b99e30c753ecf6b2b88032acfbfd34c5aba9050d980c010c1"
+        },
+        "late.b597ed27201b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f61cfa2c6509dfc3add27bd5b272343b3cf59d1c01afb5cc67732c53dd19a1b7"
+        },
+        "late.b59bc4ec67ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e1bb12a224f0f888afbd9e3b430268a48c5d4eda45e7a7edc6facb8cab2e65fa"
+        },
+        "late.b5e2c3f4104a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8fa2280f84ae2b42057026abe639d94236708781ce2df16578039c260ce89015"
+        },
+        "late.b61dcf739659": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "28dc229cae00c71ecd7e2279aa09874f1cb95badec7caa5334893fe80b3429c1"
+        },
+        "late.b6c77404bc3a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "69295b3f599d39c4409efb37034994cb7d459a98892b5eecf4b2a9d42b6d5fb3"
+        },
+        "late.b6d7cd6dffc5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "82cc501ba68b0b14194511fc521102298b4ca21656a83012a7591605b6ed2e75"
+        },
+        "late.b706db25f9f0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bf8ce8cce4aa452e5363c5f98566bc9fb4fb0a89d733e93d1853c080f93bc556"
+        },
+        "late.b71681d7bb8c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8832a5610380309640be1b766b08c00e72336c51d46eb50a11f9515b0de181cb"
+        },
+        "late.b745fc8a1236": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d8202365161d50bfbf0d533ccd21731e5e10060e62335f31e3bb99bd012f2f12"
+        },
+        "late.b7ce0fde8d06": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b80f228e3f080deb5540c997e2d22b8ca4b81fc8ecd8930a70091b9a3dffeec6"
+        },
+        "late.b81b8efa3959": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dc89830a378c0ee669916c8931adb958a5ecb6019254b2fae858078260b619d6"
+        },
+        "late.b81c8c80cb62": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a26a94fd68c5c4117d1dc2f7216ae2265b61798b00325d1b02d11ecbe397f9e2"
+        },
+        "late.b840bf086174": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "95421cfc998786b986c3be3105be00ddcfdc17727836fe2587a013b2ce6a93b6"
+        },
+        "late.b847dd9e6574": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c472dbde871382a242127051d9ca356e42b9961cf10b94dc57e0f8229ed484cd"
+        },
+        "late.b8588ebfc604": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fb73571bc3a6b6a958e73f6adf2bb06cd1add9e232783833ed8c8bf34b2bbb4a"
+        },
+        "late.b86826c2f89f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b8e4ffa4e0252127819660745216b74b693e5b7542ef0d539cf84368a205e1e9"
+        },
+        "late.b8a930e5ff2d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "97102cbdb7b5933703d4753ff7ecb03a74374e43b4f2bb5e7a58af10e2e92157"
+        },
+        "late.b8b4c632d46c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b399d8776d55472390ea95c01475d0e613b0984d14a645205c9f351a183f3aaf"
+        },
+        "late.b8e2c390b3cf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "87ccbe502a8e83b7563c1d42ecad7b85e6c7e4d28a4629ec36b6c6b596f1acba"
+        },
+        "late.b9504b700c67": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ea403a83d5aecf71db45bd69aa5ce95b3335446180fb17ec8371bd9fef43fdd0"
+        },
+        "late.b962599f6b56": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a8a98867ce34dd81912c3e3f57496949856874308e57b05cd5af60723b4da87d"
+        },
+        "late.ba025c7163fe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "72cb9310559e6c8adea963a710ca65d3883034f2f3e622441a08eabb974364a0"
+        },
+        "late.ba16b1084c32": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9e180ac12c84ade6d1624822f81d829210d12a058202f63214dab15e8ef4fac7"
+        },
+        "late.ba93078fbe0d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ff415bcec1f6e271dcdabe3ea61db359026af0a6ae4fdef28c6cb3272ee3c8b8"
+        },
+        "late.bae3d3e68eb6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "03d16e29bed36f685ded3b528161f0457ad966707a9109f41d4fb45de7656158"
+        },
+        "late.bb0e719e8150": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8ef93182a9b20e94faafff907de99763cb9d4326e5a64b38b21ca697050c53ba"
+        },
+        "late.bb107a2d83e3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "adb8bab2dea5fe210023b41182f52389be8f5f0a2b50edbd03d9bc6b36b1329d"
+        },
+        "late.bbfa773e5a63": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d7cf5045c01b2eb981a4b2640ddf66c8de124d3874c0df894afd23a04e256eca"
+        },
+        "late.bc77eb9c482d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7b2b117a0494a30073b507818735204fd06c0c144f1366f6cfe59dca8d07d347"
+        },
+        "late.bc981983e7f5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9a8bb238dc855a1c76baa30a147707c5b5b7694f779cc96228b3da99468efec8"
+        },
+        "late.bca70bf7a9fa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c8dbdab1ad6116d0f58aa31a3f139286a8ca148e8277644167f4d7581df0be2b"
+        },
+        "late.bcbb3dfd4a2a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2938d48d9c1630b75b382bcdf95916f05e5ec2d09e0b968be9f8ef4fd7b64083"
+        },
+        "late.bcc160458e33": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9bb46a2a5bfbfc47b02d9f6ee6a41a5970a99ebb8651c04702311c97d777d6db"
+        },
+        "late.bd45ba80613b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8ab9959b990c04de0e91a55d4ea74d6f99d13512064d534d1077058d9f02c1f9"
+        },
+        "late.bd4b78664c66": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "10aeac29a911799663320d5941248496941aacffe3850e213624d7693fa58b5e"
+        },
+        "late.bdd1b500d2d5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6eb7946f04bbe5cf403e0cce4f30af42e874ee811ae23ced780131d00815257f"
+        },
+        "late.bde38411ee40": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8f25f5e8e069468c125269de9620d922c7aa1ec8cf8e8c6b0fede383bf063cdf"
+        },
+        "late.be0dbd7963cf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f8263ebf38241666b65e1d40edde1ba91dd39ab5674be0c85f8881e5282a8280"
+        },
+        "late.be28d6d04a95": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2f180c63a87931c8f4d7f26fe89e1d1fbece1a3e7b0824b35ca8a919f38ed90b"
+        },
+        "late.be62fe79eed0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ce0688617abfeb58296d01f6b65462f089de58659c7388aa862b1a42f681faf7"
+        },
+        "late.be887505ea82": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c11acc3f9b164a1613434600fcd41bb2c8d028c5045f6d1bd85574347e8f1f85"
+        },
+        "late.beb3dd7ba001": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "21da8efb52e3365f993eb81fe78a2151f0edcd36d43b9ea431325219dad66036"
+        },
+        "late.becb7b9cf59b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bafffec1445d25828c644503a565d4fdb74a16d3d1b5a91ff15400b9b8a0dab4"
+        },
+        "late.bf1d17d798f5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6a37d986e24174e1172d7c716dfa9483ce11ba3bbe860626bc45b3bae719416d"
+        },
+        "late.bf93e5ce8bc1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "72c65752a1d1bbb18c2ef51bd29efbb8f5aca9ad1f5041c6d234f5991bb25c00"
+        },
+        "late.bf9ef5c63e3b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3b08b1ad64afa59440bfd9c8fc4809976c4017a9500bc3de93dc8de4d1a3b85a"
+        },
+        "late.c06b087876f8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d88d53c93ce94662b8b7952f3b6195099ce55bc5fc035d7b41f47e316c4580c3"
+        },
+        "late.c0729aab7814": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "18c6acf97a3c776ec77d6bb86059a77cbf436de87883c065b857ec06b82a326e"
+        },
+        "late.c07f5ed8782f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3c7bad064ea3860b0b08515e11bee462fe7ddcc7c630e4b078d4c598ea71f0fc"
+        },
+        "late.c0901f2c692a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cefac9b604b6429a9bebdd8b5372494987f380938d499c0ac2e66ba1003b1e86"
+        },
+        "late.c122250ac5ce": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "94641f30091d43ad83e9a38e2e712e91b7d5454b31d2dc8ca1a258f4d5973c3e"
+        },
+        "late.c189e8bc98e6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c95cc79d30bd674c50f11c985053d77bccd060ebd40fb402edbdd6388ef9408"
+        },
+        "late.c1ca6af79086": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5c6dc7c1fbae2df3fb0919e858cb72895aaac99a7d83cca0d377830dc552bcb9"
+        },
+        "late.c1cf3b585499": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "53d629e96e71c3bc411980028d77a5ad1d2a6ca2fa58f9fd1dc984b697107048"
+        },
+        "late.c2dd2cc8c8c8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d6ee39c69a4e31770662d3b6332ffafc608f3f33914b8fef8248454e5d84d5d2"
+        },
+        "late.c326a4660b67": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "20c3bd63c947c393b50a6b38ff42d3a15b85ba8097b293670c4a276ed791c281"
+        },
+        "late.c32a0147f2e4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "722741535b346e09fca7f596749d8d4ecdddcf5fa9289e74e3c3ba6c17d5e329"
+        },
+        "late.c3cafd5842d5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "076fc0b0ed68869d7f158a0389da75a9e552cde09b1390ff88768822a8ec035c"
+        },
+        "late.c403af6f3eda": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fc2939b60123eec116ada391172f44080ceebf6264802374b0bc89e295737d2d"
+        },
+        "late.c4f6301d8970": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e510465a13c1b525fe5c3401e037206afe17fc3006c92424ec3b4ec291cecaa"
+        },
+        "late.c539bb74a220": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9b3cc895ae0bd8ba7cf4f13cf2ce046b399f244bec481b536769698e20dfc300"
+        },
+        "late.c54387e026e2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8a85600503171bbc0a536a576f9a424542305a7ccaa7bd01fcb52b069c158f43"
+        },
+        "late.c566305ab9e5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "db6bfe139c81197b1b11c7d533b41ac6cb21266922f03100efd02815c2d89915"
+        },
+        "late.c59fc68619e0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e18282af9028355ab99820f39bab0a2953b51231ca653d193c39f480da02ee5e"
+        },
+        "late.c5df583bac21": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ba3881d75c8fee4858849459c3c5d5322e11f926696df9779f7686e6548f339e"
+        },
+        "late.c645e1321ed5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2e2b7294753d08081788a6afb9d288ee2ebc283e24fe29e7298a2d5219755b52"
+        },
+        "late.c68fef03d53e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7f72bbe423178a6a4ac2c860d1eb26df25be4e910a5b1304c6e65a622c0c3bcb"
+        },
+        "late.c6eac8a33ba8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b53f6e41c62c8b62be51f11d6ee6b9a2d333f4f63fc2907813f5939babb188e3"
+        },
+        "late.c6fd3870c86e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9ab4f7a738ebee1330d4c6fba51a09e7403c26188caf7087f49c2818058a66f0"
+        },
+        "late.c7174f7c86f2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dff5f448c193064d0c503f270a0a091b65c932b80103b9be0e0f39673f9a8897"
+        },
+        "late.c73a3498a3f7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a02c863abcadcb4f742f008acbd281d8f9743a66943f12b82ac6175f80077799"
+        },
+        "late.c87ffc4d0d7d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f6c3bb601d6b9470005ffe7d531a7bd4171a176efb899f576350b33d65848e61"
+        },
+        "late.c893e992ac93": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aba00a0555d1126368b9406aaddf0eaf1851a2a8b21600556a8356fbeefb4bf1"
+        },
+        "late.c8ba39ef020a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5507786807c3bf486a453b5b296749292a8d7aa6ec09e90e40734678eee3f0e6"
+        },
+        "late.c8c7a27cfa38": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a56ecf6fee5df76f26855b50739e87e23bbca0142ad3feec0d585ba4ef8bdd8a"
+        },
+        "late.c8d5e89af011": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "66d1a4ee6c70cdc50b683318356a858bc81deb613989edb15110555916006e6b"
+        },
+        "late.c8e54aa26fa9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "46b50d1811be5eecf9d6c64024095cb4b246c539b781eec851094a08028fa285"
+        },
+        "late.c8f1106abdb7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4dff93c52049b1c9966bb615e190be45e4a5875510cee5c451e80baea96f061a"
+        },
+        "late.c93f6536dcfb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aa956cb1034685708ddfb1ab8d7916dab12aeb2b26a61abdf42f3fae6702dbd1"
+        },
+        "late.c94c7cb8f662": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2ff3ba5da3e580287d62945f6e659ca5495d118aab63238bcd8b430f5736b7c5"
+        },
+        "late.c9a08425aa5b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e3ca8663f26a67f9c02e35afb021e0ce45bbbadfb36d79cb7460144593579455"
+        },
+        "late.ca0299459d30": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f679075494d866844bfce8c38b27872434544ea645781bf19f6b61254c7dce36"
+        },
+        "late.ca27ceb0b103": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4c0c5b97b6fcc9054d9936af34204385b8443593e011538fbbe84ffd58e1d3e4"
+        },
+        "late.ca97399dacad": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "696dbf0cfd7b161fd0678cdd238edc6c7c0af3735aa719d3a7f0ddafb47e1f9a"
+        },
+        "late.cb7770ba15c1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "97936ca80728f7d98eae5abfd5a2169ad07e0f3670c2cf923bbabff7193714ad"
+        },
+        "late.cb8fa991d6c5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "90277246bcc993f6211be3ddbf797705fa004a35b9fb81eae359b5493cf68e5f"
+        },
+        "late.cc334cdc30e9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "22e754c60cfbad1ff8898b0d0f993c0f9147341028a08163406e56dea7ead239"
+        },
+        "late.cc5afcd7d78a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "436f179cb860eeecfb2d4e79de93b9a9d0b92d07d473460f7ecf823f78b53b49"
+        },
+        "late.cd09183edddb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "39734099b7d0f28d11e9a5d3e5a9bff196a3ea5eb4e932da8021651eb8abb679"
+        },
+        "late.cd0bab9bdd62": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "599efb45d39baa2b3be354a31a977401d9a1ef8e9cc5de690079f03875de7ff1"
+        },
+        "late.cd0f5032b793": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a057637e3f5e077ce50061d9597a5854878e7c17ae93846985d72325f1d28b53"
+        },
+        "late.cd343406d91b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a227e075264ba3923a0f0f02493c100e76cb0aeec07dd703fe390a9637e2f72d"
+        },
+        "late.cd6c977a7bfd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "93975b31b6064252d3b3e1408e55f90b41ae6bf52ca733d56d09eed10f083b2d"
+        },
+        "late.cd8fae810f3e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "93f2341e30c72973aae0263174c2d4970bea5ea4d0c18fee86810781613198a4"
+        },
+        "late.cde4f15ec930": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e76ca5d6b3b155e7e923e11dee15952adf8f8794a73fc8d0a7f830be4ff9f25a"
+        },
+        "late.cdf6dd00acf0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "79a877758ce307fac1d10de2adf0f2c732c7f3b794a49d1f4a48f5c145592709"
+        },
+        "late.ce0e33741057": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0d9e605076898cd1f0b19d05fe18308ab301370b69784d04552a335fcca37c33"
+        },
+        "late.cf367e966f77": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9a2b04227efa1bc2ee7a0b0bf0b183e8d060ab2a3f7500107f2db5781c84eade"
+        },
+        "late.cfc18fab7460": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a7300e04f1a3ed8b0c1dd562577efc4a4df61bf79a8ddd21a7854050a126ba7f"
+        },
+        "late.cfc525c51584": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6534c2104bd60d59710a79e53c25481d05b9b36ce896770efee427da9c7d3a06"
+        },
+        "late.cfca71a113ca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "046cc29b9884888612f665353968e8d5d29c25843a3932497715f6c9f0243e77"
+        },
+        "late.cfe7a5c177e5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "993bcccb6bce560af0335a150f8fd0b98c9ab1661836ebb18501a88c0f0a9444"
+        },
+        "late.d03e3e3ba42e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f0c551fb384fb6b326347fb78000cc291f85d2c69d21fe4493a6a61933b39da1"
+        },
+        "late.d04d53d6039b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7200c17169e2aea2c4a8ef6d6c7d54c1d6cfd447d23ed7282460e28ffd559984"
+        },
+        "late.d05a347ecf59": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "db97a77ae3df9a306771f9b60b9859d525094f01166c445240f30409ce33c252"
+        },
+        "late.d064eb512eb9": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e530d6a61819166d4fc313fd6fa4388ff1fd5b438240593c6657ffe81d6bd62a"
+        },
+        "late.d0cf1bf51c07": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4d13033ef5b32618e1b5db374d8bc79802ff5e5c86e35c4c488c47d2903b6686"
+        },
+        "late.d157a09e51b2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e43eeadb80a9db34d895fb26324de87a0b24547be109da785a1ab06521e9bdef"
+        },
+        "late.d1869a351f70": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "495ac7cd316ec4487d1c4eb57069300a635bd704055da16f90ab0819ce2a1de0"
+        },
+        "late.d1cd398e280a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b40db0e0413f3b6bfde1ded9ac3d9ca96905e597ac1521a85b66db1896574f6a"
+        },
+        "late.d1fd60fd4f47": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "348a549b5bb3907c6e40436649ea12a968603dbd4044a2b0179c44adb38ef4bd"
+        },
+        "late.d26d55c7f815": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1a6dc1594412aff6f7fa575faf9147a6edf88a71e1760a454341d9801e22277d"
+        },
+        "late.d27ad1506bdb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d49702e778511b978810a5df41193e74dc83638e2769d119c4bd2917a7dbecd4"
+        },
+        "late.d2820afad9df": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "907fe3738f423b8239c72adc78c795858eea9a24452535be6de0e04d7c360ece"
+        },
+        "late.d2c44762e23f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "64142f81e0d34645bb4515c8536b7563a6331c8ba4d70a593d7a131e81a7e6df"
+        },
+        "late.d2c511f99dfe": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4357785e6fee955fddb71bd31c5d03ae1f90e16c39481253ea6f18b85fc2f131"
+        },
+        "late.d2d3db02bf2f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "af13162cd2048b9dd7cdca5d5641de6bc29ba4e7df28e4bf90962bf178dafd8d"
+        },
+        "late.d3035c2da8af": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1b6744a8a95ac53ea2c6c27f41de86ef4e684650dc993692553ac6a41d7484a2"
+        },
+        "late.d36b88babd46": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "66ea67b2433fc056b064e8586e3078d68da2ed1ce482a235dec25db480838cac"
+        },
+        "late.d3ae35160b1c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d45cbe1dcfd41c43689ceab56c64bcf8850ce9290868bfa0de9b6695105f3b7a"
+        },
+        "late.d3b992428a15": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "18211badd5d4228ad13cf724fb8e0817d8a72031255c9d635f30f95809940f6a"
+        },
+        "late.d453659f54f6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "10ccf761543fbf9cb84e10763ad0e8d2e3e9a3bfb57fdce6a3507750aa48d9bb"
+        },
+        "late.d46267a04c51": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1f0da6bccf6b1e7370a5e948b0b890a7899434946e5324a26284a3e41a2d5dbb"
+        },
+        "late.d56ba4d6ddd7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dd705ef801a20f30558a1424cbc70ff57526a75c59e205b7b1f6670c7f54de51"
+        },
+        "late.d594c2cc0a53": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "eaa25c327f22b7b002b224771775c9fad7cc0d1dbc30acdd0dfb2b44c2f6755b"
+        },
+        "late.d59ebba26be7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "40ac1d44186f08e94d0928f0e02d7dc26cceab768a4f4771cd6b1f15ddfe3029"
+        },
+        "late.d5b0b51a91d1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d21a691a143c08219526f08674cc34635629acff3ed148d62597c4ad37036553"
+        },
+        "late.d5f0faa79839": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8f1d04718ab81a7d5780517bbd9d028abd96e9fc2281e2afe47bebfcacee12d6"
+        },
+        "late.d65ea44926bc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "be5ca5334c683378668a320471b651577e6a2e2e84e215a8a8229d1e6cbaa4f4"
+        },
+        "late.d692b6499cdd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2dad3b93a31cb869eead86d158c0231afbf4e2ccf51735d59e48e7e6cc6b6ee1"
+        },
+        "late.d6a1c6964075": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "746b389f92b13ebd73399c18925292714a8f8ee3c5319a3b4851b45bc9cf5e59"
+        },
+        "late.d71766505c77": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c3ab281bfe31dc1c6c6942486c83e7e622d57fba357b95a90f11ded589755920"
+        },
+        "late.d71975a92c4b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "37cf0cc397b3e9351dc9d2fd8df4093acc843abc041498febacb0fbfd32bb33d"
+        },
+        "late.d732b65d6c12": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2fe456b5354ad70edb7503bb1b074d4eaaf2ccfaa49861a619e8ba8a97234ed5"
+        },
+        "late.d7547dc1df9e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d01c4a204d671b40f4708a861ee895cfa4030432d61ef310fe5afa8563573ee3"
+        },
+        "late.d77ccecc2c46": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "098ce96d0ec17cbd88d64fb6bbceafb37199c34d19a8f4e646a218ab6375ce98"
+        },
+        "late.d78707d7d6c2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6ce3f8faeb02628e4c3e0f595b0f3c5c153e702d5bff4bc9bfe025acfa2e4ed0"
+        },
+        "late.d7cbc6d101b5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "105e7e49b4b6c21db8fe75d18d233244a4c3876cb725a5bbfc93c0ef5c64c803"
+        },
+        "late.d7fe615d62e8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "13c05e3553e7d4b87081f470271798486f1ee1e65fc40c67a2d3c6d3745cdc96"
+        },
+        "late.d8052ee59bac": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "26b042ef62b348e6ac07b9e4739ff2cf7b45aeb06fce1e31ab5b7b85fd36cea3"
+        },
+        "late.d82eb29c4860": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4761d3520fe4ff22cb74615eaac8fd29532560d399c2de2340fadb48dbe0246d"
+        },
+        "late.d91ebf5887cf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5c63b785abb632ffb0426f55b4a4d4a40d3dd5aab8fb1e95049b3d7e3ee15285"
+        },
+        "late.d95adcdb0c33": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "168b95db9e568fef15ea00d69a7ae92145954b58bcfbb652ce4ae75565914371"
+        },
+        "late.d961e6e4caa7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7d3d5e519b9a8db57de0e0db491006e4d3c1fffbc9c1ba227fca60b3ffd1e808"
+        },
+        "late.d96e7e9f960b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "248dd42142f5c58006df4e30ae640d3cf1599f845f785a46be4ab1fffdd0689c"
+        },
+        "late.d97a01b00c87": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ecb84da25ee73458f58b258418ce9c427b1e0c142b191773acbb5f2523a06d84"
+        },
+        "late.d9a1c1149f75": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5f4ace29d05d492f8696481f934fb2fab4b719ccc8c4848cb1281563adccbd9a"
+        },
+        "late.d9e686e7bec0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b975f64f950aba40e64415770bea8f801cbd56fdfecb078fe9b2905e60bffa08"
+        },
+        "late.d9e880a937ce": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c88691944732c012172cbb24d87bb6da3cba82472d6bbeeb64bf27386696aeab"
+        },
+        "late.d9e9e130d95d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4f9eb35d6d2358e8029c0d5a13c71c2250a439cba09b93205f48d25dd355015a"
+        },
+        "late.d9f601cfb1fc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c02456c2a264a79e7d71422e10174a6e33e4831e6fbf5e59e118b0e61fb61bbd"
+        },
+        "late.d9f920aa2370": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "32e7917df2328634eaa696f037a65297eb45f255c8a467c9586630726270b73a"
+        },
+        "late.da62be2f68c4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "31bcd5151a708fbb4443b90e9c09b11bb29254b2e89341c3f76792a3b5676e23"
+        },
+        "late.da7007faabc7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b73c885ff127a23a9056ed65bb7a514e2059ab7184146527bc0682e8267d60e7"
+        },
+        "late.db4ac4b976a8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e5b1ed03675abf305fa24c8727b435a1f9e39902a9455fc42236bc21fb379a22"
+        },
+        "late.db958ca9f802": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "efcfba793104c12cdc45cd6bdeaea4d72e43d7d8f4a6116090d6cd9a9dd67e0b"
+        },
+        "late.dbc7a64b0ba3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3c771d13ac8f2967da3dbf8364b356d1315b3163877af671a6410b7304269175"
+        },
+        "late.dc09d75e8842": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "01e01b0b38ab54e41e5b7cb452c848e10d54fbc31013ae77fed822629e5ed0a7"
+        },
+        "late.dc9a8e229010": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "43508394e796e10e30da36c5659cb90757e9ba298aac4e892de362e91626556b"
+        },
+        "late.dca59cc0575d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b0a1b00b19228cf5ada220aa3f0c76e5285e4bd692ba17dd65a25892cdb9b6b1"
+        },
+        "late.dd249f91b067": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5124a1b86680943a5e45c067603fe6a5b19366117d30a5aef4f69ca3d7db58ac"
+        },
+        "late.dd3f70917316": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "953d8e4288f92389eff7acfc28d192018023f72efe086dcbb34f54cd75e61238"
+        },
+        "late.dd6074f3125d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9df97e94b9ac0a84cb10ea3b63d9716c43062ad233ec687e421225ca7b60689b"
+        },
+        "late.ddb470686bc0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d17e5040b765cd093f62d5baec703d463f03ab0c180760341870dc40f4d16f42"
+        },
+        "late.de463ba892c2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7f306272feffecce9bd10e992b3e6dd3fa05a424b2675980a34af756a722370b"
+        },
+        "late.de9b1be49dae": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "04e2fe221ac3b26ea8a04a86a453e2790a325eb5a957a2ef2a1d03be4009d9bc"
+        },
+        "late.dec619ef98b7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4bae94a696b9beb12f5e15cee0b91103265a1049e76703ca9248fad700c6f609"
+        },
+        "late.ded3f6b54d56": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8d3ec0a52fd9f472383999758418f987d75058d9f82872a46078abd18dee0a20"
+        },
+        "late.df3462469ba6": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9891e0d078c206f0700a485bba5c4e30a33c6acf6a0d48f229d06319516da452"
+        },
+        "late.df5c3008c765": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a444d062980cf350c0e334d731f4fe39a6447243d08eb5468fd796fb356b17ee"
+        },
+        "late.df64cc324ba8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b42bd1206f1e3dd4593afb77e2b8b3e2464206136e1e5d46955fb62a9b2289fa"
+        },
+        "late.df6b2587ae6f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "58a1d8bb2ddc4337a82113144eb3fcb8c74f752456c60aa016b2f500abc2fab2"
+        },
+        "late.dfce80c3ca2c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cf58288cfdfe1a6133b8366ddc210189c1f5bd60b72506534d3cfec24125482c"
+        },
+        "late.e0c47b9f787b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d4edbc54975042e580a7632ee900a7df0681c583b03b9b6cf23f1f75265ce80f"
+        },
+        "late.e0ca83a3243c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "56073089f602d3f1a74411b248fb684013277a3a468670000b47e26bf7eba59a"
+        },
+        "late.e14af8ce87e7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6b3f90abb9c4c45de3fd40c6c52b6f66956f8240e947f0b8b507178b502c1b51"
+        },
+        "late.e15045b38871": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e0feecbd52901cd283346ec62939df47d6853ca92ada8aca44e056b763582e0e"
+        },
+        "late.e1a8ae187945": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2c874b363e11fa6e15900544b1b523de56df2c532317c63f2118ec21b44e6877"
+        },
+        "late.e2658a43ed12": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5e2678d02ed3189ab879bd12e075722856635e0dc851d8c3621a413df2a5bfa0"
+        },
+        "late.e268dec7f435": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cef706382f583e43383cde0a7cfe04da4f369e75a5f72bc286f86c09831d6b12"
+        },
+        "late.e283e1df945b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0e306c8de80e035464a3c93d961f058cbe70c416d264fb32e7fa51881fec2aba"
+        },
+        "late.e29a79fe0c34": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "552e425de43e12fc97c2b0ca14848411831b4f0018b5f3b3437403c4e4172ef2"
+        },
+        "late.e2c176e01de3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "974a98dab93a4a6757ded2324eb7ce76071e9242183436cd4622b3a673a711c9"
+        },
+        "late.e2c4814d09bf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8e3bf33bfb3aaa886f2e9baf225045f88f7de060fe030f033242b4ca57faaa6b"
+        },
+        "late.e3a7da892546": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f370a09d989cd5ef2e0039678a5ce48c1f1447d0f5a9462b2e95bb1baf4e4c61"
+        },
+        "late.e3b6b7b90f8e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8740066d03751214915de49551882d0a86c208ab824c85dcd5321f6c9687435d"
+        },
+        "late.e4ca06877836": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8648a79729b82dfd5851c803ed4c2feeb7035dba05cee605707f0be72d54796e"
+        },
+        "late.e4e17795317d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d72cbc728f1969562e9d0b2ac267e027fda43782f1ac49d45556934858a85107"
+        },
+        "late.e5463e125966": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "47f8e63e77233f04a65b0d379bbdba5b4daab149de7c1995f6bdf74e1b1c3347"
+        },
+        "late.e59b689406ae": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7c3e070eb9523b9177ffba536d3ab5a41c3480eb782275d3a4788c76894dff49"
+        },
+        "late.e59f98f54177": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7d880e15b01aea6d39a5e2cbcd1fa2cb7cc3bd19540b1d5c41cbca67a4a7a33b"
+        },
+        "late.e5be6d47c85e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e8ae89a3aa5b7fadf8b036d6b5183f41d0281d653c999d5b7c54edcd41c242bc"
+        },
+        "late.e6a927dd9367": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "71bd208d3979be3ffd70584b1f7de96807f61e8a33fea65544385ba49ce46597"
+        },
+        "late.e6cda88848f3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "238b2c1dce775d54b38a08459b5d2c080e44ff436b49a462179787175a95d66d"
+        },
+        "late.e6e46159a07b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "161a859572f67800205937321bda2ef046ea747a0be75bccdd5ec33ae1f6ce6c"
+        },
+        "late.e70736700dfc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5355154a1860e7552c4d46dcb94f6bb551df2f55786b4a80d1d2f3aa659b55c0"
+        },
+        "late.e72e97bbd43f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f4003bfa1198193ecdd741f9dd9ab57259762855cf71b5715b8654df24aa18ec"
+        },
+        "late.e74a950cd9cd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "731dec319f50e603c5392e056d0b4aeed7cd7f5e35d6c789e972276e73be8d44"
+        },
+        "late.e7bc5a73f543": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d67f16ef20796da93866a7c7b8f4d50d18709dd6f4a37c21b2941e6a0d5db1ac"
+        },
+        "late.e7d8c142714b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8051098fd96f28045e0ed11a78f055e957ebdcba4a59ec5791fda5be44a7a873"
+        },
+        "late.e87f424f9a7b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "495ca1e7b67f1a72f1a0abf2cec55058ffbddce44207f957f2b3e6eab2166ec1"
+        },
+        "late.e90fb32fc22a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d1f57823971669288f5892df20bb61553220e6e691e81fefcf8892b1466e0ea5"
+        },
+        "late.e919ceb040fa": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4c71b53173d5c4ef1a3151d5627718160ecb84d0d9669fa6b093dc5a1d3d9fd5"
+        },
+        "late.e91fd0042674": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2911f43dff06d90f6c50061cbe485ace4e9a8f5cbecec2bed0d6d428d90b4be4"
+        },
+        "late.e96857c58f71": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dd851e069aed87b2f34480d458351591969d681f7b4d94acf409f2c9fde8e501"
+        },
+        "late.e96b646d443f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "11d77171d3c1083b83d50e574052147072113c2015fcf895ca2ec587d1ea0b14"
+        },
+        "late.e9d6e3c8a081": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9a7c3944c735dddfe8ef1bf16d911f086384e3555a29c306dd8570fd65cb320b"
+        },
+        "late.e9dbbff38c51": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "30888f76f910c9e3cc4135b210dc157f1d97f405b95d10b454fdaed539bc0cbd"
+        },
+        "late.ead32deee1dd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "623ab0fc913689d9d1ee545eba008150f41c181c83c2a8716f7dbf7db4c1a11c"
+        },
+        "late.eaef97f16bf3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1bb74b078bd1c5c6ff7e4691177de1697d099ef91cc658e5be919f7f3a2b04ea"
+        },
+        "late.eb023dce09e8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "513181a08c5455719cb9daab272721e11f8d72b125f8238ada5d21dc2f2ee27d"
+        },
+        "late.eb2e0422c84d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "34b29c23ea4cc11d1a948f929d13591498b3769b118284428d9b91fa7cac8749"
+        },
+        "late.eb53de35e98f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f3673a5e8eb165359d8142eb9486112114457d5ea99ecfadc9d5ad08a3307766"
+        },
+        "late.eb7bb2d3e45b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7ba7c4d3c433f9e146bca618f42c9b5be172847d50932663cc183e9f82b1dafb"
+        },
+        "late.ec13d1075804": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2525f0aea94e663728ea035f8624b6dfab467f17381329f8bd8c72bfbfa6d1fd"
+        },
+        "late.ec164868991d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ed99a8d36fd1ce5a55e6771be4084587a16af3c19a3b441da960c1b187ba9afa"
+        },
+        "late.ec4470a0e7e2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d128774ddd524adbb6acb6b4f57ff98531d593492dfb4ed2cca764de9dcda02b"
+        },
+        "late.ecc1ff060fcf": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a783a887202a4794d8bc996453f6eb667a443c32e2ed8f88ee6048b63e98c9f8"
+        },
+        "late.ecd9b077b71d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9363aeec521363c561818ed43ae8f3700dc8040393017ed5a89a0f81735bd9d3"
+        },
+        "late.ecec26d1c06a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5cc3cfeda41219faeb7ab0301526c596770a489f11c080e46eecaa8f2474f0b3"
+        },
+        "late.ed43a8a09e9b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c2d0c9e24dacb62fe122572b1ae64a4a89c55ebad3e2f63890e67268e28a5683"
+        },
+        "late.ed6875eba2f8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2089e673616a6f0534de6e26a90bf8313af01e06eea16353ff6d7b1a30676504"
+        },
+        "late.ed7256f90124": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "70f7656f173fbdedd8a2f782a73de20d26696017982b7fc3e4532e9bc69e4a07"
+        },
+        "late.edcad8e4e85e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "15099cbd1b31fbf981c5fb0ed0058de04710091e2f349e8c970deb3cb6bdd2f1"
+        },
+        "late.edeb82171d20": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "80d6fb16d6609cf734884061b63b43480b6fd27d96b60b1b79c5a320391418e7"
+        },
+        "late.edf2b370fe58": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "c92dcafaf192dcce4ca86abfd39018ce62d74cd69bd350fd8a1a29c53a142252"
+        },
+        "late.edfc3832f9bb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2d9cca6b093f6a81556dd085e7c3515bd77fe5b96ca43b3b795aef024cfe8685"
+        },
+        "late.ee139cd60cb4": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4b0ed9823c983ea42c9df621f6d37beb23a47b31d3001ae5717fd0dbfcac1179"
+        },
+        "late.ee14f6d46e3e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d8fcd4acfc1d17d231aae372b3142d9a67fb6dbbd215852b6dae989e237af791"
+        },
+        "late.ee54b2cefb8f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7e0a457245f8d96db1887cd386f0332304c3f97f141d173b0ccfcba7769de43f"
+        },
+        "late.ee664e267411": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b7aa999b28a3dbdfb0a1ef66371754e13158e9f5c48ee92918f892a01dee6d26"
+        },
+        "late.ee78eff9b7da": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b109a3f64876c24425818cf245bf7c6ddc8d627e4377e6707e00b147d1da7fc7"
+        },
+        "late.eed8facf059b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "111fb0649052197c01ec15e098e828369d282a91994ca5e3b515d92e89b76aa7"
+        },
+        "late.ef37d1c49284": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "58248057b22b4445dba3b9317c5e3cb0c075a98b94e2017c4d7386ddc31a4600"
+        },
+        "late.ef555f318566": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0cbe752ca3b595a4715a49c650688a3c5b31c5deffd0294489fb0a27107d9414"
+        },
+        "late.ef67c2b94a25": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7415c2ebb66a08b383d3371f953469a55fac5f30e9a60c0e40dd87cf51f7e4f3"
+        },
+        "late.ef8e3203d074": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "834beb123dd6a8a1d9f8f8c504d072fbba80cac718e0086beb2a8f239b22fe90"
+        },
+        "late.eff8ec10351a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4157a766dd8d7a1d89a4a21c087a81ea9c688670a91b217d6806e2321c740e1f"
+        },
+        "late.f02e2cd53d7d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "df321e826cefaae5205e8d1efa66bc0fe4c0253440fc1a691e9a69c59bd0fc93"
+        },
+        "late.f036a33ad429": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "67e2b31710f8a853780b57d9f66454726ca5ab28435e1130f78f41b3d5e97586"
+        },
+        "late.f039d18b2e2e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0bf4cd7e6f957ab152f032b2d17be151203bc9f604a2e8bb44e4c860e5a598e2"
+        },
+        "late.f0481060287a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4b0b90e48f5bd6a49b90e61372d4c39c890de81c7be488d0653c54f23ed51269"
+        },
+        "late.f09e9dc3b6dc": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e22db6b9190f4243c09fa6269bb6d9d8e09e18b52a61704b9220bb7a4b98700d"
+        },
+        "late.f0ccb0a18010": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0b538a606fa4a11dc63824bdf95cf4d8200c8ad7d7dcd0d2bbdebe859374b234"
+        },
+        "late.f0f192ee3746": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4d31a296c10e36d2e0002fcf7fa7e44eba6ee51887ad81661b56e2ebe45750a4"
+        },
+        "late.f16ae8518928": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "85221c5cfb0e2e396ae727f3c636a058547a5808d32ce42107632a49aca21909"
+        },
+        "late.f22c6e6979b8": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9113fbcc54569b0c0d4167e65df3a95f431fdedb80135760fe57d25265655841"
+        },
+        "late.f24fa79d4c74": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "b2b54f059a540b5e5c8322d7aa63dbd1fb824e5e1017eebac8ebc038d03303e1"
+        },
+        "late.f29678eeb956": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "34ccd03a06d0ecf375ef79f5dff6d377c51aa2216a81e308df521074b3c8af12"
+        },
+        "late.f2b8933525db": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "62f3b011f75c64698058462e10eca0632fd6174f354f74712437938800badf7f"
+        },
+        "late.f31a89fabe8e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f6f239c86c503dbd2f7f02bf1516f062e010532f0e5a25c6267510553aa28a1e"
+        },
+        "late.f31fa693853d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "630d09b4804373868ebb10ab2b2f44ff4fc88f8efca44216c5f060a8c79bdd01"
+        },
+        "late.f36ade17a513": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "da1d0b14aeeb6f6363111652c6363cf796f5aa844e04ce4ba9875fd245d03866"
+        },
+        "late.f3700245c463": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f5221d330b4897e986135781ccf9cf8ed92cc0dbc3552f4e499179ff7de52e9b"
+        },
+        "late.f3792715e832": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dbaef96a888da709e2330b14217e8024bd51c2c14795fc914578bbfa72aef504"
+        },
+        "late.f38b84d1da61": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae7e8d28ec04965124e54c3d8534e685f316f8347307626ba551847fcf2ea056"
+        },
+        "late.f38ef4e69403": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0cf7e6d32ab67bfbe97540f7aa4daf04c3b48f438dfb0b3065f8dbac91d50d09"
+        },
+        "late.f487fe7ef96f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "473a5d78a56b85eb036f3685aacbcd4ca4ae0a899a7ba322071608b8e73e3fed"
+        },
+        "late.f4b66eafec31": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "22bb6561b7edd6da8d110740cd12e98803d89be9826de94bf56ebb30c0e4df94"
+        },
+        "late.f4b88d940e34": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0c86a3eb17987a4a2ac2d6d1e64a1b7b513d262038c6ebd49dc2878f5040a22a"
+        },
+        "late.f4ca9e226f9c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "de31758cc07597307443e70d7cf4408362beb86d37a0b999cceb856205de18ea"
+        },
+        "late.f4e813b1276c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9ab156c47b44d8d985ad50db03ec064c03e15f45d0d3198c2398d9b5b527dd77"
+        },
+        "late.f51133fe2d9e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "84dc622feba7996f4ab8a89427905c6e4da91e8753478ea409f5acb9495fe8fa"
+        },
+        "late.f514361dfe9a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ae3e587cf33b52cafd939a6265c2b27976e857ceb97382a1d59223ce89a5e988"
+        },
+        "late.f580dacb7b08": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "92848f4962ef72bcfc8b97307cd5dc649b162bdc9664d929fdc09bffd8833d7c"
+        },
+        "late.f5a724ba7482": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a3bcfc03a1118803928d601fe314d14e0d56544f7e56431f8e1f2227a8b8fad8"
+        },
+        "late.f5d96de37525": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6047cbc335729fa379aa2c80ee27f968942f3f8aeca6e9d06a17e6e37c18fe44"
+        },
+        "late.f5e3ec114b84": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d39313537fb4b23071bed32600c4e87f463ca9b1c1c6c8b3ba3c186e47756073"
+        },
+        "late.f5e9c8f78aa5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "8c2defa1fa3383b90abc5759ef3c31fef8dc2e5b4f3de6dd045a7b19ec75dde2"
+        },
+        "late.f610c5e431c2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "bf3e7e3ebbe7ddbece7fe777518d484ecd7fe357af3bea6b56e280fef55925d1"
+        },
+        "late.f6df5a24e21e": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e614b1da12f48a1a4157b0def2baba6012c1b7708c9833f5002044a361756f18"
+        },
+        "late.f7194e6a0d0b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ad5608e95cb0b406eca8eeaa8042cb137b4f48747162914bd783245427d2b0f9"
+        },
+        "late.f7350d322f75": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d903eaa44c768c9aa047992b3e938376179cd409475c03c1582ad4216251f716"
+        },
+        "late.f7d3b2f916eb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f888c83de7fe2f8a567154efa647cae55f33908bd9b6e75cc9db82f16fc4c010"
+        },
+        "late.f806427cf83a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "217efd2f973631219c710b4f375b67a962f8a6f843d4c6a50335fc41ca8f948b"
+        },
+        "late.f86ffba64eca": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "754bb22a0dec41fb5e2244a52b61508394e4e8fd3d50e052898dda06d4cc420d"
+        },
+        "late.f8e594e850dd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9a6c0d77962a61c5320d7e788149930b997b59b26ee4116525477436f52abce4"
+        },
+        "late.f9063fd57c41": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d537110f3979216ee59382bea849b99479eb8e7ebff819a97fa0dba5db43300a"
+        },
+        "late.f9818754c4e1": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6baca3eba6f97558ebf0d0bcffce58eea7754182c6a2531cb024758326be0a70"
+        },
+        "late.f9996ac13bdb": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "4a4db1b0ecb4a9474de8a9069e2de2623cbf5a86df9a47f9c1d1257c60aec555"
+        },
+        "late.f9f7ca58c8b0": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "e0630d7599c815c506b68beef1f816910ff63771440217cc3d2477bc12c0a68a"
+        },
+        "late.f9ff81056843": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aaca28de41c37702108eccd53b19cd4873dedf9fd6ba3de729fe081c95869e58"
+        },
+        "late.fa0113f9ed6a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5c0a0cc1e395b7cf382e515b17a91978b1e7ed2d106dabba329af6ada3afbaba"
+        },
+        "late.fa2e2d91d040": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f6ca0941425aaa5a2553ccc8b1087405a84954140f0150420e8d613c5ef32188"
+        },
+        "late.fb2065b7eda3": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "799f7839ab11ad9b3580ebc5c05b7e421c6bfcbb8a103f652e961a799cd6c411"
+        },
+        "late.fb3384e490e7": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "754c2139e741dd49221f9ab59fcd45e15ff69ed0daaaa779c44d8f01e1a8f4a5"
+        },
+        "late.fb3f3652f80d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0bbeed10e1758d3a1334c90b491899e7b6443bda0d0ab9bc80373c2ae26c471f"
+        },
+        "late.fb44f10adb82": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6e991a56b191154fb7d0ec3a188b1566b2373e38b7bb1e17965a6984ed0787f4"
+        },
+        "late.fb553b47a790": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "cbbd836412c1081b2e6856dccc66bb63055aedeec5d6695d8bb11a37ae46bcf2"
+        },
+        "late.fbaeb0b2b157": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "3acbbf2872da99da015fe49b1fbd5de000c00048454321c6843ede3045bd265f"
+        },
+        "late.fbd745f80a5d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "ec09b9d25bef2ecc0632ea3555d79d6cb64c8008029b4bd51071d2ad62e384b4"
+        },
+        "late.fbe7d7baacdd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "600cf537d5ece9a67febc1d13842676596a106535c943833984da3227b6fb10f"
+        },
+        "late.fbee9828cb09": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "9c3f6f891aa2499087a3896ec9633ff1bcbeceaa0f570f1496aa1525f94f67c0"
+        },
+        "late.fc1d1fa8e360": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "486d9c3ab6305ba30e2e5edd18c5462d9a5f8729d0a83c0e71660c9b1ac87fe0"
+        },
+        "late.fc1f24e00c63": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "2ccd4b52dc67dfca879f7f9d8bbb0dae9e625cdc5d7e36dc3761640e084fac00"
+        },
+        "late.fc635921a76b": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "5031167ee5076e611f432e1501300c7768d23a6de0f83f70f4a5f983fe8b0224"
+        },
+        "late.fc86e5506840": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0ca828e5d428f0289e1d0ebf3aae57b8840e7af6bf04b42d04eab6a87d5ae4b2"
+        },
+        "late.fcb89bebcd2f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "419d6e15eebf0db49172e662cd831ec643f3a7c198208ad61decd42e604d385a"
+        },
+        "late.fd6027cbf334": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "86229895407e32091dd1980e36cfb8f6df5f4dc76a5071ffd044de38eef5b192"
+        },
+        "late.fda201fd52a2": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f345e9bd7721b67da857aac61b8c653a09fd1e717551dbed18b0d36572ea0de0"
+        },
+        "late.fe0af9ab96d5": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "6b23aa2507bb1fe36039dd278e56cdb238587ec2cf42a74bcbfcdd0ec9d13e50"
+        },
+        "late.fed8215e238a": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "f212957b8caa175fccad9fb462940feb7c4c4cc582be3b7cf380539faff0d71b"
+        },
+        "late.fedae4f75a2d": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "a90c46d23728189cc90e46e3537ceb60b77ce6819a7baca95d73984f90e8dfa0"
+        },
+        "late.ff76861fc04f": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "aac0e23d1603cae4842347e63937429d03b07321c51385929f7647d0f52516d8"
+        },
+        "late.ffa190c22323": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "44ca564a2d69ccba9221f655d259f3f1083106cda18aa3ff06c1f1247f3e77bb"
+        },
+        "late.ffa8844e174c": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "11f4220182947575b94d287b1087a23bf94be6c0cc6fa4f53f5607c5391041d5"
+        },
+        "late.ffe14a0751dd": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "0886da25157b1983eae9950f2c056ebee6d044c457317f2843209f0eed4d0ff9"
+        },
         "ui.close": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "91c9c11c4c89f49dfd00ce372e380e0cde0ed2caf944fb5b1e008466e4fc35ec"
         },
         "ui.coverage": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "6499f56492ee05e903f74e454eb996b866af53d1c67fa39c67af95170f7cc007"
         },
         "ui.language": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "1fa24b4905737a8d50bea61de9ec162133f53321a179217978509e68fea74309"
         },
         "ui.operations": {
-          "profile": "editorial-fr-ca-v1",
+          "profile": "editorial-fr-ca-v2",
           "sourceSha256": "0bc58af78df1ff8fc5a0f9181fb59b4e398f787fc71c261ff2ecc0a568f24b49"
         }
       }
