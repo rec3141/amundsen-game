@@ -1,0 +1,4434 @@
+{
+  "late.51413fc5e2f6": {
+    "source": "\"Something that acts as a person\": stone cairns that mark routes, caches and caribou drives. Plural inuksuit.",
+    "text": "« Quelque chose qui agit comme une personne » : des cairns de pierre qui jalonnent les routes, les caches et les promenades des caribous. Inuksuit pluriel."
+  },
+  "late.d7fe615d62e8": {
+    "source": "\"The bearded one.\" Its underwool, qiviut, is warmer than sheep’s wool by weight.",
+    "text": "« Le barbu. » Sa sous laine, qiviut, est plus chaude que la laine de mouton en poids."
+  },
+  "late.f3700245c463": {
+    "source": "({value0} day{value1}, {value2} grievance{value3})",
+    "text": "({value0} jour{value1}, {value2} grief{value3})"
+  },
+  "late.88aa827c6ccb": {
+    "source": "+2 °C at 30 salinity",
+    "text": "+2 °C à 30°C de salinité"
+  },
+  "late.0f7772f2edd3": {
+    "source": "+{value0}",
+    "text": "+{value0}"
+  },
+  "late.962c7057da94": {
+    "source": "0 L/s",
+    "text": "0&#160;l/s"
+  },
+  "late.3d4f79fc3b64": {
+    "source": "0 points.",
+    "text": "0 points"
+  },
+  "late.6fcf4f9416d3": {
+    "source": "0 °C at 28 salinity",
+    "text": "0 °C à 28 °C de salinité"
+  },
+  "late.f5e9c8f78aa5": {
+    "source": "0.0 cm",
+    "text": "0,0 cm"
+  },
+  "late.1b4230d3dfd3": {
+    "source": "0.0 kn",
+    "text": "0,0 kn"
+  },
+  "late.8fc18a624e53": {
+    "source": "0.0 °C",
+    "text": "0,0 ° C"
+  },
+  "late.b0995f4c15f9": {
+    "source": "0.3 °C",
+    "text": "± 0,3° C"
+  },
+  "late.f9ff81056843": {
+    "source": "0h 00m",
+    "text": "0h 00m"
+  },
+  "late.67012501d868": {
+    "source": "1 nmi",
+    "text": "1 nmi"
+  },
+  "late.b6d7cd6dffc5": {
+    "source": "40 water stopped · {value0} for the gear on the deck · 25 drained · 25 under 10 cm",
+    "text": "40 eau arrêtée · {value0} pour l'équipement sur le pont · 25 égoutté · 25 moins de 10 cm"
+  },
+  "late.f8e594e850dd": {
+    "source": "48 h",
+    "text": "48&#xA0;h"
+  },
+  "late.e72e97bbd43f": {
+    "source": "A 4σ heave of 1.7 m means, roughly:",
+    "text": "Un soulèvement de 4σ de 1,7 m signifie, à peu près :"
+  },
+  "late.47bcff8d6b71": {
+    "source": "A RIVAL HAILS YOU",
+    "text": "UN RIVAL VOUS SALUE"
+  },
+  "late.8c7861618f6a": {
+    "source": "A fierce battle of science",
+    "text": "Un duel scientifique acharné"
+  },
+  "late.0b1f7ea2e41f": {
+    "source": "A final: the small raised form of the {value0} row, {value1}.",
+    "text": "Une finale : la petite forme en relief de la ligne {value0}, {value1}."
+  },
+  "late.b7ce0fde8d06": {
+    "source": "A headland. Charts across the Arctic carry the name Nuvuk where a point juts into the current.",
+    "text": "Un promontoire. Les cartes à travers l'Arctique portent le nom de Nuvuk où un point fait saillie dans le courant."
+  },
+  "late.b81c8c80cb62": {
+    "source": "A large seal that feeds on the bottom; its skin makes boot soles and boat covers.",
+    "text": "Un grand joint qui se nourrit sur le fond ; sa peau fait des semelles de bottes et des housses de bateau."
+  },
+  "late.7663e9d795e1": {
+    "source": "A long first vowel and a held k. Both length contrasts change meaning in Inuktitut.",
+    "text": "Une longue première voyelle et un k maintenu. Les deux contrastes de longueur changent de signification en inuktitut."
+  },
+  "late.bc77eb9c482d": {
+    "source": "A long vowel. Raised eyebrows mean the same thing; a wrinkled nose means no.",
+    "text": "Une longue voyelle. Les sourcils surélevés signifient la même chose ; un nez ridé signifie non."
+  },
+  "late.a7521a7bf13e": {
+    "source": "A parka with a pouch at the back for carrying a baby against the skin.",
+    "text": "Une parka avec une pochette dans le dos pour porter un bébé contre la peau."
+  },
+  "late.7f573c953063": {
+    "source": "A roll put the rosette rinse tote on its side.",
+    "text": "Un rouleau met le sac de rinçage rosette sur le côté."
+  },
+  "late.5700c8c1f706": {
+    "source": "A short greeting. Tunngasugit, \"welcome\", is the formal one you hear at the airport.",
+    "text": "Une courte salutation. Tunngasugit, « bienvenue », est la salutation formelle que vous entendez à l'aéroport."
+  },
+  "late.30e4caeb4f91": {
+    "source": "AFT LAB",
+    "text": "LABORATOIRE ARRIÈRE"
+  },
+  "late.96618846da50": {
+    "source": "AFT LAB / DAMAGE CONTROL",
+    "text": "LABORATOIRE ARRIÈRE/CONTRÔLE DES DOMMAGES"
+  },
+  "late.988474e9b839": {
+    "source": "AIS fix −{value0} h",
+    "text": "Correction AIS −{value0} h"
+  },
+  "late.b9504b700c67": {
+    "source": "Aakka.",
+    "text": "Aakka."
+  },
+  "late.c68fef03d53e": {
+    "source": "Accept the challenge",
+    "text": "relever le gant"
+  },
+  "late.e919ceb040fa": {
+    "source": "Across the water: {value0}",
+    "text": "De l'autre côté de l'eau : {value0}"
+  },
+  "late.138a104b733f": {
+    "source": "Act",
+    "text": "Acte"
+  },
+  "late.b8a930e5ff2d": {
+    "source": "Aft lab",
+    "text": "Laboratoire arrière"
+  },
+  "late.d1cd398e280a": {
+    "source": "Air-drop a profiler",
+    "text": "Air-drop un profileur"
+  },
+  "late.cfc18fab7460": {
+    "source": "Altimeter freeboard",
+    "text": "Altimètre franc-bord"
+  },
+  "late.f9818754c4e1": {
+    "source": "Amundsen",
+    "text": "Amundsen"
+  },
+  "late.dc09d75e8842": {
+    "source": "Amundsen party",
+    "text": "Fête Amundsen"
+  },
+  "late.8ccc2182820d": {
+    "source": "Amundsen science party",
+    "text": "Amundsen science party"
+  },
+  "late.8f4f3d5b002d": {
+    "source": "An affectionate diminutive: nunakuluk, dear little land.",
+    "text": "Un diminutif affectueux : nunakuluk, chère petite terre."
+  },
+  "late.700de107742f": {
+    "source": "Another one",
+    "text": "Un autre"
+  },
+  "late.c87ffc4d0d7d": {
+    "source": "Answer below",
+    "text": "Réponse ci-dessous."
+  },
+  "late.38aac7d79ba3": {
+    "source": "Any house, snow or otherwise. Iglulik is \"the place with houses\"; sod-and-whalebone houses stood there for a thousand years.",
+    "text": "Toute maison, neige ou autre. Iglulik est « l'endroit avec des maisons » ; les maisons en gazon et en os de baleine y sont restées pendant mille ans."
+  },
+  "late.50dd1b2740f9": {
+    "source": "Aput is snow lying on the ground; qanik is snow falling. Snow depth on a floe controls how fast the ice below it grows.",
+    "text": "Aput est de la neige couchée sur le sol ; qanik est de la neige qui tombe. La profondeur de la neige sur un floe contrôle la vitesse de croissance de la glace en dessous."
+  },
+  "late.56560febdb74": {
+    "source": "Arctic fox",
+    "text": "Renard polaire"
+  },
+  "late.766e7ee7342e": {
+    "source": "Arctic hare",
+    "text": "Lièvre arctique"
+  },
+  "late.6eec4fbb53a7": {
+    "source": "Arctic tern",
+    "text": "sterne arctique"
+  },
+  "late.c8f1106abdb7": {
+    "source": "Arctic wolves follow the caribou herds; the Tuktu and Amaruq of stories hold the tundra in balance.",
+    "text": "Les loups arctiques suivent les troupeaux de caribous ; les Tuktu et les Amaruq des histoires maintiennent la toundra en équilibre."
+  },
+  "late.f7d3b2f916eb": {
+    "source": "Arrow keys or",
+    "text": "Touches fléchées ou , , ,"
+  },
+  "late.2213590392e6": {
+    "source": "Arrows or",
+    "text": "Flèches ou"
+  },
+  "late.b5e2c3f4104a": {
+    "source": "Arrows or W A S D",
+    "text": "Flèches ou W A S D"
+  },
+  "late.4b956a4627bc": {
+    "source": "Arviat",
+    "text": "Ba"
+  },
+  "late.2a1d3e194cee": {
+    "source": "Arviat, on Hudson Bay, is the place of bowheads. Bowheads live longer than any other mammal, past 200 years.",
+    "text": "Arviat, sur la baie d'Hudson, est le lieu des baleines boréales. Les baleines boréales vivent plus longtemps que tout autre mammifère, au cours des 200 dernières années."
+  },
+  "late.69f253184338": {
+    "source": "Assimilating {value0} observation{value1}.",
+    "text": "Assimilation de {value0} observation{value1}."
+  },
+  "late.e5463e125966": {
+    "source": "At 30 salinity, my water freezes near what temperature?",
+    "text": "À 30 degrés de salinité, mon eau gèle près de quelle température ?"
+  },
+  "late.9949af21d9af": {
+    "source": "Aupaluk",
+    "text": "Aupaluk"
+  },
+  "late.8be00be3a481": {
+    "source": "Ausuittuq",
+    "text": "Ausuittuq"
+  },
+  "late.185ddf19fcef": {
+    "source": "BENCH",
+    "text": "BANCS"
+  },
+  "late.26f8fadacbe5": {
+    "source": "BRIDGE / SEARCH AND RESCUE",
+    "text": "PONT / RECHERCHE ET SAUVETAGE"
+  },
+  "late.7ebf1aeb7c61": {
+    "source": "BRIDGE WING / WILDLIFE WATCH",
+    "text": "AILE DE PONT/SURVEILLANCE DE LA FAUNE"
+  },
+  "late.b52b36b7269f": {
+    "source": "Back",
+    "text": "Retour"
+  },
+  "late.68dbd12b8c80": {
+    "source": "Back to the watch",
+    "text": "Retour à la quart"
+  },
+  "late.88d130a66de8": {
+    "source": "Backspace",
+    "text": "Retour en arrière"
+  },
+  "late.b81b8efa3959": {
+    "source": "Bag of bubble wrap",
+    "text": "Sac de papier bulle"
+  },
+  "late.ee78eff9b7da": {
+    "source": "Basin-Scale Modelling Lab",
+    "text": "Labo de modélisation à l'échelle du bassin"
+  },
+  "late.704c0721a95f": {
+    "source": "Battle log",
+    "text": "Journal de bataille"
+  },
+  "late.b0ba5b78de25": {
+    "source": "Bearded seal",
+    "text": "Phoque barbu"
+  },
+  "late.b157f9096488": {
+    "source": "Bearing",
+    "text": "Relèvement"
+  },
+  "late.62f85a785ac1": {
+    "source": "Bearing {value0} · 7×50",
+    "text": "Relèvement {value0} · 7×50"
+  },
+  "late.f29678eeb956": {
+    "source": "Bearing {value0} · eye",
+    "text": "Relèvement {value0} · œil"
+  },
+  "late.4dcf827e3fb8": {
+    "source": "Begin the watch",
+    "text": "Commencer la quart"
+  },
+  "late.940fc0d9383a": {
+    "source": "Beluga",
+    "text": "Beluga"
+  },
+  "late.3c1cf57c3393": {
+    "source": "Beluga and narwhal summer in the deep sounds and fjords; watch for pale backs and a tusk between the waves.",
+    "text": "L'été des bélugas et des narvals dans les sons profonds et les fjords ; surveillez les dos pâles et une défense entre les vagues."
+  },
+  "late.4822b466cd82": {
+    "source": "Benchtop fluorometer",
+    "text": "Fluoromètre de table"
+  },
+  "late.2693ea2831b1": {
+    "source": "Best of the watch: {value0}.",
+    "text": "Le meilleur de la quart : {value0}."
+  },
+  "late.9c52711df593": {
+    "source": "Bigger",
+    "text": "Plus"
+  },
+  "late.96e258945229": {
+    "source": "Bigger box",
+    "text": "Boîte plus grande"
+  },
+  "late.8bfa5c57e6fa": {
+    "source": "Binoculars",
+    "text": "Jumelles"
+  },
+  "late.302024beffd6": {
+    "source": "Bird cliffs",
+    "text": "Falaises à oiseaux"
+  },
+  "late.11c820ee316e": {
+    "source": "Black guillemot",
+    "text": "guillemot à miroir blanc"
+  },
+  "late.b00b0ed01f87": {
+    "source": "Black-legged kittiwake",
+    "text": "<g id=\"1\">Mouette</g><g id=\"2\"> </g><g id=\"3\">tridactyle</g>"
+  },
+  "late.28dba0171ba0": {
+    "source": "Blue nose",
+    "text": "Nez bleu"
+  },
+  "late.43c2b06d4573": {
+    "source": "Boat drill",
+    "text": "exercice de poste d'abandon"
+  },
+  "late.980e5ae475a5": {
+    "source": "Boat drill & muster",
+    "text": "Perceuse et rassemblement de bateaux"
+  },
+  "late.ee664e267411": {
+    "source": "Borealis Star",
+    "text": "Étoile Borealis"
+  },
+  "late.cb8fa991d6c5": {
+    "source": "Borealis Star science party",
+    "text": "Borealis Star science party"
+  },
+  "late.0ddfa9851960": {
+    "source": "Bowhead whale",
+    "text": "Balaena mysticetus"
+  },
+  "late.239ca5767afa": {
+    "source": "Box",
+    "text": "Boîtes"
+  },
+  "late.fbd745f80a5d": {
+    "source": "Box core",
+    "text": "Noyau de boîte"
+  },
+  "late.fb3384e490e7": {
+    "source": "Box drawn: {value0} lines. Enter runs them.",
+    "text": "Encadré dessiné : {value0} lignes. Entrée les exécute."
+  },
+  "late.779c1eeeaf99": {
+    "source": "Box marked RECYCLING",
+    "text": "RECYCLAGE marqué boîte"
+  },
+  "late.413715b9c3f8": {
+    "source": "Box of GF/F filters",
+    "text": "Boîte de filtres GF/F"
+  },
+  "late.a47a73c84988": {
+    "source": "Bridge controls",
+    "text": "Commandes de pont"
+  },
+  "late.5c5f5c908ef3": {
+    "source": "Brine drains from young ice into the water below, one reason winter shelf water is dense.",
+    "text": "La saumure s'écoule de la jeune glace dans l'eau en dessous, une raison pour laquelle l'eau de la plate-forme hivernale est dense."
+  },
+  "late.f36ade17a513": {
+    "source": "CHIEF SCIENTIST / PLAN OF THE DAY",
+    "text": "CHEF SCIENTIFIQUE / PLAN DU JOUR"
+  },
+  "late.6b19d295d072": {
+    "source": "CROSSING THE LINE / NEPTUNE'S",
+    "text": "FRANCHIR LA LIGNE / NEPTUNE'S"
+  },
+  "late.cc334cdc30e9": {
+    "source": "CTD",
+    "text": "CTD"
+  },
+  "late.86e4ee524412": {
+    "source": "CTD battery pack",
+    "text": "Bloc-batterie CTD"
+  },
+  "late.fdb059ee9dc2": {
+    "source": "CTD cast",
+    "text": "CTD Cast"
+  },
+  "late.b6c77404bc3a": {
+    "source": "CTD-Rosette",
+    "text": "CTD-Rosette"
+  },
+  "late.d59ebba26be7": {
+    "source": "Charted water is {value0} from the datum{value1}.",
+    "text": "L'eau cartographiée est {value0} à partir de la donnée{value1}."
+  },
+  "late.b8b4c632d46c": {
+    "source": "Chlorophyll filtration rig",
+    "text": "Plate-forme de filtration de chlorophylle"
+  },
+  "late.f487fe7ef96f": {
+    "source": "Choose a lookout",
+    "text": "Choisissez un belvédère"
+  },
+  "late.70c1cf840eb9": {
+    "source": "Choose a request",
+    "text": "Choisir une demande"
+  },
+  "late.9e9743d6e82d": {
+    "source": "Choose a target",
+    "text": "Choisir une cible"
+  },
+  "late.49adb486e24a": {
+    "source": "Choose another",
+    "text": "CHOISISSEZ UN AUTRE"
+  },
+  "late.3f4c23f01f7c": {
+    "source": "Cite my paper",
+    "text": "Citer mon article"
+  },
+  "late.be28d6d04a95": {
+    "source": "Classified dataset",
+    "text": "Ensemble de données classifiées"
+  },
+  "late.52fd81ab38b9": {
+    "source": "Clear watch",
+    "text": "Effacer la quart"
+  },
+  "late.bbfa773e5a63": {
+    "source": "Close",
+    "text": "Fermer"
+  },
+  "late.ac74290c9fbf": {
+    "source": "Close and launch again to try this or another wreck.",
+    "text": "Fermez et lancez à nouveau pour essayer cette épave ou une autre."
+  },
+  "late.e6a927dd9367": {
+    "source": "Close and relaunch to take the call again.",
+    "text": "Fermez et relancez pour reprendre l'appel."
+  },
+  "late.2d2d62370075": {
+    "source": "Close this window to return to the bridge.",
+    "text": "Fermez cette fenêtre pour revenir au pont."
+  },
+  "late.47624d241e27": {
+    "source": "Close this window to return to the bridge; launch again (",
+    "text": "Fermez cette fenêtre pour revenir au pont ; relancez ("
+  },
+  "late.0da64bc7a15e": {
+    "source": "Close under a headland in shallow water, a colony on the ledges above.",
+    "text": "Fermez sous un promontoire en eau peu profonde, une colonie sur les rebords au-dessus."
+  },
+  "late.1f53a05a9fc0": {
+    "source": "Cold, fresh, deep",
+    "text": "Froid, frais, profond"
+  },
+  "late.473fb552f319": {
+    "source": "Cold, fresh, shallow",
+    "text": "Froid, frais, peu profond"
+  },
+  "late.f610c5e431c2": {
+    "source": "Come on, go ahead. Heard when the helicopter is turning and the science party is still zipping suits.",
+    "text": "Allez, vas-y. Entendu quand l'hélicoptère tourne et que la fête de la science zippe toujours les costumes."
+  },
+  "late.511ab8b8d481": {
+    "source": "Common eider",
+    "text": "Eider à duvet."
+  },
+  "late.a1e327c20874": {
+    "source": "Common raven",
+    "text": "Grand Corbeau"
+  },
+  "late.d04d53d6039b": {
+    "source": "Contact. {value0} in sight, beset in {value1}. Come alongside to cut them free, then lead them west; they can only follow a channel you have broken.",
+    "text": "Contact. {value0} en vue, prisonnier des glaces dans {value1}. Rejoignez-les pour les libérer, puis dirigez-les vers l'ouest ; ils ne peuvent suivre qu'un canal que vous avez brisé."
+  },
+  "late.11f2d2bfc758": {
+    "source": "Controls: {value0}, or the buttons below.",
+    "text": "Contrôles : {value0}, ou les boutons ci-dessous."
+  },
+  "late.53a1e895cd79": {
+    "source": "Counting in Inuktitut is base 20 on fingers and toes: tallimat, five, is one hand.",
+    "text": "Compter en inuktitut est la base 20 sur les doigts et les orteils : le tallimat, cinq ans, est une main."
+  },
+  "late.d71975a92c4b": {
+    "source": "Credibility +{value0}.",
+    "text": "Crédibilité +{value0}."
+  },
+  "late.de463ba892c2": {
+    "source": "Crew",
+    "text": "Équipe"
+  },
+  "late.d7cbc6d101b5": {
+    "source": "Critical finding! {value0}",
+    "text": "Conclusion critique ! {value0}"
+  },
+  "late.27e77c7898c2": {
+    "source": "Damage control log",
+    "text": "limiter les dégâts"
+  },
+  "late.d732b65d6c12": {
+    "source": "Data request",
+    "text": "Demande de données"
+  },
+  "late.df5c3008c765": {
+    "source": "Datum",
+    "text": "Date"
+  },
+  "late.d65ea44926bc": {
+    "source": "Day reports and grievances",
+    "text": "Rapports journaliers et griefs"
+  },
+  "late.3704d4b4445c": {
+    "source": "Day {value0} · {value1} · {value2} · ×{value3}",
+    "text": "Jour {value0} · {value1} · {value2} · ×{value3}"
+  },
+  "late.e9d6e3c8a081": {
+    "source": "Day {value0}, {value1}, watch {value2}",
+    "text": "Jour {value0}, {value1}, regarder {value2}"
+  },
+  "late.237faa5b23b4": {
+    "source": "Deal the cards",
+    "text": "Distribuez les cartes"
+  },
+  "late.f0f192ee3746": {
+    "source": "Decisive. {value0}",
+    "text": "Décisif. {value0}"
+  },
+  "late.b35e0445f231": {
+    "source": "Deck drained",
+    "text": "Pont asséché"
+  },
+  "late.7a71176080fe": {
+    "source": "Deep water in a sound, a glacier front at the head and steep land on both sides.",
+    "text": "De l'eau profonde dans un détroit, un front de glacier au fond et des terres escarpées des deux côtés."
+  },
+  "late.264f8f63dec4": {
+    "source": "Defeated {value0}",
+    "text": "Vaincu {value0}"
+  },
+  "late.15e508616848": {
+    "source": "Depth call",
+    "text": "Estimation de la profondeur"
+  },
+  "late.9e44ce9a519b": {
+    "source": "Discharge valve",
+    "text": "Vanne de décharge"
+  },
+  "late.b86826c2f89f": {
+    "source": "Dive weight belt",
+    "text": "Ceinture de poids de plongée"
+  },
+  "late.bf93e5ce8bc1": {
+    "source": "Down",
+    "text": "En Panne"
+  },
+  "late.2ef985bd430d": {
+    "source": "Drift ice, 4 to 7 tenths, leads opening and closing between the floes.",
+    "text": "La glace de dérive, de 4 à 7 dixièmes, conduit à l'ouverture et à la fermeture entre les floes."
+  },
+  "late.9dc581145569": {
+    "source": "Drifting snow driven by wind. A piqsiq erases the horizon; the bridge relies on radar and the ice pilot waits.",
+    "text": "Neige à la dérive entraînée par le vent. Un piqsiq efface l'horizon ; le pont s'appuie sur le radar et le pilote de glace attend."
+  },
+  "late.5b35fdf87400": {
+    "source": "Drinking water. Meltwater pools on old floes are imiq; the sea beneath them is imaq.",
+    "text": "Eau potable. Les piscines d'eau de fonte sur les vieilles floes sont imiq ; la mer en dessous d'elles est imaq."
+  },
+  "late.a6efd7142e5b": {
+    "source": "Drop ROV",
+    "text": "Collectez ROV"
+  },
+  "late.5b66f7f6c9a2": {
+    "source": "Dry-ice shipper",
+    "text": "Expéditeur de glace sèche"
+  },
+  "late.0dac6dbf5093": {
+    "source": "Dual endings: marruuk itself is dual, and nouns for two things end in -k.",
+    "text": "Finalité double : marruuk lui-même est double, et les noms de deux choses se terminent par -k."
+  },
+  "late.241a5b4c369c": {
+    "source": "EM flight line",
+    "text": "Ligne DE vol EM"
+  },
+  "late.79f8065f3a2a": {
+    "source": "EM thickness line",
+    "text": "Ligne d'épaisseur EM"
+  },
+  "late.a9b1802d38db": {
+    "source": "Each shape is a consonant. Turn it and the vowel changes: ᐱ pi, ᐳ pu, ᐸ pa. A dot above makes the vowel long; a small raised shape is a consonant with no vowel. Name the sound, find the glyph, then spell two words.",
+    "text": "Chaque forme est une consonne. Tournez-le et la voyelle change : pi, pu, pa. Un point au-dessus rend la voyelle longue ; une petite forme en relief est une consonne sans voyelle. Nommez le son, trouvez le glyphe, puis épellez deux mots."
+  },
+  "late.0e968a2fab4e": {
+    "source": "Eiders winter in polynyas and at the floe edge, diving for mussels and urchins.",
+    "text": "Les Eiders hivernent dans les polynies et au bord des floes, plongeant pour les moules et les oursins."
+  },
+  "late.6f347362bfeb": {
+    "source": "Empty cooler",
+    "text": "Refroidisseur vide"
+  },
+  "late.7c77ef9167fc": {
+    "source": "End watch",
+    "text": "Terminer la quart"
+  },
+  "late.fedae4f75a2d": {
+    "source": "Ensemble run",
+    "text": "Ensemble Run"
+  },
+  "late.2b9eceb7a86a": {
+    "source": "Enter",
+    "text": "Entrer"
+  },
+  "late.a025b62e11cb": {
+    "source": "Enter accepts the challenge",
+    "text": "Entrée accepte le défi"
+  },
+  "late.1f7a4f9e2f70": {
+    "source": "Esc",
+    "text": "Échap"
+  },
+  "late.9705540112dc": {
+    "source": "Escape closes the operation",
+    "text": "L'échappement ferme l'opération"
+  },
+  "late.299b6ef4a2a6": {
+    "source": "Every wave returned",
+    "text": "Chaque vague retournée"
+  },
+  "late.354ec2fca35a": {
+    "source": "Explore the Arctic wreck archive",
+    "text": "Explorez les archives des épaves de l’Arctique"
+  },
+  "late.a28a73a982cb": {
+    "source": "Extension cord reel",
+    "text": "Enrouleur de rallonge"
+  },
+  "late.ba025c7163fe": {
+    "source": "External hard drive",
+    "text": "Disque Dur Externe"
+  },
+  "late.4db5affe432c": {
+    "source": "FROM THE RECORD",
+    "text": "Masquer dans le dossier"
+  },
+  "late.1607075420ab": {
+    "source": "Falling snowflakes. Once settled the snow is aput; wind-packed it is another word again.",
+    "text": "Chute de flocons de neige. Une fois installée, la neige est sortie ; emballée par le vent, c'est encore un autre mot."
+  },
+  "late.c326a4660b67": {
+    "source": "Field",
+    "text": "Parcelle"
+  },
+  "late.a80ca4d3526e": {
+    "source": "Field laptop",
+    "text": "Ordinateur portable de terrain"
+  },
+  "late.c0729aab7814": {
+    "source": "Field notebook",
+    "text": "carnet de terrain"
+  },
+  "late.d5f0faa79839": {
+    "source": "Find a beset ship and break her out",
+    "text": "Repérez un navire prisonnier des glaces et dégagez-le"
+  },
+  "late.27424cb4120d": {
+    "source": "Five trials before the sea king",
+    "text": "Cinq épreuves devant le roi des mers"
+  },
+  "late.017322b98576": {
+    "source": "Fjord head",
+    "text": "Fond du fjord"
+  },
+  "late.49517a32f7e0": {
+    "source": "Float array",
+    "text": "Réseau flottant"
+  },
+  "late.b405f04d5e18": {
+    "source": "Floe photogrammetry",
+    "text": "Photogrammétrie Floe"
+  },
+  "late.3ca7a1d1eaca": {
+    "source": "Flood the aft lab",
+    "text": "Inondation au laboratoire arrière"
+  },
+  "late.3cb7abe0d945": {
+    "source": "Formalin carboy",
+    "text": "Carboy de formol"
+  },
+  "late.fe0af9ab96d5": {
+    "source": "Found {value0} ({value1})",
+    "text": "{value0} ({value1}) trouvées"
+  },
+  "late.5efb2482691d": {
+    "source": "Four days of station work is sitamat ullut.",
+    "text": "Quatre jours de travail à la station est sitamat ullut."
+  },
+  "late.c2dd2cc8c8c8": {
+    "source": "Four standard deviations brackets almost the whole vertical motion of the hull.",
+    "text": "Quatre écarts types encadrent presque tout le mouvement vertical de la coque."
+  },
+  "late.64bb383b6705": {
+    "source": "Foxes range far onto the sea ice in winter, trailing polar bears for leftovers.",
+    "text": "Les renards s'étendent loin sur la glace de mer en hiver, traînant les ours polaires pour les restes."
+  },
+  "late.dd3f70917316": {
+    "source": "Freezing point falls about 0.054 °C per unit of salinity; at 30 it sits near −1.6 °C.",
+    "text": "Le point de congélation chute d'environ 0,054 °C par unité de salinité ; à 30 ans, il se situe près de −1,6 °C."
+  },
+  "late.6e29522b1991": {
+    "source": "Fresh surface water in my Arctic realm comes mostly from:",
+    "text": "L'eau douce de surface dans mon royaume arctique provient principalement de :"
+  },
+  "late.68cd74ed7513": {
+    "source": "From three upward the noun takes the plural -t.",
+    "text": "De trois vers le haut, le nom prend le pluriel -t."
+  },
+  "late.9c3cd8846fd7": {
+    "source": "From ullaaq, morning. Unnusakkut is good afternoon; unnukkut good evening.",
+    "text": "De ullaaq, le matin. Unnusakkut est bon après-midi ; unnukkut bonsoir."
+  },
+  "late.17219fbf49b4": {
+    "source": "Geology",
+    "text": "Géologie"
+  },
+  "late.96ead420d232": {
+    "source": "Glaucous gull",
+    "text": "goéland bourgmestre"
+  },
+  "late.43c9fa671d79": {
+    "source": "Glider section",
+    "text": "Section planeur"
+  },
+  "late.02c33a0c9794": {
+    "source": "Grievances",
+    "text": "Griefs"
+  },
+  "late.d961e6e4caa7": {
+    "source": "Grievances before mutiny",
+    "text": "Les griefs avant la mutinerie"
+  },
+  "late.474c681e861c": {
+    "source": "Gyrfalcon",
+    "text": "Faucon gerfaut"
+  },
+  "late.d9f920aa2370": {
+    "source": "Hares stay white all year in the High Arctic and turn grey-brown in summer further south.",
+    "text": "Les lièvres restent blancs toute l'année dans l'Extrême-Arctique et deviennent gris-brun en été plus au sud."
+  },
+  "late.807e66dce64a": {
+    "source": "Harp seal",
+    "text": "Phoque du Groenland"
+  },
+  "late.9c41a13f4040": {
+    "source": "He drops a purse of {value0} points on the deck. \"On loan. {value1} trials. We shall see how much of it you keep.\"",
+    "text": "Il laisse tomber un bourse de {value0} points sur le pont. « En prêt. {value1} épreuves. Nous verrons combien vous en gardez. »"
+  },
+  "late.a3089b7fae27": {
+    "source": "Heading",
+    "text": "Titre"
+  },
+  "late.a2073fa9180a": {
+    "source": "Held for {value0} s",
+    "text": "Détenu pendant {value0} s"
+  },
+  "late.fda201fd52a2": {
+    "source": "Helicopter",
+    "text": "l' hélicoptère"
+  },
+  "late.cd0bab9bdd62": {
+    "source": "Helicopter land sampling",
+    "text": "Échantillonnage terrestre en hélicoptère"
+  },
+  "late.15ef4a18c8e9": {
+    "source": "Hindcast",
+    "text": "Prévision rétrospective"
+  },
+  "late.2284d040f509": {
+    "source": "Hint",
+    "text": "Indice"
+  },
+  "late.859c229eb13c": {
+    "source": "Hint.",
+    "text": "Indice"
+  },
+  "late.2ccc65de09ad": {
+    "source": "Hold ← / →",
+    "text": "Soute"
+  },
+  "late.938645d687ce": {
+    "source": "How deep was the deepest sounding of this leg?",
+    "text": "Quelle était la profondeur du son le plus profond de cette jambe ?"
+  },
+  "late.b8e2c390b3cf": {
+    "source": "How far has the ship steamed this leg?",
+    "text": "Jusqu'où le navire a-t-il fait cuire cette jambe parcourus ?"
+  },
+  "late.1dd6a17cb403": {
+    "source": "How it works",
+    "text": "Comment cela fonctionne-t-il?"
+  },
+  "late.ca0299459d30": {
+    "source": "How the syllabics work",
+    "text": "Fonctionnement de la syllabe"
+  },
+  "late.7769f8fcf60e": {
+    "source": "How the system works",
+    "text": "Comment fonctionne le système"
+  },
+  "late.8f0a3cc1678a": {
+    "source": "How the system works, page {value0} of {value1}: {value2}. {value3}",
+    "text": "Fonctionnement du système, page {value0} sur {value1} : {value2}. {value3}"
+  },
+  "late.0c391021299f": {
+    "source": "How the writing works",
+    "text": "Comment fonctionne l'écriture"
+  },
+  "late.44bb6fccbdb4": {
+    "source": "IAPSO standard seawater",
+    "text": "Eau DE mer standard IAPSO"
+  },
+  "late.f4e813b1276c": {
+    "source": "Ice chart: your ship, the search datum and the pack",
+    "text": "Carte des glaces : votre navire, la donnée de recherche et le pack"
+  },
+  "late.e1a8ae187945": {
+    "source": "Ice core",
+    "text": "Noyau de glace"
+  },
+  "late.2c6fc8db0de7": {
+    "source": "Ice crystals thick in the water before they knit into a sheet. Brash and slush foul intakes and slow a CTD wire.",
+    "text": "Cristaux de glace épais dans l'eau avant de tricoter en feuille. Brassez et débarrassez les entrées sales et ralentissez un fil CTD."
+  },
+  "late.14ecb1cac5a4": {
+    "source": "Ice frozen to the shore and held still. Travel routes and seal hunting follow the tuvaq; the ship cannot follow it far.",
+    "text": "Glace gelée sur le rivage et immobilisée. Les itinéraires de voyage et la chasse au phoque suivent le tuvaq ; le navire ne peut pas le suivre loin."
+  },
+  "late.1e380676c47e": {
+    "source": "Ice piled up where floes collide. The verb ivu-, to pile up, names the community of Ivujivik, where currents heap the ice.",
+    "text": "La glace s'accumule là où les floes se heurtent. Le verbe ivu-, pour empiler, nomme la communauté d'Ivujivik, où les courants entassent la glace."
+  },
+  "late.1d1e56bc06b6": {
+    "source": "Ice station",
+    "text": "Poste de glace"
+  },
+  "late.d1869a351f70": {
+    "source": "Ice, sea, weather, animals, gear and greetings from a working coast. A doubled letter is held twice as long, and length changes meaning: imaq is the sea, imiq drinking water.",
+    "text": "Glace, mer, météo, animaux, équipement et salutations d'une côte de travail. Une lettre doublée est tenue deux fois plus longtemps, et la longueur change de sens : imaq est la mer, imiq l'eau potable."
+  },
+  "late.502d64eb7de8": {
+    "source": "Igluligaarjuk",
+    "text": "Igluligaarjuk"
+  },
+  "late.c1ca6af79086": {
+    "source": "Iglulik",
+    "text": "Iglulik"
+  },
+  "late.b20d862dda45": {
+    "source": "Iglulik is the place with houses; tuugaalik, the one with a tusk, is the narwhal.",
+    "text": "Iglulik est l'endroit avec des maisons ; tuugaalik, celui avec une défense, est le narval."
+  },
+  "late.670ee54081cf": {
+    "source": "Ikaahuk",
+    "text": "Ikaahuk"
+  },
+  "late.14d614fc51e9": {
+    "source": "Ikpiarjuk",
+    "text": "Ikpiarjuk"
+  },
+  "late.23d5f5788ba7": {
+    "source": "Imaq is the sea as a body of water; imiq, one vowel different, is fresh water to drink.",
+    "text": "Imaq est la mer en tant que plan d'eau ; imiq, une voyelle différente, est de l'eau douce à boire."
+  },
+  "late.aef36502d67b": {
+    "source": "In",
+    "text": "Entrée"
+  },
+  "late.18ca87afec42": {
+    "source": "Inspect",
+    "text": "Inspection"
+  },
+  "late.ef37d1c49284": {
+    "source": "Into the atmosphere",
+    "text": "dans l'atmosphère."
+  },
+  "late.2213870df65c": {
+    "source": "Into the brine beneath the ice",
+    "text": "Dans la saumure sous la glace"
+  },
+  "late.3be0ec8473cc": {
+    "source": "Inuk is one person; Inuuk two; Inuit three or more. Inuktitut means \"in the manner of an Inuk\".",
+    "text": "Inuk est une personne ; Inuuk deux ; Inuit trois ou plus. Inuktitut signifie « à la manière d'un Inuk »."
+  },
+  "late.6e7bc59c12fd": {
+    "source": "Inukjuak",
+    "text": "Inukjuak"
+  },
+  "late.6e2247ad8907": {
+    "source": "Inuktitut",
+    "text": "Inuktitut"
+  },
+  "late.83a13361b111": {
+    "source": "Inuktitut builds words by stacking suffixes on a root: umiaq, boat, plus -rjuaq, big, is umiarjuaq, a ship. The names on the chart are built the same way. Read them, then build a few.",
+    "text": "L'inuktitut construit des mots en empilant des suffixes sur une racine : umiaq, bateau, plus -rjuaq, grand, est umiarjuaq, un navire. Les noms sur le graphique sont construits de la même manière. Lisez-les, puis construisez-en quelques-uns."
+  },
+  "late.25dd86f0ab08": {
+    "source": "Inuktitut watch: {value0}/{value1} first time",
+    "text": "Quart inuktitut : {value0}/{value1} première fois"
+  },
+  "late.d0cf1bf51c07": {
+    "source": "Iqaluit",
+    "text": "Whale Cove"
+  },
+  "late.e4e17795317d": {
+    "source": "Iqaluit means \"many fish\": char run up the Sylvia Grinnell River there each summer.",
+    "text": "Iqaluit signifie « beaucoup de poissons » : l'omble remonte la rivière Sylvia Grinnell chaque été."
+  },
+  "late.545a43b1e9e6": {
+    "source": "Iqaluit: many fish. Inuit: many people.",
+    "text": "Iqaluit : beaucoup de poissons. Inuits : beaucoup de gens."
+  },
+  "late.5c6d6066a7ff": {
+    "source": "Iqaluktuuttiaq",
+    "text": "Iqaluktuuttiaq"
+  },
+  "late.4afc265264fa": {
+    "source": "Iqalummiut are the people of Iqaluit.",
+    "text": "Les Iqalummiut sont les habitants d'Iqaluit."
+  },
+  "late.e74a950cd9cd": {
+    "source": "Issue plan of the day",
+    "text": "Publier le plan de la journée"
+  },
+  "late.ffe14a0751dd": {
+    "source": "It stays in the ice for good",
+    "text": "Il reste dans la glace pour de bon"
+  },
+  "late.344aa3cc906f": {
+    "source": "Ivory gull",
+    "text": "mouette ivoire"
+  },
+  "late.66b1fd64258f": {
+    "source": "Ivujivik",
+    "text": "Ivujivik"
+  },
+  "late.41db5ea81408": {
+    "source": "Ivujivik: the place where the ice piles up.",
+    "text": "Ivujivik : l'endroit où la glace s'accumule."
+  },
+  "late.8d051dbe9540": {
+    "source": "Kangiqliniq",
+    "text": "Kangiqliniq"
+  },
+  "late.7277d3c8809a": {
+    "source": "Kangiqsualujjuaq",
+    "text": "Kangiqsualujjuaq"
+  },
+  "late.6585808d8c2b": {
+    "source": "Kangiqsujuaq",
+    "text": "Kangiqsujuaq"
+  },
+  "late.c893e992ac93": {
+    "source": "Kangiqsujuaq, Kangirsuk, Kangiqliniq (Rankin Inlet): the same root in bays from Ungava to Hudson Bay.",
+    "text": "Kangiqsujuaq, Kangirsuk, Kangiqliniq (Rankin Inlet) : la même racine dans les baies d'Ungava à la baie d'Hudson."
+  },
+  "late.4702e4ea200e": {
+    "source": "Kangiqtugaapik",
+    "text": "Kangiqtugaapik"
+  },
+  "late.6fbe1fba437a": {
+    "source": "Keep watching",
+    "text": "Continue à regarder."
+  },
+  "late.376df01ba798": {
+    "source": "Killer whale",
+    "text": "Orque"
+  },
+  "late.2b49734bc9a1": {
+    "source": "Kimmirut",
+    "text": "Kimmirut"
+  },
+  "late.1ab1e5b09158": {
+    "source": "Kinngait",
+    "text": "Kinngait"
+  },
+  "late.20a801ad8772": {
+    "source": "Kuugaarjuk",
+    "text": "Kuugaarjuk"
+  },
+  "late.3dbfb212b060": {
+    "source": "Kuujjuaq",
+    "text": "Rivièr"
+  },
+  "late.2a5d2cb802b2": {
+    "source": "Kuujjuaraapik",
+    "text": "Kuujjuaraapik"
+  },
+  "late.ec13d1075804": {
+    "source": "Kuuk plus -juaq, big, gives Kuujjuaq, the great river of Ungava Bay.",
+    "text": "Kuuk plus -juaq, grand, donne Kuujjuaq, la grande rivière de la baie d'Ungava."
+  },
+  "late.85e16e28e1c6": {
+    "source": "L explains the writing · Escape closes the operation",
+    "text": "L explique l'écriture · Escape ferme l'opération"
+  },
+  "late.2642f1289356": {
+    "source": "LANGUAGE WATCH",
+    "text": "MONTRE LINGUISTIQUE"
+  },
+  "late.5ec092bc8f88": {
+    "source": "Lab clock",
+    "text": "Horloge de laboratoire"
+  },
+  "late.fc86e5506840": {
+    "source": "Label printer",
+    "text": "Imprimante d'étiquettes"
+  },
+  "late.f22c6e6979b8": {
+    "source": "Land and core",
+    "text": "Terrain et noyau"
+  },
+  "late.7d277a9572cf": {
+    "source": "Laser scanner",
+    "text": "Scanner laser"
+  },
+  "late.9c3900e943be": {
+    "source": "Learned this watch",
+    "text": "J'ai appris cette quart"
+  },
+  "late.1aa2f31ee7cc": {
+    "source": "Ledger",
+    "text": "Ledger"
+  },
+  "late.8ae1c34bd37f": {
+    "source": "Left",
+    "text": "Restant"
+  },
+  "late.2f1deb2beea9": {
+    "source": "Leg record loading…",
+    "text": "Chargement de l'enregistrement de la jambe…"
+  },
+  "late.f9f7ca58c8b0": {
+    "source": "Leg record unavailable; the riddles fall back to sea lore and the sounding to the water beneath the keel.",
+    "text": "Relevé de l’étape indisponible ; les énigmes retombent à la tradition marine et le son à l'eau sous la quille."
+  },
+  "late.644cd3304388": {
+    "source": "Leg record {value0} to {value1}: {value2} km steamed, deepest sounding {value3} m, coldest surface {value4} °C, strongest wind {value5} kn, worst roll and pitch {value6}° RMS. His riddles draw on it.",
+    "text": "Relevé de l’étape {value0} à {value1} : {value2} km parcourus, sondage le plus profond {value3} m, surface la plus froide {value4} °C, vent le plus fort {value5} kn, pire roulis et tangage {value6}° RMS. Ses énigmes s'y dessinent."
+  },
+  "late.c3cafd5842d5": {
+    "source": "Line warming between intake and sensor adds a few tenths; the record tracks it as excess heat.",
+    "text": "Le réchauffement de la ligne entre l'admission et le capteur ajoute quelques dixièmes ; l'enregistrement le suit comme un excès de chaleur."
+  },
+  "late.c6fd3870c86e": {
+    "source": "Lines",
+    "text": "Lignes"
+  },
+  "late.97539d1a5177": {
+    "source": "Liquid nitrogen dewar",
+    "text": "Dewar d'azote liquide"
+  },
+  "late.0cef4cff670d": {
+    "source": "Literally \"the one with a tusk\": tuugaaq, tusk, plus -lik, having.",
+    "text": "Littéralement « celui avec une défense » : tuugaaq, défense, plus -lik, ayant."
+  },
+  "late.4f58007d2545": {
+    "source": "Live zooplankton cooler",
+    "text": "Refroidisseur de zooplancton en direct"
+  },
+  "late.09ffbae53a01": {
+    "source": "Loading local data…",
+    "text": "Chargement des données locales…"
+  },
+  "late.4ca302b59183": {
+    "source": "Loading the seawater loop…",
+    "text": "Chargement de la boucle d'eau de mer…"
+  },
+  "late.7c979035bdc4": {
+    "source": "Loading the watch record…",
+    "text": "Chargement de l'enregistrement de la quart…"
+  },
+  "late.39b5278a4ea9": {
+    "source": "Log sighting",
+    "text": "Observation des bûches"
+  },
+  "late.e6e46159a07b": {
+    "source": "Logged {value0} points: {value1}.",
+    "text": "{value0} points enregistrés : {value1}."
+  },
+  "late.a34f5bb77d10": {
+    "source": "Long vowel: dot",
+    "text": "Voyelle longue : point"
+  },
+  "late.c73a3498a3f7": {
+    "source": "Loop valve",
+    "text": "Vanne en boucle"
+  },
+  "late.915689549c24": {
+    "source": "Loop water",
+    "text": "Bouclez l'eau"
+  },
+  "late.abcc99e6cf73": {
+    "source": "L{value0} {value1}",
+    "text": "L{value0} {value1}"
+  },
+  "late.0664fa29600e": {
+    "source": "MAYDAY RELAY · MCTS IQALUIT",
+    "text": "RELAIS MAYDAY · SCTM IQALUIT"
+  },
+  "late.e6cda88848f3": {
+    "source": "Major revision",
+    "text": "Révision majeure. "
+  },
+  "late.40d3c9126de9": {
+    "source": "Marine geology",
+    "text": "Géologie marine"
+  },
+  "late.9ad3a14e5a20": {
+    "source": "Marks make new rows",
+    "text": "Les marques créent de nouvelles lignes"
+  },
+  "late.d03e3e3ba42e": {
+    "source": "Minke whale",
+    "text": "Balaenoptera acutorostrata"
+  },
+  "late.7dc6a13e16b1": {
+    "source": "Mittimatalik",
+    "text": "Mittimatalik"
+  },
+  "late.a7b93d2128e8": {
+    "source": "Mode",
+    "text": "Mode"
+  },
+  "late.68c2cc7f0cea": {
+    "source": "Model",
+    "text": "Modèle"
+  },
+  "late.00343064716d": {
+    "source": "Model run",
+    "text": "Exécution du modèle"
+  },
+  "late.14ef18abe0f4": {
+    "source": "Modelling Lab",
+    "text": "Labo de modélisation"
+  },
+  "late.8503e4f5db6c": {
+    "source": "Mooring",
+    "text": "Amarrage"
+  },
+  "late.e3b6b7b90f8e": {
+    "source": "Mooring recovery",
+    "text": "Récupération de l'amar"
+  },
+  "late.124b1ae199d3": {
+    "source": "Mooring team",
+    "text": "- Équipe d'amarrage "
+  },
+  "late.d064eb512eb9": {
+    "source": "Moorings",
+    "text": "Amarres"
+  },
+  "late.10ab0b82ddf6": {
+    "source": "Mop bucket",
+    "text": "Seau pour serpillère"
+  },
+  "late.76cdb9507216": {
+    "source": "Move",
+    "text": "Déplacer"
+  },
+  "late.9efc509bb771": {
+    "source": "Move and act",
+    "text": "Bouger et agir"
+  },
+  "late.9a0521e71589": {
+    "source": "Multibeam survey",
+    "text": "Enquête multifaisceaux"
+  },
+  "late.1832168b0348": {
+    "source": "Murres and kittiwakes stream off the cliff, eiders and walrus work the shallows, and things move on the tundra.",
+    "text": "Les guillemots et les mouettes tridactyles affluent de la falaise, les eiders et les morses travaillent les bas-fonds et les choses bougent dans la toundra."
+  },
+  "late.c539bb74a220": {
+    "source": "Muskox",
+    "text": "Bœuf musqué"
+  },
+  "late.b8588ebfc604": {
+    "source": "Mutiny: the mess deck takes the plan out of your hands.",
+    "text": "Mutinerie : le mess vous enlève le plan des mains."
+  },
+  "late.f9996ac13bdb": {
+    "source": "Nakurmiik, qujannamiik, quana: three ways to say thank you, from Nunavik to the Kitikmeot.",
+    "text": "Nakurmiik, qujannamiik, quana : trois façons de dire merci, du Nunavik au Kitikmeot."
+  },
+  "late.68a70123b95c": {
+    "source": "Name the species",
+    "text": "Nommez l'espèce"
+  },
+  "late.dbc7a64b0ba3": {
+    "source": "Name the {value0}.",
+    "text": "Nommez la {value0}."
+  },
+  "late.88ecd30f7043": {
+    "source": "Nanuq hunts ringed seals at the floe edge and at breathing holes; ice stations post a bear watch for the same reason.",
+    "text": "Nanuq chasse les phoques annelés au bord de la banquise et aux trous de respiration ; les stations de glace affichent une quart d'ours pour la même raison."
+  },
+  "late.c4f6301d8970": {
+    "source": "Narwhal",
+    "text": "Narval"
+  },
+  "late.be0dbd7963cf": {
+    "source": "Narwhal in the log. A tusk in the glass is a sighting to be spoken of at dinner.",
+    "text": "Narval dans le journal. Une défense dans le verre est une observation dont il faut parler au dîner."
+  },
+  "late.4cd3e7a09e9e": {
+    "source": "Narwhal. {value0} of them, logged at {value1}. +{value2}.",
+    "text": "Narval. {value0} d'entre eux, enregistrés à {value1}. +{value2}."
+  },
+  "late.7e7d6c54fc50": {
+    "source": "Naujaat",
+    "text": "Naujaat;"
+  },
+  "late.6ae1323a16ac": {
+    "source": "Naujaat, \"gull nesting place\", is the community at Repulse Bay on the Arctic Circle.",
+    "text": "Naujaat, « lieu de nidification des goélands », est la communauté de Repulse Bay sur le cercle polaire arctique."
+  },
+  "late.476a2a31a2a5": {
+    "source": "Near freezing, salt sets density; the saltiest, coldest parcel is the heaviest.",
+    "text": "Près de la congélation, le sel fixe la densité ; le colis le plus salé et le plus froid est le plus lourd."
+  },
+  "late.cde4f15ec930": {
+    "source": "Nearly all heave stays within ±1.7 m",
+    "text": "Presque tout le soulèvement reste à ±1,7 m"
+  },
+  "late.1163a38d1f8e": {
+    "source": "Neptune asks how much water lies beneath your keel. Set your call on a log scale from 5 to 3000 m. Within a third of the truth passes; within a tenth pleases him.{value0}",
+    "text": "Neptune demande combien d'eau se trouve sous votre quille. Réglez votre appel sur une échelle de 5 à 3000 m. Dans un tiers de la vérité passe ; dans un dixième lui plaît.{value0}"
+  },
+  "late.86f757979958": {
+    "source": "Neptune nods: the sea remembers, and so do you.",
+    "text": "Neptune hoche la tête : la mer se souvient, et vous aussi."
+  },
+  "late.9cb79b7dd426": {
+    "source": "Neptune's Wrath",
+    "text": "La colère de Neptune"
+  },
+  "late.d453659f54f6": {
+    "source": "Neptune's court",
+    "text": "Cour de Neptune"
+  },
+  "late.e0ca83a3243c": {
+    "source": "Neptune's court: {value0} of {value1} trials passed",
+    "text": "Tribunal de Neptune : {value0} procès sur {value1} passés"
+  },
+  "late.26c3b6a2b8ec": {
+    "source": "Neptune's temper",
+    "text": "Le tempérament de Neptune"
+  },
+  "late.906fdf224b64": {
+    "source": "Neptune's wrath: {value0} of {value1} trials before he lost patience",
+    "text": "Colère de Neptune : {value0} sur {value1} épreuves avant qu'il ne perde patience"
+  },
+  "late.35191ef1901b": {
+    "source": "Nets",
+    "text": "Les filets"
+  },
+  "late.852d49e469e7": {
+    "source": "New rival",
+    "text": "Nouveau rival"
+  },
+  "late.5595b1f0e443": {
+    "source": "New watch",
+    "text": "Nouvelle quart"
+  },
+  "late.bc981983e7f5": {
+    "source": "Next",
+    "text": "Suivant"
+  },
+  "late.9106dbf62ed9": {
+    "source": "Niskin sample crate",
+    "text": "Caisse d'échantillons Niskin"
+  },
+  "late.12dcd0d51a10": {
+    "source": "No points for a withdrawal. A fresh rival is waiting.",
+    "text": "Aucun point pour un retrait. Un nouveau rival vous attend."
+  },
+  "late.371467b261bc": {
+    "source": "Northern fulmar",
+    "text": "<g id=\"1\"/><g id=\"2\"> </g><g id=\"3\">Fulmar boréal</g>"
+  },
+  "late.26f04c24ef7a": {
+    "source": "Not a {value0}: {value1}, {value2}. −{value3}.",
+    "text": "Pas une {value0} : {value1}, {value2}. −{value3}."
+  },
+  "late.848ecb4df8d1": {
+    "source": "Not much. {value0}",
+    "text": "Pas grand-chose. {value0}"
+  },
+  "late.dfce80c3ca2c": {
+    "source": "Now planning day {value0}.",
+    "text": "Planifiez maintenant le jour {value0}."
+  },
+  "late.8f3f5c258621": {
+    "source": "Nuna plus -vut, our, gives Nunavut. Nunavik and Nunatsiavut carry the same root across Quebec and Labrador.",
+    "text": "Nuna plus -vut, notre, donne au Nunavut. Nunavik et Nunatsiavut ont la même racine au Québec et au Labrador."
+  },
+  "late.1ecc65841c0d": {
+    "source": "Nunavut",
+    "text": "Nunavut"
+  },
+  "late.76f5db1b0ca3": {
+    "source": "Nunavut: our land.",
+    "text": "Nunavut : notre terre."
+  },
+  "late.76022a00a16b": {
+    "source": "Ocean",
+    "text": "Océan"
+  },
+  "late.a9edc5e78a11": {
+    "source": "Offshore, deep water, a long swell and nothing between the ship and the horizon.",
+    "text": "Au large, en eau profonde, une longue houle et rien entre le navire et l'horizon."
+  },
+  "late.a8c47c75c90f": {
+    "source": "Often -rjuaq after a vowel: umiaq, boat, gives umiarjuaq, ship.",
+    "text": "Souvent -rjuaq après une voyelle : umiaq, bateau, donne umiarjuaq, navire."
+  },
+  "late.1c55db55e128": {
+    "source": "On the bottom · {value0}",
+    "text": "En bas · {value0}"
+  },
+  "late.e91fd0042674": {
+    "source": "On the bridge wing, {value0}. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+    "text": "Sur l'aile du pont, {value0}. Les relèvements sont relatifs à l'étrave : 000 en avant, 090 à tribord."
+  },
+  "late.3fcd0f7a8392": {
+    "source": "One glyph is one syllable",
+    "text": "Un glyphe est une syllabe"
+  },
+  "late.b597ed27201b": {
+    "source": "One hand. Ten is qulit; twenty, avatit, is a whole person of digits.",
+    "text": "Une main. Dix est qulit ; vingt, avatit, est une personne entière de chiffres."
+  },
+  "late.bd4b78664c66": {
+    "source": "One hard roll, and the seawater loop let go.",
+    "text": "Un rouleau dur, et la boucle d'eau de mer a lâché."
+  },
+  "late.7ddf172d6c0a": {
+    "source": "Open data release",
+    "text": "Libération de données ouvertes"
+  },
+  "late.7c5e8ca8901e": {
+    "source": "Open water",
+    "text": "Eau libre"
+  },
+  "late.38f64bec0529": {
+    "source": "Open water that stays open in winter, kept clear by currents or wind. The oceanographer’s \"polynya\" is a Russian loan; this is the local name.",
+    "text": "Eau libre qui reste ouverte en hiver, maintenue dégagée par les courants ou le vent. La « polynie » de l'océanographe est un prêt russe ; c'est le nom local."
+  },
+  "late.6d75b2f4f702": {
+    "source": "Optical satellite pass",
+    "text": "Passe satellite optique"
+  },
+  "late.c1cf3b585499": {
+    "source": "Orbital Consortium",
+    "text": "Orbital Consortium"
+  },
+  "late.9e883dc0c760": {
+    "source": "Orbital Cryosphere Consortium",
+    "text": "Consortium sur la cryosphère orbitale"
+  },
+  "late.220e06ba2fee": {
+    "source": "Out",
+    "text": "Retrait"
+  },
+  "late.cdf6dd00acf0": {
+    "source": "Overboard at {value0} s",
+    "text": "Par-dessus bord à {value0} s"
+  },
+  "late.44b232a8365d": {
+    "source": "Pack edge",
+    "text": "Lisière de la banquise"
+  },
+  "late.cc5afcd7d78a": {
+    "source": "Pan left",
+    "text": "Pan left"
+  },
+  "late.ec164868991d": {
+    "source": "Pan right",
+    "text": "Pan right"
+  },
+  "late.8f93c8e601dd": {
+    "source": "Pangniqtuuq",
+    "text": "Pangniqtuuq"
+  },
+  "late.893a0ce13b43": {
+    "source": "Parasitic jaeger",
+    "text": "Labbe parasite"
+  },
+  "late.d157a09e51b2": {
+    "source": "Parts: {value0}.",
+    "text": "Pièces : {value0}."
+  },
+  "late.b57788c4aa13": {
+    "source": "Paulatuuq",
+    "text": "Paulatuuq"
+  },
+  "late.2631e91452f4": {
+    "source": "Peak depth",
+    "text": "Profondeur de crête"
+  },
+  "late.bcbb3dfd4a2a": {
+    "source": "Peer review",
+    "text": "Évaluations par les pairs"
+  },
+  "late.82232ed70def": {
+    "source": "Pelican case",
+    "text": "Étui pélican"
+  },
+  "late.16f434c4f05a": {
+    "source": "Peristaltic pump",
+    "text": "Pompe péristaltique"
+  },
+  "late.67636878dbb0": {
+    "source": "Physical oceanography",
+    "text": "7.1.1 Océanographie physique"
+  },
+  "late.2dddd64cd29d": {
+    "source": "Piston",
+    "text": "Piston"
+  },
+  "late.7e4d816c6f91": {
+    "source": "Piston core",
+    "text": "Noyau du piston"
+  },
+  "late.c32a0147f2e4": {
+    "source": "Place",
+    "text": "Collaborateur"
+  },
+  "late.385015bc7d6f": {
+    "source": "Plan box",
+    "text": "Boîte de plan"
+  },
+  "late.8fc9988d85b6": {
+    "source": "Plan of the day",
+    "text": "Plan de la journée"
+  },
+  "late.dd249f91b067": {
+    "source": "Plan the week as chief scientist",
+    "text": "Planifiez la semaine comme scientifique en chef"
+  },
+  "late.d97a01b00c87": {
+    "source": "Plan the {value0} transit first.",
+    "text": "Planifiez d'abord le transit de {value0}."
+  },
+  "late.0bafc1bbb34d": {
+    "source": "Plankton",
+    "text": "Plancton"
+  },
+  "late.7c138638ef76": {
+    "source": "Plankton ecology",
+    "text": "Écologie du plancton"
+  },
+  "late.d2c511f99dfe": {
+    "source": "Plankton nets",
+    "text": "Filets de plancton"
+  },
+  "late.9c76bea961dd": {
+    "source": "Planner actions",
+    "text": "Actions du planificateur"
+  },
+  "late.ef67c2b94a25": {
+    "source": "Planning day {value0} of {value1}",
+    "text": "Jour de planification {value0} de {value1}"
+  },
+  "late.6d9a6e81dce9": {
+    "source": "Points were banked on the earlier win; this one was for pride.",
+    "text": "Les points ont été mis en banque sur la victoire précédente ; celle-ci était pour la fierté."
+  },
+  "late.9815a2dc69a1": {
+    "source": "Points were banked on the first watch; this one was for the words.",
+    "text": "Des points ont été accumulés sur la première quart ; celle-ci était pour les mots."
+  },
+  "late.0542d7569207": {
+    "source": "Polar bear",
+    "text": "Ours polaire"
+  },
+  "late.dd6074f3125d": {
+    "source": "Power bar",
+    "text": "Power Bar"
+  },
+  "late.6d234a17fecd": {
+    "source": "Press release",
+    "text": "Communiqué de presse"
+  },
+  "late.f51133fe2d9e": {
+    "source": "Pronunciation: q is a k made far back in the throat; doubled letters are held long; ng as in singer. Spellings follow the Inuit Cultural Institute standard used in Nunavut; Inuinnaqtun and Inuvialuktun to the west are written in Roman letters, and Nunavik forms differ a little.",
+    "text": "Prononciation : q est un k fait loin dans la gorge ; les lettres doublées sont tenues longtemps ; ng comme dans chanteur. L'orthographe suit la norme de l'Institut culturel inuit utilisée au Nunavut ; Inuinnaqtun et Inuvialuktun à l'ouest sont écrits en lettres romaines, et les formes Nunavik diffèrent un peu."
+  },
+  "late.801ad0d72dee": {
+    "source": "Purse",
+    "text": "Bourse"
+  },
+  "late.f31fa693853d": {
+    "source": "Push the mug left",
+    "text": "Poussez la tasse vers la gauche"
+  },
+  "late.48136be5892b": {
+    "source": "Push the mug right",
+    "text": "Poussez la tasse vers la droite"
+  },
+  "late.4d8b387b8801": {
+    "source": "Qamani’tuaq",
+    "text": "Qamani'tuaq"
+  },
+  "late.3811b97d4a5a": {
+    "source": "Qausuittuq",
+    "text": "Qausuittuq"
+  },
+  "late.df6b2587ae6f": {
+    "source": "Qausuittuq, Resolute, means \"the place with no dawn\": the sun stays down there for about three months.",
+    "text": "Qausuittuq, Resolute, signifie « l'endroit sans aube » : le soleil y reste pendant environ trois mois."
+  },
+  "late.b71681d7bb8c": {
+    "source": "Qikiqtaaluk",
+    "text": "Qikiqtaaluk"
+  },
+  "late.0b4c08595167": {
+    "source": "Qikiqtaaluk, Baffin Island, is the huge island.",
+    "text": "Qikiqtaaluk, l'île de Baffin, est l'immense île."
+  },
+  "late.46819d54c1be": {
+    "source": "Qikiqtaaluk, the big island, is Baffin Island. Qikiqtarjuaq, another big island, is a community off its east coast.",
+    "text": "Qikiqtaaluk, la grande île, est l'île de Baffin. Qikiqtarjuaq, une autre grande île, est une communauté au large de sa côte est."
+  },
+  "late.1cec48b562ec": {
+    "source": "Qikiqtarjuaq",
+    "text": "Qikiqtarjuaq"
+  },
+  "late.25fbf4814f65": {
+    "source": "Question words come first. Nami umiarjuaq: where is the ship?",
+    "text": "Les mots de question viennent en premier. Nami umiarjuaq : où est le navire ?"
+  },
+  "late.084226bf4657": {
+    "source": "Qurluqtuq",
+    "text": "Qurluqtuq"
+  },
+  "late.e96b646d443f": {
+    "source": "R deals a new watch",
+    "text": "R distribue une nouvelle quart"
+  },
+  "late.174d35853adc": {
+    "source": "R hails a different rival",
+    "text": "R salue un rival différent"
+  },
+  "late.80715d0cc4fb": {
+    "source": "RBR logger",
+    "text": "Enregistreur RBR"
+  },
+  "late.d9f601cfb1fc": {
+    "source": "ROV descending · {value0} m",
+    "text": "ROV descendant · {value0} m"
+  },
+  "late.c7174f7c86f2": {
+    "source": "ROV dive",
+    "text": "Plongée ROV"
+  },
+  "late.aad82db2cb77": {
+    "source": "Radar",
+    "text": "Radar"
+  },
+  "late.bd45ba80613b": {
+    "source": "Radio bearing",
+    "text": "relèvement radiogoniométrique"
+  },
+  "late.70599d26f661": {
+    "source": "Radio bearing {value0}° ({value1}), give or take {value2}°. A second bearing from somewhere else crosses it.",
+    "text": "Radio portant {value0}° ({value1}), donner ou prendre {value2}°. Un deuxième relèvement venant d'ailleurs le traverse."
+  },
+  "late.0a858c95bc97": {
+    "source": "Rain",
+    "text": "Pluie"
+  },
+  "late.c06b087876f8": {
+    "source": "Ram",
+    "text": "Ram"
+  },
+  "late.a16c5bbe4bf9": {
+    "source": "Range",
+    "text": "Plage"
+  },
+  "late.9adc056f3dd4": {
+    "source": "Range plot and sonar display",
+    "text": "Tracé de distance et affichage du sonar"
+  },
+  "late.0afb2e689b6c": {
+    "source": "Ready…",
+    "text": "Prêt"
+  },
+  "late.aaa989eaf4a3": {
+    "source": "Recalibrate",
+    "text": "Réétalonner"
+  },
+  "late.ead32deee1dd": {
+    "source": "Red phalarope",
+    "text": "phalarope roux"
+  },
+  "late.1037525aaf28": {
+    "source": "Reject without review",
+    "text": "Rejeter sans examen"
+  },
+  "late.c93f6536dcfb": {
+    "source": "Remote",
+    "text": "À distance"
+  },
+  "late.e2658a43ed12": {
+    "source": "Request more data",
+    "text": "Demander plus de données"
+  },
+  "late.f7194e6a0d0b": {
+    "source": "Requests",
+    "text": "Requêtes"
+  },
+  "late.5faa59d4bc37": {
+    "source": "Result",
+    "text": "Résultat"
+  },
+  "late.04bc281df512": {
+    "source": "RetroSeep",
+    "text": "RetroSeep"
+  },
+  "late.e29a79fe0c34": {
+    "source": "Review",
+    "text": "Avis"
+  },
+  "late.3f5062a2ba62": {
+    "source": "Reviewer 2",
+    "text": "Relecteur 2"
+  },
+  "late.558d7d2cde8c": {
+    "source": "Reviewer 2 has opinions. {value0} must revise: attacks weakened, credibility bleeding.",
+    "text": "Le réviseur 2 a des opinions. {value0} doit réviser : attaques affaiblies, saignement de crédibilité."
+  },
+  "late.0c4c32fa6d41": {
+    "source": "Riddle {value0} of {value1}: {value2}",
+    "text": "Devinette {value0} sur {value1} : {value2}"
+  },
+  "late.954daa8b0033": {
+    "source": "Right",
+    "text": "Droite"
+  },
+  "late.ff76861fc04f": {
+    "source": "Ringed seal",
+    "text": "Phoque annelé"
+  },
+  "late.8734f5749e33": {
+    "source": "Rival Researchers",
+    "text": "Chercheurs rivaux"
+  },
+  "late.d56ba4d6ddd7": {
+    "source": "Rival credibility",
+    "text": "Crédibilité rivale"
+  },
+  "late.ce0e33741057": {
+    "source": "Rivers and melting ice",
+    "text": "Rivières et glace fondante"
+  },
+  "late.71d45746acc9": {
+    "source": "Rivers and summer melt cap the Arctic with a fresh, light layer.",
+    "text": "Les rivières et la fonte estivale coiffent l'Arctique d'une couche fraîche et légère."
+  },
+  "late.5ae788e0c4e7": {
+    "source": "Roman letters",
+    "text": "Lettres romaines"
+  },
+  "late.e96857c58f71": {
+    "source": "Root",
+    "text": "La racine"
+  },
+  "late.3284d0c2d786": {
+    "source": "Ross's gull",
+    "text": "mouette rosée"
+  },
+  "late.712b32fdc44f": {
+    "source": "Round {value0}: watch {value1} waves.",
+    "text": "Round {value0} : regardez {value1} vagues."
+  },
+  "late.19ea508212fe": {
+    "source": "Round {value0}: your turn, {value1} waves.",
+    "text": "Tour {value0} : votre tour, {value1} vagues."
+  },
+  "late.1e975193e087": {
+    "source": "Run survey",
+    "text": "Exécuter l'enquête"
+  },
+  "late.7cb65d3eae78": {
+    "source": "Running {value0} line{value1} at {value2} kn. Watch the waterfall for a hard return with a shadow.",
+    "text": "Exécution de la ligne{value0} {value1} à {value2} kn. Observez la cascade pour un retour difficile avec une ombre."
+  },
+  "late.55a90e622e47": {
+    "source": "SAR pass",
+    "text": "Pass SAR"
+  },
+  "late.8381e9bd2991": {
+    "source": "SCUPPER",
+    "text": "dalot"
+  },
+  "late.8afffa267014": {
+    "source": "SEABED / SHIPWRECKS",
+    "text": "FOND MARIN / ÉPAVES"
+  },
+  "late.5d6e52bc2e9c": {
+    "source": "SUMP PUMP",
+    "text": "POMPE DE PUISARD"
+  },
+  "late.2032c7b688cc": {
+    "source": "Sabine's gull",
+    "text": "Mouette de Sabine"
+  },
+  "late.4a90ec26f816": {
+    "source": "Said to one person leaving; tavvauvusi to several.",
+    "text": "Dit à une personne qui partait ; tavvauvusi à plusieurs."
+  },
+  "late.aadd69c95094": {
+    "source": "Said to one person; tunngasugitsi to several. The root is \"feel at home\".",
+    "text": "Dit à une personne ; tunngasugitsi à plusieurs. La racine est « se sentir chez soi »."
+  },
+  "late.5dd8f74af203": {
+    "source": "Salinity raises temperature",
+    "text": "La salinité augmente la température"
+  },
+  "late.3998f674ab3c": {
+    "source": "Salliq",
+    "text": "Salliq"
+  },
+  "late.60a58d9b59c8": {
+    "source": "Salluit",
+    "text": "Salluit"
+  },
+  "late.72e4d08b5e9f": {
+    "source": "Salt rejected from growing sea ice goes where?",
+    "text": "Le sel rejeté de la glace de mer en croissance va où ?"
+  },
+  "late.498a0e1561ca": {
+    "source": "Sanikiluaq",
+    "text": "Sanikiluaq"
+  },
+  "late.844015c37958": {
+    "source": "Sanirajak",
+    "text": "Sanirajak"
+  },
+  "late.eb7bb2d3e45b": {
+    "source": "Scupper",
+    "text": "Dalot"
+  },
+  "late.79ffdc139bd7": {
+    "source": "Sea ice",
+    "text": "Glace de mer"
+  },
+  "late.4333dbe5219d": {
+    "source": "Sea-ice team",
+    "text": "Équipe de glace de mer"
+  },
+  "late.7fcde0f53d34": {
+    "source": "Seabed",
+    "text": "Des fonds marins"
+  },
+  "late.27da0c9fffee": {
+    "source": "Seal fat, and the lamp oil rendered from it. Uqsuqtuuq, Gjoa Haven, is \"the place of much blubber\".",
+    "text": "Scellez la graisse et l'huile de lampe qui en est extraite. Uqsuqtuuq, Gjoa Haven, est « le lieu de beaucoup de graisse »."
+  },
+  "late.173839517f9b": {
+    "source": "Seals haul out on the floes, bears walk the edge, ivory gulls follow both.",
+    "text": "Les phoques traînent sur les floes, les ours marchent sur le bord, les mouettes d'ivoire suivent les deux."
+  },
+  "late.e0c47b9f787b": {
+    "source": "Search and Rescue",
+    "text": "Recherche et sauvetage"
+  },
+  "late.2d766386138f": {
+    "source": "Search called off",
+    "text": "Recherche annulée"
+  },
+  "late.2455463748a1": {
+    "source": "Search for {value0} called off",
+    "text": "Recherche de {value0} annulée"
+  },
+  "late.780e7a0fc43e": {
+    "source": "Seawater snapshot {value0}",
+    "text": "Instantané de l'eau de mer {value0}"
+  },
+  "late.9b6d44b7494f": {
+    "source": "Sediment trap",
+    "text": "dépotoir à alluvions"
+  },
+  "late.58bfb6f4c942": {
+    "source": "Seep box core",
+    "text": "Noyau de boîte d'infiltration"
+  },
+  "late.4da1be0b2690": {
+    "source": "Seep core",
+    "text": "Seep Core"
+  },
+  "late.7fb3a9b5101b": {
+    "source": "Settled",
+    "text": "Réglé"
+  },
+  "late.c94c7cb8f662": {
+    "source": "Seven days, three watches a day, and every team wants the deck. Pick a request, put it on a watch the forecast can carry, and issue the plan of the day",
+    "text": "Sept jours, trois quarts par jour, et chaque équipe veut le deck. Choisissez une demande, mettez-la sur une quart que la prévision peut transporter, et émettez le plan du jour"
+  },
+  "late.76d50c67bd02": {
+    "source": "Shallower ← · Deeper → · Call it Space",
+    "text": "Moins profond ← · Plus profond → · Appelez cela de l'espace"
+  },
+  "late.469d5b183fdc": {
+    "source": "Shift",
+    "text": "Quart de travail"
+  },
+  "late.a620e2ccee74": {
+    "source": "Ship in {value0}, bound for {value1} and {value2}. {value3} requests on the board. Arrow keys move the planner cursor; Z and X or the numbers choose a request; Enter places it.",
+    "text": "Expédier à {value0}, à destination de {value1} et {value2}. {value3} demandes sur le tableau. Les touches fléchées déplacent le curseur du planificateur ; Z et X ou les chiffres choisissent une demande ; Entrez la place."
+  },
+  "late.a8acbb0f3437": {
+    "source": "Ship in {value0}.",
+    "text": "Expédier dans {value0}."
+  },
+  "late.ef555f318566": {
+    "source": "Ship time",
+    "text": "Heure d'expédition"
+  },
+  "late.eb023dce09e8": {
+    "source": "Shipwrecks",
+    "text": "Épaves"
+  },
+  "late.946ffb6e97b8": {
+    "source": "Shipwrecks of the archive",
+    "text": "Naufrages des archives"
+  },
+  "late.abc451d1b9b5": {
+    "source": "Ship’s crew",
+    "text": "Équipage de navire"
+  },
+  "late.4b2cca6162cd": {
+    "source": "Sighting log",
+    "text": "Journal de visée"
+  },
+  "late.e9dbbff38c51": {
+    "source": "Siku is the general word for sea ice. The Nunavut ice glossary runs to dozens of finer terms; the ice chart’s \"tenths\" flatten most of them.",
+    "text": "Siku est le mot général pour la glace de mer. Le glossaire des glaces du Nunavut comporte des dizaines de termes plus fins ; les « dixièmes » de la carte des glaces en aplatissent la plupart."
+  },
+  "late.0c1c5b7b6650": {
+    "source": "Siku plus -aq: young ice a few centimetres thick, still dark, that bends under the ship’s bow wave rather than breaking.",
+    "text": "Siku plus -aq : jeune glace de quelques centimètres d'épaisseur, encore sombre, qui se plie sous la vague de proue du navire plutôt que de se briser."
+  },
+  "late.2d3f85ca24d7": {
+    "source": "Sila is weather, air and the world outside at once; in older thought it is the breath and intelligence of the world.",
+    "text": "Sila est à la fois le temps, l'air et le monde extérieur ; dans la pensée plus ancienne, c'est le souffle et l'intelligence du monde."
+  },
+  "late.8bb73c329b7f": {
+    "source": "Skin boots; sealskin for wet ice, caribou for dry cold. Plural kamiik, a pair.",
+    "text": "Bottes en peau ; peau de phoque pour la glace humide, caribou pour le froid sec. Kamiik pluriel, une paire."
+  },
+  "late.302190228652": {
+    "source": "Smaller",
+    "text": "Plus petit"
+  },
+  "late.da7007faabc7": {
+    "source": "Smaller box",
+    "text": "Boîte plus petite"
+  },
+  "late.e2c4814d09bf": {
+    "source": "Snow bunting",
+    "text": "bruant des neiges"
+  },
+  "late.80c4f20cd5f2": {
+    "source": "Somebody left the wash-down hose running in the sink.",
+    "text": "Quelqu'un a laissé le tuyau de lavage couler dans l'évier."
+  },
+  "late.edcad8e4e85e": {
+    "source": "Something is rising alongside. Press Space to face him.",
+    "text": "Quelque chose se lève à côté. Appuyez sur Espace pour lui faire face."
+  },
+  "late.659d0296c03b": {
+    "source": "Sonar",
+    "text": "Sonar"
+  },
+  "late.a6d4466ebac7": {
+    "source": "Sound speed rises with temperature, salinity and pressure.",
+    "text": "La vitesse du son augmente avec la température, la salinité et la pression."
+  },
+  "late.f0481060287a": {
+    "source": "Sound travels fastest in which water?",
+    "text": "Le son voyage-t-il le plus vite dans quelle eau ?"
+  },
+  "late.6d8c9b124d52": {
+    "source": "Space",
+    "text": "Espace"
+  },
+  "late.2d2cb022bc3d": {
+    "source": "Speed",
+    "text": "Vitesse"
+  },
+  "late.c54387e026e2": {
+    "source": "Spell it in syllabics · {value0}",
+    "text": "L'épeler en syllabique · {value0}"
+  },
+  "late.006ff1552e12": {
+    "source": "Stars gave direction in the dark months; the snow ridges left by the prevailing wind gave it by day.",
+    "text": "Les étoiles donnaient la direction dans les mois sombres ; les crêtes de neige laissées par le vent dominant la donnaient de jour."
+  },
+  "late.fbee9828cb09": {
+    "source": "Start the watch",
+    "text": "Démarrer la quart"
+  },
+  "late.e59b689406ae": {
+    "source": "Stations along the lab",
+    "text": "Stations le long du laboratoire"
+  },
+  "late.bde38411ee40": {
+    "source": "Steaming to {value0}",
+    "text": "Cuire parcourus jusqu'à {value0}"
+  },
+  "late.02f4a3c6aac9": {
+    "source": "Steer",
+    "text": "Direction"
+  },
+  "late.da62be2f68c4": {
+    "source": "Steer east",
+    "text": "Diriger vers l'est"
+  },
+  "late.3f5f26e1db4c": {
+    "source": "Steer north",
+    "text": "Diriger vers le nord"
+  },
+  "late.01dfed5e914a": {
+    "source": "Steer south",
+    "text": "Diriger vers le sud"
+  },
+  "late.95ac06a00acc": {
+    "source": "Steer west",
+    "text": "Diriger vers l'ouest"
+  },
+  "late.be62fe79eed0": {
+    "source": "Stereo microscope",
+    "text": "Microscope stéreoscopique"
+  },
+  "late.8932900cabe6": {
+    "source": "Strike Space",
+    "text": "Espace de frappe"
+  },
+  "late.91f2c8fe4468": {
+    "source": "Strike {value0} of 3",
+    "text": "Frappe {value0} sur 3"
+  },
+  "late.1f524529659b": {
+    "source": "Strike {value0}: hit{value1}. {value2} of {value3}.",
+    "text": "Frappe {value0} : touche{value1}. {value2} sur {value3}."
+  },
+  "late.294ad1aebc78": {
+    "source": "Strike {value0}: the point slid off. {value1} of {value2}.",
+    "text": "Frapper {value0} : le point a glissé. {value1} de {value2}."
+  },
+  "late.885db975a310": {
+    "source": "Suffix",
+    "text": "Suffixe"
+  },
+  "late.50785a140da9": {
+    "source": "Sump pump",
+    "text": "Pompe de puisard"
+  },
+  "late.88cf49473dfa": {
+    "source": "Surveyed",
+    "text": "ENQUETEES"
+  },
+  "late.d6a1c6964075": {
+    "source": "Swell from {value0}",
+    "text": "Gonflement à partir de {value0}"
+  },
+  "late.e87f424f9a7b": {
+    "source": "Syllabary",
+    "text": "Syllabaire"
+  },
+  "late.04757c404276": {
+    "source": "Syllabics",
+    "text": "Syllabe"
+  },
+  "late.68f4ddeea318": {
+    "source": "Syllabics, words and names on the chart",
+    "text": "Syllabique, mots et noms sur la carte"
+  },
+  "late.c9a08425aa5b": {
+    "source": "TRIAL OF THE DEEP",
+    "text": "ESSAI DES PROFONDEURS"
+  },
+  "late.becb7b9cf59b": {
+    "source": "TRIAL OF THE FOUR WINDS",
+    "text": "ESSAI DES QUATRE VENTS"
+  },
+  "late.7c6cab9ca845": {
+    "source": "TRIAL OF THE LEAD LINE",
+    "text": "ESSAI DE LA LIGNE DE DÉRIVATION"
+  },
+  "late.447aa21bf129": {
+    "source": "TRIAL OF THE ROLLING TABLE",
+    "text": "ESSAI DE LA TABLE ROULANTE"
+  },
+  "late.ecec26d1c06a": {
+    "source": "TRIAL OF THE STRIKE",
+    "text": "PROCÈS DE LA GRÈVE"
+  },
+  "late.2f7506f2c39d": {
+    "source": "TRIAL {value0} · {value1}",
+    "text": "ESSAI {value0} · {value1}"
+  },
+  "late.6b8357098636": {
+    "source": "Take a watch on the bridge",
+    "text": "Montez le quart à la passerelle"
+  },
+  "late.697168d47920": {
+    "source": "Tallurutiup Imanga",
+    "text": "Tallurutiup Imanga"
+  },
+  "late.48afdb2193ce": {
+    "source": "Talurjuaq",
+    "text": "Talurjuaq"
+  },
+  "late.1ab11d1b771a": {
+    "source": "Tank feed valve",
+    "text": "Vanne d'alimentation du réservoir"
+  },
+  "late.8820bca1391e": {
+    "source": "Taqqiq is also the month. The traditional calendar follows the moon and the animals’ seasons together.",
+    "text": "Le Taqqiq est aussi le mois. Le calendrier traditionnel suit la lune et les saisons des animaux ensemble."
+  },
+  "late.1f6075554714": {
+    "source": "Tasiujaq",
+    "text": "Tasiujaq"
+  },
+  "late.46da470099a2": {
+    "source": "Tasiujaq looks like a lake; Umiujaq looks like a boat.",
+    "text": "Tasiujaq ressemble à un lac ; Umiujaq ressemble à un bateau."
+  },
+  "late.edf2b370fe58": {
+    "source": "Tasiujaq, a Nunavik community, means \"resembles a lake\": a bay so enclosed it might be one.",
+    "text": "Tasiujaq, une communauté du Nunavik, signifie « ressemble à un lac » : une baie si fermée qu'elle pourrait en être une."
+  },
+  "late.fc1f24e00c63": {
+    "source": "That was {value0}, not a hull. The ROV is back aboard.",
+    "text": "C'était {value0}, pas une coque. Le ROV est de retour à bord."
+  },
+  "late.fa2e2d91d040": {
+    "source": "The Canadian Inuit dog pulls the qamutiik; a team is a qimuksiq.",
+    "text": "Le chien inuit canadien tire le qamutiik ; une équipe est un qimuksiq."
+  },
+  "late.f039d18b2e2e": {
+    "source": "The Riddles",
+    "text": "Les énigmes"
+  },
+  "late.862833d79ad2": {
+    "source": "The Sounding",
+    "text": "The Sounding"
+  },
+  "late.96dc20d0fa83": {
+    "source": "The South Baffin form; nakurmiik in Nunavik, quana in Inuinnaqtun, koana in the west.",
+    "text": "La forme South Baffin ; nakurmiik au Nunavik, quana à Inuinnaqtun, koana à l'ouest."
+  },
+  "late.a84e3dac7595": {
+    "source": "The Swell",
+    "text": "La houle"
+  },
+  "late.0524e9382ebe": {
+    "source": "The Trident",
+    "text": "Le Trident"
+  },
+  "late.66812708c156": {
+    "source": "The Wardroom Mug",
+    "text": "Tasse The Wardroom"
+  },
+  "late.188a5c8c4375": {
+    "source": "The answer is qanuinngittunga, \"I am fine\", literally \"I am not in any way\".",
+    "text": "La réponse est qanuinngittunga, « Je vais bien », littéralement « Je ne suis en aucune façon »."
+  },
+  "late.f036a33ad429": {
+    "source": "The aurora, plural. Under the auroral oval the display is more often overhead than to the north.",
+    "text": "L'aurore, au pluriel. Sous l'ovale auroral, l'affichage est plus souvent au-dessus de la tête que vers le nord."
+  },
+  "late.9fd47b66b79e": {
+    "source": "The biggest 4σ heave the hull felt this leg?",
+    "text": "Le plus gros soulèvement 4σ de la coque a senti cette jambe ?"
+  },
+  "late.f5a724ba7482": {
+    "source": "The chart",
+    "text": "La carte"
+  },
+  "late.16354fcf930e": {
+    "source": "The coldest sea surface my realm showed you this leg?",
+    "text": "La surface de la mer la plus froide de mon royaume vous a montré cette jambe ?"
+  },
+  "late.a784d65f1bed": {
+    "source": "The court",
+    "text": "Le tribunal"
+  },
+  "late.77693e81f03b": {
+    "source": "The crescent knife. Ulukhaktok, in the west, is the place where ulu blade stone is found.",
+    "text": "Le couteau en croissant. Ulukhaktok, à l'ouest, est l'endroit où se trouve la pierre à lame ulu."
+  },
+  "late.5590c4a40760": {
+    "source": "The dot is length",
+    "text": "Le point est la longueur"
+  },
+  "late.e4ca06877836": {
+    "source": "The edge where landfast ice meets open water. Seals, birds and hunters gather there; so do polar bears.",
+    "text": "Le bord où la glace terrestre rencontre l'eau libre. Les phoques, les oiseaux et les chasseurs s'y rassemblent ; les ours polaires aussi."
+  },
+  "late.560e1315876a": {
+    "source": "The freshest surface water this leg had a salinity of about:",
+    "text": "L'eau de surface la plus fraîche de cette jambe avait une salinité d'environ :"
+  },
+  "late.8556ce53dbbe": {
+    "source": "The hull is heated",
+    "text": "La coque est chauffée"
+  },
+  "late.84505160ef98": {
+    "source": "The ice opens up: {value0} tenths.",
+    "text": "La glace s'ouvre : {value0} dixièmes."
+  },
+  "late.2676a88c61af": {
+    "source": "The incubation tank has split along a seam.",
+    "text": "Le réservoir d'incubation s'est divisé le long d'une couture."
+  },
+  "late.fb3f3652f80d": {
+    "source": "The largest wave was 1.7 m",
+    "text": "La plus grande vague était de 1,7 m"
+  },
+  "late.4996d4e42aef": {
+    "source": "The lead found {value0} m {value1}.",
+    "text": "Le prospect a trouvé {value0} m {value1}."
+  },
+  "late.786317e1ae6a": {
+    "source": "The long runner sled, lashed rather than nailed so it flexes over rough ice. The word is dual: two runners.",
+    "text": "La longue luge, fouettée plutôt que clouée, fléchit sur la glace rugueuse. Le mot est double : deux coureurs."
+  },
+  "late.7cd9544a9b94": {
+    "source": "The loop discharge is backing up over a blocked scupper.",
+    "text": "La décharge de la boucle est sauvegardée sur un scupper bloqué."
+  },
+  "late.c645e1321ed5": {
+    "source": "The mean wave height",
+    "text": "La hauteur moyenne des vagues"
+  },
+  "late.694b52e3e5ea": {
+    "source": "The most common Arctic seal. It keeps breathing holes open through the ice all winter with its claws.",
+    "text": "Le phoque arctique le plus courant. Il garde les trous de respiration ouverts à travers la glace tout l'hiver avec ses griffes."
+  },
+  "late.6c0ee2cf9a98": {
+    "source": "The mug stayed in the middle third {value0}% of the time.",
+    "text": "La tasse est restée dans le tiers moyen {value0}% du temps."
+  },
+  "late.62ae54550e33": {
+    "source": "The open skin boat; umiarjuaq, big boat, is any ship, including this one.",
+    "text": "Le bateau à ciel ouvert ; umiarjuaq, grand bateau, est n'importe quel navire, y compris celui-ci."
+  },
+  "late.80e448e7222d": {
+    "source": "The open-water season, when the ship can reach the coast. The root au- is melting.",
+    "text": "La saison en eau libre, lorsque le navire peut atteindre la côte. La racine au- fond."
+  },
+  "late.cd343406d91b": {
+    "source": "The pack closes in: {value0} tenths.",
+    "text": "Le pack se termine dans : {value0} dixièmes."
+  },
+  "late.2f4001f8dd15": {
+    "source": "The pump warms the sample",
+    "text": "La pompe réchauffe l'échantillon"
+  },
+  "late.a10066308083": {
+    "source": "The root tariuq is salt; the same word names the ocean and the salinity your CTD measures.",
+    "text": "La racine tariuq est le sel ; le même mot nomme l'océan et la salinité que votre CTD mesure."
+  },
+  "late.8e51963d87e4": {
+    "source": "The sea king boards with a purse. Pass his trials and it grows; fail them and he takes it back.",
+    "text": "Les planches Sea King avec un bourse. Passez ses épreuves et il grandit ; échouez-leur et il les reprend."
+  },
+  "late.7ecf5fc2ef28": {
+    "source": "The seawater loop let go",
+    "text": "Le circuit d’eau de mer a lâché"
+  },
+  "late.397ac6cda68d": {
+    "source": "The shape is the consonant",
+    "text": "La forme est la consonne"
+  },
+  "late.6cd36ad53b6f": {
+    "source": "The ship has left {value0} by then.",
+    "text": "Le navire a quitté {value0} d'ici là."
+  },
+  "late.6b1949ef0377": {
+    "source": "The ship is still in {value0} on that watch. Plan the transit first.",
+    "text": "Le navire est toujours en {value0} sur cette quart. Planifiez d'abord le transport en commun."
+  },
+  "late.5ff7ea1ec387": {
+    "source": "The ship never made the {value0} passage; the leg schedule slips.",
+    "text": "Le navire n'a jamais fait le passage de {value0} ; l'horaire des étapes glisse."
+  },
+  "late.383cea3bff1f": {
+    "source": "The ship reaches {value0} only after the first transit.",
+    "text": "Le navire n'atteint {value0} qu'après le premier transit."
+  },
+  "late.cf367e966f77": {
+    "source": "The small glyph is a bare consonant",
+    "text": "Le petit glyphe est une consonne nue"
+  },
+  "late.edeb82171d20": {
+    "source": "The strongest relative wind logged this leg?",
+    "text": "Le vent relatif le plus fort a enregistré cette jambe ?"
+  },
+  "late.064699c4c321": {
+    "source": "The suffix means \"{value0}\"; the root is the word for the thing itself.",
+    "text": "Le suffixe signifie « {value0} » ; la racine est le mot pour la chose elle-même."
+  },
+  "late.a2a99a1d1b03": {
+    "source": "The tether comes up wrapped in weed and slush. {value0}'s instruments are fouled.",
+    "text": "La longe arrive enveloppée dans de l'herbe et de la neige fondante. Les instruments de {value0} sont encrassés."
+  },
+  "late.c566305ab9e5": {
+    "source": "The trap keeps collecting on {value0}{value1}. −{value2}.",
+    "text": "Le piège continue de s'accumuler sur {value0}{value1}. −{value2}."
+  },
+  "late.062ee2f50238": {
+    "source": "The turn is the vowel",
+    "text": "Le tour est la voyelle"
+  },
+  "late.7e11406e3671": {
+    "source": "The white whale of the estuaries. In some dialects the same word, qualified, covers the narwhal.",
+    "text": "La baleine blanche des estuaires. Dans certains dialectes, le même mot, qualifié, couvre le narval."
+  },
+  "late.97531ccb5b4a": {
+    "source": "The word entered English through Greenland and Denmark; the design is the Inuit hunter’s.",
+    "text": "Le mot est entré en anglais par le Groenland et le Danemark ; le dessin est celui du chasseur inuit."
+  },
+  "late.ecd9b077b71d": {
+    "source": "The {value0} is floating. {value1}",
+    "text": "La {value0} est flottante. {value1}"
+  },
+  "late.fcb89bebcd2f": {
+    "source": "The {value0} row reads {value1} for {value2}; the syllabary is lit for it.",
+    "text": "La ligne {value0} indique {value1} pour {value2} ; le syllabaire est allumé pour cela."
+  },
+  "late.6a937cfc6b06": {
+    "source": "Thermosalinograph, {value0}",
+    "text": "Thermosalinographe, {value0}"
+  },
+  "late.5a4eefbd1a06": {
+    "source": "Thick-billed murre",
+    "text": "marmette de Brunnich"
+  },
+  "late.0b69495a265a": {
+    "source": "Those lines need {value0}; only {value1} of ship time is left. Shrink the box.",
+    "text": "Ces lignes nécessitent {value0} ; il ne reste que {value1} du temps d'expédition. Rétrécissez la boîte."
+  },
+  "late.921a88c00c6f": {
+    "source": "Three legs of a language watch: the writing, the words, the names on the chart.",
+    "text": "Trois jambes d'une quart de langue : l'écriture, les mots, les noms sur le tableau."
+  },
+  "late.1fdc5a1ac677": {
+    "source": "Three legs, eight cards each. A card missed comes back once for half its points; a hint halves them too. Every fifth card in a row is a 10-point bonus. The primer on how the writing works is free, and open at any time.",
+    "text": "Trois jambes, huit cartes chacune. Une carte manquée revient une fois pour la moitié de ses points ; un indice les divise également par deux. Chaque cinquième carte d'affilée est un bonus de 10 points. L'introduction sur le fonctionnement de l'écriture est gratuite et ouverte à tout moment."
+  },
+  "late.4961389682c8": {
+    "source": "Tikirarjuaq",
+    "text": "Tikirarjuaq"
+  },
+  "late.b25928c69902": {
+    "source": "Total",
+    "text": "Total"
+  },
+  "late.c122250ac5ce": {
+    "source": "Tote feed tap",
+    "text": "Robinet d'alimentation fourre-tout"
+  },
+  "late.0e61fd2503c2": {
+    "source": "Tote on the drain",
+    "text": "Fourre-tout sur le drain"
+  },
+  "late.53d366bb6674": {
+    "source": "Transit",
+    "text": "Transport en commun"
+  },
+  "late.5f7537cf06ca": {
+    "source": "Trial",
+    "text": "Procès"
+  },
+  "late.f31a89fabe8e": {
+    "source": "Trial {value0} of {value1}: {value2}. Space to begin.",
+    "text": "Essai {value0} sur {value1} : {value2}. Espace pour commencer."
+  },
+  "late.3dcdcafebd57": {
+    "source": "Trials",
+    "text": "Procès"
+  },
+  "late.894b3be4f136": {
+    "source": "Tribute",
+    "text": "Hommage"
+  },
+  "late.7ddd66b689c9": {
+    "source": "Try it",
+    "text": "Essayez-le"
+  },
+  "late.3b3ad2945601": {
+    "source": "Tube-noses and kittiwakes work the swell; whales, harp seals and the odd pod of narwhal pass through.",
+    "text": "Les nez tubulaires et les mouettes minettes travaillent la houle ; les baleines, les phoques du Groenland et l'étrange gousse de narval passent à travers."
+  },
+  "late.78234cd8195a": {
+    "source": "Tuktoyaktuk, in Inuvialuktun, means \"it looks like a caribou\": the reef there resembles one.",
+    "text": "Tuktoyaktuk, en Inuvialuktun, signifie « ça ressemble à un caribou » : le récif y ressemble à un."
+  },
+  "late.b3993d480265": {
+    "source": "Tuktuujaqtuuq",
+    "text": "Tuktuujaqtuuq"
+  },
+  "late.a4fdcbcfb610": {
+    "source": "Tune the parameterisation",
+    "text": "Régler le paramétrage"
+  },
+  "late.e3a7da892546": {
+    "source": "Tunngasugit",
+    "text": "Tunngasugit"
+  },
+  "late.28913c51332f": {
+    "source": "Type a word to see it written glyph by glyph.",
+    "text": "Tapez un mot pour le voir écrit glyphe par glyphe."
+  },
+  "late.6b207ec27b21": {
+    "source": "UNDERWAY ENCOUNTER ·",
+    "text": "RENCONTRE EN COURS ·"
+  },
+  "late.32ac4735baac": {
+    "source": "UNDERWAY · {value0}",
+    "text": "EN COURS · {value0}"
+  },
+  "late.979fe91b5525": {
+    "source": "UPS",
+    "text": "ONDULEUR"
+  },
+  "late.d3ae35160b1c": {
+    "source": "Uluksaq is stone for an ulu; Uluksaqtuuq the place with much of it.",
+    "text": "Uluksaq est la pierre d'un ulu ; Uluksaqtuuq est l'endroit où il y en a le plus."
+  },
+  "late.7472328b17fb": {
+    "source": "Uluksaqtuuq",
+    "text": "Uluksaqtuuq"
+  },
+  "late.aba98268ad9c": {
+    "source": "Umiaq plus -rjuaq, big. The icebreaker is an umiarjuaq to everyone watching from shore.",
+    "text": "Umiaq plus -rjuaq, grand. Le brise-glace est un umiarjuaq pour tous ceux qui regardent depuis le rivage."
+  },
+  "late.fb2065b7eda3": {
+    "source": "Umiujaq",
+    "text": "Umiujaq"
+  },
+  "late.d8052ee59bac": {
+    "source": "Under the hull",
+    "text": "Sous la coque"
+  },
+  "late.1f73cdd2da46": {
+    "source": "Under way",
+    "text": "En route"
+  },
+  "late.cd6c977a7bfd": {
+    "source": "Under-ice multibeam",
+    "text": "Multi-faisceaux sous la glace"
+  },
+  "late.2038bdec9210": {
+    "source": "Up",
+    "text": "MONTER"
+  },
+  "late.6f5e6c9a6846": {
+    "source": "Upward-looking sonar",
+    "text": "Sonar orienté vers le haut"
+  },
+  "late.088566363a71": {
+    "source": "Upwelling",
+    "text": "Remontée d'eau"
+  },
+  "late.ae519d66dcdb": {
+    "source": "Uqsuqtuuq",
+    "text": "Uqsuqtuuq"
+  },
+  "late.66de4f4f0c8e": {
+    "source": "Uqsuqtuuq has much blubber; Panniqtuuq many bull caribou.",
+    "text": "Uqsuqtuuq a beaucoup de graisse ; Panniqtuuq beaucoup de caribous taureaux."
+  },
+  "late.761f7a4313db": {
+    "source": "V-shaped bushy blow",
+    "text": "Soufflage touffu en forme de V"
+  },
+  "late.f514361dfe9a": {
+    "source": "View from the bridge wing",
+    "text": "Vue depuis l'aile du pont"
+  },
+  "late.99524e452fc8": {
+    "source": "WASD",
+    "text": "WASD "
+  },
+  "late.74b82ec07d22": {
+    "source": "WATCH COMPLETE",
+    "text": "REGARDER TERMINÉ"
+  },
+  "late.727cbc30ace5": {
+    "source": "WRATH",
+    "text": "Colère"
+  },
+  "late.5f37dde9ec0b": {
+    "source": "Walk left, left arrow",
+    "text": "Marcher à gauche, flèche gauche"
+  },
+  "late.488432191f8b": {
+    "source": "Walk right, right arrow",
+    "text": "Marcher à droite, flèche droite"
+  },
+  "late.4f91af64c940": {
+    "source": "Walk with",
+    "text": "Marchez avec"
+  },
+  "late.9786a2ec3e5f": {
+    "source": "Walrus",
+    "text": "Morse"
+  },
+  "late.ed7256f90124": {
+    "source": "Walrus haul out on ice over shallow clam beds; they rarely feed deeper than 80 m.",
+    "text": "Les morses se déplacent sur la glace au-dessus des bancs de palourdes peu profonds ; ils se nourrissent rarement à plus de 80 m de profondeur."
+  },
+  "late.5b543c57838a": {
+    "source": "Warm, salty, deep",
+    "text": "Chaud, salé, profond"
+  },
+  "late.b01ad65d16ca": {
+    "source": "Wash-down tap",
+    "text": "Robinet de lavage"
+  },
+  "late.d91ebf5887cf": {
+    "source": "Watch",
+    "text": "Quart"
+  },
+  "late.0587c136e342": {
+    "source": "Watch again",
+    "text": "Revoir la vidéo."
+  },
+  "late.85d6b3291673": {
+    "source": "Watch conditions are the ship’s own underway record for {value0} – {value1} (Leg 3, 2026), binned to 8-hour watches: relative wind as logged, air temperature, 4σ heave, humidity and short-wave radiation. Stations come from the Leg 3 cruise plan ({value2}). Forecast bands widen with lead time; what happens on the day is what was recorded.",
+    "text": "Les conditions de surveillance sont le propre record en cours du navire pour {value0} – {value1} (étape 3, 2026), regroupées en quarts de 8 heures : vent relatif tel que consigné, température de l'air, soulèvement 4σ, humidité et rayonnement à ondes courtes. Les stations proviennent du plan de croisière Leg 3 ({value2}). Les bandes de prévision s'élargissent avec le délai ; ce qui se passe le jour est ce qui a été enregistré."
+  },
+  "late.de9b1be49dae": {
+    "source": "Water",
+    "text": "Eau"
+  },
+  "late.6a65d73ac40c": {
+    "source": "Water stopped",
+    "text": "Eau arrêtée"
+  },
+  "late.1988dceb1e1f": {
+    "source": "Wave {value0} came from {value1}, not {value2}.",
+    "text": "La vague {value0} provient de {value1} et non de {value2}."
+  },
+  "late.568aac57e417": {
+    "source": "Wave {value0} of round {value1} came from the {value2}.",
+    "text": "La vague {value0} du tour {value1} provient de la {value2}."
+  },
+  "late.d95adcdb0c33": {
+    "source": "Week planner: days across, watches down",
+    "text": "Planificateur de semaine : jours à travers, surveille"
+  },
+  "late.65b308fc4b4a": {
+    "source": "Welcome aboard. Inuktitut is spoken from Greenland to the Bering Strait in a chain of dialects; the coast the ship works speaks it every day, and its charts carry a thousand years of place names. The Nunavut standard writes it in syllabics: shapes for consonants, turned for vowels.",
+    "text": "Bienvenue à bord. L'inuktitut est parlé du Groenland au détroit de Béring dans une chaîne de dialectes ; la côte où travaille le navire le parle tous les jours, et ses cartes portent mille ans de noms de lieux. La norme du Nunavut l'écrit en syllabique : formes pour les consonnes, tournées pour les voyelles."
+  },
+  "late.b59bc4ec67ca": {
+    "source": "Whatever that was at {value0} is gone.",
+    "text": "Tout ce qui était à {value0} a disparu."
+  },
+  "late.bca70bf7a9fa": {
+    "source": "What’s next?",
+    "text": "Et maintenant?"
+  },
+  "late.384a2ede1f3d": {
+    "source": "What’s next? Plan of the day",
+    "text": "Quelle est la prochaine étape ? Plan du jour"
+  },
+  "late.7531c7e9da4c": {
+    "source": "Where the chart came from",
+    "text": "D'où vient le graphique"
+  },
+  "late.ca97399dacad": {
+    "source": "Which parcel sinks beneath the other?",
+    "text": "Quel colis coule sous l'autre ?"
+  },
+  "late.f3792715e832": {
+    "source": "Why does the seawater loop read warmer than the sea?",
+    "text": "Pourquoi la boucle d'eau de mer est-elle plus chaude que la mer ?"
+  },
+  "late.8ca4648757d7": {
+    "source": "Wildlife Observer",
+    "text": "Observateur de la faune"
+  },
+  "late.acabbc66a68b": {
+    "source": "Wildlife observer",
+    "text": "Observation de la faune"
+  },
+  "late.8c86b581f82b": {
+    "source": "Wind direction names differ by community, because they describe where a wind comes from across local land.",
+    "text": "Les noms de direction du vent diffèrent selon la communauté, car ils décrivent d'où vient un vent sur les terres locales."
+  },
+  "late.9ff1c8124d88": {
+    "source": "Winter and year share one word; a life is counted in winters.",
+    "text": "Hiver et année partagent un mot ; une vie se compte en hiver."
+  },
+  "late.d26d55c7f815": {
+    "source": "Words",
+    "text": "Mots"
+  },
+  "late.bb107a2d83e3": {
+    "source": "Words learned",
+    "text": "Mots appris"
+  },
+  "late.c8d5e89af011": {
+    "source": "XBT from the tube",
+    "text": "XBT du tube"
+  },
+  "late.b3ec6ce81554": {
+    "source": "You are at",
+    "text": "Vous êtes dans :"
+  },
+  "late.9cf405a2341e": {
+    "source": "Your call: {value0} m {value1}.",
+    "text": "Votre appel : {value0} m {value1}."
+  },
+  "late.b15e5360a67f": {
+    "source": "Your credibility",
+    "text": "Votre crédibilité."
+  },
+  "late.22ea72574abb": {
+    "source": "Your moves",
+    "text": "Vos déménagements"
+  },
+  "late.00962387f4ef": {
+    "source": "a blow, a big back",
+    "text": "un coup, un grand dos"
+  },
+  "late.0841a82a21c1": {
+    "source": "a dark shape on the slope",
+    "text": "une forme sombre sur la pente"
+  },
+  "late.d5b0b51a91d1": {
+    "source": "a head in the water",
+    "text": "une tête dans l'eau"
+  },
+  "late.fb553b47a790": {
+    "source": "a heap on the ice",
+    "text": "un tas sur la glace"
+  },
+  "late.9e8e0974ecef": {
+    "source": "a large seal",
+    "text": "un grand sceau"
+  },
+  "late.786bc9c6f45f": {
+    "source": "a pod porpoising",
+    "text": "un porpoising de gousse"
+  },
+  "late.7f1c802627d3": {
+    "source": "a small, quick back",
+    "text": "un petit retour rapide"
+  },
+  "late.6ffeb258f60d": {
+    "source": "a spiral tusk lifted on surfacing",
+    "text": "une défense en spirale soulevée sur le revêtement"
+  },
+  "late.9fc654479a0e": {
+    "source": "a white spot on the slope",
+    "text": "une tache blanche sur la pente"
+  },
+  "late.8bf7bcdc8e38": {
+    "source": "after transit {value0}",
+    "text": "après transit {value0}"
+  },
+  "late.c8c7a27cfa38": {
+    "source": "air {value0}{value1} °C, floe too soft",
+    "text": "air {value0}{value1} °C, floe trop doux"
+  },
+  "late.9a45ae3071f9": {
+    "source": "air ≤ {value0} °C",
+    "text": "air ≤ {value0} °C"
+  },
+  "late.d96e7e9f960b": {
+    "source": "airborne EM survey team",
+    "text": "équipe d'enquête EM aéroportée"
+  },
+  "late.935f8d8fa5ee": {
+    "source": "airborne team",
+    "text": "équipe aéroportée"
+  },
+  "late.899754144d64": {
+    "source": "all black, broad wings",
+    "text": "toutes les ailes noires et larges"
+  },
+  "late.849d0e2fad64": {
+    "source": "all dark",
+    "text": "tout foncé"
+  },
+  "late.0ccb1e7cb5aa": {
+    "source": "are on it and held steady; holding steady reveals field marks. Log it",
+    "text": "sont dessus et maintenus stables ; le maintien stable révèle des marques de champ. Enregistrez-le"
+  },
+  "late.0719939c468f": {
+    "source": "autonomous glider fleet",
+    "text": "flotte de planeurs autonomes"
+  },
+  "late.34bf81298c21": {
+    "source": "back and charge",
+    "text": "retour et charge"
+  },
+  "late.18245e594e52": {
+    "source": "backing up, {value0} s",
+    "text": "sauvegarde, {value0} s"
+  },
+  "late.8d354606b03a": {
+    "source": "backs rolling in a pod",
+    "text": "dos roulant dans une nacelle"
+  },
+  "late.4d48390c5f6b": {
+    "source": "bench(a, b)).join('')}",
+    "text": "banc(a, b)).join('')}"
+  },
+  "late.a42768585e34": {
+    "source": "beneath the keel at {value0}°N {value1}°W on {value2} {value3}",
+    "text": "sous la quille à {value0}°N {value1}°O sur {value2} {value3}"
+  },
+  "late.1c4241db2d27": {
+    "source": "beset, {value0} nmi off",
+    "text": "assèchement, {value0} nmi off"
+  },
+  "late.06a1f5c4ac7d": {
+    "source": "beyond radar",
+    "text": "au-delà du radar"
+  },
+  "late.b745fc8a1236": {
+    "source": "big dark eyes, short muzzle",
+    "text": "gros yeux foncés, museau court"
+  },
+  "late.9fa2bfef4b9d": {
+    "source": "big ears",
+    "text": "Oreille"
+  },
+  "late.55051533bb3a": {
+    "source": "big falcon along the cliff",
+    "text": "grand faucon le long de la falaise"
+  },
+  "late.9616162e9b72": {
+    "source": "big, heavy gull",
+    "text": "grosse, grosse mouette"
+  },
+  "late.ed6875eba2f8": {
+    "source": "black above, white below",
+    "text": "noir au-dessus, blanc au-dessous"
+  },
+  "late.b840bf086174": {
+    "source": "black and white",
+    "text": "noir et blanc"
+  },
+  "late.a83765d5291b": {
+    "source": "black cap, red bill",
+    "text": "casquette noire, bec rouge"
+  },
+  "late.9c046e99ade7": {
+    "source": "black ear tips",
+    "text": "embouts d'oreille noirs"
+  },
+  "late.ecc1ff060fcf": {
+    "source": "black face",
+    "text": "Blackface"
+  },
+  "late.f86ffba64eca": {
+    "source": "black harp-shaped saddle on a silver back",
+    "text": "selle en forme de harpe noire sur un dos argenté"
+  },
+  "late.9031cbcd827d": {
+    "source": "black legs",
+    "text": "Pieds noirs"
+  },
+  "late.2addc8f067a1": {
+    "source": "blown loop fitting",
+    "text": "raccord de boucle soufflé"
+  },
+  "late.beb3dd7ba001": {
+    "source": "bold white patch on the wing",
+    "text": "écusson blanc audacieux sur l'aile"
+  },
+  "late.2ec26a52bce6": {
+    "source": "bounding flight",
+    "text": "vol de délimitation"
+  },
+  "late.62c30c118a44": {
+    "source": "bright red feet trailing",
+    "text": "pieds rouges vifs traînant"
+  },
+  "late.39b442301302": {
+    "source": "broad pointed wings",
+    "text": "larges ailes pointues"
+  },
+  "late.c07f5ed8782f": {
+    "source": "buff and white, heading for the deck",
+    "text": "chamois et blanc, direction le pont"
+  },
+  "late.ee139cd60cb4": {
+    "source": "buoyant, dipping to the surface",
+    "text": "flottant, plongeant à la surface"
+  },
+  "late.8336ead5d135": {
+    "source": "buoyant, light flight",
+    "text": "vol léger et flottant"
+  },
+  "late.a98e182f31d8": {
+    "source": "burst of pale whiskers",
+    "text": "explosion de moustaches pâles"
+  },
+  "late.cd09183edddb": {
+    "source": "bushy tail",
+    "text": "queue touffue"
+  },
+  "late.34bb39c0ba62": {
+    "source": "cardMarkup(c, keys.has(c.id) ? keys.get(c.id) : null)).join('')}",
+    "text": "cardMarkup(c, keys.has(cid) ? keys.get(cid) : null)).join('')}"
+  },
+  "late.fbe7d7baacdd": {
+    "source": "channel",
+    "text": "channel"
+  },
+  "late.24674fe08975": {
+    "source": "choose ·",
+    "text": "choisissez"
+  },
+  "late.3aa0ad9c2127": {
+    "source": "chunky, flying low and straight",
+    "text": "gros, volant bas et droit"
+  },
+  "late.e283e1df945b": {
+    "source": "cm",
+    "text": "cm"
+  },
+  "late.1605d6acf1d7": {
+    "source": "commit or next ·",
+    "text": "commit ou next ·"
+  },
+  "late.34db71e79458": {
+    "source": "commit ·",
+    "text": "affecter"
+  },
+  "late.396399fc594e": {
+    "source": "cracked incubation tank",
+    "text": "cuve d'incubation fissurée"
+  },
+  "late.2fb2800e4e19": {
+    "source": "cream-yellow against the ice",
+    "text": "crème-jaune contre la glace"
+  },
+  "late.a447a8fe6b96": {
+    "source": "crew",
+    "text": "équipage"
+  },
+  "late.d3b992428a15": {
+    "source": "dark, powerful flight",
+    "text": "vol sombre et puissant"
+  },
+  "late.34117b8ea553": {
+    "source": "datum",
+    "text": "date"
+  },
+  "late.33af4c3b6dd9": {
+    "source": "deeply forked tail",
+    "text": "queue profondément fourchue"
+  },
+  "late.89ea1a8b0c44": {
+    "source": "dies at {value0} cm",
+    "text": "matrices à {value0} cm"
+  },
+  "late.0514e6810ed0": {
+    "source": "down-curved horns",
+    "text": "cornes courbées vers le bas"
+  },
+  "late.b962599f6b56": {
+    "source": "drakes white above, black below",
+    "text": "drakes blanc au-dessus, noir au-dessous"
+  },
+  "late.a91015f51776": {
+    "source": "eDNA sample",
+    "text": "échantillon d'ADNe"
+  },
+  "late.2b26ebd725ca": {
+    "source": "entirely white, no grey mantle",
+    "text": "entièrement blanc, pas de manteau gris"
+  },
+  "late.be887505ea82": {
+    "source": "escort under way",
+    "text": "escorte en cours"
+  },
+  "late.b04e85738360": {
+    "source": "falcate dorsal fin late in the roll",
+    "text": "falque la nageoire dorsale tard dans le rouleau"
+  },
+  "late.ddb470686bc0": {
+    "source": "falcon-like, pointed wings",
+    "text": "ailes pointues en forme de faucon"
+  },
+  "late.f9063fd57c41": {
+    "source": "fast, shallow wingbeats",
+    "text": "battements d'ailes rapides et peu profonds"
+  },
+  "late.b61dcf739659": {
+    "source": "fast, travelling together",
+    "text": "Voyager ensemble "
+  },
+  "late.d594c2cc0a53": {
+    "source": "final",
+    "text": "finale"
+  },
+  "late.ac59f1baf7ca": {
+    "source": "fingered wingtips",
+    "text": "bouts d'ailes à doigts"
+  },
+  "late.ec4470a0e7e2": {
+    "source": "floats at {value0} cm",
+    "text": "flotteurs à {value0} cm"
+  },
+  "late.3ac43a16214d": {
+    "source": "following, {value0} nmi astern",
+    "text": "suivant, {value0} nmi astern"
+  },
+  "late.578460a2a458": {
+    "source": "forecast wind {value0} knots, air {value1} degrees{value2}",
+    "text": "vent prévisionnel {value0} nœuds, air {value1} degrés{value2}"
+  },
+  "late.872bec5009cb": {
+    "source": "glider fleet",
+    "text": "flotte de planeurs"
+  },
+  "late.ee54b2cefb8f": {
+    "source": "grey above, white below",
+    "text": "gris au-dessus, blanc au-dessous"
+  },
+  "late.3b52d65543e4": {
+    "source": "grey calves alongside",
+    "text": "veaux gris aux côtés"
+  },
+  "late.e70736700dfc": {
+    "source": "grey mantle, white body",
+    "text": "manteau gris, corps blanc"
+  },
+  "late.1ae0538befc0": {
+    "source": "grey-white ice",
+    "text": "glace blanchâtre"
+  },
+  "late.a19b8b67c24a": {
+    "source": "gusts {value0} kn",
+    "text": "rafales {value0} kn"
+  },
+  "late.861a5ff7d1a1": {
+    "source": "gusts ≤ {value0} kn",
+    "text": "rafales ≤ {value0} kn"
+  },
+  "late.eaef97f16bf3": {
+    "source": "heave {value0} m",
+    "text": "soulèvement {value0} m"
+  },
+  "late.fc635921a76b": {
+    "source": "heave ≤ {value0} m",
+    "text": "soulèvement ≤ {value0} m"
+  },
+  "late.d77ccecc2c46": {
+    "source": "heavy ducks in a low line",
+    "text": "canards lourds en ligne basse"
+  },
+  "late.8e562b2c7fd0": {
+    "source": "hint (half points) ·",
+    "text": "indice (demi-points) ·"
+  },
+  "late.68db3f4e643d": {
+    "source": "holding, {value0} nmi off",
+    "text": "tenant, {value0} nmi off"
+  },
+  "late.4f2062ddb269": {
+    "source": "hose in the sink",
+    "text": "tuyau dans l'évier"
+  },
+  "late.bb0e719e8150": {
+    "source": "huge arched jawline, white chin",
+    "text": "énorme mâchoire arquée, menton blanc"
+  },
+  "late.f5e3ec114b84": {
+    "source": "hull multibeam",
+    "text": "coque multifaisceaux"
+  },
+  "late.219487920ad3": {
+    "source": "ice {value0}/10",
+    "text": "glace {value0}/10"
+  },
+  "late.1adbcc344b31": {
+    "source": "idle",
+    "text": "inactif"
+  },
+  "late.9026347b544a": {
+    "source": "in the purse",
+    "text": "dans le bourse"
+  },
+  "late.392c7ed089d1": {
+    "source": "keep watching",
+    "text": "Continue à regarder."
+  },
+  "late.c8ba39ef020a": {
+    "source": "large white flashes in the wing",
+    "text": "grands éclairs blancs dans l'aile"
+  },
+  "late.d71766505c77": {
+    "source": "left to reach them",
+    "text": "Pour les joindre"
+  },
+  "late.321d6cc5177a": {
+    "source": "leg",
+    "text": "jambe"
+  },
+  "late.96ddd9d6114d": {
+    "source": "lent",
+    "text": "lent"
+  },
+  "late.3dd3164fb4c1": {
+    "source": "likely",
+    "text": "probable"
+  },
+  "late.7c6f5aa201f0": {
+    "source": "located",
+    "text": "située(s)"
+  },
+  "late.7332b76a893e": {
+    "source": "long neck, small head",
+    "text": "long cou, petite tête"
+  },
+  "late.fd6027cbf334": {
+    "source": "long, heavy body",
+    "text": "corps long et lourd"
+  },
+  "late.908897f614cc": {
+    "source": "marginal",
+    "text": "marge"
+  },
+  "late.322934164e1f": {
+    "source": "medium first-year ice",
+    "text": "glace moyenne de première année"
+  },
+  "late.131ef301b275": {
+    "source": "mottled grey-brown, small bulbous head",
+    "text": "petite tête bulbeuse marbrée gris-brun"
+  },
+  "late.6a572dcb780b": {
+    "source": "move the box;",
+    "text": "déplacer la boîte ;"
+  },
+  "late.5c800a0817b6": {
+    "source": "move the cursor ·",
+    "text": "Déplacez le curseur."
+  },
+  "late.904b8634d9a1": {
+    "source": "move ·",
+    "text": "déplacer"
+  },
+  "late.98fe87457bf5": {
+    "source": "name it ·",
+    "text": "Mettez un nom dessus "
+  },
+  "late.3b128ddb33e2": {
+    "source": "nanuq, tuktu, siku…",
+    "text": "nanuq, tuktu, siku…"
+  },
+  "late.f16ae8518928": {
+    "source": "needs {value0}, {value1} left",
+    "text": "nécessite {value0}, {value1} restantes"
+  },
+  "late.f806427cf83a": {
+    "source": "never found",
+    "text": "never found"
+  },
+  "late.564878a232f2": {
+    "source": "next consonant",
+    "text": "consonne suivante"
+  },
+  "late.eb2e0422c84d": {
+    "source": "no contact",
+    "text": "aucun contact"
+  },
+  "late.ffa8844e174c": {
+    "source": "no dorsal fin",
+    "text": "pas de nageoire dorsale"
+  },
+  "late.109583a91275": {
+    "source": "no dorsal fin at all",
+    "text": "pas de nageoire dorsale du tout"
+  },
+  "late.9d0c04966dae": {
+    "source": "no targets",
+    "text": "aucune cible"
+  },
+  "late.7efa5bf90984": {
+    "source": "obligations",
+    "text": "obligations"
+  },
+  "late.854b3a410c5e": {
+    "source": "old ice",
+    "text": "vieille glace"
+  },
+  "late.f4b88d940e34": {
+    "source": "on the cursor",
+    "text": "sur le curseur"
+  },
+  "late.855b642d8c8a": {
+    "source": "on the floor, dies at {value0} cm",
+    "text": "au sol, meurt à {value0} cm"
+  },
+  "late.5cdf6838bce8": {
+    "source": "open water",
+    "text": "étendue d'eau"
+  },
+  "late.583620516f9d": {
+    "source": "optionButton(o, i)).join('')}",
+    "text": "optionButton(o, i)).join('')}"
+  },
+  "late.1758356db217": {
+    "source": "or",
+    "text": "ou"
+  },
+  "late.71a401906c9f": {
+    "source": "over shallow water, a clam bed below",
+    "text": "au-dessus de l'eau peu profonde, un lit de palourdes en dessous"
+  },
+  "late.fb44f10adb82": {
+    "source": "own channel through {value0}",
+    "text": "propre canal à travers {value0}"
+  },
+  "late.2bee3e427899": {
+    "source": "pale grey mantle",
+    "text": "manteau gris pâle"
+  },
+  "late.3a57eeeccb88": {
+    "source": "pale grey, barred below",
+    "text": "gris pâle, barré ci-dessous"
+  },
+  "late.88da8df73334": {
+    "source": "pale saddle on the back",
+    "text": "selle pâle à l'arrière"
+  },
+  "late.3d2d5ad788dd": {
+    "source": "patchy, turning white for winter",
+    "text": "inégal, devenant blanc pour l'hiver"
+  },
+  "late.209c8d61a16e": {
+    "source": "pick a method ·",
+    "text": "choisir une méthode ·"
+  },
+  "late.136e17610500": {
+    "source": "pick with 1–4",
+    "text": "choisir avec 1–4"
+  },
+  "late.444515170d9c": {
+    "source": "pick ·",
+    "text": "prendre"
+  },
+  "late.31327feaa4cb": {
+    "source": "pigeon-like gull",
+    "text": "mouette ressemblant à un pigeon"
+  },
+  "late.7d5d1cb5a9a2": {
+    "source": "pigeon-toed, unhurried",
+    "text": "à bout de pigeon, sans hâte"
+  },
+  "late.7dfa3a36b80d": {
+    "source": "pink legs, heavy pale bill",
+    "text": "pattes roses, gros bec pâle"
+  },
+  "late.901dbffcb486": {
+    "source": "pink-brown, wrinkled",
+    "text": "rose-brun, ridée"
+  },
+  "late.8fbbeb4b6151": {
+    "source": "planned box",
+    "text": "boîte prévue"
+  },
+  "late.43b3f4b185dd": {
+    "source": "pointed central tail feathers",
+    "text": "plumes centrales pointues de la queue"
+  },
+  "late.819f41f05837": {
+    "source": "points",
+    "text": "points"
+  },
+  "late.e268dec7f435": {
+    "source": "power {value0}",
+    "text": "puissance {value0}"
+  },
+  "late.ded3f6b54d56": {
+    "source": "previous consonant",
+    "text": "consonne précédente"
+  },
+  "late.82259209065c": {
+    "source": "pure white",
+    "text": "Blanc Pur"
+  },
+  "late.c6eac8a33ba8": {
+    "source": "q: a k made far back, against the uvula",
+    "text": "q : a k fait loin en arrière, contre la luette"
+  },
+  "late.83ec74cd8794": {
+    "source": "recorded wind {value0} knots, gusts {value1}, air {value2} degrees",
+    "text": "vent enregistré {value0} nœuds, rafales {value1}, air {value2} degrés"
+  },
+  "late.27bc4b18cb5d": {
+    "source": "retuning, {value0} s",
+    "text": "réajustement, {value0} s"
+  },
+  "late.9bf72f5189ea": {
+    "source": "rings: great-circle range, square-root scale",
+    "text": "anneaux : gamme grand cercle, échelle à racine carrée"
+  },
+  "late.9ba5eef5f0cb": {
+    "source": "rival",
+    "text": "concurrent"
+  },
+  "late.22630fdac92d": {
+    "source": "roll {value0}°",
+    "text": "rouler {value0}°"
+  },
+  "late.5c23eaa3446c": {
+    "source": "rolling in the cliff updraught",
+    "text": "rouler dans la falaise à vide"
+  },
+  "late.df3462469ba6": {
+    "source": "rosette tote tipped in a roll",
+    "text": "fourre-tout rosette basculé en rouleau"
+  },
+  "late.83cc66ba3a08": {
+    "source": "rosy flush on the breast",
+    "text": "rougeur rosée sur la poitrine"
+  },
+  "late.7f380307672e": {
+    "source": "row: consonant · column: vowel · click a glyph to turn it",
+    "text": "row : consonant · column : vowel · click a glyph to turn it"
+  },
+  "late.ca27ceb0b103": {
+    "source": "saved {value0} of {value1}",
+    "text": "a enregistré {value0} sur {value1}"
+  },
+  "late.2e10e6400234": {
+    "source": "science points",
+    "text": "points de science"
+  },
+  "late.d36b88babd46": {
+    "source": "scupper blocked with bubble wrap",
+    "text": "scupper bloqué avec du papier bulle"
+  },
+  "late.7febce039c4c": {
+    "source": "seconds",
+    "text": "secondes"
+  },
+  "late.720cf3189584": {
+    "source": "shaggy, block-like",
+    "text": "poilu, en forme de bloc"
+  },
+  "late.614145e0cb75": {
+    "source": "shallow forked tail",
+    "text": "queue fourchue peu profonde"
+  },
+  "late.d9e686e7bec0": {
+    "source": "sharply pointed snout",
+    "text": "museau pointu"
+  },
+  "late.edfc3832f9bb": {
+    "source": "shearing low over the swell",
+    "text": "cisaillement bas au-dessus de la houle"
+  },
+  "late.ed43a8a09e9b": {
+    "source": "ship",
+    "text": "ship"
+  },
+  "late.e5be6d47c85e": {
+    "source": "ship time",
+    "text": "heure d'expédition"
+  },
+  "late.40671aea7cff": {
+    "source": "ship time left",
+    "text": "temps restant pour l'expédition"
+  },
+  "late.24dc631636ba": {
+    "source": "shore",
+    "text": "côte"
+  },
+  "late.58d563ea8161": {
+    "source": "short pointed bill, white line on the gape",
+    "text": "bec pointu court, ligne blanche sur l'entrejambe"
+  },
+  "late.7f379c5925ae": {
+    "source": "since the call",
+    "text": "depuis l'appel"
+  },
+  "late.2fa390e34acf": {
+    "source": "sitting upright",
+    "text": "assis à la verticale"
+  },
+  "late.114363eff0a8": {
+    "source": "sleek, dark",
+    "text": "élégant, foncé"
+  },
+  "late.10dc98d500ab": {
+    "source": "slim, narrow-winged",
+    "text": "mince, à ailes étroites"
+  },
+  "late.00fa5e447ba5": {
+    "source": "slips under with no splash",
+    "text": "se glisse sous le sol sans éclaboussures"
+  },
+  "late.762de48e03df": {
+    "source": "slow, powerful wingbeats",
+    "text": "battements d'ailes lents et puissants"
+  },
+  "late.cb7770ba15c1": {
+    "source": "small auk, whirring low",
+    "text": "petite pingouine, tourbillonnant bas"
+  },
+  "late.5282e67037ff": {
+    "source": "small songbird",
+    "text": "petit oiseau chanteur"
+  },
+  "late.14abf28698db": {
+    "source": "small yellow bill, black legs",
+    "text": "petit bec jaune, pattes noires"
+  },
+  "late.8e2c29024c45": {
+    "source": "small, buoyant gull",
+    "text": "petite mouette flottante"
+  },
+  "late.503675774786": {
+    "source": "small, fast, tern-like gull",
+    "text": "petit goéland rapide ressemblant à une sterne"
+  },
+  "late.d05a347ecf59": {
+    "source": "small, on the tideline",
+    "text": "petit, sur la ligne de marée"
+  },
+  "late.22f0c7320a05": {
+    "source": "small, round head",
+    "text": "Rondes de petite taille"
+  },
+  "late.2e95603f1d20": {
+    "source": "sonar mosaic",
+    "text": "mosaïque sonar"
+  },
+  "late.cd8fae810f3e": {
+    "source": "spinning on the spot",
+    "text": "filature sur place"
+  },
+  "late.63bb2b8f1966": {
+    "source": "square fore-flippers",
+    "text": "nageoires avant carrées"
+  },
+  "late.a43521bfaa26": {
+    "source": "steer; hold two for a diagonal. Speed follows the chart: 13 kn in open water, about 3 kn breaking a metre of first-year ice, a crawl in old ice.",
+    "text": "diriger ; maintenez deux pour une diagonale. La vitesse suit le graphique : 13 nœuds en eau libre, environ 3 nœuds brisant un mètre de glace de première année, une rampe dans de la vieille glace."
+  },
+  "late.7271b1bb8c54": {
+    "source": "stiff, straight wings",
+    "text": "ailes raides et droites"
+  },
+  "late.21e978895190": {
+    "source": "streak",
+    "text": "trace/ la séquence/la série/traînée/stries /strier /periode/passer en courant"
+  },
+  "late.44da6dee55ef": {
+    "source": "striking wing pattern",
+    "text": "motif d'aile frappante"
+  },
+  "late.aacf218cde23": {
+    "source": "submarine crew",
+    "text": "Équipage du sous-marin"
+  },
+  "late.cfca71a113ca": {
+    "source": "submarine survey crew",
+    "text": "équipage d'arpentage sous-marin"
+  },
+  "late.656b3cd791f6": {
+    "source": "syllabary ·",
+    "text": "Syllabaire"
+  },
+  "late.191b16b02ade": {
+    "source": "t.glyph).join('')) || ' '}",
+    "text": "t.glyph).join('')) || ' '}"
+  },
+  "late.9533107f7a1c": {
+    "source": "tall fins in a pod",
+    "text": "grandes nageoires dans une nacelle"
+  },
+  "late.49450f7aa59c": {
+    "source": "tall triangular dorsal fin",
+    "text": "grande nageoire dorsale triangulaire"
+  },
+  "late.d7547dc1df9e": {
+    "source": "the door",
+    "text": "la nuit"
+  },
+  "late.1bfd9513a57f": {
+    "source": "the dot over {value0} makes the vowel long",
+    "text": "le point sur {value0} rend la voyelle longue"
+  },
+  "late.d3035c2da8af": {
+    "source": "the {value0}",
+    "text": "la {value0}"
+  },
+  "late.9a234c408083": {
+    "source": "the {value0} shape ({value1})",
+    "text": "la forme {value0} ({value1})"
+  },
+  "late.a2452bd2011b": {
+    "source": "then 1–4 again",
+    "text": "puis 1–4 à nouveau"
+  },
+  "late.f7350d322f75": {
+    "source": "thick first-year ice",
+    "text": "glace épaisse de première année"
+  },
+  "late.6694e7e73c64": {
+    "source": "thick neck, no black wingtip",
+    "text": "cou épais, pas de bout d'aile noir"
+  },
+  "late.5698849eb4fe": {
+    "source": "thick straight bill, dark eye patch",
+    "text": "bec droit épais, cache-œil foncé"
+  },
+  "late.d2820afad9df": {
+    "source": "thin first-year ice",
+    "text": "glace de première année"
+  },
+  "late.e59f98f54177": {
+    "source": "three triangles: grey, white, black",
+    "text": "trois triangles : gris, blanc, noir"
+  },
+  "late.1bda4ebff08c": {
+    "source": "tiny, sitting on the water",
+    "text": "minuscule, assis sur l'eau"
+  },
+  "late.1bace380efda": {
+    "source": "towed side-scan",
+    "text": "balayage latéral remorqué"
+  },
+  "late.a8d628c3ba7e": {
+    "source": "trotting, short legs",
+    "text": "trot, jambes courtes"
+  },
+  "late.3949bc110f8c": {
+    "source": "tube on the bill, grey above and white below",
+    "text": "tube sur la facture, gris au-dessus et blanc au-dessous"
+  },
+  "late.b09c738b5976": {
+    "source": "turn",
+    "text": "tournez"
+  },
+  "late.b15b710f2ada": {
+    "source": "two white tusks",
+    "text": "deux défenses blanches"
+  },
+  "late.d9e9e130d95d": {
+    "source": "under way",
+    "text": "En cours"
+  },
+  "late.eff8ec10351a": {
+    "source": "unlikely",
+    "text": "peu probable"
+  },
+  "late.2e1aec584567": {
+    "source": "unpick ·",
+    "text": "décocher ·"
+  },
+  "late.5e3282fa2441": {
+    "source": "unsurveyed",
+    "text": "non levé"
+  },
+  "late.a332d0afc6cb": {
+    "source": "very pale mantle",
+    "text": "manteau très pâle"
+  },
+  "late.d82eb29c4860": {
+    "source": "walking the floe",
+    "text": "marcher sur le floe"
+  },
+  "late.35c7c5278e2a": {
+    "source": "walking to the {value0}",
+    "text": "à pied jusqu'au {value0}"
+  },
+  "late.30b8b635ef22": {
+    "source": "water still running, saved {value0} of {value1}",
+    "text": "l'eau coule toujours, économisé {value0} sur {value1}"
+  },
+  "late.8661c13e39be": {
+    "source": "wedge-shaped head and bill",
+    "text": "tête et bec en forme de coin"
+  },
+  "late.2ed629bc8750": {
+    "source": "wedge-shaped tail",
+    "text": "cunéiforme"
+  },
+  "late.ba93078fbe0d": {
+    "source": "whirring, fast wingbeats",
+    "text": "bourdonnement, battements d'ailes rapides"
+  },
+  "late.a4011c391f4e": {
+    "source": "white eye patch, grey saddle",
+    "text": "cache-œil blanc, selle grise"
+  },
+  "late.65ac1293e8b1": {
+    "source": "white flash at the base of the primaries",
+    "text": "flash blanc à la base des primaires"
+  },
+  "late.9a8919c8045c": {
+    "source": "wind {value0} kn",
+    "text": "vent {value0} kn"
+  },
+  "late.59ad91a82458": {
+    "source": "wind ≤ {value0} kn",
+    "text": "vent ≤ {value0} kn"
+  },
+  "late.8cd4ec145507": {
+    "source": "wingtips solid black, as if dipped in ink",
+    "text": "ailerons noirs pleins, comme trempés dans de l'encre"
+  },
+  "late.a8ca977388a3": {
+    "source": "wingtips white, no black at all",
+    "text": "ailerons blancs, pas de noir du tout"
+  },
+  "late.f24fa79d4c74": {
+    "source": "working the ice edge, dropping to floes",
+    "text": "travailler le bord de la glace, tomber sur les floes"
+  },
+  "late.38d2d86388dd": {
+    "source": "{ const slot = d * WATCHES + w; const card = cardById(state, state.grid[slot]); const area = shipArea(state, slot); const classes = ['c11-cell']; let odds = null; if (slot",
+    "text": "{ const slot = d * WATCHES + w ; const card = cardById(state, state.grid[slot]) ; const area = shipArea(state, slot) ; const classes = ['c11-cell'] ; let odds = null ; if (slot"
+  },
+  "late.3b8303661382": {
+    "source": "{ const slot = d * WATCHES; const cls = d + 1",
+    "text": "{ const slot = d * MONTRES ; const cls = d + 1"
+  },
+  "late.3d2dd67cf41e": {
+    "source": "{value0} % of the box · {value1} run",
+    "text": "{value0} % de la boîte · {value1} run"
+  },
+  "late.c189e8bc98e6": {
+    "source": "{value0} ({value1})",
+    "text": "{value0} ({value1})"
+  },
+  "late.75e15cc3767a": {
+    "source": "{value0} + {value1} → {value2} {value3}. {value4}",
+    "text": "{value0} + {value1} → {value2} {value3}. {value4}"
+  },
+  "late.6d514ac8057f": {
+    "source": "{value0} + {value1}. Enter commits.",
+    "text": "{value0} + {value1}. Saisissez les validations."
+  },
+  "late.ad92047f2414": {
+    "source": "{value0} +{value1}.",
+    "text": "{value0} +{value1}."
+  },
+  "late.985a6b77c72a": {
+    "source": "{value0} / {value1}",
+    "text": "{value0} / {value1}"
+  },
+  "late.9eea7a6b4187": {
+    "source": "{value0} L already across the deck and {value1} L/s still coming",
+    "text": "{value0} L déjà sur le pont et {value1} L/s encore à venir"
+  },
+  "late.1dbb441dfe25": {
+    "source": "{value0} L/s",
+    "text": "{value0} L/s"
+  },
+  "late.1110d5a55299": {
+    "source": "{value0} L/s onto the deck",
+    "text": "{value0} L/s sur le pont"
+  },
+  "late.f0ccb0a18010": {
+    "source": "{value0} L1100 {value1} Z",
+    "text": "{value0} L1100 {value1} Z"
+  },
+  "late.2a2e0f6b93bc": {
+    "source": "{value0} a small final {value1}",
+    "text": "{value0} une petite {value1} finale"
+  },
+  "late.f02e2cd53d7d": {
+    "source": "{value0} already holds that watch.",
+    "text": "{value0} détient déjà cette quart."
+  },
+  "late.5ec596d97e6c": {
+    "source": "{value0} at {value1} already holds that watch.",
+    "text": "{value0} à {value1} détient déjà cette quart."
+  },
+  "late.a861940108ea": {
+    "source": "{value0} at {value1} is back on the board.{value2}",
+    "text": "{value0} à {value1} est de retour sur le plateau.{value2}"
+  },
+  "late.2dcb9efee508": {
+    "source": "{value0} at {value1} is planned for day {value2}, {value3}. Choose another watch to move it, or clear it.",
+    "text": "{value0} à {value1} est prévu pour le jour {value2}, {value3}. Choisissez une autre quart pour la déplacer ou effacez-la."
+  },
+  "late.6dc5d79082aa": {
+    "source": "{value0} at {value1} lost its window ({value2}).",
+    "text": "{value0} à {value1} a perdu sa fenêtre ({value2})."
+  },
+  "late.ba16b1084c32": {
+    "source": "{value0} at {value1} lost its window: {value2}.",
+    "text": "{value0} à {value1} a perdu sa fenêtre : {value2}."
+  },
+  "late.fbaeb0b2b157": {
+    "source": "{value0} at {value1} never happened before the ship left {value2}.",
+    "text": "{value0} à {value1} ne s'est jamais produit avant le départ du navire de {value2}."
+  },
+  "late.a4e2db400d69": {
+    "source": "{value0} at {value1} planned, {value2} likely, times {value3}",
+    "text": "{value0} à {value1} prévu, {value2} probable, fois {value3}"
+  },
+  "late.e14af8ce87e7": {
+    "source": "{value0} at {value1} was still on the board when the week ended.",
+    "text": "{value0} à {value1} était toujours sur le tableau à la fin de la semaine."
+  },
+  "late.bdd1b500d2d5": {
+    "source": "{value0} at {value1} {value2} day {value3}, {value4}:{value5} ×{value6} if it holds.{value7}",
+    "text": "{value0} à {value1} {value2} jour {value3}, {value4} :{value5} ×{value6} si elle tient.{value7}"
+  },
+  "late.f2b8933525db": {
+    "source": "{value0} back on the bench, dry. Its owner need never know it was on the floor.",
+    "text": "{value0} de retour sur le banc, sec. Son propriétaire n'a jamais besoin de savoir qu'il était sur le sol."
+  },
+  "late.15d8edb4f1e6": {
+    "source": "{value0} cm",
+    "text": "{value0} cm"
+  },
+  "late.02de81941a2a": {
+    "source": "{value0} cm on the deck already, {value1} L/s more arriving",
+    "text": "{value0} cm sur le pont déjà, {value1} L/s de plus arrivant"
+  },
+  "late.8dd6d503a931": {
+    "source": "{value0} concedes the station.",
+    "text": "{value0} concède la station."
+  },
+  "late.1ef3fdc4e1c1": {
+    "source": "{value0} found",
+    "text": "{value0} trouvé"
+  },
+  "late.ef8e3203d074": {
+    "source": "{value0} grievances: the mess deck votes and the plan is no longer yours. No points this week.",
+    "text": "{value0} griefs : le mess deck vote et le plan n'est plus le vôtre. Aucun point cette semaine."
+  },
+  "late.bae3d3e68eb6": {
+    "source": "{value0} h",
+    "text": "{value0} h"
+  },
+  "late.00063902cfd3": {
+    "source": "{value0} h ship time",
+    "text": "{value0} h heure d'expédition"
+  },
+  "late.38d5a3c0b397": {
+    "source": "{value0} has no dot, so its vowel is short",
+    "text": "{value0} n'a pas de point, donc sa voyelle est courte"
+  },
+  "late.3d5f1586c79b": {
+    "source": "{value0} hit{value1}",
+    "text": "{value0} a atteint{value1}"
+  },
+  "late.85b3f3e1f454": {
+    "source": "{value0} hours gone. The tasking passes to a helicopter out of Resolute.",
+    "text": "Il reste {value0} heures. La tâche est transférée à un hélicoptère de Resolute."
+  },
+  "late.c403af6f3eda": {
+    "source": "{value0} is a bare {value1} with no vowel",
+    "text": "{value0} est un {value1} nu sans voyelle"
+  },
+  "late.70adaed9483e": {
+    "source": "{value0} is a full syllable {value1}; a bare {value2} is the small raised {value3}",
+    "text": "{value0} est une syllabe complète {value1} ; une {value2} nue est la petite {value3} surélevée"
+  },
+  "late.3b82384bdcae": {
+    "source": "{value0} is afloat at {value1} cm and drifting.",
+    "text": "{value0} est à flot à {value1} cm et dérive."
+  },
+  "late.bf1d17d798f5": {
+    "source": "{value0} is being sampled. It keeps collecting.",
+    "text": "{value0} est en cours d'échantillonnage. Il continue de s'accumuler."
+  },
+  "late.70f5a4e8503f": {
+    "source": "{value0} is beset again: the channel closed behind you. Go back and pass within a cable of their hull.",
+    "text": "{value0} est à nouveau en proie : le canal est fermé derrière vous. Revenez en arrière et passez à l'intérieur d'un câble de leur coque."
+  },
+  "late.d46267a04c51": {
+    "source": "{value0} is fixed on that watch.",
+    "text": "{value0} est fixé sur cette quart."
+  },
+  "late.3a56cd8ef5f3": {
+    "source": "{value0} is free of the ice and will follow in your wake at up to 6 kn. Pressure closes a channel in close pack within a few hours, so do not run too far ahead.",
+    "text": "{value0} est libre de glace et suivra dans votre sillage jusqu'à 6 kn. La pression ferme un canal en paquet serré en quelques heures, alors ne courez pas trop loin devant."
+  },
+  "late.96bdbd6efdeb": {
+    "source": "{value0} is in open water and under her own power.",
+    "text": "{value0} est en eau libre et sous son propre pouvoir."
+  },
+  "late.c0901f2c692a": {
+    "source": "{value0} is moving again.",
+    "text": "{value0} déménage à nouveau."
+  },
+  "late.9ece05ca0078": {
+    "source": "{value0} is soaked through. Nobody will miss it.",
+    "text": "{value0} est trempé. Personne ne le manquera."
+  },
+  "late.df64cc324ba8": {
+    "source": "{value0} is the {value1} shape turned for {value2}",
+    "text": "{value0} est la forme {value1} tournée pour {value2}"
+  },
+  "late.264d540cc85f": {
+    "source": "{value0} is the {value1} shape, not {value2}",
+    "text": "{value0} est la forme {value1}, pas {value2}"
+  },
+  "late.0260370d1378": {
+    "source": "{value0} is under water. Its owner is going to ask why it was on the floor.",
+    "text": "{value0} est sous l'eau. Son propriétaire va demander pourquoi il était sur le sol."
+  },
+  "late.96caa8af1e7e": {
+    "source": "{value0} is under water. {value1}",
+    "text": "{value0} est sous l'eau. {value1}"
+  },
+  "late.6499b84b6746": {
+    "source": "{value0} km",
+    "text": "{value0} km"
+  },
+  "late.b0ff65803e35": {
+    "source": "{value0} km in {value1} hours of record.",
+    "text": "{value0} km en {value1} heures d'enregistrement."
+  },
+  "late.9c156a8d1c3d": {
+    "source": "{value0} kn",
+    "text": "{value0} kn"
+  },
+  "late.99b468d14bf8": {
+    "source": "{value0} kn over the deck on {value1}.",
+    "text": "{value0} renversez le pont sur {value1}."
+  },
+  "late.6172f5f7f6d8": {
+    "source": "{value0} likely for the selected request",
+    "text": "{value0} probable pour la demande sélectionnée"
+  },
+  "late.c59fc68619e0": {
+    "source": "{value0} likely,",
+    "text": "{value0} probable,"
+  },
+  "late.591b7584c2b4": {
+    "source": "{value0} logged.",
+    "text": "{value0} enregistrées."
+  },
+  "late.067ee12cc480": {
+    "source": "{value0} m",
+    "text": "{value0} m"
+  },
+  "late.666a72b7e106": {
+    "source": "{value0} m on {value1}, with roll and pitch RMS of {value2}°.",
+    "text": "{value0} m sur {value1}, avec un roulis et un tangage RMS de {value2}°."
+  },
+  "late.38ca488bc454": {
+    "source": "{value0} m under the keel on {value1} at {value2}°N {value3}°W.",
+    "text": "{value0} m sous la quille sur {value1} à {value2}°N {value3}°O."
+  },
+  "late.4983f63b4be3": {
+    "source": "{value0} m: {value1}",
+    "text": "{value0} m : {value1}"
+  },
+  "late.f4ca9e226f9c": {
+    "source": "{value0} of 3 rounds",
+    "text": "{value0} sur 3 tours"
+  },
+  "late.0eab35666446": {
+    "source": "{value0} of 3 strikes{value1}",
+    "text": "{value0} sur 3 coups{value1}"
+  },
+  "late.f580dacb7b08": {
+    "source": "{value0} of ship time",
+    "text": "{value0} du temps d'expédition"
+  },
+  "late.f38ef4e69403": {
+    "source": "{value0} of {value1}",
+    "text": "{value0} sur {value1}"
+  },
+  "late.27bb25f9d7b6": {
+    "source": "{value0} of {value1} riddles",
+    "text": "{value0} énigmes sur {value1}"
+  },
+  "late.702e086a7bd4": {
+    "source": "{value0} on the bench, dry.",
+    "text": "{value0} sur le banc, sec."
+  },
+  "late.f4b66eafec31": {
+    "source": "{value0} on the bench. {value1}",
+    "text": "{value0} sur le banc. {value1}"
+  },
+  "late.3548181c57ff": {
+    "source": "{value0} on the lab clock",
+    "text": "{value0} sur l'horloge du laboratoire"
+  },
+  "late.3a1d02210787": {
+    "source": "{value0} on {value1}: meltwater and river water riding on top.",
+    "text": "{value0} sur {value1} : eau de fonte et eau de rivière sur le dessus."
+  },
+  "late.6a24ae854dc8": {
+    "source": "{value0} o’clock",
+    "text": "{value0} heures"
+  },
+  "late.561e1682058b": {
+    "source": "{value0} points",
+    "text": "{value0} points"
+  },
+  "late.ad90bd8e3c51": {
+    "source": "{value0} request{value1} missed.",
+    "text": "{value0} demande{value1} manquée."
+  },
+  "late.7b38b9b19c2a": {
+    "source": "{value0} revises under the curse. −{value1}.{value2}",
+    "text": "{value0} révise sous la malédiction. −{value1}.{value2}"
+  },
+  "late.a58fcc71c077": {
+    "source": "{value0} right",
+    "text": "{value0} à droite"
+  },
+  "late.5787d62bbee5": {
+    "source": "{value0} rotate({value1})",
+    "text": "Rotation de {value0} ({value1})"
+  },
+  "late.db958ca9f802": {
+    "source": "{value0} s",
+    "text": "{value0} s"
+  },
+  "late.d9a1c1149f75": {
+    "source": "{value0} s to go.",
+    "text": "Plus que {value0} s."
+  },
+  "late.a431e99cb7fa": {
+    "source": "{value0} seconds. Hold a direction to push.",
+    "text": "{value0} secondes. Maintenez une direction pour pousser."
+  },
+  "late.4662516c4d0f": {
+    "source": "{value0} shut",
+    "text": "{value0} fermé"
+  },
+  "late.ffa190c22323": {
+    "source": "{value0} shut.",
+    "text": "{value0} fermé."
+  },
+  "late.bf9ef5c63e3b": {
+    "source": "{value0} takes the station",
+    "text": "{value0} prend la station"
+  },
+  "late.9534f87b46d9": {
+    "source": "{value0} tipped over. {value1}",
+    "text": "{value0} a basculé. {value1}"
+  },
+  "late.68f0256d5365": {
+    "source": "{value0} unidentified target{value1}",
+    "text": "{value0} cible non identifiée {value1}"
+  },
+  "late.91c4c4cf551d": {
+    "source": "{value0} unplanned · {value1} planned",
+    "text": "{value0} imprévue · {value1} planifiée"
+  },
+  "late.d27ad1506bdb": {
+    "source": "{value0} uses {value1}.",
+    "text": "{value0} utilise {value1}."
+  },
+  "late.dca59cc0575d": {
+    "source": "{value0} {value1}",
+    "text": "{value0} {value1}"
+  },
+  "late.30445e315404": {
+    "source": "{value0} {value1} {value2}",
+    "text": "{value0} {value1} {value2}"
+  },
+  "late.130a8555d426": {
+    "source": "{value0} {value1} · tier {value2}",
+    "text": "{value0} {value1} · niveau {value2}"
+  },
+  "late.4bfc73309bc8": {
+    "source": "{value0} {value1}: {value2}. Purse {value3}. {value4}",
+    "text": "{value0} {value1} : {value2}. Porte-monnaie {value3}. {value4}"
+  },
+  "late.8a3e1f0716e8": {
+    "source": "{value0} {value1}{value2}",
+    "text": "{value0} {value1}{value2}"
+  },
+  "late.11e9d4e15bce": {
+    "source": "{value0} °C",
+    "text": "{value0} °C"
+  },
+  "late.fed8215e238a": {
+    "source": "{value0} °C on {value1} near {value2}°N; seawater cannot get much colder without freezing.",
+    "text": "{value0} °C sur {value1} près de {value2}°N ; l'eau de mer ne peut pas être beaucoup plus froide sans geler."
+  },
+  "late.178fd66057ec": {
+    "source": "{value0} °C · {value1} PSU · {value2} kg/m³",
+    "text": "{value0} °C · {value1} PSU · {value2} kg/m³"
+  },
+  "late.f5d96de37525": {
+    "source": "{value0} · {value1}",
+    "text": "{value0} · {value1}"
+  },
+  "late.d9e880a937ce": {
+    "source": "{value0} · ×{value1}",
+    "text": "{value0} · ×{value1}"
+  },
+  "late.8feaab7c43e3": {
+    "source": "{value0} × {value1} km",
+    "text": "{value0} × {value1} km"
+  },
+  "late.53f73d4c09d9": {
+    "source": "{value0} × {value1} · {value2}",
+    "text": "{value0} × {value1} · {value2}"
+  },
+  "late.26270c990d26": {
+    "source": "{value0} ×{value1}",
+    "text": "{value0} ×{value1}"
+  },
+  "late.b706db25f9f0": {
+    "source": "{value0} → {value1}",
+    "text": "{value0} → {value1}"
+  },
+  "late.a8ba44f07d53": {
+    "source": "{value0} −{value1}.",
+    "text": "{value0} −{value1}."
+  },
+  "late.8c5f2c0e0527": {
+    "source": "{value0}%",
+    "text": "{value0}%"
+  },
+  "late.dc9a8e229010": {
+    "source": "{value0}% sure",
+    "text": "{value0}% sûr"
+  },
+  "late.5886321f51c9": {
+    "source": "{value0}'s defence falls.",
+    "text": "La défense de {value0} tombe."
+  },
+  "late.717edad9e502": {
+    "source": "{value0}'s defence rises.",
+    "text": "La défense de {value0} s'élève."
+  },
+  "late.a9eb10d23009": {
+    "source": "{value0}'s sensors have cleared.",
+    "text": "Les capteurs de {value0} se sont effacés."
+  },
+  "late.ee14f6d46e3e": {
+    "source": "{value0})",
+    "text": "{value0})"
+  },
+  "late.a050b1bd8733": {
+    "source": "{value0}, {value1} ({value2})",
+    "text": "{value0}, {value1} ({value2})"
+  },
+  "late.753b4f85ea72": {
+    "source": "{value0}, {value1} {value2} of the ship",
+    "text": "{value0}, {value1} {value2} du navire"
+  },
+  "late.b4171da9a522": {
+    "source": "{value0}, {value1} · {value2}",
+    "text": "{value0}, {value1} · {value2}"
+  },
+  "late.4f496db48f6f": {
+    "source": "{value0}. {value1}",
+    "text": "{value0}. {value1}"
+  },
+  "late.6a93e06f5e34": {
+    "source": "{value0}/10 close pack",
+    "text": "{value0}/10 paquet fermé"
+  },
+  "late.a938fcff0325": {
+    "source": "{value0}/10 open drift",
+    "text": "{value0}/10 dérive ouverte"
+  },
+  "late.4fee8b8f38c3": {
+    "source": "{value0}/10 very close pack",
+    "text": "{value0}/10 paquet très serré"
+  },
+  "late.e15045b38871": {
+    "source": "{value0}/10 very open drift",
+    "text": "{value0}/10 dérive très ouverte"
+  },
+  "late.f09e9dc3b6dc": {
+    "source": "{value0}/3",
+    "text": "{value0}/3"
+  },
+  "late.2512d2b7c56a": {
+    "source": "{value0}/{value1} turns",
+    "text": "{value0}/{value1} tours"
+  },
+  "late.a5709ec34538": {
+    "source": "{value0}: a small raised {value1}, a consonant with no vowel after it.",
+    "text": "{value0} : une petite {value1} surélevée, une consonne sans voyelle après elle."
+  },
+  "late.cd0f5032b793": {
+    "source": "{value0}: not an Inuktitut sound, so no glyph. The vowels are i, u and a; there is no b, c, d, e, f, h, o, w, x, y or z (y is written j, w is v).",
+    "text": "{value0} : pas un son inuktitut, donc pas de glyphe. Les voyelles sont i, u et a ; il n'y a pas de b, c, d, e, f, h, o, w, x, y ou z (y est écrit j, w est v)."
+  },
+  "late.0f13dbb76ee1": {
+    "source": "{value0}: {value1}",
+    "text": "{value0} : {value1}"
+  },
+  "late.0008f8c89a6d": {
+    "source": "{value0}: {value1} turned for {value2}{value3}: {value4}.",
+    "text": "{value0} : {value1} activé pour {value2}{value3} : {value4}."
+  },
+  "late.45ca5fd7d658": {
+    "source": "{value0}: {value1} · {value2}",
+    "text": "{value0} : {value1} · {value2}"
+  },
+  "late.36bc3a4053b0": {
+    "source": "{value0}: {value1}.",
+    "text": "{value0} : {value1}."
+  },
+  "late.b23549372a4e": {
+    "source": "{value0}:relief",
+    "text": "{value0} :soulagement"
+  },
+  "late.c5df583bac21": {
+    "source": "{value0}:shore",
+    "text": "{value0} :rivage"
+  },
+  "late.f6df5a24e21e": {
+    "source": "{value0}:texture",
+    "text": "{value0} :texture"
+  },
+  "late.8157c96a7c92": {
+    "source": "{value0}:{value1}",
+    "text": "{value0} :{value1}"
+  },
+  "late.888eb40396c3": {
+    "source": "{value0}:{value1}:{value2}",
+    "text": "{value0} :{value1} :{value2}"
+  },
+  "late.07a5bf541b50": {
+    "source": "{value0}:{value1}:{value2}:{value3}",
+    "text": "{value0} :{value1} :{value2} :{value3}"
+  },
+  "late.cfc525c51584": {
+    "source": "{value0}>{value1}",
+    "text": "{value0}>{value1}"
+  },
+  "late.769169f33675": {
+    "source": "{value0}a · {value1}",
+    "text": "{value0}a · {value1}"
+  },
+  "late.058d9dcd8242": {
+    "source": "{value0}h {value1}m",
+    "text": "{value0}h {value1}m"
+  },
+  "late.a8618e4a8104": {
+    "source": "{value0}{value1}",
+    "text": "{value0}{value1}"
+  },
+  "late.0db1d0a9af62": {
+    "source": "{value0}{value1}, logged. +{value2}.",
+    "text": "{value0}{value1}, enregistré. +{value2}."
+  },
+  "late.d1fd60fd4f47": {
+    "source": "{value0}{value1}, {value2}.",
+    "text": "{value0}{value1}, {value2}."
+  },
+  "late.39c1eb2041d9": {
+    "source": "{value0}°",
+    "text": "{value0}°"
+  },
+  "late.dec619ef98b7": {
+    "source": "{value0}° ({value1}) at {value2} kn",
+    "text": "{value0}° ({value1}) à {value2} kn"
+  },
+  "late.0659d5cf06ae": {
+    "source": "{value0}°{value1} {value2}°{value3}",
+    "text": "{value0}°{value1} {value2}°{value3}"
+  },
+  "late.5843c1d67e29": {
+    "source": "{value0}°{value1}′{value2}",
+    "text": "{value0}°{value1}′{value2}"
+  },
+  "late.382bcd254475": {
+    "source": "{value0}…",
+    "text": "{value0}..."
+  },
+  "late.7c75a7d41979": {
+    "source": "} {value0}",
+    "text": "} {value0}"
+  },
+  "late.908442933c3a": {
+    "source": "} {value0} °C and {value1} PSU. {value2}. Go.",
+    "text": "} {value0} °C et {value1} PSU. {value2}. Allez-y."
+  },
+  "late.eb53de35e98f": {
+    "source": "±{value0}° on their VHF, {value1} s to retune",
+    "text": "±{value0}° sur leur VHF, {value1} s pour réajuster"
+  },
+  "late.48afe802a5d7": {
+    "source": "· {value0}",
+    "text": "· {value0}"
+  },
+  "late.429b61df4931": {
+    "source": "×3 for {value0} s, then {value1} s astern",
+    "text": "×3 pendant {value0} s, puis {value1} s en arrière"
+  },
+  "late.5e438deb3363": {
+    "source": "×{value0}",
+    "text": "×{value0}"
+  },
+  "late.d2c44762e23f": {
+    "source": "↕ {value0} m",
+    "text": "↕ {value0} m"
+  },
+  "late.43da9923db13": {
+    "source": "−1 °C at 32 salinity",
+    "text": "−1 °C à 32 °C de salinité"
+  },
+  "late.f38b84d1da61": {
+    "source": "−1.6 °C",
+    "text": "1,6 °C"
+  },
+  "late.8ece608373b3": {
+    "source": "−4.0 °C",
+    "text": "4,0(C)"
+  },
+  "late.83d84044d1bb": {
+    "source": "−4.5 °C",
+    "text": "−4,5 °C"
+  },
+  "late.23ef7b65dc34": {
+    "source": "−{value0}",
+    "text": "−{value0}"
+  },
+  "late.142c9ce9e20c": {
+    "source": "◂ Previous",
+    "text": "Retour&#10;"
+  },
+  "late.66f19fb72bc3": {
+    "source": "☀ daylight · ☾ dark · ≋ fog · ↕ heave · past watches: mean (gust) kn",
+    "text": "☀ lumière du jour · ☾ obscurité · brouillard · ↕ soulèvement · quarts passées : moyenne (rafale) kn"
+  },
+  "late.e90fb32fc22a": {
+    "source": "✓ {value0}",
+    "text": "✓ {value0}"
+  },
+  "late.92f3f6c444b1": {
+    "source": "✓ {value0} pts",
+    "text": "✓ {value0} pts"
+  },
+  "late.d692b6499cdd": {
+    "source": "A mast standing out of the ice, seen from a snowmobile, in the middle of the bay. The wreck sits upright near the centre of the box.",
+    "text": "Un mât sortant de la glace, vu d'une motoneige, au milieu de la baie. L'épave se trouve debout près du centre de la boîte."
+  }
+,
+  "late.16bd7524fb9b": {
+    "source": "A small harbour; the GEBCO cell is land.",
+    "text": "Un petit port ; la cellule GEBCO est terrestre."
+  }
+,
+  "late.ab350b4c6c35": {
+    "source": "A small harbour; the GEBCO cell reads 2 m at the shore.",
+    "text": "Un petit port ; la cellule GEBCO lit 2 m à terre."
+  }
+,
+  "late.5939a44ddf0d": {
+    "source": "Abandoned in the pack beside the Resolute on Belcher's written order; the Resolute drifted a thousand miles east and was found afloat sixteen months later, the Intrepid was never seen again.",
+    "text": "Abandonné dans la meute à côté du Resolute sur ordre écrit de Belcher ; le Resolute a dérivé à mille miles à l'est et a été retrouvé à flot seize mois plus tard, l'Intrepid n'a jamais été revu."
+  }
+,
+  "late.4315f0e18793": {
+    "source": "Abandoned off King William Island in April 1848, she was found in 2014 on the second survey line of a search box moved south after a davit pintle turned up on the shore, in the water Inuit had pointed to since 1869.",
+    "text": "Abandonnée au large de l'île du Roi-Guillaume en avril 1848, elle a été trouvée en 2014 sur la deuxième ligne d'arpentage d'une boîte de recherche déplacée vers le sud après qu'un davet ait été relevé sur le rivage, dans l'eau que les Inuits avaient pointée depuis 1869."
+  }
+,
+  "late.110310135da7": {
+    "source": "About 100 m (P:Breadalbane wreck site); the GEBCO cell gives 97 m.",
+    "text": "Environ 100 m (P : site de l'épave de Breadalbane) ; la cellule GEBCO donne 97 m."
+  }
+,
+  "late.9a5d94e14dad": {
+    "source": "About 11 m (P:Wilmot and Crampton Bay). The site lies just off the game's GEBCO grid.",
+    "text": "Environ 11 m (P :Wilmot et Crampton Bay). Le site se trouve juste à côté de la grille GEBCO du jeu."
+  }
+,
+  "late.4549e4baf5e7": {
+    "source": "About 24 m (P:Terror Bay).",
+    "text": "Environ 24 m (P :Terror Bay)."
+  }
+,
+  "late.76e8bdeb9c4d": {
+    "source": "American whaler",
+    "text": "Baleinier américain"
+  }
+,
+  "late.e2c176e01de3": {
+    "source": "Approximate. The archive pins the loss off Cape Fry from Inuit testimony (E673); the artifact record pins it at Cape Searle because the wreck position is not fixed (A:wrecks-disasters-021).",
+    "text": "Approximatif. Les archives épinglent la perte au large du cap Fry à partir du témoignage inuit (E673) ; le dossier d'artefact l'épingle au cap Searle parce que la position de l'épave n'est pas fixe (A :épaves-disasters-021)."
+  }
+,
+  "late.82dce7f70367": {
+    "source": "Approximate: 'about 75 degrees 10 minutes north, 60 degrees 30 minutes west, some forty miles south of Cape York' (A:wrecks-disasters-017). No individual wreck has a fixed position; the named ships are listed in A:wrecks-disasters-044.",
+    "text": "Approximativement : « environ 75 degrés 10 minutes au nord, 60 degrés 30 minutes à l'ouest, à une quarantaine de kilomètres au sud du cap York » (A :épaves-disasters-017). Aucune épave individuelle n'a de position fixe ; les navires nommés sont répertoriés en A :épaves-disasters-044."
+  }
+,
+  "late.af16df5536ce": {
+    "source": "Approximate: the archive gives only Melville Bay (E1202).",
+    "text": "Approximatif : l'archive ne donne que Melville Bay (E1202)."
+  }
+,
+  "late.4ba2f1ee0873": {
+    "source": "Approximate: the gazetteer pin off Cape Sabine (A:wrecks-disasters-005); the event record pins Kane Basin at 79.0 −71.0 and says 'position approximate' (E419).",
+    "text": "Approximatif : l'épingle de la nomenclature au large du cap Sabine (A : wrecks-disasters-005) ; l'enregistrement de l'événement épingle le bassin de Kane à 79,0 −71,0 et indique « position approximative » (E419)."
+  }
+,
+  "late.4f3f1e2f0cd3": {
+    "source": "Approximate; the archive places the loss in Melville Bay (E680). McDougall's plate of the loss is pinned at 75.0 −64.0 (A:mcclure-investigator-073).",
+    "text": "Approximatif ; les archives placent la perte dans la baie de Melville (E680). La plaque de McDougall de la perte est épinglée à 75,0 −64,0 (A :mcclure-investigator-073)."
+  }
+,
+  "late.c8e54aa26fa9": {
+    "source": "Beach and shallows; the GEBCO cell straddles the inlet (254 m) and does not describe the shore.",
+    "text": "Plage et bas-fonds ; la cellule GEBCO chevauche l'entrée (254 m) et ne décrit pas le rivage."
+  }
+,
+  "late.9130ee2cd23e": {
+    "source": "Belcher's flagship, abandoned with the Pioneer in Wellington Channel with her colours nailed to the mast, 'as if we had encoffined some cherished object'.",
+    "text": "Le vaisseau amiral de Belcher, abandonné avec le Pioneer dans le canal de Wellington avec ses couleurs clouées au mât, « comme si nous avions encoffré un objet précieux »."
+  }
+,
+  "late.e7bc5a73f543": {
+    "source": "Chartered to carry Garlington's party north to relieve Greely, she was nipped in Kane Basin and sank with most of her stores; the relief party's retreat left Greely's men to winter at Cape Sabine on almost nothing.",
+    "text": "Chargé de transporter le groupe de Garlington vers le nord pour soulager Greely, il a été pincé dans le bassin de Kane et a coulé avec la plupart de ses magasins ; la retraite du groupe de secours a laissé les hommes de Greely passer l'hiver au cap Sabine sur presque rien."
+  }
+,
+  "late.7fcf09ac095d": {
+    "source": "Crushed in Melville Bay on 23 June 1840 alongside the Bon Accord; the record says no more than that.",
+    "text": "Écrasé dans la baie de Melville le 23 juin 1840 le long du Bon Accord ; le dossier n'en dit pas plus."
+  }
+,
+  "late.29a160837525": {
+    "source": "Driven ashore on Somerset Island in August 1825 and abandoned with her stores under canvas; seven years later those stores kept John Ross's Victory crew alive.",
+    "text": "Débarquée sur l'île Somerset en août 1825 et abandonnée avec ses magasins sous toile ; sept ans plus tard, ces magasins ont permis à l'équipe Victory de John Ross de rester en vie."
+  }
+,
+  "late.e7d8c142714b": {
+    "source": "Dundee whaler, earlier Peary's expedition ship",
+    "text": "Dundee Whaler, ancien navire d'expédition de Peary"
+  }
+,
+  "late.32306689fc0c": {
+    "source": "Fast in the harbour ice from 1830 and abandoned where she lay. Search the harbour itself, close under the shore, not the open coast outside it.",
+    "text": "Rapide dans la glace du port à partir de 1830 et abandonnée là où elle gisait. Fouillez le port lui-même, près du rivage, pas la côte ouverte à l'extérieur."
+  }
+,
+  "late.a65899e146fe": {
+    "source": "Frozen in at her winter berth inside a small, shoal harbour and abandoned there. The box is small; search close under the shore.",
+    "text": "Gelé à son poste d'hiver à l'intérieur d'un petit port sur les hauts-fonds et abandonné là-bas. La boîte est petite ; cherchez près du rivage."
+  }
+,
+  "late.eed8facf059b": {
+    "source": "Her consort drifted east the length of Barrow Strait and Lancaster Sound. If the Intrepid went down near where she was left, she lies east of the abandonment position, down the drift.",
+    "text": "Son épouse dérivait vers l'est le long du détroit de Barrow et du détroit de Lancaster. Si l'intrépide est descendue près de l'endroit où elle a été laissée, elle se trouve à l'est de la position d'abandon, en bas de la dérive."
+  }
+,
+  "late.acde809e77e2": {
+    "source": "Her engine useless from the first season, she spent four winters on the Boothia coast; on 29 May 1832 her colours were nailed to the mast and Ross went last over the side.",
+    "text": "Son moteur inutile dès la première saison, elle passe quatre hivers sur la côte de Boothia ; le 29 mai 1832, ses couleurs sont clouées au mât et Ross passe en dernier sur le côté."
+  }
+,
+  "late.7a53be1932c5": {
+    "source": "Hull whaler",
+    "text": "Baleinier à coque"
+  }
+,
+  "late.7761b2806807": {
+    "source": "In-nook-poo-zhee-jook pointed on McClintock's chart to the water just east of the north end of O'Reilly Island; the 2014 box was moved south to match the beach find. Search the eastern side, toward the peninsula.",
+    "text": "In-nook-poo-zhee-jook pointait sur la carte de McClintock vers l'eau juste à l'est de l'extrémité nord de l'île O'Reilly ; la boîte de 2014 a été déplacée vers le sud pour correspondre à la découverte de la plage. Fouillez le côté est, vers la péninsule."
+  }
+,
+  "late.0d383143b442": {
+    "source": "Kane's brig was frozen into Rensselaer Harbour for two winters; every man signed the paper to leave her, the flags were hoisted and hauled down, and the party walked once round the brig before setting off south by boat.",
+    "text": "Le brick de Kane a été gelé dans le port de Rensselaer pendant deux hivers ; chaque homme a signé le papier pour la quitter, les drapeaux ont été hissés et hissés, et le groupe a marché une fois autour du brick avant de partir vers le sud en bateau."
+  }
+,
+  "late.50a0261fbdec": {
+    "source": "Landing stores for Belcher's squadron with the Phoenix, she was nipped by a driving floe half a mile from Beechey Island and crushed in fifteen minutes; her people walked off onto the ice.",
+    "text": "Débarquant des magasins pour l'escadron de Belcher avec le Phoenix, elle a été pincée par un floe à un demi-mille de l'île de Beechey et écrasée en quinze minutes ; son peuple est parti sur la glace."
+  }
+,
+  "late.2a94fc553e15": {
+    "source": "Last seen 16 October 1835 drifting south in the pack; Inuit told Captain Harrison in 1840 that she was crushed off Cape Fry in December and that twenty-two sick men left ashore all died.",
+    "text": "Vu pour la dernière fois le 16 octobre 1835 dérivant vers le sud dans la meute ; Inuit dit au capitaine Harrison en 1840 qu'elle a été écrasée au large du cap Fry en décembre et que vingt-deux hommes malades partis à terre sont tous morts."
+  }
+,
+  "late.d78707d7d6c2": {
+    "source": "Last seen forty-five miles south-east of Cape Searle, drifting south in the pack, and crushed some weeks later. A ship crushed in a drifting pack goes down along the drift: look south of the datum.",
+    "text": "Vu pour la dernière fois à quarante-cinq milles au sud-est du cap Searle, dérivant vers le sud dans la meute, et écrasé quelques semaines plus tard. Un navire écrasé dans une meute à la dérive descend le long de la dérive : regardez au sud de la référence."
+  }
+,
+  "late.fa0113f9ed6a": {
+    "source": "Leading a file of whalers and naval search ships through a crack in the ice she was nipped; two days later the repair was stove in and Belcher bought her for a hundred pounds for her oil and timber.",
+    "text": "Menant une file de baleiniers et de navires de recherche navale à travers une fissure dans la glace, elle a été pincée ; deux jours plus tard, la réparation a été cuite et Belcher l'a achetée pour cent livres sterling pour son pétrole et son bois."
+  }
+,
+  "late.17301d97e9bb": {
+    "source": "Left at her winter berth in the bay with her colours flying. In 2010 side-scan sonar picked her up within fifteen minutes of the first line: she is close to where she was left, and the box is small.",
+    "text": "Laissée à son poste d'hiver dans la baie avec ses couleurs qui volent. En 2010, le sonar à balayage latéral l'a récupérée dans les quinze minutes suivant la première ligne : elle est proche de l'endroit où elle a été laissée, et la boîte est petite."
+  }
+,
+  "late.8c23bf0b53a8": {
+    "source": "Left in the pack of Wellington Channel, which streams south into Barrow Strait. A ship crushed in that drift lies south of where she was left.",
+    "text": "Il reste dans la meute du canal de Wellington, qui coule vers le sud dans le détroit de Barrow. Un navire écrasé dans cette dérive se trouve au sud de l'endroit où il a été laissé."
+  }
+,
+  "late.5e1e186ca40f": {
+    "source": "McClure took her into Mercy Bay in September 1851 and never got her out; after three winters and two scurvy deaths, Bedford Pim walked in over the ice and the crew abandoned her for the Resolute.",
+    "text": "McClure l'emmena à Mercy Bay en septembre 1851 et ne l'en sortit jamais ; après trois hivers et deux décès dus au scorbut, Bedford Pim entra sur la glace et l'équipage l'abandonna pour le Resolute."
+  }
+,
+  "late.bcc160458e33": {
+    "source": "Newfoundland sealer, Greely relief",
+    "text": "Scelleuse terre-neuvienne, Greely relief"
+  }
+,
+  "late.0737751829cd": {
+    "source": "Nipped about half a mile from the island, and found in 1980 upright in about 100 m half a mile south of it. Search the deep water south of the island, not the shallows under it.",
+    "text": "Piqué à environ un demi-mille de l'île, et trouvé en 1980 debout à environ 100 m au sud de celle-ci. Fouillez les eaux profondes au sud de l'île, pas les eaux peu profondes en dessous."
+  }
+,
+  "late.7128b4ccf61d": {
+    "source": "Nipped in Smith Sound on 15 October 1872, she broke away from nineteen people left on a floe; the fourteen still aboard ran her into the land, wintered in a hut built from her, and the Tigress found her sunk the next August.",
+    "text": "Plongée dans le détroit de Smith le 15 octobre 1872, elle s'est séparée de dix-neuf personnes laissées sur un floe ; les quatorze encore à bord l'ont courue dans la terre, ont hiverné dans une hutte construite à partir d'elle, et la Tigresse l'a trouvée coulée le mois d'août suivant."
+  }
+,
+  "late.242f191241c8": {
+    "source": "Nipped in the pack north-east of Cape Sabine and gone in the afternoon; the party retreated south by boat. The pack in Kane Basin sets south toward Smith Sound: look south of the datum.",
+    "text": "Embarqué dans la meute au nord-est du cap Sabine et parti dans l'après-midi ; le groupe se retira vers le sud en bateau. La meute de Kane Basin se dirige vers le sud en direction de Smith Sound : regardez au sud du datum."
+  }
+,
+  "late.2f5867a9e905": {
+    "source": "Parry fixed the spot at 72°42′30″N 91°50′05″W. The ice drove her onto the beach, so whatever is left lies inshore, along the shore, not out in the inlet.",
+    "text": "Parry a fixé l'endroit à 72 °42′30″N 91 °50′05″O. La glace l'a conduite sur la plage, donc tout ce qui reste se trouve sur la côte, le long du rivage, pas dans l'entrée."
+  }
+,
+  "late.8afce8a29a0f": {
+    "source": "Parry's own fix, 72°42′30″N 91°50′05″W (E247). The hull broke up on the beach and nothing of it has been found since; the search is for what the ice pushed into the shallows.",
+    "text": "Fixation propre de Parry, 72 °42′30″N 91 °50′05″O (E247). La coque s'est brisée sur la plage et rien de tout cela n'a été trouvé depuis ; la recherche porte sur ce que la glace a poussé dans les bas-fonds."
+  }
+,
+  "late.2e392aa67fc4": {
+    "source": "Position from James Clark Ross's magnetic table (A:ross-victory-054). Never seen again after 1832.",
+    "text": "Position de la table magnétique de James Clark Ross (A :ross-victory-054). Jamais revu après 1832."
+  }
+,
+  "late.b07b7467ca29": {
+    "source": "Rensselaer Harbour as pinned in the archive (E18). Never seen again.",
+    "text": "Rensselaer Harbour tel qu'épinglé dans les archives (E18). Jamais revu."
+  }
+,
+  "late.1e13db7a0119": {
+    "source": "Run into the land at the cove and broken up by her people for a hut and a boat; the Tigress found her 'sunk about a mile and a half offshore'. Search offshore of the cove, to the west, out toward Littleton Island.",
+    "text": "Courir dans la terre à la crique et rompu par son peuple pour une hutte et un bateau ; la tigresse l'a trouvée « coulée à environ un mile et demi au large ». Cherchez au large de la crique, à l'ouest, vers l'île Littleton."
+  }
+,
+  "late.9aa69598240c": {
+    "source": "Sammy Kogvik of Uqsuqtuuq described a mast standing out of the ice in the bay; the Martin Bergmann turned aside, dropped a sonar and found a three-masted ship sitting upright in the middle of Terror Bay.",
+    "text": "Sammy Kogvik d'Uqsuqtuuq a décrit un mât se tenant hors de la glace dans la baie ; le Martin Bergmann s'est détourné, a lâché un sonar et a trouvé un navire à trois mâts assis debout au milieu de Terror Bay."
+  }
+,
+  "late.199455e62b1c": {
+    "source": "She was leading the file north through a crack toward Cape York when she was nipped, and went down in the same crack two days later. Look north of the datum, along the lead.",
+    "text": "Elle conduisait le dossier vers le nord à travers une fissure vers Cape York quand elle a été pincée, et elle est descendue dans la même fissure deux jours plus tard. Regardez au nord de la référence, le long de la laisse."
+  }
+,
+  "late.fc1d1fa8e360": {
+    "source": "The Carey Islands as pinned in the archive (E512). Which island she struck is not recorded.",
+    "text": "Les îles Carey telles qu'épinglées dans les archives (E512). L'île qu'elle a frappée n'est pas enregistrée."
+  }
+,
+  "late.79adaf70ef55": {
+    "source": "The abandonment position, 74°41′N 101°22′W (E1973). The ship drifted in the pack afterwards and was never seen again; where she went down is unknown.",
+    "text": "La position d'abandon, 74 °41′N 101 °22′O (E1973). Le navire a dérivé dans la meute par la suite et n'a jamais été revu ; l'endroit où il est descendu est inconnu."
+  }
+,
+  "late.3132dfc3cc67": {
+    "source": "The abandonment position, 75°31′14″N 92°21′55″W (A:wrecks-disasters-024). Never seen again.",
+    "text": "La position d'abandon, 75 °31′14″N 92 °21′55″O (A :épaves-disasters-024). Jamais revu."
+  }
+,
+  "late.a2a1daa1273e": {
+    "source": "The archive's Life Boat Cove pin opposite Littleton Island (P:Life Boat Cove). The Tigress logged the winter camp at 78°23′N 73°46′W (E168), a different longitude; the pin is used here.",
+    "text": "L'épingle Life Boat Cove des archives en face de Littleton Island (P :Life Boat Cove). La Tigresse a enregistré le camp d'hiver à 78 °23′N 73 °46′O (E168), une longitude différente ; la goupille est utilisée ici."
+  }
+,
+  "late.4aef56028ce1": {
+    "source": "The archive's wreck-site pin (P:Wilmot and Crampton Bay); Parks Canada publishes a protected zone, not a position. Found 2 September 2014.",
+    "text": "L'épingle du site de l'épave des archives (P :Wilmot et Crampton Bay) ; Parcs Canada publie une zone protégée, et non une position. Trouvé le 2 septembre 2014."
+  }
+,
+  "late.02a37eb98d68": {
+    "source": "The archive's wreck-site pin (P:Wreck of HMS Investigator); Parks Canada located her in July 2010.",
+    "text": "La broche du site de l'épave des archives (P :épave de l'enquêteur du HMS) ; Parcs Canada l'a localisée en juillet 2010."
+  }
+,
+  "late.db4ac4b976a8": {
+    "source": "The archive's wreck-site pin in the middle of the bay (P:Terror Bay). Found 3 September 2016.",
+    "text": "La broche du site de l'épave des archives au milieu de la baie (P :Terror Bay). Trouvé le 3 septembre 2016."
+  }
+,
+  "late.2eaa942f661b": {
+    "source": "The cell at the pin; the islands' shoals run to the surface within 2 km.",
+    "text": "La cellule à l'épingle ; les hauts-fonds des îles remontent à la surface à moins de 2 km."
+  }
+,
+  "late.464d69b04bbd": {
+    "source": "The cell at the pin; the neighbourhood runs from the shore to 210 m.",
+    "text": "La cellule à l'épingle ; le quartier s'étend du rivage à 210 m."
+  }
+,
+  "late.121e17a351d8": {
+    "source": "The fleet lay stem to stern against the land floe when the pack came in from seaward. The land ice, and Cape York, were to the north: the wrecks lie along the floe edge north of the datum.",
+    "text": "La flotte s'étendait de la poupe à la poupe contre la floe terrestre lorsque la meute arrivait du large. La glace terrestre et le cap York se trouvaient au nord : les épaves se trouvaient le long du bord de la banquise au nord du point de référence."
+  }
+,
+  "late.cfe7a5c177e5": {
+    "source": "The record gives the bay and the date and nothing else. There is no clue to narrow the box; cover it.",
+    "text": "Le dossier donne la baie et la date et rien d'autre. Il n'y a aucun indice pour rétrécir la boîte ; couvrez-la."
+  }
+,
+  "late.22daef2b916b": {
+    "source": "The rounded position published for the protected wreck site (P:Breadalbane wreck site). Found by side-scan sonar on 13 August 1980.",
+    "text": "La position arrondie publiée pour le site de l'épave protégée (P : site de l'épave de Breadalbane). Trouvé par sonar à balayage latéral le 13 août 1980."
+  }
+,
+  "late.3b8c9dd42d2b": {
+    "source": "The same Windward that carried Peary north in 1898, wrecked on the Carey Islands in June 1907; Captain Cooney and his crew sailed the boats to Pond Inlet.",
+    "text": "Le même Windward qui transporta Peary vers le nord en 1898 fit naufrage sur les îles Carey en juin 1907 ; le capitaine Cooney et son équipage firent naviguer les bateaux jusqu'à Pond Inlet."
+  }
+,
+  "late.3960315eef2a": {
+    "source": "The worst week the Davis Strait fishery ever had: a gale on 19 June 1830 drove the pack onto the fleet lying along the land floe, nineteen ships were crushed and a thousand men camped on the ice with no lives lost.",
+    "text": "La pire semaine que la pêche dans le détroit de Davis ait jamais connue : une tempête le 19 juin 1830 a poussé la meute sur la flotte gisant le long de la banquise, dix-neuf navires ont été écrasés et un millier d'hommes ont campé sur la glace sans aucune vie perdue."
+  }
+,
+  "late.7e7d6f21b66f": {
+    "source": "Upright in about eleven metres, the upper deck about eight metres down (E894).",
+    "text": "Monté à environ onze mètres, le pont supérieur à environ huit mètres plus bas (E894)."
+  }
+,
+  "late.27766c23a9a9": {
+    "source": "Wrecked on the islands, not in the channel between them. A ship that strikes lies on the rocks she struck: search the shoal water against the shore, not the deep water offshore.",
+    "text": "A fait naufrage sur les îles, pas dans le chenal entre elles. Un navire qui frappe repose sur les rochers qu'il a heurtés : fouillez l'eau du haut-fond contre le rivage, pas l'eau profonde au large."
+  }
+,
+  "late.86b970d389cb": {
+    "source": "barque, Admiralty transport",
+    "text": "barque, transport de l'Amirauté"
+  }
+,
+  "late.9558c50aa2f6": {
+    "source": "barque, Royal Navy",
+    "text": "barque, Royal Navy"
+  }
+,
+  "late.4209b38ebf9a": {
+    "source": "barque, Royal Navy (with her tender Pioneer)",
+    "text": "barque, Royal Navy (avec son tendre Pioneer)"
+  }
+,
+  "late.09807d130dde": {
+    "source": "bomb vessel, Franklin expedition",
+    "text": "navire bombardier, expédition Franklin"
+  }
+,
+  "late.a08a4bbe682b": {
+    "source": "bomb vessel, Franklin's flagship",
+    "text": "navire-bombardier, navire amiral de Franklin"
+  }
+,
+  "late.286fe92da074": {
+    "source": "bomb vessel, Royal Navy",
+    "text": "navire-bombardier, Royal Navy"
+  }
+,
+  "late.38ee8f494b66": {
+    "source": "brig, Second Grinnell Expedition",
+    "text": "brick, deuxième expédition Grinnell"
+  }
+,
+  "late.4ba0202f9dba": {
+    "source": "one of nineteen or twenty whalers crushed together",
+    "text": "l'un des dix-neuf ou vingt baleiniers écrasés ensemble"
+  }
+,
+  "late.b847dd9e6574": {
+    "source": "paddle steamer, John Ross's private expedition",
+    "text": "paddle steamer, l'expédition privée de John Ross"
+  }
+,
+  "late.d2d3db02bf2f": {
+    "source": "steam tender, Royal Navy",
+    "text": "steam tender, Royal Navy"
+  }
+,
+  "late.34244970a0d2": {
+    "source": "steamer, United States North Polar Expedition",
+    "text": "vapeur, expédition polaire nord des États-Unis"
+  }
+,
+  "late.7c4410a071eb": {
+    "source": "whaler",
+    "text": "baleinière"
+  }
+}

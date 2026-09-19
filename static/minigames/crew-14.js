@@ -1,4 +1,5 @@
 import { WATCH_SECONDS, FOV, POINTS, WRONG_PENALTY, HABITATS, suggestHabitat, createWatch, tick, toggleGlass, target, beginLog, cancelLog, identify, finish, poolFor, angleDiff, wrap, apparentDeg, waterElev, isUp, upFor, cuesRevealed, oclock } from './crew-14-model.js';
+import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-14.css', import.meta.url).href;
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -42,7 +43,7 @@ const LOOK = {
 };
 
 export const game = {
-  title: 'Wildlife observer',
+  get title() { return text('Wildlife observer'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const { signal } = events;
@@ -114,6 +115,7 @@ export const game = {
     const doneEl = find('[data-done]');
     const canvas = find('.c14-canvas');
     const ctx = canvas.getContext('2d');
+    const rawFillText = ctx.fillText.bind(ctx); ctx.fillText = (value, ...args) => rawFillText(text(String(value)), ...args);
     const status = find('[data-status]');
     const glassLine = find('[data-glass]');
     const idMenu = find('[data-idmenu]');

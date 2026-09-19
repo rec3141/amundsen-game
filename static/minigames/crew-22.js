@@ -5,13 +5,14 @@
 import { LEGS, createSession, startLeg, draw, answer, hint, worth, summary, accuracyLabel, syllables } from './crew-22-model.js';
 import { SERIES, VOWELS } from './crew-22-lexicon.js';
 import { PAGES, TURNER_ROWS, describe, turnerText } from './crew-22-logic.js';
+import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-22.css', import.meta.url).href;
 const escape = text => String(text).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 const KEYS = ['1', '2', '3', '4'];
 
 export const game = {
-  title: 'Inuktitut',
+  get title() { return text('Inuktitut'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const { signal } = events;

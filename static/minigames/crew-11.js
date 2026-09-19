@@ -1,4 +1,5 @@
 import { DAYS, WATCHES, SLOTS, MUTINY_AT, WATCH_LABELS, TEAMS, OPS, createGame, cardById, shipArea, lead, forecast, chance, needsText, multiplier, canPlace, place, remove, issue, summary, dayOf, watchOf } from './crew-11-model.js';
+import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-11.css', import.meta.url).href;
 const weatherUrl = new URL('../data/crew-11-weather.json', import.meta.url).href;
@@ -19,7 +20,7 @@ const grade = p => (p >= 0.75 ? 'good' : p >= 0.45 ? 'fair' : 'poor');
 const selectable = card => card.status === 'open' || card.status === 'planned';
 
 export const game = {
-  title: 'What’s next?',
+  get title() { return text('What’s next?'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     let active = true;

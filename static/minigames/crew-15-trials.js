@@ -3,6 +3,7 @@
 // returns { key(name, down), frame(now, dt), cleanup }. A trial ends by calling
 // ctx.finish({ passed, bonus, headline, note }) exactly once.
 import { clamp, sliderToDepth, depthToSlider, judgeSounding, tridentMarker, judgeStrike, makeSequence, DIRECTIONS, MUG, makeSea, rollAt, stepMug, dealRiddles } from './crew-15-model.js';
+import { text as i18nText } from '../i18n-text.js';
 
 export const WIDTH = 640, HEIGHT = 360;
 const GOLD = '#e8b84a', FOAM = '#dff3f4', INK = '#0b2530';
@@ -74,7 +75,7 @@ export function drawNeptune(g, x, y, s, t, mood) {
 }
 
 function label(g, text, x, y, size = 15, colour = FOAM, align = 'left', weight = 600) {
-  g.fillStyle = colour; g.font = `${weight} ${size}px system-ui, sans-serif`; g.textAlign = align; g.textBaseline = 'middle'; g.fillText(text, x, y);
+  g.fillStyle = colour; g.font = `${weight} ${size}px system-ui, sans-serif`; g.textAlign = align; g.textBaseline = 'middle'; g.fillText(i18nText(String(text)), x, y);
 }
 
 function button(ctx, text, key, action, extra = {}) {
