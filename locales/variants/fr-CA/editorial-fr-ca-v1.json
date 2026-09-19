@@ -1,0 +1,352 @@
+{
+  "schema": 1,
+  "locale": "fr-CA",
+  "profile": {
+    "id": "editorial-fr-ca-v1",
+    "translator": "lead-assistant",
+    "glossary": "ctd-pilot-v1",
+    "status": "pilot"
+  },
+  "messages": {
+    "ui.language": {
+      "source": "Language",
+      "text": "Langue",
+      "status": "reviewed-pilot"
+    },
+    "ui.coverage": {
+      "source": "French pilot: CTD notebook. Other operations remain in English.",
+      "text": "Version pilote en français : carnet CTD. Les autres opérations restent en anglais.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.title": {
+      "source": "Catch the layers",
+      "text": "Échantillonnez les couches",
+      "status": "reviewed-pilot"
+    },
+    "ctd.activity": {
+      "source": "CTD cast",
+      "text": "Profil CTD",
+      "status": "reviewed-pilot"
+    },
+    "ctd.description": {
+      "source": "Read the water column",
+      "text": "Explorez la colonne d’eau",
+      "status": "reviewed-pilot"
+    },
+    "ctd.kicker": {
+      "source": "ROSETTE / FIELD NOTEBOOK",
+      "text": "ROSETTE / CARNET DE TERRAIN",
+      "status": "reviewed-pilot"
+    },
+    "ctd.intro": {
+      "source": "Read the water on the way down. On the way up the winch does not stop: close a bottle in as many layers as you can.",
+      "text": "Observez la colonne d’eau à la descente. À la remontée, le treuil ne s’arrête pas : fermez une bouteille dans le plus de couches possible.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.layersAria": {
+      "source": "Layers to sample",
+      "text": "Couches à échantillonner",
+      "status": "reviewed-pilot"
+    },
+    "ctd.chartAria": {
+      "source": "CTD profiles; pressure increases downward",
+      "text": "Profils CTD; la pression augmente vers le bas",
+      "status": "reviewed-pilot"
+    },
+    "ctd.loading": {
+      "source": "Loading local profiles…",
+      "text": "Chargement des profils locaux…",
+      "status": "reviewed-pilot"
+    },
+    "ctd.lower": {
+      "source": "Lower rosette · Enter",
+      "text": "Descendre la rosette · Entrée",
+      "status": "reviewed-pilot"
+    },
+    "ctd.ascend": {
+      "source": "Begin ascent · Enter",
+      "text": "Commencer la remontée · Entrée",
+      "status": "reviewed-pilot"
+    },
+    "ctd.new": {
+      "source": "New cast · Enter",
+      "text": "Nouveau profil · Entrée",
+      "status": "reviewed-pilot"
+    },
+    "ctd.fire": {
+      "source": "Fire bottle · Space",
+      "text": "Fermer une bouteille · Espace",
+      "status": "reviewed-pilot"
+    },
+    "ctd.phase.loading": {
+      "source": "Loading",
+      "text": "Chargement",
+      "status": "reviewed-pilot"
+    },
+    "ctd.phase.ready": {
+      "source": "On deck",
+      "text": "Sur le pont",
+      "status": "reviewed-pilot"
+    },
+    "ctd.phase.down": {
+      "source": "Downcast · recording",
+      "text": "Descente · enregistrement",
+      "status": "reviewed-pilot"
+    },
+    "ctd.phase.bottom": {
+      "source": "At depth · study the chart",
+      "text": "En profondeur · examinez les courbes",
+      "status": "reviewed-pilot"
+    },
+    "ctd.phase.up": {
+      "source": "Upcast · sampling",
+      "text": "Remontée · échantillonnage",
+      "status": "reviewed-pilot"
+    },
+    "ctd.phase.done": {
+      "source": "Bottles on deck",
+      "text": "Bouteilles sur le pont",
+      "status": "reviewed-pilot"
+    },
+    "ctd.remaining": {
+      "source": "{remaining} of {capacity} bottles left",
+      "text": "Bouteilles restantes : {remaining} sur {capacity}",
+      "status": "reviewed-pilot"
+    },
+    "ctd.caught": {
+      "source": "Caught · {points} · bottle {bottle} dbar · layer {layer} dbar",
+      "text": "Échantillonnée · {points} · bouteille à {bottle} dbar · couche à {layer} dbar",
+      "status": "reviewed-pilot"
+    },
+    "ctd.missed": {
+      "source": "Missed · layer {layer} dbar",
+      "text": "Manquée · couche à {layer} dbar",
+      "status": "reviewed-pilot"
+    },
+    "ctd.noMeasurements": {
+      "source": "No measurements",
+      "text": "Aucune mesure",
+      "status": "reviewed-pilot"
+    },
+    "ctd.legendReview": {
+      "source": "Dashed: layers, in their channel colour. White dots: bottles.",
+      "text": "Tirets : couches, de la couleur de leur variable. Points blancs : bouteilles.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.legend": {
+      "source": "Independent channel scales · gaps remain gaps · white line: rosette",
+      "text": "Échelles indépendantes · lacunes conservées · ligne blanche : rosette",
+      "status": "reviewed-pilot"
+    },
+    "ctd.rigging": {
+      "source": "Rigging the rosette…",
+      "text": "Préparation de la rosette…",
+      "status": "reviewed-pilot"
+    },
+    "ctd.ready": {
+      "source": "{layers} layers in the notebook, {capacity} bottles on the rosette. Lower away; the winch holds at depth until you begin the ascent.",
+      "text": "{layers} couches dans le carnet, {capacity} bouteilles sur la rosette. Amorcez la descente; le treuil reste en profondeur jusqu’à ce que vous lanciez la remontée.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.requestError": {
+      "source": "Profile request failed ({status})",
+      "text": "Échec du chargement du profil ({status})",
+      "status": "reviewed-pilot"
+    },
+    "ctd.noLayers": {
+      "source": "No local cast offers two layers",
+      "text": "Aucun profil local ne présente deux couches",
+      "status": "reviewed-pilot"
+    },
+    "ctd.noCasts": {
+      "source": "No local casts available",
+      "text": "Aucun profil local disponible",
+      "status": "reviewed-pilot"
+    },
+    "ctd.retry": {
+      "source": "{error}. Close and reopen the CTD notebook to retry.",
+      "text": "{error}. Fermez et rouvrez le carnet CTD pour réessayer.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.summary": {
+      "source": "{points} points · {caught} of {layers} layers caught",
+      "text": "{points} points · {caught} couches échantillonnées sur {layers}",
+      "status": "reviewed-pilot"
+    },
+    "ctd.bottle": {
+      "source": "Bottle {number}: {pressure} dbar · {outcome}",
+      "text": "Bouteille {number} : {pressure} dbar · {outcome}",
+      "status": "reviewed-pilot"
+    },
+    "ctd.bottleScore": {
+      "source": "{layer} · error {error} dbar · {points}",
+      "text": "{layer} · écart de {error} dbar · {points}",
+      "status": "reviewed-pilot"
+    },
+    "ctd.openWater": {
+      "source": "open water",
+      "text": "hors des couches ciblées",
+      "status": "reviewed-pilot"
+    },
+    "ctd.noneClosed": {
+      "source": "No bottles closed.",
+      "text": "Aucune bouteille fermée.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.rules": {
+      "source": "A bottle counts toward the nearest layer it reaches: 100 at the layer, 0 at {limit} dbar error. Each layer keeps its best bottle.",
+      "text": "Une bouteille compte pour la couche la plus proche qu’elle atteint : 100 points dans la couche, 0 à {limit} dbar d’écart. Chaque couche conserve sa meilleure bouteille.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.practice": {
+      "source": "Practice cast.",
+      "text": "Profil d’entraînement.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.recorded": {
+      "source": "Cast recorded; further casts are practice.",
+      "text": "Profil consigné; les suivants servent à l’entraînement.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.stationUnknown": {
+      "source": "Unlabelled station",
+      "text": "Station sans nom",
+      "status": "reviewed-pilot"
+    },
+    "ctd.timeUnknown": {
+      "source": "Time unavailable",
+      "text": "Heure non disponible",
+      "status": "reviewed-pilot"
+    },
+    "ctd.source": {
+      "source": "{id} · {station} · {time} · {maximum} dbar. Underway archive.",
+      "text": "{id} · {station} · {time} · {maximum} dbar. Archives Underway.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.revealed": {
+      "source": "Layers revealed. Compare your bottles with the profile, or draw a new cast.",
+      "text": "Les couches sont dévoilées. Comparez vos bouteilles au profil ou chargez un nouveau profil.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.log": {
+      "source": "{caught}/{layers} layers · {station}",
+      "text": "{caught}/{layers} couches · {station}",
+      "status": "reviewed-pilot"
+    },
+    "ctd.closed": {
+      "source": "Bottle {number} closed at {pressure} dbar.",
+      "text": "Bouteille {number} fermée à {pressure} dbar.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.descending": {
+      "source": "Watch the curves emerge. Layer pressures stay hidden until recovery.",
+      "text": "Observez les courbes se tracer. Les pressions des couches restent masquées jusqu’au retour sur le pont.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.ascending": {
+      "source": "Hauling. Space closes a bottle; the winch does not stop.",
+      "text": "Remontée en cours. Espace ferme une bouteille; le treuil ne s’arrête pas.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.atDepth": {
+      "source": "Downcast complete. Study all five curves, then begin the ascent when ready.",
+      "text": "Descente terminée. Examinez les cinq courbes, puis amorcez la remontée.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.channel.Temperature": {
+      "source": "Temperature",
+      "text": "Température",
+      "status": "reviewed-pilot"
+    },
+    "ctd.channel.Salinity": {
+      "source": "Salinity",
+      "text": "Salinité",
+      "status": "reviewed-pilot"
+    },
+    "ctd.channel.Oxygen": {
+      "source": "Oxygen",
+      "text": "Oxygène",
+      "status": "reviewed-pilot"
+    },
+    "ctd.channel.Fluorescence": {
+      "source": "Fluorescence",
+      "text": "Fluorescence",
+      "status": "reviewed-pilot"
+    },
+    "ctd.channel.Sigma-t": {
+      "source": "Sigma-t",
+      "text": "Sigma-t",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.chlorophyll.label": {
+      "source": "Chlorophyll maximum",
+      "text": "Maximum de chlorophylle",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.chlorophyll.rule": {
+      "source": "Find the fluorescence peak (chlorophyll proxy).",
+      "text": "Repérez le pic de fluorescence (indicateur de la chlorophylle).",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.temperature.label": {
+      "source": "Temperature minimum",
+      "text": "Minimum de température",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.temperature.rule": {
+      "source": "Find the coldest measured layer.",
+      "text": "Repérez la couche mesurée la plus froide.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.oxygen.label": {
+      "source": "Oxygen minimum",
+      "text": "Minimum d’oxygène",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.oxygen.rule": {
+      "source": "Find the lowest measured oxygen concentration.",
+      "text": "Repérez la concentration d’oxygène mesurée la plus faible.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.warm.label": {
+      "source": "Temperature maximum",
+      "text": "Maximum de température",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.warm.rule": {
+      "source": "Find the warmest measured layer.",
+      "text": "Repérez la couche mesurée la plus chaude.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.oxygenMax.label": {
+      "source": "Oxygen maximum",
+      "text": "Maximum d’oxygène",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.oxygenMax.rule": {
+      "source": "Find the highest measured oxygen concentration.",
+      "text": "Repérez la concentration d’oxygène mesurée la plus élevée.",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.pycnocline.label": {
+      "source": "Pycnocline",
+      "text": "Pycnocline",
+      "status": "reviewed-pilot"
+    },
+    "ctd.target.pycnocline.rule": {
+      "source": "Find the strongest positive Sigma-t gradient with pressure.",
+      "text": "Repérez le plus fort gradient positif de Sigma-t en fonction de la pression.",
+      "status": "reviewed-pilot"
+    },
+    "ui.close": {
+      "source": "Close operation",
+      "text": "Fermer l’opération",
+      "status": "reviewed-pilot"
+    },
+    "ui.operations": {
+      "source": "SHIPBOARD OPERATIONS",
+      "text": "OPÉRATIONS À BORD",
+      "status": "reviewed-pilot"
+    }
+  }
+}

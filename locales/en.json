@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "locale": "en",
+  "messages": {
+    "ui.language": {
+      "text": "Language"
+    },
+    "ui.coverage": {
+      "text": "French pilot: CTD notebook. Other operations remain in English."
+    },
+    "ctd.title": {
+      "text": "Catch the layers"
+    },
+    "ctd.activity": {
+      "text": "CTD cast"
+    },
+    "ctd.description": {
+      "text": "Read the water column"
+    },
+    "ctd.kicker": {
+      "text": "ROSETTE / FIELD NOTEBOOK"
+    },
+    "ctd.intro": {
+      "text": "Read the water on the way down. On the way up the winch does not stop: close a bottle in as many layers as you can."
+    },
+    "ctd.layersAria": {
+      "text": "Layers to sample"
+    },
+    "ctd.chartAria": {
+      "text": "CTD profiles; pressure increases downward"
+    },
+    "ctd.loading": {
+      "text": "Loading local profiles…"
+    },
+    "ctd.lower": {
+      "text": "Lower rosette · Enter"
+    },
+    "ctd.ascend": {
+      "text": "Begin ascent · Enter"
+    },
+    "ctd.new": {
+      "text": "New cast · Enter"
+    },
+    "ctd.fire": {
+      "text": "Fire bottle · Space"
+    },
+    "ctd.phase.loading": {
+      "text": "Loading"
+    },
+    "ctd.phase.ready": {
+      "text": "On deck"
+    },
+    "ctd.phase.down": {
+      "text": "Downcast · recording"
+    },
+    "ctd.phase.bottom": {
+      "text": "At depth · study the chart"
+    },
+    "ctd.phase.up": {
+      "text": "Upcast · sampling"
+    },
+    "ctd.phase.done": {
+      "text": "Bottles on deck"
+    },
+    "ctd.remaining": {
+      "text": "{remaining} of {capacity} bottles left"
+    },
+    "ctd.caught": {
+      "text": "Caught · {points} · bottle {bottle} dbar · layer {layer} dbar"
+    },
+    "ctd.missed": {
+      "text": "Missed · layer {layer} dbar"
+    },
+    "ctd.noMeasurements": {
+      "text": "No measurements"
+    },
+    "ctd.legendReview": {
+      "text": "Dashed: layers, in their channel colour. White dots: bottles."
+    },
+    "ctd.legend": {
+      "text": "Independent channel scales · gaps remain gaps · white line: rosette"
+    },
+    "ctd.rigging": {
+      "text": "Rigging the rosette…"
+    },
+    "ctd.ready": {
+      "text": "{layers} layers in the notebook, {capacity} bottles on the rosette. Lower away; the winch holds at depth until you begin the ascent."
+    },
+    "ctd.requestError": {
+      "text": "Profile request failed ({status})"
+    },
+    "ctd.noLayers": {
+      "text": "No local cast offers two layers"
+    },
+    "ctd.noCasts": {
+      "text": "No local casts available"
+    },
+    "ctd.retry": {
+      "text": "{error}. Close and reopen the CTD notebook to retry."
+    },
+    "ctd.summary": {
+      "text": "{points} points · {caught} of {layers} layers caught"
+    },
+    "ctd.bottle": {
+      "text": "Bottle {number}: {pressure} dbar · {outcome}"
+    },
+    "ctd.bottleScore": {
+      "text": "{layer} · error {error} dbar · {points}"
+    },
+    "ctd.openWater": {
+      "text": "open water"
+    },
+    "ctd.noneClosed": {
+      "text": "No bottles closed."
+    },
+    "ctd.rules": {
+      "text": "A bottle counts toward the nearest layer it reaches: 100 at the layer, 0 at {limit} dbar error. Each layer keeps its best bottle."
+    },
+    "ctd.practice": {
+      "text": "Practice cast."
+    },
+    "ctd.recorded": {
+      "text": "Cast recorded; further casts are practice."
+    },
+    "ctd.stationUnknown": {
+      "text": "Unlabelled station"
+    },
+    "ctd.timeUnknown": {
+      "text": "Time unavailable"
+    },
+    "ctd.source": {
+      "text": "{id} · {station} · {time} · {maximum} dbar. Underway archive."
+    },
+    "ctd.revealed": {
+      "text": "Layers revealed. Compare your bottles with the profile, or draw a new cast."
+    },
+    "ctd.log": {
+      "text": "{caught}/{layers} layers · {station}"
+    },
+    "ctd.closed": {
+      "text": "Bottle {number} closed at {pressure} dbar."
+    },
+    "ctd.descending": {
+      "text": "Watch the curves emerge. Layer pressures stay hidden until recovery."
+    },
+    "ctd.ascending": {
+      "text": "Hauling. Space closes a bottle; the winch does not stop."
+    },
+    "ctd.atDepth": {
+      "text": "Downcast complete. Study all five curves, then begin the ascent when ready."
+    },
+    "ctd.channel.Temperature": {
+      "text": "Temperature"
+    },
+    "ctd.channel.Salinity": {
+      "text": "Salinity"
+    },
+    "ctd.channel.Oxygen": {
+      "text": "Oxygen"
+    },
+    "ctd.channel.Fluorescence": {
+      "text": "Fluorescence"
+    },
+    "ctd.channel.Sigma-t": {
+      "text": "Sigma-t"
+    },
+    "ctd.target.chlorophyll.label": {
+      "text": "Chlorophyll maximum"
+    },
+    "ctd.target.chlorophyll.rule": {
+      "text": "Find the fluorescence peak (chlorophyll proxy)."
+    },
+    "ctd.target.temperature.label": {
+      "text": "Temperature minimum"
+    },
+    "ctd.target.temperature.rule": {
+      "text": "Find the coldest measured layer."
+    },
+    "ctd.target.oxygen.label": {
+      "text": "Oxygen minimum"
+    },
+    "ctd.target.oxygen.rule": {
+      "text": "Find the lowest measured oxygen concentration."
+    },
+    "ctd.target.warm.label": {
+      "text": "Temperature maximum"
+    },
+    "ctd.target.warm.rule": {
+      "text": "Find the warmest measured layer."
+    },
+    "ctd.target.oxygenMax.label": {
+      "text": "Oxygen maximum"
+    },
+    "ctd.target.oxygenMax.rule": {
+      "text": "Find the highest measured oxygen concentration."
+    },
+    "ctd.target.pycnocline.label": {
+      "text": "Pycnocline"
+    },
+    "ctd.target.pycnocline.rule": {
+      "text": "Find the strongest positive Sigma-t gradient with pressure."
+    },
+    "ui.close": {
+      "text": "Close operation"
+    },
+    "ui.operations": {
+      "text": "SHIPBOARD OPERATIONS"
+    }
+  }
+}

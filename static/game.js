@@ -1,3 +1,4 @@
+import { t } from './i18n-text.js';
 import { publicMirror } from './site.js';
 import { minigames, activities } from './minigames/registry.js';
 import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, MAP_KM2, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
@@ -467,7 +468,8 @@ function updateUI() {
 const activityButtons = new Map();
 for (const activity of activities) {
   const button = document.createElement('button'), key = document.createElement('kbd'), copy = document.createElement('span'), name = document.createElement('b'), description = document.createElement('small');
-  button.className = 'activity'; key.textContent = activity.key.toUpperCase(); name.textContent = activity.title; description.textContent = activity.description;
+  button.className = 'activity'; key.textContent = activity.key.toUpperCase(); name.textContent = activity.id === 'ctd' ? t('ctd.activity') : activity.title; description.textContent = activity.id === 'ctd' ? t('ctd.description') : activity.description;
+  if (activity.id === 'ctd') { name.dataset.i18n = 'ctd.activity'; name.dataset.i18nLocale = ''; name.lang = globalThis.UWI18n?.locale || 'en'; description.dataset.i18nLocale = ''; }
   copy.append(name, description); button.append(key, copy); button.onclick = () => startActivity(activity); $('#activities').append(button);
   activityButtons.set(activity, { button, description });
 }
@@ -475,9 +477,10 @@ function updateActivities() {
   for (const [activity, { button, description }] of activityButtons) {
     const ok = !world || available(activity);
     button.classList.toggle('unavailable', !ok); button.setAttribute('aria-disabled', String(!ok));
-    description.textContent = ok ? describe(activity) : unavailableReason(activity);
+    description.textContent = ok ? (activity.id === 'ctd' ? t('ctd.description') : describe(activity)) : unavailableReason(activity);
   }
 }
+window.addEventListener('uw:localechange', updateActivities);
 function endActivity() {
   recorder?.cancel(); recorder = null;
   const dispose = cleanup; cleanup = null;
@@ -490,7 +493,10 @@ function startActivity(activity, extra = {}) {
   const game = minigames[activity.id]; if (!game?.mount) { toast('This operation is unavailable.'); return; }
   if (!available(activity)) { toast(unavailableReason(activity), true); return; }
   endActivity(); waypoints = []; keys.clear(); returnFocus = document.activeElement;
-  $('#mission-title').textContent = activity.title;
+  const title = $('#mission-title');
+  if (activity.id === 'ctd') { title.dataset.i18n = 'ctd.activity'; title.dataset.i18nLocale = ''; title.lang = globalThis.UWI18n?.locale || 'en'; }
+  else { delete title.dataset.i18n; delete title.dataset.i18nLocale; title.lang = 'en'; }
+  title.textContent = activity.id === 'ctd' ? t('ctd.activity') : activity.title;
   const location = here(['patrol', 'raft'].includes(activity.id));
   recorder = operationRecorder(state, activity, location, entry => {
     const rescued = activity.id === 'sar' && state.mayday ? state.mayday.name : '';

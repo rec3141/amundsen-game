@@ -41,3 +41,8 @@
 .fleet i,.fleet-list i{display:inline-block;width:12px;height:12px;border-radius:50%;border:1px solid #1b1f26;flex-shrink:0}
 .fleet-list{list-style:none;margin:10px 0 0;padding:0}.fleet-list li{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:12px}.fleet-list li:first-child{border-top:0}.fleet-list span{flex:1;min-width:0}.fleet-list b{display:block;overflow-wrap:anywhere}.fleet-list small{display:block;font-size:10px;color:var(--muted)}.fleet-list .secondary{padding:7px 10px;font-size:11px;flex-shrink:0}
 .fleet .fine{margin-top:12px}
+:root .locale-control { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; flex-wrap: wrap; }
+:root .locale-control select { max-width: 11rem; padding: .35rem; font: inherit; }
+:root .locale-coverage { margin: .6rem 0; font-size: .8rem; opacity: .8; }
+:root #mission-dialog > .locale-control { margin: 0 3rem .8rem 0; }
+body > header { height: auto; min-height: 94px; flex-wrap: wrap; padding-block: 12px; gap: 12px 24px; }
