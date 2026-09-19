@@ -202,14 +202,25 @@ python3 tools/crew.py switch --fallback off  # on enables automatic switching
 python3 tools/crew.py resume my-idea --worker codex
 python3 tools/crew.py start my-idea /path/to/brief.md
 python3 tools/crew.py start my-idea /path/to/brief.md --worker codex
-python3 tools/crew_watch.py          # Queue current board once
+python3 tools/crew_watch.py --triage # Read requests and pending scope decisions
+python3 tools/crew_watch.py --route 25 --scope world \
+  --outcome 'Mapping earns fewer points and ship upgrades cost thousands in the existing stores' \
+  --files static/exploration.js static/game.js
+python3 tools/crew_watch.py          # Queue scoped, eligible requests once
 ```
 
 `amundsen-game-crew.service` currently watches the suggestion board every 15
-seconds, launching a worker for every new idea with no concurrency cap. Comments
-posted on an idea after its latest run merged start a revision run
-(`idea-<id>-r<n>`) that edits the merged game in place; the coordinator merges it
-without re-registering. It runs for the meeting;
+seconds, launching scoped requests with no concurrency cap. The coordinator first
+reads the submission and feedback, traces the affected player flow, and records
+`minigame`, `world`, or `integration` scope with an acceptance outcome and allowed
+files. There is no default minigame route. Routing records in
+`runtime/crew-routing/` are tied to the exact request and comments; new feedback
+requires another scope decision. `--route` makes an eligible request available to
+the running watcher immediately; it does not replace or restart existing work.
+Comments after a merged run can then start a scoped revision. Unmerged or failed
+runs remain for coordinator review. Workers report `SCOPE_BLOCKED` when their
+allowed files cannot deliver the requested outcome. The coordinator checks that
+outcome before accepting a branch. The watcher runs for the meeting;
 it is not enabled at boot. The watcher continues after a chat turn ends. Workers
 commit their branch and stop; they do not deploy or merge. Merges require the
 coordinating session to be active. Logs, exact task briefs, process IDs, and final

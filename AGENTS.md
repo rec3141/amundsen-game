@@ -11,6 +11,7 @@
 - All game runtime assets and data must work without internet access.
 
 ## Crew-idea workflow
+- Before dispatch, the coordinator reads the request and feedback, identifies the actual player flow, and records a scope, acceptance outcome and allowed files with `tools/crew_watch.py --route`. Use `--triage` to inspect pending work. Every new comment invalidates the prior routing decision. Main-chart, economy, progression, launcher and cross-device requests must change those flows, not become standalone themed minigames. Workers whose scope cannot deliver the outcome report `SCOPE_BLOCKED` with the needed files.
 - Each crew idea gets a separate Git branch and worktree and its own headless worker process: the saved Claude Code/Codex preference (`python3 tools/crew.py switch claude|codex`). Usage limits automatically hand the same worktree to the other tool once; if both are limited the run stops.
 - The coordinating session reviews, smoke-checks, and merges completed branches on main. Worker instances must not merge themselves or deploy.
 - Work only within the assigned file scope; commit the implementation and report verification and limits.
