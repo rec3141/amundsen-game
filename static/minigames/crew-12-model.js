@@ -1,5 +1,8 @@
 // Search and Rescue: the pure model. A seeded ice field on a cell grid, the Amundsen breaking a channel
-// through it, a beset cruise ship drifting with the pack until found, then following the channel out.
+// through it, a beset casualty drifting with the pack until found, then following the channel out.
+// The casualty is whichever vessel raised the Mayday on the main chart (expedition.sar: name, kind,
+// trouble, position); without a call it is the game's own MV Kittiwake. Her kind sets how fast she can
+// follow in a broken channel and how she paints on the chart.
 // Positions are cell units (x east, y south); one cell is CELL_NMI nautical miles. Time runs at
 // TIME_SCALE game seconds per real second, so speeds in knots convert to cells per real second with KN.
 
@@ -22,7 +25,28 @@ export const BEARING_COOLDOWN_S = 8;
 export const BEARING_ERROR_DEG = 12;
 export const CRUISE_GAP = 1.6;
 export const CUT_CELLS = 1.2;
-export const VESSEL = 'MV Kittiwake';
+export const DEFAULT_VESSEL = { name: 'MV Kittiwake', kind: 'cruise ship', trouble: 'beset and taking water forward, 162 passengers' };
+export const VESSEL = DEFAULT_VESSEL.name;
+
+// How each kind of casualty follows in a broken channel (knots) and paints on the chart (length in cells,
+// hull and deck colours). A small hull rides a channel at a crawl; a sealift carrier has the power to keep up.
+export const VESSEL_KINDS = {
+  'cruise ship': { kn: CRUISE_KN, length: 2.4, hull: '#f7f9fb', deck: '#3d6fa8' },
+  'sealift carrier': { kn: 7, length: 2.8, hull: '#4f5d68', deck: '#d0482f' },
+  'fishing vessel': { kn: 7, length: 1.5, hull: '#2f5f8a', deck: '#e9d7a2' },
+  'yacht': { kn: 4.5, length: 1.1, hull: '#fbfbf6', deck: '#7a5230' },
+};
+const text = (value, max) => (typeof value === 'string' ? value.trim().slice(0, max) : '');
+const coord = (value, limit) => (Number.isFinite(value) && Math.abs(value) <= limit ? value : null);
+// The casualty for a game: the Mayday details from the main chart, sanitised, with the profile for her kind.
+export function casualtyFrom(sar) {
+  const name = text(sar?.name, 48) || DEFAULT_VESSEL.name;
+  const kind = text(sar?.kind, 32).toLowerCase() || DEFAULT_VESSEL.kind;
+  const trouble = text(sar?.trouble, 120) || (name === DEFAULT_VESSEL.name ? DEFAULT_VESSEL.trouble : 'beset in the pack');
+  const profile = VESSEL_KINDS[kind] ?? VESSEL_KINDS['cruise ship'];
+  const distanceKm = Number.isFinite(sar?.distanceKm) && sar.distanceKm >= 0 ? Math.round(sar.distanceKm) : null;
+  return { name, kind, trouble, lon: coord(sar?.lon, 180), lat: coord(sar?.lat, 90), distanceKm, ...profile };
+}
 
 // Stages of development as charted by the Canadian Ice Service (WMO egg code), with the thickness each
 // stage stands for. Breaking speed comes from the thickness.
@@ -95,7 +119,8 @@ function channelLife(cell) {
   return cell.cm >= 120 ? 1.6 * 3600 : 2.4 * 3600;
 }
 
-export function createGame(seed) {
+export function createGame(seed, sar) {
+  const vessel = casualtyFrom(sar);
   const random = mulberry(hash(seed));
   const ctNoise = noiseField(random, 5.5), leadNoise = noiseField(random, 3.2), cmNoise = noiseField(random, 7);
   const cells = [];
@@ -121,7 +146,7 @@ export function createGame(seed) {
       open[index(cc, rr)] = 1; queue.push([cc, rr]);
     }
   }
-  // The cruise ship is beset in close pack deep inside the field; its last fix is three hours old.
+  // The casualty is beset in close pack deep inside the field; her last fix is three hours old.
   let cruise = null;
   for (let tries = 0; tries < 400 && !cruise; tries++) {
     const c = 24 + Math.floor(random() * 13), r = 4 + Math.floor(random() * (ROWS - 8));
@@ -147,7 +172,7 @@ export function createGame(seed) {
   }
   const startRow = 3 + Math.floor(random() * (ROWS - 6));
   const state = {
-    seed: String(seed), cells, open, cruise: { ...cruise, beset: true, besets: 0, path: [], repathIn: 0 }, bergs, datum, drift, driftDeg, driftKn,
+    seed: String(seed), vessel, cells, open, cruise: { ...cruise, beset: true, besets: 0, path: [], repathIn: 0 }, bergs, datum, drift, driftDeg, driftKn,
     ship: { x: 2.5, y: startRow + .5, heading: Math.PI / 2, kn: 0 },
     phase: 'search', time: 0, searchTime: 0, escortTime: 0, contactAt: null, contactDistance: 0,
     ram: 0, ramCooldown: 0, bearingCooldown: 0, bearings: [], events: [], finished: false, result: null,
@@ -171,7 +196,7 @@ function breakCell(state, { c, r }) {
 }
 export const passable = cell => cell.channel || cell.ct <= 3;
 
-// Breadth-first path for the cruise ship through passable cells, eight-connected.
+// Breadth-first path for the casualty through passable cells, eight-connected.
 function findPath(state, from, to) {
   const prev = new Int32Array(COLS * ROWS).fill(-1);
   const start = index(from.c, from.r), goal = index(to.c, to.r);
@@ -294,7 +319,7 @@ export function step(state, input, dtReal) {
       const nextCell = state.cells[index(next.c, next.r)];
       if (passable(nextCell)) {
         const tx = next.c + .5, ty = next.r + .5, d = Math.hypot(tx - cruise.x, ty - cruise.y);
-        const travel = CRUISE_KN * KN * dt;
+        const travel = state.vessel.kn * KN * dt;
         if (d <= travel) { cruise.x = tx; cruise.y = ty; cruise.cell = cruise.path.shift(); } else { cruise.x += (tx - cruise.x) / d * travel; cruise.y += (ty - cruise.y) / d * travel; }
         moving = true;
       } else cruise.path = null;
@@ -330,13 +355,17 @@ function finish(state, delivered) {
   state.finished = true;
   const found = state.phase === 'escort';
   const searchPoints = found ? Math.round(10 + 30 * Math.max(0, 1 - state.searchTime / SEARCH_LIMIT_S)) : 0;
-  // A steady 6 kn along the shortest route is the yardstick for the escort.
-  const idealS = state.contactDistance * CELL_NMI / 6 * 3600;
+  // Her own best channel speed along the shortest route is the yardstick for the escort.
+  const idealS = state.contactDistance * CELL_NMI / state.vessel.kn * 3600;
   const efficiency = delivered ? Math.min(1, idealS / Math.max(1, state.escortTime)) : 0;
   const escortPoints = delivered ? Math.max(5, Math.round(60 * efficiency) - 5 * state.cruise.besets) : 0;
   state.result = {
     title: 'Search and Rescue',
-    vessel: VESSEL,
+    vessel: state.vessel.name,
+    kind: state.vessel.kind,
+    trouble: state.vessel.trouble,
+    lon: state.vessel.lon,
+    lat: state.vessel.lat,
     found, delivered,
     points: searchPoints + escortPoints,
     searchPoints, escortPoints,
