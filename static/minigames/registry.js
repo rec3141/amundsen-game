@@ -1,3 +1,4 @@
+import { game as inuktitut } from './crew-22.js';
 import { game as patrol } from './crew-4.js';
 import { game as wildlife } from './crew-14.js';
 import { game as wrecks } from './crew-18.js';
@@ -17,8 +18,9 @@ import { game as flood } from './crew-10.js';
 import { game as raft } from './crew-8.js';
 // Activities launch at the ship's current position. `requires: 'ice'` needs charted ice of 1/10 or more within 10 km of the
 // ship (of the helicopter for Ice Patrol); the shell names the nearest ice when there is none.
-export const minigames = { patrol, wildlife, wrecks, rivals, ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, neptune };
+export const minigames = { inuktitut, patrol, wildlife, wrecks, rivals, ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, neptune };
 export const activities = [
+  { id: 'inuktitut', title: 'Inuktitut', description: 'Syllabics, words and names on the chart', key: '3' },
   { id: 'patrol', title: 'Ice Patrol', description: 'Read the ice from a helicopter', key: 'j', requires: 'ice' },
   { id: 'wildlife', title: 'Wildlife Observer', description: 'Take a watch on the bridge', key: 'b' },
   { id: 'wrecks', title: 'Shipwrecks', description: 'Explore the Arctic wreck archive', key: 'v' },
