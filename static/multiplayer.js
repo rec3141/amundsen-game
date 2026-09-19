@@ -76,7 +76,7 @@ function updateList() {
   for (const p of [...others.values()].sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id))) {
     const item = document.createElement('li'), swatch = document.createElement('i'), copy = document.createElement('span'), name = document.createElement('b'), where = document.createElement('small'), go = document.createElement('button');
     const s = shipById(p.ship), u = p.x * world.cols, v = p.y * world.rows, km = Math.hypot(u - su, v - sv) * world.km;
-    swatch.style.background = s.tint; name.textContent = shipLabel(p.name, p.ship);
+    swatch.style.background = s.tint; name.dataset.i18nSkip = ''; name.textContent = shipLabel(p.name, p.ship);
     where.textContent = `${s.country} · ${Math.round(km)} km ${bearing(su, sv, u, v)}${p.stale ? ' · no report lately' : ''}`;
     go.type = 'button'; go.className = 'secondary'; go.textContent = 'Steam to'; go.setAttribute('aria-label', `Steam towards ${name.textContent}`);
     go.onclick = () => { sailTo(u, v); $('#ocean')?.focus(); };

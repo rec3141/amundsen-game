@@ -456,6 +456,7 @@ function updateUI() {
   if (!state.discoveries.length) { const p = document.createElement('li'); p.className = 'muted'; p.textContent = 'A blank log, an open sea. Complete an operation anywhere afloat to leave your first mark.'; $('#discovery-log').append(p); }
   for (const entry of [...state.discoveries].reverse()) {
     const item = document.createElement('li'), name = document.createElement('b'), meta = document.createElement('small');
+    name.dataset.i18nSkip = '';
     name.textContent = entry.title;
     const where = Number.isFinite(entry.lon) && Number.isFinite(entry.lat) ? formatPosition(entry.lon, entry.lat) : entry.x === null ? 'earlier chart' : `Chart ${Math.round(entry.x * 100)} / ${Math.round(entry.y * 100)}`;
     const depth = Number.isFinite(entry.depth) ? ` · ${Math.round(entry.depth)} m` : '';
@@ -948,7 +949,7 @@ async function postScore(activity, entry) {
   if (!player) { toast('Sign the log with your name to post scores to the leaderboard.'); return; }
   try { await fetch('api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ player, activity: activity.id, title: activity.title, points: entry.points }) }); } catch {}
 }
-function boardList(list, rows, empty) { list.replaceChildren(); if (!rows.length) { list.append(el('li', 'none', empty)); return; } for (const r of rows) { const item = el('li'); item.append(el('span', '', r.player), el('b', '', `${r.points}${r.operations ? ` · ${r.operations} ops` : ''}`)); list.append(item); } }
+function boardList(list, rows, empty) { list.replaceChildren(); if (!rows.length) { list.append(el('li', 'none', empty)); return; } for (const r of rows) { const item = el('li'), player = el('span', '', r.player); player.dataset.i18nSkip = ''; item.append(player, el('b', '', `${r.points}${r.operations ? ` · ${r.operations} ops` : ''}`)); list.append(item); } }
 async function loadLeaderboard() {
   if (publicMirror) return;
   try {
@@ -981,16 +982,17 @@ function commentForm(idea) {
   return form;
 }
 const summaryText = idea => `${idea.comments?.length || 0} comment${idea.comments?.length === 1 ? '' : 's'} · iterate on this idea`;
-function commentList(idea, thread) { thread.replaceChildren(); for (const c of idea.comments || []) { const item = el('div', 'comment'); item.append(el('b', '', c.name), el('span', '', c.body)); thread.append(item); } }
+function commentList(idea, thread) { thread.replaceChildren(); for (const c of idea.comments || []) { const item = el('div', 'comment'), name = el('b', '', c.name), body = el('span', '', c.body); name.dataset.i18nSkip = ''; body.dataset.i18nSkip = ''; item.append(name, body); thread.append(item); } }
 function ideaCard(idea) {
   const article = el('article', 'idea'); article.dataset.id = idea.id;
-  const head = el('div', 'idea-head'); head.append(el('h3', '', idea.title));
+  const head = el('div', 'idea-head'), title = el('h3', '', idea.title); title.dataset.i18nSkip = ''; head.append(title);
   if (idea.build) head.append(el('span', `build build-${idea.build}`, BUILD_LABEL[idea.build] || idea.build));
-  const meta = el('small', '', `${idea.name} · Idea #${idea.id}`);
+  const meta = el('small', '', `${idea.name} · Idea #${idea.id}`); meta.dataset.i18nSkip = '';
   const thread = el('div', 'comments'); commentList(idea, thread);
   const details = el('details', 'thread');
   details.append(el('summary', '', summaryText(idea)), thread, commentForm(idea));
-  article.append(head, el('p', '', idea.description), meta, details);
+  const description = el('p', '', idea.description); description.dataset.i18nSkip = '';
+  article.append(head, description, meta, details);
   return article;
 }
 // A refresh never replaces a card whose thread is open or being typed in, so drafts survive the 5 s poll.
