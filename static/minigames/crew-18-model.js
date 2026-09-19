@@ -222,7 +222,7 @@ export function contactAt(site, x, y, radius = 1) {
   for (const c of site.contacts) { const d = Math.hypot(c.x - x, c.y - y); if (d < bestD) { best = c; bestD = d; } }
   return best;
 }
-// Drop the ROV on the cursor. Hours are charged; a wreck ends the game.
+// Drop the ROV on the cursor. Ship time covers deployment, the bottom window and recovery.
 export function dive(state, x = state.cursor.x, y = state.cursor.y) {
   if (state.phase !== 'plan' || state.result) return { ok: false, reason: 'busy' };
   if (!isCovered(state, x, y)) return { ok: false, reason: 'unsurveyed' };
@@ -231,7 +231,7 @@ export function dive(state, x = state.cursor.x, y = state.cursor.y) {
   const what = contactAt(state.site, x, y);
   const hit = what?.kind === 'wreck';
   state.hoursLeft -= hours; state.hoursUsed += hours;
-  state.dives.push({ x, y, hit, what: what?.kind ?? 'seabed', hours });
+  state.dives.push({ x, y, hit: false, what: what?.kind ?? 'seabed', hours });
   state.phase = 'dive';
   return { ok: true, hit, what: what?.kind ?? 'seabed', hours };
 }

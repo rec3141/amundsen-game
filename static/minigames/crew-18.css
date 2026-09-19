@@ -77,3 +77,8 @@ dialog:has(.c18-game) { max-width: 1160px; width: calc(100vw - 24px); max-height
 @media (prefers-reduced-motion: reduce) {
   .c18-game button { transition: none; }
 }
+.c18-game .c18-rov-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.c18-game .c18-rov-controls button, .c18-game [data-thrust] { min-height: 44px; touch-action: none; }
+.c18-game [data-thrust]:active { background: #c9e8dd; color: #183b4a; }
+.c18-game .c18-rov-views { font-size: 12px; color: var(--c18-teal); font-variant-numeric: tabular-nums; }
+.c18-game[data-phase="dive"] .c18-stage { position: sticky; top: 0; z-index: 1; background: var(--c18-paper); }
