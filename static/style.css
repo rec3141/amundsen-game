@@ -33,3 +33,11 @@
 #toast.klaxon{background:#b3352b}
 @keyframes klaxon{0%,100%{box-shadow:0 8px 24px #51452b12}20%,60%{box-shadow:0 0 0 4px #e0392b,0 8px 40px #e0392b80}40%,80%{box-shadow:0 0 0 1px #e0392b60,0 8px 24px #51452b12}}.map-panel.alarm{animation:klaxon 2s ease-out}
 @media(max-width:740px){#legend{left:8px;top:66px;grid-template-columns:1fr;font-size:10px;max-height:50%}.legend-toggle{padding:4px 6px}}
+
+/* The fleet: who else is at sea, the icebreaker picker and the sharing switch. */
+.fleet{border-bottom:1px solid var(--line);padding-bottom:14px}.fleet .missions-heading{margin-top:16px}.fleet .missions-heading span{overflow-wrap:anywhere;text-align:right}
+.fleet-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.fleet-controls .secondary{padding:8px 12px}.fleet-share{display:flex;align-items:center;gap:6px;margin:0;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer}.fleet-share input{width:auto;margin:0;padding:0;accent-color:var(--teal)}
+.fleet-picker{display:grid;gap:6px;margin-top:10px;max-height:300px;overflow:auto}.fleet-ship{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#fbfcf8;border:1px solid var(--line);border-radius:7px;padding:8px 10px;min-height:44px}.fleet-ship:hover{border-color:var(--teal)}.fleet-ship[aria-pressed="true"]{background:#e6eee4;border-color:var(--teal)}.fleet-ship b{display:block;font-size:12px}.fleet-ship small{display:block;font-size:10px;color:var(--muted)}
+.fleet i,.fleet-list i{display:inline-block;width:12px;height:12px;border-radius:50%;border:1px solid #1b1f26;flex-shrink:0}
+.fleet-list{list-style:none;margin:10px 0 0;padding:0}.fleet-list li{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:12px}.fleet-list li:first-child{border-top:0}.fleet-list span{flex:1;min-width:0}.fleet-list b{display:block;overflow-wrap:anywhere}.fleet-list small{display:block;font-size:10px;color:var(--muted)}.fleet-list .secondary{padding:7px 10px;font-size:11px;flex-shrink:0}
+.fleet .fine{margin-top:12px}

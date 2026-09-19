@@ -1,12 +1,16 @@
-"""Offline intranet game server with shared, durable meeting suggestions."""
+"""Offline intranet game server with shared, durable meeting suggestions and a live fleet presence relay."""
 import argparse
+import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
 import sqlite3
+import threading
+import time
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).parent
 DB = Path(os.environ.get('AMUNDSEN_GAME_DB', ROOT / 'runtime/suggestions.sqlite'))
@@ -45,6 +49,62 @@ def leaderboard():
         if len(entry['top']) < 10:
             entry['top'].append({'player': r['player'], 'points': r['points']})
     return {'overall': overall, 'activities': list(activities.values())}
+
+# Fleet presence: every open chart reports its own ship about once a second and receives the others in reply.
+# Entries live only in memory, under FLEET_LOCK, and drop out FLEET_TTL seconds after their last report; a session
+# reporting faster than FLEET_INTERVAL is refused. The relay carries nothing but a display name, a fleet ship id,
+# a chart position and a heading; the session secret never leaves this table, only its derived public id does.
+FLEET_TTL, FLEET_INTERVAL, FLEET_MAX, FLEET_MAX_PER_ADDRESS = 15.0, 0.4, 64, 8
+FLEET, FLEET_LOCK = {}, threading.Lock()
+SESSION_RE, SHIP_RE, NAME_RE = re.compile(r'[0-9a-f]{16,32}'), re.compile(r'[a-z0-9-]{1,24}'), re.compile(r'[^\x00-\x1f\x7f]{0,40}')
+
+def fleet_number(value, low, high):
+    """A finite JSON number within [low, high], or None."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or not low <= value <= high:
+        return None
+    return float(value)
+
+def fleet_expire(now):
+    for session in [s for s, e in FLEET.items() if now - e['seen'] > FLEET_TTL]:
+        del FLEET[session]
+
+def fleet_view(now, exclude=None):
+    """The public picture of every ship but `exclude`, oldest report first, without session secrets or addresses."""
+    return [{'id': e['id'], 'name': e['name'], 'ship': e['ship'], 'x': e['x'], 'y': e['y'], 'heading': e['heading'], 'age': round(now - e['seen'], 1)}
+            for session, e in sorted(FLEET.items(), key=lambda item: item[1]['seen']) if session != exclude]
+
+def fleet_report(data, address):
+    """Record one ship's report and answer with the rest of the fleet, or reject it with a status and reason."""
+    session = data.get('session') if isinstance(data, dict) else None
+    if not isinstance(session, str) or not SESSION_RE.fullmatch(session):
+        return 400, {'error': 'A fleet report needs a session id.'}
+    now = time.monotonic()
+    with FLEET_LOCK:
+        fleet_expire(now)
+        if data.get('leave') is True:
+            FLEET.pop(session, None)
+            return 200, {'players': [], 'ttl': FLEET_TTL}
+        name, ship = data.get('name', ''), data.get('ship')
+        x, y, heading = fleet_number(data.get('x'), 0, 1), fleet_number(data.get('y'), 0, 1), fleet_number(data.get('heading'), -7, 7)
+        if not isinstance(name, str) or not NAME_RE.fullmatch(name) or not isinstance(ship, str) or not SHIP_RE.fullmatch(ship) or None in (x, y, heading):
+            return 400, {'error': 'A fleet report carries a name, a ship, a chart position and a heading.'}
+        entry = FLEET.get(session)
+        if entry is None:
+            if len(FLEET) >= FLEET_MAX:
+                return 503, {'error': 'The fleet chart is full.'}
+            if sum(1 for e in FLEET.values() if e['address'] == address) >= FLEET_MAX_PER_ADDRESS:
+                return 429, {'error': 'Too many ships from this computer.'}
+            entry = FLEET[session] = {'id': hashlib.sha256(session.encode()).hexdigest()[:12], 'address': address, 'seen': now - FLEET_INTERVAL}
+        elif now - entry['seen'] < FLEET_INTERVAL:
+            return 429, {'error': 'Report about once a second.'}
+        entry.update(name=name.strip(), ship=ship, x=x, y=y, heading=heading, seen=now)
+        return 200, {'players': fleet_view(now, session), 'ttl': FLEET_TTL}
+
+def fleet_list(session=None):
+    now = time.monotonic()
+    with FLEET_LOCK:
+        fleet_expire(now)
+        return {'players': fleet_view(now, session if isinstance(session, str) and SESSION_RE.fullmatch(session) else None), 'ttl': FLEET_TTL}
 
 def clean(data, fields):
     """Return stripped string fields within their limits, or None when the payload is unusable."""
@@ -87,7 +147,14 @@ class Handler(SimpleHTTPRequestHandler):
             return self.respond(200, ideas)
         if urlsplit(self.path).path == '/api/leaderboard':
             return self.respond(200, leaderboard())
+        if urlsplit(self.path).path == '/api/fleet':
+            return self.respond(200, fleet_list(parse_qs(urlsplit(self.path).query).get('session', [None])[0]))
         return super().do_GET()
+
+    def client(self):
+        """The reporting computer: the first forwarded address behind the site proxy, else the socket peer."""
+        forwarded = self.headers.get('X-Forwarded-For', '').split(',')[0].strip()
+        return forwarded or self.client_address[0]
 
     def read_json(self):
         if self.headers.get('Sec-Fetch-Site') == 'cross-site':
@@ -105,11 +172,13 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         path = urlsplit(self.path).path
         comment = re.fullmatch(r'/api/suggestions/(\d+)/comments', path)
-        if path not in ('/api/suggestions', '/api/scores') and not comment:
+        if path not in ('/api/suggestions', '/api/scores', '/api/fleet') and not comment:
             return self.respond(404, {'error': 'Unknown endpoint'})
         status, data = self.read_json()
         if status != 200:
             return self.respond(status, data)
+        if path == '/api/fleet':
+            return self.respond(*fleet_report(data, self.client()))
         if path == '/api/scores':
             fields = clean(data, [('player', 60), ('activity', 40), ('title', 100)])
             points = data.get('points') if isinstance(data, dict) else None
@@ -136,6 +205,11 @@ class Handler(SimpleHTTPRequestHandler):
             ident = db.execute('INSERT INTO suggestions(name,title,description) VALUES (?,?,?)', fields).lastrowid
         return self.respond(201, {'id': ident})
 
+class Server(ThreadingHTTPServer):
+    """A dozen open charts each poll the relay every second and load some forty modules apiece; a deeper listen backlog
+    than the stock five keeps a burst of simultaneous connections from being reset."""
+    request_queue_size = 64
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--host', default='0.0.0.0')
@@ -143,4 +217,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     connect().close()
     print(f'Amundsen Expedition listening on http://{args.host}:{args.port}', flush=True)
-    ThreadingHTTPServer((args.host, args.port), Handler).serve_forever()
+    Server((args.host, args.port), Handler).serve_forever()

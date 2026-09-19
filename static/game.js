@@ -3,6 +3,7 @@ import { minigames, activities } from './minigames/registry.js';
 import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
 import { loadWorld } from './world.js';
 import { renderChart, CHART_SCALE } from './world-chart.js';
+import { multiplayer } from './multiplayer.js';
 const $ = s => document.querySelector(s);
 if (publicMirror) {
   document.querySelectorAll('[data-page="ideas"], [data-page="board"], #suggest-shortcut, .crew-note, .player').forEach(node => { node.hidden = true; });
@@ -577,6 +578,8 @@ window.addEventListener('keydown', e => {
   if (k === '+' || k === '=') { e.preventDefault(); setZoom(zoom * 1.4); return; }
   if (k === '-' || k === '_') { e.preventDefault(); setZoom(zoom / 1.4); return; }
   if (k === '2') { e.preventDefault(); if (!e.repeat) toggleLegend(); return; }
+  if (k === '3') { e.preventDefault(); if (!e.repeat) multiplayer.toggleFleet(); return; }
+  if (k === '4') { e.preventDefault(); if (!e.repeat) multiplayer.nextShip(); return; }
   if (['w', 'a', 's', 'd', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright'].includes(k)) { e.preventDefault(); if (helicopter?.rtb) return; keys.add(k); waypoints = []; routePlan = null; if (target && !craft()) { clearTarget(); updateEvents(); } }
 });
 window.addEventListener('keyup', e => keys.delete(e.key.toLowerCase())); window.addEventListener('blur', () => { keys.clear(); save(); });
@@ -818,6 +821,7 @@ function draw() {
   }
   if (zodiac) { ctx.strokeStyle = '#f0a35b90'; ctx.setLineDash([2, 4]); ctx.beginPath(); ctx.moveTo(toX(su), toY(sv)); ctx.lineTo(toX(zodiac.u), toY(zodiac.v)); ctx.stroke(); ctx.setLineDash([]); }
   drawShip(toX(su), toY(sv), px);
+  multiplayer.draw(ctx, { toX, toY, px, width, height });
   if (zodiac) {
     const x = toX(zodiac.u), y = toY(zodiac.v);
     zodiacSprite(ctx, x, y, flightAngle, px + 1);
@@ -841,6 +845,7 @@ function draw() {
   ctx.strokeStyle = '#ffffffcc'; ctx.strokeRect(m.x + u0 / world.cols * m.w, m.y + v0 / world.rows * m.h, width / z / world.cols * m.w, height / z / world.rows * m.h);
   ctx.fillStyle = '#ca5342'; ctx.beginPath(); ctx.arc(m.x + shipU() / world.cols * m.w, m.y + shipV() / world.rows * m.h, 2.5, 0, 7); ctx.fill();
   if (craft()) { ctx.fillStyle = helicopter ? '#f6c75f' : '#f0a35b'; ctx.fillRect(m.x + pilotU() / world.cols * m.w - 2, m.y + pilotV() / world.rows * m.h - 2, 4, 4); }
+  multiplayer.drawMini(ctx, m);
   if (auv) { ctx.fillStyle = '#d9e26b'; ctx.fillRect(m.x + auv.u / world.cols * m.w - 2, m.y + auv.v / world.rows * m.h - 2, 4, 4); }
   if (state.mayday) { ctx.fillStyle = '#e0392b'; ctx.beginPath(); ctx.arc(m.x + state.mayday.x * m.w, m.y + state.mayday.y * m.h, 2.5, 0, 7); ctx.fill(); }
   if (target) { ctx.strokeStyle = '#f6c75f'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(m.x + target.wreck.u / world.cols * m.w, m.y + target.wreck.v / world.rows * m.h, 3, 0, 7); ctx.stroke(); }
@@ -908,6 +913,8 @@ async function boot() {
     radioSeen = tanker().slot;
     loadWrecks().then(() => { const wreck = wrecks.find(w => w.id === state.target); if (wreck) { target = { wreck, goal: null }; routeTarget(); } else state.target = null; updateUI(); });
     chartPosition(state, known); updateUI(); buildFog();
+    // The fleet relay learns only the ship's chart position and heading; other charts' ships are drawn over this one.
+    multiplayer.start({ world, ship: () => ({ x: state.x, y: state.y, heading: angle }), sailTo, toast });
     $('#mapping-rule').textContent = `1 point per new ${world.km} × ${world.km} km grid cell · 120° fan widens with depth`;
     $('#chart-credit').textContent = `GEBCO 2024 · CIS ice chart ${world.chartDate}`;
     surfaceBase = await renderChart(world, () => {}, false); rebuildSurface();
