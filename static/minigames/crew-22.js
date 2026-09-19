@@ -1,8 +1,5 @@
-// Inuktitut: a three-leg language watch. Syllabics first (name the sound, find the glyph, spell a word), then a
-// working vocabulary for ice, sea, weather, animals, gear and greetings, then the chart: place names decoded into
-// their parts and new words built from a root and a suffix. Missed cards come back once for half points.
-// "How it works" (L) opens a primer on the logic of the syllabary at any point without touching the deck.
-import { LEGS, createSession, startLeg, draw, answer, hint, worth, summary, accuracyLabel, syllables } from './crew-22-model.js';
+// Guided examples remain visible during practice; help and retries are free.
+import { LEGS, createSession, startLeg, draw, answer, hint, worth, summary, syllables } from './crew-22-model.js';
 import { SERIES, VOWELS } from './crew-22-lexicon.js';
 import { PAGES, TURNER_ROWS, describe, turnerText } from './crew-22-logic.js';
 
@@ -28,10 +25,10 @@ export const game = {
     root.innerHTML = `<section class="ik-game" tabindex="-1" aria-label="Inuktitut">
       <link rel="stylesheet" href="${stylesheet}">
       <div class="ik-heading">
-        <div><p class="ik-kicker" data-where></p><h3>Inuktitut<span class="ik-syl">ᐃᓄᒃᑎᑐᑦ</span></h3><p class="ik-sub">Three legs of a language watch: the writing, the words, the names on the chart.</p></div>
+        <div><p class="ik-kicker" data-where></p><h3>Inuktitut<span class="ik-syl">ᐃᓄᒃᑎᑐᑦ</span></h3><p class="ik-sub">Learn a little, try it together: shapes, words, and names on the chart.</p></div>
         <div class="ik-meters">
           <div class="ik-meter"><strong data-points>0</strong><span>points</span></div>
-          <div class="ik-meter"><strong data-streak>0</strong><span>streak</span></div>
+          <div class="ik-meter"><strong data-streak>0</strong><span>practised</span></div>
           <div class="ik-meter"><strong data-leg>–</strong><span>leg</span></div>
         </div>
       </div>
@@ -41,7 +38,7 @@ export const game = {
           <div class="ik-card" data-card></div>
           <div class="ik-card ik-primer" data-primer hidden tabindex="-1" role="region" aria-label="How the syllabics work"></div>
           <div class="ik-actions" data-actions>
-            <button type="button" data-action="hint">Hint <kbd>H</kbd></button>
+            <button type="button" data-action="hint">Show me <kbd>H</kbd></button>
             <button type="button" data-action="chart" aria-pressed="false">Syllabary <kbd>C</kbd></button>
             <button type="button" data-action="logic">How it works <kbd>L</kbd></button>
             <button type="button" data-action="next" data-next class="ik-next">Next <kbd>Enter</kbd></button>
@@ -53,7 +50,7 @@ export const game = {
         </aside>
       </div>
       <p class="ik-live" role="status" aria-live="polite" data-live></p>
-      <p class="ik-hint"><kbd>1</kbd>–<kbd>4</kbd> pick · <kbd>←→↑↓</kbd>/<kbd>WASD</kbd> move · <kbd>Enter</kbd>/<kbd>Space</kbd> commit or next · <kbd>H</kbd> hint (half points) · <kbd>C</kbd> syllabary · <kbd>Backspace</kbd> unpick · <span data-hint-extra></span></p>
+      <p class="ik-hint"><kbd>1</kbd>–<kbd>4</kbd> pick · <kbd>←→↑↓</kbd>/<kbd>WASD</kbd> move · <kbd>Enter</kbd>/<kbd>Space</kbd> commit or next · <kbd>H</kbd> free help · <kbd>C</kbd> syllabary · <kbd>Backspace</kbd> unpick · <span data-hint-extra></span></p>
     </section>`;
     const panel = root.querySelector('.ik-game');
     const find = selector => panel.querySelector(selector);
@@ -96,16 +93,16 @@ export const game = {
       }).join('');
       find('[data-leg]').textContent = state.leg >= 0 && state.leg < LEGS.length ? `${state.leg + 1}/3` : state.phase === 'end' ? '3/3' : '–';
     }
-    // Per-card result dots. `outcomes[leg][k]` is 'ok', 'half' (right on the retry) or 'bad'.
+    // Each completed practice card lights a progress dot.
     const outcomes = [{}, {}, {}];
     const dotClass = (leg, k) => ({ ok: 'ik-ok', half: 'ik-half', bad: 'ik-bad' }[outcomes[leg][k]] || '');
     function renderMeters() {
       find('[data-points]').textContent = String(state.score);
-      find('[data-streak]').textContent = String(state.streak);
+      find('[data-streak]').textContent = String(state.correct);
     }
     function renderLearned() {
       const list = find('[data-learned]');
-      list.innerHTML = state.learned.length ? state.learned.map(l => `<li><span class="ik-syl">${escape(l.s)}</span><span><b>${escape(l.w)}</b> <small>${escape(l.en)}</small></span></li>`).join('') : '<li class="ik-none">Answer a word card and it lands here.</li>';
+      list.innerHTML = state.learned.length ? state.learned.map(l => `<li><span class="ik-syl">${escape(l.s)}</span><span><b>${escape(l.w)}</b> <small>${escape(l.en)}</small></span></li>`).join('') : '<li class="ik-none">Practise a word and keep it here to refer to.</li>';
       list.scrollTop = list.scrollHeight;
       find('[data-learned-count]').textContent = state.learned.length ? `${state.learned.length}` : '';
     }
@@ -121,9 +118,9 @@ export const game = {
     function renderIntro() {
       find('[data-card]').innerHTML = `<div class="ik-brief"><p class="ik-brief-kicker">LANGUAGE WATCH</p>
         <h4>Tunngasugit<span class="ik-syl">ᑐᙵᓱᒋᑦ</span></h4>
-        <p>Welcome aboard. Inuktitut is spoken from Greenland to the Bering Strait in a chain of dialects; the coast the ship works speaks it every day, and its charts carry a thousand years of place names. The Nunavut standard writes it in syllabics: shapes for consonants, turned for vowels.</p>
-        <p>Three legs, eight cards each. A card missed comes back once for half its points; a hint halves them too. Every fifth card in a row is a 10-point bonus. The primer on how the writing works is free, and open at any time.</p>
-        <p class="ik-brief-small">Pronunciation: q is a k made far back in the throat; doubled letters are held long; ng as in singer. Spellings follow the Inuit Cultural Institute standard used in Nunavut; Inuinnaqtun and Inuvialuktun to the west are written in Roman letters, and Nunavik forms differ a little.</p>
+        <p>Start with one shape: ᐱ pi, ᐳ pu, ᐸ pa. Turning the shape changes its vowel. A dot makes the vowel long: ᐲ pii.</p>
+        <p>We’ll explore 14 short examples together. Read each example, then match it below. Keep the example open as long as you like. Help and retries are free, and there’s no timer.</p>
+        <p class="ik-brief-small">Start with six writing examples, then four everyday words and four names or word-building examples. The interactive “How it works” guide is always available.</p>
         <div class="ik-go-row"><button type="button" class="ik-go" data-action="next">Begin the watch <kbd>Enter</kbd></button><button type="button" class="ik-go ik-go-quiet" data-action="logic">How the writing works <kbd>L</kbd></button></div></div>`;
       actions({ next: true, nextLabel: 'Begin' });
       find('[data-hint-extra]').textContent = 'L explains the writing · Escape closes the operation';
@@ -134,8 +131,8 @@ export const game = {
         <h4>${escape(leg.name)}<span class="ik-syl">${leg.inuk}</span> <small style="font:14px system-ui,sans-serif;color:#b9d0d6">${escape(leg.roman)}</small></h4>
         <p>${escape(leg.brief)}</p>
         ${state.leg === 2 && state.near ? `<p class="ik-brief-small">The first name is the nearest community to the ship: ${escape(state.near.place.name)}, ${Math.round(state.near.km)} km away.</p>` : ''}
-        <div class="ik-go-row"><button type="button" class="ik-go" data-action="next">Deal the cards <kbd>Enter</kbd></button>${state.leg === 0 ? '<button type="button" class="ik-go ik-go-quiet" data-action="logic">How the system works <kbd>L</kbd></button>' : ''}</div></div>`;
-      actions({ next: true, nextLabel: 'Deal' });
+        <div class="ik-go-row"><button type="button" class="ik-go" data-action="next">Learn together <kbd>Enter</kbd></button>${state.leg === 0 ? '<button type="button" class="ik-go ik-go-quiet" data-action="logic">How the system works <kbd>L</kbd></button>' : ''}</div></div>`;
+      actions({ next: true, nextLabel: 'Learn' });
       if (state.leg === 0) setChart(true);
     }
     function optionButton(option, i, extra = '') {
@@ -152,7 +149,8 @@ export const game = {
     function renderAsk() {
       const card = state.card;
       cursor = 0; pickRoot = -1; pickSuffix = -1; row = 'roots';
-      const head = `<p class="ik-worth">${card.retry ? 'SECOND LOOK · ' : ''}${card.hinted ? 'HINTED · ' : ''}worth <b>${worth(state)}</b></p>
+      const head = `<p class="ik-worth">PRACTICE · <b>${worth(state)} points</b></p>
+        <div class="ik-lesson"><h5>Read together</h5><p>${escape(lessonText(card))}</p></div>
         <p class="ik-prompt-sub">${escape(card.promptSub)}</p>
         <div class="${promptClass(card)}" lang="${card.kind === 'gloss' || card.kind === 'build' ? 'en' : 'iu'}">${escape(card.prompt)}</div>`;
       let body;
@@ -167,7 +165,13 @@ export const game = {
       find('[data-hint-extra]').textContent = card.kind === 'build' ? 'Enter commits root + suffix' : 'Escape closes the operation';
       litChart(card, false);
       setCursor(0);
-      live(`${card.promptSub}: ${card.prompt}. ${card.kind === 'build' ? 'Roots: ' + card.roots.map(o => o.label).join(', ') + '. Suffixes: ' + card.suffixes.map(o => o.label).join(', ') : 'Options: ' + card.options.map((o, i) => `${i + 1} ${o.label}${o.sub ? ' ' + o.sub : ''}`).join(', ')}.`);
+      live(`Read together. ${lessonText(card)} ${card.promptSub}: ${card.prompt}. ${card.kind === 'build' ? 'Roots: ' + card.roots.map(o => o.label).join(', ') + '. Suffixes: ' + card.suffixes.map(o => o.label).join(', ') : 'Options: ' + card.options.map((o, i) => `${i + 1} ${o.label}${o.sub ? ' ' + o.sub : ''}`).join(', ')}.`);
+    }
+    function lessonText(card) {
+      if (card.kind === 'spell') return `${card.word.s} · ${card.word.w} · ${card.word.en}. Read it in parts: ${card.tokens.map(t => `${t.glyph} = ${t.roman}${t.final ? ' (final, no vowel)' : ''}`).join(' · ')}. Match the complete word below.`;
+      if (card.word) return `${card.word.s} · ${card.word.w} means ${card.word.en}. ${card.word.note}`;
+      if (card.place) return `${card.place.name} means ${card.place.en}. ${card.place.parts}.`;
+      return card.note;
     }
     function hintText(card) {
       if (card.kind === 'glyph' || card.kind === 'sound') {
@@ -182,12 +186,27 @@ export const game = {
     }
     function showHint() {
       const box = find('[data-feedback]');
-      box.hidden = false; box.className = 'ik-feedback'; box.innerHTML = `<b>Hint.</b> ${escape(hintText(state.card))}`;
-      litChart(state.card, false); if (['glyph', 'sound', 'spell'].includes(state.card.kind)) setChart(true);
-      find('.ik-worth').innerHTML = `${state.card.retry ? 'SECOND LOOK · ' : ''}HINTED · worth <b>${worth(state)}</b>`;
+      const card = state.card;
+      const guide = card.kind === 'build'
+        ? `Choose root ${card.answerRoot + 1} (${card.roots[card.answerRoot].label}), then suffix ${card.answerSuffix + 1} (${card.suffixes[card.answerSuffix].label}).`
+        : `Choose ${card.answer + 1}: ${card.options[card.answer].label}.`;
+      box.hidden = false; box.className = 'ik-feedback';
+      box.textContent = `${guide} ${hintText(card)} Take another look at the example above; all points are still available.`;
+      litChart(card, true);
+      if (['glyph', 'sound', 'spell'].includes(card.kind)) setChart(true);
     }
     function renderFeedback(result) {
       const card = state.card;
+      if (!result.ok) {
+        showHint();
+        if (card.kind === 'build') { pickRoot = -1; pickSuffix = -1; setRow('roots');
+          panel.querySelectorAll('[data-option]').forEach(b => b.classList.remove('ik-picked'));
+          find('[data-next]').disabled = true;
+        }
+        live(`Let’s try that together. ${find('[data-feedback]').textContent}`);
+        panel.focus({ preventScroll: true });
+        return;
+      }
       const buttons = group => [...panel.querySelectorAll(`[data-group="${group}"] [data-option]`)];
       if (card.kind === 'build') {
         buttons('roots').forEach((b, i) => { b.disabled = true; b.classList.toggle('ik-right', i === card.answerRoot); b.classList.toggle('ik-wrong', i === result.choice.root && i !== card.answerRoot); });
@@ -195,24 +214,23 @@ export const game = {
       } else buttons('options').forEach((b, i) => { b.disabled = true; b.classList.toggle('ik-right', i === card.answer); b.classList.toggle('ik-wrong', i === result.choice && i !== card.answer); b.classList.remove('ik-cursor'); });
       const box = find('[data-feedback]');
       box.hidden = false; box.className = `ik-feedback ${result.ok ? 'ik-good' : 'ik-poor'}`;
-      const verdict = result.ok ? `<b>${['Ii.', 'Yes.', 'Right.'][result.points % 3]} +${result.points}${result.bonus ? ` and a streak bonus of ${result.bonus}` : ''}.</b>`
-        : `<b>Aakka.</b> ${card.retry ? 'That one stays in the log to look up later.' : 'It comes back at the end of the leg for half points.'}`;
+      const verdict = `<b>You’ve practised it. +${result.points} points.</b>`;
       const note = card.note.replace(/([᐀-ᙿ][᐀-ᙿ ]*)/g, '<span class="ik-syl">$1</span>');
       box.innerHTML = `${verdict} ${note}`;
       litChart(card, true);
       const legIndex = state.leg, k = state.decks[legIndex].findIndex(c => c.prompt === card.prompt && c.kind === card.kind);
-      if (k >= 0 && (result.ok || card.retry)) outcomes[legIndex][k] = result.ok ? (card.retry ? 'half' : 'ok') : 'bad';
+      if (k >= 0) outcomes[legIndex][k] = 'ok';
       actions({ next: true, nextLabel: state.queue.length ? 'Next card' : state.leg < 2 ? 'Next leg' : 'Finish' });
       find('[data-next]').focus({ preventScroll: true });
-      live(`${result.ok ? 'Correct' : 'Wrong'}. ${box.textContent}`);
+      live(box.textContent);
       renderMeters(); renderLegs(); renderLearned();
     }
     function renderEnd() {
       const s = summary(state);
       const legs = LEGS.map((leg, i) => `<div><dt>${escape(leg.name)}: ${s.legs[i].correct}/${state.decks[i].length}</dt><dd>${s.legs[i].points}</dd></div>`).join('');
       find('[data-card]').innerHTML = `<div class="ik-brief"><p class="ik-brief-kicker">WATCH COMPLETE</p>
-        <h4>${escape(accuracyLabel(s.firstTry, s.cards))}</h4>
-        <p>${s.firstTry} of ${s.cards} cards right first time, ${s.correct} of ${s.asked} answers in all. Best streak ${s.bestStreak}${s.hints ? `, ${s.hints} hint${s.hints === 1 ? '' : 's'}` : ''}.</p>
+        <h4>A first language watch</h4>
+        <p>${s.cards} examples explored, with ${s.learned.length} words and names in your log. Come back to practise the shapes or explore more names.</p>
         <dl class="ik-breakdown">${legs}</dl>
         ${submitted ? '<p class="ik-brief-small">Points were banked on the first watch; this one was for the words.</p>' : `<p class="ik-points"><strong>${s.points}</strong> science points</p>`}
         <p class="ik-brief-small">Nakurmiik, qujannamiik, quana: three ways to say thank you, from Nunavik to the Kitikmeot.</p>
@@ -222,7 +240,7 @@ export const game = {
       renderLegs(); renderMeters();
       if (!submitted) {
         submitted = true;
-        try { complete(s.points, { title: `Inuktitut watch: ${s.firstTry}/${s.cards} first time`, ...s, near: state.near?.place.name ?? null }); } catch (error) { console.error(error); }
+        try { complete(s.points, { title: `Inuktitut: ${s.cards} examples explored`, ...s, near: state.near?.place.name ?? null }); } catch (error) { console.error(error); }
       }
     }
     // ---------- primer: how the system works ----------
@@ -379,7 +397,7 @@ export const game = {
       if (state.phase === 'feedback') { draw(state); if (state.phase === 'brief' && state.leg === 1) setChart(false); render(); return; }
       if (state.phase === 'ask') commit();
     }
-    function useHint() { if (hint(state)) { showHint(); find('[data-action="hint"]').disabled = true; live(hintText(state.card)); } }
+    function useHint() { if (hint(state)) { showHint(); find('[data-action="hint"]').disabled = true; live(find('[data-feedback]').textContent); } }
     function replay() {
       state = createSession(expedition, (Date.now() ^ (Math.random() * 0xffffffff)) >>> 0);
       for (const o of outcomes) for (const k of Object.keys(o)) delete o[k];

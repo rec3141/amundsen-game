@@ -196,3 +196,7 @@ dialog:has(.ik-game) { max-width: 1040px; width: calc(100vw - 24px); max-height:
   .ik-game .ik-glyphrow span { min-width: 40px; }
   .ik-game .ik-glyphrow span b { font-size: 26px; }
 }
+
+.ik-game .ik-lesson { margin: 24px 0 16px; padding: 12px 14px; background: #ffffff14; border-left: 4px solid #8fd8cf; border-radius: 8px; overflow-wrap: anywhere; }
+.ik-game .ik-lesson h5 { margin: 0 0 6px; color: #8fd8cf; font-size: 13px; }
+.ik-game .ik-lesson p { font: 16px/1.65 var(--ik-syl); }
