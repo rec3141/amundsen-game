@@ -578,8 +578,8 @@ window.addEventListener('keydown', e => {
   if (k === '+' || k === '=') { e.preventDefault(); setZoom(zoom * 1.4); return; }
   if (k === '-' || k === '_') { e.preventDefault(); setZoom(zoom / 1.4); return; }
   if (k === '2') { e.preventDefault(); if (!e.repeat) toggleLegend(); return; }
-  if (k === '3') { e.preventDefault(); if (!e.repeat) multiplayer.toggleFleet(); return; }
-  if (k === '4') { e.preventDefault(); if (!e.repeat) multiplayer.nextShip(); return; }
+  if (k === '4') { e.preventDefault(); if (!e.repeat) multiplayer.toggleFleet(); return; }
+  if (k === '5') { e.preventDefault(); if (!e.repeat) multiplayer.nextShip(); return; }
   if (['w', 'a', 's', 'd', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright'].includes(k)) { e.preventDefault(); if (helicopter?.rtb) return; keys.add(k); waypoints = []; routePlan = null; if (target && !craft()) { clearTarget(); updateEvents(); } }
 });
 window.addEventListener('keyup', e => keys.delete(e.key.toLowerCase())); window.addEventListener('blur', () => { keys.clear(); save(); });
