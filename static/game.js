@@ -3,7 +3,7 @@ import { minigames, activities } from './minigames/registry.js';
 import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, MAP_KM2, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
 import { loadWorld } from './world.js';
 import { createChart } from './world-chart.js';
-import { multiplayer } from './multiplayer.js';
+import { multiplayer, MEET_KM } from './multiplayer.js';
 const $ = s => document.querySelector(s);
 if (publicMirror) {
   document.querySelectorAll('[data-page="ideas"], [data-page="board"], #suggest-shortcut, .crew-note, .player').forEach(node => { node.hidden = true; });
@@ -458,7 +458,7 @@ function updateUI() {
     name.textContent = entry.title;
     const where = Number.isFinite(entry.lon) && Number.isFinite(entry.lat) ? formatPosition(entry.lon, entry.lat) : entry.x === null ? 'earlier chart' : `Chart ${Math.round(entry.x * 100)} / ${Math.round(entry.y * 100)}`;
     const depth = Number.isFinite(entry.depth) ? ` · ${Math.round(entry.depth)} m` : '';
-    const tally = entry.lost ? `−${entry.lost} points` : { grounding: 'no points to lose', bunker: 'no charge', tow: 'no points lost', radio: 'on the radio' }[entry.activity] ?? `+${entry.points}`;
+    const tally = entry.lost ? `−${entry.lost} points` : entry.activity === 'faceoff' && !entry.points ? 'no points lost' : { grounding: 'no points to lose', bunker: 'no charge', tow: 'no points lost', radio: 'on the radio' }[entry.activity] ?? `+${entry.points}`;
     meta.textContent = `${entry.date ? new Date(entry.date).toLocaleDateString() + ' · ' : ''}${where}${depth} · ${tally}`;
     item.append(name, meta); if (['grounding', 'bunker', 'tow', 'radio'].includes(entry.activity)) item.className = entry.activity; $('#discovery-log').append(item);
   }
@@ -490,12 +490,13 @@ function startActivity(activity, extra = {}) {
   const game = minigames[activity.id]; if (!game?.mount) { toast('This operation is unavailable.'); return; }
   if (!available(activity)) { toast(unavailableReason(activity), true); return; }
   endActivity(); waypoints = []; keys.clear(); returnFocus = document.activeElement;
-  $('#mission-title').textContent = activity.title;
+  $('#mission-title').textContent = extra.duel ? `${activity.title} · face-off with ${extra.duel.opponent}` : activity.title;
   const location = here(['patrol', 'raft'].includes(activity.id));
   recorder = operationRecorder(state, activity, location, entry => {
     const rescued = activity.id === 'sar' && state.mayday ? state.mayday.name : '';
     if (rescued) state.mayday = null;
     save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart${rescued ? ` · ${rescued} safe, call cleared` : ''}`); postScore(activity, entry);
+    multiplayer.scored(activity.id, entry.points);
   });
   const session = recorder;
   $('#mission-dialog').showModal();
@@ -516,7 +517,7 @@ $('#close-mission').onclick = () => { endActivity(); $('#mission-dialog').close(
 // Only a pointer closes the operation with the × button; Enter and Space belong to the minigame (Escape still closes).
 $('#close-mission').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); });
 $('#mission-dialog').addEventListener('cancel', () => endActivity());
-$('#mission-dialog').addEventListener('close', () => { if ($('#mission-dialog').open) return; endActivity(); if (returnFocus?.isConnected) returnFocus.focus(); else canvas.focus(); });
+$('#mission-dialog').addEventListener('close', () => { if ($('#mission-dialog').open) return; endActivity(); multiplayer.closed(); if (returnFocus?.isConnected) returnFocus.focus(); else canvas.focus(); });
 $('#reset').onclick = () => { if (confirm('Start a fresh voyage and clear your chart, log, science points and stores? Crew ideas stay on the server.')) { endActivity(); if (helicopter) toggleHelicopter(); if (zodiac) toggleZodiac(); auv = null; auvArmed = false; adrift = null; routePlan = null; preview = null; $('#auv').setAttribute('aria-pressed', 'false'); state = newVoyage(0, world?.start); restoreEvents(state, null); target = null; pendingAlarm = null; iceCache = null; try { localStorage.removeItem('amundsen-expedition'); } catch {} known = new Set(); mapped = new Set(); rebuildSurface(); chartPosition(state, known); waypoints = []; keys.clear(); save(); updateUI(); buildFog(); } };
 
 // The view follows the active vehicle. Zoom is chart pixels per grid cell, set from a scale in pixels per kilometre so
@@ -590,6 +591,9 @@ window.addEventListener('keydown', e => {
   if (k === '2') { e.preventDefault(); if (!e.repeat) toggleLegend(); return; }
   if (k === '4') { e.preventDefault(); if (!e.repeat) multiplayer.toggleFleet(); return; }
   if (k === '5') { e.preventDefault(); if (!e.repeat) multiplayer.nextShip(); return; }
+  if (k === '6') { e.preventDefault(); if (!e.repeat) multiplayer.faceOff(); return; }
+  if (k === '7') { e.preventDefault(); if (!e.repeat) multiplayer.snowball(); return; }
+  if (k === '8') { e.preventDefault(); if (!e.repeat) multiplayer.decline(); return; }
   if (['w', 'a', 's', 'd', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright'].includes(k)) { e.preventDefault(); if (helicopter?.rtb) return; keys.add(k); waypoints = []; routePlan = null; if (target && !craft()) { clearTarget(); updateEvents(); } }
 });
 window.addEventListener('keyup', e => keys.delete(e.key.toLowerCase())); window.addEventListener('blur', () => { keys.clear(); save(); });
@@ -698,6 +702,7 @@ const GLYPHS = {
   wrecks(c) { const anchor = () => { c.beginPath(); c.arc(0, -5.5, 1.6, 0, 7); c.moveTo(0, -3.9); c.lineTo(0, 7); c.moveTo(-4, -1); c.lineTo(4, -1); c.moveTo(-6, 2.5); c.quadraticCurveTo(0, 9.5, 6, 2.5); c.stroke(); }; c.strokeStyle = INK; c.lineWidth = 3; anchor(); c.strokeStyle = '#f0ba70'; c.lineWidth = 1.2; anchor(); },
   patrol(c) { c.strokeStyle = INK; c.lineWidth = 1.6; c.beginPath(); c.moveTo(-7, -7); c.lineTo(7, 7); c.moveTo(7, -7); c.lineTo(-7, 7); c.stroke(); c.fillStyle = '#f6c75f'; c.lineWidth = 1; c.beginPath(); c.arc(0, 0, 3.2, 0, 7); c.fill(); c.stroke(); },
   wildlife(c) { c.fillStyle = '#6f9a5c'; c.strokeStyle = INK; c.lineWidth = 1; c.fillRect(-2, -4, 4, 3); c.strokeRect(-2, -4, 4, 3); for (const x of [-3.6, 3.6]) { c.beginPath(); c.arc(x, 1.5, 3.6, 0, 7); c.fill(); c.stroke(); } },
+  faceoff(c) { c.strokeStyle = INK; c.lineWidth = 1.5; c.beginPath(); c.moveTo(-5, 7); c.lineTo(-5, -7); c.moveTo(5, 7); c.lineTo(5, -7); c.stroke(); c.lineWidth = 1; c.fillStyle = '#c8402e'; c.beginPath(); c.moveTo(-5, -7); c.lineTo(2, -4.5); c.lineTo(-5, -2); c.closePath(); c.fill(); c.stroke(); c.fillStyle = '#2d6fc4'; c.beginPath(); c.moveTo(5, -7); c.lineTo(-2, -4.5); c.lineTo(5, -2); c.closePath(); c.fill(); c.stroke(); },
   rivals(c) { c.fillStyle = '#9b6bb3'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.moveTo(-2, -7); c.lineTo(2, -7); c.lineTo(2, -2); c.lineTo(6.5, 6.5); c.lineTo(-6.5, 6.5); c.lineTo(-2, -2); c.closePath(); c.fill(); c.stroke(); },
   raft(c) { c.fillStyle = '#c9a56b'; c.strokeStyle = INK; c.lineWidth = 1; c.fillRect(-2.5, -7, 5, 14); c.strokeRect(-2.5, -7, 5, 14); c.fillStyle = INK; c.fillRect(-2.5, -3, 5, 1.5); c.fillRect(-2.5, 2, 5, 1.5); },
   plan(c) { c.fillStyle = CREAM; c.strokeStyle = INK; c.lineWidth = 1; c.fillRect(-5, -6, 10, 12.5); c.strokeRect(-5, -6, 10, 12.5); c.fillStyle = INK; c.fillRect(-2, -7.5, 4, 2.5); c.strokeStyle = '#116b6b'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(-3, .5); c.lineTo(-1, 3); c.lineTo(3.2, -2.5); c.stroke(); },
@@ -731,7 +736,7 @@ function drawMayday(c, pulse) {
 }
 const drawTargetRing = (c, r) => { c.setLineDash([5, 4]); for (const [colour, w] of [[INK, 4], ['#f6c75f', 2]]) { c.strokeStyle = colour; c.lineWidth = w; c.beginPath(); c.arc(0, 0, r, 0, 7); c.stroke(); } c.setLineDash([]); c.beginPath(); c.moveTo(-4, 0); c.lineTo(4, 0); c.moveTo(0, -4); c.lineTo(0, 4); c.stroke(); };
 // The legend lists every glyph the chart can carry; 2 or the button in the chart's bottom bar shows it.
-const LEGEND = [...activities.map(a => ({ id: a.id, name: a.title })), { id: 'radio', name: 'Radio call' }, { id: 'bunker', name: 'Bunkered' }, { id: 'grounding', name: 'Ran aground' }, { id: 'tow', name: 'Towed' }, { id: 'datum', name: 'Wreck datum' }, { id: 'mayday', name: 'Mayday' }, { id: 'target', name: 'Steaming to' }];
+const LEGEND = [...activities.map(a => ({ id: a.id, name: a.title })), { id: 'radio', name: 'Radio call' }, { id: 'faceoff', name: 'Face-off' }, { id: 'bunker', name: 'Bunkered' }, { id: 'grounding', name: 'Ran aground' }, { id: 'tow', name: 'Towed' }, { id: 'datum', name: 'Wreck datum' }, { id: 'mayday', name: 'Mayday' }, { id: 'target', name: 'Steaming to' }];
 function buildLegend() {
   for (const item of LEGEND) {
     const row = el('span', 'legend-item'), swatch = document.createElement('canvas'); swatch.width = swatch.height = 44;
@@ -914,8 +919,16 @@ async function boot() {
     radioSeen = tanker().slot;
     loadWrecks().then(() => { const wreck = wrecks.find(w => w.id === state.target); if (wreck) { target = { wreck, goal: null }; routeTarget(); } else state.target = null; updateUI(); });
     chartPosition(state, known); updateUI(); buildFog();
-    // The fleet relay learns only the ship's chart position and heading; other charts' ships are drawn over this one.
-    multiplayer.start({ world, ship: () => ({ x: state.x, y: state.y, heading: angle }), sailTo, toast });
+    // The fleet relay learns the ship's chart position and heading and carries hails; other charts' ships are drawn
+    // over this one. A face-off can be played in any operation that needs no ice, craft or call; its round opens
+    // through startActivity like any other, and a settled face-off is written to the log here.
+    multiplayer.start({
+      world, ship: () => ({ x: state.x, y: state.y, heading: angle }), sailTo, toast,
+      games: activities.filter(a => !a.requires && !['patrol', 'raft', 'sar'].includes(a.id) && minigames[a.id]?.mount),
+      play: (id, duel) => { const activity = activities.find(a => a.id === id); if (!activity || !craftReady()) return false; startActivity(activity, { duel }); return $('#mission-dialog').open; },
+      award: (points, title) => { state.score = Math.min(Number.MAX_SAFE_INTEGER, state.score + points); const record = logEvent(state, here(), 'faceoff', title); record.points = points; save(); updateUI(); if (points) postScore({ id: 'faceoff', title: 'Face-off' }, record); },
+      jolt: () => { shake = Math.max(shake, .7); },
+    });
     $('#mapping-rule').textContent = `1 point per ${MAP_KM2} km² of new seabed · ${world.km} km cells · 120° fan widens with depth`;
     $('#chart-credit').textContent = `GEBCO 2024 · CIS ice chart ${world.chartDate}`;
     // The chart draws itself in tiles as the view moves; the half-pixel-per-cell overview stands in under them and
