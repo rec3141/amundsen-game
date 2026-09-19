@@ -88,13 +88,14 @@ const shipU = () => state.x * world.cols, shipV = () => state.y * world.rows;
 const degrees = (value, positive, negative) => { const abs = Math.abs(value), whole = Math.floor(abs), minutes = ((abs - whole) * 60).toFixed(1); return `${whole}°${minutes.padStart(4, '0')}′${value >= 0 ? positive : negative}`; };
 const formatPosition = (lon, lat) => `${degrees(lat, 'N', 'S')} ${degrees(lon, 'E', 'W')}`;
 function iceLabel(ice) {
-  if (!ice) return 'ice coverage unknown · outside CIS chart';
+  if (!ice) return 'no ice measurement here';
   if (!ice.percent) return /iceberg/i.test(ice.form) ? 'bergy water' : 'open water';
+  if (ice.source === 'NSIDC') return `ice ${ice.tenths.toFixed(1)}/10 · NSIDC satellite`;
   return `ice ${ice.percent === 5 ? '<1' : ice.tenths}/10 ${ice.stage.replace(/ \(.*\)/, '').toLowerCase()}`;
 }
 function here(airborne = false) {
   const u = airborne ? pilotU() : shipU(), v = airborne ? pilotV() : shipV(), { lon, lat } = world.unproject(u, v), ice = world.ice(u, v);
-  return { x: u / world.cols, y: v / world.rows, vehicle: airborne ? 'helicopter' : 'ship', lon, lat, depth: world.depth(u, v), ice: ice && { ...ice, concentration: ice.tenths, chartDate: world.chartDate } };
+  return { x: u / world.cols, y: v / world.rows, vehicle: airborne ? 'helicopter' : 'ship', lon, lat, depth: world.depth(u, v), ice: ice && { ...ice, concentration: ice.tenths, chartDate: ice.source === 'NSIDC' && world.satellite ? world.satellite.date : world.chartDate } };
 }
 // Distances and compass bearings between grid positions; north is the direction of the pole at the origin.
 const COMPASS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
@@ -917,7 +918,7 @@ async function boot() {
     // The fleet relay learns only the ship's chart position and heading; other charts' ships are drawn over this one.
     multiplayer.start({ world, ship: () => ({ x: state.x, y: state.y, heading: angle }), sailTo, toast });
     $('#mapping-rule').textContent = `1 point per ${MAP_KM2} km² of new seabed · ${world.km} km cells · 120° fan widens with depth`;
-    $('#chart-credit').textContent = `GEBCO 2024 · CIS ice chart ${world.chartDate}`;
+    $('#chart-credit').textContent = `GEBCO 2024 · CIS ice charts ${world.chartDate}${world.satellite ? ` · NSIDC sea ice ${world.satellite.date}` : ''}`;
     // The chart draws itself in tiles as the view moves; the half-pixel-per-cell overview stands in under them and
     // is the minimap's base.
     const drawn = createChart(world); drawn.reveal(mapped);

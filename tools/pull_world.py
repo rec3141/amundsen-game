@@ -5,7 +5,9 @@ Reads (never writes) the GEBCO 2024 sub-ice GeoTIFF release, the OSM land polygo
 the underway coastline tiles are cut from, the Natural Earth land and minor-island
 polygons where the OSM extract stops, the Natural Earth glaciated areas published
 with the dashboard, the GeoNames dumps for Canada and Greenland, the newest CIS ice
-chart per region, the ship's underway track and the Leg 3 cruise plan.
+chart per region, the ship's underway track, the Leg 3 cruise plan and the NSIDC Sea
+Ice Index daily concentration for the day of the newest chart (downloaded into the
+NSIDC folder when it is not there yet; the ice beyond the CIS charts comes from it).
 
 Writes under static/data/world/:
   world.bin.gz  gzip of the concatenated grid layers listed in world.json
@@ -19,19 +21,22 @@ mid-Atlantic and the north-east Pacific. static/world.js implements the same
 projection; static/exploration.js carries saved voyages between grids.
 
 Needs numpy, scipy and the GDAL command-line tools (gdalbuildvrt, gdalwarp, ogr2ogr,
-gdal_rasterize); GDAL reads the GeoTIFFs straight from the release zip.
+gdal_rasterize, gdal_translate); GDAL reads the GeoTIFFs straight from the release zip.
 """
 import argparse
 import gzip
 import hashlib
 import json
 import math
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.error
+import urllib.request
 import zipfile
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 try:
@@ -55,8 +60,15 @@ SEA_APPROACH_M = 6000      # a place is charted when a water cell lies within th
 # the first chart. Kept while it stays on the plan's track and keeps that sea room on the current grid.
 START = (-70.5573, 76.5109)
 SEA_ROOM = 15000
+# NSIDC Sea Ice Index (G02135, version 4): daily concentration on the 25 km NSIDC polar stereographic grid as a
+# GeoTIFF of percent x 10, with these codes above 1000. It supplies the ice beyond the CIS charts.
+NSIDC_URL = 'https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/{day:%Y}/{day:%m}_{day:%b}/{name}'
+NSIDC_NAME = 'N_{day:%Y%m%d}_concentration_v4.0.tif'
+NSIDC_CODES = {'pole hole': 2510, 'coast': 2530, 'land': 2540, 'missing': 2550}
+NSIDC_FILL_PX = 3           # coast, land and missing pixels this close to a measurement take the nearest one
+NSIDC_LOOKBACK_DAYS = 7     # how far before the chart date to look when that day's index is not published
 SKIP_PLACE_CODES = {'PPLQ', 'PPLH', 'PPLW', 'PPLX', 'PPLCH'}   # abandoned, historical, destroyed, sections of places
-TOOLS = ('gdalbuildvrt', 'gdalwarp', 'ogr2ogr', 'gdal_rasterize')
+TOOLS = ('gdalbuildvrt', 'gdalwarp', 'ogr2ogr', 'gdal_rasterize', 'gdal_translate')
 
 
 def run(*args):
@@ -267,6 +279,61 @@ def build_ice(charts, work, res, cols, rows, bounds):
     return read_grid(conc_path, 'u1', cols, rows), read_grid(class_path, 'u1', cols, rows), classes, used
 
 
+def fetch_nsidc(folder, day):
+    """The Sea Ice Index GeoTIFF for `day`, or the nearest earlier day within NSIDC_LOOKBACK_DAYS: the copy under
+    `folder`, else downloaded there. Returns (path, day, url) or None when nothing is published or reachable."""
+    folder.mkdir(parents=True, exist_ok=True)
+    offline = False
+    for back in range(NSIDC_LOOKBACK_DAYS + 1):
+        when = day - timedelta(days=back)
+        path = folder / NSIDC_NAME.format(day=when)
+        url = NSIDC_URL.format(day=when, name=path.name)
+        if path.exists():
+            return path, when, url
+        if offline:
+            continue
+        part = path.with_suffix('.part')
+        try:
+            with urllib.request.urlopen(url, timeout=60) as response, open(part, 'wb') as out:
+                shutil.copyfileobj(response, out)
+            part.rename(path)
+            print(f'downloaded {url}', flush=True)
+            return path, when, url
+        except urllib.error.HTTPError as error:
+            if error.code != 404:
+                raise
+        except (urllib.error.URLError, OSError) as error:
+            print(f'NSIDC not reachable ({error}); looking for an earlier copy under {folder}', flush=True)
+            offline = True
+        finally:
+            part.unlink(missing_ok=True)
+    return None
+
+
+def build_satellite_ice(path, work, res, cols, rows):
+    """Sea Ice Index concentration in percent on the grid, 255 where the index has no measurement. The pole hole
+    (poleward of the sensor's swath) and the coast, land and missing pixels within NSIDC_FILL_PX of a measurement
+    take the nearest measured pixel, so the water along this finer grid's shore is covered; the rest stays 255."""
+    raw = work / 'nsidc_raw.bin'
+    run('gdal_translate', '-q', '-of', 'ENVI', path, raw)
+    header = raw.with_suffix('.hdr').read_text()
+    samples, lines = (int(re.search(rf'{key}\s*=\s*(\d+)', header).group(1)) for key in ('samples', 'lines'))
+    codes = np.fromfile(raw, '<u2').reshape(lines, samples)
+    measured = codes <= 1000
+    conc = np.where(measured, codes / 10, -1).astype('<f4')
+    distance, (ni, nj) = ndimage.distance_transform_edt(~measured, return_indices=True)
+    take = ~measured & ((distance <= NSIDC_FILL_PX) | (codes == NSIDC_CODES['pole hole']))
+    conc[take] = conc[ni[take], nj[take]]
+    filled = work / 'nsidc_filled.bin'
+    conc.tofile(filled)
+    filled.with_suffix('.hdr').write_text(header.replace('data type = 12', 'data type = 4'))
+    out = work / 'nsidc_grid.bin'
+    run('gdalwarp', '-q', '-overwrite', '-srcnodata', '-1', '-dstnodata', '-1', '-t_srs', PROJ4, *te(res), '-r', 'bilinear',
+        '-ot', 'Float32', '-of', 'ENVI', filled, out)
+    grid = read_grid(out, '<f4', cols, rows)
+    return np.where(grid >= 0, np.clip(np.rint(grid), 0, 100), 255).astype('u1')
+
+
 def inside(x, y):
     return EXTENT[0] <= x <= EXTENT[2] and EXTENT[1] <= y <= EXTENT[3]
 
@@ -409,12 +476,24 @@ def pull(args):
         glaciers = build_glaciers(www / 'static/geo/glaciated_areas.geojson', work, res, cols, rows, bounds)
         conc, cls, classes, chart_sources = build_ice(charts, work, res, cols, rows, bounds)
         print('ice done', flush=True)
+        chart_day = args.nsidc_date or date.fromisoformat(max(c['date'] for c in chart_sources if c.get('date')))
+        satellite = fetch_nsidc(args.nsidc_dir, chart_day)
+        sat = build_satellite_ice(satellite[0], work, res, cols, rows) if satellite else None
+        print('satellite ice done' if satellite else f'no Sea Ice Index within {NSIDC_LOOKBACK_DAYS} days of {chart_day}; the water beyond the CIS charts stays unmeasured', flush=True)
     land = fraction > LAND_FRACTION
     # The shore comes from the land polygons; GEBCO only supplies heights and depths on either side of it.
     # Sub-ice bedrock below sea level (under ice caps) stays land, and a strait GEBCO closes stays water.
     elevation = np.where(land, np.maximum(elevation, 1), np.minimum(elevation, -2)).astype('<i2')
     conc = np.where(land, 255, conc).astype('u1')
     cls = np.where(land | (conc == 255), 0, cls).astype('u1')
+    # Beyond the CIS charts the Sea Ice Index fills the water, under its own class so the chart can name the source.
+    cis = ~land & (conc != 255)
+    beyond = np.zeros_like(land)
+    if sat is not None:
+        classes.append({'stage': 'Not reported', 'form': 'Not reported', 'source': 'NSIDC'})
+        beyond = ~land & (conc == 255) & (sat != 255)
+        conc[beyond] = sat[beyond]
+        cls[beyond] = len(classes) - 1
     cover = (land & (glaciers > 0)).astype('u1')
 
     layers, blob = [], b''
@@ -438,6 +517,8 @@ def pull(args):
     start_cell = cell_of(*forward(start['lon'], start['lat']), res)
     main_sea = labels == labels[start_cell[1], start_cell[0]]
     charted = water & (conc != 255)
+    index = satellite and {'product': 'NSIDC Sea Ice Index, Version 4 (G02135): daily sea ice concentration on a 25 km grid',
+                           'date': satellite[1].isoformat(), 'attribution': 'NSIDC / NOAA', 'sourceUrl': satellite[2]}
     world = {
         'version': 1,
         'generated': datetime.now(timezone.utc).isoformat(timespec='seconds'),
@@ -451,22 +532,28 @@ def pull(args):
         'data': {'file': 'world.bin.gz', 'compression': 'gzip', 'bytes': len(packed), 'rawBytes': len(blob),
                  'sha256': hashlib.sha256(packed).hexdigest(), 'byteOrder': 'little-endian', 'layers': layers},
         'units': {'elevation': 'metres; land is >= 1, water is <= -2',
-                  'iceConcentration': 'percent of the sea surface (CIS total concentration, tenths x 10); 255 = land or no chart',
-                  'iceClass': 'index into ice.classes: stage of development and floe form of the dominant partial concentration',
+                  'iceConcentration': 'percent of the sea surface: CIS total concentration (tenths x 10) inside the charts, NSIDC Sea Ice '
+                                      'Index concentration beyond them; 255 = land or no measurement',
+                  'iceClass': 'index into ice.classes: stage of development and floe form of the dominant partial concentration; '
+                              'the class with source NSIDC marks cells filled from the Sea Ice Index',
                   'glacier': f'1 where Natural Earth maps glacier or ice cap over land, within longitude {OSM_BBOX[0]:.0f} to {OSM_BBOX[2]:.0f} only'},
-        'ice': {'classes': classes, 'charts': [{k: c[k] for k in ('region', 'date', 'validTime', 'attribution')} for c in chart_sources]},
+        'ice': {'classes': classes, 'charts': [{k: c[k] for k in ('region', 'date', 'validTime', 'attribution')} for c in chart_sources],
+                'satellite': index or None},
         'start': start,
         'places': places,
         'shipTrack': {'span': track_span, 'spacing': 8000, 'lonLat': track},
         'stats': {'landCells': int(land.sum()), 'waterCells': int(water.sum()), 'seaComponents': int(count),
-                  'startSeaCells': int(main_sea.sum()), 'iceChartedWaterCells': int(charted.sum()),
+                  'startSeaCells': int(main_sea.sum()), 'iceChartedWaterCells': int(charted.sum()), 'iceCisWaterCells': int(cis.sum()),
+                  'iceSatelliteWaterCells': int(beyond.sum()),
                   'iceCells40': int((charted & (conc >= 40)).sum()), 'deepest': int(elevation.min()), 'highest': int(elevation.max()),
                   'cellsBeyondOsmShore': beyond_osm},
         'method': f'GEBCO 15 arc-second cells averaged onto the grid (gdalwarp -r average). Shore: OSM land polygons inside '
                   f'longitude {OSM_BBOX[0]:.0f} to {OSM_BBOX[2]:.0f}, latitude {OSM_BBOX[1]:.0f} to {OSM_BBOX[3]:.0f}, Natural Earth '
                   f'land and minor islands beyond, rasterised at {res // LAND_SUBCELLS} m; a cell is land when more than '
                   f'{LAND_FRACTION:.0%} of it is land. Ice: newest chart per region burned in region order; water polygons are 0, '
-                  f'no-data polygons leave 255. Places: GeoNames populated places with water within {SEA_APPROACH_M / 1000:g} km.',
+                  f'no-data polygons leave 255; water beyond the charts takes the NSIDC Sea Ice Index for the newest chart day, resampled '
+                  f'bilinearly from 25 km (its pole hole and the coast, land and missing pixels within {NSIDC_FILL_PX} pixels of a '
+                  f'measurement take the nearest one). Places: GeoNames populated places with water within {SEA_APPROACH_M / 1000:g} km.',
         'sources': [
             {**source(args.gebco, 'GEBCO 2024 sub-ice topography and bathymetry, 15 arc-second GeoTIFF release'), 'tiles': gebco_tiles},
             {**source(args.land, 'OSM land polygons (shore inside the extract window)'), 'layer': args.land_layer, 'window': list(OSM_BBOX)},
@@ -477,12 +564,15 @@ def pull(args):
             source(www / 'data/w-1y.json', 'CCGS Amundsen underway track, past year'),
             source(www / 'data/plan.json', 'Leg 3 cruise plan (starting position)'),
             *[{k: v for k, v in c.items() if k not in ('attribution', 'validTime')} for c in chart_sources],
+            *([{**source(satellite[0], 'NSIDC Sea Ice Index v4 daily concentration GeoTIFF (ice beyond the CIS charts)'),
+                'date': satellite[1].isoformat(), 'sourceUrl': satellite[2]}] if satellite else []),
         ],
     }
     (args.output / 'world.json').write_text(json.dumps(world, indent=1, ensure_ascii=False) + '\n')
     print(f"world.bin.gz {len(packed) / 1e6:.2f} MB ({len(blob) / 1e6:.1f} MB raw); "
           f"{world['stats']['waterCells']} water cells ({world['stats']['startSeaCells']} joined to the start), "
-          f"{world['stats']['iceCells40']} with ice >= 4/10; {len(places)} places; start {start['lon']}, {start['lat']}")
+          f"{world['stats']['iceCells40']} with ice >= 4/10 ({world['stats']['iceSatelliteWaterCells']} from the Sea Ice Index); "
+          f"{len(places)} places; start {start['lon']}, {start['lat']}")
 
 
 if __name__ == '__main__':
@@ -494,6 +584,8 @@ if __name__ == '__main__':
     parser.add_argument('--ne-islands', type=Path, default=Path('/data/gis/naturalearth/ne_10m_minor_islands.shp'))
     parser.add_argument('--geonames', type=Path, default=Path('/data/gis/geonames'), help='folder of GeoNames country dumps (XX.zip)')
     parser.add_argument('--www', type=Path, default=Path('/data/underway_server/www'))
+    parser.add_argument('--nsidc-dir', type=Path, default=Path('/data/gis/nsidc'), help='folder of NSIDC Sea Ice Index GeoTIFFs; missing days are downloaded here')
+    parser.add_argument('--nsidc-date', type=date.fromisoformat, default=None, help='Sea Ice Index day, YYYY-MM-DD (default: the newest ice chart\'s date)')
     parser.add_argument('--output', type=Path, default=Path(__file__).resolve().parents[1] / 'static/data/world')
     parser.add_argument('--resolution', type=int, default=2000, help='grid cell size in projected metres')
     parser.add_argument('--tmp', type=Path, default=None, help='scratch folder for the GDAL intermediates (default: the system temp)')

@@ -1,7 +1,7 @@
-// The open world: GEBCO elevation, the OSM and Natural Earth shore, GeoNames places and the CIS ice charts on
-// one polar stereographic grid over the sector 0-180 W, 50-90 N (built by tools/pull_world.py). Positions are in
-// cell units: u runs east from the left edge, v runs south from the top edge, and cell (c, r) has its centre at
-// (c + .5, r + .5).
+// The open world: GEBCO elevation, the OSM and Natural Earth shore, GeoNames places, the CIS ice charts and, beyond
+// them, the NSIDC Sea Ice Index, on one polar stereographic grid over the sector 0-180 W, 50-90 N (built by
+// tools/pull_world.py). Positions are in cell units: u runs east from the left edge, v runs south from the top edge,
+// and cell (c, r) has its centre at (c + .5, r + .5).
 const DATA = new URL('./data/world/', import.meta.url);
 // An ice station needs a floe to stand on: open drift (4/10) or more.
 export const ICE_STATION_MIN = 40;
@@ -95,7 +95,7 @@ export function createWorld(meta, layers) {
     const i = index(u, v), percent = iceConcentration[i];
     if (percent === 255 || sign[i] > 0) return null;
     const kind = meta.ice.classes[iceClass[i]] ?? meta.ice.classes[0];
-    return { percent, tenths: percent / 10, stage: kind.stage, form: kind.form };
+    return { percent, tenths: percent / 10, stage: kind.stage, form: kind.form, source: kind.source ?? 'CIS' };
   }
   // Share of open-water speed the ship keeps: an icebreaker is slowed by the pack, never stopped. `hull` scales
   // the slowdown (1 as built, less with an ice-strengthened hull).
@@ -201,6 +201,8 @@ export function createWorld(meta, layers) {
     start: { x: start.u / cols, y: start.v / rows },
     shipTrack: meta.shipTrack.lonLat.map(([lon, lat]) => proj.project(lon, lat)),
     chartDate: meta.ice.charts.map(chart => chart.date).filter(Boolean).sort().at(-1) ?? '',
+    // The Sea Ice Index day that covers the water beyond the CIS charts, when the build had one.
+    satellite: meta.ice.satellite ?? null,
     shore, isLand, lineClear, lastClear, seaRoom, ice, iceSpeed, route, nearestPlace,
     depth: (u, v) => Math.max(0, -elevation[index(u, v)]),
     // Screen angle of true north at a position: the direction of the pole.
