@@ -68,7 +68,13 @@ The Python server is intended for a trusted ship intranet, not public hosting.
 - Click the chart to sail, or steer with WASD/arrows. Sailing uncovers the
   captain's chart and draws the voyage track.
 - Launch operations anywhere using the sidebar buttons or keyboard shortcuts.
-  **C** opens the CTD notebook; **I** opens the ice-thickness transect.
+  **C** opens the CTD notebook; **I** opens the ice-thickness transect; **3** opens
+  Inuktitut, including the interactive syllabics guide (**L** inside the game).
+- On the intranet, other players sail on the same main chart. **4** opens the
+  icebreaker picker and **5** cycles the twelve vessels. Fleet positions update
+  about once a second; the sharing checkbox hides your ship, and inactive ships
+  expire after 15 seconds. Voyages, fuel and scores stay local. The public mirror
+  runs without the presence relay.
 - CTD: a random archived cast is drawn each launch. Lower the rosette to reveal
   temperature, salinity, oxygen, fluorescence and density curves, then begin the
   non-stop ascent and press Space or Fire bottle to catch as many of the listed
