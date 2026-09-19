@@ -32,6 +32,7 @@ let timer = null, online = null, ttl = 15, fullUntil = 0, listStamp = 0, reporte
 // received and not yet answered. Snowballs in flight, and each ship's tally of snowballs landed and taken.
 const outbox = [], snowballs = [], tally = new Map();
 let duel = null, offer = null;
+let sharingVersion = 0;
 
 function hex(n) {
   const bytes = new Uint8Array(n);
@@ -89,24 +90,30 @@ const nameOf = p => shipLabel(p.name, p.ship);
 function updateList() {
   const list = $('#fleet-list'), me = own(); if (!list || !me) return;
   if ($('#fleet-status')) $('#fleet-status').textContent = status();
+  const focused = list.contains(document.activeElement) ? document.activeElement : null;
+  const focusedShip = focused?.closest('li')?.dataset.ship, focusedAction = focused?.dataset.action;
   list.replaceChildren();
   const su = me.x * world.cols, sv = me.y * world.rows;
   for (const p of [...others.values()].sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id))) {
     const item = document.createElement('li'), swatch = document.createElement('i'), copy = document.createElement('span'), name = document.createElement('b'), where = document.createElement('small'), go = document.createElement('button');
     const s = shipById(p.ship), u = p.x * world.cols, v = p.y * world.rows, km = Math.hypot(u - su, v - sv) * world.km, t = tally.get(p.id);
+    item.dataset.ship = p.id;
     swatch.style.background = s.tint; name.textContent = nameOf(p);
     where.textContent = `${s.country} · ${Math.round(km)} km ${bearing(su, sv, u, v)}${km <= MEET_KM ? ' · within hail' : ''}${p.stale ? ' · no report lately' : ''}${t ? ` · snowballs ${t.landed} landed, ${t.taken} taken` : ''}`;
+    go.dataset.action = 'steam';
     go.type = 'button'; go.className = 'secondary'; go.textContent = 'Steam to'; go.setAttribute('aria-label', `Steam towards ${name.textContent}`);
     go.onclick = () => { sailTo(u, v); $('#ocean')?.focus(); };
     copy.append(name, where); item.append(swatch, copy);
     if (km <= MEET_KM && share) {
       const face = document.createElement('button'), snow = document.createElement('button');
+      face.dataset.action = 'face'; snow.dataset.action = 'snow';
       face.type = snow.type = 'button'; face.className = snow.className = 'secondary'; face.textContent = 'Face off'; snow.textContent = 'Snowball';
       face.setAttribute('aria-label', `Challenge ${name.textContent} to a face-off`); snow.setAttribute('aria-label', `Throw a snowball at ${name.textContent}`);
       face.onclick = () => { faceOff(p.id); $('#ocean')?.focus(); }; snow.onclick = () => { snowball(p.id); $('#ocean')?.focus(); };
       item.append(face, snow);
     }
     item.append(go); list.append(item);
+    if (p.id === focusedShip) item.querySelector(`[data-action="${focusedAction}"]`)?.focus({ preventScroll: true });
   }
   updateMeet();
 }
@@ -132,9 +139,10 @@ function updateMeet() {
 // poll, so a player who keeps their ship to themselves still sees the others.
 function schedule(ms) { clearTimeout(timer); timer = setTimeout(poll, ms); }
 async function poll() {
-  if (document.hidden) { schedule(POLL_MS); return; }
+  if (polling) return;
   const me = own(); if (!me) { schedule(POLL_MS); return; }
   polling = true;
+  const version = sharingVersion;
   const sharing = share && fullUntil <= performance.now();
   const body = { session, name: playerName(), ship, x: Math.min(1, Math.max(0, me.x)), y: Math.min(1, Math.max(0, me.y)), heading: Math.max(-7, Math.min(7, Number.isFinite(me.heading) ? me.heading : 0)) };
   if (sharing && outbox.length) body.hail = outbox[0];
@@ -148,15 +156,20 @@ async function poll() {
     else if (response.status === 429) { wait = REFUSED_MS; online = true; }
     else if (!response.ok) throw Error(`relay answered ${response.status}`);
     else {
-      const data = await response.json(); if (Number.isFinite(data?.ttl)) ttl = data.ttl;
+      const data = await response.json();
+      if (version !== sharingVersion) return;
+      if (Number.isFinite(data?.ttl)) ttl = data.ttl;
       apply(Array.isArray(data?.players) ? data.players : []);
-      if (body.hail) { outbox.shift(); if (data?.delivered === false) undelivered(body.hail); }
+      if (body.hail && outbox[0] === body.hail) { outbox.shift(); if (data?.delivered === false) undelivered(body.hail); }
+      tick();
       receive(Array.isArray(data?.mail) ? data.mail : []);
       if (online !== true) { online = true; if (others.size) toast(`Fleet · ${others.size} other ship${others.size === 1 ? '' : 's'} on the chart.`); }
     }
   } catch { if (online !== false) others.clear(); online = false; wait = RETRY_MS; }
-  polling = false; tick(); updateList();
-  schedule(outbox.length && sharing ? Math.min(wait, HAIL_GAP_MS) : wait);
+  finally {
+    polling = false; tick(); updateList();
+    schedule(outbox.length && share && wait === POLL_MS ? HAIL_GAP_MS : wait);
+  }
 }
 const valid = p => p && typeof p.id === 'string' && /^[0-9a-f]{1,16}$/.test(p.id) && typeof p.ship === 'string' && typeof p.name === 'string' && [p.x, p.y, p.heading].every(Number.isFinite) && p.x >= 0 && p.x <= 1 && p.y >= 0 && p.y <= 1;
 function apply(players) {
@@ -176,7 +189,7 @@ function position(p, now) {
 }
 
 // Hails. One goes out per report; a queued hail brings the next report forward to the relay's minimum interval.
-function hail(message) { outbox.push(message); if (!polling) schedule(Math.max(0, HAIL_GAP_MS - (performance.now() - reportedAt))); }
+function hail(message) { if (!share) return; outbox.push(message); if (!polling) schedule(Math.max(0, HAIL_GAP_MS - (performance.now() - reportedAt))); }
 function undelivered(h) {
   if ((h.kind === 'challenge' || h.kind === 'accept') && duel?.id === h.duel) { toast(`${duel.name} is no longer on the chart · face-off dropped.`); duel = null; }
 }
@@ -186,22 +199,24 @@ function receive(mail) {
   const now = performance.now();
   for (const m of mail) {
     if (!validHail(m)) continue;
+    if (!share) continue;
     const who = shipLabel(m.name.slice(0, 40), m.ship), id = typeof m.duel === 'string' ? m.duel.slice(0, 16) : '';
     if (m.kind === 'challenge') {
+      if ((offer?.id === id && offer.from === m.from) || (duel?.id === id && duel.with === m.from)) continue;
       const game = gameById(m.game);
-      if (!game || duel || offer || !share) { hail({ to: m.from, kind: 'decline', duel: id }); continue; }
+      if (!game || duel || offer || !others.has(m.from) || rangeTo(others.get(m.from)) > MEET_KM) { hail({ to: m.from, kind: 'decline', duel: id }); continue; }
       offer = { id, from: m.from, name: who, ship: m.ship, game: game.id, at: now };
       toast(`${who} hails you · face off in ${game.title}, most points wins ${DUEL_BONUS} · 6 accepts, 8 declines.`, true);
     } else if (m.kind === 'accept') {
       if (duel?.id !== id || duel.stage !== 'sent' || duel.with !== m.from) continue;
-      duel.stage = 'playing'; toast(`${who} accepts · ${gameById(duel.game)?.title ?? duel.game} · most points wins ${DUEL_BONUS}. Both rounds open now.`, true); launch();
+      duel.stage = 'playing'; duel.at = now; toast(`${who} accepts · ${gameById(duel.game)?.title ?? duel.game} · most points wins ${DUEL_BONUS}. Your round opens when the chart is ready.`, true); launch();
     } else if (m.kind === 'decline') {
       if (offer?.id === id && offer.from === m.from) { offer = null; toast(`${who} withdrew the challenge.`); continue; }
       if (duel?.id !== id || duel.with !== m.from) continue;
       toast(duel.stage === 'sent' ? `${who} declines the face-off.` : `${who} has withdrawn · face-off void${duel.mine === null ? '' : ', your round’s points stand'}.`);
       duel = null;
     } else if (m.kind === 'result') {
-      if (duel?.id !== id || duel.with !== m.from || !Number.isFinite(m.points) || m.points < 0) continue;
+      if (duel?.id !== id || duel.stage !== 'playing' || duel.with !== m.from || duel.theirs !== null || !Number.isFinite(m.points) || m.points < 0) continue;
       duel.theirs = Math.floor(m.points); if (duel.mine === null) toast(`${who} banked ${duel.theirs} points · your round decides it.`); settle();
     } else if (m.kind === 'snowball') {
       const from = others.get(m.from), me = own();
@@ -216,9 +231,9 @@ function receive(mail) {
 // a round that could not open while another operation was in progress.
 function tick() {
   const now = performance.now();
-  if (offer && now - offer.at > OFFER_MS) { toast(`${offer.name}’s challenge lapsed.`); offer = null; }
-  if (duel?.stage === 'sent' && now - duel.at > OFFER_MS) { toast(`No answer from ${duel.name} · challenge withdrawn.`); duel = null; }
-  if (duel?.stage === 'playing' && duel.mine !== null && duel.theirs === null && now - duel.scoredAt > RESULT_MS) { toast(`No result from ${duel.name} · face-off void.`, true); duel = null; }
+  if (offer && now - offer.at > OFFER_MS) { hail({ to: offer.from, kind: 'decline', duel: offer.id }); toast(`${offer.name}’s challenge lapsed.`); offer = null; }
+  if (duel?.stage === 'sent' && now - duel.at > OFFER_MS) { hail({ to: duel.with, kind: 'decline', duel: duel.id }); toast(`No answer from ${duel.name} · challenge withdrawn.`); duel = null; }
+  if (duel?.stage === 'playing' && duel.mine !== null && duel.theirs === null && now - duel.scoredAt > RESULT_MS) { hail({ to: duel.with, kind: 'decline', duel: duel.id }); toast(`No result from ${duel.name} · face-off void.`, true); duel = null; }
   if (duel?.stage === 'playing' && !duel.launched) {
     if (now - duel.at > LAUNCH_MS) { hail({ to: duel.with, kind: 'decline', duel: duel.id }); toast(`The round could not open · face-off with ${duel.name} withdrawn.`, true); duel = null; }
     else launch();
@@ -228,9 +243,9 @@ function launch() {
   if (!duel || duel.launched) return;
   duel.launched = !!play(duel.game, { id: duel.id, opponent: duel.name });
 }
-// The shell reports the points of every operation it banks; a face-off round is the first one in the duel's game.
-function scored(gameId, points) {
-  if (!duel?.launched || duel.game !== gameId || duel.mine !== null) return;
+// Only the operation opened for this face-off may supply its result.
+function scored(gameId, points, duelId) {
+  if (!duel?.launched || duel.id !== duelId || duel.game !== gameId || duel.mine !== null) return;
   duel.mine = Math.max(0, Math.floor(Number.isFinite(points) ? points : 0)); duel.scoredAt = performance.now();
   hail({ to: duel.with, kind: 'result', duel: duel.id, points: duel.mine });
   settle(); updateMeet();
@@ -238,8 +253,8 @@ function scored(gameId, points) {
 // A round closed without a result counts as none.
 function closed() {
   if (!duel?.launched || duel.mine !== null) return;
-  toast(`Round closed without a result · 0 points go to ${duel.name}.`, true);
-  scored(duel.game, 0);
+  toast(`Round closed without a result · your face-off score is 0.`, true);
+  scored(duel.game, 0, duel.id);
 }
 function settle() {
   if (!duel || duel.mine === null || duel.theirs === null) return;
@@ -252,6 +267,7 @@ function settle() {
 // panel's picker; both ships play it at once and the higher banked score takes the bonus.
 function faceOff(id = null) {
   if (!started) return;
+  tick();
   if (offer) { accept(); return; }
   if (duel) { toast(duel.stage === 'sent' ? `Waiting for ${duel.name} to answer · 8 withdraws.` : `Face-off with ${duel.name} in progress.`); return; }
   if (!share) { toast('Show your ship to the fleet to hail another ship.'); return; }
@@ -263,7 +279,7 @@ function faceOff(id = null) {
   toast(`Hailing ${duel.name} · face off in ${game.title} · she has ${OFFER_MS / 1000} s to answer.`); updateMeet();
 }
 function accept() {
-  if (!offer) return;
+  if (!offer || !share) return;
   duel = { id: offer.id, with: offer.from, name: offer.name, game: offer.game, stage: 'playing', launched: false, mine: null, theirs: null, at: performance.now(), scoredAt: 0 }; offer = null;
   hail({ to: duel.with, kind: 'accept', duel: duel.id });
   toast(`Face-off accepted · ${gameById(duel.game)?.title ?? duel.game} · most points wins ${DUEL_BONUS}.`); launch(); updateMeet();
@@ -353,14 +369,19 @@ function drawMini(ctx, m) {
   for (const p of others.values()) { const at = position(p, now); ctx.fillStyle = shipById(p.ship).tint; ctx.beginPath(); ctx.arc(m.x + at.x * m.w, m.y + at.y * m.h, 2.2, 0, Math.PI * 2); ctx.fill(); }
 }
 
-function leave() {
+function leave(hail = null) {
   if (!started || !share || !session) return;
-  const body = JSON.stringify({ session, leave: true });
+  const body = JSON.stringify({ session, leave: true, ...(hail?.kind ? { hail } : {}) });
   try { if (navigator.sendBeacon) navigator.sendBeacon('api/fleet', new Blob([body], { type: 'application/json' })); else fetch('api/fleet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => {}); } catch {}
 }
 function setShare(on) {
   if (share === on) return;
-  if (!on) { if (offer) decline(); if (duel && !duel.launched) decline(); leave(); }
+  sharingVersion++;
+  if (!on) {
+    if (duel || offer) toast('Fleet sharing ended · face-off withdrawn.');
+    leave(duel ? { to: duel.with, kind: 'decline', duel: duel.id } : offer ? { to: offer.from, kind: 'decline', duel: offer.id } : null);
+    duel = null; offer = null; outbox.length = 0;
+  }
   share = on; write(localStorage, SHARE_KEY, on ? '1' : '0');
   toast(on ? 'Your ship is back on the fleet’s charts.' : 'Your ship is off the fleet’s charts · you still see theirs.');
   updateList(); schedule(0);

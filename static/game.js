@@ -3,7 +3,7 @@ import { minigames, activities } from './minigames/registry.js';
 import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, MAP_KM2, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
 import { loadWorld } from './world.js';
 import { createChart } from './world-chart.js';
-import { multiplayer, MEET_KM } from './multiplayer.js';
+import { multiplayer } from './multiplayer.js';
 const $ = s => document.querySelector(s);
 if (publicMirror) {
   document.querySelectorAll('[data-page="ideas"], [data-page="board"], #suggest-shortcut, .crew-note, .player').forEach(node => { node.hidden = true; });
@@ -496,7 +496,7 @@ function startActivity(activity, extra = {}) {
     const rescued = activity.id === 'sar' && state.mayday ? state.mayday.name : '';
     if (rescued) state.mayday = null;
     save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart${rescued ? ` · ${rescued} safe, call cleared` : ''}`); postScore(activity, entry);
-    multiplayer.scored(activity.id, entry.points);
+    multiplayer.scored(activity.id, entry.points, extra.duel?.id);
   });
   const session = recorder;
   $('#mission-dialog').showModal();

@@ -107,6 +107,9 @@ def fleet_report(data, address):
     with FLEET_LOCK:
         fleet_expire(now)
         if data.get('leave') is True:
+            departing = FLEET.get(session)
+            if departing:
+                fleet_hail(departing, data, now)
             FLEET.pop(session, None)
             return 200, {'players': [], 'ttl': FLEET_TTL}
         name, ship = data.get('name', ''), data.get('ship')
