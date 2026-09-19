@@ -50,7 +50,7 @@ EXTENT = (-4620000, -4620000, 4620000, 60000)
 OSM_BBOX = (-150.0, 45.0, -15.0, 86.0)
 LAND_SUBCELLS = 4          # the shore is rasterised this many times finer than the grid
 LAND_FRACTION = 0.55       # a cell is land when more than this share of it is land, which keeps straits open
-SEA_APPROACH = 2           # a place is charted when a water cell lies within this many cells of it
+SEA_APPROACH_M = 6000      # a place is charted when a water cell lies within this distance of it
 # The opening of Leg 3: the Plan A track off Pituffik where the ship first has 15 km of sea room, as fixed on
 # the first chart. Kept while it stays on the plan's track and keeps that sea room on the current grid.
 START = (-70.5573, 76.5109)
@@ -286,10 +286,11 @@ def geonames_rows(zip_path):
 
 def build_places(zips, water, res, cols, rows):
     """Settlements with a sea approach: GeoNames populated places on the grid with charted water within
-    SEA_APPROACH cells. North of 55 N, in Nunavut, the Northwest Territories and Greenland every place counts;
+    SEA_APPROACH_M metres (whole cells, rounded up). North of 55 N, in Nunavut, the Northwest Territories and Greenland every place counts;
     further south only places with a recorded population or an administrative seat, which keeps the southern
     coasts to their towns."""
-    near_water = ndimage.binary_dilation(water, structure=np.ones((3, 3), bool), iterations=SEA_APPROACH) if SEA_APPROACH else water
+    reach = math.ceil(SEA_APPROACH_M / res)
+    near_water = ndimage.binary_dilation(water, structure=np.ones((3, 3), bool), iterations=reach) if reach else water
     places, seen = [], set()
     for zip_path in zips:
         for r in geonames_rows(zip_path):
@@ -465,7 +466,7 @@ def pull(args):
                   f'longitude {OSM_BBOX[0]:.0f} to {OSM_BBOX[2]:.0f}, latitude {OSM_BBOX[1]:.0f} to {OSM_BBOX[3]:.0f}, Natural Earth '
                   f'land and minor islands beyond, rasterised at {res // LAND_SUBCELLS} m; a cell is land when more than '
                   f'{LAND_FRACTION:.0%} of it is land. Ice: newest chart per region burned in region order; water polygons are 0, '
-                  f'no-data polygons leave 255. Places: GeoNames populated places with water within {SEA_APPROACH} cells.',
+                  f'no-data polygons leave 255. Places: GeoNames populated places with water within {SEA_APPROACH_M / 1000:g} km.',
         'sources': [
             {**source(args.gebco, 'GEBCO 2024 sub-ice topography and bathymetry, 15 arc-second GeoTIFF release'), 'tiles': gebco_tiles},
             {**source(args.land, 'OSM land polygons (shore inside the extract window)'), 'layer': args.land_layer, 'window': list(OSM_BBOX)},
@@ -494,6 +495,6 @@ if __name__ == '__main__':
     parser.add_argument('--geonames', type=Path, default=Path('/data/gis/geonames'), help='folder of GeoNames country dumps (XX.zip)')
     parser.add_argument('--www', type=Path, default=Path('/data/underway_server/www'))
     parser.add_argument('--output', type=Path, default=Path(__file__).resolve().parents[1] / 'static/data/world')
-    parser.add_argument('--resolution', type=int, default=3000, help='grid cell size in projected metres')
+    parser.add_argument('--resolution', type=int, default=2000, help='grid cell size in projected metres')
     parser.add_argument('--tmp', type=Path, default=None, help='scratch folder for the GDAL intermediates (default: the system temp)')
     pull(parser.parse_args())

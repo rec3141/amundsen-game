@@ -1,8 +1,8 @@
 import { publicMirror } from './site.js';
 import { minigames, activities } from './minigames/registry.js';
-import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
+import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, MAP_KM2, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
 import { loadWorld } from './world.js';
-import { renderChart, CHART_SCALE } from './world-chart.js';
+import { createChart } from './world-chart.js';
 const $ = s => document.querySelector(s);
 if (publicMirror) {
   document.querySelectorAll('[data-page="ideas"], [data-page="board"], #suggest-shortcut, .crew-note, .player').forEach(node => { node.hidden = true; });
@@ -10,10 +10,11 @@ if (publicMirror) {
 }
 const canvas = $('#ocean'), ctx = canvas.getContext('2d');
 const fog = document.createElement('canvas'), mini = document.createElement('canvas');
-let width = 900, height = 480, keys = new Set(), last = 0, angle = -.4, cleanup = null, page = 'game';
-let world = null, chart = null, miniBase = null, sea = null, zoom = 3.2, progress = 0;
+let width = 900, height = 480, dpr = 1, keys = new Set(), last = 0, angle = -.4, cleanup = null, page = 'game';
+// `zoom` is chart pixels per grid cell once the player has zoomed; null follows the starting scale for the screen.
+let world = null, chart = null, placeholder = null, miniBase = null, sea = null, zoom = null, progress = 0;
 let state = newVoyage(), known = new Set(), recorder = null, returnFocus = null, chartElapsed = 0;
-let helicopter = null, flightAngle = 0, mapped = new Set(), surface = null, mappingDirty = false, seaCells = 1;
+let helicopter = null, flightAngle = 0, mapped = new Set(), mappingDirty = false, seaCells = 1;
 // One small craft is under the player's control at a time; the AUV runs on its own. `adrift` holds the moment the
 // tanks ran dry, `routePlan` the distance and diesel of the committed route, `preview` the route under the mouse.
 let zodiac = null, auv = null, auvArmed = false, adrift = null, routePlan = null, preview = null, pointer = null, startPlace = '', radioSeen = -1;
@@ -23,9 +24,11 @@ let waypoints = [], routeComplete = true, holdUntil = 0, shake = 0;
 // Live events: the archive wrecks on the chart, the wreck the ship is steaming to, an alarm waiting to open, the
 // cached nearest-ice search and the chart mark under the mouse.
 let wrecks = [], target = null, pendingAlarm = null, iceCache = null, hovered = null;
-// The zodiac keeps within a tether of the ship; the AUV runs straight out and maps a fixed near-bottom swath;
-// bunkering, and recovering the AUV, need the ship within BUNKER_KM; dry tanks drift for the grace period, then a tow.
-const ZODIAC_TETHER_KM = 30, AUV_RANGE_KM = 60, AUV_SWATH_M = 3000, AUV_CELLS_PER_S = 12, BUNKER_KM = 6, PORT_CHART_KM = 300, ADRIFT_GRACE_MS = 30000;
+// The ship makes SHIP_KM_PER_S at the starting zoom (a little less zoomed in, less again in ice); the zodiac keeps
+// within a tether of the ship; the AUV runs straight out at AUV_KM_PER_S and maps a fixed near-bottom swath;
+// bunkering, and recovering the AUV, need the ship within BUNKER_KM; dry tanks drift at DRIFT_KM_PER_S for the grace
+// period, then a tow.
+const SHIP_KM_PER_S = 50, ZODIAC_TETHER_KM = 30, AUV_RANGE_KM = 60, AUV_SWATH_M = 3000, AUV_KM_PER_S = 36, DRIFT_KM_PER_S = 1.2, BUNKER_KM = 6, PORT_CHART_KM = 300, ADRIFT_GRACE_MS = 30000;
 // A wreck is surveyed within WRECK_KM of its datum; a Mayday is answered within SAR_KM of the casualty and is stood
 // down after SAR_LIFE_S; ice stations need charted ice of ICE_NEAR_PERCENT or more within ICE_NEAR_KM. Intervals are
 // seconds of active play: the next call comes SAR_GAP_S after the last plus an exponential draw of mean SAR_SPREAD_S
@@ -196,7 +199,7 @@ function stepAuv(dt) {
   if (!auv) return;
   const near = () => Math.hypot(auv.u - shipU(), auv.v - shipV()) * world.km <= BUNKER_KM;
   if (auv.waiting) { if (near()) recoverAuv(); return; }
-  const goal = auv.home ? auv.dock : auv.target, du = goal.u - auv.u, dv = goal.v - auv.v, d = Math.hypot(du, dv), step = Math.min(d, AUV_CELLS_PER_S * dt);
+  const goal = auv.home ? auv.dock : auv.target, du = goal.u - auv.u, dv = goal.v - auv.v, d = Math.hypot(du, dv), step = Math.min(d, AUV_KM_PER_S / world.km * dt);
   const nu = d ? auv.u + du / d * step : auv.u, nv = d ? auv.v + dv / d * step : auv.v;
   const added = mapSwath(state, mapped, world, { u: auv.u, v: auv.v }, { u: nu, v: nv }, 1, AUV_SWATH_M);
   if (added.length) { clearSeabed(added); mappingDirty = true; auv.cells += added.length; }
@@ -252,7 +255,7 @@ function drift(time, dt) {
   if (craft() || state.fuel > 0) { adrift = null; return; }
   if (!adrift) { adrift = { since: time, heading: angle }; waypoints = []; routePlan = null; keys.clear(); toast(`Tanks dry · the ship drifts. U bunkers if fuel is within ${BUNKER_KM} km; otherwise a tow south in ${ADRIFT_GRACE_MS / 1000} s.`, true); }
   adrift.heading += (Math.random() - .5) * dt;
-  const u = shipU(), v = shipV(), nu = u + Math.cos(adrift.heading) * .4 * dt, nv = v + Math.sin(adrift.heading) * .4 * dt;
+  const u = shipU(), v = shipV(), drifted = DRIFT_KM_PER_S / world.km * dt, nu = u + Math.cos(adrift.heading) * drifted, nv = v + Math.sin(adrift.heading) * drifted;
   if (nu > .5 && nv > .5 && nu < world.cols - .5 && nv < world.rows - .5 && !world.isLand(nu, nv) && world.lineClear(u, v, nu, nv)) { state.x = nu / world.cols; state.y = nv / world.rows; } else adrift.heading += Math.PI / 2;
   if (time - adrift.since >= ADRIFT_GRACE_MS) tow();
 }
@@ -515,16 +518,23 @@ $('#mission-dialog').addEventListener('cancel', () => endActivity());
 $('#mission-dialog').addEventListener('close', () => { if ($('#mission-dialog').open) return; endActivity(); if (returnFocus?.isConnected) returnFocus.focus(); else canvas.focus(); });
 $('#reset').onclick = () => { if (confirm('Start a fresh voyage and clear your chart, log, science points and stores? Crew ideas stay on the server.')) { endActivity(); if (helicopter) toggleHelicopter(); if (zodiac) toggleZodiac(); auv = null; auvArmed = false; adrift = null; routePlan = null; preview = null; $('#auv').setAttribute('aria-pressed', 'false'); state = newVoyage(0, world?.start); restoreEvents(state, null); target = null; pendingAlarm = null; iceCache = null; try { localStorage.removeItem('amundsen-expedition'); } catch {} known = new Set(); mapped = new Set(); rebuildSurface(); chartPosition(state, known); waypoints = []; keys.clear(); save(); updateUI(); buildFog(); } };
 
-// The view follows the active vehicle; zoom is chart pixels per grid cell, clamped so the view never leaves the world.
-const minZoom = () => world ? Math.max(1, width / world.cols, height / world.rows) : 1;
+// The view follows the active vehicle. Zoom is chart pixels per grid cell, set from a scale in pixels per kilometre so
+// the chart shows the same stretch of sea whatever the grid's cell size: ZOOM_PX_PER_KM to begin with
+// (PHONE_ZOOM_PX_PER_KM on a narrow screen), between MIN_ZOOM_PX_PER_KM and MAX_ZOOM_PX_PER_KM, and never so far out
+// that the view leaves the world. Craft are drawn at two screen pixels per sprite pixel from SPRITE_2X_PX_PER_KM and
+// the log's marks are all titled from LABEL_PX_PER_KM.
+const ZOOM_PX_PER_KM = 1.1, PHONE_ZOOM_PX_PER_KM = .8, MIN_ZOOM_PX_PER_KM = 1 / 3, MAX_ZOOM_PX_PER_KM = 4, SPRITE_2X_PX_PER_KM = 2, LABEL_PX_PER_KM = 1.6;
+const defaultZoom = () => (width < 520 ? PHONE_ZOOM_PX_PER_KM : ZOOM_PX_PER_KM) * world.km;
+const minZoom = () => world ? Math.max(MIN_ZOOM_PX_PER_KM * world.km, width / world.cols, height / world.rows) : 1;
 function view() {
-  const z = Math.max(minZoom(), zoom), w = width / z, h = height / z;
+  const z = Math.max(minZoom(), zoom ?? defaultZoom()), w = width / z, h = height / z;
   const u = Math.max(w / 2, Math.min(world.cols - w / 2, pilotU())), v = Math.max(h / 2, Math.min(world.rows - h / 2, pilotV()));
   return { z, u0: u - w / 2, v0: v - h / 2 };
 }
-function setZoom(next) { zoom = Math.max(minZoom(), Math.min(8, next)); }
-$('#zoom-in').onclick = () => setZoom(zoom * 1.4); $('#zoom-out').onclick = () => setZoom(zoom / 1.4);
-function resize() { const r = canvas.getBoundingClientRect(); if (!r.width) return; width = r.width; height = r.height; const dpr = Math.min(devicePixelRatio || 1, 2); canvas.width = width * dpr; canvas.height = height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); if (width < 520 && zoom === 3.2) zoom = 2.4; }
+function setZoom(next) { zoom = Math.max(minZoom(), Math.min(MAX_ZOOM_PX_PER_KM * world.km, next)); }
+const zoomBy = factor => { if (world) setZoom(view().z * factor); };
+$('#zoom-in').onclick = () => zoomBy(1.4); $('#zoom-out').onclick = () => zoomBy(1 / 1.4);
+function resize() { const r = canvas.getBoundingClientRect(); if (!r.width) return; width = r.width; height = r.height; dpr = Math.min(devicePixelRatio || 1, 2); canvas.width = width * dpr; canvas.height = height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
 new ResizeObserver(resize).observe(canvas);
 const miniRect = () => { const w = width < 520 ? 96 : 156, h = Math.round(w * (world ? world.rows / world.cols : .7)); return { x: width - w - 12, y: 12, w, h }; };
 function sailTo(u, v) {
@@ -574,8 +584,8 @@ window.addEventListener('keydown', e => {
   if (k === 'y') { e.preventDefault(); if (!e.repeat) toggleZodiac(); return; }
   if (k === '1') { e.preventDefault(); if (!e.repeat) armAuv(); return; }
   if (activity) { e.preventDefault(); if (!e.repeat) startActivity(activity); return; }
-  if (k === '+' || k === '=') { e.preventDefault(); setZoom(zoom * 1.4); return; }
-  if (k === '-' || k === '_') { e.preventDefault(); setZoom(zoom / 1.4); return; }
+  if (k === '+' || k === '=') { e.preventDefault(); zoomBy(1.4); return; }
+  if (k === '-' || k === '_') { e.preventDefault(); zoomBy(1 / 1.4); return; }
   if (k === '2') { e.preventDefault(); if (!e.repeat) toggleLegend(); return; }
   if (['w', 'a', 's', 'd', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright'].includes(k)) { e.preventDefault(); if (helicopter?.rtb) return; keys.add(k); waypoints = []; routePlan = null; if (target && !craft()) { clearTarget(); updateEvents(); } }
 });
@@ -634,17 +644,9 @@ function move(du, dv) {
   if (!sail(state, km, world.ice(u, v)?.percent ?? 255)) { keys.clear(); waypoints = []; routePlan = null; }
   return true;
 }
-let surfaceBase = null;
-function clearSeabed(cells) {
-  if (!surface) return;
-  const paint = surface.getContext('2d');
-  for (const cell of cells) paint.clearRect(cell % world.cols * CHART_SCALE, Math.floor(cell / world.cols) * CHART_SCALE, CHART_SCALE, CHART_SCALE);
-}
-function rebuildSurface() {
-  if (!surfaceBase) return;
-  surface = document.createElement('canvas'); surface.width = surfaceBase.width; surface.height = surfaceBase.height;
-  surface.getContext('2d').drawImage(surfaceBase, 0, 0); clearSeabed(mapped);
-}
+// The chart keeps the seabed hidden until it is mapped; cells are shown as the swath adds them.
+function clearSeabed(cells) { chart?.reveal(cells); }
+function rebuildSurface() { if (chart) { chart.reset(); chart.reveal(mapped); } }
 function drawGraticule(z, u0, v0) {
   const pole = world.pole, px = (pole.u - u0) * z, py = (pole.v - v0) * z;
   ctx.save(); ctx.strokeStyle = '#4a3f2a30'; ctx.lineWidth = 1; ctx.fillStyle = '#4a3f2a99'; ctx.font = '10px Georgia';
@@ -745,11 +747,10 @@ function drawLoading() {
 }
 function draw() {
   if (!chart) { drawLoading(); return; }
-  const { z, u0, v0 } = view(), S = CHART_SCALE, toX = u => (u - u0) * z, toY = v => (v - v0) * z;
+  const { z, u0, v0 } = view(), toX = u => (u - u0) * z, toY = v => (v - v0) * z;
   ctx.save(); if (shake > 0) ctx.translate((Math.random() - .5) * 8 * shake, (Math.random() - .5) * 8 * shake);
   ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(chart, u0 * S, v0 * S, width / z * S, height / z * S, 0, 0, width, height);
-  if (surface) ctx.drawImage(surface, u0 * S, v0 * S, width / z * S, height / z * S, 0, 0, width, height);
+  chart.draw(ctx, { z, u0, v0, width, height, dpr }, placeholder);
   ctx.drawImage(fog, u0 / world.cols * fog.width, v0 / world.rows * fog.height, width / z / world.cols * fog.width, height / z / world.rows * fog.height, 0, 0, width, height);
   drawGraticule(z, u0, v0);
   ctx.strokeStyle = '#e8c589'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]); ctx.beginPath(); state.route.forEach((p, i) => i ? ctx.lineTo(toX(p.x * world.cols), toY(p.y * world.rows)) : ctx.moveTo(toX(p.x * world.cols), toY(p.y * world.rows))); ctx.stroke(); ctx.setLineDash([]);
@@ -809,7 +810,7 @@ function draw() {
     ctx.stroke(); ctx.setLineDash([]); const end = waypoints.at(-1); ctx.beginPath(); ctx.arc(toX(end.u), toY(end.v), 5, 0, 7); ctx.stroke();
     if (routePlan && !craft()) label(`${Math.round(routePlan.km)} km · ${m3(routePlan.fuel)} m³`, toX(end.u) + 8, toY(end.v) - 8, routePlan.fuel > state.fuel ? '#b3352b' : '#1b2a2c');
   }
-  const px = z >= 6 ? 2 : 1;
+  const px = z / world.km >= SPRITE_2X_PX_PER_KM ? 2 : 1;
   if (auv) {
     const x = toX(auv.u), y = toY(auv.v), goal = auv.home ? auv.dock : auv.target;
     if (!auv.waiting) { ctx.strokeStyle = '#d9e26bb0'; ctx.setLineDash([2, 4]); ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(toX(goal.u), toY(goal.v)); ctx.stroke(); ctx.setLineDash([]); }
@@ -829,7 +830,7 @@ function draw() {
     ctx.fillStyle = '#f6c75f'; ctx.font = 'bold 12px sans-serif'; ctx.fillText('HELICOPTER', x + 15, y - 15);
   }
   hovered = pointer ? marks.reduce((best, m) => { const d = Math.hypot(m.x - pointer.px, m.y - pointer.py); return d <= 12 && (!best || d < best.d) ? { ...m, d } : best; }, null) : null;
-  if (z >= 5) for (const m of marks) if (m !== hovered) label(m.text, m.x + 8, m.y - 7, '#1b2a2c', 'italic 11px Georgia');
+  if (z / world.km >= LABEL_PX_PER_KM) for (const m of marks) if (m !== hovered) label(m.text, m.x + 8, m.y - 7, '#1b2a2c', 'italic 11px Georgia');
   if (hovered) label(hovered.text, hovered.x + 10, hovered.y - 9, '#1b2a2c', 'bold 12px sans-serif');
   ctx.restore();
   // Compass: true north is the direction of the pole, which swings with longitude on this projection.
@@ -854,9 +855,9 @@ function loop(time) {
     if (time < holdUntil) { dx = dy = 0; keys.clear(); }
     const z = view().z, ice = world.ice(shipU(), shipV());
     state.played += dt; drift(time, dt); stepAuv(dt);
-    // Cells per second: 20 (40 km/s) at the default zoom, a little slower when zoomed in, slowed further by the pack
+    // Cells per second: SHIP_KM_PER_S at the starting zoom, a little slower when zoomed in, slowed further by the pack
     // (less with an ice-strengthened hull). The helicopter flies at 2.5 times that, the zodiac at 1.6.
-    const speed = 20 * Math.sqrt(3.2 / z) * (helicopter ? 2.5 : zodiac ? 1.6 : world.iceSpeed(ice ? ice.percent : 255, state.upgrades.hull ? .6 : 1)) * dt;
+    const speed = SHIP_KM_PER_S / world.km * Math.sqrt(ZOOM_PX_PER_KM * world.km / z) * (helicopter ? 2.5 : zodiac ? 1.6 : world.iceSpeed(ice ? ice.percent : 255, state.upgrades.hull ? .6 : 1)) * dt;
     if (waypoints.length) {
       let budget = speed;
       while (waypoints.length && budget > 0) {
@@ -908,12 +909,15 @@ async function boot() {
     radioSeen = tanker().slot;
     loadWrecks().then(() => { const wreck = wrecks.find(w => w.id === state.target); if (wreck) { target = { wreck, goal: null }; routeTarget(); } else state.target = null; updateUI(); });
     chartPosition(state, known); updateUI(); buildFog();
-    $('#mapping-rule').textContent = `1 point per new ${world.km} × ${world.km} km grid cell · 120° fan widens with depth`;
+    $('#mapping-rule').textContent = `1 point per ${MAP_KM2} km² of new seabed · ${world.km} km cells · 120° fan widens with depth`;
     $('#chart-credit').textContent = `GEBCO 2024 · CIS ice chart ${world.chartDate}`;
-    surfaceBase = await renderChart(world, () => {}, false); rebuildSurface();
-    chart = await renderChart(world, value => { progress = value; });
+    // The chart draws itself in tiles as the view moves; the half-pixel-per-cell overview stands in under them and
+    // is the minimap's base.
+    const drawn = createChart(world); drawn.reveal(mapped);
+    placeholder = drawn.overview(.5); progress = 1;
     miniBase = document.createElement('canvas'); const m = miniRect(); miniBase.width = m.w * 2; miniBase.height = m.h * 2;
-    const base = miniBase.getContext('2d'); base.imageSmoothingEnabled = true; base.drawImage(surfaceBase, 0, 0, miniBase.width, miniBase.height);
+    const base = miniBase.getContext('2d'); base.imageSmoothingEnabled = true; base.drawImage(placeholder, 0, 0, miniBase.width, miniBase.height);
+    chart = drawn;
     buildFog(); sightPlaces(); save(); canvas.focus();
   } catch (error) {
     console.error(error);

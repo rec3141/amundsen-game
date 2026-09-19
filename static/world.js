@@ -14,8 +14,8 @@ export const BUNKER_PORTS = [
   // Baffin Island south, Hudson Strait, Hudson Bay and Ungava
   'Arviat', 'Chesterfield Inlet', 'Churchill', 'Coral Harbour', 'Inukjuak', 'Iqaluit', 'Kimmirut', 'Kinngait', 'Kuujjuarapik',
   'Naujaat', 'Pangnirtung', 'Puvirnituq', 'Rankin Inlet', 'Salluit', 'Sanikiluaq', 'Whale Cove',
-  // Labrador and Newfoundland (Nain, Goose Bay and Kuujjuaq lie up channels the 3 km grid closes)
-  'Cartwright', 'Hopedale', 'Makkovik', "St. John's",
+  // Labrador and Newfoundland (Kuujjuaq lies up the Koksoak River, which the 2 km grid closes)
+  'Cartwright', 'Happy Valley-Goose Bay', 'Hopedale', 'Makkovik', 'Nain', "St. John's",
   // Greenland
   'Aasiaat', 'Dundas', 'Ilulissat', 'Ittoqqortoormiit', 'Kullorsuaq', 'Maniitsoq', 'Nanortalik', 'Nuuk', 'Paamiut', 'Qaanaaq',
   'Qaqortoq', 'Qeqertarsuaq', 'Sisimiut', 'Tasiilaq', 'Upernavik', 'Uummannaq',
@@ -104,7 +104,7 @@ export function createWorld(meta, layers) {
   // A* over water cells. Diagonal steps need both orthogonal neighbours afloat, so the polyline of cell centres
   // never touches the shore function. Cells against the coast and cells in ice cost more, which keeps the
   // route mid-channel and out of the pack when there is a way round.
-  const gScore = new Float64Array(size), cameFrom = new Int32Array(size), stamp = new Uint32Array(size);
+  const gScore = new Float32Array(size), cameFrom = new Int32Array(size), stamp = new Uint32Array(size);
   let generation = 0;
   function search(start, goal) {
     generation++;
@@ -131,8 +131,9 @@ export function createWorld(meta, layers) {
         const next = rr * cols + cc;
         if (sign[next] > 0 || (dr && dc && (sign[r * cols + cc] > 0 || sign[rr * cols + c] > 0))) continue;
         const cost = g + (dr && dc ? SQRT2 : 1) * (coast[next] ? 2.2 : 1) * (2.2 - 1.2 * iceSpeed(iceConcentration[next]));
-        // Equal-cost paths summed in a different order differ by rounding only; treating that as an improvement would re-expand the grid endlessly.
-        if (stamp[next] === generation && gScore[next] <= cost + 1e-6) continue;
+        // Equal-cost paths summed in a different order differ by rounding only (single precision here, to halve the
+        // memory of a grid this size); treating that as an improvement would re-expand the grid endlessly.
+        if (stamp[next] === generation && gScore[next] <= cost + 1e-3) continue;
         gScore[next] = cost; stamp[next] = generation; cameFrom[next] = node;
         const du = Math.abs(cc - gc), dv = Math.abs(rr - gr);
         push(next, cost + Math.max(du, dv) + (SQRT2 - 1) * Math.min(du, dv));

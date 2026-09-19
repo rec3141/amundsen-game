@@ -1,10 +1,11 @@
-export const STORAGE_KEY = 'amundsen-exploration', VERSION = 4;
+export const STORAGE_KEY = 'amundsen-exploration', VERSION = 5;
 // The chart grids voyages have been saved on, by the first save version that used each: cell size and edges in
 // projected metres (WGS84 polar stereographic, world.json) and the 20 km fog grid laid over it. A save keeps
 // positions as fractions of its grid, so a voyage from an older grid is carried across through metres.
 const GRIDS = {
   3: { cols: 1300, rows: 900, resolution: 2000, xmin: -1300000, ymax: -600000, fogCols: 130, fogRows: 90 },
   4: { cols: 3080, rows: 1560, resolution: 3000, xmin: -4620000, ymax: 60000, fogCols: 462, fogRows: 234 },
+  5: { cols: 4620, rows: 2340, resolution: 2000, xmin: -4620000, ymax: 60000, fogCols: 462, fogRows: 234 },
 };
 export const GRID = GRIDS[VERSION];
 // The fog grid covers the whole world (9240 x 4680 km): a cell is 20 km, the ship charts 120 km around it.
@@ -52,7 +53,8 @@ function entry(d, placed = true) {
 // Carries a voyage saved on grid `from` onto grid `to`. Both grids share the projection, so a fraction of the old
 // grid maps to a fraction of the new one through projected metres. A point that lands off the new chart is
 // dropped: the ship and her safe berth fall back to the start, a log entry keeps only its lon/lat, and a route,
-// mapped or revealed cell is left out.
+// mapped or revealed cell is left out. A mapped or revealed cell covers every new cell whose centre lies inside it,
+// so a swath charted on a coarser grid stays a solid band on a finer one.
 function migrate(raw, from, to = GRID) {
   const width = grid => grid.cols * grid.resolution, height = grid => grid.rows * grid.resolution;
   const carried = p => {
@@ -60,12 +62,17 @@ function migrate(raw, from, to = GRID) {
     const x = (from.xmin + p.x * width(from) - to.xmin) / width(to), y = (to.ymax - (from.ymax - p.y * height(from))) / height(to);
     return x >= 0 && x < 1 && y >= 0 && y < 1 ? { x, y } : null;
   };
-  // Cell indices of a grid `fromCols` wide map through their centres; several old cells may share a new one.
+  // Cell indices of a grid `fromCols` x `fromRows`: the new cells whose centres fall inside the old cell, or the cell
+  // holding the old cell's centre when none does (a coarser grid); several old cells may share a new one.
   const cells = (list, fromCols, fromRows, toCols, toRows) => {
     const out = new Set();
     for (const n of Array.isArray(list) ? list : []) {
       if (!Number.isInteger(n) || n < 0 || n >= fromCols * fromRows) continue;
-      const q = carried({ x: (n % fromCols + .5) / fromCols, y: (Math.floor(n / fromCols) + .5) / fromRows });
+      const c = n % fromCols, r = Math.floor(n / fromCols), before = out.size;
+      const a = carried({ x: c / fromCols, y: r / fromRows }), b = carried({ x: (c + 1) / fromCols - 1e-9, y: (r + 1) / fromRows - 1e-9 });
+      if (a && b) for (let y = Math.ceil(a.y * toRows - .5); y + .5 < b.y * toRows; y++) for (let x = Math.ceil(a.x * toCols - .5); x + .5 < b.x * toCols; x++) out.add(y * toCols + x);
+      if (out.size > before) continue;
+      const q = carried({ x: (c + .5) / fromCols, y: (r + .5) / fromRows });
       if (q) out.add(Math.floor(q.y * toRows) * toCols + Math.floor(q.x * toCols));
     }
     return [...out];
@@ -87,10 +94,10 @@ export function restoreVoyage(raw, legacy, start = START) {
     state.discoveries = (Array.isArray(raw.discoveries) ? raw.discoveries : []).filter(d => d && typeof d === 'object').slice(-MAX_LOG).map(d => entry(d, false));
     return state;
   }
-  // Versions 2 and 3 sailed the 2 km grid of the archipelago; version 2 without fuel or stores, so she carries
-  // full tanks and nothing bought.
-  if (!raw || (raw.version !== 2 && raw.version !== 3 && raw.version !== VERSION)) return newVoyage(legacy?.score, start);
-  if (raw.version !== VERSION) raw = migrate(raw, GRIDS[3]);
+  // Versions 2 and 3 sailed the 2 km grid of the archipelago (version 2 without fuel or stores, so she carries full
+  // tanks and nothing bought); version 4 sailed this sector on a 3 km grid.
+  if (!raw || ![2, 3, 4, VERSION].includes(raw.version)) return newVoyage(legacy?.score, start);
+  if (raw.version !== VERSION) raw = migrate(raw, GRIDS[raw.version === 4 ? 4 : 3]);
   const state = { ...newVoyage(raw.score, start), ...position(raw, start) };
   state.upgrades = Object.fromEntries(STORES.filter(item => raw.upgrades?.[item.id] === true).map(item => [item.id, true]));
   state.fuel = finite(raw.fuel, tankCapacity(state), 0, tankCapacity(state));
@@ -100,7 +107,7 @@ export function restoreVoyage(raw, legacy, start = START) {
   state.operations = Math.floor(finite(raw.operations, 0, 0, Number.MAX_SAFE_INTEGER));
   state.groundings = Math.floor(finite(raw.groundings, 0, 0, Number.MAX_SAFE_INTEGER));
   state.revealed = [...new Set((Array.isArray(raw.revealed) ? raw.revealed : []).filter(n => Number.isInteger(n) && n >= 0 && n < COLS * ROWS))];
-  state.mapped = [...new Set((Array.isArray(raw.mapped) ? raw.mapped : []).filter(n => Number.isInteger(n) && n >= 0 && n < 10000000))];
+  state.mapped = [...new Set((Array.isArray(raw.mapped) ? raw.mapped : []).filter(n => Number.isInteger(n) && n >= 0 && n < GRID.cols * GRID.rows))];
   state.route = (Array.isArray(raw.route) ? raw.route : []).filter(validPosition).slice(-MAX_ROUTE).map(p => position(p));
   state.discoveries = (Array.isArray(raw.discoveries) ? raw.discoveries : []).filter(d => d && typeof d === 'object').slice(-MAX_LOG).map(d => entry(d));
   state.sighted = [...new Set((Array.isArray(raw.sighted) ? raw.sighted : []).filter(name => typeof name === 'string').map(name => name.slice(0, 80)))].slice(-MAX_SIGHTED);
@@ -205,14 +212,16 @@ export function towSouth(state, location, place = '', start = START, harbour = '
 }
 
 // A 120-degree fan spans 2 * depth * tan(60°); the wide-swath upgrade widens it by `WIDE_SWATH`. Cells are
-// credited once at DEM resolution. `fixed` is a swath width in metres that ignores depth (an AUV near the
-// bottom, or 0 for a boat sounding only its own track).
-export const WIDE_SWATH = 1.4;
+// credited once at grid resolution and score MAP_KM2 square kilometres to the point whatever the cell size, so a
+// kilometre sailed earns the same on any grid. `fixed` is a swath width in metres that ignores depth (an AUV near
+// the bottom, or 0 for a boat sounding only its own track).
+export const WIDE_SWATH = 1.4, MAP_KM2 = 9;
 // Eight times a real multibeam fan, so a voyage charts a visible band of seabed.
 export const swathWidth = (depth, widen = 1) => 16 * depth * Math.sqrt(3) * widen;
 export function mapSwath(state, mapped, world, from, to, widen = 1, fixed = null) {
   const du = to.u - from.u, dv = to.v - from.v, distance = Math.hypot(du, dv);
   if (!distance) return [];
+  const credit = count => Math.floor(count * world.km * world.km / MAP_KM2), before = credit(mapped.size);
   const added = [], steps = Math.max(1, Math.ceil(distance * 4));
   for (let step = 0; step <= steps; step++) {
     const u = from.u + du * step / steps, v = from.v + dv * step / steps;
@@ -227,6 +236,6 @@ export function mapSwath(state, mapped, world, from, to, widen = 1, fixed = null
       mapped.add(cell); state.mapped.push(cell); added.push(cell);
     }
   }
-  state.score = Math.min(Number.MAX_SAFE_INTEGER, state.score + added.length);
+  state.score = Math.min(Number.MAX_SAFE_INTEGER, state.score + credit(mapped.size) - before);
   return added;
 }
