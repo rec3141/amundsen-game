@@ -1,8 +1,10 @@
-// Inuktitut: a three-leg language watch. Syllabics first (name the sound, find the glyph), then a working
-// vocabulary for ice, sea, weather, animals, gear and greetings, then the chart: place names decoded into
+// Inuktitut: a three-leg language watch. Syllabics first (name the sound, find the glyph, spell a word), then a
+// working vocabulary for ice, sea, weather, animals, gear and greetings, then the chart: place names decoded into
 // their parts and new words built from a root and a suffix. Missed cards come back once for half points.
-import { LEGS, createSession, startLeg, draw, answer, hint, worth, summary, accuracyLabel } from './crew-22-model.js';
+// "How it works" (L) opens a primer on the logic of the syllabary at any point without touching the deck.
+import { LEGS, createSession, startLeg, draw, answer, hint, worth, summary, accuracyLabel, syllables } from './crew-22-model.js';
 import { SERIES, VOWELS } from './crew-22-lexicon.js';
+import { PAGES, TURNER_ROWS, describe, turnerText } from './crew-22-logic.js';
 
 const stylesheet = new URL('./crew-22.css', import.meta.url).href;
 const escape = text => String(text).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
@@ -17,6 +19,12 @@ export const game = {
     let alive = true, submitted = false, cursor = 0, chartOpen = false;
     // Build cards take two picks; `pickRoot`/`pickSuffix` hold them and `row` says which row the keys address.
     let pickRoot = -1, pickSuffix = -1, row = 'roots';
+    // The primer overlays the stage; `turner` is the row index into TURNER_ROWS, the vowel column and the two toggles.
+    const primer = { open: false, page: 0, turner: { ri: 1, vi: 0, long: false, final: false }, text: '' };
+    const TURN_PAGE = PAGES.findIndex(p => p.demo === 'turner');
+    // The workbench starts on the nearest community's name when every letter of it has a glyph, else on nanuq.
+    const nearName = (state.near?.place.name || '').toLowerCase();
+    primer.text = nearName && syllables(nearName).every(t => !t.raw) ? nearName : 'nanuq';
     root.innerHTML = `<section class="ik-game" tabindex="-1" aria-label="Inuktitut">
       <link rel="stylesheet" href="${stylesheet}">
       <div class="ik-heading">
@@ -31,14 +39,16 @@ export const game = {
       <div class="ik-layout">
         <div class="ik-stage">
           <div class="ik-card" data-card></div>
-          <div class="ik-actions">
+          <div class="ik-card ik-primer" data-primer hidden tabindex="-1" role="region" aria-label="How the syllabics work"></div>
+          <div class="ik-actions" data-actions>
             <button type="button" data-action="hint">Hint <kbd>H</kbd></button>
             <button type="button" data-action="chart" aria-pressed="false">Syllabary <kbd>C</kbd></button>
+            <button type="button" data-action="logic">How it works <kbd>L</kbd></button>
             <button type="button" data-action="next" data-next class="ik-next">Next <kbd>Enter</kbd></button>
           </div>
         </div>
         <aside class="ik-side">
-          <div class="ik-panel ik-chart" data-chart hidden><h5>Syllabary <span>row: consonant · column: vowel</span></h5><div data-chart-table></div></div>
+          <div class="ik-panel ik-chart" data-chart hidden><h5>Syllabary <span>row: consonant · column: vowel · click a glyph to turn it</span></h5><div data-chart-table></div></div>
           <div class="ik-panel"><h5>Learned this watch <span data-learned-count></span></h5><ol class="ik-learned" data-learned aria-label="Words learned"></ol></div>
         </aside>
       </div>
@@ -59,12 +69,13 @@ export const game = {
     }
     function renderChartTable() {
       const head = `<tr><th></th>${VOWELS.map(v => `<th>${v}</th>`).join('')}<th>final</th></tr>`;
-      const rows = SERIES.map(r => `<tr data-row="${r.c}"><th>${r.c || '·'}</th>${r.glyphs.map((g, i) => `<td class="ik-syl" data-cell="${r.c}:${i}">${g}</td>`).join('')}<td class="ik-syl ik-final" data-cell="${r.c}:f">${r.final}</td></tr>`).join('');
+      const rows = SERIES.map(r => `<tr data-row="${r.c}"><th>${r.c || '·'}</th>${r.glyphs.map((g, i) => `<td class="ik-syl" data-cell="${r.c}:${i}" title="${r.c}${VOWELS[i]}: open in the turner">${g}</td>`).join('')}<td class="ik-syl ik-final" data-cell="${r.c}:f" title="final ${r.c}: open in the turner">${r.final}</td></tr>`).join('');
       find('[data-chart-table]').innerHTML = `<table>${head}${rows}</table>`;
     }
     function litChart(card, hit) {
       panel.querySelectorAll('[data-cell]').forEach(td => td.classList.remove('ik-lit', 'ik-hit'));
       panel.querySelectorAll('[data-row]').forEach(tr => tr.classList.remove('ik-lit-row'));
+      if (card?.kind === 'spell') { for (const c of card.rows) find(`[data-row="${c}"]`)?.classList.add('ik-lit-row'); return; }
       if (!card || (card.kind !== 'glyph' && card.kind !== 'sound')) return;
       const tr = find(`[data-row="${card.row}"]`);
       tr?.classList.add('ik-lit-row');
@@ -111,11 +122,11 @@ export const game = {
       find('[data-card]').innerHTML = `<div class="ik-brief"><p class="ik-brief-kicker">LANGUAGE WATCH</p>
         <h4>Tunngasugit<span class="ik-syl">ᑐᙵᓱᒋᑦ</span></h4>
         <p>Welcome aboard. Inuktitut is spoken from Greenland to the Bering Strait in a chain of dialects; the coast the ship works speaks it every day, and its charts carry a thousand years of place names. The Nunavut standard writes it in syllabics: shapes for consonants, turned for vowels.</p>
-        <p>Three legs, eight cards each. A card missed comes back once for half its points; a hint halves them too. Every fifth card in a row is a 10-point bonus.</p>
+        <p>Three legs, eight cards each. A card missed comes back once for half its points; a hint halves them too. Every fifth card in a row is a 10-point bonus. The primer on how the writing works is free, and open at any time.</p>
         <p class="ik-brief-small">Pronunciation: q is a k made far back in the throat; doubled letters are held long; ng as in singer. Spellings follow the Inuit Cultural Institute standard used in Nunavut; Inuinnaqtun and Inuvialuktun to the west are written in Roman letters, and Nunavik forms differ a little.</p>
-        <button type="button" class="ik-go" data-action="next">Begin the watch <kbd>Enter</kbd></button></div>`;
+        <div class="ik-go-row"><button type="button" class="ik-go" data-action="next">Begin the watch <kbd>Enter</kbd></button><button type="button" class="ik-go ik-go-quiet" data-action="logic">How the writing works <kbd>L</kbd></button></div></div>`;
       actions({ next: true, nextLabel: 'Begin' });
-      find('[data-hint-extra]').textContent = 'Escape closes the operation';
+      find('[data-hint-extra]').textContent = 'L explains the writing · Escape closes the operation';
     }
     function renderBrief() {
       const leg = LEGS[state.leg];
@@ -123,15 +134,15 @@ export const game = {
         <h4>${escape(leg.name)}<span class="ik-syl">${leg.inuk}</span> <small style="font:14px system-ui,sans-serif;color:#b9d0d6">${escape(leg.roman)}</small></h4>
         <p>${escape(leg.brief)}</p>
         ${state.leg === 2 && state.near ? `<p class="ik-brief-small">The first name is the nearest community to the ship: ${escape(state.near.place.name)}, ${Math.round(state.near.km)} km away.</p>` : ''}
-        <button type="button" class="ik-go" data-action="next">Deal the cards <kbd>Enter</kbd></button></div>`;
+        <div class="ik-go-row"><button type="button" class="ik-go" data-action="next">Deal the cards <kbd>Enter</kbd></button>${state.leg === 0 ? '<button type="button" class="ik-go ik-go-quiet" data-action="logic">How the system works <kbd>L</kbd></button>' : ''}</div></div>`;
       actions({ next: true, nextLabel: 'Deal' });
       if (state.leg === 0) setChart(true);
     }
     function optionButton(option, i, extra = '') {
       const syl = option.label && /[᐀-ᙿ]/.test(option.label);
-      const big = syl && option.label.length <= 2;
+      const big = syl && option.label.length <= 2, mid = syl && !big && !option.sub;
       return `<button type="button" data-option="${i}" ${extra} aria-label="${escape(option.label)}${option.sub ? `, ${escape(option.sub)}` : ''}">
-        <span class="ik-key">${KEYS[i]}</span><span class="ik-opt"><b class="${syl ? 'ik-syl' : ''} ${big ? 'ik-big' : ''}">${escape(option.label)}</b>${option.sub ? `<small>${escape(option.sub)}${option.gloss ? ` · ${escape(option.gloss)}` : ''}</small>` : option.gloss ? `<small>${escape(option.gloss)}</small>` : ''}</span></button>`;
+        <span class="ik-key">${KEYS[i]}</span><span class="ik-opt"><b class="${syl ? 'ik-syl' : ''} ${big ? 'ik-big' : mid ? 'ik-mid' : ''}">${escape(option.label)}</b>${option.sub ? `<small>${escape(option.sub)}${option.gloss ? ` · ${escape(option.gloss)}` : ''}</small>` : option.gloss ? `<small>${escape(option.gloss)}</small>` : ''}</span></button>`;
     }
     function promptClass(card) {
       if (card.kind === 'gloss' || card.kind === 'build') return 'ik-prompt ik-en';
@@ -165,13 +176,14 @@ export const game = {
           : `The ${card.row || 'bare vowel'} row reads ${series.glyphs.join(' ')} for ${VOWELS.map(v => card.row + v).join(', ')}; the syllabary is lit for it.`;
       }
       if (card.kind === 'word' || card.kind === 'gloss') { const d = card.word.d; return `The word belongs to the ${({ ice: 'ice', sea: 'water', land: 'land', sky: 'weather and sky', animal: 'animal', people: 'people', gear: 'gear and travel', phrase: 'greetings and phrases', number: 'number' })[d]} set. ${card.note.split('. ')[0]}.`; }
+      if (card.kind === 'spell') { const full = card.tokens.filter(t => !t.final).length, finals = card.tokens.length - full; return `${card.tokens.length} glyphs: ${full} full syllable${full === 1 ? '' : 's'}${finals ? ` and ${finals} small final${finals === 1 ? '' : 's'}` : ''}${card.tokens.some(t => t.long) ? ', one of them with a length dot' : ', no length dots'}. The rows are lit on the syllabary.`; }
       if (card.kind === 'place') return `Parts: ${card.place.parts}.`;
       return `The suffix means "${card.suffixes[card.answerSuffix].sub}"; the root is the word for the thing itself.`;
     }
     function showHint() {
       const box = find('[data-feedback]');
       box.hidden = false; box.className = 'ik-feedback'; box.innerHTML = `<b>Hint.</b> ${escape(hintText(state.card))}`;
-      litChart(state.card, false); if (state.card.kind === 'glyph' || state.card.kind === 'sound') setChart(true);
+      litChart(state.card, false); if (['glyph', 'sound', 'spell'].includes(state.card.kind)) setChart(true);
       find('.ik-worth').innerHTML = `${state.card.retry ? 'SECOND LOOK · ' : ''}HINTED · worth <b>${worth(state)}</b>`;
     }
     function renderFeedback(result) {
@@ -213,6 +225,108 @@ export const game = {
         try { complete(s.points, { title: `Inuktitut watch: ${s.firstTry}/${s.cards} first time`, ...s, near: state.near?.place.name ?? null }); } catch (error) { console.error(error); }
       }
     }
+    // ---------- primer: how the system works ----------
+    function turnerHtml() {
+      const t = primer.turner, row = TURNER_ROWS[t.ri];
+      const vi = t.long ? (t.vi | 1) : (t.vi & ~1);
+      const glyph = t.final && row.final ? row.final : row.glyphs[vi];
+      const cells = [0, 2, 4].map(k => `<button type="button" data-turn-v="${k}" class="${!t.final && (vi & ~1) === k ? 'ik-on' : ''}" aria-label="${row.c}${VOWELS[k]}"><b class="ik-syl">${row.glyphs[t.long ? k + 1 : k]}</b><small>${row.c}${VOWELS[t.long ? k + 1 : k]}</small></button>`).join('');
+      const fin = row.final ? `<button type="button" data-turn-final class="${t.final ? 'ik-on' : ''}" aria-label="final ${row.c}"><b class="ik-syl">${row.final}</b><small>${row.c}</small></button>` : '';
+      return `<div class="ik-turner">
+        <div class="ik-turner-big"><b class="ik-syl">${glyph}</b><span>${escape(t.final && row.final ? row.c : row.c + VOWELS[vi])}</span></div>
+        <div class="ik-turner-controls">
+          <div class="ik-turner-row"><button type="button" data-turn-row="-1" aria-label="previous consonant">▲ <kbd>W</kbd></button><span class="ik-turner-name">${row.c ? `the <b>${escape(row.c)}</b> shape` : 'the bare vowel'}</span><button type="button" data-turn-row="1" aria-label="next consonant">▼ <kbd>S</kbd></button></div>
+          <div class="ik-turner-cells">${cells}${fin}</div>
+          <div class="ik-turner-row"><button type="button" data-turn-long class="${t.long ? 'ik-on' : ''}" aria-pressed="${t.long}">Long vowel: dot <kbd>Space</kbd></button></div>
+        </div>
+        <p class="ik-turner-text" data-turner-text>${escape(turnerText(row.c, vi, t.final))}</p>
+      </div>`;
+    }
+    function benchHtml() {
+      const tokens = syllables(primer.text);
+      const out = tokens.filter(t => !t.space);
+      return `<div class="ik-bench">
+        <label class="ik-bench-input"><span>Roman letters</span><input type="text" data-bench autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="40" value="${escape(primer.text)}" placeholder="nanuq, tuktu, siku…"></label>
+        <div class="ik-bench-out" data-bench-out>
+          <div class="ik-bench-word ik-syl" lang="iu">${escape(tokens.map(t => t.glyph).join('')) || '&nbsp;'}</div>
+          <ol class="ik-tokens">${out.map(t => `<li class="${t.raw ? 'ik-raw' : t.final ? 'ik-fin' : ''}"><b class="ik-syl">${escape(t.glyph)}</b><span>${escape(describe(t))}</span></li>`).join('') || '<li class="ik-none">Type a word to see it written glyph by glyph.</li>'}</ol>
+        </div>
+      </div>`;
+    }
+    function renderPrimer() {
+      const page = PAGES[primer.page], n = PAGES.length, box = find('[data-primer]');
+      const tabs = PAGES.map((p, i) => `<button type="button" data-page="${i}" class="${i === primer.page ? 'ik-on' : ''}" aria-current="${i === primer.page ? 'page' : 'false'}" aria-label="page ${i + 1}: ${escape(p.title)}">${i + 1}</button>`).join('');
+      box.innerHTML = `<div class="ik-brief ik-primer-body">
+        <p class="ik-brief-kicker">HOW THE SYSTEM WORKS · ${primer.page + 1} OF ${n}</p>
+        <h4>${escape(page.title)}${page.inuk ? `<span class="ik-syl">${page.inuk}</span>` : ''}</h4>
+        <p>${escape(page.lead)}</p>
+        ${page.demo === 'turner' ? turnerHtml() : page.demo === 'workbench' ? benchHtml() : page.html || ''}
+        ${page.body.map(t => `<p>${escape(t)}</p>`).join('')}
+        ${page.small ? `<p class="ik-brief-small">${escape(page.small)}</p>` : ''}
+        <div class="ik-primer-nav"><div class="ik-pages" role="tablist">${tabs}</div>
+          <button type="button" data-page="${primer.page - 1}" ${primer.page === 0 ? 'disabled' : ''}>Back <kbd>←</kbd></button>
+          ${primer.page < n - 1 ? `<button type="button" class="ik-next" data-page="${primer.page + 1}">Next <kbd>Enter</kbd></button>` : '<button type="button" class="ik-next" data-action="logic">Back to the watch <kbd>Enter</kbd></button>'}
+          <button type="button" data-action="logic" class="ik-quiet">Close <kbd>L</kbd></button></div>
+        <p class="ik-hint ik-primer-keys">${escape(page.keys || '←→ or 1–8 pages · Enter next')}</p></div>`;
+      live(`How the system works, page ${primer.page + 1} of ${n}: ${page.title}. ${page.lead}`);
+    }
+    function benchUpdate() {
+      const out = find('[data-bench-out]'); if (!out) return;
+      const tmp = document.createElement('div'); tmp.innerHTML = benchHtml();
+      out.replaceWith(tmp.querySelector('[data-bench-out]'));
+    }
+    function setPage(i, focus = true) {
+      primer.page = Math.max(0, Math.min(PAGES.length - 1, i));
+      renderPrimer();
+      if (focus) find('[data-primer]').focus({ preventScroll: true });
+    }
+    function turn(change) {
+      const t = primer.turner;
+      Object.assign(t, change);
+      const rows = TURNER_ROWS.length;
+      t.ri = ((t.ri % rows) + rows) % rows;
+      t.vi = ((t.vi % 6) + 6) % 6;
+      renderPrimer();
+      find('[data-primer]').focus({ preventScroll: true });
+    }
+    function openPrimer(page = primer.page, focus = true) {
+      primer.open = true;
+      find('[data-primer]').hidden = false; find('[data-card]').hidden = true; find('[data-actions]').hidden = true;
+      find('[data-action="logic"]').setAttribute('aria-pressed', 'true');
+      setPage(page, focus);
+    }
+    function closePrimer() {
+      if (!primer.open) return;
+      primer.open = false;
+      find('[data-primer]').hidden = true; find('[data-card]').hidden = false; find('[data-actions]').hidden = false;
+      find('[data-action="logic"]').setAttribute('aria-pressed', 'false');
+      live('Back to the watch.');
+      panel.focus({ preventScroll: true });
+    }
+    function togglePrimer() { if (primer.open) closePrimer(); else openPrimer(); }
+    function openTurnerAt(c, vi) {
+      const ri = TURNER_ROWS.findIndex(r => r.c === c);
+      if (ri < 0) { if (!primer.open) togglePrimer(); setPage(PAGES.findIndex(p => p.id === 'marks')); return; }
+      Object.assign(primer.turner, { ri, vi: vi < 0 ? 4 : vi, long: vi >= 0 && vi % 2 === 1, final: vi < 0 });
+      if (!primer.open) openPrimer(TURN_PAGE); else setPage(TURN_PAGE);
+    }
+    function primerKey(key, event) {
+      const page = PAGES[primer.page];
+      if (key === 'l' || key === 'Backspace') { event.preventDefault(); closePrimer(); return; }
+      if (/^[1-9]$/.test(key) && Number(key) <= PAGES.length) { event.preventDefault(); setPage(Number(key) - 1); return; }
+      if (page.demo === 'turner') {
+        const t = primer.turner;
+        const rowStep = { ArrowUp: -1, w: -1, ArrowDown: 1, s: 1 }[key], vStep = { a: -1, d: 1 }[key];
+        if (rowStep !== undefined) { event.preventDefault(); turn({ ri: t.ri + rowStep }); return; }
+        if (vStep !== undefined) { event.preventDefault(); turn({ vi: (t.vi & ~1) + 2 * vStep, final: false }); return; }
+        if (key === ' ') { event.preventDefault(); turn({ long: !t.long, final: false }); return; }
+        if (key === 'f') { event.preventDefault(); turn({ final: !t.final }); return; }
+      }
+      if (key === 'ArrowRight' || key === ']' || key === 'PageDown') { event.preventDefault(); setPage(primer.page + 1); return; }
+      if (key === 'ArrowLeft' || key === '[' || key === 'PageUp') { event.preventDefault(); setPage(primer.page - 1); return; }
+      if (key === 'Enter' || key === ' ') { event.preventDefault(); if (primer.page < PAGES.length - 1) setPage(primer.page + 1); else closePrimer(); }
+    }
+
     function render() {
       if (state.phase === 'intro') renderIntro();
       else if (state.phase === 'brief') renderBrief();
@@ -269,13 +383,23 @@ export const game = {
     function replay() {
       state = createSession(expedition, (Date.now() ^ (Math.random() * 0xffffffff)) >>> 0);
       for (const o of outcomes) for (const k of Object.keys(o)) delete o[k];
+      closePrimer();
       setChart(false); renderWhere(); renderLearned(); render();
       panel.focus();
     }
 
     panel.addEventListener('click', event => {
+      const cell = event.target instanceof Element ? event.target.closest('[data-cell]') : null;
+      if (cell && alive) { const [c, v] = cell.dataset.cell.split(':'); openTurnerAt(c, v === 'f' ? -1 : Number(v)); return; }
       const button = event.target instanceof Element ? event.target.closest('button') : null;
       if (!button || !alive) return;
+      if (button.dataset.page !== undefined) { setPage(Number(button.dataset.page)); return; }
+      if (button.dataset.turnRow !== undefined) { turn({ ri: primer.turner.ri + Number(button.dataset.turnRow) }); return; }
+      if (button.dataset.turnV !== undefined) { turn({ vi: Number(button.dataset.turnV), final: false }); return; }
+      if (button.dataset.turnLong !== undefined) { turn({ long: !primer.turner.long, final: false }); return; }
+      if (button.dataset.turnFinal !== undefined) { turn({ final: !primer.turner.final }); return; }
+      if (button.dataset.action === 'logic') { togglePrimer(); return; }
+      if (primer.open) return;
       if (button.dataset.option !== undefined) { const group = button.closest('[data-group]')?.dataset.group || 'options'; if (state.card?.kind === 'build') setRow(group); pick(group, Number(button.dataset.option)); return; }
       const action = button.dataset.action;
       if (action === 'next') advance();
@@ -283,14 +407,19 @@ export const game = {
       else if (action === 'chart') setChart(!chartOpen);
       else if (action === 'replay') replay();
     }, { signal });
+    panel.addEventListener('input', event => {
+      if (event.target instanceof HTMLInputElement && event.target.dataset.bench !== undefined) { primer.text = event.target.value; benchUpdate(); }
+    }, { signal });
     window.addEventListener('keydown', event => {
       if (!alive || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
       if (event.key === 'Escape' || /^(input|textarea|select)$/i.test(event.target?.tagName || '')) return;
       const onButton = event.target instanceof Element && panel.contains(event.target) && event.target.closest('button');
       const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
       const confirm = key === 'Enter' || key === ' ';
-      if (confirm && onButton && (onButton.dataset.option !== undefined || onButton.dataset.action)) return; // the button's own click handles it
+      if (confirm && onButton && [...onButton.attributes].some(a => /^data-(option|action|page|turn)/.test(a.name))) return; // the button's own click handles it
       if (key === 'c') { event.preventDefault(); setChart(!chartOpen); return; }
+      if (key === 'l') { event.preventDefault(); togglePrimer(); return; }
+      if (primer.open) { primerKey(key, event); return; }
       if (state.phase === 'end') { if (confirm || key === 'r') { event.preventDefault(); replay(); } return; }
       if (state.phase === 'intro' || state.phase === 'brief' || state.phase === 'feedback') { if (confirm) { event.preventDefault(); advance(); } return; }
       if (state.phase !== 'ask') return;

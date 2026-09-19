@@ -125,3 +125,74 @@ dialog:has(.ik-game) { max-width: 1040px; width: calc(100vw - 24px); max-height:
   .ik-game .ik-meters { width: 100%; justify-content: space-between; }
   .ik-game .ik-meter { min-width: 0; flex: 1; padding: 6px 8px; }
 }
+
+/* ---------- How the system works: the primer, the turner and the workbench ---------- */
+.ik-game .ik-go-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.ik-game .ik-go-row .ik-go { margin-top: 0; }
+.ik-game .ik-go-quiet { background: #ffffff18; border-color: #8fd8cf88; color: #e6f0f2; }
+.ik-game .ik-go-quiet:not(:disabled):hover { background: #ffffff2c; }
+.ik-game .ik-options button .ik-opt b.ik-mid { font-size: 21px; line-height: 1.1; letter-spacing: 1px; }
+.ik-game .ik-chart td[data-cell] { cursor: pointer; }
+.ik-game .ik-chart td[data-cell]:hover { background: #d9ece9; }
+.ik-game .ik-primer { outline: none; }
+.ik-game .ik-primer:focus-visible { box-shadow: inset 0 0 0 2px #ffd166; }
+.ik-game .ik-primer-body { max-width: none; }
+.ik-game .ik-primer-body h4 .ik-syl { color: #8fd8cf; font-weight: 500; margin-left: 10px; }
+.ik-game .ik-glyphrow { display: flex; flex-wrap: wrap; gap: 6px 4px; margin: 4px 0; }
+.ik-game .ik-glyphrow span { display: grid; justify-items: center; min-width: 46px; padding: 6px 4px 4px; border-radius: 8px; background: #ffffff14; }
+.ik-game .ik-glyphrow span b { font-size: 30px; line-height: 1; font-weight: 500; }
+.ik-game .ik-glyphrow span small { font-size: 11px; color: #bfe3dc; margin-top: 3px; white-space: nowrap; }
+.ik-game .ik-glyphrow-word span { background: #ffd16622; }
+.ik-game .ik-glyphgroup { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.ik-game .ik-glyphrow-tight { flex-wrap: nowrap; margin: 0; }
+.ik-game .ik-glyphrow-tight span { min-width: 42px; padding: 4px 3px 3px; }
+.ik-game .ik-glyphrow-tight span b { font-size: 24px; }
+.ik-game .ik-caption { font-size: 13px !important; color: #c6d9df !important; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.ik-game .ik-word { display: inline-flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+.ik-game .ik-word b { font-size: 20px; font-weight: 500; color: #fff; }
+.ik-game .ik-word small { color: #8fd8cf; font-size: 12px; }
+.ik-game .ik-turner { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 18px; align-items: center; margin: 4px 0; }
+.ik-game .ik-turner-big { display: grid; justify-items: center; align-content: center; width: 150px; height: 150px; border-radius: 16px; background: #ffd16622; box-shadow: inset 0 0 0 1px #ffd16655; }
+.ik-game .ik-turner-big b { font-size: 88px; line-height: 1; font-weight: 500; color: #fff; }
+.ik-game .ik-turner-big span { font: 600 16px system-ui, sans-serif; color: #ffd166; margin-top: 6px; }
+.ik-game .ik-turner-controls { display: grid; gap: 8px; min-width: 0; }
+.ik-game .ik-turner-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.ik-game .ik-turner-row button { min-height: 36px; padding: 6px 10px; font-size: 12px; background: #ffffffe8; }
+.ik-game .ik-turner-name { font-size: 14px; color: #e6f0f2; }
+.ik-game .ik-turner-name b { color: #ffd166; }
+.ik-game .ik-turner-cells { display: flex; gap: 6px; flex-wrap: wrap; }
+.ik-game .ik-turner-cells button { display: grid; justify-items: center; gap: 2px; min-width: 60px; padding: 6px 8px; background: #ffffffe8; }
+.ik-game .ik-turner-cells button b { font-size: 28px; line-height: 1; font-weight: 500; }
+.ik-game .ik-turner-cells button small { font-size: 11px; color: var(--ik-muted); }
+.ik-game .ik-turner button.ik-on { background: #fff4d6; border-color: #ffd166; box-shadow: 0 0 0 2px #ffd16666; }
+.ik-game .ik-turner-text { grid-column: 1 / -1; font-size: 14px !important; color: #e6f0f2 !important; border-left: 4px solid #8fd8cf; padding: 6px 12px; background: #ffffff14; border-radius: 6px; }
+.ik-game .ik-bench { display: grid; gap: 10px; }
+.ik-game .ik-bench-input { display: grid; gap: 4px; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: #8fd8cf; font-weight: 700; max-width: 360px; }
+.ik-game .ik-bench-input input { font: 500 22px/1.2 system-ui, sans-serif; padding: 8px 12px; border-radius: 9px; border: 1px solid #aec6c8; background: #fff; color: var(--ik-ink); min-width: 0; width: 100%; }
+.ik-game .ik-bench-input input:focus-visible { outline: 3px solid #ffd166; outline-offset: 2px; }
+.ik-game .ik-bench-word { font-size: 52px; line-height: 1.15; font-weight: 500; letter-spacing: 1px; word-break: break-word; min-height: 60px; }
+.ik-game .ik-tokens { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.ik-game .ik-tokens li { display: grid; grid-template-columns: 48px 1fr; gap: 10px; align-items: center; padding: 4px 8px; border-radius: 8px; background: #ffffff14; font-size: 13px; color: #e6f0f2; }
+.ik-game .ik-tokens li b { font-size: 30px; line-height: 1; font-weight: 500; text-align: center; color: #fff; }
+.ik-game .ik-tokens li.ik-fin b { font-size: 24px; color: #ffd166; }
+.ik-game .ik-tokens li.ik-raw { background: #c8412e33; }
+.ik-game .ik-tokens li.ik-raw b { font: 600 22px system-ui, sans-serif; color: #ffb4a6; }
+.ik-game .ik-tokens .ik-none { display: block; color: #b9d0d6; font-size: 13px; }
+.ik-game .ik-primer-nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+.ik-game .ik-primer-nav .ik-pages { display: flex; gap: 4px; flex-wrap: wrap; flex-basis: 100%; }
+.ik-game .ik-primer-nav .ik-quiet { margin-left: auto; }
+.ik-game .ik-primer-nav .ik-pages button { min-height: 32px; min-width: 32px; padding: 4px 8px; font-size: 12px; background: #ffffffd0; }
+.ik-game .ik-primer-nav .ik-pages button.ik-on { background: #ffd166; border-color: #946335; }
+.ik-game .ik-primer-nav button { min-height: 38px; }
+.ik-game .ik-primer-nav .ik-next { background: var(--ik-amber); border-color: #946335; color: #1b1b1b; }
+.ik-game .ik-primer-nav .ik-next:not(:disabled):hover { background: #f0b273; }
+.ik-game .ik-primer-nav .ik-quiet { background: #ffffff18; border-color: #8fd8cf88; color: #e6f0f2; }
+.ik-game .ik-primer-keys { color: #b9d0d6 !important; font-size: 11.5px !important; margin: 0 !important; }
+@media (max-width: 600px) {
+  .ik-game .ik-turner { grid-template-columns: 1fr; }
+  .ik-game .ik-turner-big { width: 120px; height: 120px; }
+  .ik-game .ik-turner-big b { font-size: 70px; }
+  .ik-game .ik-bench-word { font-size: 40px; }
+  .ik-game .ik-glyphrow span { min-width: 40px; }
+  .ik-game .ik-glyphrow span b { font-size: 26px; }
+}

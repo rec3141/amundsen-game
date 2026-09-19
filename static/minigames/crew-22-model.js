@@ -4,7 +4,7 @@ import { VOWELS, SERIES, SOUNDS, WORDS, SUFFIXES, BUILDS, ROOTS, PLACES } from '
 
 export const LEGS = [
   { id: 'syllabics', name: 'Syllabics', inuk: 'ᖃᓂᐅᔮᖅᐸᐃᑦ', roman: 'qaniujaaqpait', cards: 8, points: 4,
-    brief: 'Each shape is a consonant. Turn it and the vowel changes: ᐱ pi, ᐳ pu, ᐸ pa. A dot above makes the vowel long; a small raised shape is a consonant with no vowel. Name the sound, or find the glyph.' },
+    brief: 'Each shape is a consonant. Turn it and the vowel changes: ᐱ pi, ᐳ pu, ᐸ pa. A dot above makes the vowel long; a small raised shape is a consonant with no vowel. Name the sound, find the glyph, then spell two words.' },
   { id: 'words', name: 'Words', inuk: 'ᐅᖃᐅᓰᑦ', roman: 'uqausiit', cards: 8, points: 6,
     brief: 'Ice, sea, weather, animals, gear and greetings from a working coast. A doubled letter is held twice as long, and length changes meaning: imaq is the sea, imiq drinking water.' },
   { id: 'chart', name: 'The chart', inuk: 'ᓄᓇᙳᐊᖅ', roman: 'nunannguaq', cards: 8, points: 8,
@@ -20,29 +20,34 @@ export function rng(seed) {
 const shuffle = (list, random) => { const a = list.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const pick = (list, random) => list[Math.floor(random() * list.length)];
 
-// Romanized Inuktitut to syllabics. Consonant digraphs first (nng, ng), doubled vowels are long, a consonant
-// with no vowel after it becomes a final. Used to write built words and to keep the lexicon honest.
+// Romanized Inuktitut to syllabics, one token per glyph. Consonant digraphs first (nng, ng), a doubled vowel is
+// long, a consonant with no vowel after it becomes a final. Letters outside the Inuktitut inventory (e, o, h, b,
+// c...) pass through as `raw` so the workbench can point at them. Used to write built words, to deal the spelling
+// cards and to keep the lexicon honest.
 const BY_C = Object.fromEntries(SERIES.map(row => [row.c, row]));
-export function toSyllabics(roman) {
-  const text = roman.toLowerCase().replace(/[^a-zł&]/g, ch => ch === '&' ? 'ł' : ch === '’' ? '' : ch === ' ' ? ' ' : '');
-  let out = '', i = 0;
-  const isVowel = ch => ch === 'a' || ch === 'i' || ch === 'u';
+const isVowel = ch => ch === 'a' || ch === 'i' || ch === 'u';
+export function syllables(roman) {
+  const text = String(roman).toLowerCase().replace(/&/g, 'ł').replace(/[^a-zł ]/g, '');
+  const tokens = [];
+  let i = 0;
   while (i < text.length) {
-    if (text[i] === ' ') { out += ' '; i++; continue; }
+    if (text[i] === ' ') { tokens.push({ space: true, glyph: ' ', roman: ' ' }); i++; continue; }
     let c = '';
     if (text.startsWith('nng', i)) { c = 'nng'; i += 3; }
     else if (text.startsWith('ng', i)) { c = 'ng'; i += 2; }
     else if (!isVowel(text[i])) { c = text[i]; i++; }
     const row = BY_C[c];
-    if (!row) { out += c; continue; }
+    if (!row) { tokens.push({ raw: c, glyph: c, roman: c }); continue; }
     if (i < text.length && isVowel(text[i])) {
       const v = text[i]; i++;
       const long = text[i] === v; if (long) i++;
-      out += row.glyphs[VOWELS.indexOf(v + (long ? v : ''))];
-    } else out += row.final;
+      const vi = VOWELS.indexOf(v + (long ? v : ''));
+      tokens.push({ c, v, long, vi, glyph: row.glyphs[vi], roman: c + VOWELS[vi] });
+    } else tokens.push({ c, final: true, vi: -1, glyph: row.final, roman: c });
   }
-  return out;
+  return tokens;
 }
+export const toSyllabics = roman => syllables(roman).map(t => t.glyph).join('');
 
 // Great-circle distance in km, for naming the nearest community.
 export function kmBetween(lat0, lon0, lat1, lon1) {
@@ -98,10 +103,63 @@ function syllabicsCard(random, used) {
   }
   return null;
 }
-export function syllabicsDeck(random, n) {
+// Spelling cards: a short word in Roman letters, four syllabic spellings, one right. Each wrong one breaks a single
+// rule of the system (a glyph turned for the wrong vowel, a length dot added or dropped, a full syllable where a
+// final belongs or the reverse, another consonant's shape) so the feedback can name the rule.
+export function spellable(word) {
+  if (/[ \-']/.test(word.w)) return false;
+  const tokens = syllables(word.w);
+  return tokens.length >= 2 && tokens.length <= 4 && tokens.every(t => !t.raw) && toSyllabics(word.w) === word.s;
+}
+function mutations(tokens) {
+  const out = [];
+  const write = (list, k, token) => list.map((t, j) => j === k ? token : t);
+  const form = list => ({ glyph: list.map(t => t.glyph).join(''), roman: list.map(t => t.roman).join('') });
+  tokens.forEach((t, k) => {
+    const row = BY_C[t.c];
+    if (t.final) {
+      for (const vi of [4, 0]) out.push({ ...form(write(tokens, k, { glyph: row.glyphs[vi], roman: t.c + VOWELS[vi] })), why: `${row.glyphs[vi]} is a full syllable ${t.c + VOWELS[vi]}; a bare ${t.c} is the small raised ${row.final}` });
+      return;
+    }
+    for (const v of ['i', 'u', 'a'].filter(v => v !== t.v)) {
+      const vi = VOWELS.indexOf(v + (t.long ? v : ''));
+      out.push({ ...form(write(tokens, k, { glyph: row.glyphs[vi], roman: t.c + VOWELS[vi] })), why: `${row.glyphs[vi]} is the ${t.c || 'vowel'} shape turned for ${v}` });
+    }
+    const vi = t.long ? t.vi - 1 : t.vi + 1;
+    out.push({ ...form(write(tokens, k, { glyph: row.glyphs[vi], roman: t.c + VOWELS[vi] })), why: t.long ? `${row.glyphs[vi]} has no dot, so its vowel is short` : `the dot over ${row.glyphs[vi]} makes the vowel long` });
+    if (k === tokens.length - 1 && row.final) out.push({ ...form(write(tokens, k, { glyph: row.final, roman: t.c })), why: `${row.final} is a bare ${t.c} with no vowel` });
+    for (const other of ['p', 't', 'k', 'g', 'm', 'n', 's', 'l', 'j', 'v', 'r', 'q'].filter(c => c !== t.c && c)) {
+      const g = BY_C[other].glyphs[t.vi];
+      out.push({ ...form(write(tokens, k, { glyph: g, roman: other + VOWELS[t.vi] })), why: `${g} is the ${other} shape, not ${t.c || 'a bare vowel'}`, shape: true });
+    }
+  });
+  return out;
+}
+export function spellCard(word, random) {
+  const tokens = syllables(word.w);
+  const pool = shuffle(mutations(tokens), random);
+  const chosen = [];
+  // Rule breaks first, one look-alike shape at most, no two spellings that read the same, and only spellings whose
+  // Roman reading writes back to the same glyphs (ᐅᒥᐃᖅ would romanise as umiiq, which is ᐅᒦᖅ).
+  for (const m of [...pool.filter(m => !m.shape), ...pool.filter(m => m.shape)]) {
+    if (m.glyph === word.s || toSyllabics(m.roman) !== m.glyph || chosen.some(c => c.glyph === m.glyph) || (m.shape && chosen.some(c => c.shape))) continue;
+    chosen.push(m);
+    if (chosen.length === 3) break;
+  }
+  const correct = { glyph: word.s, roman: word.w };
+  const options = shuffle([correct, ...chosen], random);
+  const parts = tokens.map(t => t.final ? `${t.glyph} a small final ${t.c}` : `${t.glyph} ${t.roman}${t.long ? ' with the length dot' : ''}`).join(', ');
+  const note = `${word.s} is ${word.w}, ${word.en}: ${parts}. ${chosen.map(m => `${m.glyph} reads ${m.roman}: ${m.why}`).join('. ')}.`;
+  return { kind: 'spell', prompt: word.w, roman: true, promptSub: `Spell it in syllabics · ${word.en}`, options: options.map(o => ({ label: o.glyph, sub: '' })), answer: options.indexOf(correct), note, word, tokens, rows: [...new Set(tokens.map(t => t.c))] };
+}
+export function spellDeck(random, n) {
+  const pool = shuffle(WORDS.filter(spellable), random);
+  return pool.slice(0, n).map(w => spellCard(w, random));
+}
+export function syllabicsDeck(random, n, spellings = 2) {
   const used = new Set(), deck = [];
-  while (deck.length < n) { const card = syllabicsCard(random, used); if (!card) break; deck.push(card); }
-  return deck;
+  while (deck.length < n - spellings) { const card = syllabicsCard(random, used); if (!card) break; deck.push(card); }
+  return [...deck, ...spellDeck(random, spellings)];
 }
 
 export function wordDeck(random, n, exclude = new Set()) {
@@ -157,7 +215,10 @@ export function chartDeck(random, n, near) {
 export function createSession(expedition, seed) {
   const random = rng(seed);
   const near = nearestPlace(expedition?.lat, expedition?.lon);
-  const decks = [syllabicsDeck(random, LEGS[0].cards), wordDeck(random, LEGS[1].cards), chartDeck(random, LEGS[2].cards, near?.place)];
+  const syllabics = syllabicsDeck(random, LEGS[0].cards);
+  // Words spelled in leg 1 are not dealt again as vocabulary in leg 2.
+  const spelled = new Set(syllabics.filter(c => c.kind === 'spell').map(c => c.word.w));
+  const decks = [syllabics, wordDeck(random, LEGS[1].cards, spelled), chartDeck(random, LEGS[2].cards, near?.place)];
   return {
     seed, near, decks, leg: -1, queue: [], card: null, phase: 'intro',
     score: 0, streak: 0, bestStreak: 0, correct: 0, firstTry: 0, asked: 0, hints: 0,
