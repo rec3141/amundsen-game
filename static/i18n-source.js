@@ -1100,8 +1100,6 @@ export const messages = {
   "late.8cd4ec145507": "wingtips solid black, as if dipped in ink",
   "late.a8ca977388a3": "wingtips white, no black at all",
   "late.f24fa79d4c74": "working the ice edge, dropping to floes",
-  "late.38d2d86388dd": "{ const slot = d * WATCHES + w; const card = cardById(state, state.grid[slot]); const area = shipArea(state, slot); const classes = ['c11-cell']; let odds = null; if (slot",
-  "late.3b8303661382": "{ const slot = d * WATCHES; const cls = d + 1",
   "late.3d2dd67cf41e": "{value0} % of the box · {value1} run",
   "late.c189e8bc98e6": "{value0} ({value1})",
   "late.75e15cc3767a": "{value0} + {value1} → {value2} {value3}. {value4}",
@@ -1555,5 +1553,12 @@ export const messages = {
   "core.shell.launchIcePatrol": "Launch the helicopter (G) for Ice Patrol",
   "core.shell.hireRaft": "Hire the helicopter in the ship’s stores (Q) for The Raft",
   "core.shell.launchRaft": "Launch the helicopter (G) for The Raft",
-  "core.shell.ofHelicopter": " of the helicopter"
+  "core.shell.ofHelicopter": " of the helicopter",
+  "crew14.canvas.bow": "BOW",
+  "crew14.canvas.stern": "STERN",
+  "crew14.canvas.eye": "eye",
+  "crew14.status.open": "On the bridge wing, open water. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+  "crew14.status.ice": "On the bridge wing, pack edge. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+  "crew14.status.coast": "On the bridge wing, bird cliffs. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+  "crew14.status.sound": "On the bridge wing, fjord head. Bearings are relative to the bow: 000 ahead, 090 to starboard."
 };

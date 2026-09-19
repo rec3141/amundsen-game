@@ -241,6 +241,13 @@ window.UW_UI_CATALOG = {
         "core.shell.launchIcePatrol": "Launch the helicopter (G) for Ice Patrol",
         "core.shell.launchRaft": "Launch the helicopter (G) for The Raft",
         "core.shell.ofHelicopter": " of the helicopter",
+        "crew14.canvas.bow": "BOW",
+        "crew14.canvas.eye": "eye",
+        "crew14.canvas.stern": "STERN",
+        "crew14.status.coast": "On the bridge wing, bird cliffs. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+        "crew14.status.ice": "On the bridge wing, pack edge. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+        "crew14.status.open": "On the bridge wing, open water. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+        "crew14.status.sound": "On the bridge wing, fjord head. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
         "crew2.aria": "Old ice survey",
         "crew2.back": "Back on the image. Add marks, then resume.",
         "crew2.begin": "Begin survey",
@@ -710,7 +717,6 @@ window.UW_UI_CATALOG = {
         "late.385015bc7d6f": "Plan box",
         "late.38aac7d79ba3": "Any house, snow or otherwise. Iglulik is \"the place with houses\"; sod-and-whalebone houses stood there for a thousand years.",
         "late.38ca488bc454": "{value0} m under the keel on {value1} at {value2}°N {value3}°W.",
-        "late.38d2d86388dd": "{ const slot = d * WATCHES + w; const card = cardById(state, state.grid[slot]); const area = shipArea(state, slot); const classes = ['c11-cell']; let odds = null; if (slot",
         "late.38d5a3c0b397": "{value0} has no dot, so its vowel is short",
         "late.38ee8f494b66": "brig, Second Grinnell Expedition",
         "late.38f64bec0529": "Open water that stays open in winter, kept clear by currents or wind. The oceanographer’s \"polynya\" is a Russian loan; this is the local name.",
@@ -732,7 +738,6 @@ window.UW_UI_CATALOG = {
         "late.3b3ad2945601": "Tube-noses and kittiwakes work the swell; whales, harp seals and the odd pod of narwhal pass through.",
         "late.3b52d65543e4": "grey calves alongside",
         "late.3b82384bdcae": "{value0} is afloat at {value1} cm and drifting.",
-        "late.3b8303661382": "{ const slot = d * WATCHES; const cls = d + 1",
         "late.3b8c9dd42d2b": "The same Windward that carried Peary north in 1898, wrecked on the Carey Islands in June 1907; Captain Cooney and his crew sailed the boats to Pond Inlet.",
         "late.3be0ec8473cc": "Inuk is one person; Inuuk two; Inuit three or more. Inuktitut means \"in the manner of an Inuk\".",
         "late.3c1cf57c3393": "Beluga and narwhal summer in the deep sounds and fjords; watch for pale backs and a tusk between the waves.",
@@ -1802,6 +1807,13 @@ window.UW_UI_CATALOG = {
         "core.shell.launchIcePatrol": "Décollez en hélicoptère (G) pour la Patrouille des glaces",
         "core.shell.launchRaft": "Décollez en hélicoptère (G) pour Le radeau",
         "core.shell.ofHelicopter": " de l’hélicoptère",
+        "crew14.canvas.bow": "PROUE",
+        "crew14.canvas.eye": "œil nu",
+        "crew14.canvas.stern": "POUPE",
+        "crew14.status.coast": "Sur l’aile de la passerelle, près des falaises à oiseaux. Les relèvements sont relatifs à la proue : 000 devant, 090 à tribord.",
+        "crew14.status.ice": "Sur l’aile de la passerelle, à la bordure de la banquise. Les relèvements sont relatifs à la proue : 000 devant, 090 à tribord.",
+        "crew14.status.open": "Sur l’aile de la passerelle, en pleine eau. Les relèvements sont relatifs à la proue : 000 devant, 090 à tribord.",
+        "crew14.status.sound": "Sur l’aile de la passerelle, à la tête du fjord. Les relèvements sont relatifs à la proue : 000 devant, 090 à tribord.",
         "crew2.aria": "Relevé de la vieille glace",
         "crew2.back": "De retour à l'image. Ajoutez des repères, puis reprenez.",
         "crew2.begin": "Commencer le relevé",
@@ -2271,7 +2283,6 @@ window.UW_UI_CATALOG = {
         "late.385015bc7d6f": "Boîte de plan",
         "late.38aac7d79ba3": "Toute maison, neige ou autre. Iglulik est « l'endroit avec des maisons » ; les maisons en gazon et en os de baleine y sont restées pendant mille ans.",
         "late.38ca488bc454": "{value0} m sous la quille sur {value1} à {value2}°N {value3}°O.",
-        "late.38d2d86388dd": "{ const slot = d * WATCHES + w ; const card = cardById(state, state.grid[slot]) ; const area = shipArea(state, slot) ; const classes = ['c11-cell'] ; let odds = null ; if (slot",
         "late.38d5a3c0b397": "{value0} n'a pas de point, donc sa voyelle est courte",
         "late.38ee8f494b66": "brick, deuxième expédition Grinnell",
         "late.38f64bec0529": "Eau libre qui reste ouverte en hiver, maintenue dégagée par les courants ou le vent. La « polynie » de l'océanographe est un prêt russe ; c'est le nom local.",
@@ -2293,7 +2304,6 @@ window.UW_UI_CATALOG = {
         "late.3b3ad2945601": "Les nez tubulaires et les mouettes minettes travaillent la houle ; les baleines, les phoques du Groenland et l'étrange gousse de narval passent à travers.",
         "late.3b52d65543e4": "veaux gris aux côtés",
         "late.3b82384bdcae": "{value0} est à flot à {value1} cm et dérive.",
-        "late.3b8303661382": "{ const slot = d * MONTRES ; const cls = d + 1",
         "late.3b8c9dd42d2b": "Le même Windward qui transporta Peary vers le nord en 1898 fit naufrage sur les îles Carey en juin 1907 ; le capitaine Cooney et son équipage firent naviguer les bateaux jusqu'à Pond Inlet.",
         "late.3be0ec8473cc": "Inuk est une personne ; Inuuk deux ; Inuit trois ou plus. Inuktitut signifie « à la manière d'un Inuk ».",
         "late.3c1cf57c3393": "L'été des bélugas et des narvals dans les sons profonds et les fjords ; surveillez les dos pâles et une défense entre les vagues.",
@@ -4070,6 +4080,34 @@ window.UW_UI_CATALOG = {
         "core.shell.ofHelicopter": {
           "profile": "editorial-fr-ca-v2",
           "sourceSha256": "3c9e572674cf39c91bbfdc2b4f8548cdd24444398301cfd13dbb01a96e3600e7"
+        },
+        "crew14.canvas.bow": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "76a3f4917fb912a6d193971d76fe685a8ab307e501244f2d96f9f7ac1a70dade"
+        },
+        "crew14.canvas.eye": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7de04c245d20cda8af05addf5346400b3b49ad2d410fde43226a2053a79cd722"
+        },
+        "crew14.canvas.stern": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "7f56db8b3f201e183bb7ba1db2b57779af8912a8664e1c3b42937c15d37d9b7c"
+        },
+        "crew14.status.coast": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "d8c9b9c1c69cc98105841f403ba63a23ef20173ea95ac1335491de606d4bcc6f"
+        },
+        "crew14.status.ice": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "fbcbf26d1d59d48bb1e50467ac87cca44025fca17e8142e26930e540c9460b6a"
+        },
+        "crew14.status.open": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "1d81ecfc2244889f57e46f48c15747741822304179c453ecda05c09761265e70"
+        },
+        "crew14.status.sound": {
+          "profile": "editorial-fr-ca-v2",
+          "sourceSha256": "dfa5efd6d5d51ee869ca834aeac3f24e075a550ca4a6d1dd70f234dbe6b877c6"
         },
         "crew2.aria": {
           "profile": "editorial-fr-ca-v2",
@@ -5947,10 +5985,6 @@ window.UW_UI_CATALOG = {
           "profile": "editorial-fr-ca-v2",
           "sourceSha256": "285f055a01d354e563fd2063d26858a00660a63b1a8b09b3d88a97cd9094d194"
         },
-        "late.38d2d86388dd": {
-          "profile": "editorial-fr-ca-v2",
-          "sourceSha256": "b9f4bcda509c4d11b28579f45471f7d65335f3db4a3e9988b89450d1cba4e596"
-        },
         "late.38d5a3c0b397": {
           "profile": "editorial-fr-ca-v2",
           "sourceSha256": "78c61dad6474aeba8101b5056b458a46da55d7f1da604b1e74b3a1f1321bc3fe"
@@ -6034,10 +6068,6 @@ window.UW_UI_CATALOG = {
         "late.3b82384bdcae": {
           "profile": "editorial-fr-ca-v2",
           "sourceSha256": "6e38a417121c10a2056631b619d45c201a33adaabaa3aee6e31adeea1ed68f24"
-        },
-        "late.3b8303661382": {
-          "profile": "editorial-fr-ca-v2",
-          "sourceSha256": "05b24c7130d00006ea1d8c91a950f72a8836ffc844e55333b7e63d3c6b65a6fc"
         },
         "late.3b8c9dd42d2b": {
           "profile": "editorial-fr-ca-v2",

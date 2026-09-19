@@ -10,9 +10,11 @@
     if (!message.includes('{')) sourceKeys.set(message, key);
     else {
       const names = [], escaped = message.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\\\{([a-zA-Z][a-zA-Z0-9_]*)\\\}/g, (_, name) => { names.push(name); return '(.+?)'; });
-      sourcePatterns.push({key, names, pattern:new RegExp(`^${escaped}$`, 's')});
+      sourcePatterns.push({key, names, literal:message.replace(/\{[a-zA-Z][a-zA-Z0-9_]*\}/g, '').length, pattern:new RegExp(`^${escaped}$`, 's')});
     }
   }
+  // Prefer the most specific template when generic measurement patterns also match.
+  sourcePatterns.sort((a, b) => b.literal - a.literal || a.names.length - b.names.length);
   const supported = value => typeof value === 'string' && has(catalog.locales, value);
   let stored;
   try { stored = JSON.parse(localStorage.getItem('uw:locale')); } catch (_) {}

@@ -5508,16 +5508,6 @@
       "text": "travailler le bord de la glace, tomber sur les floes",
       "status": "translated-expansion"
     },
-    "late.38d2d86388dd": {
-      "source": "{ const slot = d * WATCHES + w; const card = cardById(state, state.grid[slot]); const area = shipArea(state, slot); const classes = ['c11-cell']; let odds = null; if (slot",
-      "text": "{ const slot = d * WATCHES + w ; const card = cardById(state, state.grid[slot]) ; const area = shipArea(state, slot) ; const classes = ['c11-cell'] ; let odds = null ; if (slot",
-      "status": "translated-expansion"
-    },
-    "late.3b8303661382": {
-      "source": "{ const slot = d * WATCHES; const cls = d + 1",
-      "text": "{ const slot = d * MONTRES ; const cls = d + 1",
-      "status": "translated-expansion"
-    },
     "late.3d2dd67cf41e": {
       "source": "{value0} % of the box · {value1} run",
       "text": "{value0} % de la boîte · {value1} run",
@@ -7786,6 +7776,41 @@
     "core.shell.ofHelicopter": {
       "source": " of the helicopter",
       "text": " de l’hélicoptère",
+      "status": "translated-expansion"
+    },
+    "crew14.canvas.bow": {
+      "source": "BOW",
+      "text": "PROUE",
+      "status": "translated-expansion"
+    },
+    "crew14.canvas.stern": {
+      "source": "STERN",
+      "text": "POUPE",
+      "status": "translated-expansion"
+    },
+    "crew14.canvas.eye": {
+      "source": "eye",
+      "text": "œil nu",
+      "status": "translated-expansion"
+    },
+    "crew14.status.open": {
+      "source": "On the bridge wing, open water. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+      "text": "Sur l’aile de la passerelle, en pleine eau. Les relèvements sont relatifs à la proue : 000 devant, 090 à tribord.",
+      "status": "translated-expansion"
+    },
+    "crew14.status.ice": {
+      "source": "On the bridge wing, pack edge. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+      "text": "Sur l’aile de la passerelle, à la bordure de la banquise. Les relèvements sont relatifs à la proue : 000 devant, 090 à tribord.",
+      "status": "translated-expansion"
+    },
+    "crew14.status.coast": {
+      "source": "On the bridge wing, bird cliffs. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+      "text": "Sur l’aile de la passerelle, près des falaises à oiseaux. Les relèvements sont relatifs à la proue : 000 devant, 090 à tribord.",
+      "status": "translated-expansion"
+    },
+    "crew14.status.sound": {
+      "source": "On the bridge wing, fjord head. Bearings are relative to the bow: 000 ahead, 090 to starboard.",
+      "text": "Sur l’aile de la passerelle, à la tête du fjord. Les relèvements sont relatifs à la proue : 000 devant, 090 à tribord.",
       "status": "translated-expansion"
     }
   }

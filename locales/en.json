@@ -3302,12 +3302,6 @@
     "late.f24fa79d4c74": {
       "text": "working the ice edge, dropping to floes"
     },
-    "late.38d2d86388dd": {
-      "text": "{ const slot = d * WATCHES + w; const card = cardById(state, state.grid[slot]); const area = shipArea(state, slot); const classes = ['c11-cell']; let odds = null; if (slot"
-    },
-    "late.3b8303661382": {
-      "text": "{ const slot = d * WATCHES; const cls = d + 1"
-    },
     "late.3d2dd67cf41e": {
       "text": "{value0} % of the box · {value1} run"
     },
@@ -4669,6 +4663,27 @@
     },
     "core.shell.ofHelicopter": {
       "text": " of the helicopter"
+    },
+    "crew14.canvas.bow": {
+      "text": "BOW"
+    },
+    "crew14.canvas.stern": {
+      "text": "STERN"
+    },
+    "crew14.canvas.eye": {
+      "text": "eye"
+    },
+    "crew14.status.open": {
+      "text": "On the bridge wing, open water. Bearings are relative to the bow: 000 ahead, 090 to starboard."
+    },
+    "crew14.status.ice": {
+      "text": "On the bridge wing, pack edge. Bearings are relative to the bow: 000 ahead, 090 to starboard."
+    },
+    "crew14.status.coast": {
+      "text": "On the bridge wing, bird cliffs. Bearings are relative to the bow: 000 ahead, 090 to starboard."
+    },
+    "crew14.status.sound": {
+      "text": "On the bridge wing, fjord head. Bearings are relative to the bow: 000 ahead, 090 to starboard."
     }
   }
 }
