@@ -66,7 +66,9 @@ The Python server is intended for a trusted ship intranet, not public hosting.
 ## Play and collaborate
 
 - Click the chart to sail, or steer with WASD/arrows. Sailing uncovers the
-  captain's chart and draws the voyage track.
+  captain's chart and draws the voyage track. The sector uses 2 km cells from
+  local GEBCO and shoreline data, rendered in tiles at the current screen scale.
+  Older voyage saves migrate automatically, including mapped swaths.
 - Launch operations anywhere using the sidebar buttons or keyboard shortcuts.
   **C** opens the CTD notebook; **I** opens the ice-thickness transect; **3** opens
   Inuktitut, including the interactive syllabics guide (**L** inside the game).
