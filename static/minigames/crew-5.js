@@ -1,4 +1,5 @@
 import { COLUMNS, ROWS, SHIP_HOURS, SEEP_BONUS, CORERS, LAYERS, ITEMS, createSurvey, score, unlocked, affordable, site as siteAt, penetration, select, chooseCorer, core, finish, recordPoints, formatAge, label } from './crew-5-seabed.js';
+import { t } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-5.css', import.meta.url).href;
 const CELL = 50;
@@ -11,7 +12,7 @@ const smtzClass = cm => cm === null ? 'sulfate' : cm < 40 ? 'hot' : cm < 200 ? '
 const smtzText = cm => cm === null ? 'sulfate to the base' : `SMTZ at ${cm} cm`;
 
 export const game = {
-  title: 'Seep-Seeker',
+  get title() { return t('crew5.title'); },
   mount(root, { complete, expedition }) {
     // The same chart position over the same voyage gives the same seafloor; the survey moves on with each operation logged.
     const position = Number.isFinite(expedition?.x) && Number.isFinite(expedition?.y) ? `${Math.round(expedition.x * 1000)}:${Math.round(expedition.y * 1000)}` : Date.now();
@@ -281,6 +282,7 @@ export const game = {
     }
     window.addEventListener('keydown', key, { capture: true, signal: events.signal });
     window.addEventListener('keyup', key, { capture: true, signal: events.signal });
+    globalThis.addEventListener?.('uw:localechange', () => { gameEl.lang = globalThis.UWI18n?.locale || 'en'; render(); renderColumn(shown); }, { signal: events.signal });
     render();
     return () => {
       active = false;

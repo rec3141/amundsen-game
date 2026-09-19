@@ -1,4 +1,5 @@
 import { PLATFORMS, CLASSES, renderScene, mulberry32, hashSeed, WIDTH, HEIGHT } from './crew-3-scenes.js';
+import { t } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-3.css', import.meta.url).href;
 const chartFile = new URL('../data/crew-3-ice-charts.json', import.meta.url).href;
@@ -22,7 +23,7 @@ function makeDeck(rng, oldShare) {
 }
 
 export const game = {
-  title: 'Cliceify',
+  get title() { return t('crew3.title'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const rng = mulberry32(hashSeed(`${expedition?.x ?? 0}:${expedition?.y ?? 0}:${Date.now()}`));
@@ -329,6 +330,7 @@ export const game = {
       proceed();
     }, { capture: true, signal: events.signal });
 
+    globalThis.addEventListener?.('uw:localechange', () => { view.lang = globalThis.UWI18n?.locale || 'en'; render(); }, { signal: events.signal });
     intro();
     return () => {
       active = false;

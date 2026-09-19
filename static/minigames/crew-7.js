@@ -2,6 +2,7 @@ import {
   WORLD, SHIP, ENDURANCE_S, LOW_FUEL_S, SPOT_RADIUS, SEARCH_SPEED, DECK_RADIUS, RETURN_BONUS, SWEEP_BONUS,
   createSearch, seededRandom, step, grab, grabbable, land, canLand, found, score, speed, distanceToDeck,
 } from './crew-7-world.js';
+import { t } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-7.css', import.meta.url).href;
 const chartData = new URL('../data/crew-7-old-ice.json', import.meta.url).href;
@@ -24,7 +25,7 @@ async function loadChart() {
 }
 
 export const game = {
-  title: "Find Clement's stuff",
+  get title() { return t('crew7.title'); },
   mount(root, { complete, expedition }) {
     const position = Number.isFinite(expedition?.x) && Number.isFinite(expedition?.y) ? `search:${Math.round(expedition.x * 1000)}:${Math.round(expedition.y * 1000)}` : null;
     const seed = `${expedition?.seed ?? expedition?.id ?? position ?? 'clement'}:${expedition?.operations ?? 0}:${Date.now() % 100000}`;
@@ -427,6 +428,7 @@ export const game = {
       if (hold) held[hold] = false;
     }, { capture: true, signal });
     window.addEventListener('blur', () => Object.keys(held).forEach(k => { held[k] = false; }), { signal });
+    globalThis.addEventListener?.('uw:localechange', () => { gameEl.lang = globalThis.UWI18n?.locale || 'en'; renderPanel(); draw(); }, { signal });
     fit();
     renderPanel();
     draw();
