@@ -1,3 +1,5 @@
+// Chart references: https://tusaalanga.ca/node/2516 and https://ajohns.artsci.utoronto.ca/inuit/syllabics.htm
+// Regional history: https://itk.ca/unification-writing-system/ and https://itk.ca/projects/inuktut-qaliujaaqpait/
 // The internal logic of qaniujaaqpait, the syllabics Nunavut writes Inuktitut in, as a walkthrough the game shows
 // on request: one page per rule, each demonstrated with the glyphs themselves. Two pages are interactive: the
 // turner (one shape in every attitude) and the workbench (Roman letters written out glyph by glyph).
@@ -60,16 +62,16 @@ export const PAGES = [
   },
   {
     id: 'marks', title: 'Marks make new rows',
-    lead: 'Inuktitut has sounds Cree does not, and the chart grew by marking existing shapes rather than inventing new ones. q is the r shape with a dot. ng is a small n fused to the g shape. The rare ł, a breathy l, is the l shape with a stroke.',
-    html: '<div class="ik-glyphgroup">' + ['r', 'q', 'g', 'ng', 'nng', 'l', 'ł'].map(c => glyphRow([[BY_C[c].glyphs[0], c + 'i'], [BY_C[c].glyphs[2], c + 'u'], [BY_C[c].glyphs[4], c + 'a'], [BY_C[c].final, c]], 'ik-glyphrow-tight')).join('') + '</div><p class="ik-caption">r and q; g, ng and the doubled nng; l and ł.</p>',
-    body: ['Two dots can sit on one glyph and mean different things: the q dot is part of the shape, the length dot sits above it. ᖃ qa, ᖄ qaa. In ᐅᒥᖕᒪᒃ umingmak, muskox, the ᖕ is a final ng before the m: a small n and a small g together.'],
+    lead: 'Inuktitut has sounds Cree does not, and the chart grew by marking existing shapes rather than inventing new ones. The q series combines a small r with the k series: ᕐ + ᑲ becomes ᖃ qa. Compare the related g, ng and nng rows below, and the l and ł rows.',
+    html: '<div class="ik-glyphgroup">' + ['k', 'q', 'g', 'ng', 'nng', 'l', 'ł'].map(c => glyphRow([[BY_C[c].glyphs[0], c + 'i'], [BY_C[c].glyphs[2], c + 'u'], [BY_C[c].glyphs[4], c + 'a'], [BY_C[c].final, c]], 'ik-glyphrow-tight')).join('') + '</div><p class="ik-caption">k and q; g, ng and the doubled nng; l and ł.</p>',
+    body: ['The small r in q is part of the consonant shape; a dot above the syllable marks vowel length. ᖃ qa, ᖄ qaa. In ᐅᒥᖕᒪᒃ umingmak, muskox, the ᖕ is a final ng before the m: a small n and a small g together.'],
   },
   {
     id: 'origin', title: 'Where the chart came from',
-    lead: 'James Evans, a Methodist missionary at Norway House, cut the first syllabics for Cree in 1840, taking the turned shape from Pitman-style shorthand and the consonant-plus-vowel principle from Devanagari. Anglican missionaries carried it to Inuktitut at Little Whale River in 1855, and Edmund Peck took it up the Hudson Bay and Baffin coasts from 1876.',
+    lead: 'In the 1850s, John Horden and Edwin Watkins adapted Cree syllabics for Inuktitut. Edmund Peck translated biblical materials into syllabics in 1876.',
     html: `<p class="ik-caption">${word('ᓄᓇᕗᑦ', 'Nunavut', 'our land, 1999')} ${word('ᓄᓇᕕᒃ', 'Nunavik', 'four-column chart')} ${word('ᖃᓂᐅᔮᖅᐸᐃᑦ', 'qaniujaaqpait', 'syllabics')} ${word('ᖃᓕᐅᔮᖅᐸᐃᑦ', 'qaliujaaqpait', 'Roman letters')}</p>`,
-    body: ['It spread from camp to camp faster than any school, because a reader could teach it in an afternoon: fifteen shapes, three turns, a dot and a small form. The Inuit Cultural Institute standardised the chart in 1976, dropping the ai column and fixing the dual orthography, syllabics and Roman, that Nunavut still uses. The block has been in Unicode as Unified Canadian Aboriginal Syllabics since 1999, which is why the names on the game\'s chart are text rather than pictures.'],
-    small: 'West of the Kitikmeot, Inuinnaqtun and Inuvialuktun are written in Roman letters only, as is Greenlandic. Inuit Tapiriit Kanatami adopted a single Roman orthography, Inuktut Qaliujaaqpait, in 2019 for use across Inuit Nunangat alongside syllabics.',
+    body: ['The Inuit Cultural Institute introduced a standard with both syllabic and Roman forms in 1976. Regional writing traditions remain distinct: Nunavik reintroduced its fourth vowel column in 2000.'],
+    small: 'Inuit Tapiriit Kanatami adopted Inuktut Qaliujaaqpait, a unified Roman orthography, in 2019. It does not replace syllabics; regional writing systems continue alongside it.',
   },
   {
     id: 'workbench', title: 'Try it', demo: 'workbench',
