@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generated": "2026-09-18T12:16:09+00:00",
+ "generated": "2026-09-19T02:39:35+00:00",
  "generator": "tools/pull_world.py",
  "projection": {
   "name": "WGS84 polar stereographic, north",
@@ -11,9 +11,9 @@
   "f": 0.0033528106647474805
  },
  "grid": {
-  "cols": 3080,
-  "rows": 1560,
-  "resolution": 3000,
+  "cols": 4620,
+  "rows": 2340,
+  "resolution": 2000,
   "xmin": -4620000,
   "ymin": -4620000,
   "xmax": 4620000,
@@ -30,9 +30,9 @@
  "data": {
   "file": "world.bin.gz",
   "compression": "gzip",
-  "bytes": 5720714,
-  "rawBytes": 24024000,
-  "sha256": "0e4c0aeecb3f090d7af5507a2ecb5fc8a286a090643674ac505fc67fb8bf6c9e",
+  "bytes": 12088338,
+  "rawBytes": 54054000,
+  "sha256": "94ee23056a6beb77f42630d8685b88545dd6ac89f4c0aead7069ad88d100bbf3",
   "byteOrder": "little-endian",
   "layers": [
    {
@@ -40,28 +40,28 @@
     "dtype": "int16",
     "encoding": "row-delta",
     "offset": 0,
-    "bytes": 9609600
+    "bytes": 21621600
    },
    {
     "name": "iceConcentration",
     "dtype": "uint8",
     "encoding": "raw",
-    "offset": 9609600,
-    "bytes": 4804800
+    "offset": 21621600,
+    "bytes": 10810800
    },
    {
     "name": "iceClass",
     "dtype": "uint8",
     "encoding": "raw",
-    "offset": 14414400,
-    "bytes": 4804800
+    "offset": 32432400,
+    "bytes": 10810800
    },
    {
     "name": "glacier",
     "dtype": "uint8",
     "encoding": "raw",
-    "offset": 19219200,
-    "bytes": 4804800
+    "offset": 43243200,
+    "bytes": 10810800
    }
   ]
  },
@@ -251,6 +251,12 @@
    "pop": 66
   },
   {
+   "name": "Albert Bridge",
+   "lon": -60.0595,
+   "lat": 46.0165,
+   "pop": 1285
+  },
+  {
    "name": "Alberton",
    "lon": -64.0654,
    "lat": 46.8169,
@@ -278,6 +284,12 @@
    "name": "Alexandra Fiord",
    "lon": -75.7966,
    "lat": 78.8852,
+   "pop": 0
+  },
+  {
+   "name": "Alice Arm",
+   "lon": -129.4872,
+   "lat": 55.4827,
    "pop": 0
   },
   {
@@ -339,6 +351,12 @@
    "lon": -65.0815,
    "lat": 47.8283,
    "pop": 338
+  },
+  {
+   "name": "Antigonish",
+   "lon": -61.9986,
+   "lat": 45.6168,
+   "pop": 5003
   },
   {
    "name": "Apex",
@@ -483,6 +501,12 @@
    "lon": -64.9536,
    "lat": 47.0523,
    "pop": 1319
+  },
+  {
+   "name": "Baie Verte",
+   "lon": -56.1815,
+   "lat": 49.9333,
+   "pop": 1311
   },
   {
    "name": "Baie Verte",
@@ -1163,6 +1187,12 @@
    "pop": 159
   },
   {
+   "name": "Central Kings",
+   "lon": -62.4986,
+   "lat": 46.3168,
+   "pop": 386
+  },
+  {
    "name": "Central Saanich",
    "lon": -123.4193,
    "lat": 48.5663,
@@ -1251,6 +1281,12 @@
    "lon": -64.656,
    "lat": 47.7459,
    "pop": 462
+  },
+  {
+   "name": "Chisasibi",
+   "lon": -78.9,
+   "lat": 53.7833,
+   "pop": 5397
   },
   {
    "name": "Churchill",
@@ -1383,6 +1419,18 @@
    "lon": -55.8647,
    "lat": 51.6001,
    "pop": 118
+  },
+  {
+   "name": "Coombs",
+   "lon": -124.4195,
+   "lat": 49.2996,
+   "pop": 1612
+  },
+  {
+   "name": "Coquitlam",
+   "lon": -122.7822,
+   "lat": 49.2846,
+   "pop": 148625
   },
   {
    "name": "Coral Harbour",
@@ -1577,6 +1625,12 @@
    "pop": 532
   },
   {
+   "name": "Dorchester",
+   "lon": -64.5079,
+   "lat": 45.9016,
+   "pop": 906
+  },
+  {
    "name": "Doting Cove",
    "lon": -53.9481,
    "lat": 49.4499,
@@ -1623,6 +1677,12 @@
    "lon": -123.6836,
    "lat": 48.3664,
    "pop": 1500
+  },
+  {
+   "name": "East Wellington",
+   "lon": -124.0174,
+   "lat": 49.1739,
+   "pop": 1444
   },
   {
    "name": "Eastern Kings",
@@ -2327,6 +2387,12 @@
    "pop": 225
   },
   {
+   "name": "Holberg",
+   "lon": -128.0099,
+   "lat": 50.6547,
+   "pop": 15
+  },
+  {
    "name": "Holyrood",
    "lon": -53.1314,
    "lat": 47.3832,
@@ -2783,6 +2849,12 @@
    "pop": 0
   },
   {
+   "name": "Kensington",
+   "lon": -63.6487,
+   "lat": 46.4334,
+   "pop": 1619
+  },
+  {
    "name": "Kiatak",
    "lon": -71.4667,
    "lat": 77.35,
@@ -2847,6 +2919,12 @@
    "lon": -128.6534,
    "lat": 54.0524,
    "pop": 8987
+  },
+  {
+   "name": "Kitsault",
+   "lon": -129.4769,
+   "lat": 55.4584,
+   "pop": 0
   },
   {
    "name": "Kitsissuarsuit",
@@ -3207,6 +3285,12 @@
    "lon": -124.7607,
    "lat": 49.9809,
    "pop": 292
+  },
+  {
+   "name": "Lyons Brook",
+   "lon": -62.7874,
+   "lat": 45.6685,
+   "pop": 824
   },
   {
    "name": "Maarmorilik",
@@ -4847,6 +4931,12 @@
    "pop": 239
   },
   {
+   "name": "River Springs",
+   "lon": -122.7667,
+   "lat": 49.2833,
+   "pop": 2325
+  },
+  {
    "name": "River of Ponds",
    "lon": -57.378,
    "lat": 50.535,
@@ -4955,12 +5045,6 @@
    "pop": 2963
   },
   {
-   "name": "Saint Irénée and Alderwood",
-   "lon": -64.9869,
-   "lat": 47.4989,
-   "pop": 847
-  },
-  {
    "name": "Saint-Alexandre",
    "lon": -66.8615,
    "lat": 50.0254,
@@ -4983,6 +5067,18 @@
    "lon": -65.1731,
    "lat": 47.7693,
    "pop": 615
+  },
+  {
+   "name": "Saint-Mathieu-de-Rioux",
+   "lon": -68.9869,
+   "lat": 48.1832,
+   "pop": 672
+  },
+  {
+   "name": "Saint-Pascal",
+   "lon": -69.803,
+   "lat": 47.5181,
+   "pop": 3490
   },
   {
    "name": "Saint-Pons",
@@ -5187,12 +5283,6 @@
    "lon": -36.3798,
    "lat": 65.9073,
    "pop": 209
-  },
-  {
-   "name": "Shawnigan Lake",
-   "lon": -123.6449,
-   "lat": 48.6506,
-   "pop": 3908
   },
   {
    "name": "Shearwater",
@@ -5507,12 +5597,6 @@
    "pop": 0
   },
   {
-   "name": "Steady Brook",
-   "lon": -57.825,
-   "lat": 48.954,
-   "pop": 416
-  },
-  {
    "name": "Stephenville",
    "lon": -58.5818,
    "lat": 48.55,
@@ -5573,6 +5657,12 @@
    "pop": 267
   },
   {
+   "name": "Sunnyside",
+   "lon": -53.9148,
+   "lat": 47.8555,
+   "pop": 407
+  },
+  {
    "name": "Sunset Beach",
    "lon": -123.2484,
    "lat": 49.3998,
@@ -5625,6 +5715,12 @@
    "lon": -69.7167,
    "lat": 48.15,
    "pop": 858
+  },
+  {
+   "name": "Tahsis",
+   "lon": -126.6549,
+   "lat": 49.9253,
+   "pop": 393
   },
   {
    "name": "Taloyoak",
@@ -5711,6 +5807,12 @@
    "pop": 7883
   },
   {
+   "name": "Tide Head",
+   "lon": -66.7783,
+   "lat": 47.9853,
+   "pop": 951
+  },
+  {
    "name": "Tidnish",
    "lon": -64.0095,
    "lat": 45.9937,
@@ -5787,6 +5889,12 @@
    "lon": -125.9074,
    "lat": 49.1531,
    "pop": 2516
+  },
+  {
+   "name": "Tompkins",
+   "lon": -59.2153,
+   "lat": 47.8,
+   "pop": 114
   },
   {
    "name": "Toqqusaq",
@@ -6245,6 +6353,12 @@
    "pop": 0
   },
   {
+   "name": "Winterland",
+   "lon": -55.2983,
+   "lat": 47.1499,
+   "pop": 398
+  },
+  {
    "name": "Winterton",
    "lon": -53.328,
    "lat": 47.956,
@@ -6301,146 +6415,98 @@
  ],
  "shipTrack": {
   "span": {
-   "start": "2025-09-18T12:10:01+00:00",
-   "end": "2026-09-18T12:07:00+00:00"
+   "start": "2025-09-19T02:30:00+00:00",
+   "end": "2026-09-19T02:12:32.135416832+00:00"
   },
   "spacing": 8000,
   "lonLat": [
    [
-    -82.701,
-    80.446
+    -79.748,
+    79.677
    ],
    [
-    -83.062,
-    80.395
+    -80.134,
+    79.652
    ],
    [
-    -83.473,
-    80.337
+    -79.753,
+    79.69
    ],
    [
-    -83.396,
-    80.253
+    -80.173,
+    79.662
    ],
    [
-    -83.097,
-    80.18
+    -80.645,
+    79.633
    ],
    [
-    -82.78,
-    80.109
+    -81.12,
+    79.65
    ],
    [
-    -82.46,
-    80.038
+    -81.563,
+    79.692
    ],
    [
-    -82.205,
-    79.96
+    -81.823,
+    79.765
    ],
    [
-    -81.944,
-    79.883
+    -81.857,
+    79.852
    ],
    [
-    -81.835,
-    79.797
+    -82.074,
+    79.93
    ],
    [
-    -81.699,
-    79.713
+    -82.357,
+    80.004
    ],
    [
-    -81.281,
-    79.665
+    -82.645,
+    80.079
    ],
    [
-    -80.818,
-    79.634
+    -82.928,
+    80.152
    ],
    [
-    -80.35,
-    79.653
+    -83.284,
+    80.218
    ],
    [
-    -79.863,
-    79.673
+    -83.49,
+    80.287
    ],
    [
-    -80.416,
-    79.649
+    -83.963,
+    80.326
    ],
    [
-    -80.885,
-    79.636
+    -84.445,
+    80.366
    ],
    [
-    -81.342,
-    79.67
+    -84.93,
+    80.405
    ],
    [
-    -81.74,
-    79.723
+    -85.421,
+    80.442
    ],
    [
-    -81.858,
-    79.809
-   ],
-   [
-    -81.928,
-    79.88
-   ],
-   [
-    -82.226,
-    79.966
-   ],
-   [
-    -82.492,
-    80.043
-   ],
-   [
-    -82.758,
-    80.118
-   ],
-   [
-    -83.106,
-    80.185
-   ],
-   [
-    -83.364,
-    80.247
-   ],
-   [
-    -83.717,
-    80.309
-   ],
-   [
-    -84.205,
-    80.346
-   ],
-   [
-    -84.688,
-    80.385
-   ],
-   [
-    -85.134,
-    80.42
-   ],
-   [
-    -85.669,
-    80.46
-   ],
-   [
-    -86.169,
-    80.496
-   ],
-   [
-    -86.63,
-    80.543
-   ],
-   [
-    -86.839,
+    -85.916,
     80.479
+   ],
+   [
+    -86.394,
+    80.52
+   ],
+   [
+    -86.852,
+    80.486
    ],
    [
     -86.923,
@@ -12525,21 +12591,29 @@
    [
     -86.858,
     80.052
+   ],
+   [
+    -86.57,
+    79.998
+   ],
+   [
+    -86.124,
+    79.99
    ]
   ]
  },
  "stats": {
-  "landCells": 1731899,
-  "waterCells": 3072901,
-  "seaComponents": 1900,
-  "startSeaCells": 3067001,
-  "iceChartedWaterCells": 544403,
-  "iceCells40": 111245,
-  "deepest": -7333,
-  "highest": 5464,
-  "cellsBeyondOsmShore": 1503890
+  "landCells": 3898458,
+  "waterCells": 6912342,
+  "seaComponents": 2467,
+  "startSeaCells": 6902312,
+  "iceChartedWaterCells": 1225085,
+  "iceCells40": 250316,
+  "deepest": -7334,
+  "highest": 5634,
+  "cellsBeyondOsmShore": 3383748
  },
- "method": "GEBCO 15 arc-second cells averaged onto the grid (gdalwarp -r average). Shore: OSM land polygons inside longitude -150 to -15, latitude 45 to 86, Natural Earth land and minor islands beyond, rasterised at 750 m; a cell is land when more than 55% of it is land. Ice: newest chart per region burned in region order; water polygons are 0, no-data polygons leave 255. Places: GeoNames populated places with water within 2 cells.",
+ "method": "GEBCO 15 arc-second cells averaged onto the grid (gdalwarp -r average). Shore: OSM land polygons inside longitude -150 to -15, latitude 45 to 86, Natural Earth land and minor islands beyond, rasterised at 500 m; a cell is land when more than 55% of it is land. Ice: newest chart per region burned in region order; water polygons are 0, no-data polygons leave 255. Places: GeoNames populated places with water within 6 km.",
  "sources": [
   {
    "role": "GEBCO 2024 sub-ice topography and bathymetry, 15 arc-second GeoTIFF release",
@@ -12608,16 +12682,16 @@
   {
    "role": "CCGS Amundsen underway track, past year",
    "path": "/data/underway_server/www/data/w-1y.json",
-   "bytes": 1499773,
-   "sha256": "936ddb5532e4905ee76ab99af7452dbd1c1dda2c5153866e794290717c73cccc",
-   "modified": "2026-09-18T12:10:24+00:00"
+   "bytes": 1492070,
+   "sha256": "f91cbff6f3aca3739ee56e0c2057c9ad4034190c855cc6a2308859223f7bdf95",
+   "modified": "2026-09-19T02:30:25+00:00"
   },
   {
    "role": "Leg 3 cruise plan (starting position)",
    "path": "/data/underway_server/www/data/plan.json",
    "bytes": 34773,
    "sha256": "91fcd339923c58414754e7222390bc8dda73c7a62c0f92a56ca328dbf3023ed9",
-   "modified": "2026-09-18T12:15:14+00:00"
+   "modified": "2026-09-19T02:39:13+00:00"
   },
   {
    "region": "Eastern Arctic",

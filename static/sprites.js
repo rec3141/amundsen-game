@@ -25,20 +25,19 @@ const SHADOW = '#041d3373';
 const TAU = Math.PI * 2;
 
 // Grids are rows of palette letters; '.' is transparent. Every row must be the same length.
+// The Amundsen is 27 pixels from stern to bow and 9 across: at the chart's starting zoom she covers about 25 km.
 const SHIP = [
-  '................................',
-  '..kkkkkkkkkkkkkkkkkkkk..........',
-  '.kRrrrrrrrrrrrrrrrrrrrkk........',
-  'kRyrrrrrrrrrrrWWWWWWWWrrkk......',
-  'kRydddgggggggdWbbbbbbwWrrwkk....',
-  'kRydddghgghhgdeWbbbbbwWrrrwrkk..',
-  'kRydddghhhhhgdeWwwwwwwWyyrrwrrkk',
-  'kRydddghgghhgdeWbbbbbwWrrrwrkk..',
-  'kRydddgggggggdWbbbbbbwWrrwkk....',
-  'kRyrrrrrrrrrrrWWWWWWWWrrkk......',
-  '.kRrrrrrrrrrrrrrrrrrrrkk........',
-  '..kkkkkkkkkkkkkkkkkkkk..........',
-  '................................',
+  '...........................',
+  '..kkkkkkkkkkkkkkkkk........',
+  '.kRrrrrrrrrrrrrrrrrkk......',
+  'kRyrrrrrrrrrrWWWWWWrrkk....',
+  'kRyddghgghgdeWbbbbwWrrrkk..',
+  'kRyddghhhhgdeWwwwwwWyyrwrkk',
+  'kRyddghgghgdeWbbbbwWrrrkk..',
+  'kRyrrrrrrrrrrWWWWWWrrkk....',
+  '.kRrrrrrrrrrrrrrrrrkk......',
+  '..kkkkkkkkkkkkkkkkk........',
+  '...........................',
 ];
 const HELICOPTER = [
   '............',
@@ -140,7 +139,7 @@ function sprite(name, rows, { wake = 0, shadow = [1, 2], pivot } = {}) {
   return { name, body, wake: wakeLayer, pivotX: px, pivotY: py, shadow, size: 2 * Math.ceil(reach) + 4 };
 }
 const SPRITES = {
-  ship: sprite('ship', SHIP, { wake: 22 }),
+  ship: sprite('ship', SHIP, { wake: 18 }),
   helicopter: sprite('helicopter', HELICOPTER, { shadow: [2, 4], pivot: [7.5, 6] }),
   zodiac: sprite('zodiac', ZODIAC, { shadow: [1, 1] }),
   auv: sprite('auv', AUV, { shadow: [1, 1] }),
