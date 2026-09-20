@@ -1,10 +1,8 @@
-// Shipwrecks, in two steps. Launched at sea, the game is a target picker: the archive's wrecks by range and
-// bearing from the ship, and choosing one hands the ship to the shell (expedition.steamTo) to steam there.
-// Launched on station (expedition.wreck names the wreck the ship is over), it opens straight on the search:
-// plan sonar lines over the box against the ship-time budget, spot the contact in the mosaic and the
-// waterfall, then drop the ROV to identify it. Without steamTo the search is run from wherever the ship is.
+// Shipwrecks: archive selection, sonar survey and a piloted ROV inspection.
 import { GRID, createGame, clampBox, planLegs, planCost, startSurvey, advanceSurvey, dive, endDive, score, isCovered, contactAt, diveHours, distanceKm, bearingDeg, compass, formatPosition, siteBudget, SURVEY_KN, named } from './crew-18-model.js';
 import { text } from '../i18n-text.js';
+
+import { createROV, advanceROV, drawROV, ROV_KEYS } from './crew-18-rov.js';
 
 const stylesheet = new URL('./crew-18.css', import.meta.url).href;
 const archive = new URL('../data/crew-18-wrecks.json', import.meta.url);
@@ -27,9 +25,12 @@ export const game = {
     const ship = { lon: Number.isFinite(expedition?.lon) ? expedition.lon : -70.56, lat: Number.isFinite(expedition?.lat) ? expedition.lat : 76.51 };
     const seed = `${ship.lon.toFixed(2)}:${ship.lat.toFixed(2)}:${Date.now()}`;
     let phase = 'loading', wrecks = [], selected = 0, state = null, mode = 'box', fast = false;
-    let mosaic = null, waterfall = null, diveAnim = null, hover = -1;
+    let mosaic = null, waterfall = null, rov = null, hover = -1;
     let width = 0, height = 0, dpr = 1;
     const plot = { cx: 0, cy: 0, radius: 1, maxKm: 1, rings: [], markers: [] };
+    let surveyPaused = false;
+    const heldKeys = new Set(), heldButtons = new Map();
+    const clearThrusters = () => { heldKeys.clear(); heldButtons.clear(); };
     const canSteam = typeof expedition?.steamTo === 'function';
     const picking = () => phase === 'loading' || phase === 'pick' || phase === 'steaming';
 
@@ -45,7 +46,7 @@ export const game = {
         </div>
         <div class="c18-layout">
           <div class="c18-stage">
-            <canvas class="c18-canvas" data-canvas tabindex="-1" aria-label="Range plot and sonar display"></canvas>
+            <canvas class="c18-canvas" data-canvas tabindex="0" aria-label="Range plot and sonar display"></canvas>
             <div class="c18-legend" data-legend aria-hidden="true"></div>
           </div>
           <aside class="c18-panel" data-panel></aside>
@@ -61,7 +62,7 @@ export const game = {
     const setPhase = next => { phase = next; gameEl.dataset.phase = next; };
 
     // ---- data ------------------------------------------------------------------------------
-    fetch(archive).then(r => { if (!r.ok) throw Error('archive missing'); return r.json(); }).then(data => {
+    fetch(archive, { signal }).then(r => { if (!r.ok) throw Error('archive missing'); return r.json(); }).then(data => {
       if (!active) return;
       wrecks = data.wrecks.map(w => ({ ...w, distanceKm: distanceKm(ship.lat, ship.lon, w.lat, w.lon), bearing: bearingDeg(ship.lat, ship.lon, w.lat, w.lon), budget: siteBudget(w) }))
         .sort((a, b) => a.distanceKm - b.distanceKm);
@@ -72,7 +73,7 @@ export const game = {
       setPhase('pick');
       layoutPlot();
       renderPanel();
-    }).catch(error => { console.error(error); panel.innerHTML = '<p class="c18-status">The wreck archive did not load. Close and try again.</p>'; });
+    }).catch(error => { if (!active) return; console.error(error); panel.innerHTML = '<p class="c18-status">The wreck archive did not load. Close and try again.</p>'; });
 
     // ---- range and bearing plot ------------------------------------------------------------
     // The ship at the centre, each wreck at its great-circle range and initial bearing. The range scale is
@@ -234,7 +235,7 @@ export const game = {
       // The ship on her line, with the swath she is painting.
       if (state.ship && (state.phase === 'survey' || state.survey)) {
         const x = b.x + state.ship.x * cp, y = b.y + state.ship.y * cp, hw = site.swathCells / 2 * cp;
-        if (state.phase === 'survey') { ctx.fillStyle = 'rgba(125,255,176,.18)'; ctx.fillRect(x - 3, y - hw, 6, hw * 2); }
+        if (state.phase === 'survey' && !surveyPaused) { ctx.fillStyle = 'rgba(125,255,176,.18)'; ctx.fillRect(x - 3, y - hw, 6, hw * 2); }
         ctx.save(); ctx.translate(x, y); ctx.rotate(state.ship.heading);
         ctx.fillStyle = '#ff6b4a'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.2;
         ctx.beginPath(); ctx.moveTo(9, 0); ctx.lineTo(-5, -5); ctx.lineTo(-7, 0); ctx.lineTo(-5, 5); ctx.closePath(); ctx.fill(); ctx.stroke();
@@ -251,7 +252,6 @@ export const game = {
       ctx.fillStyle = '#fff'; ctx.fillRect(b.x + 8, b.y + b.size - 12, barPx, 3); ctx.font = '10px system-ui, sans-serif'; ctx.fillText(`${barKm} km`, b.x + 8, b.y + b.size - 16);
       ctx.fillText('N ↑', b.x + b.size - 28, b.y + 14);
       drawWaterfall(b);
-      if (state.phase === 'dive' && diveAnim) drawDive(now, b);
     }
 
     // The waterfall: the latest pings of the current line, newest at the top.
@@ -277,64 +277,10 @@ export const game = {
       c.restore();
     }
 
-    // ROV descent: the water column darkens with depth, then the lights find the contact.
-    function drawDive(now, b) {
-      const a = diveAnim, t = Math.min(1, (now - a.start) / a.duration);
-      const wx = b.x + b.size * 0.15, wy = b.y + b.size * 0.1, ws = b.size * 0.7;
-      ctx.fillStyle = 'rgba(3,12,20,.9)'; ctx.fillRect(b.x, b.y, b.size, b.size);
-      const descent = Math.min(1, t / 0.7), bottom = t > 0.7;
-      const grad = ctx.createLinearGradient(0, wy, 0, wy + ws);
-      grad.addColorStop(0, '#2a7f9a'); grad.addColorStop(0.5, '#0f3d52'); grad.addColorStop(1, '#03111a');
-      ctx.fillStyle = grad; ctx.fillRect(wx, wy, ws, ws);
-      const rovY = wy + 14 + descent * (ws - 60);
-      if (bottom) {
-        const reveal = Math.min(1, (t - 0.7) / 0.3);
-        ctx.save(); ctx.beginPath(); ctx.arc(wx + ws / 2, wy + ws - 40, 24 + reveal * ws * 0.4, 0, Math.PI * 2); ctx.clip();
-        drawSeabedView(wx, wy + ws * 0.5, ws, ws * 0.5, a.hit ? 'wreck' : a.what, state.site.sonar.mode === 'side-scan');
-        ctx.restore();
-      }
-      ctx.fillStyle = '#ffd27a'; ctx.fillRect(wx + ws / 2 - 10, rovY, 20, 12); ctx.fillStyle = '#fff'; ctx.fillRect(wx + ws / 2 - 6, rovY + 3, 4, 4); ctx.fillRect(wx + ws / 2 + 2, rovY + 3, 4, 4);
-      ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.beginPath(); ctx.moveTo(wx + ws / 2, wy); ctx.lineTo(wx + ws / 2, rovY); ctx.stroke();
-      ctx.font = '700 13px system-ui, sans-serif'; ctx.fillStyle = '#fff';
-      ctx.fillText(bottom ? (a.hit ? `On the bottom · ${state.site.wreck.ship}` : `On the bottom · ${a.what === 'seabed' ? 'nothing but seabed' : a.what}`) : `ROV descending · ${Math.round(descent * state.site.depth)} m`, wx + 8, wy + 18);
-      if (t >= 1) { ctx.font = '12px system-ui, sans-serif'; ctx.fillStyle = '#ffe4a8'; ctx.fillText(a.hit ? 'Enter logs the discovery' : 'Enter recovers the ROV', wx + 8, wy + ws - 8); }
-    }
-
-    // What the ROV camera sees on the bottom: sediment, then the contact in its lights.
-    function drawSeabedView(x, y, w, h, kind, shallow) {
-      ctx.fillStyle = shallow ? '#6b5a3c' : '#4c5a55'; ctx.fillRect(x, y, w, h);
-      ctx.fillStyle = 'rgba(255,255,255,.08)';
-      for (let i = 0; i < 40; i++) { const px = x + ((i * 97) % 100) / 100 * w, py = y + h * 0.35 + ((i * 53) % 100) / 100 * h * 0.6; ctx.beginPath(); ctx.ellipse(px, py, 3 + (i % 3), 1.5, 0, 0, Math.PI * 2); ctx.fill(); }
-      const cx = x + w / 2, floor = y + h * 0.78;
-      ctx.save(); ctx.translate(cx, floor);
-      if (kind === 'wreck') {
-        // A hull on her side: keel, frames standing like ribs, a stump of mast and the planking gone between them.
-        const L = w * 0.62, H = h * 0.42;
-        ctx.strokeStyle = '#d9c39c'; ctx.lineWidth = 5; ctx.lineCap = 'round';
-        ctx.beginPath(); ctx.moveTo(-L / 2, 0); ctx.quadraticCurveTo(-L * 0.45, -H * 0.15, -L * 0.3, -H * 0.2); ctx.lineTo(L * 0.42, -H * 0.2); ctx.quadraticCurveTo(L * 0.5, -H * 0.4, L * 0.52, -H * 0.9); ctx.stroke();
-        ctx.lineWidth = 3;
-        for (let i = -0.28; i <= 0.4; i += 0.08) { const fx = i * L, fh = H * (0.7 + 0.3 * Math.sin((i + 0.3) * 4)); ctx.beginPath(); ctx.moveTo(fx, -H * 0.2); ctx.quadraticCurveTo(fx + L * 0.03, -H * 0.2 - fh * 0.6, fx + L * 0.02, -H * 0.2 - fh); ctx.stroke(); }
-        ctx.fillStyle = '#c9b48f'; ctx.fillRect(-L * 0.1, -H * 0.2 - H * 0.05, L * 0.42, H * 0.06);
-        ctx.strokeStyle = '#b39e78'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(L * 0.05, -H * 0.2); ctx.lineTo(L * 0.3, -H * 1.05); ctx.stroke();
-        ctx.fillStyle = 'rgba(120,180,150,.35)'; for (let i = 0; i < 6; i++) { ctx.beginPath(); ctx.arc(-L * 0.25 + i * L * 0.1, -H * 0.25 - (i % 2) * 6, 5, 0, Math.PI * 2); ctx.fill(); }
-      } else if (kind === 'boulder') {
-        ctx.fillStyle = '#7d8478'; ctx.beginPath(); ctx.moveTo(-w * 0.18, 0); ctx.quadraticCurveTo(-w * 0.2, -h * 0.5, -w * 0.02, -h * 0.55); ctx.quadraticCurveTo(w * 0.18, -h * 0.5, w * 0.2, -h * 0.1); ctx.quadraticCurveTo(w * 0.1, h * 0.02, -w * 0.18, 0); ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,.12)'; ctx.beginPath(); ctx.ellipse(-w * 0.04, -h * 0.35, w * 0.08, h * 0.1, -0.5, 0, Math.PI * 2); ctx.fill();
-      } else if (kind === 'outcrop') {
-        ctx.fillStyle = '#6f6a62'; ctx.beginPath(); ctx.moveTo(-w * 0.4, 0); ctx.lineTo(-w * 0.3, -h * 0.3); ctx.lineTo(-w * 0.1, -h * 0.25); ctx.lineTo(0, -h * 0.55); ctx.lineTo(w * 0.15, -h * 0.35); ctx.lineTo(w * 0.35, -h * 0.4); ctx.lineTo(w * 0.42, 0); ctx.closePath(); ctx.fill();
-        ctx.strokeStyle = 'rgba(0,0,0,.3)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(-w * 0.3, -h * 0.1); ctx.lineTo(w * 0.3, -h * 0.2); ctx.stroke();
-      } else {
-        // An iceberg scour or bare sediment: a groove with berms, and nothing else.
-        ctx.fillStyle = 'rgba(0,0,0,.28)'; ctx.beginPath(); ctx.ellipse(0, -h * 0.05, w * 0.42, h * 0.12, 0, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,.1)'; ctx.beginPath(); ctx.ellipse(0, -h * 0.2, w * 0.45, h * 0.05, 0, 0, Math.PI * 2); ctx.fill();
-      }
-      ctx.restore();
-    }
-
     // ---- sizing ----------------------------------------------------------------------------
     function fit() {
       const rect = canvas.getBoundingClientRect();
-      const w = Math.max(240, Math.round(rect.width)), h = Math.round(picking() ? w * (w < 520 ? 0.95 : 0.62) : Math.min(w * 0.76, Math.max(320, w * 0.74)));   // the plot gets taller on a phone
+      const w = Math.max(240, Math.round(rect.width)), h = phase === 'dive' ? Math.round(Math.min(w * 0.76, window.innerHeight * 0.55)) : Math.round(picking() ? w * (w < 520 ? 0.95 : 0.62) : Math.min(w * 0.76, Math.max(320, w * 0.74)));   // the plot gets taller on a phone
       const d = Math.min(3, window.devicePixelRatio || 1);
       if (w === width && h === height && d === dpr) return;
       width = w; height = h; dpr = d;
@@ -358,10 +304,12 @@ export const game = {
           <div class="c18-story" data-story></div>
           <p class="c18-status" role="status" aria-live="polite" data-status></p>
           <button type="button" class="c18-primary" data-go></button>
+          ${canSteam ? '<button type="button" data-here>Survey here <kbd>H</kbd></button>' : ''}
           <p class="c18-help"><kbd>↑</kbd><kbd>↓</kbd> choose · <kbd>Enter</kbd> ${canSteam ? 'steam to the datum' : 'survey from here'} · click a mark on the plot</p>`;
         find('[data-legend]').innerHTML = `<span><i style="background:#f4f1e6"></i>never found</span><span><i style="background:#ffd27a"></i>located</span><span><i style="background:#ff6b4a"></i>Amundsen</span><span>rings: great-circle range, square-root scale</span>`;
         panel.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => { select(Number(b.dataset.pick)); }, { signal }));
         find('[data-go]').addEventListener('click', choose, { signal });
+        find('[data-here]')?.addEventListener('click', () => begin(wrecks[selected], false), { signal });
         select(selected);
         return;
       }
@@ -378,7 +326,42 @@ export const game = {
         find('[data-back]').addEventListener('click', backToPick, { signal });
         return;
       }
-      if (phase === 'plan' || phase === 'survey' || phase === 'dive') {
+      if (phase === 'dive') {
+        panel.innerHTML = `
+          <h4>ROV · fly the contact</h4>
+          <p class="c18-help">Generated dive scene · approach the amber markers, release the thrusters, then hold Scan for 2.5 seconds. Record ${rov.nodes.length} view${rov.nodes.length > 1 ? 's around the hull' : ''} before recovery.</p>
+          <p class="c18-status" role="status" aria-live="polite" data-status></p>
+          <div class="c18-rov-views" data-views></div>
+          <div class="c18-rov-controls" role="group" aria-label="ROV thrusters and camera">
+            ${[['forward', 'Forward W'], ['back', 'Reverse S'], ['left', 'Strafe left A'], ['right', 'Strafe right D'], ['rise', 'Rise Q'], ['sink', 'Descend E'], ['yawLeft', 'Turn left ←'], ['yawRight', 'Turn right →'], ['lookUp', 'Look up ↑'], ['lookDown', 'Look down ↓']].map(([action, label]) => `<button type="button" data-thrust="${action}">${label}</button>`).join('')}
+          </div>
+          <button type="button" class="c18-primary" data-thrust="scan">Hold Scan <kbd>Space</kbd></button>
+          <div class="c18-row"><button type="button" data-pause>Pause <kbd>P</kbd></button><button type="button" data-recover>Recover <kbd>R</kbd></button></div>
+          <p class="c18-help">Hold buttons or keys to move. Arrows aim the camera; WASD move horizontally, Q/E change altitude. Scan within 3–13 m. Fly outside the hull or rise above it to cross over. Recovery keeps the ship-time cost; a complete inspection identifies the contact.</p>`;
+        find('[data-legend]').textContent = 'Amber: scan view · green: recorded · coral: ROV · seabed grid: 5 m';
+        panel.querySelectorAll('[data-thrust]').forEach(button => {
+          button.addEventListener('pointerdown', event => {
+            if (event.button !== 0) return;
+            event.preventDefault(); button.setPointerCapture(event.pointerId);
+            heldButtons.set(event.pointerId, button.dataset.thrust);
+          }, { signal });
+          const release = event => heldButtons.delete(event.pointerId);
+          button.addEventListener('pointerup', release, { signal });
+          button.addEventListener('pointercancel', release, { signal });
+          button.addEventListener('lostpointercapture', release, { signal });
+          button.addEventListener('keydown', event => {
+            if (event.key !== ' ' && event.key !== 'Enter') return;
+            event.preventDefault(); heldButtons.set('keyboard', button.dataset.thrust);
+          }, { signal });
+          button.addEventListener('keyup', () => heldButtons.delete('keyboard'), { signal });
+          button.addEventListener('blur', () => heldButtons.delete('keyboard'), { signal });
+        });
+        find('[data-pause]').addEventListener('click', pauseDive, { signal });
+        find('[data-recover]').addEventListener('click', () => afterDive(), { signal });
+        updateDivePanel();
+        return;
+      }
+      if (phase === 'plan' || phase === 'survey') {
         const { site } = state, w = site.wreck;
         panel.innerHTML = `
           <div class="c18-clue"><b>FROM THE RECORD · ${esc(w.ship)}, ${w.year}</b>${esc(w.clue)}</div>
@@ -408,11 +391,13 @@ export const game = {
               <div class="c18-row"><button type="button" data-grow aria-label="Bigger box">Bigger <kbd>+</kbd></button><button type="button" data-shrink aria-label="Smaller box">Smaller <kbd>−</kbd></button><button type="button" data-fast aria-pressed="false">×${FAST} <kbd>F</kbd></button></div>
             </div>
           </div>
+          <button type="button" data-survey-pause hidden>Pause survey <kbd>B</kbd></button>
           <p class="c18-help">Arrows or <kbd>WASD</kbd> move the box; <kbd>Shift</kbd>+arrows resize it. Drag on the seabed to draw a box, click to place the cursor. Surveying runs at ${SURVEY_KN} kn; the clock is ship time.</p>`;
         find('[data-legend]').innerHTML = `<span><i style="background:#3f6572"></i>unsurveyed</span><span><i style="background:${site.sonar.mode === 'side-scan' ? '#b58a3c' : '#5a8c9a'}"></i>sonar mosaic</span><span><i style="background:#5a5648"></i>shore</span><span><i style="border:2px solid #ffd27a;background:none"></i>planned box</span><span><i style="background:#ff8c6b"></i>datum</span><span><i style="background:#ff6b4a"></i>ship</span>`;
         panel.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode), { signal }));
         panel.querySelectorAll('[data-dir]').forEach(b => b.addEventListener('click', () => move(...b.dataset.dir.split(',').map(Number), false), { signal }));
         find('[data-run]').addEventListener('click', run, { signal });
+        find('[data-survey-pause]').addEventListener('click', pauseSurvey, { signal });
         find('[data-dive]').addEventListener('click', drop, { signal });
         find('[data-grow]').addEventListener('click', () => resize(1, 1), { signal });
         find('[data-shrink]').addEventListener('click', () => resize(-1, -1), { signal });
@@ -436,6 +421,8 @@ export const game = {
       const over = cost.hours > state.hoursLeft, runBtn = find('[data-run]'), diveBtn = find('[data-dive]');
       runBtn.disabled = state.phase !== 'plan' || over; runBtn.querySelector('small').textContent = over ? `needs ${hours(cost.hours)}, ${hours(state.hoursLeft)} left` : `${hours(cost.hours)} of ship time`;
       runBtn.hidden = mode !== 'box'; diveBtn.hidden = mode !== 'inspect';
+      find('[data-survey-pause]').hidden = state.phase !== 'survey';
+      find('[data-survey-pause]').textContent = surveyPaused ? 'Resume survey (B)' : 'Pause survey (B)';
       const covered = isCovered(state, state.cursor.x, state.cursor.y);
       diveBtn.disabled = state.phase !== 'plan' || !covered || diveHours(site.depth) > state.hoursLeft;
       diveBtn.querySelector('small').textContent = covered ? `${hours(diveHours(site.depth))} of ship time` : 'move onto surveyed seabed';
@@ -473,7 +460,7 @@ export const game = {
       state = createGame(w, seed);
       mosaic = buildMosaic(state.site);
       waterfall = document.createElement('canvas'); waterfall.width = 160; waterfall.height = GRID * MOSAIC_PX;
-      mode = 'box'; fast = false;
+      mode = 'box'; fast = false; surveyPaused = false;
       find('[data-title]').textContent = `${w.ship}, ${w.year} · ${w.place}`;
       setPhase('plan'); fit(); renderPanel();
       say(`${onStation ? `On station over the ${w.short} datum, ${formatPosition(w.lat, w.lon)}` : `${formatPosition(w.lat, w.lon)}, ${km(w.distanceKm)} ${compass(w.bearing)} of the ship`}. ${hours(state.site.budgetH)} of ship time. Read the record, box the likely water, run the lines.`);
@@ -496,6 +483,7 @@ export const game = {
     function resize(dw, dh) { if (!state || state.phase !== 'plan') return; state.box = clampBox({ ...state.box, w: state.box.w + dw, h: state.box.h + dh }); readouts(); }
     function run() {
       if (!state || state.phase !== 'plan') return;
+      surveyPaused = false;
       const r = startSurvey(state, state.box);
       if (!r.ok) { say(r.reason === 'over budget' ? `Those lines need ${hours(r.cost.hours)}; only ${hours(state.hoursLeft)} of ship time is left. Shrink the box.` : 'Not now.'); return; }
       const c = waterfall.getContext('2d'); c.fillStyle = '#05100f'; c.fillRect(0, 0, waterfall.width, waterfall.height);
@@ -507,22 +495,48 @@ export const game = {
       if (!state || state.phase !== 'plan') return;
       const r = dive(state);
       if (!r.ok) { say(r.reason === 'unsurveyed' ? 'The ROV goes where the sonar has been: move the cursor onto surveyed seabed.' : r.reason === 'over budget' ? 'Not enough ship time left for a dive.' : 'Not now.'); return; }
-      diveAnim = { start: performance.now(), duration: Math.min(8000, 3500 + state.site.depth * 6), hit: r.hit, what: r.what };
-      setPhase('dive');
-      say('The ROV is on its way down.');
+      rov = createROV(r.what);
+      clearThrusters();
+      setPhase('dive'); renderPanel(); readouts();
+      canvas.setAttribute('aria-label', 'Piloted ROV camera and local plan view');
+      canvas.focus({ preventScroll: true });
+    }
+    function pauseSurvey() {
+      if (state?.phase !== 'survey') return;
+      surveyPaused = !surveyPaused;
+      say(surveyPaused ? 'Survey paused. Inspect the returns; B resumes the lines.' : 'Survey resumed.');
       readouts();
     }
-    function afterDive() {
-      if (!state || state.phase !== 'dive' || !diveAnim || performance.now() - diveAnim.start < diveAnim.duration) return;
-      const last = state.dives.at(-1);
-      endDive(state); diveAnim = null;
+    function pauseDive() {
+      if (!rov) return;
+      rov.paused = !rov.paused; clearThrusters(); updateDivePanel();
+    }
+    function updateDivePanel() {
+      if (!rov) return;
+      const status = rov.paused ? 'Dive paused. P or Resume returns control.' : rov.message || 'Follow the local plan toward the contact. Descend and centre an amber marker.';
+      if (find('[data-status]')?.textContent !== status) say(status);
+      find('[data-pause]').textContent = rov.paused ? 'Resume (P)' : 'Pause (P)';
+      find('[data-recover]').textContent = rov.ready ? 'Recover & log (R)' : 'Recover early (R)';
+      const views = rov.nodes.map(n => `${n.progress >= 1 ? '✓' : '○'} ${n.name}: ${Math.floor(n.progress * 100)}%`).join(' · ');
+      if (find('[data-views]').textContent !== views) find('[data-views]').textContent = views;
+    }
+    function afterDive(timedOut = false) {
+      if (!state || state.phase !== 'dive' || !rov) return;
+      const lastDive = state.dives.at(-1);
+      lastDive.scans = rov.nodes.filter(n => n.progress >= 1).map(n => n.name);
+      lastDive.bottomSeconds = Math.round(rov.elapsed);
+      lastDive.hit = lastDive.what === 'wreck' && rov.ready;
+      const identified = rov.ready;
+      endDive(state); rov = null; clearThrusters();
       if (state.result) return finishGame();
-      mode = 'inspect'; setPhase('plan'); readouts();
-      say(last.what === 'seabed' ? 'Nothing down there but seabed. The ROV is back aboard.' : `That was ${last.what === 'boulder' ? 'a boulder' : last.what === 'scour' ? 'an iceberg scour' : 'a rock outcrop'}, not a hull. The ROV is back aboard.`);
+      mode = 'inspect'; setPhase('plan'); renderPanel(); readouts();
+      canvas.setAttribute('aria-label', 'Sonar mosaic and waterfall');
+      say(timedOut ? 'Bottom window ended; ROV recovered. Plan another dive or continue searching.' : identified ? 'Contact inspection recorded; ROV aboard. Continue searching the mosaic.' : 'ROV recovered before the inspection was complete. Choose a contact and dive again.');
     }
     function finishGame() {
       if (awarded || !state?.result) return;
       awarded = true;
+      state.result.rovInspections = state.dives.map(d => ({ contact: d.what, scans: d.scans || [], bottomSeconds: d.bottomSeconds || 0 }));
       const r = state.result, w = state.site.wreck, debrief = find('[data-debrief]');
       setPhase('done'); readouts();
       debrief.hidden = false;
@@ -554,17 +568,24 @@ export const game = {
       fit();
       if (picking()) { if (wrecks.length) drawPlot(now); else { ctx.fillStyle = '#183b4a'; ctx.fillRect(0, 0, width, height); } }
       else if (state) {
-        if (state.phase === 'survey') {
+        if (state.phase === 'survey' && !surveyPaused) {
           const before = state.ship ? { ...state.ship } : null;
           const ev = advanceSurvey(state, dt * state.site.budgetH / SURVEY_SECONDS * (fast ? FAST : 1));
           if (before && state.ship && state.ship.y === before.y) pushPing(Math.abs(state.ship.x - before.x));
           if (ev === 'done') { mode = 'inspect'; setPhase('plan'); say('Lines complete. Inspect the mosaic: a hull is long with a hard return and a shadow; boulders are round and small.'); }
           else if (ev === 'timeout') finishGame();
+          if (!active) return;
           readouts();
-        } else if (state.phase === 'dive') afterDive();
-        drawSearch(now);
+        } else if (state.phase === 'dive') {
+          advanceROV(rov, new Set([...heldKeys, ...heldButtons.values()]), dt);
+          updateDivePanel();
+          if (rov.remaining <= 0) afterDive(true);
+        }
+        if (!active) return;
+        if (state.phase === 'dive') drawROV(ctx, rov, width, height);
+        else drawSearch(now);
       }
-      frame = requestAnimationFrame(loop);
+      if (active) frame = requestAnimationFrame(loop);
     }
 
     // ---- input -----------------------------------------------------------------------------
@@ -578,6 +599,7 @@ export const game = {
         if (key === 'ArrowDown' || key === 's' || key === 'ArrowRight' || key === 'd') select(selected + 1);
         else if (key === 'ArrowUp' || key === 'w' || key === 'ArrowLeft' || key === 'a') select(selected - 1);
         else if (key === 'Enter' || key === ' ') choose();
+        else if (key === 'h') begin(wrecks[selected], false);
         else handled = false;
       } else if (phase === 'steaming') {
         if (key === 'Backspace') backToPick();
@@ -591,14 +613,29 @@ export const game = {
         else if (key === '-' || key === '_') resize(-1, -1);
         else handled = false;
       } else if (state && state.phase === 'survey') {
-        if (key === 'f' || key === ' ' || key === 'Enter') { fast = !fast; readouts(); }
+        if (key === 'b') pauseSurvey();
+        else if (key === 'f' || key === ' ' || key === 'Enter') { fast = !fast; readouts(); }
         else handled = false;
       } else if (state && state.phase === 'dive') {
-        if (key === 'Enter' || key === ' ' || key === 'f') { if (diveAnim) diveAnim.start = Math.min(diveAnim.start, performance.now() - diveAnim.duration); }
+        if (ROV_KEYS[key]) heldKeys.add(ROV_KEYS[key]);
+        else if (key === 'p' && !event.repeat) pauseDive();
+        else if (key === 'r' && !event.repeat) afterDive();
         else handled = false;
       } else handled = false;
       if (handled) { event.preventDefault(); event.stopPropagation(); }
     }, { capture: true, signal });
+
+    document.addEventListener('keyup', event => {
+      const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+      if (ROV_KEYS[key]) heldKeys.delete(ROV_KEYS[key]);
+    }, { signal });
+    const loseFocus = () => {
+      clearThrusters();
+      if (rov && !rov.paused) { rov.paused = true; updateDivePanel(); }
+      if (state?.phase === 'survey') { surveyPaused = true; readouts(); }
+    };
+    window.addEventListener('blur', loseFocus, { signal });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) loseFocus(); }, { signal });
 
     // Pointer: pick a wreck on the plot; drag a box or click a cursor on the seabed.
     let drag = null;
@@ -642,6 +679,7 @@ export const game = {
 
     return () => {
       active = false;
+      clearThrusters();
       events.abort();
       observer?.disconnect();
       if (frame) cancelAnimationFrame(frame);
