@@ -76,3 +76,5 @@ body>header{min-height:64px;padding:10px 3%;gap:20px}body>header .brand{font-siz
 
 /* Notices leave navigation readings and craft controls clear. */
 #toast{top:var(--toast-top,74px);bottom:auto;width:max-content;max-width:min(540px,calc(100% - 24px));font-size:11px;padding:10px 14px}
+
+.activity-suit.cards{--suit:#926622}.activity.upcoming{cursor:pointer}.activity.upcoming .card-art{opacity:.55}.activity.upcoming:hover{transform:translateY(var(--lift)) rotate(var(--tilt));z-index:1}

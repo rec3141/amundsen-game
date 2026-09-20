@@ -477,20 +477,28 @@ function updateUI() {
   updateActivities(); updateStores(); updateFuel(); updateEvents();
 }
 const activityButtons = new Map();
+const plannedCardGames = ['Cribbage', 'Euchre', 'Gin Rummy', 'Spades', 'Poker', 'Solitaire'].map(title => ({
+  id: title.toLowerCase().replaceAll(' ', '-'), title, description: 'Coming soon', key: '', upcoming: true,
+}));
 const HANDS = [
   { id: 'science', title: 'Ship & science', suit: '♣', cards: ['ctd', 'ice', 'net', 'seep', 'contaminants', 'plan'] },
   { id: 'arctic', title: 'Ice & exploration', suit: '♠', cards: ['patrol', 'wildlife', 'oldice', 'cliceify', 'heli', 'raft'] },
-  { id: 'crew', title: 'Crew & adventure', suit: '♥', cards: ['sar', 'wrecks', 'rivals', 'flood', 'neptune', 'inuktitut', 'hearts'] },
+  { id: 'crew', title: 'Crew & adventure', suit: '♥', cards: ['sar', 'wrecks', 'rivals', 'flood', 'neptune', 'inuktitut'] },
+  { id: 'cards', title: 'Card games', suit: '♦', cards: ['hearts', ...plannedCardGames.map(game => game.id)] },
 ];
 for (const hand of HANDS) {
   const section = document.createElement('section'), heading = document.createElement('h3'), row = document.createElement('div');
   section.className = `activity-suit ${hand.id}`; heading.id = `hand-${hand.id}`;
-  heading.textContent = hand.title; section.setAttribute('aria-labelledby', heading.id);
+  heading.textContent = hand.title;
+  if (hand.id === 'cards') heading.dataset.i18n = 'cards.heading';
+  section.setAttribute('aria-labelledby', heading.id);
   row.className = 'activity-hand'; section.append(heading, row); $('#activities').append(section);
   hand.cards.forEach((id, index) => {
-    const activity = activities.find(a => a.id === id);
+    const activity = activities.find(a => a.id === id) || plannedCardGames.find(a => a.id === id);
     const button = document.createElement('button'), corner = document.createElement('span'), key = document.createElement('kbd'), suit = document.createElement('span'), art = document.createElement('canvas'), copy = document.createElement('span'), name = document.createElement('b'), description = document.createElement('small');
     button.type = 'button'; button.className = 'activity'; button.dataset.activity = id;
+    if (activity.upcoming) button.classList.add('upcoming');
+    if (hand.id === 'cards') art.dataset.cardGame = '';
     button.style.setProperty('--tilt', `${(index - (hand.cards.length - 1) / 2) * 1.5}deg`);
     button.style.setProperty('--lift', `${Math.abs(index - (hand.cards.length - 1) / 2) * 3}px`);
     corner.className = 'card-corner'; key.textContent = activity.key.toUpperCase(); suit.textContent = hand.suit; suit.setAttribute('aria-hidden', 'true');
@@ -498,13 +506,18 @@ for (const hand of HANDS) {
     copy.className = 'card-copy'; name.textContent = activity.id === 'ctd' ? t('ctd.activity') : activity.title;
     description.textContent = activity.id === 'ctd' ? t('ctd.description') : activity.description;
     if (activity.id === 'ctd') { name.dataset.i18n = 'ctd.activity'; name.dataset.i18nLocale = ''; description.dataset.i18nLocale = ''; }
+    if (hand.id === 'cards') {
+      name.textContent = id === 'hearts' ? 'Hearts' : activity.title;
+      name.dataset.i18n = `cards.${id}`;
+      if (activity.upcoming) description.dataset.i18n = 'cards.soon';
+    }
     copy.append(name, description); button.append(corner, art, copy); button.onclick = () => startActivity(activity); row.append(button);
     activityButtons.set(activity, { button, description, art });
   });
 }
 function updateActivities() {
   for (const [activity, { description }] of activityButtons) {
-    description.textContent = activity.id === 'ctd' ? t('ctd.description') : describe(activity);
+    description.textContent = activity.upcoming ? t('cards.soon') : activity.id === 'ctd' ? t('ctd.description') : describe(activity);
   }
 }
 window.addEventListener('uw:localechange', updateActivities);
@@ -1076,5 +1089,15 @@ async function loadIdeas() {
   } catch { $('#board-status').textContent = 'Cannot reach the server. Retrying…'; }
 }
 $('#idea-form').onsubmit = async e => { e.preventDefault(); const form = e.currentTarget, button = form.querySelector('button'); button.disabled = true; $('#form-status').textContent = 'Sending…'; try { const response = await fetch('api/suggestions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) }); if (!response.ok) throw Error((await response.json()).error || 'Could not save idea'); form.reset(); $('#form-status').textContent = 'Your idea is on the crew board. Thank you!'; await loadIdeas(); } catch (error) { $('#form-status').textContent = error.message === 'Failed to fetch' ? 'Connection lost. Your draft is still here; try again.' : error.message; } finally { button.disabled = false; } };
-for (const [activity, { art }] of activityButtons) { const c = art.getContext('2d'); c.translate(48, 48); c.scale(4, 4); (GLYPHS[activity.id] || GLYPHS.ctd)(c); }
+for (const [activity, { art }] of activityButtons) {
+  const c = art.getContext('2d');
+  if ('cardGame' in art.dataset) {
+    c.fillStyle = '#e4d4b6'; c.strokeStyle = '#9a7139'; c.lineWidth = 3;
+    c.fillRect(18, 14, 48, 64); c.strokeRect(18, 14, 48, 64);
+    c.fillStyle = '#fffaf0'; c.fillRect(32, 23, 48, 64); c.strokeRect(32, 23, 48, 64);
+    c.fillStyle = '#a14d3d'; c.font = '36px Georgia'; c.textAlign = 'center'; c.fillText(activity.id === 'hearts' ? '♥' : '♦', 56, 67);
+  } else {
+    c.translate(48, 48); c.scale(4, 4); (GLYPHS[activity.id] || GLYPHS.ctd)(c);
+  }
+}
 buildLegend(); setInterval(() => { if (!document.hidden) loadIdeas(); if (world) save(); }, 5000); setInterval(() => { if (!document.hidden && page === 'board') loadLeaderboard(); }, 10000); updateUI(); loadIdeas(); resize(); requestAnimationFrame(loop); boot();

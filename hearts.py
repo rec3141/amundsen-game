@@ -7,6 +7,8 @@ import selectors
 import shutil
 import subprocess
 import threading
+import queue
+import crew_chat
 
 ROOT = Path(__file__).parent
 LOCK = threading.Lock()
@@ -28,7 +30,7 @@ def stop():
 atexit.register(stop)
 
 
-def request(data):
+def _request(data):
     global PROCESS
     with LOCK:
         try:
@@ -51,3 +53,44 @@ def request(data):
         except (OSError, ValueError, TimeoutError):
             stop()
             return 503, {'error': 'The card table is reconnecting. Try again in a moment.'}
+
+
+CHAT_QUEUE = queue.Queue(maxsize=4)
+CHAT_LOCK = threading.Lock()
+CHAT_WORKER = None
+
+
+def chat_worker():
+    while True:
+        job = CHAT_QUEUE.get()
+        try:
+            for index, handle in enumerate(job['speakers']):
+                text = crew_chat.reply(handle, job['context'])
+                name = crew_chat.PERSONAS[handle]['name']
+                _request({'action': 'crewReply', 'code': job['code'], 'name': name,
+                          'crew': handle, 'text': text, 'done': index == len(job['speakers']) - 1})
+                job['context']['chat'].append({'name': name, 'text': text})
+        except Exception:
+            _request({'action': 'crewReply', 'code': job['code'], 'name': 'Table',
+                      'text': 'The crew conversation is unavailable. Try again in a moment.', 'done': True})
+        finally:
+            CHAT_QUEUE.task_done()
+
+
+def request(data):
+    global CHAT_WORKER
+    if not isinstance(data, dict) or data.get('action') == 'crewReply':
+        return 400, {'error': 'Unknown table request.'}
+    if data.get('action') != 'chat':
+        return _request(data)
+    with CHAT_LOCK:
+        if CHAT_QUEUE.full():
+            return 429, {'error': 'The crew are talking at other tables. Try again shortly.'}
+        status, body = _request(data)
+        job = body.pop('aiJob', None)
+        if job:
+            CHAT_QUEUE.put_nowait(job)
+            if CHAT_WORKER is None or not CHAT_WORKER.is_alive():
+                CHAT_WORKER = threading.Thread(target=chat_worker, name='card-table-crew', daemon=True)
+                CHAT_WORKER.start()
+        return status, body

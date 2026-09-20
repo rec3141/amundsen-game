@@ -9,7 +9,8 @@ upstream test and simulation files. Upstream source comments are preserved.
 The ship's adapter is tools/hearts/service.mjs. It uses Parlour's game setup,
 move validation, turn flow, scoring, legal moves and per-player views. Deals use
 Node's cryptographic shuffle; seeds and private logs never leave the server.
-Bots are not enabled.
+Crew opponents use the upstream easy, medium and hard policies with per-seat
+private views. Conversation is handled separately by the local ship model.
 
 Rebuild from the repository root with:
 

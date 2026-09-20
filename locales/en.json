@@ -4825,6 +4825,33 @@
     },
     "bridge.zoom": {
       "text": "+ / − Zoom"
+    },
+    "cards.heading": {
+      "text": "Card games"
+    },
+    "cards.soon": {
+      "text": "Coming soon"
+    },
+    "cards.hearts": {
+      "text": "Hearts"
+    },
+    "cards.cribbage": {
+      "text": "Cribbage"
+    },
+    "cards.euchre": {
+      "text": "Euchre"
+    },
+    "cards.gin-rummy": {
+      "text": "Gin Rummy"
+    },
+    "cards.spades": {
+      "text": "Spades"
+    },
+    "cards.poker": {
+      "text": "Poker"
+    },
+    "cards.solitaire": {
+      "text": "Solitaire"
     }
   }
 }

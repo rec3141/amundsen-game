@@ -21,6 +21,15 @@ window.UW_UI_CATALOG = {
         "bridge.stores": "Stores",
         "bridge.tap": "Tap to sail",
         "bridge.zoom": "+ / − Zoom",
+        "cards.cribbage": "Cribbage",
+        "cards.euchre": "Euchre",
+        "cards.gin-rummy": "Gin Rummy",
+        "cards.heading": "Card games",
+        "cards.hearts": "Hearts",
+        "cards.poker": "Poker",
+        "cards.solitaire": "Solitaire",
+        "cards.soon": "Coming soon",
+        "cards.spades": "Spades",
         "core.auto.0059798b7f70": "(optional)",
         "core.auto.022127539fb5": "FREE VOYAGE",
         "core.auto.03245738e467": "CREW IDEA BOARD",
@@ -1634,6 +1643,15 @@ window.UW_UI_CATALOG = {
         "bridge.stores": "Magasin",
         "bridge.tap": "Touchez pour naviguer",
         "bridge.zoom": "+ / − Zoom",
+        "cards.cribbage": "Crible",
+        "cards.euchre": "Euchre",
+        "cards.gin-rummy": "Gin rami",
+        "cards.heading": "Jeux de cartes",
+        "cards.hearts": "Dame de pique",
+        "cards.poker": "Poker",
+        "cards.solitaire": "Solitaire",
+        "cards.soon": "À venir",
+        "cards.spades": "Pique",
         "core.auto.0059798b7f70": "(facultatif)",
         "core.auto.022127539fb5": "NAVIGATION LIBRE",
         "core.auto.03245738e467": "TABLEAU D’IDÉES DE L’ÉQUIPAGE",
@@ -3294,6 +3312,42 @@ window.UW_UI_CATALOG = {
         "bridge.zoom": {
           "profile": "bridge-layout-fr-ca",
           "sourceSha256": "18137bc4c0874b16cd9e1a76b691cc5fd905cb37169d8119cd7add5601733c66"
+        },
+        "cards.cribbage": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "d39f9fe1cd8235915393113e0b15257d3b0b8b6306691e0d09dd1a0a6f15d1f1"
+        },
+        "cards.euchre": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "7f08dde9eaae60b9892b5415d9d27e780bfa83ec8fca511d89ded0d56895e2d6"
+        },
+        "cards.gin-rummy": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "09b41379db3eb5449cba0d9b7f4490d08f43c20fa2ddb0b7ee4b42386c980a47"
+        },
+        "cards.heading": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "7c14499a296a77ece52f95fcd462b812d3d70a5f2f93fa6b167bae3892cb0828"
+        },
+        "cards.hearts": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "2e6d30d71e88bafab450b3776817fcd8d650bc6dae0b63f835e606c15311dca9"
+        },
+        "cards.poker": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "1a8344daec2e176ec2090ed8948d0aa8667ea1d3f2ac82050857ed80193fc7b4"
+        },
+        "cards.solitaire": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "a3a4e80fa4fbbf904197ffa5db6205d25c38b9e0abd5afaccb1aa7480eceeada"
+        },
+        "cards.soon": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "dea484ab2df73b93cb21610a9d050542653754a1b24a4c775b61c4911b597f47"
+        },
+        "cards.spades": {
+          "profile": "card-hand-fr-ca",
+          "sourceSha256": "d89a1d46ff941104009e9811c3f0db975c1752ef9d1311744ece6978c10bce0c"
         },
         "core.auto.0059798b7f70": {
           "profile": "editorial-fr-ca-v2",

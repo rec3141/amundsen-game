@@ -1607,5 +1607,14 @@ export const messages = {
   "bridge.shipPanels": "Ship panels",
   "bridge.shipControls": "Ship controls",
   "bridge.tap": "Tap to sail",
-  "bridge.zoom": "+ / − Zoom"
+  "bridge.zoom": "+ / − Zoom",
+  "cards.heading": "Card games",
+  "cards.soon": "Coming soon",
+  "cards.hearts": "Hearts",
+  "cards.cribbage": "Cribbage",
+  "cards.euchre": "Euchre",
+  "cards.gin-rummy": "Gin Rummy",
+  "cards.spades": "Spades",
+  "cards.poker": "Poker",
+  "cards.solitaire": "Solitaire"
 };

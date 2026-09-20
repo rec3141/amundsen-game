@@ -259,22 +259,35 @@ The game's user publish timer runs every five minutes and shares grid's existing
 publish lock. It deploys only the game subtree. Mutable assets revalidate; the
 compressed world data retains its gzip bytes for browser decompression.
 
-## Wardroom Hearts
+## Card games and crew tables
 
-Open the Hearts activity card or press **9**, create a table, and share its
-five-character code with three other players on the ship network. Each player
-joins from their own browser. Any seated player can deal once all four seats
-are filled. Bots are not enabled. Lowest score wins when a player reaches 100;
-all four confirm each new hand or rematch. Closing the operation or reloading
-the same browser tab preserves the seat. Disconnected players keep their seats.
+The fourth activity hand (♦) lists Hearts, Cribbage, Euchre, Gin Rummy, Spades,
+Poker and Solitaire individually. Hearts is playable; the other cards open the
+shared lobby with that game selected and marked coming soon. Shortcut **9**
+opens Hearts. The lobby lists tables with player names, game and available seats;
+players join directly, without entering a code. A saved seat has a Return button.
 
-The game server validates moves with the vendored Parlour Hearts engine and
-returns only the requesting player's hand. Tables survive server restarts in
-`runtime/hearts.json`; inactive tables expire after 24 hours when tables are
-created or joined. Set `AMUNDSEN_HEARTS_DB` to use a different store and
-`AMUNDSEN_HEARTS_NODE` if Node is outside the server's PATH. A systemd drop-in
-can provide the latter. The Python service owns the bundled Node child process.
-No public relay, CDN, or other internet service is used.
+Create a Hearts table and wait for shipmates, or use **Invite @crew** to fill
+empty seats. Seat menus choose Cap’n Barnacle, Doc, Ada or Polly; a human can
+replace a crew seat before dealing. Crew use Parlour's local policies: Doc and
+Polly easy, Cap’n medium, Ada hard. They see only their own hand and public play.
+All players share standard Hearts scoring, lowest score wins when someone
+reaches 100. Crew confirm the next hand automatically; humans confirm themselves.
 
-Upstream source, version, licenses and rebuild instructions are in
+Table conversation uses the ship's resident AI model and the underway crew
+personas (snapshot from AMUNDSEN/dashboard/chatbot.py). Address `@crew` for all
+four, or `@capn`, `@doc`, `@ada`, `@polly`. Replies use only the public score,
+played cards and table conversation. The Python worker reads
+`~/.config/underway/chat-model.json`, checks the model is resident, and makes
+local completion requests. It does not load models or change the underway chat.
+Generation runs separately from moves, one table-conversation job at a time.
+
+The game server validates moves with the vendored Parlour engine and returns
+only the requesting player's hand. Tables survive server restarts in
+`runtime/hearts.json`; set `AMUNDSEN_HEARTS_DB` for an isolated store. Set
+`AMUNDSEN_HEARTS_NODE` if Node is outside the server PATH. The Python service owns
+the bundled Node child. Closing the operation or reloading the same browser tab
+preserves the seat. No public relay or CDN is needed for gameplay.
+
+Upstream versions, licenses and rebuild instructions:
 [vendor/parlour/README.md](vendor/parlour/README.md).

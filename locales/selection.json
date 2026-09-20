@@ -51,7 +51,16 @@
         "bridge.shipPanels": "bridge-layout-fr-ca",
         "bridge.shipControls": "bridge-layout-fr-ca",
         "bridge.tap": "bridge-layout-fr-ca",
-        "bridge.zoom": "bridge-layout-fr-ca"
+        "bridge.zoom": "bridge-layout-fr-ca",
+        "cards.heading": "card-hand-fr-ca",
+        "cards.soon": "card-hand-fr-ca",
+        "cards.hearts": "card-hand-fr-ca",
+        "cards.cribbage": "card-hand-fr-ca",
+        "cards.euchre": "card-hand-fr-ca",
+        "cards.gin-rummy": "card-hand-fr-ca",
+        "cards.spades": "card-hand-fr-ca",
+        "cards.poker": "card-hand-fr-ca",
+        "cards.solitaire": "card-hand-fr-ca"
       }
     }
   }

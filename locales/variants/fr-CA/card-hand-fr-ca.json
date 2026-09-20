@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "locale": "fr-CA",
+  "profile": {
+    "id": "card-hand-fr-ca",
+    "translator": "Codex",
+    "status": "interface-update"
+  },
+  "messages": {
+    "cards.heading": {
+      "source": "Card games",
+      "text": "Jeux de cartes",
+      "status": "translated"
+    },
+    "cards.soon": {
+      "source": "Coming soon",
+      "text": "À venir",
+      "status": "translated"
+    },
+    "cards.hearts": {
+      "source": "Hearts",
+      "text": "Dame de pique",
+      "status": "translated"
+    },
+    "cards.cribbage": {
+      "source": "Cribbage",
+      "text": "Crible",
+      "status": "translated"
+    },
+    "cards.euchre": {
+      "source": "Euchre",
+      "text": "Euchre",
+      "status": "translated"
+    },
+    "cards.gin-rummy": {
+      "source": "Gin Rummy",
+      "text": "Gin rami",
+      "status": "translated"
+    },
+    "cards.spades": {
+      "source": "Spades",
+      "text": "Pique",
+      "status": "translated"
+    },
+    "cards.poker": {
+      "source": "Poker",
+      "text": "Poker",
+      "status": "translated"
+    },
+    "cards.solitaire": {
+      "source": "Solitaire",
+      "text": "Solitaire",
+      "status": "translated"
+    }
+  }
+}
