@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generated": "2026-09-19T02:39:35+00:00",
+ "generated": "2026-09-19T03:59:30+00:00",
  "generator": "tools/pull_world.py",
  "projection": {
   "name": "WGS84 polar stereographic, north",
@@ -30,9 +30,9 @@
  "data": {
   "file": "world.bin.gz",
   "compression": "gzip",
-  "bytes": 12088338,
+  "bytes": 12268007,
   "rawBytes": 54054000,
-  "sha256": "94ee23056a6beb77f42630d8685b88545dd6ac89f4c0aead7069ad88d100bbf3",
+  "sha256": "a642776c7ba7395db35569ad9420bfaf9772e8d1fedccbe5e3aa2c41558b533c",
   "byteOrder": "little-endian",
   "layers": [
    {
@@ -67,8 +67,8 @@
  },
  "units": {
   "elevation": "metres; land is >= 1, water is <= -2",
-  "iceConcentration": "percent of the sea surface (CIS total concentration, tenths x 10); 255 = land or no chart",
-  "iceClass": "index into ice.classes: stage of development and floe form of the dominant partial concentration",
+  "iceConcentration": "percent of the sea surface: CIS total concentration (tenths x 10) inside the charts, NSIDC Sea Ice Index concentration beyond them; 255 = land or no measurement",
+  "iceClass": "index into ice.classes: stage of development and floe form of the dominant partial concentration; the class with source NSIDC marks cells filled from the Sea Ice Index",
   "glacier": "1 where Natural Earth maps glacier or ice cap over land, within longitude -150 to -15 only"
  },
  "ice": {
@@ -124,6 +124,11 @@
    {
     "stage": "Thick first-year ice (>120 cm)",
     "form": "Small floe (20–100 m)"
+   },
+   {
+    "stage": "Not reported",
+    "form": "Not reported",
+    "source": "NSIDC"
    }
   ],
   "charts": [
@@ -145,7 +150,13 @@
     "validTime": "2026-09-07T18:00:00Z",
     "attribution": "Canadian Ice Service / ECCC"
    }
-  ]
+  ],
+  "satellite": {
+   "product": "NSIDC Sea Ice Index, Version 4 (G02135): daily sea ice concentration on a 25 km grid",
+   "date": "2026-09-07",
+   "attribution": "NSIDC / NOAA",
+   "sourceUrl": "https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/09_Sep/N_20260907_concentration_v4.0.tif"
+  }
  },
  "start": {
   "lon": -70.5573,
@@ -6415,98 +6426,90 @@
  ],
  "shipTrack": {
   "span": {
-   "start": "2025-09-19T02:30:00+00:00",
-   "end": "2026-09-19T02:12:32.135416832+00:00"
+   "start": "2025-09-19T03:50:00+00:00",
+   "end": "2026-09-19T03:37:11+00:00"
   },
   "spacing": 8000,
   "lonLat": [
    [
-    -79.748,
-    79.677
+    -80.016,
+    79.667
    ],
    [
-    -80.134,
-    79.652
+    -80.416,
+    79.649
    ],
    [
-    -79.753,
-    79.69
+    -80.885,
+    79.636
    ],
    [
-    -80.173,
-    79.662
+    -81.342,
+    79.67
    ],
    [
-    -80.645,
-    79.633
+    -81.74,
+    79.723
    ],
    [
-    -81.12,
-    79.65
+    -81.858,
+    79.809
    ],
    [
-    -81.563,
-    79.692
+    -81.928,
+    79.88
    ],
    [
-    -81.823,
-    79.765
+    -82.226,
+    79.966
    ],
    [
-    -81.857,
-    79.852
+    -82.492,
+    80.043
    ],
    [
-    -82.074,
-    79.93
+    -82.758,
+    80.118
    ],
    [
-    -82.357,
-    80.004
+    -83.106,
+    80.185
    ],
    [
-    -82.645,
-    80.079
+    -83.364,
+    80.247
    ],
    [
-    -82.928,
-    80.152
+    -83.717,
+    80.309
    ],
    [
-    -83.284,
-    80.218
+    -84.205,
+    80.346
    ],
    [
-    -83.49,
-    80.287
+    -84.688,
+    80.385
    ],
    [
-    -83.963,
-    80.326
+    -85.134,
+    80.42
    ],
    [
-    -84.445,
-    80.366
+    -85.669,
+    80.46
    ],
    [
-    -84.93,
-    80.405
+    -86.169,
+    80.496
    ],
    [
-    -85.421,
-    80.442
+    -86.63,
+    80.543
    ],
    [
-    -85.916,
+    -86.839,
     80.479
-   ],
-   [
-    -86.394,
-    80.52
-   ],
-   [
-    -86.852,
-    80.486
    ],
    [
     -86.923,
@@ -12607,13 +12610,15 @@
   "waterCells": 6912342,
   "seaComponents": 2467,
   "startSeaCells": 6902312,
-  "iceChartedWaterCells": 1225085,
-  "iceCells40": 250316,
+  "iceChartedWaterCells": 5344015,
+  "iceCisWaterCells": 1225085,
+  "iceSatelliteWaterCells": 4118930,
+  "iceCells40": 722568,
   "deepest": -7334,
   "highest": 5634,
   "cellsBeyondOsmShore": 3383748
  },
- "method": "GEBCO 15 arc-second cells averaged onto the grid (gdalwarp -r average). Shore: OSM land polygons inside longitude -150 to -15, latitude 45 to 86, Natural Earth land and minor islands beyond, rasterised at 500 m; a cell is land when more than 55% of it is land. Ice: newest chart per region burned in region order; water polygons are 0, no-data polygons leave 255. Places: GeoNames populated places with water within 6 km.",
+ "method": "GEBCO 15 arc-second cells averaged onto the grid (gdalwarp -r average). Shore: OSM land polygons inside longitude -150 to -15, latitude 45 to 86, Natural Earth land and minor islands beyond, rasterised at 500 m; a cell is land when more than 55% of it is land. Ice: newest chart per region burned in region order; water polygons are 0, no-data polygons leave 255; water beyond the charts takes the NSIDC Sea Ice Index for the newest chart day, resampled bilinearly from 25 km (its pole hole and the coast, land and missing pixels within 3 pixels of a measurement take the nearest one). Places: GeoNames populated places with water within 6 km.",
  "sources": [
   {
    "role": "GEBCO 2024 sub-ice topography and bathymetry, 15 arc-second GeoTIFF release",
@@ -12682,16 +12687,16 @@
   {
    "role": "CCGS Amundsen underway track, past year",
    "path": "/data/underway_server/www/data/w-1y.json",
-   "bytes": 1492070,
-   "sha256": "f91cbff6f3aca3739ee56e0c2057c9ad4034190c855cc6a2308859223f7bdf95",
-   "modified": "2026-09-19T02:30:25+00:00"
+   "bytes": 1495258,
+   "sha256": "b28b16b38293056fc282ffb86def37436879ac8585f82e67499a2f308339262c",
+   "modified": "2026-09-19T03:50:21+00:00"
   },
   {
    "role": "Leg 3 cruise plan (starting position)",
    "path": "/data/underway_server/www/data/plan.json",
    "bytes": 34773,
    "sha256": "91fcd339923c58414754e7222390bc8dda73c7a62c0f92a56ca328dbf3023ed9",
-   "modified": "2026-09-19T02:39:13+00:00"
+   "modified": "2026-09-19T03:59:13+00:00"
   },
   {
    "region": "Eastern Arctic",
@@ -12725,6 +12730,15 @@
    "bytes": 1612399,
    "sha256": "ef20a3ff26f2b27e28251c041fd5716e1f77904172e43af151a806910937d772",
    "modified": "2026-09-15T02:31:13+00:00"
+  },
+  {
+   "role": "NSIDC Sea Ice Index v4 daily concentration GeoTIFF (ice beyond the CIS charts)",
+   "path": "/data/gis/nsidc/N_20260907_concentration_v4.0.tif",
+   "bytes": 666553,
+   "sha256": "8dbd2e903c57d57e724c03a3f784920edbf9bc04a15dd7d15f67db6103c0f057",
+   "modified": "2026-09-19T03:51:25+00:00",
+   "date": "2026-09-07",
+   "sourceUrl": "https://noaadata.apps.nsidc.org/NOAA/G02135/north/daily/geotiff/2026/09_Sep/N_20260907_concentration_v4.0.tif"
   }
  ]
 }

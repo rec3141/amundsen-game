@@ -1,4 +1,4 @@
-// Draws the chart from the grid on demand: shaded land relief, glaciers, sea ice, the shore and, where the seabed has
+// Draws the chart from the grid on demand: shaded land relief, glaciers, sea ice (grey where nothing measured it), the shore and, where the seabed has
 // been mapped, bathymetry. The world is never painted whole at screen size: the view is covered by TILE-pixel tiles
 // rendered at the current zoom and kept in a small cache, so the coast is drawn at device resolution at every zoom and
 // the chart costs the same memory whatever the grid's size. The shore drawn here is world.shore()'s zero line, the
@@ -73,7 +73,8 @@ export function createChart(world) {
           const k = sea.at(shown ? -z : 500), gain = shown ? 1 + light * .12 : 1;
           red = sea.colours[k] * gain; green = sea.colours[k + 1] * gain; blue = sea.colours[k + 2] * gain;
           const percent = iceConcentration[nearest];
-          if (percent === 255) { if ((X + Y) % 16 < 5) { red = 181; green = 143; blue = 91; } else { red = 76; green = 91; blue = 100; } }        // beyond the ice charts
+          // No ice measurement (beyond the CIS charts and the Sea Ice Index): plain grey, the mapped seabed showing through.
+          if (percent === 255) { const t = shown ? .55 : 1; red += (106 - red) * t; green += (114 - green) * t; blue += (118 - blue) * t; }
           else if (percent) {
             // Floes are switched on in proportion to the charted concentration.
             const kind = iceClass[nearest], gx = Math.floor(X / grain), gy = Math.floor(Y / grain);
