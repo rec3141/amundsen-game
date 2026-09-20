@@ -1,10 +1,14 @@
-import { COLS, ROWS, CELL_NMI, RADAR_CELLS, SEARCH_LIMIT_S, HOURS_SINCE_FIX, RAM_S, RAM_COOLDOWN_S, BEARING_COOLDOWN_S, BEARING_ERROR_DEG, VESSEL, createGame, step, index, cellOf, stageOf, ctColour, ctBand, clock } from './crew-12-model.js';
+import { COLS, ROWS, CELL_NMI, RADAR_CELLS, SEARCH_LIMIT_S, HOURS_SINCE_FIX, RAM_S, RAM_COOLDOWN_S, BEARING_COOLDOWN_S, BEARING_ERROR_DEG, createGame, step, index, cellOf, stageOf, ctColour, ctBand, clock } from './crew-12-model.js';
 import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-12.css', import.meta.url).href;
 const KEYS = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0], w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0] };
 const deg = rad => `${String(Math.round(((rad * 180 / Math.PI) % 360 + 360) % 360)).padStart(3, '0')}°`;
 const compass = d => ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'][Math.round(((d % 360) + 360) % 360 / 22.5) % 16];
+const esc = value => String(value).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+// Degrees and decimal minutes, as the AIS fix is read off the bridge display.
+const dm = (value, pos, neg, pad) => { const a = Math.abs(value), d = Math.floor(a), m = (a - d) * 60; return `${String(d).padStart(pad, '0')}°${m.toFixed(1).padStart(4, '0')}′${value < 0 ? neg : pos}`; };
+const position = v => (Number.isFinite(v.lat) && Number.isFinite(v.lon) ? `${dm(v.lat, 'N', 'S', 2)} ${dm(v.lon, 'E', 'W', 3)}` : '');
 
 export const game = {
   get title() { return text('Search and Rescue'); },
@@ -14,20 +18,26 @@ export const game = {
     let active = true, awarded = false, frame = 0, last = 0;
     const held = new Set();
     let ramQueued = false, bearingQueued = false;
-    const state = createGame(expedition?.seed ?? `${expedition?.x ?? ''}:${expedition?.y ?? ''}:${Date.now()}:${Math.random()}`);
+    // The casualty is the vessel whose Mayday the main chart is answering; the field is drawn fresh each launch.
+    const sar = expedition?.sar;
+    const state = createGame(expedition?.seed ?? `${sar?.name ?? ''}:${expedition?.x ?? ''}:${expedition?.y ?? ''}:${Date.now()}:${Math.random()}`, sar);
+    const vessel = state.vessel;
+    const name = esc(vessel.name);
     const driftText = `${String(state.driftDeg).padStart(3, '0')}° (${compass(state.driftDeg)}) at ${state.driftKn.toFixed(1)} kn`;
+    const fix = position(vessel);
+    const responder = vessel.distanceKm !== null ? `CCGS Amundsen, ${vessel.distanceKm} km off, is the closest responder.` : 'CCGS Amundsen is the closest responder.';
     root.innerHTML = `
       <section class="c12-game" aria-label="Search and Rescue">
         <link rel="stylesheet" href="${stylesheet}">
         <div class="c12-heading">
-          <div><p class="c12-kicker">BRIDGE / SEARCH AND RESCUE</p><h3>Search and Rescue</h3></div>
+          <div><p class="c12-kicker">BRIDGE / SEARCH AND RESCUE · ${name.toUpperCase()}</p><h3>Search and Rescue</h3></div>
           <div class="c12-meters">
             <div class="c12-clock"><strong data-clock>0h 00m</strong><span data-clock-label>since the call</span></div>
             <div class="c12-score"><strong data-points>0</strong><span>points</span></div>
           </div>
         </div>
         <div class="c12-signal" data-signal>
-          <b>MAYDAY RELAY · MCTS IQALUIT</b> ${VESSEL}, 162 passengers, beset and taking water forward. Last AIS fix ${HOURS_SINCE_FIX} h ago at the marked position; pack drifting ${driftText}. CCGS Amundsen is the closest responder. Reach them within ${Math.round(SEARCH_LIMIT_S / 3600)} hours of the call, cut them free, then lead them to open water.
+          <b>MAYDAY RELAY · MCTS IQALUIT</b> ${name}, ${esc(vessel.kind)}, ${esc(vessel.trouble)}. Last AIS fix ${HOURS_SINCE_FIX} h ago at ${fix ? `${fix}, ` : ''}the marked datum; pack drifting ${driftText}. ${responder} Reach them within ${Math.round(SEARCH_LIMIT_S / 3600)} hours of the call, cut them free, then lead them to open water.
         </div>
         <div class="c12-layout">
           <div class="c12-chart-wrap">
@@ -41,7 +51,7 @@ export const game = {
               <div><dt>Speed</dt><dd data-speed>0.0 kn</dd></div>
               <div><dt>Heading</dt><dd data-heading>000°</dd></div>
               <div><dt>Under the hull</dt><dd data-ice>open water</dd></div>
-              <div><dt>${VESSEL}</dt><dd data-cruise>no contact</dd></div>
+              <div><dt>Casualty</dt><dd data-cruise>${name}, no contact</dd></div>
               <div><dt>Radar</dt><dd data-radar>no targets</dd></div>
             </dl>
             <p class="c12-status" role="status" aria-live="polite" data-status>Head for the datum and let the radar do the looking. Contacts inside ${RADAR_CELLS * CELL_NMI} nmi paint as blips; you identify one by closing to ${CELL_NMI * 2} nmi.</p>
@@ -57,7 +67,7 @@ export const game = {
                 <button type="button" class="c12-bearing" data-bearing>Radio bearing <kbd>B</kbd><small data-bearing-note>±${BEARING_ERROR_DEG}° on their VHF</small></button>
               </div>
             </div>
-            <p class="c12-help">Arrow keys or <kbd>WASD</kbd> steer; hold two for a diagonal. Speed follows the chart: 13 kn in open water, about 3 kn breaking a metre of first-year ice, a crawl in old ice.</p>
+            <p class="c12-help">Arrow keys or <kbd>WASD</kbd> steer; hold two for a diagonal. Speed follows the chart: 13 kn in open water, about 3 kn breaking a metre of first-year ice, a crawl in old ice. A ${esc(vessel.kind)} follows a broken channel at up to ${vessel.kn} kn.</p>
           </aside>
         </div>
         <div class="c12-debrief" data-debrief hidden></div>
@@ -167,7 +177,7 @@ export const game = {
       const inRange = p => Math.hypot(p.x - ship.x, p.y - ship.y) <= RADAR_CELLS;
       for (const berg of state.bergs) { if (berg.known) drawBerg(berg.x, berg.y); else if (inRange(berg)) drawBlip(berg.x, berg.y, t); }
       if (state.phase === 'escort') {
-        drawShip(cruise.x, cruise.y, cruise.path?.length ? Math.atan2(cruise.path[0].c + .5 - cruise.x, -(cruise.path[0].r + .5 - cruise.y)) : ship.heading, 2.4, '#f7f9fb', '#3d6fa8');
+        drawShip(cruise.x, cruise.y, cruise.path?.length ? Math.atan2(cruise.path[0].c + .5 - cruise.x, -(cruise.path[0].r + .5 - cruise.y)) : ship.heading, vessel.length, vessel.hull, vessel.deck);
         if (cruise.beset) {
           ctx.save(); ctx.strokeStyle = '#c8203a'; ctx.lineWidth = 2; ctx.setLineDash([3, 3]);
           ctx.beginPath(); ctx.arc(cruise.x * cellPx, cruise.y * cellPx, 1.3 * cellPx, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
@@ -205,7 +215,7 @@ export const game = {
         find('[data-clock]').parentElement.classList.remove('c12-late');
       }
       const gap = Math.hypot(cruise.x - ship.x, cruise.y - ship.y) * CELL_NMI;
-      find('[data-cruise]').textContent = state.phase === 'search' ? 'no contact' : cruise.beset ? `beset, ${gap.toFixed(1)} nmi off` : cruise.moving ? `following, ${gap.toFixed(1)} nmi astern` : `holding, ${gap.toFixed(1)} nmi off`;
+      find('[data-cruise]').textContent = `${vessel.name}, ${state.phase === 'search' ? 'no contact' : cruise.beset ? `beset, ${gap.toFixed(1)} nmi off` : cruise.moving ? `following, ${gap.toFixed(1)} nmi astern` : `holding, ${gap.toFixed(1)} nmi off`}`;
       const targets = [...state.bergs.filter(b => !b.known), ...(state.phase === 'search' ? [cruise] : [])].filter(p => Math.hypot(p.x - ship.x, p.y - ship.y) <= RADAR_CELLS).length;
       find('[data-radar]').textContent = targets ? `${targets} unidentified target${targets > 1 ? 's' : ''}` : 'no targets';
       const ram = find('[data-ram]');
@@ -219,15 +229,15 @@ export const game = {
 
     function report(list) {
       for (const event of list) {
-        if (event.type === 'contact') { const at = cellOf(state.cruise); say(`Contact. ${VESSEL} in sight, beset in ${ctBand(state.cells[index(at.c, at.r)].ct)}. Come alongside to cut them free, then lead them west; they can only follow a channel you have broken.`); }
-        else if (event.type === 'cut') say(`${VESSEL} is free of the ice and will follow in your wake at up to 6 kn. Pressure closes a channel in close pack within a few hours, so do not run too far ahead.`);
-        else if (event.type === 'beset') say(`${VESSEL} is beset again: the channel closed behind you. Go back and pass within a cable of their hull.`);
-        else if (event.type === 'freed' && !list.some(e => e.type === 'cut')) say(`${VESSEL} is moving again.`);
+        if (event.type === 'contact') { const at = cellOf(state.cruise); say(`Contact. ${vessel.name} in sight, ${vessel.kind}, beset in ${ctBand(state.cells[index(at.c, at.r)].ct)}. Come alongside to cut them free, then lead them west; they can only follow a channel you have broken.`); }
+        else if (event.type === 'cut') say(`${vessel.name} is free of the ice and will follow in your wake at up to ${vessel.kn} kn. Pressure closes a channel in close pack within a few hours, so do not run too far ahead.`);
+        else if (event.type === 'beset') say(`${vessel.name} is beset again: the channel closed behind you. Go back and pass within a cable of their hull.`);
+        else if (event.type === 'freed' && !list.some(e => e.type === 'cut')) say(`${vessel.name} is moving again.`);
         else if (event.type === 'bearing') say(`Radio bearing ${String(event.deg).padStart(3, '0')}° (${compass(event.deg)}), give or take ${BEARING_ERROR_DEG}°. A second bearing from somewhere else crosses it.`);
         else if (event.type === 'berg') say('Identified: an iceberg. Not them.');
         else if (event.type === 'ram') say('Backing and ramming.');
         else if (event.type === 'timeout') say(`${Math.round(SEARCH_LIMIT_S / 3600)} hours gone. The tasking passes to a helicopter out of Resolute.`);
-        else if (event.type === 'delivered') say(`${VESSEL} is in open water and under her own power.`);
+        else if (event.type === 'delivered') say(`${vessel.name} is in open water and clear of the pack.`);
       }
     }
 
@@ -238,16 +248,17 @@ export const game = {
       const debrief = find('[data-debrief]');
       debrief.hidden = false;
       debrief.innerHTML = r.found
-        ? `<h4>${r.delivered ? `${VESSEL} delivered to open water` : `${VESSEL} found`}</h4>
+        ? `<h4>${r.delivered ? `${name} delivered to open water` : `${name} found`}</h4>
            <ul>
+             <li>${name}, ${esc(vessel.kind)}, ${esc(vessel.trouble)}${fix ? `; last fix ${fix}` : ''}</li>
              <li>Search: contact ${r.searchHours} h after the call, ${r.bearingsTaken} radio bearing${r.bearingsTaken === 1 ? '' : 's'}, ${r.bergsIdentified} iceberg${r.bergsIdentified === 1 ? '' : 's'} identified · <b>${r.searchPoints}</b> points</li>
              <li>Escort: ${r.escortHours} h in the channel, beset ${r.besets} time${r.besets === 1 ? '' : 's'} · <b>${r.escortPoints}</b> points</li>
              <li>Pack drift over the ${HOURS_SINCE_FIX} h since the fix: ${driftText}, about ${(r.driftKn * HOURS_SINCE_FIX).toFixed(1)} nmi</li>
            </ul>
            <p><b>${r.points} points.</b> Close this window to return to the bridge.</p>`
-        : `<h4>Search called off</h4>
+        : `<h4>Search for ${name} called off</h4>
            <ul>
-             <li>${Math.round(SEARCH_LIMIT_S / 3600)} h without contact; ${r.bearingsTaken} radio bearing${r.bearingsTaken === 1 ? '' : 's'}, ${r.bergsIdentified} iceberg${r.bergsIdentified === 1 ? '' : 's'} identified</li>
+             <li>${Math.round(SEARCH_LIMIT_S / 3600)} h without contact with the ${esc(vessel.kind)}; ${r.bearingsTaken} radio bearing${r.bearingsTaken === 1 ? '' : 's'}, ${r.bergsIdentified} iceberg${r.bergsIdentified === 1 ? '' : 's'} identified</li>
              <li>The pack was drifting ${driftText}: about ${(r.driftKn * HOURS_SINCE_FIX).toFixed(1)} nmi from the fix before you even left</li>
            </ul>
            <p><b>0 points.</b> Close and relaunch to take the call again.</p>`;
