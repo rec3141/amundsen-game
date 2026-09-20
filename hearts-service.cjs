@@ -2269,6 +2269,9 @@ function applyMove(room, seat, move, payload) {
   if (outcome.rejected) fail(400, outcome.rejected.message);
   room.session = outcome.session;
   if (outcome.session.status === "ended") {
+    room.history ||= [];
+    room.history.push({ hand: room.hand, tricks: outcome.session.state.tricksPlayed, heartsBroken: outcome.session.state.heartsBroken, points: outcome.session.state.handPoints, moonShooter: outcome.session.state.moonShooter });
+    room.history = room.history.slice(-20);
     room.scores = room.scores.map((score, i) => score + outcome.session.state.handPoints[i]);
     room.finished = room.scores.some((score) => score >= 100);
     room.ready = room.players.flatMap((p, i) => p?.crew ? [i] : []);
@@ -2323,6 +2326,7 @@ function view(room, seat) {
     game: "hearts",
     chat: room.chat || [],
     aiPending: !!room.aiPending,
+    history: room.history || [],
     state,
     ready: room.ready,
     finished: room.finished,
@@ -2371,6 +2375,7 @@ function handle(data) {
         hand: 1,
         scores: [0, 0, 0, 0],
         ready: [],
+        history: [],
         finished: false,
         touched: Date.now()
       };

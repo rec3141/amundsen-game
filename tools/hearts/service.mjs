@@ -23,6 +23,11 @@ function applyMove(room, seat, move, payload) {
   if (outcome.rejected) fail(400, outcome.rejected.message);
   room.session = outcome.session;
   if (outcome.session.status === 'ended') {
+    room.history ||= [];
+    room.history.push({ hand: room.hand, tricks: outcome.session.state.tricksPlayed,
+      heartsBroken: outcome.session.state.heartsBroken, points: outcome.session.state.handPoints,
+      moonShooter: outcome.session.state.moonShooter });
+    room.history = room.history.slice(-20);
     room.scores = room.scores.map((score, i) => score + outcome.session.state.handPoints[i]);
     room.finished = room.scores.some(score => score >= 100);
     room.ready = room.players.flatMap((p, i) => p?.crew ? [i] : []);
@@ -58,6 +63,7 @@ function view(room, seat) {
   const state = session ? heartsGame.playerView(session.state, seat) : null;
   return { code: room.code, seat, revision: room.revision, hand: room.hand, scores: room.scores,
     players: roster(room), game: 'hearts', chat: room.chat || [], aiPending: !!room.aiPending,
+    history: room.history || [],
     state, ready: room.ready, finished: room.finished,
     legal: session ? heartsGame.flow.legalMovesFor(session.state, session.phase, seat) : [] };
 }
@@ -87,7 +93,7 @@ function handle(data) {
       let code;
       do { code = Array.from({ length: 5 }, () => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[randomInt(31)]).join(''); } while (rooms[code]);
       room = rooms[code] = { code, players: [null, null, null, null], revision: 0, hand: 1,
-        scores: [0, 0, 0, 0], ready: [], finished: false, touched: Date.now() };
+        scores: [0, 0, 0, 0], ready: [], history: [], finished: false, touched: Date.now() };
     } else {
       room = rooms[String(data.code).toUpperCase()];
       if (!room) fail(404, 'That table has closed. Choose another table.');
