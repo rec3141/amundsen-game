@@ -1,8 +1,9 @@
 # Amundsen Expedition
 
 An offline browser game and shared minigame suggestion board for collaborative
-coding aboard the CCGS Amundsen. Python 3.10+; no packages, build step, external
-fonts, map tiles, or internet connection required.
+coding aboard the CCGS Amundsen. Python 3.10+ and Node.js 18+ for the shared
+Hearts table; no runtime package install, build step, external fonts, map tiles,
+or internet connection required.
 
 ## Live ship deployment
 
@@ -257,3 +258,23 @@ The export includes only `HEAD:static`. Its `site.js` enables public mode and
 The game's user publish timer runs every five minutes and shares grid's existing
 publish lock. It deploys only the game subtree. Mutable assets revalidate; the
 compressed world data retains its gzip bytes for browser decompression.
+
+## Wardroom Hearts
+
+Open the Hearts activity card or press **9**, create a table, and share its
+five-character code with three other players on the ship network. Each player
+joins from their own browser. Any seated player can deal once all four seats
+are filled. Bots are not enabled. Lowest score wins when a player reaches 100;
+all four confirm each new hand or rematch. Closing the operation or reloading
+the same browser tab preserves the seat. Disconnected players keep their seats.
+
+The game server validates moves with the vendored Parlour Hearts engine and
+returns only the requesting player's hand. Tables survive server restarts in
+`runtime/hearts.json`; inactive tables expire after 24 hours when tables are
+created or joined. Set `AMUNDSEN_HEARTS_DB` to use a different store and
+`AMUNDSEN_HEARTS_NODE` if Node is outside the server's PATH. A systemd drop-in
+can provide the latter. The Python service owns the bundled Node child process.
+No public relay, CDN, or other internet service is used.
+
+Upstream source, version, licenses and rebuild instructions are in
+[vendor/parlour/README.md](vendor/parlour/README.md).

@@ -1,3 +1,4 @@
+import { game as hearts } from './hearts.js';
 import { game as inuktitut } from './crew-22.js';
 import { game as patrol } from './crew-4.js';
 import { game as wildlife } from './crew-14.js';
@@ -17,8 +18,9 @@ import { game as plan } from './crew-11.js';
 import { game as flood } from './crew-10.js';
 import { game as raft } from './crew-8.js';
 // Activities launch anywhere; each carries its own field scene and equipment.
-export const minigames = { inuktitut, patrol, wildlife, wrecks, rivals, ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, neptune };
+export const minigames = { hearts, inuktitut, patrol, wildlife, wrecks, rivals, ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, neptune };
 export const activities = [
+  { id: 'hearts', title: 'Wardroom Hearts', description: 'Four shipmates, one card table', key: '9' },
   { id: 'inuktitut', title: 'Inuktitut', description: 'Syllabics, words and names on the chart', key: '3' },
   { id: 'patrol', title: 'Ice Patrol', description: 'Read the ice from a helicopter', key: 'j' },
   { id: 'wildlife', title: 'Wildlife Observer', description: 'Take a watch on the bridge', key: 'b' },

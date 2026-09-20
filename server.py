@@ -1,5 +1,6 @@
-"""Offline intranet game server with shared, durable meeting suggestions and a live fleet presence relay."""
+"""Offline intranet game server with durable suggestions, fleet presence and shared card tables."""
 import argparse
+import hearts
 import hashlib
 import json
 import math
@@ -205,11 +206,13 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         path = urlsplit(self.path).path
         comment = re.fullmatch(r'/api/suggestions/(\d+)/comments', path)
-        if path not in ('/api/suggestions', '/api/scores', '/api/fleet') and not comment:
+        if path not in ('/api/suggestions', '/api/scores', '/api/fleet', '/api/hearts') and not comment:
             return self.respond(404, {'error': 'Unknown endpoint'})
         status, data = self.read_json()
         if status != 200:
             return self.respond(status, data)
+        if path == '/api/hearts':
+            return self.respond(*hearts.request(data))
         if path == '/api/fleet':
             return self.respond(*fleet_report(data, self.client()))
         if path == '/api/scores':

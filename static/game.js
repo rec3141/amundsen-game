@@ -480,7 +480,7 @@ const activityButtons = new Map();
 const HANDS = [
   { id: 'science', title: 'Ship & science', suit: '♣', cards: ['ctd', 'ice', 'net', 'seep', 'contaminants', 'plan'] },
   { id: 'arctic', title: 'Ice & exploration', suit: '♠', cards: ['patrol', 'wildlife', 'oldice', 'cliceify', 'heli', 'raft'] },
-  { id: 'crew', title: 'Crew & adventure', suit: '♥', cards: ['sar', 'wrecks', 'rivals', 'flood', 'neptune', 'inuktitut'] },
+  { id: 'crew', title: 'Crew & adventure', suit: '♥', cards: ['sar', 'wrecks', 'rivals', 'flood', 'neptune', 'inuktitut', 'hearts'] },
 ];
 for (const hand of HANDS) {
   const section = document.createElement('section'), heading = document.createElement('h3'), row = document.createElement('div');
@@ -978,7 +978,7 @@ async function boot() {
     // through startActivity like any other, and a settled face-off is written to the log here.
     multiplayer.start({
       world, ship: () => ({ x: state.x, y: state.y, heading: angle }), sailTo, toast,
-      games: activities.filter(a => minigames[a.id]?.mount),
+      games: activities.filter(a => minigames[a.id]?.mount && !minigames[a.id].multiplayerOnly),
       play: (id, duel) => { const activity = activities.find(a => a.id === id); if (!activity || !craftReady()) return false; startActivity(activity, { duel }); return $('#mission-dialog').open; },
       award: (points, title) => { state.score = Math.min(Number.MAX_SAFE_INTEGER, state.score + points); const record = logEvent(state, here(), 'faceoff', title); record.points = points; save(); updateUI(); if (points) postScore({ id: 'faceoff', title: 'Face-off' }, record); },
       jolt: () => { shake = Math.max(shake, .7); },
