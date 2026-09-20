@@ -35,7 +35,7 @@ def build_status():
             continue
         if ident not in latest or state.get('started', 0) > latest[ident].get('started', 0):
             latest[ident] = state
-    names = {'starting': 'building', 'running': 'building', 'switching': 'building', 'limited': 'failed', 'ready_for_review': 'review', 'merged': 'live', 'failed': 'failed'}
+    names = {'starting': 'building', 'running': 'building', 'switching': 'building', 'limited': 'failed', 'ready_for_review': 'review', 'merged': 'live', 'failed': 'failed', 'retired': 'retired'}
     return {ident: names.get(state.get('status'), state.get('status')) for ident, state in latest.items()}
 
 def leaderboard():

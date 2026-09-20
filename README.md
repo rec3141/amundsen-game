@@ -69,7 +69,7 @@ The Python server is intended for a trusted ship intranet, not public hosting.
   captain's chart and draws the voyage track. The sector uses 2 km cells from
   local GEBCO and shoreline data, rendered in tiles at the current screen scale.
   Older voyage saves migrate automatically, including mapped swaths.
-- Launch operations anywhere using the sidebar buttons or keyboard shortcuts.
+- Launch every operation anywhere using the three hands of activity cards under the map or keyboard shortcuts. Ice, aircraft ownership and active Maydays never gate a minigame.
   **C** opens the CTD notebook; **I** opens the ice-thickness transect; **3** opens
   Inuktitut, including the interactive syllabics guide (**L** inside the game).
 - On the intranet, other players sail on the same main chart. **4** opens the
@@ -94,9 +94,9 @@ The Python server is intended for a trusted ship intranet, not public hosting.
 - Every logged operation leaves its own glyph on the chart (**2** toggles the
   legend). The 16 archive shipwrecks are marked: **V** picks one to steam to, and
   the survey starts once the ship is on the datum. Mayday calls appear at
-  intervals and **X** answers within 20 km. Flooding and contamination alarms
-  fire on their own now and then as well as on demand. Ice games need charted
-  ice within 10 km of the ship or helicopter.
+  intervals and **X** answers from anywhere. Flooding and contamination alarms
+  fire on their own now and then as well as on demand. The bridge reports charted
+  ice near the ship or helicopter without restricting game launches.
 - The ship burns diesel per km, more in ice. **U** bunkers at a community berth
   within 6 km or from the tanker M/T Nanny at her announced anchorage, for science
   points. Dry tanks mean a drift and a tow south to the start. **Q** opens the

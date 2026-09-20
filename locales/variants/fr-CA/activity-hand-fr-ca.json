@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "locale": "fr-CA",
+  "profile": {
+    "id": "activity-hand-fr-ca",
+    "translator": "Codex",
+    "status": "interface-update"
+  },
+  "messages": {
+    "hand.heading": {
+      "source": "Play your next card",
+      "text": "Jouez votre prochaine carte",
+      "status": "translated"
+    },
+    "hand.eyebrow": {
+      "source": "YOUR NEXT DISCOVERY",
+      "text": "VOTRE PROCHAINE DÉCOUVERTE",
+      "status": "translated"
+    },
+    "hand.help": {
+      "source": "Pick a card or use its key. Every game, anywhere.",
+      "text": "Choisissez une carte ou utilisez sa touche. Tous les jeux, partout.",
+      "status": "translated"
+    },
+    "hand.science": {
+      "source": "Ship & science",
+      "text": "Navire et science",
+      "status": "translated"
+    },
+    "hand.arctic": {
+      "source": "Ice & exploration",
+      "text": "Glaces et exploration",
+      "status": "translated"
+    },
+    "hand.crew": {
+      "source": "Crew & adventure",
+      "text": "Équipage et aventure",
+      "status": "translated"
+    },
+    "hand.retired": {
+      "source": "Set aside",
+      "text": "Mis de côté",
+      "status": "translated"
+    },
+    "hand.answer": {
+      "source": "X answers the call",
+      "text": "X répond à l’appel",
+      "status": "translated"
+    },
+    "hand.call": {
+      "source": "Answer the Mayday from {vessel} · {range} km {bearing}",
+      "text": "Répondez au Mayday de {vessel} · {range} km {bearing}",
+      "status": "translated"
+    },
+    "hand.nearIce": {
+      "source": "Charted ice within {range} km of {craft}",
+      "text": "Glace cartographiée à moins de {range} km de {craft}",
+      "status": "translated"
+    },
+    "hand.nearestIce": {
+      "source": "Nearest charted ice {range} km {bearing} of {craft}",
+      "text": "Glace cartographiée la plus proche à {range} km {bearing} de {craft}",
+      "status": "translated"
+    },
+    "hand.iceDescription": {
+      "source": "Drill a floe transect",
+      "text": "Forez un transect de glace",
+      "status": "translated"
+    },
+    "hand.chartAria": {
+      "source": "Expedition chart. Tap to sail or steer with arrow keys or WASD. Land blocks the ship and grounding costs the last operation's points. All activities launch anywhere with the cards below the map or their keyboard shortcuts. G launches the hired helicopter; Y launches the zodiac and 1 sends the AUV. U bunkers nearby; Q opens stores. V opens Shipwrecks, X opens Search and Rescue. 2 shows the legend, 4 chooses your icebreaker, 5 cycles vessels. Within 15 km of another player, 6 challenges, 7 throws a snowball and 8 declines.",
+      "text": "Carte de l’expédition. Cliquez pour naviguer ou utilisez les flèches ou WASD. La terre bloque le navire; un échouement coûte les points de la dernière opération. Tous les jeux se lancent partout avec les cartes sous la carte marine ou leurs raccourcis. G lance l’hélicoptère loué; Y lance le zodiac et 1 envoie l’AUV. U ravitaille à proximité; Q ouvre le magasin. V ouvre les Épaves, X la Recherche et sauvetage. 2 affiche la légende, 4 choisit le brise-glace, 5 change de navire. À moins de 15 km d’un autre joueur, 6 propose un duel, 7 lance une boule de neige et 8 refuse.",
+      "status": "translated"
+    }
+  }
+}

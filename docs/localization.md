@@ -4,7 +4,9 @@ The expedition shell, ship and fleet controls, stores, log, CTD and ice notebook
 and every crew minigame support English and Canadian French. The selected
 `editorial-fr-ca-v2` profile supplies 1,561 source messages. The `crew-merge-fr-ca` override profile
 adds 23 labels for the merged fleet, ice-coverage, ROV and learning controls.
-New narrative strings outside those catalogs fall back to English. The original
+The `activity-hand-fr-ca` profile supplies the card-hand headings, unrestricted-launch
+copy and chart accessibility description. New narrative strings outside those
+catalogs fall back to English. The original
 68-message `editorial-fr-ca-v1` CTD pilot remains available as an independent,
 immutable candidate.
 

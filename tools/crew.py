@@ -212,6 +212,8 @@ def main():
         state = json.loads((run / 'state.json').read_text())
         if state['status'] in ('starting', 'running', 'switching') and (alive(state.get('pid')) or alive(state.get('supervisor_pid'))):
             parser.error('This run is still working.')
+        if state['status'] == 'retired':
+            parser.error('This prototype is retired; scope a new run instead.')
         if state['status'] == 'merged':
             parser.error('This run is merged; start a new revision branch.')
         state.update(status='starting', worker=args.worker or preferences()['worker'], started=time.time(), attempts=state.get('attempts', 1))

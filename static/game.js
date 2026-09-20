@@ -31,11 +31,9 @@ let wrecks = [], target = null, pendingAlarm = null, iceCache = null, hovered = 
 // bunkering, and recovering the AUV, need the ship within BUNKER_KM; dry tanks drift at DRIFT_KM_PER_S for the grace
 // period, then a tow.
 const SHIP_KM_PER_S = 50, ZODIAC_TETHER_KM = 30, AUV_RANGE_KM = 60, AUV_SWATH_M = 3000, AUV_KM_PER_S = 36, DRIFT_KM_PER_S = 1.2, BUNKER_KM = 6, PORT_CHART_KM = 300, ADRIFT_GRACE_MS = 30000;
-// A wreck is surveyed within WRECK_KM of its datum; a Mayday is answered within SAR_KM of the casualty and is stood
-// down after SAR_LIFE_S; ice stations need charted ice of ICE_NEAR_PERCENT or more within ICE_NEAR_KM. Intervals are
-// seconds of active play: the next call comes SAR_GAP_S after the last plus an exponential draw of mean SAR_SPREAD_S
-// (12 minutes on average), the next alarm ALARM_GAP_S after the last plus a draw of mean ALARM_SPREAD_S (15 minutes).
-const WRECK_KM = 15, SAR_KM = 20, SAR_LIFE_S = 1200, SAR_GAP_S = 360, SAR_SPREAD_S = 360, SAR_FIRST_S = [150, 300], SAR_RANGE_KM = [60, 300];
+// Wreck datums and Mayday calls add context to operations, which can launch anywhere. Calls stand down after
+// SAR_LIFE_S. Intervals are seconds of active play: calls and alarms use a minimum gap plus an exponential draw.
+const WRECK_KM = 15, SAR_LIFE_S = 1200, SAR_GAP_S = 360, SAR_SPREAD_S = 360, SAR_FIRST_S = [150, 300], SAR_RANGE_KM = [60, 300];
 const ALARM_GAP_S = 480, ALARM_SPREAD_S = 420, ALARM_FIRST_S = [300, 480], ALARM_DELAY_MS = 2000, ICE_NEAR_KM = 10, ICE_NEAR_PERCENT = 10, ICE_SEARCH_CELLS = 400;
 const ALARMS = { flood: 'flooding in the aft lab', contaminants: 'contamination on the rosette deck' };
 // Vessels that raise a Mayday; the game's own MV Kittiwake among them.
@@ -123,27 +121,19 @@ function nearestIce(u, v) {
   iceCache = { key, result: best && { km: best.d * world.km, bearing: bearing(u, v, best.u, best.v) } };
   return iceCache.result;
 }
-const iceDistance = (u, v, of = '') => { const near = nearestIce(u, v); return near ? `Nearest ice ${Math.round(near.km)} km ${near.bearing}${of} · charted ice within ${ICE_NEAR_KM} km needed` : `No charted ice within ${ICE_SEARCH_CELLS * world.km} km`; };
 // The archive wrecks: the nearest to the ship, and the one whose datum the ship is on.
 function nearestWreck(u = shipU(), v = shipV()) { let best = null; for (const wreck of wrecks) { const km = kmBetween(u, v, wreck.u, wreck.v); if (!best || km < best.km) best = { wreck, km, bearing: bearing(u, v, wreck.u, wreck.v) }; } return best; }
 const wreckHere = () => { const near = world && nearestWreck(); return near && near.km <= (near.wreck.reach ?? WRECK_KM) ? near.wreck : null; };
 const maydayU = () => state.mayday.x * world.cols, maydayV = () => state.mayday.y * world.rows;
 const maydayRange = () => ({ km: kmBetween(shipU(), shipV(), maydayU(), maydayV()), bearing: bearing(shipU(), shipV(), maydayU(), maydayV()) });
 const maydayLine = () => { const r = maydayRange(); return `Answer the Mayday from ${state.mayday.name} · ${Math.round(r.km)} km ${r.bearing}`; };
-function unavailableReason(activity) {
-  if (activity.id === 'patrol') return !state.upgrades.helicopter ? 'Hire the helicopter in the ship’s stores (Q) for Ice Patrol' : !helicopter ? 'Launch the helicopter (G) for Ice Patrol' : !nearIce(pilotU(), pilotV()) ? iceDistance(pilotU(), pilotV(), localize(' of the helicopter')) : '';
-  if (activity.id === 'raft') return !state.upgrades.helicopter ? 'Hire the helicopter in the ship’s stores (Q) for The Raft' : !helicopter ? 'Launch the helicopter (G) for The Raft' : !world.isLand(pilotU(), pilotV()) ? 'Fly inland over land for The Raft' : '';
-  if (activity.id === 'sar') return !state.mayday ? 'No call on the radio' : maydayRange().km > SAR_KM ? maydayLine() : '';
-  return activity.requires === 'ice' && !nearIce(shipU(), shipV()) ? iceDistance(shipU(), shipV()) : '';
-}
-// What an available operation offers right now.
+// The activity description can reflect a call or a wreck under the ship.
 function describe(activity) {
   if (!world) return activity.description;
   if (activity.id === 'sar' && state.mayday) return maydayLine();
   if (activity.id === 'wrecks') { const wreck = wreckHere(); if (wreck) return `Survey the ${wreck.ship} datum · on station`; }
   return activity.description;
 }
-const available = activity => !unavailableReason(activity);
 const craftReady = () => world && chart && page === 'game' && !$('#mission-dialog').open;
 function toggleHelicopter() {
   if (!craftReady()) return;
@@ -368,7 +358,7 @@ function raiseMayday() {
   state.lastCall = state.played; state.nextCall = state.played + SAR_GAP_S + expo(SAR_SPREAD_S);
   const r = maydayRange(), where = `${Math.round(r.km)} km ${r.bearing}`;
   logEvent(state, { x: state.mayday.x, y: state.mayday.y, lon, lat, depth: world.depth(spot.u, spot.v) }, 'radio', `Mayday · ${who.name}, ${who.kind}, ${who.trouble} · ${where}`);
-  save(); updateUI(); toast(`MAYDAY · ${who.name}, ${who.kind}, ${who.trouble} · ${where} · X answers within ${SAR_KM} km`, true, true);
+  save(); updateUI(); toast(`MAYDAY · ${who.name}, ${who.kind}, ${who.trouble} · ${where} · X answers the call`, true, true);
 }
 function standDown(reason, quiet = false) {
   const m = state.mayday; if (!m) return;
@@ -405,13 +395,13 @@ function updateEvents() {
   const lines = [];
   if (target) lines.push(['target', targetLine()]);
   else { const near = nearestWreck(); if (near) lines.push(['wreck', near.wreck === wreckHere() ? `On the ${near.wreck.ship} datum · ${Math.round(near.km)} km ${near.bearing} · V surveys her` : `Nearest wreck datum · ${near.wreck.ship}${near.wreck.year ? ` (${near.wreck.year})` : ''} ${Math.round(near.km)} km ${near.bearing} · V surveys within ${WRECK_KM} km`]); }
-  if (state.mayday) { const r = maydayRange(), m = state.mayday; lines.push(['mayday', `Mayday · ${m.name}, ${m.kind}, ${m.trouble} · ${Math.round(r.km)} km ${r.bearing} · ${Math.max(1, Math.ceil((m.until - state.played) / 60))} min before she is stood down · X answers within ${SAR_KM} km`]); }
+  if (state.mayday) { const r = maydayRange(), m = state.mayday; lines.push(['mayday', `Mayday · ${m.name}, ${m.kind}, ${m.trouble} · ${Math.round(r.km)} km ${r.bearing} · ${Math.max(1, Math.ceil((m.until - state.played) / 60))} min before she is stood down · X answers the call`]); }
   else lines.push(['radio', 'Radio · no call · listening on channel 16']);
   if (pendingAlarm) lines.push(['alarm', `ALARM · ${ALARMS[pendingAlarm.id]} · opening now`]);
   else lines.push(['quiet', state.lastAlarm === null ? 'Alarms · none this voyage' : `Alarms · last one ${minutesAgo(state.lastAlarm) ? `${minutesAgo(state.lastAlarm)} min ago` : 'just now'}`]);
   const u = pilotU(), v = pilotV(), who = helicopter ? 'the helicopter' : 'the ship';
   const ice = nearIce(u, v) ? null : nearestIce(u, v);
-  lines.push(['ice', nearIce(u, v) ? `Charted ice within ${ICE_NEAR_KM} km of ${who} · ice stations open` : ice ? `Nearest charted ice ${Math.round(ice.km)} km ${ice.bearing} of ${who} · ice stations open within ${ICE_NEAR_KM} km of it` : `No charted ice within ${ICE_SEARCH_CELLS * world.km} km`]);
+  lines.push(['ice', nearIce(u, v) ? `Charted ice within ${ICE_NEAR_KM} km of ${who}` : ice ? `Nearest charted ice ${Math.round(ice.km)} km ${ice.bearing} of ${who}` : `No charted ice within ${ICE_SEARCH_CELLS * world.km} km`]);
   const list = $('#events'); list.replaceChildren();
   for (const [kind, text] of lines) { const row = el('div', kind); row.textContent = text; list.append(row); }
 }
@@ -468,18 +458,34 @@ function updateUI() {
   updateActivities(); updateStores(); updateFuel(); updateEvents();
 }
 const activityButtons = new Map();
-for (const activity of activities) {
-  const button = document.createElement('button'), key = document.createElement('kbd'), copy = document.createElement('span'), name = document.createElement('b'), description = document.createElement('small');
-  button.className = 'activity'; key.textContent = activity.key.toUpperCase(); name.textContent = activity.id === 'ctd' ? t('ctd.activity') : activity.title; description.textContent = activity.id === 'ctd' ? t('ctd.description') : activity.description;
-  if (activity.id === 'ctd') { name.dataset.i18n = 'ctd.activity'; name.dataset.i18nLocale = ''; name.lang = globalThis.UWI18n?.locale || 'en'; description.dataset.i18nLocale = ''; }
-  copy.append(name, description); button.append(key, copy); button.onclick = () => startActivity(activity); $('#activities').append(button);
-  activityButtons.set(activity, { button, description });
+const HANDS = [
+  { id: 'science', title: 'Ship & science', suit: '♣', cards: ['ctd', 'ice', 'net', 'seep', 'contaminants', 'plan'] },
+  { id: 'arctic', title: 'Ice & exploration', suit: '♠', cards: ['patrol', 'wildlife', 'oldice', 'cliceify', 'heli', 'raft'] },
+  { id: 'crew', title: 'Crew & adventure', suit: '♥', cards: ['sar', 'wrecks', 'rivals', 'flood', 'neptune', 'inuktitut'] },
+];
+for (const hand of HANDS) {
+  const section = document.createElement('section'), heading = document.createElement('h3'), row = document.createElement('div');
+  section.className = `activity-suit ${hand.id}`; heading.id = `hand-${hand.id}`;
+  heading.textContent = hand.title; section.setAttribute('aria-labelledby', heading.id);
+  row.className = 'activity-hand'; section.append(heading, row); $('#activities').append(section);
+  hand.cards.forEach((id, index) => {
+    const activity = activities.find(a => a.id === id);
+    const button = document.createElement('button'), corner = document.createElement('span'), key = document.createElement('kbd'), suit = document.createElement('span'), art = document.createElement('canvas'), copy = document.createElement('span'), name = document.createElement('b'), description = document.createElement('small');
+    button.type = 'button'; button.className = 'activity'; button.dataset.activity = id;
+    button.style.setProperty('--tilt', `${(index - (hand.cards.length - 1) / 2) * 1.5}deg`);
+    button.style.setProperty('--lift', `${Math.abs(index - (hand.cards.length - 1) / 2) * 3}px`);
+    corner.className = 'card-corner'; key.textContent = activity.key.toUpperCase(); suit.textContent = hand.suit; suit.setAttribute('aria-hidden', 'true');
+    corner.append(key, suit); art.width = art.height = 96; art.className = 'card-art'; art.setAttribute('aria-hidden', 'true');
+    copy.className = 'card-copy'; name.textContent = activity.id === 'ctd' ? t('ctd.activity') : activity.title;
+    description.textContent = activity.id === 'ctd' ? t('ctd.description') : activity.description;
+    if (activity.id === 'ctd') { name.dataset.i18n = 'ctd.activity'; name.dataset.i18nLocale = ''; description.dataset.i18nLocale = ''; }
+    copy.append(name, description); button.append(corner, art, copy); button.onclick = () => startActivity(activity); row.append(button);
+    activityButtons.set(activity, { button, description, art });
+  });
 }
 function updateActivities() {
-  for (const [activity, { button, description }] of activityButtons) {
-    const ok = !world || available(activity);
-    button.classList.toggle('unavailable', !ok); button.setAttribute('aria-disabled', String(!ok));
-    description.textContent = ok ? (activity.id === 'ctd' ? t('ctd.description') : describe(activity)) : unavailableReason(activity);
+  for (const [activity, { description }] of activityButtons) {
+    description.textContent = activity.id === 'ctd' ? t('ctd.description') : describe(activity);
   }
 }
 window.addEventListener('uw:localechange', updateActivities);
@@ -493,7 +499,6 @@ function startActivity(activity, extra = {}) {
   if ($('#mission-dialog').open || page !== 'game') return;
   if (!world) { toast('The chart is still unrolling. One moment.'); return; }
   const game = minigames[activity.id]; if (!game?.mount) { toast('This operation is unavailable.'); return; }
-  if (!available(activity)) { toast(unavailableReason(activity), true); return; }
   endActivity(); waypoints = []; keys.clear(); returnFocus = document.activeElement;
   const title = $('#mission-title');
   delete title.dataset.i18n; delete title.dataset.i18nLocale; title.removeAttribute('lang');
@@ -707,6 +712,7 @@ function drawTanker(x, y, near, text) {
 // Chart glyphs, one per logged activity, about 10 px across: one fill colour and the chart ink.
 const INK = '#2b1d10', CREAM = '#f6f1e4';
 const GLYPHS = {
+  inuktitut(c) { c.fillStyle = '#f6f1e4'; c.strokeStyle = INK; c.lineWidth = 1.2; c.beginPath(); c.moveTo(0, -4); c.quadraticCurveTo(-3, -7, -7, -5); c.lineTo(-7, 5); c.quadraticCurveTo(-3, 3, 0, 6); c.quadraticCurveTo(3, 3, 7, 5); c.lineTo(7, -5); c.quadraticCurveTo(3, -7, 0, -4); c.closePath(); c.fill(); c.stroke(); c.beginPath(); c.moveTo(0, -4); c.lineTo(0, 6); c.stroke(); },
   ctd(c) { c.fillStyle = '#c9ced2'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.arc(0, 0, 5.5, 0, 7); c.fill(); c.stroke(); c.fillStyle = INK; for (let n = 0; n < 6; n++) { c.beginPath(); c.arc(Math.cos(n * Math.PI / 3) * 3.2, Math.sin(n * Math.PI / 3) * 3.2, 1.2, 0, 7); c.fill(); } },
   ice(c) { c.strokeStyle = INK; c.lineWidth = 2; c.beginPath(); c.moveTo(0, -7); c.lineTo(0, 7); c.stroke(); c.strokeStyle = '#7cc4ea'; c.lineWidth = 1.6; c.beginPath(); for (let y = -4; y <= 4; y += 3) { c.moveTo(-3.5, y); c.lineTo(3.5, y + 1.6); } c.stroke(); },
   net(c) { c.fillStyle = '#e2cf93'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.moveTo(-6, -5); c.lineTo(6, -5); c.lineTo(0, 6); c.closePath(); c.fill(); c.stroke(); c.beginPath(); c.moveTo(-3, -5); c.lineTo(2, 2.5); c.moveTo(3, -5); c.lineTo(-2, 2.5); c.moveTo(-4.5, -1.5); c.lineTo(4.5, -1.5); c.stroke(); },
@@ -817,7 +823,6 @@ function draw() {
   if (state.mayday) {
     const x = toX(maydayU()), y = toY(maydayV()), r = maydayRange(), pulse = (Math.sin(performance.now() / 250) + 1) / 2;
     ctx.strokeStyle = '#e0392b90'; ctx.setLineDash([2, 5]); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(toX(su), toY(sv)); ctx.lineTo(x, y); ctx.stroke(); ctx.setLineDash([]);
-    ctx.strokeStyle = '#e0392b50'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(x, y, SAR_KM / world.km * z, 0, 7); ctx.stroke();
     ctx.save(); ctx.translate(x, y); drawMayday(ctx, pulse); ctx.restore();
     label(`MAYDAY · ${state.mayday.name} · ${Math.round(r.km)} km ${r.bearing}`, x + 12, y - 10, '#8c1d12', 'bold 11px sans-serif');
   }
@@ -935,11 +940,11 @@ async function boot() {
     loadWrecks().then(() => { const wreck = wrecks.find(w => w.id === state.target); if (wreck) { target = { wreck, goal: null }; routeTarget(); } else state.target = null; updateUI(); });
     chartPosition(state, known); updateUI(); buildFog();
     // The fleet relay learns the ship's chart position and heading and carries hails; other charts' ships are drawn
-    // over this one. A face-off can be played in any operation that needs no ice, craft or call; its round opens
+    // over this one. A face-off can be played in any operation; its round opens
     // through startActivity like any other, and a settled face-off is written to the log here.
     multiplayer.start({
       world, ship: () => ({ x: state.x, y: state.y, heading: angle }), sailTo, toast,
-      games: activities.filter(a => !a.requires && !['patrol', 'raft', 'sar'].includes(a.id) && minigames[a.id]?.mount),
+      games: activities.filter(a => minigames[a.id]?.mount),
       play: (id, duel) => { const activity = activities.find(a => a.id === id); if (!activity || !craftReady()) return false; startActivity(activity, { duel }); return $('#mission-dialog').open; },
       award: (points, title) => { state.score = Math.min(Number.MAX_SAFE_INTEGER, state.score + points); const record = logEvent(state, here(), 'faceoff', title); record.points = points; save(); updateUI(); if (points) postScore({ id: 'faceoff', title: 'Face-off' }, record); },
       jolt: () => { shake = Math.max(shake, .7); },
@@ -983,7 +988,7 @@ async function loadLeaderboard() {
     }
   } catch { $('#board-refresh').textContent = 'Cannot reach the server. Retrying…'; }
 }
-const BUILD_LABEL = { building: 'Being built', review: 'In review', live: 'In the game', failed: 'Build stalled' };
+const BUILD_LABEL = { building: 'Being built', review: 'In review', live: 'In the game', failed: 'Build stalled', retired: 'Set aside' };
 function el(tag, className, text) { const node = document.createElement(tag); if (className) node.className = className; if (text != null) node.textContent = text; return node; }
 let crewName = ''; try { crewName = localStorage.getItem('amundsen-crew-name') || ''; } catch {}
 function commentForm(idea) {
@@ -1037,4 +1042,5 @@ async function loadIdeas() {
   } catch { $('#board-status').textContent = 'Cannot reach the server. Retrying…'; }
 }
 $('#idea-form').onsubmit = async e => { e.preventDefault(); const form = e.currentTarget, button = form.querySelector('button'); button.disabled = true; $('#form-status').textContent = 'Sending…'; try { const response = await fetch('api/suggestions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) }); if (!response.ok) throw Error((await response.json()).error || 'Could not save idea'); form.reset(); $('#form-status').textContent = 'Your idea is on the crew board. Thank you!'; await loadIdeas(); } catch (error) { $('#form-status').textContent = error.message === 'Failed to fetch' ? 'Connection lost. Your draft is still here; try again.' : error.message; } finally { button.disabled = false; } };
+for (const [activity, { art }] of activityButtons) { const c = art.getContext('2d'); c.translate(48, 48); c.scale(4, 4); (GLYPHS[activity.id] || GLYPHS.ctd)(c); }
 buildLegend(); setInterval(() => { if (!document.hidden) loadIdeas(); if (world) save(); }, 5000); setInterval(() => { if (!document.hidden && page === 'board') loadLeaderboard(); }, 10000); updateUI(); loadIdeas(); resize(); requestAnimationFrame(loop); boot();

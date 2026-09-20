@@ -477,6 +477,19 @@ window.UW_UI_CATALOG = {
         "early.logged": "Logged ✓",
         "early.points": "points",
         "early.score": "Score",
+        "hand.answer": "X answers the call",
+        "hand.arctic": "Ice & exploration",
+        "hand.call": "Answer the Mayday from {vessel} · {range} km {bearing}",
+        "hand.chartAria": "Expedition chart. Tap to sail or steer with arrow keys or WASD. Land blocks the ship and grounding costs the last operation's points. All activities launch anywhere with the cards below the map or their keyboard shortcuts. G launches the hired helicopter; Y launches the zodiac and 1 sends the AUV. U bunkers nearby; Q opens stores. V opens Shipwrecks, X opens Search and Rescue. 2 shows the legend, 4 chooses your icebreaker, 5 cycles vessels. Within 15 km of another player, 6 challenges, 7 throws a snowball and 8 declines.",
+        "hand.crew": "Crew & adventure",
+        "hand.eyebrow": "YOUR NEXT DISCOVERY",
+        "hand.heading": "Play your next card",
+        "hand.help": "Pick a card or use its key. Every game, anywhere.",
+        "hand.iceDescription": "Drill a floe transect",
+        "hand.nearIce": "Charted ice within {range} km of {craft}",
+        "hand.nearestIce": "Nearest charted ice {range} km {bearing} of {craft}",
+        "hand.retired": "Set aside",
+        "hand.science": "Ship & science",
         "late.00063902cfd3": "{value0} h ship time",
         "late.0008f8c89a6d": "{value0}: {value1} turned for {value2}{value3}: {value4}.",
         "late.00343064716d": "Model run",
@@ -2066,6 +2079,19 @@ window.UW_UI_CATALOG = {
         "early.logged": "Consigné ✓",
         "early.points": "points",
         "early.score": "Pointage",
+        "hand.answer": "X répond à l’appel",
+        "hand.arctic": "Glaces et exploration",
+        "hand.call": "Répondez au Mayday de {vessel} · {range} km {bearing}",
+        "hand.chartAria": "Carte de l’expédition. Cliquez pour naviguer ou utilisez les flèches ou WASD. La terre bloque le navire; un échouement coûte les points de la dernière opération. Tous les jeux se lancent partout avec les cartes sous la carte marine ou leurs raccourcis. G lance l’hélicoptère loué; Y lance le zodiac et 1 envoie l’AUV. U ravitaille à proximité; Q ouvre le magasin. V ouvre les Épaves, X la Recherche et sauvetage. 2 affiche la légende, 4 choisit le brise-glace, 5 change de navire. À moins de 15 km d’un autre joueur, 6 propose un duel, 7 lance une boule de neige et 8 refuse.",
+        "hand.crew": "Équipage et aventure",
+        "hand.eyebrow": "VOTRE PROCHAINE DÉCOUVERTE",
+        "hand.heading": "Jouez votre prochaine carte",
+        "hand.help": "Choisissez une carte ou utilisez sa touche. Tous les jeux, partout.",
+        "hand.iceDescription": "Forez un transect de glace",
+        "hand.nearIce": "Glace cartographiée à moins de {range} km de {craft}",
+        "hand.nearestIce": "Glace cartographiée la plus proche à {range} km {bearing} de {craft}",
+        "hand.retired": "Mis de côté",
+        "hand.science": "Navire et science",
         "late.00063902cfd3": "{value0} h heure d'expédition",
         "late.0008f8c89a6d": "{value0} : {value1} activé pour {value2}{value3} : {value4}.",
         "late.00343064716d": "Exécution du modèle",
@@ -5070,6 +5096,58 @@ window.UW_UI_CATALOG = {
         "early.score": {
           "profile": "editorial-fr-ca-v2",
           "sourceSha256": "ee6251f853e10e7fb27ede4afb9f240c17ecb0b38e1616539efb062c40fbd792"
+        },
+        "hand.answer": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "64d8acde746a722ddab05b08997dbe919d955b83a16a6bc66931de3d9f2232af"
+        },
+        "hand.arctic": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "3c03f081b3c13530cfede6f2d45b16cb44da9ebebaad294e06ae63bd1f71544d"
+        },
+        "hand.call": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "fae40a1f9b08c7de6d37a1d9aa447f987811695a9a83ff9e9ef12840bbfb318d"
+        },
+        "hand.chartAria": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "f19385a27a907ca2ebbce6b34c895853963a47acf0bfe134ec8062f78b0b7acb"
+        },
+        "hand.crew": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "f9e0aa4dec5077e210a578795fedd23610b47af3f9f37552c46723861941b157"
+        },
+        "hand.eyebrow": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "450bd3cacd363e892868a8fa37c8d19dcaf965b50328704504493b24198b9c3d"
+        },
+        "hand.heading": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "78202b07435fa748f202cf3f3213cb9fc132feaa0a3b5429cab476041f3c7a63"
+        },
+        "hand.help": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "87c968c76c7a4055be19c270c7d01cef3178487240883088af8a7b318877baa5"
+        },
+        "hand.iceDescription": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "d689c254dbbe183929322c39b2d79bcb8783def2d28285980cd3b0a927b60542"
+        },
+        "hand.nearIce": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "e9d23b9ebcaa05b9b8fc4a76f4263a3fb356365696ce3f5f4e2786f0dcf77b6f"
+        },
+        "hand.nearestIce": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "7ce7b6275cd30cc5b2f3a57fb7ef858a096f53f185d7e34af5a123f624e0028e"
+        },
+        "hand.retired": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "c205eac05e5094e33698ee6bc4dbdc1fda4aee681ddeb1d9d0022294d9959cf6"
+        },
+        "hand.science": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "90321078e34aa2fc62b8b6844776a7cf7d828ab177583bc192720735dad0e223"
         },
         "late.00063902cfd3": {
           "profile": "editorial-fr-ca-v2",

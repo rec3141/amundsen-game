@@ -24,7 +24,7 @@ If the allowed files cannot deliver the outcome, stop and report SCOPE_BLOCKED w
 substitute a different feature. Verify the stated acceptance outcome, not just that the new code runs.
 Keep the real projection and data; never invent geography or ice. Data pulls use the underway server's local
 files under /data/underway_server/www, read-only; project reference /data/dev/underway.
-Keyboard AND button controls; responsive layout. Minigames launch anywhere; only ice stations require ice.
+Keyboard AND button controls; responsive layout. All minigames launch anywhere without location, equipment or active-event gates.
 Audience: STEM postgraduate scientists aboard CCGS Amundsen. Subtle science, no disclaimer or preachy copy.
 NO TESTS: do not write test files. Syntax checks and a smoke check on a spare port are welcome; do not touch
 port 8050, systemd units or Caddy. Do not spawn further agents, read credentials, merge or deploy.
@@ -124,7 +124,7 @@ def triage(ideas, states):
     """Show routing decisions and existing work without starting workers."""
     for idea in ideas:
         runs = idea_runs(idea, states)
-        if runs and runs[-1]['status'] == 'merged' and not needs_work(idea, runs):
+        if runs and (runs[-1]['status'] == 'retired' or (runs[-1]['status'] == 'merged' and not needs_work(idea, runs))):
             continue
         route = read_route(idea)
         status = f"{runs[-1]['branch']}: {runs[-1]['status']}" if runs else 'unstarted'

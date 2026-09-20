@@ -1583,5 +1583,18 @@ export const messages = {
   "merge.rovSink": "Descend E",
   "merge.rovScan": "Hold Scan",
   "merge.rovRecover": "Recover early (R)",
-  "merge.rovRecoverLog": "Recover & log (R)"
+  "merge.rovRecoverLog": "Recover & log (R)",
+  "hand.heading": "Play your next card",
+  "hand.eyebrow": "YOUR NEXT DISCOVERY",
+  "hand.help": "Pick a card or use its key. Every game, anywhere.",
+  "hand.science": "Ship & science",
+  "hand.arctic": "Ice & exploration",
+  "hand.crew": "Crew & adventure",
+  "hand.retired": "Set aside",
+  "hand.answer": "X answers the call",
+  "hand.call": "Answer the Mayday from {vessel} · {range} km {bearing}",
+  "hand.nearIce": "Charted ice within {range} km of {craft}",
+  "hand.nearestIce": "Nearest charted ice {range} km {bearing} of {craft}",
+  "hand.iceDescription": "Drill a floe transect",
+  "hand.chartAria": "Expedition chart. Tap to sail or steer with arrow keys or WASD. Land blocks the ship and grounding costs the last operation's points. All activities launch anywhere with the cards below the map or their keyboard shortcuts. G launches the hired helicopter; Y launches the zodiac and 1 sends the AUV. U bunkers nearby; Q opens stores. V opens Shipwrecks, X opens Search and Rescue. 2 shows the legend, 4 chooses your icebreaker, 5 cycles vessels. Within 15 km of another player, 6 challenges, 7 throws a snowball and 8 declines."
 };

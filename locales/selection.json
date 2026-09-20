@@ -27,7 +27,20 @@
         "merge.rovSink": "crew-merge-fr-ca",
         "merge.rovScan": "crew-merge-fr-ca",
         "merge.rovRecover": "crew-merge-fr-ca",
-        "merge.rovRecoverLog": "crew-merge-fr-ca"
+        "merge.rovRecoverLog": "crew-merge-fr-ca",
+        "hand.heading": "activity-hand-fr-ca",
+        "hand.eyebrow": "activity-hand-fr-ca",
+        "hand.help": "activity-hand-fr-ca",
+        "hand.science": "activity-hand-fr-ca",
+        "hand.arctic": "activity-hand-fr-ca",
+        "hand.crew": "activity-hand-fr-ca",
+        "hand.retired": "activity-hand-fr-ca",
+        "hand.answer": "activity-hand-fr-ca",
+        "hand.call": "activity-hand-fr-ca",
+        "hand.nearIce": "activity-hand-fr-ca",
+        "hand.nearestIce": "activity-hand-fr-ca",
+        "hand.iceDescription": "activity-hand-fr-ca",
+        "hand.chartAria": "activity-hand-fr-ca"
       }
     }
   }
