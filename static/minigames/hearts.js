@@ -84,7 +84,7 @@ export const game = {
       const chat = root.querySelector('.hearts-conversation');
       if (chat) chatDraft = chat.querySelector('input').value;
       const chatFocused = chat?.contains(document.activeElement);
-      body.innerHTML = `<div class="hearts-heading"><strong>Hearts · ${escape(t.players.find(p => p && !p.crew)?.name || 'Shipmates')}'s table</strong><button data-action="browse">All tables</button></div><ul class="hearts-players">${players}</ul>${content}<p class="hearts-footnote">Your seat stays here when you close the table or reload this tab.</p>`;
+      body.innerHTML = `<div class="hearts-heading"><strong>Hearts · ${escape(t.players.find(p => p && !p.crew)?.name || 'Shipmates')}'s table</strong><span class="hearts-heading-actions"><button data-action="browse">All tables</button>${s ? '<button data-action="leave">Quit game</button>' : ''}</span></div><ul class="hearts-players">${players}</ul>${content}<p class="hearts-footnote">Your seat stays here when you close the table or reload this tab.</p>`;
       if (chat) body.append(chat);
       else {
         const section = document.createElement('section'); section.className = 'hearts-conversation';

@@ -2430,11 +2430,14 @@ function handle(data) {
     if (simultaneous && data.hand !== void 0 && data.hand !== room.hand) fail(409, "A new hand has started. Choose again.");
     if (data.revision !== room.revision && !simultaneous) fail(409, "The table changed. Try your move again.");
     if (action === "leave") {
-      if (room.session && !room.finished) fail(409, "Your seat is reserved until this match ends. Close the table and return to resume.");
       room.players[seat] = null;
       room.revision++;
       room.touched = Date.now();
       if (!room.players.some((p) => p && !p.crew)) delete rooms[room.code];
+      else if (room.session) {
+        const crew = Object.keys(CREW).find((id) => !room.players.some((p) => p?.crew === id));
+        room.players[seat] = { name: CREW[crew].name, crew };
+      }
       save();
       return { left: true };
     }
