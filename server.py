@@ -52,11 +52,15 @@ def leaderboard():
 
 # Fleet presence: every open chart reports its own ship about once a second and receives the others in reply.
 # Entries live only in memory, under FLEET_LOCK, and drop out FLEET_TTL seconds after their last report; a session
-# reporting faster than FLEET_INTERVAL is refused. The relay carries nothing but a display name, a fleet ship id,
-# a chart position and a heading; the session secret never leaves this table, only its derived public id does.
-FLEET_TTL, FLEET_INTERVAL, FLEET_MAX, FLEET_MAX_PER_ADDRESS = 15.0, 0.4, 64, 8
+# reporting faster than FLEET_INTERVAL is refused. The relay carries a display name, a fleet ship id, a chart
+# position and a heading, plus hails: one short message per report, addressed to another ship's public id and held
+# in her mailbox until her next report collects it. A hail is a face-off challenge, its answer or result, or a
+# snowball; the relay never judges a hail, it only carries it. The session secret never leaves this table, only
+# its derived public id does.
+FLEET_TTL, FLEET_INTERVAL, FLEET_MAX, FLEET_MAX_PER_ADDRESS, MAIL_MAX = 15.0, 0.4, 64, 8, 32
 FLEET, FLEET_LOCK = {}, threading.Lock()
 SESSION_RE, SHIP_RE, NAME_RE = re.compile(r'[0-9a-f]{16,32}'), re.compile(r'[a-z0-9-]{1,24}'), re.compile(r'[^\x00-\x1f\x7f]{0,40}')
+ID_RE, HAIL_KINDS = re.compile(r'[0-9a-f]{1,16}'), ('challenge', 'accept', 'decline', 'result', 'snowball')
 
 def fleet_number(value, low, high):
     """A finite JSON number within [low, high], or None."""
@@ -73,8 +77,29 @@ def fleet_view(now, exclude=None):
     return [{'id': e['id'], 'name': e['name'], 'ship': e['ship'], 'x': e['x'], 'y': e['y'], 'heading': e['heading'], 'age': round(now - e['seen'], 1)}
             for session, e in sorted(FLEET.items(), key=lambda item: item[1]['seen']) if session != exclude]
 
+def fleet_hail(sender, data, now):
+    """Deliver the report's hail, if any, to the addressed ship's mailbox; True when it was delivered."""
+    hail = data.get('hail')
+    if not isinstance(hail, dict):
+        return None
+    to, kind, duel, game = hail.get('to'), hail.get('kind'), hail.get('duel', ''), hail.get('game', '')
+    points = hail.get('points')
+    if not isinstance(to, str) or not ID_RE.fullmatch(to) or kind not in HAIL_KINDS or not isinstance(duel, str) or not ID_RE.fullmatch(duel or '0'):
+        return False
+    if not isinstance(game, str) or not SHIP_RE.fullmatch(game or 'x') or (points is not None and fleet_number(points, 0, 1000000) is None):
+        return False
+    target = next((e for e in FLEET.values() if e['id'] == to), None)
+    if target is None or target is sender:
+        return False
+    message = {'from': sender['id'], 'name': sender['name'], 'ship': sender['ship'], 'kind': kind, 'duel': duel, 'game': game, 'at': round(now, 1)}
+    if points is not None:
+        message['points'] = int(points)
+    target['mail'] = target['mail'][-(MAIL_MAX - 1):] + [message]
+    return True
+
 def fleet_report(data, address):
-    """Record one ship's report and answer with the rest of the fleet, or reject it with a status and reason."""
+    """Record one ship's report and answer with the rest of the fleet and the hails waiting for her, or reject
+    it with a status and reason."""
     session = data.get('session') if isinstance(data, dict) else None
     if not isinstance(session, str) or not SESSION_RE.fullmatch(session):
         return 400, {'error': 'A fleet report needs a session id.'}
@@ -82,6 +107,9 @@ def fleet_report(data, address):
     with FLEET_LOCK:
         fleet_expire(now)
         if data.get('leave') is True:
+            departing = FLEET.get(session)
+            if departing:
+                fleet_hail(departing, data, now)
             FLEET.pop(session, None)
             return 200, {'players': [], 'ttl': FLEET_TTL}
         name, ship = data.get('name', ''), data.get('ship')
@@ -94,11 +122,16 @@ def fleet_report(data, address):
                 return 503, {'error': 'The fleet chart is full.'}
             if sum(1 for e in FLEET.values() if e['address'] == address) >= FLEET_MAX_PER_ADDRESS:
                 return 429, {'error': 'Too many ships from this computer.'}
-            entry = FLEET[session] = {'id': hashlib.sha256(session.encode()).hexdigest()[:12], 'address': address, 'seen': now - FLEET_INTERVAL}
+            entry = FLEET[session] = {'id': hashlib.sha256(session.encode()).hexdigest()[:12], 'address': address, 'seen': now - FLEET_INTERVAL, 'mail': []}
         elif now - entry['seen'] < FLEET_INTERVAL:
             return 429, {'error': 'Report about once a second.'}
         entry.update(name=name.strip(), ship=ship, x=x, y=y, heading=heading, seen=now)
-        return 200, {'players': fleet_view(now, session), 'ttl': FLEET_TTL}
+        delivered = fleet_hail(entry, data, now)
+        mail, entry['mail'] = entry['mail'], []
+        reply = {'players': fleet_view(now, session), 'ttl': FLEET_TTL, 'mail': mail}
+        if delivered is not None:
+            reply['delivered'] = delivered
+        return 200, reply
 
 def fleet_list(session=None):
     now = time.monotonic()

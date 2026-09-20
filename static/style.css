@@ -46,3 +46,8 @@
 :root .locale-coverage { margin: .6rem 0; font-size: .8rem; opacity: .8; }
 :root #mission-dialog > .locale-control { margin: 0 3rem .8rem 0; }
 body > header { height: auto; min-height: 94px; flex-wrap: wrap; padding-block: 12px; gap: 12px 24px; }
+/* Meeting another ship: the hail panel, its operation picker, and the face-off and snowball buttons. */
+.fleet-meet{margin-top:12px;padding:10px 12px;background:#eef2ea;border:1px solid var(--line);border-radius:7px}#meet-status{margin:0 0 8px;font-size:11px;font-weight:600;color:#3c5a3e;overflow-wrap:anywhere}
+.duel-game{display:flex;align-items:center;gap:6px;margin:0;font-size:11px;font-weight:600;color:var(--muted);flex:1 1 100%}.duel-game select{flex:1;margin:0;padding:6px 8px;font-size:12px;border:1px solid #cbd6d0;border-radius:5px;background:#fbfcf9;color:var(--ink)}
+.fleet-meet .secondary:disabled{opacity:.5;cursor:default}#face-off:not(:disabled){border-color:var(--teal);color:var(--teal)}#decline{border-color:#b3352b;color:#b3352b}
+.fleet-list li{flex-wrap:wrap}.fleet-list li span{flex:1 1 120px}
