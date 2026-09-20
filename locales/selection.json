@@ -4,7 +4,31 @@
     "fr-CA": {
       "label": "Français (Canada)",
       "defaultProfile": "editorial-fr-ca-v2",
-      "overrides": {}
+      "overrides": {
+        "merge.unknownIce": "crew-merge-fr-ca",
+        "merge.faceOff": "crew-merge-fr-ca",
+        "merge.accept": "crew-merge-fr-ca",
+        "merge.snowball": "crew-merge-fr-ca",
+        "merge.decline": "crew-merge-fr-ca",
+        "merge.withdraw": "crew-merge-fr-ca",
+        "merge.faceOffLabel": "crew-merge-fr-ca",
+        "merge.faceOffWith": "crew-merge-fr-ca",
+        "merge.faceOffButton": "crew-merge-fr-ca",
+        "merge.snowballButton": "crew-merge-fr-ca",
+        "merge.noShip": "crew-merge-fr-ca",
+        "merge.learning": "crew-merge-fr-ca",
+        "merge.learn": "crew-merge-fr-ca",
+        "merge.readTogether": "crew-merge-fr-ca",
+        "merge.showMe": "crew-merge-fr-ca",
+        "merge.practised": "crew-merge-fr-ca",
+        "merge.rovForward": "crew-merge-fr-ca",
+        "merge.rovReverse": "crew-merge-fr-ca",
+        "merge.rovRise": "crew-merge-fr-ca",
+        "merge.rovSink": "crew-merge-fr-ca",
+        "merge.rovScan": "crew-merge-fr-ca",
+        "merge.rovRecover": "crew-merge-fr-ca",
+        "merge.rovRecoverLog": "crew-merge-fr-ca"
+      }
     }
   }
 }

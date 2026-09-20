@@ -4684,6 +4684,75 @@
     },
     "crew14.status.sound": {
       "text": "On the bridge wing, fjord head. Bearings are relative to the bow: 000 ahead, 090 to starboard."
+    },
+    "merge.unknownIce": {
+      "text": "Grey · ice coverage unknown; open water is charted"
+    },
+    "merge.faceOff": {
+      "text": "6 · Face off"
+    },
+    "merge.accept": {
+      "text": "6 · Accept"
+    },
+    "merge.snowball": {
+      "text": "7 · Snowball"
+    },
+    "merge.decline": {
+      "text": "8 · Decline"
+    },
+    "merge.withdraw": {
+      "text": "8 · Withdraw"
+    },
+    "merge.faceOffLabel": {
+      "text": "Face off in"
+    },
+    "merge.faceOffWith": {
+      "text": "· face-off with"
+    },
+    "merge.faceOffButton": {
+      "text": "Face off"
+    },
+    "merge.snowballButton": {
+      "text": "Snowball"
+    },
+    "merge.noShip": {
+      "text": "No ship within {range} km · steam alongside another icebreaker to hail her"
+    },
+    "merge.learning": {
+      "text": "Learn together"
+    },
+    "merge.learn": {
+      "text": "Learn"
+    },
+    "merge.readTogether": {
+      "text": "Read together"
+    },
+    "merge.showMe": {
+      "text": "Show me"
+    },
+    "merge.practised": {
+      "text": "practised"
+    },
+    "merge.rovForward": {
+      "text": "Forward W"
+    },
+    "merge.rovReverse": {
+      "text": "Reverse S"
+    },
+    "merge.rovRise": {
+      "text": "Rise Q"
+    },
+    "merge.rovSink": {
+      "text": "Descend E"
+    },
+    "merge.rovScan": {
+      "text": "Hold Scan"
+    },
+    "merge.rovRecover": {
+      "text": "Recover early (R)"
+    },
+    "merge.rovRecoverLog": {
+      "text": "Recover & log (R)"
     }
   }
 }

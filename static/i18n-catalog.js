@@ -1561,6 +1561,29 @@ window.UW_UI_CATALOG = {
         "late.ffa190c22323": "{value0} shut.",
         "late.ffa8844e174c": "no dorsal fin",
         "late.ffe14a0751dd": "It stays in the ice for good",
+        "merge.accept": "6 · Accept",
+        "merge.decline": "8 · Decline",
+        "merge.faceOff": "6 · Face off",
+        "merge.faceOffButton": "Face off",
+        "merge.faceOffLabel": "Face off in",
+        "merge.faceOffWith": "· face-off with",
+        "merge.learn": "Learn",
+        "merge.learning": "Learn together",
+        "merge.noShip": "No ship within {range} km · steam alongside another icebreaker to hail her",
+        "merge.practised": "practised",
+        "merge.readTogether": "Read together",
+        "merge.rovForward": "Forward W",
+        "merge.rovRecover": "Recover early (R)",
+        "merge.rovRecoverLog": "Recover & log (R)",
+        "merge.rovReverse": "Reverse S",
+        "merge.rovRise": "Rise Q",
+        "merge.rovScan": "Hold Scan",
+        "merge.rovSink": "Descend E",
+        "merge.showMe": "Show me",
+        "merge.snowball": "7 · Snowball",
+        "merge.snowballButton": "Snowball",
+        "merge.unknownIce": "Grey · ice coverage unknown; open water is charted",
+        "merge.withdraw": "8 · Withdraw",
         "ui.close": "Close operation",
         "ui.coverage": "French pilot: CTD notebook. Other operations remain in English.",
         "ui.language": "Language",
@@ -3127,6 +3150,29 @@ window.UW_UI_CATALOG = {
         "late.ffa190c22323": "{value0} fermé.",
         "late.ffa8844e174c": "pas de nageoire dorsale",
         "late.ffe14a0751dd": "Il reste dans la glace pour de bon",
+        "merge.accept": "6 · Accepter",
+        "merge.decline": "8 · Refuser",
+        "merge.faceOff": "6 · Duel",
+        "merge.faceOffButton": "Duel",
+        "merge.faceOffLabel": "Duel dans",
+        "merge.faceOffWith": "· duel avec",
+        "merge.learn": "Apprendre",
+        "merge.learning": "Apprendre ensemble",
+        "merge.noShip": "Aucun navire à moins de {range} km · approchez un autre brise-glace pour le héler",
+        "merge.practised": "exemples pratiqués",
+        "merge.readTogether": "Lisons ensemble",
+        "merge.rovForward": "Avancer W",
+        "merge.rovRecover": "Récupérer maintenant (R)",
+        "merge.rovRecoverLog": "Récupérer et consigner (R)",
+        "merge.rovReverse": "Reculer S",
+        "merge.rovRise": "Monter Q",
+        "merge.rovScan": "Maintenir le balayage",
+        "merge.rovSink": "Descendre E",
+        "merge.showMe": "Montrez-moi",
+        "merge.snowball": "7 · Boule de neige",
+        "merge.snowballButton": "Boule de neige",
+        "merge.unknownIce": "Gris · couverture de glace inconnue; l’eau libre est cartographiée",
+        "merge.withdraw": "8 · Retirer",
         "ui.close": "Fermer l’opération",
         "ui.coverage": "Interface complète en français canadien.",
         "ui.language": "Langue",
@@ -9360,6 +9406,98 @@ window.UW_UI_CATALOG = {
         "late.ffe14a0751dd": {
           "profile": "editorial-fr-ca-v2",
           "sourceSha256": "0886da25157b1983eae9950f2c056ebee6d044c457317f2843209f0eed4d0ff9"
+        },
+        "merge.accept": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "9650bc2106617c8eef4264734f3845d5e2b302ccccec2a80523ead113553ac17"
+        },
+        "merge.decline": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "3427dbe3cf2682743933742b1c17ce650c8bd4ff3e6c840fadde982bea5d5b32"
+        },
+        "merge.faceOff": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "294958db876012c91eb202c79c6c8c01cd040ddb7be85257cf3c8588868b78b4"
+        },
+        "merge.faceOffButton": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "427f33054966fd4deacabb21a2302ec3144e93077156e13402e7d7736dc7c115"
+        },
+        "merge.faceOffLabel": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "255324d67fb8bdd668c54d9734c96b31c652816e43f2f0ca3c5b9e4ee455e784"
+        },
+        "merge.faceOffWith": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "e6d90ab3aaf1fe849b1a695deeb1331ca2152b306b73744fdf7eee6e98bc6f9f"
+        },
+        "merge.learn": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "245841ed3cdcc809bb1af66f2ab835d4595b842a82a37769545300763f3cefbe"
+        },
+        "merge.learning": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "eaf16e1f235cd216bea6455618239f40627b2de6da4fb57abbc210c1c741fefa"
+        },
+        "merge.noShip": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "0d2a1afc0632f82647e59027df26310e334b317e9d1e5a6245b99fbde7b810b1"
+        },
+        "merge.practised": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "ef4f09860728169788b1495a31fd3070d119f9a9c6d192a0410e0c5365bc011e"
+        },
+        "merge.readTogether": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "2a0862566ae75ca988ac4385d30e7d6ceda5df9bb69092f7ac577fcf80ada815"
+        },
+        "merge.rovForward": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "ab21957795dff9aed3b2ebd6efe8642131dc85687e8f90b2739cb825ff7f01d8"
+        },
+        "merge.rovRecover": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "22069a2dc3ec89fe3e7fc27af95d20f478694ad65f582fe355c0c7b41e116390"
+        },
+        "merge.rovRecoverLog": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "804c957f7d54abfd9b6a9690a06d2cdf55ecd150bf7dda8fa0fc71b7ebd8fb9e"
+        },
+        "merge.rovReverse": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "2beb93e126bbca8d7590170b2812cad82bedaa05256db0242efdd14caee08e4d"
+        },
+        "merge.rovRise": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "bab0206e04c12e73c7983e9568402854bf0d5dcf8688fbe6b44fe1304d193167"
+        },
+        "merge.rovScan": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "a96b0f36c51ac2adfd53d340bbbd11d291d3403b9bad44cf0575c4e25aee17b5"
+        },
+        "merge.rovSink": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "c36eadadb05e778826eba43f50a33b12f54790446737c3c00d274098218926a0"
+        },
+        "merge.showMe": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "e30964fff6e6728b52e419eb411657c003740df0e21fdc3d2ff477e2b86c7c93"
+        },
+        "merge.snowball": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "71cb4e01ee207fc0eaec425437ade08a39a99e24560de18742d5738df587495b"
+        },
+        "merge.snowballButton": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "351ff8a6be2e49ee0bf51843db233779ce2e5cb27b8a739b8a874dcddd009a88"
+        },
+        "merge.unknownIce": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "2575e1db098be7c6969021901c809d91dbaaf0538b143b4dcd6b87d8e67cf3a9"
+        },
+        "merge.withdraw": {
+          "profile": "crew-merge-fr-ca",
+          "sourceSha256": "3c23f1154d41ed0a89b650210afc201f02f2839b8453ac34e6e3c7b1adeaf670"
         },
         "ui.close": {
           "profile": "editorial-fr-ca-v2",

@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "locale": "fr-CA",
+  "profile": {
+    "id": "crew-merge-fr-ca",
+    "translator": "Codex integration",
+    "status": "integration-copy"
+  },
+  "messages": {
+    "merge.unknownIce": {
+      "source": "Grey · ice coverage unknown; open water is charted",
+      "text": "Gris · couverture de glace inconnue; l’eau libre est cartographiée",
+      "status": "translated-integration"
+    },
+    "merge.faceOff": {
+      "source": "6 · Face off",
+      "text": "6 · Duel",
+      "status": "translated-integration"
+    },
+    "merge.accept": {
+      "source": "6 · Accept",
+      "text": "6 · Accepter",
+      "status": "translated-integration"
+    },
+    "merge.snowball": {
+      "source": "7 · Snowball",
+      "text": "7 · Boule de neige",
+      "status": "translated-integration"
+    },
+    "merge.decline": {
+      "source": "8 · Decline",
+      "text": "8 · Refuser",
+      "status": "translated-integration"
+    },
+    "merge.withdraw": {
+      "source": "8 · Withdraw",
+      "text": "8 · Retirer",
+      "status": "translated-integration"
+    },
+    "merge.faceOffLabel": {
+      "source": "Face off in",
+      "text": "Duel dans",
+      "status": "translated-integration"
+    },
+    "merge.faceOffWith": {
+      "source": "· face-off with",
+      "text": "· duel avec",
+      "status": "translated-integration"
+    },
+    "merge.faceOffButton": {
+      "source": "Face off",
+      "text": "Duel",
+      "status": "translated-integration"
+    },
+    "merge.snowballButton": {
+      "source": "Snowball",
+      "text": "Boule de neige",
+      "status": "translated-integration"
+    },
+    "merge.noShip": {
+      "source": "No ship within {range} km · steam alongside another icebreaker to hail her",
+      "text": "Aucun navire à moins de {range} km · approchez un autre brise-glace pour le héler",
+      "status": "translated-integration"
+    },
+    "merge.learning": {
+      "source": "Learn together",
+      "text": "Apprendre ensemble",
+      "status": "translated-integration"
+    },
+    "merge.learn": {
+      "source": "Learn",
+      "text": "Apprendre",
+      "status": "translated-integration"
+    },
+    "merge.readTogether": {
+      "source": "Read together",
+      "text": "Lisons ensemble",
+      "status": "translated-integration"
+    },
+    "merge.showMe": {
+      "source": "Show me",
+      "text": "Montrez-moi",
+      "status": "translated-integration"
+    },
+    "merge.practised": {
+      "source": "practised",
+      "text": "exemples pratiqués",
+      "status": "translated-integration"
+    },
+    "merge.rovForward": {
+      "source": "Forward W",
+      "text": "Avancer W",
+      "status": "translated-integration"
+    },
+    "merge.rovReverse": {
+      "source": "Reverse S",
+      "text": "Reculer S",
+      "status": "translated-integration"
+    },
+    "merge.rovRise": {
+      "source": "Rise Q",
+      "text": "Monter Q",
+      "status": "translated-integration"
+    },
+    "merge.rovSink": {
+      "source": "Descend E",
+      "text": "Descendre E",
+      "status": "translated-integration"
+    },
+    "merge.rovScan": {
+      "source": "Hold Scan",
+      "text": "Maintenir le balayage",
+      "status": "translated-integration"
+    },
+    "merge.rovRecover": {
+      "source": "Recover early (R)",
+      "text": "Récupérer maintenant (R)",
+      "status": "translated-integration"
+    },
+    "merge.rovRecoverLog": {
+      "source": "Recover & log (R)",
+      "text": "Récupérer et consigner (R)",
+      "status": "translated-integration"
+    }
+  }
+}
