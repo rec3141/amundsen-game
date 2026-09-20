@@ -42,7 +42,16 @@
         "hand.iceDescription": "activity-hand-fr-ca",
         "hand.chartAria": "activity-hand-fr-ca",
         "hand.mapping": "activity-hand-fr-ca",
-        "hand.mappingLoading": "activity-hand-fr-ca"
+        "hand.mappingLoading": "activity-hand-fr-ca",
+        "bridge.nearby": "bridge-layout-fr-ca",
+        "bridge.fleet": "bridge-layout-fr-ca",
+        "bridge.stores": "bridge-layout-fr-ca",
+        "bridge.log": "bridge-layout-fr-ca",
+        "bridge.bridge": "bridge-layout-fr-ca",
+        "bridge.shipPanels": "bridge-layout-fr-ca",
+        "bridge.shipControls": "bridge-layout-fr-ca",
+        "bridge.tap": "bridge-layout-fr-ca",
+        "bridge.zoom": "bridge-layout-fr-ca"
       }
     }
   }

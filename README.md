@@ -69,6 +69,7 @@ The Python server is intended for a trusted ship intranet, not public hosting.
   captain's chart and draws the voyage track. The sector uses 2 km cells from
   local GEBCO and shoreline data, rendered in tiles at the current screen scale.
   Older voyage saves migrate automatically, including mapped swaths.
+- The bridge keeps the chart readings, ship status and craft controls in the first screen. Nearby, Fleet, Stores and Log tabs organize the right panel; detailed lists scroll within it. The welcome text hides after four seconds, and the header links back to `http://underway.local/`.
 - Launch every operation anywhere using the three hands of activity cards under the map or keyboard shortcuts. Ice, aircraft ownership and active Maydays never gate a minigame.
   **C** opens the CTD notebook; **I** opens the ice-thickness transect; **3** opens
   Inuktitut, including the interactive syllabics guide (**L** inside the game).

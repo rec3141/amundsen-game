@@ -4798,6 +4798,33 @@
     },
     "hand.mappingLoading": {
       "text": "1 point per 900 km² of new seabed"
+    },
+    "bridge.nearby": {
+      "text": "Nearby"
+    },
+    "bridge.fleet": {
+      "text": "Fleet"
+    },
+    "bridge.stores": {
+      "text": "Stores"
+    },
+    "bridge.log": {
+      "text": "Log"
+    },
+    "bridge.bridge": {
+      "text": "On the bridge"
+    },
+    "bridge.shipPanels": {
+      "text": "Ship panels"
+    },
+    "bridge.shipControls": {
+      "text": "Ship controls"
+    },
+    "bridge.tap": {
+      "text": "Tap to sail"
+    },
+    "bridge.zoom": {
+      "text": "+ / − Zoom"
     }
   }
 }

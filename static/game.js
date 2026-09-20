@@ -8,7 +8,7 @@ import { multiplayer } from './multiplayer.js';
 const $ = s => document.querySelector(s);
 if (publicMirror) {
   document.querySelectorAll('[data-page="ideas"], [data-page="board"], #suggest-shortcut, .crew-note, .player').forEach(node => { node.hidden = true; });
-  $('.online').textContent = 'EXPLORE THE ARCTIC';
+  $('#fleet-tab').hidden = true;
 }
 const canvas = $('#ocean'), ctx = canvas.getContext('2d');
 const fog = document.createElement('canvas'), mini = document.createElement('canvas');
@@ -78,7 +78,7 @@ const m3 = value => value < 10 ? value.toFixed(1) : Math.round(value).toLocaleSt
 function save() { if (!world) return; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { $('#save-status').textContent = 'Chart stays in this tab · storage unavailable'; } }
 let toastTimer;
 function toast(message, long = false, klaxon = false) { $('#toast').textContent = localize(message); $('#toast').classList.toggle('klaxon', klaxon); $('#toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('show'), long ? 7000 : 3500); }
-function showPage(name) { if (publicMirror && name !== 'game') return; page = name; keys.clear(); waypoints = []; $('#game-page').hidden = name !== 'game'; $('#ideas-page').hidden = name !== 'ideas'; $('#board-page').hidden = name !== 'board'; document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.page === name)); if (name === 'ideas') loadIdeas(); else if (name === 'board') loadLeaderboard(); else resize(); }
+function showPage(name) { if (publicMirror && name !== 'game') return; page = name; keys.clear(); waypoints = []; $('#game-page').hidden = name !== 'game'; $('#ideas-page').hidden = name !== 'ideas'; $('#board-page').hidden = name !== 'board'; document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.page === name)); if (name === 'ideas') loadIdeas(); else if (name === 'board') loadLeaderboard(); else { fitBridge(); resize(); } }
 document.querySelectorAll('.tab').forEach(b => b.onclick = () => showPage(b.dataset.page));
 $('#suggest-shortcut').onclick = $('#crew-link').onclick = () => showPage('ideas');
 
@@ -430,8 +430,27 @@ function purchase(id) {
   buy(state, id); save(); updateUI();
   toast(`${item.title} aboard · −${item.price} science points.`, true);
 }
-function toggleStores(open = !!$('#stores').hidden) { $('#stores').hidden = !open; $('#stores-toggle').setAttribute('aria-expanded', String(open)); }
-$('#stores-toggle').onclick = () => toggleStores();
+function selectSidebar(name, focus = false) {
+  if (name === 'fleet' && publicMirror) return;
+  for (const panel of document.querySelectorAll('[data-sidebar-panel]')) panel.hidden = panel.dataset.sidebarPanel !== name;
+  for (const button of document.querySelectorAll('[data-sidebar-tab]')) {
+    const selected = button.dataset.sidebarTab === name;
+    button.setAttribute('aria-selected', String(selected)); button.tabIndex = selected ? 0 : -1;
+    if (selected && focus) button.focus();
+  }
+  $('#stores-toggle').setAttribute('aria-expanded', String(name === 'stores'));
+}
+for (const button of document.querySelectorAll('[data-sidebar-tab]')) {
+  button.onclick = () => selectSidebar(button.dataset.sidebarTab);
+  button.onkeydown = event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault(); event.stopPropagation();
+    const tabs = [...document.querySelectorAll('[data-sidebar-tab]')].filter(b => !b.hidden), index = tabs.indexOf(button);
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+    selectSidebar(tabs[next].dataset.sidebarTab, true);
+  };
+}
+function toggleStores(open = !!$('#stores').hidden) { selectSidebar(open ? 'stores' : 'nearby'); }
 function updateFuel() {
   const cap = tankCapacity(state), share = state.fuel / cap, gauge = $('#fuel-gauge');
   $('#fuel').textContent = Math.round(state.fuel).toLocaleString();
@@ -557,6 +576,21 @@ const zoomBy = factor => { if (world) setZoom(view().z * factor); };
 $('#zoom-in').onclick = () => zoomBy(1.4); $('#zoom-out').onclick = () => zoomBy(1 / 1.4);
 function resize() { const r = canvas.getBoundingClientRect(); if (!r.width) return; width = r.width; height = r.height; dpr = Math.min(devicePixelRatio || 1, 2); canvas.width = width * dpr; canvas.height = height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
 new ResizeObserver(resize).observe(canvas);
+function fitBridge() {
+  const panel = $('.map-panel'); if ($('#game-page').hidden) return;
+  const top = panel.getBoundingClientRect().top + window.scrollY;
+  document.documentElement.style.setProperty('--toast-top', `${document.querySelector('body > header').getBoundingClientRect().height + 10}px`);
+  const available = Math.max(360, window.innerHeight - top - 16), phone = window.matchMedia('(max-width:740px)').matches;
+  const mapHeight = phone ? Math.max(165, Math.round(available * .48)) : Math.min(820, available);
+  $('.expedition').style.setProperty('--map-height', `${mapHeight}px`);
+  $('.expedition').style.setProperty('--sidebar-height', `${phone ? available - mapHeight - 10 : mapHeight}px`);
+}
+window.addEventListener('resize', fitBridge);
+const bridgeObserver = new ResizeObserver(fitBridge);
+bridgeObserver.observe(document.querySelector('body > header')); bridgeObserver.observe($('#game-intro'));
+setTimeout(() => { $('#game-intro').hidden = true; fitBridge(); }, 4000);
+fitBridge();
+
 const miniRect = () => { const w = width < 520 ? 96 : 156, h = Math.round(w * (world ? world.rows / world.cols : .7)); return { x: width - w - 12, y: 12, w, h }; };
 function sailTo(u, v) {
   if (!world) return;
@@ -608,7 +642,7 @@ window.addEventListener('keydown', e => {
   if (k === '+' || k === '=') { e.preventDefault(); zoomBy(1.4); return; }
   if (k === '-' || k === '_') { e.preventDefault(); zoomBy(1 / 1.4); return; }
   if (k === '2') { e.preventDefault(); if (!e.repeat) toggleLegend(); return; }
-  if (k === '4') { e.preventDefault(); if (!e.repeat) multiplayer.toggleFleet(); return; }
+  if (k === '4') { e.preventDefault(); if (!e.repeat) { selectSidebar('fleet'); multiplayer.toggleFleet(); } return; }
   if (k === '5') { e.preventDefault(); if (!e.repeat) multiplayer.nextShip(); return; }
   if (k === '6') { e.preventDefault(); if (!e.repeat) multiplayer.faceOff(); return; }
   if (k === '7') { e.preventDefault(); if (!e.repeat) multiplayer.snowball(); return; }

@@ -12,6 +12,15 @@ window.UW_UI_CATALOG = {
         "activity.crew7.description": "Fly the old floes for lost gear",
         "activity.crew8.description": "Core an uplifted lake bed",
         "activity.crew9.description": "Tow a net through keels and boulders",
+        "bridge.bridge": "On the bridge",
+        "bridge.fleet": "Fleet",
+        "bridge.log": "Log",
+        "bridge.nearby": "Nearby",
+        "bridge.shipControls": "Ship controls",
+        "bridge.shipPanels": "Ship panels",
+        "bridge.stores": "Stores",
+        "bridge.tap": "Tap to sail",
+        "bridge.zoom": "+ / − Zoom",
         "core.auto.0059798b7f70": "(optional)",
         "core.auto.022127539fb5": "FREE VOYAGE",
         "core.auto.03245738e467": "CREW IDEA BOARD",
@@ -1616,6 +1625,15 @@ window.UW_UI_CATALOG = {
         "activity.crew7.description": "Survolez les vieux floes à la recherche du matériel perdu",
         "activity.crew8.description": "Carottez le fond d'un lac soulevé",
         "activity.crew9.description": "Remorquez un filet entre les quilles de glace et les blocs rocheux",
+        "bridge.bridge": "À la passerelle",
+        "bridge.fleet": "Flotte",
+        "bridge.log": "Journal",
+        "bridge.nearby": "À proximité",
+        "bridge.shipControls": "Commandes du navire",
+        "bridge.shipPanels": "Panneaux du navire",
+        "bridge.stores": "Magasin",
+        "bridge.tap": "Touchez pour naviguer",
+        "bridge.zoom": "+ / − Zoom",
         "core.auto.0059798b7f70": "(facultatif)",
         "core.auto.022127539fb5": "NAVIGATION LIBRE",
         "core.auto.03245738e467": "TABLEAU D’IDÉES DE L’ÉQUIPAGE",
@@ -3240,6 +3258,42 @@ window.UW_UI_CATALOG = {
         "activity.crew9.description": {
           "profile": "editorial-fr-ca-v2",
           "sourceSha256": "60d3c294b5d8bf6cdf8e8f8f2a8676f01ddcc36a7a5b58be7cd488feb404ad94"
+        },
+        "bridge.bridge": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "91f71632af9283dd931a411eda34a094356494dfbb2d394a096f22fd44a464b0"
+        },
+        "bridge.fleet": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "b4134f8d12cf8e94557f0fe55a9477c213656b0cd6d72172807d84f3a4de4bf5"
+        },
+        "bridge.log": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "c16646da71d84e1c44d27064bd090b29cb03849132051862808925d70978dbab"
+        },
+        "bridge.nearby": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "b1a4ee8f997aaeaf1a06e7bc1f784039aa6e2c2392864bc3dc0db49236107212"
+        },
+        "bridge.shipControls": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "0e5d7e11ad49b44f2f727b347949acec6cd21a25c8f21dd56bcc0e8aa305405b"
+        },
+        "bridge.shipPanels": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "68954d834c942513df30b0181d18f61c2e8a3acc9ec127a5a34eafcf6b059468"
+        },
+        "bridge.stores": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "7f89e241f463c7caa2d5a5c746cfcf09733e3ec180ef37cec252216ec2d9581f"
+        },
+        "bridge.tap": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "b4e03be2352abcb6fd48e081086ec243f8ea781d7218ceff42cf78c9f940e047"
+        },
+        "bridge.zoom": {
+          "profile": "bridge-layout-fr-ca",
+          "sourceSha256": "18137bc4c0874b16cd9e1a76b691cc5fd905cb37169d8119cd7add5601733c66"
         },
         "core.auto.0059798b7f70": {
           "profile": "editorial-fr-ca-v2",

@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "locale": "fr-CA",
+  "profile": {
+    "id": "bridge-layout-fr-ca",
+    "translator": "Codex",
+    "status": "interface-update"
+  },
+  "messages": {
+    "bridge.nearby": {
+      "source": "Nearby",
+      "text": "À proximité",
+      "status": "translated"
+    },
+    "bridge.fleet": {
+      "source": "Fleet",
+      "text": "Flotte",
+      "status": "translated"
+    },
+    "bridge.stores": {
+      "source": "Stores",
+      "text": "Magasin",
+      "status": "translated"
+    },
+    "bridge.log": {
+      "source": "Log",
+      "text": "Journal",
+      "status": "translated"
+    },
+    "bridge.bridge": {
+      "source": "On the bridge",
+      "text": "À la passerelle",
+      "status": "translated"
+    },
+    "bridge.shipPanels": {
+      "source": "Ship panels",
+      "text": "Panneaux du navire",
+      "status": "translated"
+    },
+    "bridge.shipControls": {
+      "source": "Ship controls",
+      "text": "Commandes du navire",
+      "status": "translated"
+    },
+    "bridge.tap": {
+      "source": "Tap to sail",
+      "text": "Touchez pour naviguer",
+      "status": "translated"
+    },
+    "bridge.zoom": {
+      "source": "+ / − Zoom",
+      "text": "+ / − Zoom",
+      "status": "translated"
+    }
+  }
+}
