@@ -18,6 +18,14 @@ function roster(room) { return room.players.map(p => p ? { name: p.name, crew: p
 function publicContext(room) { return { game: 'Hearts', hand: room.hand, scores: room.scores,
   players: roster(room), passing: room.session?.state.passing, heartsBroken: room.session?.state.heartsBroken,
   playedCards: room.session?.state.plays || [], chat: (room.chat || []).slice(-12) }; }
+function tableAside(room) {
+  const state = room.session?.state;
+  if (!state || room.aiPending || room.asideHand === room.hand || room.hand % 2 === 0 || state.tricksPlayed < 3) return null;
+  const speakers = room.players.filter(p => p?.crew).map(p => p.crew);
+  if (!speakers.length) return null;
+  room.asideHand = room.hand; room.aiPending = true; room.revision++; save();
+  return { code: room.code, speakers: [speakers[randomInt(speakers.length)]], context: { ...publicContext(room), aside: true } };
+}
 function applyMove(room, seat, move, payload) {
   const outcome = sessionApply(heartsGame, room.session, seat, move, payload);
   if (outcome.rejected) fail(400, outcome.rejected.message);
@@ -111,7 +119,8 @@ function handle(data) {
     if (action === 'poll') {
       room.players[seat].seen = Date.now(); room.touched = Date.now();
       advanceCrew(room);
-      return view(room, seat);
+      const aiJob = tableAside(room);
+      return { ...view(room, seat), ...(aiJob ? { aiJob } : {}) };
     }
     if (action === 'chat') {
       const text = typeof data.text === 'string' ? data.text.trim() : '';

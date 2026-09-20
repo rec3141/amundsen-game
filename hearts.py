@@ -77,20 +77,25 @@ def chat_worker():
             CHAT_QUEUE.task_done()
 
 
-def request(data):
+def queue_chat(job):
     global CHAT_WORKER
+    if CHAT_QUEUE.full():
+        return False
+    CHAT_QUEUE.put_nowait(job)
+    if CHAT_WORKER is None or not CHAT_WORKER.is_alive():
+        CHAT_WORKER = threading.Thread(target=chat_worker, name='card-table-crew', daemon=True)
+        CHAT_WORKER.start()
+    return True
+
+
+def request(data):
     if not isinstance(data, dict) or data.get('action') == 'crewReply':
         return 400, {'error': 'Unknown table request.'}
-    if data.get('action') != 'chat':
-        return _request(data)
     with CHAT_LOCK:
-        if CHAT_QUEUE.full():
+        if data.get('action') == 'chat' and CHAT_QUEUE.full():
             return 429, {'error': 'The crew are talking at other tables. Try again shortly.'}
         status, body = _request(data)
         job = body.pop('aiJob', None)
         if job:
-            CHAT_QUEUE.put_nowait(job)
-            if CHAT_WORKER is None or not CHAT_WORKER.is_alive():
-                CHAT_WORKER = threading.Thread(target=chat_worker, name='card-table-crew', daemon=True)
-                CHAT_WORKER.start()
+            queue_chat(job)
         return status, body
