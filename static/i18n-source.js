@@ -1596,5 +1596,7 @@ export const messages = {
   "hand.nearIce": "Charted ice within {range} km of {craft}",
   "hand.nearestIce": "Nearest charted ice {range} km {bearing} of {craft}",
   "hand.iceDescription": "Drill a floe transect",
-  "hand.chartAria": "Expedition chart. Tap to sail or steer with arrow keys or WASD. Land blocks the ship and grounding costs the last operation's points. All activities launch anywhere with the cards below the map or their keyboard shortcuts. G launches the hired helicopter; Y launches the zodiac and 1 sends the AUV. U bunkers nearby; Q opens stores. V opens Shipwrecks, X opens Search and Rescue. 2 shows the legend, 4 chooses your icebreaker, 5 cycles vessels. Within 15 km of another player, 6 challenges, 7 throws a snowball and 8 declines."
+  "hand.chartAria": "Expedition chart. Tap to sail or steer with arrow keys or WASD. Land blocks the ship and grounding costs the last operation's points. All activities launch anywhere with the cards below the map or their keyboard shortcuts. G launches the hired helicopter; Y launches the zodiac and 1 sends the AUV. U bunkers nearby; Q opens stores. V opens Shipwrecks, X opens Search and Rescue. 2 shows the legend, 4 chooses your icebreaker, 5 cycles vessels. Within 15 km of another player, 6 challenges, 7 throws a snowball and 8 declines.",
+  "hand.mapping": "1 point per {area} km² of new seabed · {cell} km cells · 120° fan widens with depth",
+  "hand.mappingLoading": "1 point per 900 km² of new seabed"
 };

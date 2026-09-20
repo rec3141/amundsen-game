@@ -71,6 +71,16 @@
       "source": "Expedition chart. Tap to sail or steer with arrow keys or WASD. Land blocks the ship and grounding costs the last operation's points. All activities launch anywhere with the cards below the map or their keyboard shortcuts. G launches the hired helicopter; Y launches the zodiac and 1 sends the AUV. U bunkers nearby; Q opens stores. V opens Shipwrecks, X opens Search and Rescue. 2 shows the legend, 4 chooses your icebreaker, 5 cycles vessels. Within 15 km of another player, 6 challenges, 7 throws a snowball and 8 declines.",
       "text": "Carte de l’expédition. Cliquez pour naviguer ou utilisez les flèches ou WASD. La terre bloque le navire; un échouement coûte les points de la dernière opération. Tous les jeux se lancent partout avec les cartes sous la carte marine ou leurs raccourcis. G lance l’hélicoptère loué; Y lance le zodiac et 1 envoie l’AUV. U ravitaille à proximité; Q ouvre le magasin. V ouvre les Épaves, X la Recherche et sauvetage. 2 affiche la légende, 4 choisit le brise-glace, 5 change de navire. À moins de 15 km d’un autre joueur, 6 propose un duel, 7 lance une boule de neige et 8 refuse.",
       "status": "translated"
+    },
+    "hand.mapping": {
+      "source": "1 point per {area} km² of new seabed · {cell} km cells · 120° fan widens with depth",
+      "text": "1 point par {area} km² de nouveau fond cartographié · cellules de {cell} km · faisceau de 120° qui s’élargit avec la profondeur",
+      "status": "translated"
+    },
+    "hand.mappingLoading": {
+      "source": "1 point per 900 km² of new seabed",
+      "text": "1 point par 900 km² de nouveau fond cartographié",
+      "status": "translated"
     }
   }
 }

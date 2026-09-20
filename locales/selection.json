@@ -40,7 +40,9 @@
         "hand.nearIce": "activity-hand-fr-ca",
         "hand.nearestIce": "activity-hand-fr-ca",
         "hand.iceDescription": "activity-hand-fr-ca",
-        "hand.chartAria": "activity-hand-fr-ca"
+        "hand.chartAria": "activity-hand-fr-ca",
+        "hand.mapping": "activity-hand-fr-ca",
+        "hand.mappingLoading": "activity-hand-fr-ca"
       }
     }
   }

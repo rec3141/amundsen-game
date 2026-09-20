@@ -486,6 +486,8 @@ window.UW_UI_CATALOG = {
         "hand.heading": "Play your next card",
         "hand.help": "Pick a card or use its key. Every game, anywhere.",
         "hand.iceDescription": "Drill a floe transect",
+        "hand.mapping": "1 point per {area} km² of new seabed · {cell} km cells · 120° fan widens with depth",
+        "hand.mappingLoading": "1 point per 900 km² of new seabed",
         "hand.nearIce": "Charted ice within {range} km of {craft}",
         "hand.nearestIce": "Nearest charted ice {range} km {bearing} of {craft}",
         "hand.retired": "Set aside",
@@ -2088,6 +2090,8 @@ window.UW_UI_CATALOG = {
         "hand.heading": "Jouez votre prochaine carte",
         "hand.help": "Choisissez une carte ou utilisez sa touche. Tous les jeux, partout.",
         "hand.iceDescription": "Forez un transect de glace",
+        "hand.mapping": "1 point par {area} km² de nouveau fond cartographié · cellules de {cell} km · faisceau de 120° qui s’élargit avec la profondeur",
+        "hand.mappingLoading": "1 point par 900 km² de nouveau fond cartographié",
         "hand.nearIce": "Glace cartographiée à moins de {range} km de {craft}",
         "hand.nearestIce": "Glace cartographiée la plus proche à {range} km {bearing} de {craft}",
         "hand.retired": "Mis de côté",
@@ -5132,6 +5136,14 @@ window.UW_UI_CATALOG = {
         "hand.iceDescription": {
           "profile": "activity-hand-fr-ca",
           "sourceSha256": "d689c254dbbe183929322c39b2d79bcb8783def2d28285980cd3b0a927b60542"
+        },
+        "hand.mapping": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "7acb4424c032d1084b6a2f1158820a278169706c21a03afc4f82f279e95ab097"
+        },
+        "hand.mappingLoading": {
+          "profile": "activity-hand-fr-ca",
+          "sourceSha256": "a2c6807f03c61ff753a40d63c85aed70ced06824c4294f59f61b1613d223cdbe"
         },
         "hand.nearIce": {
           "profile": "activity-hand-fr-ca",

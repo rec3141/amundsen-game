@@ -86,6 +86,7 @@ The Python server is intended for a trusted ship intranet, not public hosting.
 - Ice: drill with a 1 m Kovacs corer (D or tap). Ice thicker than the barrel
   needs pull (P), empty (E) and extend (X) runs. Each breakthrough adds to the
   transect chart; finish the transect to bank the points.
+- Mapping earns 1 science point per 900 km² of newly mapped seabed, shared across ship and AUV surveys.
 - Completed operations leave discovery marks at the ship's position and entries
   in the expedition log. There are no predetermined mission locations.
 - Sailing maps the seabed in a depth-dependent multibeam swath and scores newly

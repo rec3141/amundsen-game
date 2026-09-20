@@ -215,7 +215,7 @@ export function towSouth(state, location, place = '', start = START, harbour = '
 // credited once at grid resolution and score MAP_KM2 square kilometres to the point whatever the cell size, so a
 // kilometre sailed earns the same on any grid. `fixed` is a swath width in metres that ignores depth (an AUV near
 // the bottom, or 0 for a boat sounding only its own track).
-export const WIDE_SWATH = 1.4, MAP_KM2 = 9;
+export const WIDE_SWATH = 1.4, MAP_KM2 = 900;
 // Eight times a real multibeam fan, so a voyage charts a visible band of seabed.
 export const swathWidth = (depth, widen = 1) => 16 * depth * Math.sqrt(3) * widen;
 export function mapSwath(state, mapped, world, from, to, widen = 1, fixed = null) {
