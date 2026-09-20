@@ -2247,7 +2247,7 @@ if (file) {
     if (error.code !== "ENOENT") throw error;
   }
 }
-var CREW = { capn: { name: "Cap'n Barnacle", policy: mediumBot }, doc: { name: "Doc", policy: easyBot }, ada: { name: "Ada", policy: hardBot }, polly: { name: "Polly", policy: easyBot } };
+var CREW = { capn: { name: "Cap'n Barnacle", policy: mediumBot }, doc: { name: "Doc", policy: easyBot }, ada: { name: "Ada", policy: mediumBot }, polly: { name: "Polly", policy: easyBot } };
 for (const room of Object.values(rooms)) room.aiPending = false;
 function roster(room) {
   return room.players.map((p) => p ? { name: p.name, crew: p.crew || null, online: !!p.crew || Date.now() - p.seen < 15e3 } : null);

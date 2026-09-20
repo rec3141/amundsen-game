@@ -1,5 +1,5 @@
 import { createSession, sessionApply, stdDeck, makeRng } from '@parlour/engine';
-import { heartsGame, passDirectionFor, easyBot, mediumBot, hardBot } from '@parlour/game-hearts';
+import { heartsGame, passDirectionFor, easyBot, mediumBot } from '@parlour/game-hearts';
 import { randomBytes, randomInt } from 'node:crypto';
 import { createInterface } from 'node:readline';
 import { readFileSync, writeFileSync, renameSync, mkdirSync } from 'node:fs';
@@ -12,7 +12,7 @@ if (file) {
   try { rooms = JSON.parse(readFileSync(file, 'utf8')); }
   catch (error) { if (error.code !== 'ENOENT') throw error; }
 }
-const CREW = { capn: { name: "Cap'n Barnacle", policy: mediumBot }, doc: { name: 'Doc', policy: easyBot }, ada: { name: 'Ada', policy: hardBot }, polly: { name: 'Polly', policy: easyBot } };
+const CREW = { capn: { name: "Cap'n Barnacle", policy: mediumBot }, doc: { name: 'Doc', policy: easyBot }, ada: { name: 'Ada', policy: mediumBot }, polly: { name: 'Polly', policy: easyBot } };
 for (const room of Object.values(rooms)) room.aiPending = false;
 function roster(room) { return room.players.map(p => p ? { name: p.name, crew: p.crew || null, online: !!p.crew || Date.now() - p.seen < 15000 } : null); }
 function publicContext(room) { return { game: 'Hearts', hand: room.hand, scores: room.scores,
