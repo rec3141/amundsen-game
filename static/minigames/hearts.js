@@ -55,7 +55,11 @@ export const game = {
       const t = table, s = t.state;
       const title = dialog?.querySelector('#mission-title span');
       if (title) title.textContent = CARD_GAMES[t.game] || 'Hearts';
-      const players = t.players.map((p, seat) => `<li class="${seat === t.seat ? 'self' : ''} ${s && !s.passing && !s.handOver && s.turn === seat ? 'turn' : ''}"><strong>${p ? escape(p.name) : 'Open seat'}${seat === t.seat ? ' · you' : ''}</strong><span>${p ? `${t.scores[seat]} points${p.crew ? ' · @' + p.crew : !p.online ? ' · reconnecting' : ''}` : 'Waiting for a shipmate'}</span>${!s && (!p || p.crew) ? `<select aria-label="Seat ${seat + 1} opponent" data-seat="${seat}"><option value="">Human shipmate</option>${Object.entries(CREW).map(([id, name]) => `<option value="${id}" ${p?.crew === id ? 'selected' : ''}>${name}</option>`).join('')}</select>` : ''}</li>`).join('');
+      const players = t.players.map((p, seat) => {
+        const points = s?.taken?.[seat]?.filter(card => card[0] === 'H' || card === 'S12') || [];
+        const captured = points.length ? `<span class="hearts-captured" aria-label="Penalty cards captured">${points.map(card => `<i class="hearts-point-card ${'HD'.includes(card[0]) ? 'red' : ''}">${label(card)}</i>`).join('')}</span>` : '';
+        return `<li class="${seat === t.seat ? 'self' : ''} ${s && !s.passing && !s.handOver && s.turn === seat ? 'turn' : ''}"><strong>${p ? escape(p.name) : 'Open seat'}${seat === t.seat ? ' · you' : ''}</strong><span>${p ? `${t.scores[seat]} points${p.crew ? ' · @' + p.crew : !p.online ? ' · reconnecting' : ''}` : 'Waiting for a shipmate'}</span>${captured}${!s && (!p || p.crew) ? `<select aria-label="Seat ${seat + 1} opponent" data-seat="${seat}"><option value="">Human shipmate</option>${Object.entries(CREW).map(([id, name]) => `<option value="${id}" ${p?.crew === id ? 'selected' : ''}>${name}</option>`).join('')}</select>` : ''}</li>`;
+      }).join('');
       let content = '';
       if (!s) {
         content = `<p>Your shipmates can join this table from the open-table list. ${t.players.filter(Boolean).length}/4 seated.</p><div class="hearts-actions"><button data-action="inviteCrew" ${t.players.every(Boolean) ? 'disabled' : ''}>Invite @crew</button><button data-action="start" ${t.players.some(p => !p) ? 'disabled' : ''}>Deal cards</button><button data-action="leave">Leave table</button></div>`;
