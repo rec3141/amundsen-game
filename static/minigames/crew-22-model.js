@@ -1,16 +1,15 @@
-// Pure game model for the Inuktitut minigame: deterministic decks for three legs (syllabics, words, chart),
-// answer checking with one retry per missed card, hints that halve a card's points, and the final score.
+// Guided Inuktitut practice: a fixed syllabics progression, free help, and unlimited same-card retries.
 import { VOWELS, SERIES, SOUNDS, WORDS, SUFFIXES, BUILDS, ROOTS, PLACES } from './crew-22-lexicon.js';
 
 export const LEGS = [
-  { id: 'syllabics', name: 'Syllabics', inuk: 'ᖃᓂᐅᔮᖅᐸᐃᑦ', roman: 'qaniujaaqpait', cards: 8, points: 4,
-    brief: 'Each shape is a consonant. Turn it and the vowel changes: ᐱ pi, ᐳ pu, ᐸ pa. A dot above makes the vowel long; a small raised shape is a consonant with no vowel. Name the sound, find the glyph, then spell two words.' },
-  { id: 'words', name: 'Words', inuk: 'ᐅᖃᐅᓰᑦ', roman: 'uqausiit', cards: 8, points: 6,
+  { id: 'syllabics', name: 'Syllabics', inuk: 'ᖃᓂᐅᔮᖅᐸᐃᑦ', roman: 'qaniujaaqpait', cards: 6, points: 4,
+    brief: 'Each shape is a consonant. Turn it and the vowel changes: ᐱ pi, ᐳ pu, ᐸ pa. A dot above makes the vowel long; a small raised shape is a consonant with no vowel. Follow the p shape through three vowels, add a length dot, then meet a final and spell aput. Each example stays visible while you practise.' },
+  { id: 'words', name: 'Words', inuk: 'ᐅᖃᐅᓰᑦ', roman: 'uqausiit', cards: 4, points: 6,
     brief: 'Ice, sea, weather, animals, gear and greetings from a working coast. A doubled letter is held twice as long, and length changes meaning: imaq is the sea, imiq drinking water.' },
-  { id: 'chart', name: 'The chart', inuk: 'ᓄᓇᙳᐊᖅ', roman: 'nunannguaq', cards: 8, points: 8,
+  { id: 'chart', name: 'The chart', inuk: 'ᓄᓇᙳᐊᖅ', roman: 'nunannguaq', cards: 4, points: 8,
     brief: 'Inuktitut builds words by stacking suffixes on a root: umiaq, boat, plus -rjuaq, big, is umiarjuaq, a ship. The names on the chart are built the same way. Read them, then build a few.' },
 ];
-const STREAK_EVERY = 5, STREAK_BONUS = 10;
+
 
 // Deterministic RNG (mulberry32) so a seed replays the same deck.
 export function rng(seed) {
@@ -215,21 +214,33 @@ export function chartDeck(random, n, near) {
 export function createSession(expedition, seed) {
   const random = rng(seed);
   const near = nearestPlace(expedition?.lat, expedition?.lon);
-  const syllabics = syllabicsDeck(random, LEGS[0].cards);
-  // Words spelled in leg 1 are not dealt again as vocabulary in leg 2.
-  const spelled = new Set(syllabics.filter(c => c.kind === 'spell').map(c => c.word.w));
-  const decks = [syllabics, wordDeck(random, LEGS[1].cards, spelled), chartDeck(random, LEGS[2].cards, near?.place)];
+  const p = BY_C.p;
+  const syllabics = [0, 2, 4, 1].map(vi => {
+    const options = shuffle([0, 2, 4, 1], random);
+    return { kind: 'sound', prompt: romanOf(p, vi), promptSub: 'Find the glyph from the example',
+      options: options.map(k => ({ label: p.glyphs[k], sub: romanOf(p, k) })), answer: options.indexOf(vi),
+      glyph: p.glyphs[vi], roman: romanOf(p, vi), row: 'p', vi,
+      note: `${p.glyphs[vi]} writes ${romanOf(p, vi)}. The same p shape turns for i, u and a: ᐱ pi, ᐳ pu, ᐸ pa. A dot makes the vowel long: ᐲ pii.` };
+  });
+  syllabics.push({ kind: 'glyph', prompt: 'ᑦ', promptSub: 'Match this small final to its sound',
+    options: [{ label: 't' }, { label: 'ta' }], answer: 0, glyph: 'ᑦ', roman: 't', row: 't', vi: -1,
+    note: 'ᑦ is final t, with no vowel. Compare ᑕ ta, a full syllable. Aput ends with ᑦ: ᐊ a + ᐳ pu + ᑦ t.' });
+  syllabics.push(spellCard(WORDS.find(w => w.w === 'aput'), random));
+  const vocabulary = ['aput', 'siku', 'nanuq', 'umiaq'].map(w => WORDS.find(word => word.w === w));
+  const words = vocabulary.map(word => {
+    const items = shuffle(vocabulary, random);
+    return { kind: 'word', prompt: word.s, promptSub: word.w,
+      options: items.map(w => ({ label: w.en })), answer: items.indexOf(word), word, note: word.note };
+  });
+  const decks = [syllabics, words, chartDeck(random, LEGS[2].cards, near?.place)];
   return {
     seed, near, decks, leg: -1, queue: [], card: null, phase: 'intro',
     score: 0, streak: 0, bestStreak: 0, correct: 0, firstTry: 0, asked: 0, hints: 0,
     legStats: LEGS.map(() => ({ correct: 0, asked: 0, points: 0 })), learned: [], last: null,
   };
 }
-// Points a card is worth right now: the leg's value, halved once for a retry and once for a hint.
-export function worth(state) {
-  const base = LEGS[state.leg].points;
-  return Math.max(1, Math.round(base / (state.card.retry ? 2 : 1) / (state.card.hinted ? 2 : 1)));
-}
+// Help and repeated attempts carry the full completion value.
+export function worth(state) { return LEGS[state.leg].points; }
 export function startLeg(state) {
   state.leg++;
   if (state.leg >= LEGS.length) { state.phase = 'end'; state.card = null; return state; }
@@ -261,21 +272,20 @@ export function answer(state, choice) {
   if (ok) {
     points = worth(state);
     state.correct++; stats.correct++;
-    if (!card.retry) state.firstTry++;
+    if (!card.attempts) state.firstTry++;
     state.streak++;
     state.bestStreak = Math.max(state.bestStreak, state.streak);
-    if (state.streak % STREAK_EVERY === 0) bonus = STREAK_BONUS;
+
     state.score += points + bonus; stats.points += points + bonus;
     const learned = card.word ? { s: card.word.s, w: card.word.w, en: card.word.en }
       : card.place ? { s: card.place.s || card.place.name, w: card.place.name, en: card.place.en }
       : card.build ? { s: toSyllabics(card.build.result), w: card.build.result, en: card.build.en } : null;
     if (learned && !state.learned.some(l => l.w === learned.w)) state.learned.push(learned);
   } else {
-    state.streak = 0;
-    if (!card.retry) state.queue.push({ ...card, retry: true, hinted: false });
+    card.attempts = (card.attempts || 0) + 1;
   }
   state.last = { ok, points, bonus, choice, retry: card.retry, remaining: state.queue.length };
-  state.phase = 'feedback';
+  state.phase = ok ? 'feedback' : 'ask';
   return state.last;
 }
 export function summary(state) {
