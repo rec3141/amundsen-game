@@ -86,12 +86,13 @@ export const game = {
       const chat = root.querySelector('.hearts-conversation');
       if (chat) chatDraft = chat.querySelector('input').value;
       const chatFocused = chat?.contains(document.activeElement);
-      body.innerHTML = `<div class="hearts-heading"><strong>Hearts · ${escape(t.players.find(p => p && !p.crew)?.name || 'Shipmates')}'s table</strong><span class="hearts-heading-actions"><button data-action="browse">All tables</button>${s ? '<button data-action="leave">Quit game</button>' : ''}</span></div><ul class="hearts-players">${players}</ul>${content}<p class="hearts-footnote">Your seat stays here when you close the table or reload this tab.</p>`;
-      if (chat) body.append(chat);
+      body.innerHTML = `<div class="hearts-heading"><strong>Hearts · ${escape(t.players.find(p => p && !p.crew)?.name || 'Shipmates')}'s table</strong><span class="hearts-heading-actions"><button data-action="browse">All tables</button>${s ? '<button data-action="leave">Quit game</button>' : ''}</span></div><div class="hearts-active-layout"><div class="hearts-game-area"><ul class="hearts-players">${players}</ul>${content}<p class="hearts-footnote">Your seat stays here when you close the table or reload this tab.</p></div></div>`;
+      const layout = body.querySelector('.hearts-active-layout');
+      if (chat) layout.append(chat);
       else {
         const section = document.createElement('section'); section.className = 'hearts-conversation';
         section.innerHTML = `<h3>At the table</h3><div class="hearts-messages" role="log" aria-live="polite"></div><p class="hearts-typing" role="status"></p><form class="hearts-chat"><input name="message" aria-label="Table message" maxlength="1000" placeholder="Talk to @crew, @capn, @doc, @ada or @polly" required value="${escape(chatDraft)}"><button>Send</button></form>`;
-        body.append(section);
+        layout.append(section);
       }
       renderChat();
       if (chatFocused) body.querySelector('.hearts-chat input').focus();
