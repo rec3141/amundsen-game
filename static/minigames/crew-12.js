@@ -1,4 +1,5 @@
 import { COLS, ROWS, CELL_NMI, RADAR_CELLS, SEARCH_LIMIT_S, HOURS_SINCE_FIX, RAM_S, RAM_COOLDOWN_S, BEARING_COOLDOWN_S, BEARING_ERROR_DEG, VESSEL, createGame, step, index, cellOf, stageOf, ctColour, ctBand, clock } from './crew-12-model.js';
+import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-12.css', import.meta.url).href;
 const KEYS = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0], w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0] };
@@ -6,7 +7,7 @@ const deg = rad => `${String(Math.round(((rad * 180 / Math.PI) % 360 + 360) % 36
 const compass = d => ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'][Math.round(((d % 360) + 360) % 360 / 22.5) % 16];
 
 export const game = {
-  title: 'Search and Rescue',
+  get title() { return text('Search and Rescue'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const { signal } = events;
@@ -65,6 +66,7 @@ export const game = {
     const find = selector => game.querySelector(selector);
     const canvas = find('[data-chart]');
     const ctx = canvas.getContext('2d');
+    const rawFillText = ctx.fillText.bind(ctx); ctx.fillText = (value, ...args) => rawFillText(text(String(value)), ...args);
     const status = find('[data-status]');
     const say = text => { status.textContent = text; };
     let width = 0, height = 0, cellPx = 8;

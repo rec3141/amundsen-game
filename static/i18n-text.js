@@ -10,3 +10,9 @@ export function t(key, values = {}) {
   return message.replace(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g,
     (token, name) => Object.prototype.hasOwnProperty.call(values, name) ? String(values[name]) : token);
 }
+
+export function text(source, values = {}) {
+  if (globalThis.UWI18n) return globalThis.UWI18n.text(source, values);
+  return source.replace(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g,
+    (token, name) => Object.prototype.hasOwnProperty.call(values, name) ? String(values[name]) : token);
+}

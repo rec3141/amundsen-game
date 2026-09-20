@@ -3,6 +3,7 @@
 // early. Whatever is left in the purse is logged as the operation's points.
 import { TRIBUTE, PASS_AWARD, FAIL_TAKE, WRATH_FAILS, WRATH_TAKE, BLUE_NOSE, TRIALS_PER_COURT, mulberry32, hashSeed, shuffle, applyVerdict, mood } from './crew-15-model.js';
 import { TRIALS, WIDTH, HEIGHT, drawScene } from './crew-15-trials.js';
+import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-15.css', import.meta.url).href;
 const dataFile = new URL('../data/crew-15-neptune.json', import.meta.url).href;
@@ -17,7 +18,7 @@ const WRATH_LINE = '"ENOUGH." The trident strikes the deck. The table goes over,
 const BLUE_NOSE_LINE = '"Well. A blue nose for you, then." He takes the trident back, and the wake goes flat and quiet.';
 
 export const game = {
-  title: "Neptune's Wrath",
+  get title() { return text("Neptune's Wrath"); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const rng = mulberry32(hashSeed(`${expedition?.x ?? 0}:${expedition?.y ?? 0}:${Date.now()}`));

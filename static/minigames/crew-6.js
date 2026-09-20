@@ -1,4 +1,5 @@
 import { createRun, step, resume, result, dripState, SURFACES, KIT, THRESHOLD, PLAYER_R, WALL_H, DECKHAND_R } from './crew-6-maze.js';
+import { t } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-6.css', import.meta.url).href;
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -7,7 +8,7 @@ const KEYS = { arrowup: 'up', w: 'up', arrowdown: 'down', s: 'down', arrowleft: 
 const clock = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 
 export const game = {
-  title: 'Contaminants',
+  get title() { return t('crew6.title'); },
   mount(root, { complete }) {
     const state = createRun(`${Date.now()}:${Math.random()}`);
     const events = new AbortController();
@@ -76,6 +77,38 @@ export const game = {
     const dialog = root.closest('dialog');
     const pad = [...section.querySelectorAll('[data-dir]')];
     let bannerTimer = 0, touchList = '';
+    const surfaceLabel = surface => t(`crew6.surface.${surface.key || Object.keys(SURFACES).find(key => SURFACES[key] === surface)}`);
+    const kitLabel = item => t(`crew6.kit.${item.id}`);
+
+    function localize() {
+      section.lang = globalThis.UWI18n?.locale || 'en';
+      section.setAttribute('aria-label', t('crew6.aria.game'));
+      find('.tm-kicker').textContent = t('crew6.kicker');
+      find('.tm-heading h3').textContent = t('crew6.heading');
+      find('.tm-clock span').textContent = t('crew6.elapsed');
+      find('.tm-instructions').textContent = t('crew6.instructions');
+      canvas.setAttribute('aria-label', t('crew6.aria.canvas'));
+      find('.tm-shout').textContent = t('crew6.tia.shout');
+      find('.tm-who').textContent = t('crew6.tia.who');
+      retry.childNodes[0].textContent = t('crew6.retry') + ' ';
+      const headings = section.querySelectorAll('.tm-panel > h4');
+      headings[0].textContent = t('crew6.cleanSuit'); headings[1].textContent = t('crew6.dirtyMeter');
+      for (const item of state.items) find(`[data-kit="${item.id}"]`).lastChild.textContent = kitLabel(item);
+      find('.tm-meter').setAttribute('aria-label', t('crew6.aria.meter'));
+      find('.tm-legend summary').textContent = t('crew6.legend.heading');
+      const legend = find('.tm-legend ul').children;
+      [...['steel', 'rust', 'paint', 'grease', 'anode'], 'deckhand', 'drip'].forEach((key, i) => {
+        const textNode = [...legend[i].childNodes].find(node => node.nodeType === Node.TEXT_NODE);
+        if (textNode) textNode.textContent = t(`crew6.surface.${key}`) + ' ';
+      });
+      find('.tm-legend p').textContent = t('crew6.legend.brushing', { threshold: THRESHOLD });
+      find('.tm-pad').setAttribute('aria-label', t('crew6.aria.move'));
+      const directions = ['up', 'left', 'down', 'right'];
+      [...find('.tm-pad').children].forEach((button, i) => button.setAttribute('aria-label', t(`crew6.aria.${directions[i]}`)));
+      find('.tm-reward').textContent = t('crew6.reward');
+      if (state.phase === 'search') status.textContent = t('crew6.status.start');
+      renderPanel(); draw();
+    }
 
     function say(text) { status.textContent = text; }
     function flash(text, ms = 1400) {
@@ -89,15 +122,15 @@ export const game = {
       for (const item of state.items) find(`[data-kit="${item.id}"]`).classList.toggle('tm-found', item.found);
       const meter = find('.tm-meter');
       meter.setAttribute('aria-valuenow', Math.round(state.dirty));
-      meter.setAttribute('aria-valuetext', `${Math.round(state.dirty)} of ${THRESHOLD}`);
+      meter.setAttribute('aria-valuetext', t('crew6.meter.value', { dirty: Math.round(state.dirty), threshold: THRESHOLD }));
       meter.firstElementChild.style.width = `${state.dirty / THRESHOLD * 100}%`;
       meter.classList.toggle('tm-hot', state.dirty >= THRESHOLD * 0.7);
       section.classList.toggle('tm-suited', state.phase !== 'search');
       find('[data-meter-note]').textContent = state.phase === 'search'
-        ? 'Suit up first — the float coat can touch what it likes.'
-        : `${Math.round(state.dirty)} / ${THRESHOLD}${state.fails ? ` · glove change ${state.fails}` : ''}`;
-      const rows = state.touches.map(t => `<li><span>${escape(t.label)}</span><em>${escape(t.element)}</em><b>+${t.dirt}</b></li>`);
-      if (state.rubDirt >= 1) rows.push(`<li><span>Brushing along surfaces</span><em></em><b>+${Math.round(state.rubDirt)}</b></li>`);
+        ? t('crew6.meter.unsuited')
+        : t(state.fails ? 'crew6.meter.dirtyChanges' : 'crew6.meter.dirty', { dirty: Math.round(state.dirty), threshold: THRESHOLD, count: state.fails });
+      const rows = state.touches.map(touch => `<li><span>${escape(surfaceLabel(touch))}</span><em>${escape(touch.element)}</em><b>+${touch.dirt}</b></li>`);
+      if (state.rubDirt >= 1) rows.push(`<li><span>${escape(t('crew6.brushing'))}</span><em></em><b>+${Math.round(state.rubDirt)}</b></li>`);
       const list = rows.join('');
       if (list !== touchList) { touchList = list; find('[data-touches]').innerHTML = list; }
       find('[data-clock]').textContent = clock(state.searchSeconds + state.returnSeconds);
@@ -245,7 +278,7 @@ export const game = {
       ctx.fillStyle = '#0b1e26d9';
       for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) if (!state.seen.has(y * cols + x)) ctx.fillRect(x - 0.05, y - 0.05, 1.1, 1.1);
       // The label sits in the margin above or below the rosette's row, kept clear of the side edges.
-      text('TM rosette', Math.min(cols - 0.9, Math.max(0.9, state.start[0] + 0.5)), state.start[1] === 0 ? -PAD / 2 : rows + PAD / 2, 0.22, '#e8fbff', 700);
+      text(t('crew6.rosette'), Math.min(cols - 0.9, Math.max(0.9, state.start[0] + 0.5)), state.start[1] === 0 ? -PAD / 2 : rows + PAD / 2, 0.22, '#e8fbff', 700);
     }
 
     function input() {
@@ -256,22 +289,22 @@ export const game = {
     function handle(event) {
       if (event.type === 'item') {
         const left = state.items.filter(i => !i.found).length;
-        say(left ? `${event.item.label} found. ${left} piece${left === 1 ? '' : 's'} to go.` : `${event.item.label} found. Suit up.`);
-        flash(event.item.label, 900);
+        say(t(left ? 'crew6.status.found' : 'crew6.status.foundAll', { item: kitLabel(event.item), count: left }));
+        flash(kitLabel(event.item), 900);
       } else if (event.type === 'suited') {
-        flash('Suited up. Touch nothing.', 1600);
-        say(`Suited up in ${clock(state.searchSeconds)}. Back to the rosette now: every surface counts, so does the deckhand, so do the drips.`);
+        flash(t('crew6.flash.suited'), 1600);
+        say(t('crew6.status.suited', { time: clock(state.searchSeconds) }));
       } else if (event.type === 'touch') {
-        say(`${event.surface.label} — ${Math.round(state.dirty)} / ${THRESHOLD}.`);
+        say(t('crew6.status.touch', { surface: surfaceLabel(event.surface), dirty: Math.round(state.dirty), threshold: THRESHOLD }));
         section.classList.remove('tm-shake');
         void section.offsetWidth;
         section.classList.add('tm-shake');
       } else if (event.type === 'busted') {
         held.clear();
         nudges.clear();
-        find('[data-tia-detail]').textContent = `${state.touches.length} touch${state.touches.length === 1 ? '' : 'es'}: ${[...new Set(state.touches.map(t => t.label.toLowerCase()))].join(', ')}${state.rubDirt >= 1 ? ', plus brushing along the way' : ''}. Nobody wants a rusty blank.`;
+        find('[data-tia-detail]').textContent = t(state.rubDirt >= 1 ? 'crew6.tia.detailBrushing' : 'crew6.tia.detail', { count: state.touches.length, surfaces: [...new Set(state.touches.map(surfaceLabel))].join(', ') });
         tia.hidden = false;
-        say(`Tia: don't touch it, you're dirty. ${state.touches.length} touches. Change gloves and go again from where you suited up.`);
+        say(t('crew6.status.busted', { count: state.touches.length }));
         retry.focus();
       } else if (event.type === 'arrived') {
         finish();
@@ -279,25 +312,26 @@ export const game = {
     }
     function finish() {
       const summary = result(state);
-      done.innerHTML = `<p class="tm-kicker">SAMPLE TAKEN</p><h4>${escape(summary.detail.title)}</h4>
-        <ul><li><span>Cleanliness</span><b>${summary.cleanliness}</b></li><li><span>Speed · ${clock(summary.seconds)}</span><b>+${summary.timeBonus}</b></li>
-        ${summary.blankBonus ? `<li><span>No touch at all</span><b>+${summary.blankBonus}</b></li>` : ''}${summary.penalty ? `<li><span>Glove changes · ${state.fails}</span><b>−${summary.penalty}</b></li>` : ''}
-        <li class="tm-total"><span>Science points</span><b>${summary.points}</b></li></ul>
-        <p>${summary.blankBonus ? 'Blank-grade: nothing on the bottles but seawater.' : `${state.touches.length ? 'Tia logs what you brushed against the sample.' : 'A few brushes on the way, noted on the sample sheet.'}`}</p>`;
+      const title = t(summary.blankBonus ? 'crew6.result.blankTitle' : 'crew6.result.title', { cleanliness: summary.cleanliness });
+      done.innerHTML = `<p class="tm-kicker">${escape(t('crew6.result.kicker'))}</p><h4>${escape(title)}</h4>
+        <ul><li><span>${escape(t('crew6.result.cleanliness'))}</span><b>${summary.cleanliness}</b></li><li><span>${escape(t('crew6.result.speed', {time:clock(summary.seconds)}))}</span><b>+${summary.timeBonus}</b></li>
+        ${summary.blankBonus ? `<li><span>${escape(t('crew6.result.noTouch'))}</span><b>+${summary.blankBonus}</b></li>` : ''}${summary.penalty ? `<li><span>${escape(t('crew6.result.changes', {count:state.fails}))}</span><b>−${summary.penalty}</b></li>` : ''}
+        <li class="tm-total"><span>${escape(t('crew6.result.points'))}</span><b>${summary.points}</b></li></ul>
+        <p>${escape(t(summary.blankBonus ? 'crew6.result.blankNote' : state.touches.length ? 'crew6.result.touchedNote' : 'crew6.result.brushedNote'))}</p>`;
       done.hidden = false;
       banner.hidden = true;
       clearTimeout(bannerTimer);
-      say(`Sample taken: ${summary.cleanliness}% clean in ${clock(summary.seconds)} · ${summary.points} points.`);
+      say(t('crew6.status.finished', { cleanliness: summary.cleanliness, time: clock(summary.seconds), points: summary.points }));
       if (!awarded) {
         awarded = true;
-        complete(summary.points, summary.detail);
+        complete(summary.points, { ...summary.detail, title });
       }
     }
     function again() {
       if (!active || !resume(state)) return;
       tia.hidden = true;
-      flash('Fresh gloves. Go.', 1200);
-      say('Fresh gloves from Tia. Back to the rosette from where you suited up.');
+      flash(t('crew6.flash.fresh'), 1200);
+      say(t('crew6.status.fresh'));
       renderPanel();
       canvas.focus?.();
     }
@@ -347,9 +381,10 @@ export const game = {
     document.addEventListener('visibilitychange', () => { held.clear(); previous = 0; }, { signal });
     const observer = new ResizeObserver(() => { fit(); draw(); });
     observer.observe(canvas);
+    globalThis.addEventListener?.('uw:localechange', localize, { signal });
     fit();
     renderPanel();
-    draw();
+    localize();
     frame = requestAnimationFrame(loop);
     return () => {
       active = false;

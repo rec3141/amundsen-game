@@ -4,6 +4,7 @@
 // plan sonar lines over the box against the ship-time budget, spot the contact in the mosaic and the
 // waterfall, then drop the ROV to identify it. Without steamTo the search is run from wherever the ship is.
 import { GRID, createGame, clampBox, planLegs, planCost, startSurvey, advanceSurvey, dive, endDive, score, isCovered, contactAt, diveHours, distanceKm, bearingDeg, compass, formatPosition, siteBudget, SURVEY_KN, named } from './crew-18-model.js';
+import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-18.css', import.meta.url).href;
 const archive = new URL('../data/crew-18-wrecks.json', import.meta.url);
@@ -18,7 +19,7 @@ const hours = h => { const m = Math.round(h * 60); return `${Math.floor(m / 60)}
 const km = v => v >= 10 ? `${v.toFixed(0)} km` : `${v.toFixed(1)} km`;
 
 export const game = {
-  title: 'Shipwrecks',
+  get title() { return text('Shipwrecks'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const { signal } = events;
@@ -54,6 +55,7 @@ export const game = {
     const gameEl = root.querySelector('.c18-game');
     const find = selector => gameEl.querySelector(selector);
     const canvas = find('[data-canvas]'), ctx = canvas.getContext('2d');
+    const rawFillText = ctx.fillText.bind(ctx); ctx.fillText = (value, ...args) => rawFillText(text(String(value)), ...args);
     const panel = find('[data-panel]');
     const say = text => { const el = find('[data-status]'); if (el) el.textContent = text; };
     const setPhase = next => { phase = next; gameEl.dataset.phase = next; };

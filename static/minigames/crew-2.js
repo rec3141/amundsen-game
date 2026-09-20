@@ -2,6 +2,7 @@ import {
   MAX_MARKS, SHIP_HOURS, STATION_HOURS, HOLES_PER_FLOE, MAX_DEPTH_CM,
   createScene, lonLat, sample, floeAt, speedKnots, travelField, routeTo, floeMean, floeDone, scoreSurvey,
 } from './crew-2-model.js';
+import { t } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-2.css', import.meta.url).href;
 const sceneUrl = new URL('../data/crew-2-scene.json', import.meta.url);
@@ -18,7 +19,7 @@ const degrees = (value, positive, negative) => `${Math.abs(value).toFixed(3)}° 
 const hoursText = hours => `${hours.toFixed(1)} h`;
 
 export const crew2 = {
-  title: 'Where is the old ice?',
+  get title() { return t('crew2.title'); },
   mount(root, { complete }) {
     const events = new AbortController();
     const signal = events.signal;
@@ -645,6 +646,7 @@ export const crew2 = {
 
     game.dataset.phase = 'loading';
     find('[data-instructions]').innerHTML = instructions.plan;
+    globalThis.addEventListener?.('uw:localechange', () => { game.lang = globalThis.UWI18n?.locale || 'en'; render(); drawMap(); }, { signal: events.signal });
 
     return () => {
       active = false;

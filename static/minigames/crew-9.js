@@ -2,6 +2,7 @@ import {
   NETS, SPECIES, netById, speciesById, createGame, startTow, step, haul, sell, buy, select, finish, score, towsLeft, sampleValue,
   speciesCount, keelDepth, seabedAt, canCatch, deepLayerTop, TOW_SECONDS, TOW_BUDGET, TOW_SPEED, WINCH_SPEED, VIEW_WIDTH, VIEW_HEIGHT, NET_X, HITS_TO_TEAR, SPECIES_POINTS, COLLECTION_BONUS,
 } from './crew-9-model.js';
+import { t } from '../i18n-text.js';
 import { createAudio } from './crew-9-audio.js';
 
 const stylesheet = new URL('./crew-9.css', import.meta.url).href;
@@ -117,7 +118,7 @@ function iconFor(species) {
 }
 
 export const game = {
-  title: 'Crazy Net',
+  get title() { return t('crew9.title'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const signal = events.signal;
@@ -572,6 +573,7 @@ export const game = {
       say(`${state.station.station ? `${state.station.station}: ` : ''}${state.station.bottom} m of water. Pick a start depth and tow the ring net.`);
     })();
 
+    globalThis.addEventListener?.('uw:localechange', () => { game.lang = globalThis.UWI18n?.locale || 'en'; renderSource(); renderPanel(); render(performance.now()); }, { signal: events.signal });
     setDepth(startDepth);
     renderSource();
     renderPanel();

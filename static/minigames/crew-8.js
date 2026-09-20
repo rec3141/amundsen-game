@@ -1,4 +1,5 @@
 import { createSession, push, beginPull, haul, abandon, nextCore, finish, canFinish, drivesLeft, coreSegments, abandonPenalty, cueText, points, maxDepthCm, DRIVES, PROFILE, MIN_CORE_CM, ABANDON_BASE, ABANDON_PER_CM } from './crew-8-model.js';
+import { t } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-8.css', import.meta.url).href;
 const GAUGE_KG = 200;
@@ -7,7 +8,7 @@ const MUD = '#4a4a3a';
 const escape = text => String(text).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 export const game = {
-  title: 'The Raft',
+  get title() { return t('crew8.title'); },
   mount(root, { complete, expedition }) {
     // The same chart position finds the same basin; the drive sites and the raft are new every launch.
     const spot = Number.isFinite(expedition?.x) && Number.isFinite(expedition?.y) ? `lake:${Math.round(expedition.x)}:${Math.round(expedition.y)}` : `lake:${Date.now()}`;
@@ -376,6 +377,7 @@ export const game = {
       if (key === 'p' || key === 'space') stopHauling();
     }, { capture: true, signal: events.signal });
 
+    globalThis.addEventListener?.('uw:localechange', () => { view.lang = globalThis.UWI18n?.locale || 'en'; render(); }, { signal: events.signal });
     render();
     return () => {
       active = false;

@@ -1,4 +1,5 @@
 import { createFlood, step, go, move, act, station, fixStation, closure, atStation, available, summary, result, labClock, rollAt, scupperClear, KEYS, AREA_M2, LAPTOP_FALL_S } from './crew-10-model.js';
+import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-10.css', import.meta.url).href;
 const seawaterUrl = new URL('../data/crew-10-seawater.json', import.meta.url).href;
@@ -78,7 +79,7 @@ function playKlaxon() {
 }
 
 export const game = {
-  title: 'Flood the aft lab',
+  get title() { return text('Flood the aft lab'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     let active = true, frame = 0, last = 0, awarded = false, state = null, seawater = null, seed = 0;

@@ -1,11 +1,12 @@
 import { createDuel, moveOptions, playTurn, score, tell, MOVES, TYPES, cap } from './crew-19-model.js';
+import { text } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-19.css', import.meta.url).href;
 const PACE = { use: 700, hit: 800, miss: 650, blocked: 600, heal: 500, stage: 500, status: 650, tick: 650, weather: 550, tell: 300, end: 900 };
 const escape = text => String(text).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 
 export const game = {
-  title: 'Rival Researchers',
+  get title() { return text('Rival Researchers'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const { signal } = events;
@@ -47,6 +48,9 @@ export const game = {
     const find = selector => panel.querySelector(selector);
     const canvas = find('canvas');
     const ctx = canvas.getContext('2d');
+    const rawFillText = ctx.fillText.bind(ctx), rawStrokeText = ctx.strokeText.bind(ctx);
+    ctx.fillText = (value, ...args) => rawFillText(text(String(value)), ...args);
+    ctx.strokeText = (value, ...args) => rawStrokeText(text(String(value)), ...args);
     panel.focus();
 
     // ---------- rendering of the HTML parts ----------

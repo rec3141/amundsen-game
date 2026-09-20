@@ -1,4 +1,5 @@
 import { COLS, ROWS, FUEL_SECONDS, KM_PER_BAND, SIGHTING_POINTS, FALSE_SIGHTING_PENALTY, FORMS, stageInfo, createGame, spawn, move, rotate, step, drop, burnFuel, speedMs, distanceKm, logSighting, falseSighting, finish } from './crew-4-ice.js';
+import { t } from '../i18n-text.js';
 
 const stylesheet = new URL('./crew-4.css', import.meta.url).href;
 const chartUrl = new URL('../data/crew-4-ice-chart.json', import.meta.url).href;
@@ -38,7 +39,7 @@ function tenthsBar(partials) {
 }
 
 export const game = {
-  title: 'Ice Patrol',
+  get title() { return t('crew4.title'); },
   mount(root, { complete, expedition }) {
     const events = new AbortController();
     const { signal } = events;
@@ -630,6 +631,7 @@ export const game = {
       showOverlay(`Ice chart unavailable: ${escape(error.message)}. Close and reopen to try again.`);
       say('The ice chart could not be read.');
     });
+    globalThis.addEventListener?.('uw:localechange', () => { game.lang = globalThis.UWI18n?.locale || 'en'; renderHud(); renderNext(); renderBands(); renderSightings(); draw(performance.now()); }, { signal });
     raf = requestAnimationFrame(frame);
     return () => {
       active = false;
