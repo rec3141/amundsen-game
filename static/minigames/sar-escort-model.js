@@ -8,19 +8,31 @@ export const VESSELS = [
   { kind: 'sealift carrier', size: 42, iceClass: 'Polar Class 6', strength: 2.1, tolerance: 19 },
 ];
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+export function escortPosition(route, progress) {
+  const t = clamp(progress, 0, 1), curve = Math.sin(t * Math.PI) * route.bend;
+  const dx = route.b.x - route.a.x, dy = route.b.y - route.a.y, length = Math.hypot(dx, dy);
+  const nx = -dy / length, ny = dx / length, turn = Math.cos(t * Math.PI) * Math.PI * route.bend;
+  return { x: route.a.x + dx * t + nx * curve, y: route.a.y + dy * t + ny * curve,
+    heading: Math.atan2(dy + ny * turn, dx + nx * turn) };
+}
 export function createEscort(sar, random = Math.random) {
   const casualty = casualtyFrom(sar);
   const vessel = { ...casualty, ...(VESSELS.find(v => v.kind === casualty.kind) || VESSELS[2]) };
   const maxHealth = Math.round(vessel.size * vessel.strength * 6);
+  const angle = random() * Math.PI * 2;
+  const route = { a: { x: 450 - Math.cos(angle) * 340, y: 260 - Math.sin(angle) * 150 },
+    b: { x: 450 + Math.cos(angle) * 340, y: 260 + Math.sin(angle) * 150 }, bend: (random() - .5) * 130 };
+  const ship = escortPosition(route, 0);
   return { vessel, random, maxHealth, health: maxHealth, time: 0, spawn: .5, cooldown: 0,
-    ship: { x: 110, y: 260 }, breaker: { x: 210, y: 260, heading: 0 },
+    route, ship, breaker: { x: ship.x + Math.cos(ship.heading) * 85, y: ship.y + Math.sin(ship.heading) * 85, heading: ship.heading },
     floes: [], particles: [], broken: 0, hits: 0, phase: 'ready', flash: 0, pulse: 0 };
 }
 export function spawnFloe(s) {
   const rand = s.random, edge = Math.floor(rand() * 4);
   const x = edge === 0 ? -45 : edge === 1 ? WIDTH + 45 : rand() * WIDTH;
   const y = edge === 2 ? -45 : edge === 3 ? HEIGHT + 45 : rand() * HEIGHT;
-  const targetX = clamp(s.ship.x + 45 + rand() * 110, 110, 800), targetY = s.ship.y + (rand() - .5) * 100;
+  const ahead = escortPosition(s.route, (s.time + 4 + rand() * 7) / 65);
+  const targetX = ahead.x, targetY = ahead.y + (rand() - .5) * 100;
   const angle = Math.atan2(targetY - y, targetX - x), speed = 35 + rand() * 25 + s.time * .35;
   s.floes.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
     r: 23 + rand() * 29, angle: rand() * 6.28, spin: (rand() - .5) * .6, grace: 0 });
@@ -44,8 +56,7 @@ export function stepEscort(s, dt, input = {}) {
   dt = clamp(dt, 0, .04);
   s.time += dt; s.cooldown = Math.max(0, s.cooldown - dt);
   s.flash = Math.max(0, s.flash - dt); s.pulse = Math.max(0, s.pulse - dt);
-  s.ship.x = 110 + 680 * Math.min(1, s.time / 65);
-  s.ship.y = 260 + Math.sin(s.time / 65 * Math.PI * 2) * 50;
+  Object.assign(s.ship, escortPosition(s.route, s.time / 65));
   let dx = input.x || 0, dy = input.y || 0;
   if (!dx && !dy && input.target) {
     dx = input.target.x - s.breaker.x; dy = input.target.y - s.breaker.y;

@@ -1,6 +1,7 @@
 import { t, text as localize } from './i18n-text.js';
 import { publicMirror } from './site.js';
 import { minigames, activities } from './minigames/registry.js';
+import { randomCasualty } from './minigames/crew-12-model.js';
 import { STORAGE_KEY, COLS, ROWS, FUEL, STORES, WIDE_SWATH, MAP_KM2, newVoyage, readVoyage, chartPosition, chartPercent, operationRecorder, runAground, mapSwath, swathWidth, tankCapacity, burnRate, sail, buy, bunker, towSouth, logEvent } from './exploration.js';
 import { loadWorld } from './world.js';
 import { createChart } from './world-chart.js';
@@ -36,18 +37,6 @@ const SHIP_KM_PER_S = 50, ZODIAC_TETHER_KM = 30, AUV_RANGE_KM = 60, AUV_SWATH_M 
 const WRECK_KM = 15, SAR_LIFE_S = 1200, SAR_GAP_S = 360, SAR_SPREAD_S = 360, SAR_FIRST_S = [150, 300], SAR_RANGE_KM = [60, 300];
 const ALARM_GAP_S = 480, ALARM_SPREAD_S = 420, ALARM_FIRST_S = [300, 480], ALARM_DELAY_MS = 2000, ICE_NEAR_KM = 10, ICE_NEAR_PERCENT = 10, ICE_SEARCH_CELLS = 400;
 const ALARMS = { flood: 'flooding in the aft lab', contaminants: 'contamination on the rosette deck' };
-// Vessels that raise a Mayday; the game's own MV Kittiwake among them.
-const CASUALTIES = [
-  { name: 'MV Kittiwake', kind: 'cruise ship', trouble: 'beset and taking water forward, 162 passengers' },
-  { name: 'MV Boreal Spirit', kind: 'cruise ship', trouble: 'holed by ice, listing to port' },
-  { name: 'MS Aurora Strait', kind: 'cruise ship', trouble: 'steering gear failed, drifting with the floes' },
-  { name: 'MV Tuvaq Sealift', kind: 'sealift carrier', trouble: 'beset, deck cargo shifting' },
-  { name: 'MV Hudson Trader', kind: 'sealift carrier', trouble: 'engine room fire, adrift in the pack' },
-  { name: 'FV Sannirut', kind: 'fishing vessel', trouble: 'nipped in the ice and listing' },
-  { name: 'FV Kingnait Bay', kind: 'fishing vessel', trouble: 'propeller fouled, beset' },
-  { name: 'SY Wandering Tern', kind: 'yacht', trouble: 'trapped in closing pack, two aboard' },
-  { name: 'SY Petrel', kind: 'yacht', trouble: 'dismasted, drifting onto the ice edge' },
-];
 const expo = mean => -Math.log(1 - Math.random()) * mean, between = ([lo, hi]) => lo + Math.random() * (hi - lo);
 // Event state rides in the saved voyage beside the exploration fields and is restored here with guarded defaults:
 // `played` seconds of active play; `lastCall`, `nextCall`, `lastAlarm`, `nextAlarm` on that clock; the active
@@ -353,7 +342,7 @@ function placeMayday() {
 function raiseMayday() {
   const spot = placeMayday();
   if (!spot) { state.nextCall = state.played + 120; return; }
-  const who = CASUALTIES[Math.floor(Math.random() * CASUALTIES.length)], { lon, lat } = world.unproject(spot.u, spot.v);
+  const who = randomCasualty(), { lon, lat } = world.unproject(spot.u, spot.v);
   state.mayday = { ...who, lon, lat, x: spot.u / world.cols, y: spot.v / world.rows, at: state.played, until: state.played + SAR_LIFE_S };
   state.lastCall = state.played; state.nextCall = state.played + SAR_GAP_S + expo(SAR_SPREAD_S);
   const r = maydayRange(), where = `${Math.round(r.km)} km ${r.bearing}`;
@@ -558,11 +547,11 @@ function startActivity(activity, extra = {}) {
   // The fast winch lets a CTD station bank more casts: 25% more points for that operation.
   const bonus = activity.id === 'ctd' && state.upgrades.winch ? 1.25 : 1;
   // Shipwrecks learns the wreck under the ship and how to steam to another; SAR learns the casualty; alarms say so.
-  const wreck = activity.id === 'wrecks' ? wreckHere() : null, mayday = rescueCall;
+  const wreck = activity.id === 'wrecks' ? wreckHere() : null, mayday = rescueCall || (['sar', 'escort'].includes(activity.id) ? randomCasualty() : null);
   const expedition = { ...location, score: state.score, operations: state.operations, chartPercent: chartPercent(state, sea), fuel: state.fuel, upgrades: { ...state.upgrades }, steamTo, ...extra };
   if (wreck) expedition.wreck = wreck.id;
-  if (mayday) expedition.sar = { name: mayday.name, kind: mayday.kind, trouble: mayday.trouble, lon: mayday.lon, lat: mayday.lat, distanceKm: Math.round(maydayRange().km * 10) / 10 };
-  try { cleanup = game.mount($('#minigame'), { complete: (points, detail) => { if ($('#mission-dialog').open) session.complete(Number.isFinite(points) ? points * bonus : points, detail); }, expedition }); }
+  if (mayday) expedition.sar = { name: mayday.name, kind: mayday.kind, trouble: mayday.trouble, lon: mayday.lon, lat: mayday.lat, distanceKm: rescueCall ? Math.round(maydayRange().km * 10) / 10 : null };
+  try { cleanup = game.mount($('#minigame'), { complete: (points, detail) => { if ($('#mission-dialog').open) session.complete(Number.isFinite(points) ? points * bonus : points, detail); }, close: () => { if (recorder === session) { endActivity(); $('#mission-dialog').close(); } }, expedition }); }
   catch (error) { endActivity(); $('#mission-dialog').close(); toast('Could not open this operation. Please try again.'); console.error(error); }
 }
 $('#close-mission').onclick = () => { endActivity(); $('#mission-dialog').close(); };

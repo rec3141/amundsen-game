@@ -1,10 +1,10 @@
-import { WIDTH, HEIGHT, createEscort, stepEscort, escortScore } from './sar-escort-model.js';
+import { WIDTH, HEIGHT, createEscort, stepEscort, escortScore, escortPosition } from './sar-escort-model.js';
 
 export const game = {
   title: 'SAR: Ice Escort',
-  mount(root, { complete, expedition }) {
+  mount(root, { complete, close, expedition }) {
     const events = new AbortController(), { signal } = events;
-    const state = createEscort(expedition?.sar);
+    let state = createEscort(expedition?.sar);
     let frame, last = 0, target = null, ram = false, awarded = false;
     const keys = new Set();
     root.innerHTML = `<section class="escort">
@@ -14,7 +14,7 @@ export const game = {
       <div class="escort-meters"><label>HULL <span data-health></span><meter data-hull min="0" max="1" value="1"></meter></label>
       <label>A → B <span data-distance></span><progress data-route max="65" value="0"></progress></label></div>
       <canvas data-sea tabindex="0" aria-label="Escort ice field. Steer with arrows or WASD, or drag on the chart. Space triggers a ram burst."></canvas>
-      <div class="escort-bottom"><button data-start>Begin escort</button><button data-ram disabled>Ram · Space</button><p data-status role="status"></p></div>
+      <div class="escort-bottom"><button data-start>Begin escort</button><button data-ram disabled>Ram · Space</button><button data-result hidden></button><p data-status role="status"></p></div>
       <p class="escort-help">Steer the red Amundsen with WASD / arrows, or hold and drag on the water. Contact splits large floes; Space or Ram breaks a wider cluster every 2.6 seconds. Break amber floes until they turn blue: blue fragments are small enough for this ship to pass safely. Get the white ship from A to B.</p>
     </section>`;
     const find = selector => root.querySelector(selector), canvas = find('[data-sea]'), ctx = canvas.getContext('2d');
@@ -33,14 +33,24 @@ export const game = {
     }
     find('[data-vessel]').textContent = `${state.vessel.name} · ${state.vessel.kind}`;
     find('[data-call]').textContent = `MAYDAY RELAY · ${state.vessel.trouble}.${state.vessel.lat !== null && state.vessel.lon !== null ? ` Last fix ${state.vessel.lat.toFixed(3)}°, ${state.vessel.lon.toFixed(3)}°.` : ''}${state.vessel.distanceKm !== null ? ` Amundsen is ${state.vessel.distanceKm} km off.` : ''}`;
-    find('[data-start]').addEventListener('click', () => {
+    function start() {
+      clearInput();
       state.phase = 'running'; find('[data-start]').hidden = true;
+      find('[data-result]').hidden = true; find('[data-ram]').hidden = false;
       find('[data-status]').textContent = 'Ice closing from all sides. Keep their hull intact!'; canvas.focus();
+      readouts();
+    }
+    find('[data-start]').addEventListener('click', start, { signal });
+    find('[data-result]').addEventListener('click', () => {
+      if (state.phase === 'won') { close(); return; }
+      if (state.phase !== 'lost') return;
+      state = createEscort(expedition?.sar); awarded = false;
+      start();
     }, { signal });
     find('[data-ram]').addEventListener('click', () => { ram = true; canvas.focus(); }, { signal });
     const controls = ['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd', ' '];
     window.addEventListener('keydown', e => {
-      if (e.target instanceof HTMLSelectElement || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.target instanceof HTMLSelectElement || e.target instanceof HTMLButtonElement || e.ctrlKey || e.metaKey || e.altKey) return;
       const key = e.key.toLowerCase(); if (!controls.includes(key)) return;
       e.preventDefault(); keys.add(key); if (key === ' ' && !e.repeat) ram = true;
     }, { signal });
@@ -72,11 +82,11 @@ export const game = {
       for (let x = 0; x < WIDTH; x += 50) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, HEIGHT); ctx.stroke(); }
       for (let y = 0; y < HEIGHT; y += 50) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(WIDTH, y); ctx.stroke(); }
       ctx.strokeStyle = '#558f98'; ctx.setLineDash([5, 9]); ctx.beginPath();
-      for (let i = 0; i <= 100; i++) { const x = 110 + 680 * i / 100, y = 260 + Math.sin(i / 100 * Math.PI * 2) * 50; if (!i) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+      for (let i = 0; i <= 100; i++) { const { x, y } = escortPosition(state.route, i / 100); if (!i) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
       ctx.stroke(); ctx.setLineDash([]);
       ctx.font = 'bold 17px monospace'; ctx.textAlign = 'center';
-      for (const [x, label] of [[110, 'A'], [790, 'B · SHELTER']]) {
-        ctx.strokeStyle = '#78d7bc'; ctx.beginPath(); ctx.arc(x, 260, 53, 0, Math.PI * 2); ctx.stroke(); ctx.fillStyle = '#a5e9d8'; ctx.fillText(label, x, 335);
+      for (const [point, label] of [[state.route.a, 'A'], [state.route.b, 'B · SHELTER']]) {
+        ctx.strokeStyle = '#78d7bc'; ctx.beginPath(); ctx.arc(point.x, point.y, 53, 0, Math.PI * 2); ctx.stroke(); ctx.fillStyle = '#a5e9d8'; ctx.fillText(label, point.x, point.y + 75);
       }
       for (const f of state.floes) {
         const danger = f.r > state.vessel.tolerance;
@@ -87,7 +97,7 @@ export const game = {
         ctx.restore();
       }
       for (const p of state.particles) { ctx.globalAlpha = p.life / .45; ctx.fillStyle = '#fff'; ctx.fillRect(p.x, p.y, 4, 4); } ctx.globalAlpha = 1;
-      ship(state.ship.x, state.ship.y, state.vessel.size, Math.atan2(Math.cos(state.time / 65 * Math.PI * 2) * 50 * Math.PI * 2, 680), state.flash ? '#ff706d' : '#fff2d7');
+      ship(state.ship.x, state.ship.y, state.vessel.size, state.ship.heading, state.flash ? '#ff706d' : '#fff2d7');
       ctx.fillStyle = '#243d46'; ctx.fillRect(state.ship.x - 30, state.ship.y - state.vessel.size - 14, 60, 5);
       ctx.fillStyle = state.health / state.maxHealth > .3 ? '#79e0b5' : '#ff706d'; ctx.fillRect(state.ship.x - 30, state.ship.y - state.vessel.size - 14, 60 * state.health / state.maxHealth, 5);
       ship(state.breaker.x, state.breaker.y, 25, state.breaker.heading, '#f26451');
@@ -104,8 +114,12 @@ export const game = {
       ram = false;
       if (!awarded && ['won', 'lost'].includes(state.phase)) {
         awarded = true;
-        find('[data-status]').textContent = state.phase === 'won' ? `Rescued! ${Math.ceil(state.health)} hull remaining · ${escortScore(state)} points.` : 'The ice crushed their hull. Close and launch again for another escort.';
-        complete(escortScore(state), { title: 'SAR: Ice Escort', summary: `${state.vessel.name} · ${state.phase === 'won' ? 'safe in shelter' : 'hull lost'} · ${state.hits} impacts`, won: state.phase === 'won' });
+        clearInput();
+        find('[data-status]').textContent = state.phase === 'won' ? `Rescued! ${Math.ceil(state.health)} hull remaining · ${escortScore(state)} points.` : 'The ice crushed their hull. Retry to answer the same call again.';
+        find('[data-ram]').hidden = true;
+        const result = find('[data-result]');
+        result.textContent = state.phase === 'won' ? 'Complete' : 'Retry'; result.hidden = false; result.focus();
+        if (state.phase === 'won') complete(escortScore(state), { title: 'SAR: Ice Escort', summary: `${state.vessel.name} · safe in shelter · ${state.hits} impacts`, won: true });
       }
       readouts(); draw(); frame = requestAnimationFrame(tick);
     }

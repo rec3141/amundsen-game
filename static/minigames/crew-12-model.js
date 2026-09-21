@@ -28,6 +28,20 @@ export const CUT_CELLS = 1.2;
 export const DEFAULT_VESSEL = { name: 'MV Kittiwake', kind: 'cruise ship', trouble: 'beset and taking water forward, 162 passengers' };
 export const VESSEL = DEFAULT_VESSEL.name;
 
+// Both SAR modes and chart Maydays draw from the same casualty pool.
+export const CASUALTIES = [
+  DEFAULT_VESSEL,
+  { name: 'MV Boreal Spirit', kind: 'cruise ship', trouble: 'holed by ice, listing to port' },
+  { name: 'MS Aurora Strait', kind: 'cruise ship', trouble: 'steering gear failed, drifting with the floes' },
+  { name: 'MV Tuvaq Sealift', kind: 'sealift carrier', trouble: 'beset, deck cargo shifting' },
+  { name: 'MV Hudson Trader', kind: 'sealift carrier', trouble: 'engine room fire, adrift in the pack' },
+  { name: 'FV Sannirut', kind: 'fishing vessel', trouble: 'nipped in the ice and listing' },
+  { name: 'FV Kingnait Bay', kind: 'fishing vessel', trouble: 'propeller fouled, beset' },
+  { name: 'SY Wandering Tern', kind: 'yacht', trouble: 'trapped in closing pack, two aboard' },
+  { name: 'SY Petrel', kind: 'yacht', trouble: 'dismasted, drifting onto the ice edge' },
+];
+export const randomCasualty = () => ({ ...CASUALTIES[Math.floor(Math.random() * CASUALTIES.length)] });
+
 // How each kind of casualty follows in a broken channel (knots) and paints on the chart (length in cells,
 // hull and deck colours). A small hull rides a channel at a crawl; a sealift carrier has the power to keep up.
 export const VESSEL_KINDS = {
