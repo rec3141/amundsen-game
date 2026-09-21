@@ -16,10 +16,11 @@ export function escortPosition(route, progress) {
     heading: Math.atan2(dy + ny * turn, dx + nx * turn) };
 }
 export function iceDrift(s, x = WIDTH / 2, y = HEIGHT / 2) {
-  const angle = s.drift.angle + Math.sin(s.time / 17 + s.drift.phase) * .65;
-  const speed = 42 + Math.sin(s.time / 11 + s.drift.phase) * 7 + s.time * .1;
-  return { x: Math.cos(angle) * speed + Math.sin(y / 180 + s.time / 14) * 5,
-    y: Math.sin(angle) * speed + Math.sin(x / 240 + s.time / 18) * 5 };
+  const driftTime = s.time * 5;
+  const angle = s.drift.angle + Math.sin(driftTime / 17 + s.drift.phase) * 3.25;
+  const speed = 42 + Math.sin(driftTime / 11 + s.drift.phase) * 7 + s.time * .1;
+  return { x: Math.cos(angle) * speed + Math.sin(y / 180 + driftTime / 14) * 5,
+    y: Math.sin(angle) * speed + Math.sin(x / 240 + driftTime / 18) * 5 };
 }
 export function createEscort(sar, random = Math.random) {
   const casualty = casualtyFrom(sar);
