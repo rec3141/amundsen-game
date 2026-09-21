@@ -65,7 +65,10 @@ def chat_worker():
         job = CHAT_QUEUE.get()
         try:
             for index, handle in enumerate(job['speakers']):
-                text = crew_chat.reply(handle, job['context'])
+                context = {**job['context'], 'conversationTurn': index + 1}
+                if index:
+                    context['replyTo'] = job['context']['chat'][-1]
+                text = crew_chat.reply(handle, context)
                 name = crew_chat.PERSONAS[handle]['name']
                 _request({'action': 'crewReply', 'code': job['code'], 'name': name,
                           'crew': handle, 'text': text, 'done': index == len(job['speakers']) - 1})

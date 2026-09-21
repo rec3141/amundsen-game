@@ -2281,7 +2281,7 @@ function tableAside(room) {
   room.aiPending = true;
   room.revision++;
   save();
-  return { code: room.code, speakers: speakers.length > 1 ? [speakers[first], speakers[second]] : [speakers[first]], context: { ...publicContext(room), aside: true } };
+  return { code: room.code, speakers: speakers.length > 1 ? [speakers[first], speakers[second]] : [speakers[first]], context: { ...publicContext(room), aside: true, factRequested: milestone === 9 } };
 }
 function sameMove(left, right) {
   if (!left || !right || left.id !== right.id) return false;
