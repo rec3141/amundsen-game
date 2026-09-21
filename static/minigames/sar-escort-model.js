@@ -15,12 +15,19 @@ export function escortPosition(route, progress) {
   return { x: route.a.x + dx * t + nx * curve, y: route.a.y + dy * t + ny * curve,
     heading: Math.atan2(dy + ny * turn, dx + nx * turn) };
 }
+export const DRIFT_HOLD_S = 20, DRIFT_TURN_S = 4;
+export function driftHeading(s) {
+  const cycle = DRIFT_HOLD_S + DRIFT_TURN_S;
+  const leg = Math.min(s.drift.headings.length - 1, Math.floor(s.time / cycle));
+  const from = s.drift.headings[leg], to = s.drift.headings[leg + 1] ?? from;
+  const t = clamp((s.time % cycle - DRIFT_HOLD_S) / DRIFT_TURN_S, 0, 1);
+  return from + (to - from) * t * t * (3 - 2 * t);
+}
 export function iceDrift(s, x = WIDTH / 2, y = HEIGHT / 2) {
-  const driftTime = s.time * 5;
-  const angle = s.drift.angle + Math.sin(driftTime / 17 + s.drift.phase) * 3.25;
-  const speed = 42 + Math.sin(driftTime / 11 + s.drift.phase) * 7 + s.time * .1;
-  return { x: Math.cos(angle) * speed + Math.sin(y / 180 + driftTime / 14) * 5,
-    y: Math.sin(angle) * speed + Math.sin(x / 240 + driftTime / 18) * 5 };
+  const angle = driftHeading(s);
+  const speed = 42 + Math.sin(s.time / 11 + s.drift.phase) * 7 + s.time * .1;
+  return { x: Math.cos(angle) * speed + Math.sin(y / 180 + s.time / 14) * 5,
+    y: Math.sin(angle) * speed + Math.sin(x / 240 + s.time / 18) * 5 };
 }
 export function createEscort(sar, random = Math.random) {
   const casualty = casualtyFrom(sar);
@@ -30,8 +37,11 @@ export function createEscort(sar, random = Math.random) {
   const route = { a: { x: 450 - Math.cos(angle) * 340, y: 260 - Math.sin(angle) * 150 },
     b: { x: 450 + Math.cos(angle) * 340, y: 260 + Math.sin(angle) * 150 }, bend: (random() - .5) * 130 };
   const ship = escortPosition(route, 0);
+  // Sustained headings carry fragments across the field before the pack makes its next broad turn.
+  const headings = [random() * Math.PI * 2];
+  for (let i = 0; i < 3; i++) headings.push(headings.at(-1) + (random() < .5 ? -1 : 1) * (Math.PI / 3 + random() * Math.PI * 4 / 9));
   const s = { vessel, random, maxHealth, health: maxHealth, time: 0, spawn: .5, cooldown: 0,
-    drift: { angle: random() * Math.PI * 2, phase: random() * Math.PI * 2 },
+    drift: { headings, phase: random() * Math.PI * 2 },
     route, ship, breaker: { x: ship.x + Math.cos(ship.heading) * 85, y: ship.y + Math.sin(ship.heading) * 85, heading: ship.heading },
     floes: [], particles: [], broken: 0, hits: 0, phase: 'ready', flash: 0, pulse: 0 };
   // Leave manoeuvring room at departure; the surrounding pack is already drifting.
