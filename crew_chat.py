@@ -6,6 +6,7 @@ import urllib.request
 PERSONAS = json.loads((Path(__file__).parent / 'crew-personas.json').read_text())
 CONFIG = Path.home() / '.config/underway/chat-model.json'
 UNDERWAY = Path(__file__).parent / 'static/data/crew-15-neptune.json'
+ARCHIVE = Path(__file__).parent / 'static/data/crew-18-wrecks.json'
 
 
 def fetch(url, body=None, timeout=5):
@@ -17,10 +18,13 @@ def fetch(url, body=None, timeout=5):
 
 def table_fact(hand):
     snapshot = json.loads(UNDERWAY.read_text())
+    archive = json.loads(ARCHIVE.read_text())
+    wreck = archive['wrecks'][(hand - 1) % len(archive['wrecks'])]
     facts = [
         f"The local underway record for this leg logs {snapshot['distanceKm']:.0f} km over {snapshot['hours']:.0f} hours.",
         f"Its highest logged wind was {snapshot['extremes']['windMax']['value']:.0f} kn.",
         f"The coldest logged air temperature was {snapshot['extremes']['airMin']['value']:.1f}°C.",
+        f"The onboard Arctic history archive records that {wreck['ship']} was lost near {wreck['place']} in {wreck['year']}.",
     ]
     return facts[(hand - 1) % len(facts)]
 
