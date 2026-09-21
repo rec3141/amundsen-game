@@ -8,6 +8,7 @@ import { ctd } from './ctd.js';
 import { ice } from './ice.js';
 import { game as neptune } from './crew-15.js';
 import { game as sar } from './crew-12.js';
+import { game as escort } from './sar-escort.js';
 import { game as heli } from './crew-7.js';
 import { game as cliceify } from './crew-3.js';
 import { game as net } from './crew-9.js';
@@ -18,7 +19,7 @@ import { game as plan } from './crew-11.js';
 import { game as flood } from './crew-10.js';
 import { game as raft } from './crew-8.js';
 // Activities launch anywhere; each carries its own field scene and equipment.
-export const minigames = { ...cardLobbies, hearts, inuktitut, patrol, wildlife, wrecks, rivals, ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, neptune };
+export const minigames = { ...cardLobbies, hearts, inuktitut, patrol, wildlife, wrecks, rivals, ctd, ice, raft, flood, plan, contaminants, oldice, seep, net, cliceify, heli, sar, escort, neptune };
 export const activities = [
   { id: 'hearts', title: 'Wardroom Hearts', description: 'Four shipmates, one card table', key: '9' },
   { id: 'inuktitut', title: 'Inuktitut', description: 'Syllabics, words and names on the chart', key: '3' },
@@ -39,5 +40,6 @@ export const activities = [
   { id: 'cliceify', title: "Cliceify", description: "Classify ice from deck to satellite", key: 'l' },
   { id: 'heli', title: "Find Clement's stuff", description: "Fly the old floes for lost gear", key: 'h' },
   { id: 'sar', title: "Search and Rescue", description: "Find a beset ship and break her out", key: 'x' },
+  { id: 'escort', title: 'SAR: Ice Escort', description: 'Break incoming floes and bring a ship to shelter', key: '0' },
   { id: 'neptune', title: "Neptune's Wrath", description: "Five trials before the sea king", key: 'k' },
 ];

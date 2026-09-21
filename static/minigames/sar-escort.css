@@ -1,0 +1,18 @@
+dialog:has(.escort) { width:calc(100vw - 24px); max-width:960px; max-height:calc(100dvh - 24px); overflow-y:auto; }
+.escort { color:#e7f4f4; background:#102a38; padding:18px; border-radius:12px; }
+.escort header { height:auto; padding:0; border:0; background:transparent; display:flex; justify-content:space-between; gap:14px; align-items:center; flex-wrap:wrap; }
+.escort h3 { color:#fff; margin:3px 0 9px; font-size:24px; }
+.escort .escort-kicker { color:#7dd9d2; font:700 11px monospace; letter-spacing:2px; margin:0; }
+.escort [data-vessel] { color:#f3d3a0; }
+.escort [data-call] { color:#b7cfd5; font-size:14px; line-height:1.5; }
+.escort [data-profile] { color:#f3d3a0; font:12px monospace; }
+.escort .escort-meters { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:14px 0; font:13px monospace; }
+.escort .escort-meters label { margin:0; padding:0; color:#e7f4f4; }
+.escort meter,.escort progress { display:block; width:100%; height:15px; margin-top:5px; accent-color:#75e0b3; }
+.escort canvas { display:block; width:100%; height:auto; min-height:0; flex:none; aspect-ratio:900/520; background:#0b2331; border:1px solid #527b88; border-radius:8px; touch-action:none; }
+.escort .escort-bottom { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:12px; }
+.escort button { background:#f3ba65; color:#132c38; border:0; border-radius:6px; padding:12px 20px; font-weight:800; cursor:pointer; }
+.escort button:disabled { opacity:.55; cursor:default; }
+.escort [data-status] { flex:1; min-width:180px; margin:0; font-size:14px; }
+.escort .escort-help { color:#b7cfd5; font-size:13px; line-height:1.5; margin:12px 0 0; }
+@media(max-width:550px) { dialog:has(.escort) {padding:16px 10px} .escort {padding:10px} .escort .escort-meters {gap:9px;font-size:11px} .escort h3 {font-size:20px} }

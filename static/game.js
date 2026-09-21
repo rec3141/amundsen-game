@@ -130,7 +130,7 @@ const maydayLine = () => { const r = maydayRange(); return `Answer the Mayday fr
 // The activity description can reflect a call or a wreck under the ship.
 function describe(activity) {
   if (!world) return activity.description;
-  if (activity.id === 'sar' && state.mayday) return maydayLine();
+  if (['sar', 'escort'].includes(activity.id) && state.mayday) return maydayLine();
   if (activity.id === 'wrecks') { const wreck = wreckHere(); if (wreck) return `Survey the ${wreck.ship} datum · on station`; }
   return activity.description;
 }
@@ -358,7 +358,7 @@ function raiseMayday() {
   state.lastCall = state.played; state.nextCall = state.played + SAR_GAP_S + expo(SAR_SPREAD_S);
   const r = maydayRange(), where = `${Math.round(r.km)} km ${r.bearing}`;
   logEvent(state, { x: state.mayday.x, y: state.mayday.y, lon, lat, depth: world.depth(spot.u, spot.v) }, 'radio', `Mayday · ${who.name}, ${who.kind}, ${who.trouble} · ${where}`);
-  save(); updateUI(); toast(`MAYDAY · ${who.name}, ${who.kind}, ${who.trouble} · ${where} · X answers the call`, true, true);
+  save(); updateUI(); toast(`MAYDAY · ${who.name}, ${who.kind}, ${who.trouble} · ${where} · X search / 0 ice escort`, true, true);
 }
 function standDown(reason, quiet = false) {
   const m = state.mayday; if (!m) return;
@@ -395,7 +395,7 @@ function updateEvents() {
   const lines = [];
   if (target) lines.push(['target', targetLine()]);
   else { const near = nearestWreck(); if (near) lines.push(['wreck', near.wreck === wreckHere() ? `On the ${near.wreck.ship} datum · ${Math.round(near.km)} km ${near.bearing} · V surveys her` : `Nearest wreck datum · ${near.wreck.ship}${near.wreck.year ? ` (${near.wreck.year})` : ''} ${Math.round(near.km)} km ${near.bearing} · V surveys within ${WRECK_KM} km`]); }
-  if (state.mayday) { const r = maydayRange(), m = state.mayday; lines.push(['mayday', `Mayday · ${m.name}, ${m.kind}, ${m.trouble} · ${Math.round(r.km)} km ${r.bearing} · ${Math.max(1, Math.ceil((m.until - state.played) / 60))} min before she is stood down · X answers the call`]); }
+  if (state.mayday) { const r = maydayRange(), m = state.mayday; lines.push(['mayday', `Mayday · ${m.name}, ${m.kind}, ${m.trouble} · ${Math.round(r.km)} km ${r.bearing} · ${Math.max(1, Math.ceil((m.until - state.played) / 60))} min before she is stood down · X search / 0 ice escort`]); }
   else lines.push(['radio', 'Radio · no call · listening on channel 16']);
   if (pendingAlarm) lines.push(['alarm', `ALARM · ${ALARMS[pendingAlarm.id]} · opening now`]);
   else lines.push(['quiet', state.lastAlarm === null ? 'Alarms · none this voyage' : `Alarms · last one ${minutesAgo(state.lastAlarm) ? `${minutesAgo(state.lastAlarm)} min ago` : 'just now'}`]);
@@ -483,7 +483,7 @@ const plannedCardGames = ['Cribbage', 'Euchre', 'Gin Rummy', 'Spades', 'Poker', 
 const HANDS = [
   { id: 'science', title: 'Ship & science', suit: '♣', cards: ['ctd', 'ice', 'net', 'seep', 'contaminants', 'plan'] },
   { id: 'arctic', title: 'Ice & exploration', suit: '♠', cards: ['patrol', 'wildlife', 'oldice', 'cliceify', 'heli', 'raft'] },
-  { id: 'crew', title: 'Crew & adventure', suit: '♥', cards: ['sar', 'wrecks', 'rivals', 'flood', 'neptune', 'inuktitut'] },
+  { id: 'crew', title: 'Crew & adventure', suit: '♥', cards: ['sar', 'escort', 'wrecks', 'rivals', 'flood', 'neptune', 'inuktitut'] },
   { id: 'cards', title: 'Card games', suit: '♦', cards: ['hearts', ...plannedCardGames.map(game => game.id)] },
 ];
 for (const hand of HANDS) {
@@ -543,8 +543,9 @@ function startActivity(activity, extra = {}) {
     title.append(document.createTextNode(' · face-off with '), opponent);
   }
   const location = here(['patrol', 'raft'].includes(activity.id));
+  const rescueCall = ['sar', 'escort'].includes(activity.id) ? state.mayday : null;
   recorder = operationRecorder(state, activity, location, entry => {
-    const rescued = activity.id === 'sar' && state.mayday ? state.mayday.name : '';
+    const rescued = rescueCall && state.mayday === rescueCall && (activity.id === 'sar' || entry.detail?.won === true) ? rescueCall.name : '';
     if (rescued) state.mayday = null;
     save(); updateUI(); toast(`${entry.title} · +${entry.points} science points · added to chart${rescued ? ` · ${rescued} safe, call cleared` : ''}`); postScore(activity, entry);
     multiplayer.scored(activity.id, entry.points, extra.duel?.id);
@@ -557,7 +558,7 @@ function startActivity(activity, extra = {}) {
   // The fast winch lets a CTD station bank more casts: 25% more points for that operation.
   const bonus = activity.id === 'ctd' && state.upgrades.winch ? 1.25 : 1;
   // Shipwrecks learns the wreck under the ship and how to steam to another; SAR learns the casualty; alarms say so.
-  const wreck = activity.id === 'wrecks' ? wreckHere() : null, mayday = activity.id === 'sar' ? state.mayday : null;
+  const wreck = activity.id === 'wrecks' ? wreckHere() : null, mayday = rescueCall;
   const expedition = { ...location, score: state.score, operations: state.operations, chartPercent: chartPercent(state, sea), fuel: state.fuel, upgrades: { ...state.upgrades }, steamTo, ...extra };
   if (wreck) expedition.wreck = wreck.id;
   if (mayday) expedition.sar = { name: mayday.name, kind: mayday.kind, trouble: mayday.trouble, lon: mayday.lon, lat: mayday.lat, distanceKm: Math.round(maydayRange().km * 10) / 10 };
@@ -759,6 +760,7 @@ function drawTanker(x, y, near, text) {
 // Chart glyphs, one per logged activity, about 10 px across: one fill colour and the chart ink.
 const INK = '#2b1d10', CREAM = '#f6f1e4';
 const GLYPHS = {
+  escort(c) { GLYPHS.sar(c); },
   inuktitut(c) { c.fillStyle = '#f6f1e4'; c.strokeStyle = INK; c.lineWidth = 1.2; c.beginPath(); c.moveTo(0, -4); c.quadraticCurveTo(-3, -7, -7, -5); c.lineTo(-7, 5); c.quadraticCurveTo(-3, 3, 0, 6); c.quadraticCurveTo(3, 3, 7, 5); c.lineTo(7, -5); c.quadraticCurveTo(3, -7, 0, -4); c.closePath(); c.fill(); c.stroke(); c.beginPath(); c.moveTo(0, -4); c.lineTo(0, 6); c.stroke(); },
   ctd(c) { c.fillStyle = '#c9ced2'; c.strokeStyle = INK; c.lineWidth = 1; c.beginPath(); c.arc(0, 0, 5.5, 0, 7); c.fill(); c.stroke(); c.fillStyle = INK; for (let n = 0; n < 6; n++) { c.beginPath(); c.arc(Math.cos(n * Math.PI / 3) * 3.2, Math.sin(n * Math.PI / 3) * 3.2, 1.2, 0, 7); c.fill(); } },
   ice(c) { c.strokeStyle = INK; c.lineWidth = 2; c.beginPath(); c.moveTo(0, -7); c.lineTo(0, 7); c.stroke(); c.strokeStyle = '#7cc4ea'; c.lineWidth = 1.6; c.beginPath(); for (let y = -4; y <= 4; y += 3) { c.moveTo(-3.5, y); c.lineTo(3.5, y + 1.6); } c.stroke(); },
