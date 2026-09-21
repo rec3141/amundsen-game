@@ -15,6 +15,12 @@ export function escortPosition(route, progress) {
   return { x: route.a.x + dx * t + nx * curve, y: route.a.y + dy * t + ny * curve,
     heading: Math.atan2(dy + ny * turn, dx + nx * turn) };
 }
+export function iceDrift(s, x = WIDTH / 2, y = HEIGHT / 2) {
+  const angle = s.drift.angle + Math.sin(s.time / 17 + s.drift.phase) * .65;
+  const speed = 42 + Math.sin(s.time / 11 + s.drift.phase) * 7 + s.time * .1;
+  return { x: Math.cos(angle) * speed + Math.sin(y / 180 + s.time / 14) * 5,
+    y: Math.sin(angle) * speed + Math.sin(x / 240 + s.time / 18) * 5 };
+}
 export function createEscort(sar, random = Math.random) {
   const casualty = casualtyFrom(sar);
   const vessel = { ...casualty, ...(VESSELS.find(v => v.kind === casualty.kind) || VESSELS[2]) };
@@ -23,19 +29,28 @@ export function createEscort(sar, random = Math.random) {
   const route = { a: { x: 450 - Math.cos(angle) * 340, y: 260 - Math.sin(angle) * 150 },
     b: { x: 450 + Math.cos(angle) * 340, y: 260 + Math.sin(angle) * 150 }, bend: (random() - .5) * 130 };
   const ship = escortPosition(route, 0);
-  return { vessel, random, maxHealth, health: maxHealth, time: 0, spawn: .5, cooldown: 0,
+  const s = { vessel, random, maxHealth, health: maxHealth, time: 0, spawn: .5, cooldown: 0,
+    drift: { angle: random() * Math.PI * 2, phase: random() * Math.PI * 2 },
     route, ship, breaker: { x: ship.x + Math.cos(ship.heading) * 85, y: ship.y + Math.sin(ship.heading) * 85, heading: ship.heading },
     floes: [], particles: [], broken: 0, hits: 0, phase: 'ready', flash: 0, pulse: 0 };
+  // Leave manoeuvring room at departure; the surrounding pack is already drifting.
+  for (let i = 0; i < 32; i++) {
+    const x = random() * WIDTH, y = random() * HEIGHT;
+    if (Math.hypot(x - ship.x, y - ship.y) > 125 && Math.hypot(x - s.breaker.x, y - s.breaker.y) > 70) addFloe(s, x, y);
+  }
+  return s;
+}
+function addFloe(s, x, y) {
+  const rand = s.random, flow = iceDrift(s, x, y), slip = .9 + rand() * .2;
+  s.floes.push({ x, y, vx: flow.x * slip, vy: flow.y * slip, slip,
+    r: 23 + rand() * 29, angle: rand() * 6.28, spin: (rand() - .5) * .6, grace: 0 });
 }
 export function spawnFloe(s) {
-  const rand = s.random, edge = Math.floor(rand() * 4);
-  const x = edge === 0 ? -45 : edge === 1 ? WIDTH + 45 : rand() * WIDTH;
-  const y = edge === 2 ? -45 : edge === 3 ? HEIGHT + 45 : rand() * HEIGHT;
-  const ahead = escortPosition(s.route, (s.time + 4 + rand() * 7) / 65);
-  const targetX = ahead.x, targetY = ahead.y + (rand() - .5) * 100;
-  const angle = Math.atan2(targetY - y, targetX - x), speed = 35 + rand() * 25 + s.time * .35;
-  s.floes.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-    r: 23 + rand() * 29, angle: rand() * 6.28, spin: (rand() - .5) * .6, grace: 0 });
+  const flow = iceDrift(s), across = Math.abs(flow.x) * HEIGHT, along = Math.abs(flow.y) * WIDTH;
+  // Upstream edge arrivals follow pack flux, independent of the casualty's course or position.
+  const side = s.random() * (across + along) < across;
+  addFloe(s, side ? (flow.x > 0 ? -55 : WIDTH + 55) : s.random() * WIDTH,
+    side ? s.random() * HEIGHT : (flow.y > 0 ? -55 : HEIGHT + 55));
 }
 function fracture(s, floe) {
   s.broken++;
@@ -72,9 +87,16 @@ export function stepEscort(s, dt, input = {}) {
   const ram = input.ram && s.cooldown === 0;
   if (ram) { s.cooldown = 2.6; s.pulse = .35; }
   s.spawn -= dt;
-  if (s.spawn <= 0) { spawnFloe(s); s.spawn = Math.max(.48, 1.15 - s.time * .009); }
+  if (s.spawn <= 0) {
+    spawnFloe(s);
+    const flow = iceDrift(s), flux = Math.abs(flow.x) * HEIGHT + Math.abs(flow.y) * WIDTH;
+    s.spawn = WIDTH * HEIGHT / (flux * (32 + s.time * .24));
+  }
   const moving = s.floes; s.floes = [];
   for (const floe of moving) {
+    const flow = iceDrift(s, floe.x, floe.y), follow = 1 - Math.exp(-dt * 1.8);
+    floe.vx += (flow.x * floe.slip - floe.vx) * follow;
+    floe.vy += (flow.y * floe.slip - floe.vy) * follow;
     floe.x += floe.vx * dt; floe.y += floe.vy * dt; floe.angle += floe.spin * dt; floe.grace -= dt;
     if (floe.x < -150 || floe.x > WIDTH + 150 || floe.y < -150 || floe.y > HEIGHT + 150) continue;
     const danger = floe.r > s.vessel.tolerance;

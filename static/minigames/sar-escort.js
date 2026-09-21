@@ -1,4 +1,4 @@
-import { WIDTH, HEIGHT, createEscort, stepEscort, escortScore, escortPosition } from './sar-escort-model.js';
+import { WIDTH, HEIGHT, createEscort, stepEscort, escortScore, escortPosition, iceDrift } from './sar-escort-model.js';
 
 export const game = {
   title: 'SAR: Ice Escort',
@@ -15,7 +15,7 @@ export const game = {
       <label>A → B <span data-distance></span><progress data-route max="65" value="0"></progress></label></div>
       <canvas data-sea tabindex="0" aria-label="Escort ice field. Steer with arrows or WASD, or drag on the chart. Space triggers a ram burst."></canvas>
       <div class="escort-bottom"><button data-start>Begin escort</button><button data-ram disabled>Ram · Space</button><button data-result hidden></button><p data-status role="status"></p></div>
-      <p class="escort-help">Steer the red Amundsen with WASD / arrows, or hold and drag on the water. Contact splits large floes; Space or Ram breaks a wider cluster every 2.6 seconds. Break amber floes until they turn blue: blue fragments are small enough for this ship to pass safely. Get the white ship from A to B.</p>
+      <p class="escort-help">Steer the red Amundsen with WASD / arrows, or hold and drag on the water. The pack drifts with shifting winds and currents: watch the arrows and clear the crossing ahead. Contact splits large floes; Space or Ram breaks a wider cluster every 2.6 seconds. Break amber floes until they turn blue, small enough for this ship to pass safely. Get the white ship from A to B.</p>
     </section>`;
     const find = selector => root.querySelector(selector), canvas = find('[data-sea]'), ctx = canvas.getContext('2d');
     function readouts() {
@@ -37,7 +37,7 @@ export const game = {
       clearInput();
       state.phase = 'running'; find('[data-start]').hidden = true;
       find('[data-result]').hidden = true; find('[data-ram]').hidden = false;
-      find('[data-status]').textContent = 'Ice closing from all sides. Keep their hull intact!'; canvas.focus();
+      find('[data-status]').textContent = 'Pack on the move. Clear a passage through the drift!'; canvas.focus();
       readouts();
     }
     find('[data-start]').addEventListener('click', start, { signal });
@@ -81,6 +81,11 @@ export const game = {
       ctx.strokeStyle = '#173746'; ctx.lineWidth = 1;
       for (let x = 0; x < WIDTH; x += 50) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, HEIGHT); ctx.stroke(); }
       for (let y = 0; y < HEIGHT; y += 50) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(WIDTH, y); ctx.stroke(); }
+      for (let x = 70; x < WIDTH; x += 150) for (let y = 60; y < HEIGHT; y += 130) {
+        const flow = iceDrift(state, x, y);
+        ctx.save(); ctx.translate(x, y); ctx.rotate(Math.atan2(flow.y, flow.x));
+        ctx.strokeStyle = '#376371'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(-14, 0); ctx.lineTo(14, 0); ctx.lineTo(7, -5); ctx.moveTo(14, 0); ctx.lineTo(7, 5); ctx.stroke(); ctx.restore();
+      }
       ctx.strokeStyle = '#558f98'; ctx.setLineDash([5, 9]); ctx.beginPath();
       for (let i = 0; i <= 100; i++) { const { x, y } = escortPosition(state.route, i / 100); if (!i) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
       ctx.stroke(); ctx.setLineDash([]);
