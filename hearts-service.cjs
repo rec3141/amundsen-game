@@ -2256,15 +2256,16 @@ function cardFace(card) {
   return `${{ 1: "A", 11: "J", 12: "Q", 13: "K" }[Number(card.slice(1))] || card.slice(1)}${{ C: "♣", D: "♦", S: "♠", H: "♥" }[card[0]] || ""}`;
 }
 function publicContext(room) {
+  const players = roster(room);
   return {
     game: "Hearts",
     hand: room.hand,
-    scores: room.scores,
-    players: roster(room),
+    scoreboard: players.map((player, seat) => ({ player: player?.name, points: room.scores[seat] })),
+    players,
     passing: room.session?.state.passing,
     heartsBroken: room.session?.state.heartsBroken,
     visiblePlays: (room.session?.state.plays || []).map((play) => ({ seat: roster(room)[play.seat]?.name, card: cardFace(play.card) })),
-    priorHands: room.history || [],
+    priorHands: (room.history || []).map((hand) => ({ hand: hand.hand, results: players.map((player, seat) => ({ player: player?.name, points: hand.points[seat] })) })),
     chat: (room.chat || []).slice(-12)
   };
 }

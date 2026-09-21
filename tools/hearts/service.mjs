@@ -16,10 +16,12 @@ const CREW = { capn: { name: "Cap'n Barnacle", policy: mediumBot }, doc: { name:
 for (const room of Object.values(rooms)) room.aiPending = false;
 function roster(room) { return room.players.map(p => p ? { name: p.name, crew: p.crew || null, online: !!p.crew || Date.now() - p.seen < 15000 } : null); }
 function cardFace(card) { return `${({ 1: 'A', 11: 'J', 12: 'Q', 13: 'K' })[Number(card.slice(1))] || card.slice(1)}${({ C: '♣', D: '♦', S: '♠', H: '♥' })[card[0]] || ''}`; }
-function publicContext(room) { return { game: 'Hearts', hand: room.hand, scores: room.scores,
-  players: roster(room), passing: room.session?.state.passing, heartsBroken: room.session?.state.heartsBroken,
+function publicContext(room) { const players = roster(room); return { game: 'Hearts', hand: room.hand,
+  scoreboard: players.map((player, seat) => ({ player: player?.name, points: room.scores[seat] })),
+  players, passing: room.session?.state.passing, heartsBroken: room.session?.state.heartsBroken,
   visiblePlays: (room.session?.state.plays || []).map(play => ({ seat: roster(room)[play.seat]?.name, card: cardFace(play.card) })),
-  priorHands: room.history || [], chat: (room.chat || []).slice(-12) }; }
+  priorHands: (room.history || []).map(hand => ({ hand: hand.hand, results: players.map((player, seat) => ({ player: player?.name, points: hand.points[seat] })) })),
+  chat: (room.chat || []).slice(-12) }; }
 function tableAside(room) {
   const state = room.session?.state;
   const previous = room.asideHand === room.hand ? room.asideTrick || 0 : 0;

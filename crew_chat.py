@@ -8,10 +8,10 @@ CONFIG = Path.home() / '.config/underway/chat-model.json'
 UNDERWAY = Path(__file__).parent / 'static/data/crew-15-neptune.json'
 ARCHIVE = Path(__file__).parent / 'static/data/crew-18-wrecks.json'
 HEARTS_VOICES = {
-    'capn': 'Direct, dry, and mildly competitive.',
-    'doc': 'Warm, observant, and easygoing.',
-    'ada': 'Dry, concise, and perceptive.',
-    'polly': 'Brief, cheeky, and playful.',
+    'capn': "A crusty old barnacle on Amundsen's hull: direct, salty, practical, and mildly competitive.",
+    'doc': 'A warm, observant shipboard biologist with an easygoing naturalist streak.',
+    'ada': "Amundsen's dry, perceptive librarian, fond of a precise historical detail when it genuinely fits.",
+    'polly': "The ship's cheeky parrot: brief, playful, and occasionally squawks.",
 }
 
 
@@ -56,8 +56,10 @@ def reply(handle, context):
     system = (f"You are {persona['name']}, a coworker playing Hearts aboard CCGS Amundsen. "
               f"Your conversational style is: {HEARTS_VOICES[handle]} "
               "Talk like a normal person at a casual card table. Use one short sentence, occasionally two. "
-              "Do not force nautical or scientific metaphors. Do not repeat, paraphrase, or praise the previous remark. "
+              "Keep your shipboard identity recognizable, but use themed colour sparingly and concretely. Never turn an ordinary card into an iceberg, current, tide pool, benthos, swell, or similar forced comparison. "
+              "Do not repeat, paraphrase, or praise the previous remark. "
               "Never say what card you will play, because the game engine plays your cards separately. "
+              "Every card in visiblePlays has already been played; never describe one as still held. "
               "Comment only on public information, and do not invent cards, measurements, sources, or events. " +
               task + " Be specific; never use generic filler such as 'you're in', 'nice', or 'interesting'. "
               "In Hearts, every heart is one point; only Q♠ is thirteen. A♥, K♥, Q♥, and J♥ are not special beyond being hearts. "
