@@ -19,7 +19,7 @@ export const game = {
     }
     let credentials = null, table = null, disposed = false, busy = false, selected = new Set();
     let selectedGame = options.cardGame || 'hearts', listing = { tables: [], games: [{ id: 'hearts', title: 'Hearts' }] }, browsing = true, chatDraft = '';
-    let requests = Promise.resolve(), pendingAction = false, connectionLost = false;
+    let requests = Promise.resolve(), pendingAction = false, connectionLost = false, lastTrickKey = null, hiddenLastTrick = null, lastTrickTimer = null;
     const abort = new AbortController();
     try { credentials = JSON.parse(sessionStorage.getItem(STORE)); } catch {}
     root.innerHTML = `<section class="hearts-table"><div class="hearts-notice" role="status" aria-live="polite"></div><div class="hearts-body"></div><details class="hearts-rules"><summary>How to play · Hearts</summary><p>Four players. Pass three cards left, right, across, then keep your hand on every fourth deal. The 2♣ leads. Follow suit when you can; hearts cannot lead until broken unless you have only hearts. No penalty cards on the first trick unless you have no alternative.</p><p>Each heart costs 1; Q♠ costs 13. Take all 26 and everyone else receives 26. Lowest total wins when someone reaches 100. All four players confirm before the next deal.</p><small>Rules powered by Parlour · MIT license</small></details></section>`;
@@ -70,13 +70,22 @@ export const game = {
         selected = new Set([...selected].filter(c => cards.includes(c)));
         const current = s.trick?.plays || [];
         const last = s.plays.slice(Math.max(0, Math.floor(s.plays.length / 4) * 4 - 4), Math.floor(s.plays.length / 4) * 4);
-        const shown = current.length ? current : last;
+        if (current.length || !last.length || !legal.size) {
+          clearTimeout(lastTrickTimer); lastTrickTimer = null;
+        } else if (lastTrickKey !== s.plays.length) {
+          lastTrickKey = s.plays.length; hiddenLastTrick = null;
+          clearTimeout(lastTrickTimer);
+          lastTrickTimer = setTimeout(() => { hiddenLastTrick = lastTrickKey; render(); }, 3500);
+        }
+        const showLast = !current.length && last.length && hiddenLastTrick !== s.plays.length;
+        const shown = current.length ? current : showLast ? last : [];
         const status = s.handOver ? (t.finished ? 'Match complete' : 'Hand complete') : s.passing ? (canPass ? `Choose 3 cards to pass ${s.rules.passDirection}` : 'Waiting for the other players to pass') : legal.size ? 'Your turn — choose a card' : `${t.players[s.turn].name} is playing`;
         const trick = shown.map(p => `<div class="hearts-play"><span>${escape(t.players[p.seat].name)}</span><span class="hearts-card ${'HD'.includes(p.card[0]) ? 'red' : ''}">${label(p.card)}</span></div>`).join('');
         const hand = cards.map(c => `<button class="hearts-card ${'HD'.includes(c[0]) ? 'red' : ''} ${selected.has(c) ? 'picked' : ''}" data-card="${c}" aria-label="${label(c)}" ${canPass ? `aria-pressed="${selected.has(c)}"` : ''} ${!canPass && !legal.has(c) ? 'disabled' : ''}>${label(c)}</button>`).join('');
-        const handLine = hand => `Hand ${hand.hand} · ${hand.tricks}/13 tricks · ${hand.heartsBroken ? 'Hearts broken' : 'Hearts unbroken'}${hand.points ? ` · ${t.players.map((p, i) => `${escape(p.name)} +${hand.points[i]}`).join(', ')}` : ''}`;
-        const currentHand = { hand: t.hand, tricks: s.tricksPlayed, heartsBroken: s.heartsBroken };
-        content = `<h3 class="hearts-status" aria-live="polite">${escape(status)}</h3><details class="hearts-history"><summary>${handLine(currentHand)}</summary>${t.history?.length ? `<ol>${t.history.map(hand => `<li>${handLine(hand)}</li>`).join('')}</ol>` : '<p>No completed hands yet.</p>'}</details><div class="hearts-felt" aria-label="${current.length ? 'Current trick' : 'Last trick'}">${trick || '<span>The table is ready.</span>'}</div>${!current.length && last.length ? `<p class="hearts-meta">Last trick · taken by ${escape(t.players[s.leader].name)}</p>` : ''}<div class="hearts-hand" aria-label="Your hand">${hand}</div>${canPass ? `<button data-action="pass" ${selected.size !== 3 ? 'disabled' : ''}>Pass ${selected.size}/3 cards</button>` : ''}`;
+        const handLine = `Hand ${t.hand} · ${s.tricksPlayed}/13 tricks · ${s.heartsBroken ? 'Hearts broken' : 'Hearts unbroken'}`;
+        const tricks = Array.from({ length: Math.ceil(s.plays.length / 4) }, (_, index) => s.plays.slice(index * 4, index * 4 + 4));
+        const ledger = tricks.length ? `<ol>${tricks.map((plays, index) => `<li>Trick ${index + 1} · ${plays.map(play => `${escape(t.players[play.seat].name)} ${label(play.card)}`).join(', ')}</li>`).join('')}</ol>` : '<p>No cards played yet.</p>';
+        content = `<h3 class="hearts-status" aria-live="polite">${escape(status)}</h3><details class="hearts-history"><summary>${handLine}</summary>${ledger}</details><div class="hearts-felt" aria-label="${current.length ? 'Current trick' : showLast ? 'Last trick' : 'Table'}">${trick || '<span>The table is ready.</span>'}</div>${showLast ? `<p class="hearts-meta">Last trick · taken by ${escape(t.players[s.leader].name)}</p>` : ''}<div class="hearts-hand" aria-label="Your hand">${hand}</div>${canPass ? `<button data-action="pass" ${selected.size !== 3 ? 'disabled' : ''}>Pass ${selected.size}/3 cards</button>` : ''}`;
         if (s.handOver) {
           const low = Math.min(...t.scores);
           content += `<p>${t.players.map((p, i) => `${escape(p.name)}: +${s.handPoints[i]}`).join(' · ')}</p>${t.finished ? `<p class="hearts-winner">${t.players.filter((_, i) => t.scores[i] === low).map(p => escape(p.name)).join(' & ')} wins!</p>` : ''}<button data-action="ready" ${t.ready.includes(t.seat) ? 'disabled' : ''}>${t.ready.includes(t.seat) ? 'Ready — waiting for shipmates' : t.finished ? 'Play another match' : 'Ready for next hand'}</button><p class="hearts-meta">${t.ready.length}/4 ready</p>`;
@@ -172,7 +181,7 @@ export const game = {
     root.addEventListener('click', click); root.addEventListener('submit', submit); root.addEventListener('change', change);
     lobby(); send('list');
     const timer = setInterval(() => send(browsing ? 'list' : 'poll'), 1000);
-    return () => { dialog?.classList.remove('hearts-modal'); disposed = true; abort.abort(); clearInterval(timer); root.removeEventListener('click', click); root.removeEventListener('submit', submit); root.removeEventListener('change', change); };
+    return () => { dialog?.classList.remove('hearts-modal'); disposed = true; abort.abort(); clearInterval(timer); clearTimeout(lastTrickTimer); root.removeEventListener('click', click); root.removeEventListener('submit', submit); root.removeEventListener('change', change); };
   },
 };
 

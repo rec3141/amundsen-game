@@ -70,7 +70,7 @@ export function highestNonQueen(hand: readonly CardId[]): CardId {
 
 export function rankOf(card: CardId): number {
   const value = Number.parseInt(card.slice(1), 10);
-  return Number.isFinite(value) ? value : -1;
+  return value === 1 ? 14 : Number.isFinite(value) ? value : -1;
 }
 
 /** Dump order when void: shed the queen, then bare high spades, then hearts. */

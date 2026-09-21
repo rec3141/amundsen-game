@@ -1115,7 +1115,7 @@ function suitOfCard(card) {
 function rankOfCard(card) {
   if (!isRealCard(card)) return -1;
   const rank = Number.parseInt(card.slice(1), 10);
-  return Number.isFinite(rank) ? rank : -1;
+  return rank === 1 ? 14 : Number.isFinite(rank) ? rank : -1;
 }
 function isHeart(card) {
   return suitOfCard(card) === SUIT_HEARTS;
@@ -1381,7 +1381,7 @@ function duckUnder(hand, ledSuit, winningRank) {
 }
 function rankOf(card) {
   const value = Number.parseInt(card.slice(1), 10);
-  return Number.isFinite(value) ? value : -1;
+  return value === 1 ? 14 : Number.isFinite(value) ? value : -1;
 }
 function dumpOrder(hand, state) {
   return [...hand].sort((a, b) => discardUrgency(b, state) - discardUrgency(a, state));
@@ -2261,12 +2261,13 @@ function publicContext(room) {
     passing: room.session?.state.passing,
     heartsBroken: room.session?.state.heartsBroken,
     playedCards: room.session?.state.plays || [],
+    priorHands: room.history || [],
     chat: (room.chat || []).slice(-12)
   };
 }
 function tableAside(room) {
   const state = room.session?.state;
-  if (!state || room.aiPending || room.asideHand === room.hand || room.hand % 2 === 0 || state.tricksPlayed < 3) return null;
+  if (!state || room.aiPending || room.asideHand === room.hand || state.tricksPlayed < 3) return null;
   const speakers = room.players.filter((p) => p?.crew).map((p) => p.crew);
   if (!speakers.length) return null;
   room.asideHand = room.hand;

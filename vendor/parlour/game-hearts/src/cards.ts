@@ -44,7 +44,7 @@ export function suitOfCard(card: CardId): string | null {
 export function rankOfCard(card: CardId): number {
   if (!isRealCard(card)) return -1;
   const rank = Number.parseInt(card.slice(1), 10);
-  return Number.isFinite(rank) ? rank : -1;
+  return rank === 1 ? 14 : Number.isFinite(rank) ? rank : -1;
 }
 
 export function isHeart(card: CardId): boolean {

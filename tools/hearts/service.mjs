@@ -17,10 +17,10 @@ for (const room of Object.values(rooms)) room.aiPending = false;
 function roster(room) { return room.players.map(p => p ? { name: p.name, crew: p.crew || null, online: !!p.crew || Date.now() - p.seen < 15000 } : null); }
 function publicContext(room) { return { game: 'Hearts', hand: room.hand, scores: room.scores,
   players: roster(room), passing: room.session?.state.passing, heartsBroken: room.session?.state.heartsBroken,
-  playedCards: room.session?.state.plays || [], chat: (room.chat || []).slice(-12) }; }
+  playedCards: room.session?.state.plays || [], priorHands: room.history || [], chat: (room.chat || []).slice(-12) }; }
 function tableAside(room) {
   const state = room.session?.state;
-  if (!state || room.aiPending || room.asideHand === room.hand || room.hand % 2 === 0 || state.tricksPlayed < 3) return null;
+  if (!state || room.aiPending || room.asideHand === room.hand || state.tricksPlayed < 3) return null;
   const speakers = room.players.filter(p => p?.crew).map(p => p.crew);
   if (!speakers.length) return null;
   room.asideHand = room.hand; room.aiPending = true; room.revision++; save();
