@@ -2275,6 +2275,28 @@ function tableAside(room) {
   save();
   return { code: room.code, speakers: [speakers[(0, import_node_crypto.randomInt)(speakers.length)]], context: { ...publicContext(room), aside: true } };
 }
+function sameMove(left, right) {
+  if (!left || !right || left.id !== right.id) return false;
+  if (left.id === "playCard") return left.payload.card === right.payload.card;
+  if (left.id === "passCards") return [...left.payload.cards].sort().join() === [...right.payload.cards].sort().join();
+  return true;
+}
+function trackDecision(room, seat, move, payload) {
+  const legal = heartsGame.flow.legalMovesFor(room.session.state, room.session.phase, seat);
+  const reference = mediumBot.chooseMove(heartsGame.playerView(room.session.state, seat), seat, legal, makeRng(1), { thinkMs: () => 100 });
+  const actual = { id: move, payload };
+  if (!legal.some((candidate) => sameMove(candidate, actual))) return;
+  if (!reference || !sameMove(reference, actual)) {
+    room.learning ||= {};
+    const profile = room.learning[seat] ||= { choices: 0, carefulChoices: 0 };
+    profile.choices++;
+    return;
+  }
+  room.learning ||= {};
+  const profile = room.learning[seat] ||= { choices: 0, carefulChoices: 0 };
+  profile.choices++;
+  profile.carefulChoices++;
+}
 function applyMove(room, seat, move, payload) {
   const outcome = sessionApply(heartsGame, room.session, seat, move, payload);
   if (outcome.rejected) fail(400, outcome.rejected.message);
@@ -2464,6 +2486,7 @@ function handle(data) {
       deal(room);
     } else if (action === "move") {
       if (!room.session || room.finished) fail(409, "There is no hand in play.");
+      trackDecision(room, seat, data.move, data.payload);
       applyMove(room, seat, data.move, data.payload);
     } else if (action === "ready") {
       if (room.session?.status !== "ended") fail(409, "Finish this hand first.");
