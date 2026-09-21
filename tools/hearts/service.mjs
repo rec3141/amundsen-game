@@ -15,16 +15,21 @@ if (file) {
 const CREW = { capn: { name: "Cap'n Barnacle", policy: mediumBot }, doc: { name: 'Doc', policy: easyBot }, ada: { name: 'Ada', policy: mediumBot }, polly: { name: 'Polly', policy: easyBot } };
 for (const room of Object.values(rooms)) room.aiPending = false;
 function roster(room) { return room.players.map(p => p ? { name: p.name, crew: p.crew || null, online: !!p.crew || Date.now() - p.seen < 15000 } : null); }
+function cardFace(card) { return `${({ 1: 'A', 11: 'J', 12: 'Q', 13: 'K' })[Number(card.slice(1))] || card.slice(1)}${({ C: '♣', D: '♦', S: '♠', H: '♥' })[card[0]] || ''}`; }
 function publicContext(room) { return { game: 'Hearts', hand: room.hand, scores: room.scores,
   players: roster(room), passing: room.session?.state.passing, heartsBroken: room.session?.state.heartsBroken,
-  playedCards: room.session?.state.plays || [], priorHands: room.history || [], chat: (room.chat || []).slice(-12) }; }
+  visiblePlays: (room.session?.state.plays || []).map(play => ({ seat: roster(room)[play.seat]?.name, card: cardFace(play.card) })),
+  priorHands: room.history || [], chat: (room.chat || []).slice(-12) }; }
 function tableAside(room) {
   const state = room.session?.state;
-  if (!state || room.aiPending || room.asideHand === room.hand || state.tricksPlayed < 3) return null;
+  const previous = room.asideHand === room.hand ? room.asideTrick || 0 : 0;
+  const milestone = [3, 6, 9, 12].find(trick => state?.tricksPlayed >= trick && trick > previous);
+  if (!state || room.aiPending || !milestone) return null;
   const speakers = room.players.filter(p => p?.crew).map(p => p.crew);
   if (!speakers.length) return null;
-  room.asideHand = room.hand; room.aiPending = true; room.revision++; save();
-  return { code: room.code, speakers: [speakers[randomInt(speakers.length)]], context: { ...publicContext(room), aside: true } };
+  const first = randomInt(speakers.length), second = speakers.length > 1 ? (first + 1 + randomInt(speakers.length - 1)) % speakers.length : first;
+  room.asideHand = room.hand; room.asideTrick = milestone; room.aiPending = true; room.revision++; save();
+  return { code: room.code, speakers: speakers.length > 1 ? [speakers[first], speakers[second]] : [speakers[first]], context: { ...publicContext(room), aside: true } };
 }
 function sameMove(left, right) {
   if (!left || !right || left.id !== right.id) return false;

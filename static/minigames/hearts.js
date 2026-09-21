@@ -6,7 +6,7 @@ const STORE = 'amundsen-hearts-seat';
 const suits = { C: '♣', D: '♦', S: '♠', H: '♥' };
 const label = card => `${({ 1: 'A', 11: 'J', 12: 'Q', 13: 'K', 14: 'A' })[+card.slice(1)] || card.slice(1)}${suits[card[0]]}`;
 const escape = text => String(text).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-const sorted = cards => [...cards].sort((a, b) => 'CDSH'.indexOf(a[0]) - 'CDSH'.indexOf(b[0]) || +a.slice(1) - +b.slice(1));
+const sorted = cards => [...cards].sort((a, b) => 'CDSH'.indexOf(a[0]) - 'CDSH'.indexOf(b[0]) || (a.slice(1) === '1' ? 14 : +a.slice(1)) - (b.slice(1) === '1' ? 14 : +b.slice(1)));
 
 export const game = {
   title: 'Wardroom Hearts',
@@ -44,7 +44,9 @@ export const game = {
       const stamp = JSON.stringify(table.chat);
       if (log.dataset.stamp !== stamp) {
         log.innerHTML = table.chat.map(m => `<p><strong>${escape(m.name)}</strong> ${escape(m.text)}</p>`).join('');
-        log.dataset.stamp = stamp; log.scrollTop = log.scrollHeight;
+        log.dataset.stamp = stamp;
+        const follow = () => { log.scrollTop = log.scrollHeight; };
+        follow(); requestAnimationFrame(follow);
       }
       chat.querySelector('.hearts-typing').textContent = table.aiPending ? 'The crew are answering…' : '';
       chat.querySelector('button').disabled = table.aiPending;
