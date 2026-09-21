@@ -48,6 +48,16 @@ function trackDecision(room, seat, move, payload) {
   const profile = room.learning[seat] ||= { choices: 0, carefulChoices: 0 };
   profile.choices++; profile.carefulChoices++;
 }
+function crewPolicy(room, crew) {
+  if (CREW[crew].policy !== easyBot) return CREW[crew].policy;
+  const profiles = Object.values(room.learning || {});
+  const choices = profiles.reduce((sum, profile) => sum + profile.choices, 0);
+  const carefulChoices = profiles.reduce((sum, profile) => sum + profile.carefulChoices, 0);
+  if (choices < 12) return easyBot;
+  const carefulRate = (carefulChoices + 6) / (choices + 12);
+  const carefulChance = Math.max(0.15, Math.min(0.75, (carefulRate - 0.2) / 0.7));
+  return randomInt(1000) < carefulChance * 1000 ? mediumBot : easyBot;
+}
 function applyMove(room, seat, move, payload) {
   const outcome = sessionApply(heartsGame, room.session, seat, move, payload);
   if (outcome.rejected) fail(400, outcome.rejected.message);
@@ -68,7 +78,8 @@ function advanceCrew(room) {
   const seat = room.players.findIndex((p, i) => p?.crew && heartsGame.flow.legalMovesFor(room.session.state, room.session.phase, i).length);
   if (seat < 0) return;
   const legal = heartsGame.flow.legalMovesFor(room.session.state, room.session.phase, seat);
-  const move = CREW[room.players[seat].crew].policy.chooseMove(heartsGame.playerView(room.session.state, seat), seat, legal, makeRng(randomInt(0x100000000)), { thinkMs: () => 100 });
+  const crew = room.players[seat].crew;
+  const move = crewPolicy(room, crew).chooseMove(heartsGame.playerView(room.session.state, seat), seat, legal, makeRng(randomInt(0x100000000)), { thinkMs: () => 100 });
   if (!move) return;
   applyMove(room, seat, move.id, move.payload); room.nextBotAt = Date.now() + 900; room.revision++; save();
 }
