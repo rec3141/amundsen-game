@@ -106,6 +106,8 @@ export const game = {
         layout.append(section);
       }
       renderChat();
+      const followChat = () => { const log = body.querySelector('.hearts-messages'); if (log) log.scrollTop = log.scrollHeight; };
+      requestAnimationFrame(() => { followChat(); requestAnimationFrame(followChat); });
       if (chatFocused) body.querySelector('.hearts-chat input').focus();
       if (focus) body.querySelector(`[data-card="${focus}"]`)?.focus();
     }
