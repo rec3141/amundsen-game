@@ -1,4 +1,4 @@
-// ../../vendor/parlour/engine/src/types.ts
+// vendor/parlour/engine/src/types.ts
 function rngSeedFrom(text) {
   let h = 2166136261 >>> 0;
   for (let i = 0; i < text.length; i++) {
@@ -77,7 +77,7 @@ function defineGameCatalog(entry) {
   return entry;
 }
 
-// ../../vendor/parlour/engine/src/zones.ts
+// vendor/parlour/engine/src/zones.ts
 function shuffledIds(deck, rng) {
   return rng.shuffle(deck.cardIds);
 }
@@ -85,7 +85,7 @@ function stableCardOrder(cards, compare) {
   return cards.map((card, index) => ({ card, index })).sort((left, right) => compare(left.card, right.card) || left.index - right.index).map(({ card }) => card);
 }
 
-// ../../vendor/parlour/engine/src/veil.ts
+// vendor/parlour/engine/src/veil.ts
 var VEIL_HANDLE_PREFIX = "v#";
 function isVeilHandle(value) {
   return typeof value === "string" && value.startsWith(VEIL_HANDLE_PREFIX);
@@ -274,7 +274,7 @@ function veilSupport(pack) {
   };
 }
 
-// ../../vendor/parlour/engine/src/seats.ts
+// vendor/parlour/engine/src/seats.ts
 function advanceSeat(from, seats, steps = 1, direction = 1) {
   if (!Number.isInteger(seats) || seats < 1) {
     throw new Error(`seat ring requires a positive seat count, got ${seats}`);
@@ -283,7 +283,7 @@ function advanceSeat(from, seats, steps = 1, direction = 1) {
   return ((from + offset) % seats + seats) % seats;
 }
 
-// ../../vendor/pure-rand/src/generator/LinearCongruential.ts
+// vendor/pure-rand/src/generator/LinearCongruential.ts
 var MULTIPLIER = 214013;
 var INCREMENT = 2531011;
 var MASK = 4294967295;
@@ -334,7 +334,7 @@ var congruential32 = Object.assign(
   { fromState }
 );
 
-// ../../vendor/pure-rand/src/generator/MersenneTwister.ts
+// vendor/pure-rand/src/generator/MersenneTwister.ts
 var MersenneTwister = class _MersenneTwister {
   constructor(states, index) {
     this.states = states;
@@ -420,7 +420,7 @@ var mersenne = Object.assign(
   { fromState: fromState2 }
 );
 
-// ../../vendor/pure-rand/src/generator/XorShift.ts
+// vendor/pure-rand/src/generator/XorShift.ts
 var XorShift128Plus = class _XorShift128Plus {
   constructor(s01, s00, s11, s10) {
     this.s01 = s01;
@@ -493,7 +493,7 @@ var xorshift128plus = Object.assign(
   { fromState: fromState3 }
 );
 
-// ../../vendor/pure-rand/src/generator/XoroShiro.ts
+// vendor/pure-rand/src/generator/XoroShiro.ts
 var XoroShiro128Plus = class _XoroShiro128Plus {
   constructor(s01, s00, s11, s10) {
     this.s01 = s01;
@@ -566,7 +566,7 @@ var xoroshiro128plus = Object.assign(
   { fromState: fromState4 }
 );
 
-// ../../vendor/pure-rand/src/distribution/internals/UnsafeUniformIntDistributionInternal.ts
+// vendor/pure-rand/src/distribution/internals/UnsafeUniformIntDistributionInternal.ts
 function unsafeUniformIntDistributionInternal(rangeSize, rng) {
   const MaxAllowed = rangeSize > 2 ? ~~(4294967296 / rangeSize) * rangeSize : 4294967296;
   let deltaV = rng.unsafeNext() + 2147483648;
@@ -576,7 +576,7 @@ function unsafeUniformIntDistributionInternal(rangeSize, rng) {
   return deltaV % rangeSize;
 }
 
-// ../../vendor/pure-rand/src/distribution/internals/UnsafeUniformArrayIntDistributionInternal.ts
+// vendor/pure-rand/src/distribution/internals/UnsafeUniformArrayIntDistributionInternal.ts
 function unsafeUniformArrayIntDistributionInternal(out, rangeSize, rng) {
   const rangeLength = rangeSize.length;
   while (true) {
@@ -597,12 +597,12 @@ function unsafeUniformArrayIntDistributionInternal(out, rangeSize, rng) {
   }
 }
 
-// ../../vendor/pure-rand/src/distribution/UnsafeUniformBigIntDistribution.ts
+// vendor/pure-rand/src/distribution/UnsafeUniformBigIntDistribution.ts
 var One = typeof BigInt !== "undefined" ? BigInt(1) : void 0;
 var ThirtyTwo = typeof BigInt !== "undefined" ? BigInt(32) : void 0;
 var NumValues = typeof BigInt !== "undefined" ? BigInt(4294967296) : void 0;
 
-// ../../vendor/pure-rand/src/distribution/internals/ArrayInt64.ts
+// vendor/pure-rand/src/distribution/internals/ArrayInt64.ts
 function fromNumberToArrayInt64(out, n) {
   if (n < 0) {
     const posN = -n;
@@ -652,7 +652,7 @@ function substractArrayInt64(out, arrayIntA, arrayIntB) {
   return out;
 }
 
-// ../../vendor/pure-rand/src/distribution/UnsafeUniformIntDistribution.ts
+// vendor/pure-rand/src/distribution/UnsafeUniformIntDistribution.ts
 var safeNumberMaxSafeInteger = Number.MAX_SAFE_INTEGER;
 var sharedA = { sign: 1, data: [0, 0] };
 var sharedB = { sign: 1, data: [0, 0] };
@@ -678,7 +678,7 @@ function unsafeUniformIntDistribution(from, to, rng) {
   return uniformLargeIntInternal(from, to, rangeSize, rng);
 }
 
-// ../../vendor/parlour/engine/src/rng.ts
+// vendor/parlour/engine/src/rng.ts
 var UINT32 = 4294967296;
 var POW_2_53 = 9007199254740992;
 function isState(value) {
@@ -727,7 +727,7 @@ function makeRng(seed) {
   return rng;
 }
 
-// ../../vendor/parlour/engine/src/runtime.ts
+// vendor/parlour/engine/src/runtime.ts
 var MAX_AUTO_ROUNDS = 1e3;
 function canonical(value) {
   if (value === null || typeof value !== "object") {
@@ -987,7 +987,7 @@ function sessionApply(def, session, seat, moveId, payload, meta = {}) {
   return { events: cursor.events, fx: fx.events, session: next };
 }
 
-// ../../vendor/parlour/engine/src/config.ts
+// vendor/parlour/engine/src/config.ts
 function coerce(field, value) {
   switch (field.kind) {
     case "toggle":
@@ -1022,7 +1022,7 @@ function defineConfig(fields, presets = []) {
   };
 }
 
-// ../../vendor/parlour/tricks/src/index.ts
+// vendor/parlour/tricks/src/index.ts
 var TrickFx = {
   /** {seat, card, index} — one per card landing on the table */
   Play: "tricks.play",
@@ -1086,7 +1086,7 @@ function emitTrickCollect(fx, seat, cards) {
   fx.emit(TrickFx.Collect, { seat, cards: [...cards], count: cards.length });
 }
 
-// ../../vendor/parlour/game-hearts/src/cards.ts
+// vendor/parlour/game-hearts/src/cards.ts
 var SUIT_CLUBS = "clubs";
 var SUIT_HEARTS = "hearts";
 var SUIT_SPADES = "spades";
@@ -1154,7 +1154,7 @@ var orderHeartsHand = (cards, context) => stableCardOrder(cards, (left, right) =
   return rankKey(left) - rankKey(right) || left.localeCompare(right);
 });
 
-// ../../vendor/parlour/game-hearts/src/audit.ts
+// vendor/parlour/game-hearts/src/audit.ts
 function reconstructHands(finalHands, plays, seats, trickRules) {
   if (plays.length % seats !== 0) return null;
   const hands = finalHands.map((cards) => [...cards]);
@@ -1194,7 +1194,7 @@ function auditFollowSuit(finalHands, plays, seats, trickRules) {
   return [...disputed].sort((a, b) => a - b);
 }
 
-// ../../vendor/parlour/game-hearts/src/config.ts
+// vendor/parlour/game-hearts/src/config.ts
 var PASS_ROTATION_WITH_HOLD = ["left", "right", "across", "hold"];
 var PASS_ROTATION_PLAIN = ["left", "right", "across"];
 function passDirectionFor(handIndex, holdHand) {
@@ -1278,7 +1278,7 @@ var heartsConfigSchema = defineConfig(
   ]
 );
 
-// ../../vendor/parlour/game-hearts/src/bots/evaluate.ts
+// vendor/parlour/game-hearts/src/bots/evaluate.ts
 function cardsSeen(state) {
   const seen = /* @__PURE__ */ new Set();
   for (const pile of state.taken) for (const card of pile) seen.add(card);
@@ -1351,7 +1351,7 @@ function knownVoids(plays, seats) {
   return voids;
 }
 
-// ../../vendor/parlour/game-hearts/src/bots/shared.ts
+// vendor/parlour/game-hearts/src/bots/shared.ts
 function legalPlayCards(legal) {
   return legal.flatMap(
     (move) => move.id === "playCard" && typeof move.payload?.card === "string" ? [move.payload.card] : []
@@ -1463,7 +1463,7 @@ function suitLength(hand, card) {
   return hand.filter((other) => suitOfCard(other) === suit).length;
 }
 
-// ../../vendor/parlour/game-hearts/src/bots/easy.ts
+// vendor/parlour/game-hearts/src/bots/easy.ts
 var easyBot = {
   id: "hearts-easy",
   label: "Harmless",
@@ -1486,7 +1486,7 @@ var easyBot = {
   }
 };
 
-// ../../vendor/parlour/game-hearts/src/bots/hard.ts
+// vendor/parlour/game-hearts/src/bots/hard.ts
 var DEFAULT_HARD_PARAMS = {
   /**
    * Four points is the earliest hoarder trigger that never behaved like a
@@ -1587,7 +1587,7 @@ function pointWorth(card) {
   return card === QUEEN_SPADES ? 13 : 0;
 }
 
-// ../../vendor/parlour/game-hearts/src/bots/medium.ts
+// vendor/parlour/game-hearts/src/bots/medium.ts
 var mediumBot = {
   id: "hearts-medium",
   label: "Careful",
@@ -1610,7 +1610,7 @@ var mediumBot = {
   }
 };
 
-// ../../vendor/parlour/game-hearts/src/bots/index.ts
+// vendor/parlour/game-hearts/src/bots/index.ts
 var HEARTS_PERSONAS = [
   {
     id: "dove",
@@ -1656,7 +1656,7 @@ var HEARTS_PERSONAS = [
 var BY_ID = new Map(HEARTS_PERSONAS.map((persona) => [persona.id, persona]));
 var HEARTS_BOTS = [easyBot, mediumBot, hardBot];
 
-// ../../vendor/parlour/game-hearts/src/howto.ts
+// vendor/parlour/game-hearts/src/howto.ts
 var heartsHowToPlay = {
   summary: "The classic evasion game \u2014 take no hearts, dodge the Black Lady, and let someone else eat the points.",
   objective: "Finish the match with the lowest score. Every heart you capture costs 1 point and the queen of spades costs 13; when one player crosses the game-over threshold (100 by default) the lowest total wins.",
@@ -1716,7 +1716,7 @@ var heartsHowToPlay = {
   ]
 };
 
-// ../../vendor/parlour/game-hearts/src/scoring.ts
+// vendor/parlour/game-hearts/src/scoring.ts
 var MOON_POINTS = 26;
 function rawHandPoints(taken, jackDiamonds) {
   return taken.map((cards) => cards.reduce((sum, card) => sum + cardPoints(card, jackDiamonds), 0));
@@ -1780,12 +1780,12 @@ function handResult(points, taken, disputed) {
   };
 }
 
-// ../../vendor/parlour/game-hearts/src/state.ts
+// vendor/parlour/game-hearts/src/state.ts
 var HEARTS_SEATS = 4;
 var HAND_SIZE = 13;
 var TRICKS_PER_HAND = HAND_SIZE;
 
-// ../../vendor/parlour/game-hearts/src/game.ts
+// vendor/parlour/game-hearts/src/game.ts
 var GAME_ID = "hearts";
 var PASS_SIZE = 3;
 var DEAL_STAGGER_MS = 70;
@@ -2162,7 +2162,7 @@ var heartsGame = {
   bots: HEARTS_BOTS
 };
 
-// ../../vendor/parlour/game-hearts/src/catalog.ts
+// vendor/parlour/game-hearts/src/catalog.ts
 var heartsCatalog = defineGameCatalog({
   id: "hearts",
   gameId: "hearts",
@@ -2233,7 +2233,7 @@ var heartsCatalog = defineGameCatalog({
   ]
 });
 
-// service.mjs
+// tools/hearts/service.mjs
 var import_node_crypto = require("node:crypto");
 var import_node_readline = require("node:readline");
 var import_node_fs = require("node:fs");
@@ -2253,7 +2253,7 @@ function roster(room) {
   return room.players.map((p) => p ? { name: p.name, crew: p.crew || null, online: !!p.crew || Date.now() - p.seen < 15e3 } : null);
 }
 function cardFace(card) {
-  return `${{ 1: "A", 11: "J", 12: "Q", 13: "K" }[Number(card.slice(1))] || card.slice(1)}${{ C: "♣", D: "♦", S: "♠", H: "♥" }[card[0]] || ""}`;
+  return `${{ 1: "A", 11: "J", 12: "Q", 13: "K" }[Number(card.slice(1))] || card.slice(1)}${{ C: "\u2663", D: "\u2666", S: "\u2660", H: "\u2665" }[card[0]] || ""}`;
 }
 function publicContext(room) {
   const players = roster(room);
@@ -2292,13 +2292,19 @@ function sameMove(left, right) {
 }
 function trackDecision(room, seat, move, payload) {
   const legal = heartsGame.flow.legalMovesFor(room.session.state, room.session.phase, seat);
-  const reference = mediumBot.chooseMove(heartsGame.playerView(room.session.state, seat), seat, legal, makeRng(1), { thinkMs: () => 100 });
+  const reference = mediumBot.chooseMove(
+    heartsGame.playerView(room.session.state, seat),
+    seat,
+    legal,
+    makeRng(1),
+    { thinkMs: () => 100 }
+  );
   const actual = { id: move, payload };
   if (!legal.some((candidate) => sameMove(candidate, actual))) return;
   if (!reference || !sameMove(reference, actual)) {
     room.learning ||= {};
-    const profile = room.learning[seat] ||= { choices: 0, carefulChoices: 0 };
-    profile.choices++;
+    const profile2 = room.learning[seat] ||= { choices: 0, carefulChoices: 0 };
+    profile2.choices++;
     return;
   }
   room.learning ||= {};
@@ -2322,7 +2328,13 @@ function applyMove(room, seat, move, payload) {
   room.session = outcome.session;
   if (outcome.session.status === "ended") {
     room.history ||= [];
-    room.history.push({ hand: room.hand, tricks: outcome.session.state.tricksPlayed, heartsBroken: outcome.session.state.heartsBroken, points: outcome.session.state.handPoints, moonShooter: outcome.session.state.moonShooter });
+    room.history.push({
+      hand: room.hand,
+      tricks: outcome.session.state.tricksPlayed,
+      heartsBroken: outcome.session.state.heartsBroken,
+      points: outcome.session.state.handPoints,
+      moonShooter: outcome.session.state.moonShooter
+    });
     room.history = room.history.slice(-20);
     room.scores = room.scores.map((score, i) => score + outcome.session.state.handPoints[i]);
     room.finished = room.scores.some((score) => score >= 100);
@@ -2389,6 +2401,7 @@ function view(room, seat) {
 function handle(data) {
   if (!data || typeof data !== "object" || Array.isArray(data)) fail(400, "Expected a table request.");
   const { action } = data;
+  const requestLocale = String(data.locale || "").toLowerCase() === "fr-ca" ? "fr-CA" : "en";
   let room, seat, token;
   if (action === "list") return { tables: Object.values(rooms).filter((r) => Date.now() - r.touched < 864e5 && r.players.some((p) => p && !p.crew)).map((r) => ({
     id: r.code,
@@ -2426,6 +2439,7 @@ function handle(data) {
         players: [null, null, null, null],
         revision: 0,
         hand: 1,
+        locale: requestLocale,
         scores: [0, 0, 0, 0],
         ready: [],
         history: [],
@@ -2446,12 +2460,13 @@ function handle(data) {
     if (!room) fail(404, "Table not found. Create or join a table.");
     seat = room.players.findIndex((p) => p && !p.crew && typeof data.token === "string" && p.token === data.token);
     if (seat < 0) fail(403, "Your seat could not be found. Join the table again.");
+    room.locale = requestLocale;
     if (action === "poll") {
       room.players[seat].seen = Date.now();
       room.touched = Date.now();
       advanceCrew(room);
       const aiJob = tableAside(room);
-      return { ...view(room, seat), ...(aiJob ? { aiJob } : {}) };
+      return { ...view(room, seat), ...aiJob ? { aiJob } : {} };
     }
     if (action === "chat") {
       const text = typeof data.text === "string" ? data.text.trim() : "";
@@ -2465,7 +2480,11 @@ function handle(data) {
       room.aiPending = true;
       room.revision++;
       save();
-      return { ...view(room, seat), aiJob: { code: room.code, speakers, context: publicContext(room) } };
+      return { ...view(room, seat), aiJob: {
+        code: room.code,
+        speakers,
+        context: { ...publicContext(room), locale: requestLocale }
+      } };
     }
     if (action === "inviteCrew" || action === "setCrew") {
       if (room.session) fail(409, "Choose the crew before the deal.");

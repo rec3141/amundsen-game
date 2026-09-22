@@ -66,6 +66,9 @@ def reply(handle, context):
               "Cards appear as 5♠ or A♥; never use internal IDs such as S5. Do not output headings, lists, tables, plans, or tool chatter.")
     if aside and context.get('factRequested') and context.get('conversationTurn') == 1:
         context = {**context, 'underwayFact': table_fact(context['hand'])}
+    default_language = 'Canadian French' if str(context.get('locale', '')).lower().startswith('fr') else 'English'
+    system += (f" Reply in the language of the most recent human table message that clearly establishes one. "
+               f"If no recent human message establishes a language, use {default_language}, the language selected on the player's page.")
     messages = [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(context, ensure_ascii=False)}]
     if backend == 'openai':
         body = dict(model=model, messages=messages, stream=False, max_tokens=100,

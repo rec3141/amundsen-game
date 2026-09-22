@@ -122,7 +122,8 @@ export const game = {
       if (disposed) return;
       try {
         const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...credentials, action, revision: table?.revision, hand: table?.hand, ...extra }), signal: abort.signal });
+          body: JSON.stringify({ ...credentials, action, revision: table?.revision, hand: table?.hand,
+            locale: globalThis.UWI18n?.locale === 'fr-CA' ? 'fr-CA' : 'en', ...extra }), signal: abort.signal });
         const result = await response.json();
         if (!response.ok) {
           if ([403, 404].includes(response.status) && credentials) { credentials = null; table = null; remember(); lobby(); }

@@ -118,6 +118,7 @@ function view(room, seat) {
 function handle(data) {
   if (!data || typeof data !== 'object' || Array.isArray(data)) fail(400, 'Expected a table request.');
   const { action } = data;
+  const requestLocale = String(data.locale || '').toLowerCase() === 'fr-ca' ? 'fr-CA' : 'en';
   let room, seat, token;
   if (action === 'list') return { tables: Object.values(rooms).filter(r => Date.now() - r.touched < 86400000 && r.players.some(p => p && !p.crew)).map(r => ({
     id: r.code, game: 'hearts', name: `${r.players.find(p => p && !p.crew).name}'s table`,
@@ -140,7 +141,7 @@ function handle(data) {
       if (Object.keys(rooms).length >= 64) fail(429, 'All tables are occupied. Try again later.');
       let code;
       do { code = Array.from({ length: 5 }, () => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[randomInt(31)]).join(''); } while (rooms[code]);
-      room = rooms[code] = { code, players: [null, null, null, null], revision: 0, hand: 1,
+      room = rooms[code] = { code, players: [null, null, null, null], revision: 0, hand: 1, locale: requestLocale,
         scores: [0, 0, 0, 0], ready: [], history: [], finished: false, touched: Date.now() };
     } else {
       room = rooms[String(data.code).toUpperCase()];
@@ -156,6 +157,7 @@ function handle(data) {
     if (!room) fail(404, 'Table not found. Create or join a table.');
     seat = room.players.findIndex(p => p && !p.crew && typeof data.token === 'string' && p.token === data.token);
     if (seat < 0) fail(403, 'Your seat could not be found. Join the table again.');
+    room.locale = requestLocale;
     if (action === 'poll') {
       room.players[seat].seen = Date.now(); room.touched = Date.now();
       advanceCrew(room);
@@ -170,7 +172,8 @@ function handle(data) {
       const mentions = [...text.matchAll(/@(capn|doc|ada|polly|crew)\b/gi)].map(m => m[1].toLowerCase());
       const speakers = mentions.includes('crew') ? Object.keys(CREW) : mentions.length ? [...new Set(mentions)] : [room.players.find(p => p?.crew)?.crew || 'polly'];
       room.aiPending = true; room.revision++; save();
-      return { ...view(room, seat), aiJob: { code: room.code, speakers, context: publicContext(room) } };
+      return { ...view(room, seat), aiJob: { code: room.code, speakers,
+        context: { ...publicContext(room), locale: requestLocale } } };
     }
     if (action === 'inviteCrew' || action === 'setCrew') {
       if (room.session) fail(409, 'Choose the crew before the deal.');
