@@ -15,7 +15,7 @@ export const game = {
       <label>A → B <span data-distance></span><progress data-route max="65" value="0"></progress></label></div>
       <canvas data-sea tabindex="0" aria-label="Escort ice field. Steer with arrows or WASD, or drag on the chart. Space triggers a ram burst."></canvas>
       <div class="escort-bottom"><button data-start>Begin escort</button><button data-ram disabled>Ram · Space</button><button data-result hidden></button><p data-status role="status"></p></div>
-      <p class="escort-help">Steer the red Amundsen with WASD / arrows, or hold and drag on the water. Only your bow breaks ice: turn towards incoming floes. Space or Ram breaks a cluster ahead every 2.6 seconds. Keep clear of the other ship and watch the current arrows. Break amber floes until they turn blue, small enough for this ship to pass safely. Get the white ship from A to B.</p>
+      <p class="escort-help">Steer the red Amundsen with WASD / arrows, or hold and drag on the water. Your front half breaks ice: turn towards incoming floes. Space or Ram sweeps the forward half-circle every 2.6 seconds. Keep clear of the other ship and watch the current arrows. Break amber floes until they turn blue, small enough for this ship to pass safely. Ice keeps drifting after a hull impact. Get the white ship from A to B.</p>
     </section>`;
     const find = selector => root.querySelector(selector), canvas = find('[data-sea]'), ctx = canvas.getContext('2d');
     function readouts() {

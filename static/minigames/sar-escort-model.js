@@ -1,7 +1,7 @@
 import { casualtyFrom } from './crew-12-model.js';
 
 export const WIDTH = 900, HEIGHT = 520;
-export const BREAKER_SIZE = 25, BOW_HALF_ANGLE = Math.PI / 3, RAM_REACH = 90;
+export const BREAKER_SIZE = 25, BOW_HALF_ANGLE = Math.PI / 2, RAM_REACH = 90;
 export const VESSELS = [
   { kind: 'yacht', size: 18, iceClass: 'Unstrengthened', strength: 1, tolerance: 8 },
   { kind: 'fishing vessel', size: 24, iceClass: 'Light ice strengthening', strength: 1.2, tolerance: 10 },
@@ -81,10 +81,8 @@ function fracture(s, floe) {
 export function bowHitsFloe(breaker, floe, ram = false) {
   const dx = floe.x - breaker.x, dy = floe.y - breaker.y;
   const forward = dx * Math.cos(breaker.heading) + dy * Math.sin(breaker.heading);
-  const side = -dx * Math.sin(breaker.heading) + dy * Math.cos(breaker.heading);
-  if (forward <= BREAKER_SIZE * .35 || Math.abs(side) > forward * Math.tan(BOW_HALF_ANGLE)) return false;
-  return ram ? Math.hypot(dx, dy) < floe.r + RAM_REACH
-    : Math.hypot(forward - BREAKER_SIZE, side) < floe.r + 9;
+  if (forward < -1e-9) return false;
+  return Math.hypot(dx, dy) < floe.r + (ram ? RAM_REACH : BREAKER_SIZE + 9);
 }
 function separateShips(s) {
   // Circumscribed hull radii keep both painted hulls apart at every heading.
@@ -133,10 +131,13 @@ export function stepEscort(s, dt, input = {}) {
     if (danger && floe.grace <= 0 && bowHitsFloe(s.breaker, floe, ram)) {
       fracture(s, floe); continue;
     }
-    if (Math.hypot(floe.x - s.ship.x, floe.y - s.ship.y) < floe.r + s.vessel.size * .55) {
-      if (danger) { s.health = Math.max(0, s.health - Math.ceil((floe.r - s.vessel.tolerance) * .9)); s.hits++; s.flash = .3; }
-      continue;
-    }
+    const hullDistance = Math.hypot(floe.x - s.ship.x, floe.y - s.ship.y), contactRadius = floe.r + s.vessel.size * .55;
+    // Floes remain in the drift after impact. A continuous contact deals damage once;
+    // separation clears the contact, with a small margin to avoid edge chatter.
+    if (hullDistance < contactRadius) {
+      if (danger && !floe.contact) { s.health = Math.max(0, s.health - Math.ceil((floe.r - s.vessel.tolerance) * .9)); s.hits++; s.flash = .3; }
+      floe.contact = true;
+    } else if (hullDistance > contactRadius + 6) floe.contact = false;
     s.floes.push(floe);
   }
   for (const p of s.particles) { p.x += p.vx * dt; p.y += p.vy * dt; p.life -= dt; }
