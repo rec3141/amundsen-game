@@ -466,14 +466,14 @@ function updateUI() {
   updateActivities(); updateStores(); updateFuel(); updateEvents();
 }
 const activityButtons = new Map();
-const plannedCardGames = ['Cribbage', 'Euchre', 'Gin Rummy', 'Spades', 'Poker', 'Solitaire'].map(title => ({
+const plannedCardGames = ['Euchre', 'Gin Rummy', 'Spades', 'Poker', 'Solitaire'].map(title => ({
   id: title.toLowerCase().replaceAll(' ', '-'), title, description: 'Coming soon', key: '', upcoming: true,
 }));
 const HANDS = [
   { id: 'science', title: 'Ship & science', suit: '♣', cards: ['ctd', 'ice', 'net', 'seep', 'contaminants', 'plan'] },
   { id: 'arctic', title: 'Ice & exploration', suit: '♠', cards: ['patrol', 'wildlife', 'oldice', 'cliceify', 'heli', 'raft'] },
   { id: 'crew', title: 'Crew & adventure', suit: '♥', cards: ['sar', 'escort', 'wrecks', 'rivals', 'flood', 'neptune', 'inuktitut'] },
-  { id: 'cards', title: 'Card games', suit: '♦', cards: ['hearts', ...plannedCardGames.map(game => game.id)] },
+  { id: 'cards', title: 'Card games', suit: '♦', cards: ['hearts', 'cribbage', ...plannedCardGames.map(game => game.id)] },
 ];
 for (const hand of HANDS) {
   const section = document.createElement('section'), heading = document.createElement('h3'), row = document.createElement('div');
