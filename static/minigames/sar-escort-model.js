@@ -1,6 +1,7 @@
 import { casualtyFrom } from './crew-12-model.js';
 
 export const WIDTH = 900, HEIGHT = 520;
+export const BREAKER_SIZE = 25, BOW_HALF_ANGLE = Math.PI / 3, RAM_REACH = 90;
 export const VESSELS = [
   { kind: 'yacht', size: 18, iceClass: 'Unstrengthened', strength: 1, tolerance: 8 },
   { kind: 'fishing vessel', size: 24, iceClass: 'Light ice strengthening', strength: 1.2, tolerance: 10 },
@@ -15,7 +16,7 @@ export function escortPosition(route, progress) {
   return { x: route.a.x + dx * t + nx * curve, y: route.a.y + dy * t + ny * curve,
     heading: Math.atan2(dy + ny * turn, dx + nx * turn) };
 }
-export const DRIFT_HOLD_S = 20, DRIFT_TURN_S = 4;
+export const DRIFT_HOLD_S = 15, DRIFT_TURN_S = 4;
 export function driftHeading(s) {
   const cycle = DRIFT_HOLD_S + DRIFT_TURN_S;
   const leg = Math.min(s.drift.headings.length - 1, Math.floor(s.time / cycle));
@@ -77,6 +78,23 @@ function fracture(s, floe) {
     s.particles.push({ x: floe.x, y: floe.y, vx: Math.cos(a) * 65, vy: Math.sin(a) * 65, life: .45 });
   }
 }
+export function bowHitsFloe(breaker, floe, ram = false) {
+  const dx = floe.x - breaker.x, dy = floe.y - breaker.y;
+  const forward = dx * Math.cos(breaker.heading) + dy * Math.sin(breaker.heading);
+  const side = -dx * Math.sin(breaker.heading) + dy * Math.cos(breaker.heading);
+  if (forward <= BREAKER_SIZE * .35 || Math.abs(side) > forward * Math.tan(BOW_HALF_ANGLE)) return false;
+  return ram ? Math.hypot(dx, dy) < floe.r + RAM_REACH
+    : Math.hypot(forward - BREAKER_SIZE, side) < floe.r + 9;
+}
+function separateShips(s) {
+  // Circumscribed hull radii keep both painted hulls apart at every heading.
+  const clearance = Math.hypot(BREAKER_SIZE, BREAKER_SIZE * .4) + s.vessel.size * Math.hypot(1, .4) + 3;
+  const dx = s.breaker.x - s.ship.x, dy = s.breaker.y - s.ship.y, distance = Math.hypot(dx, dy);
+  if (distance >= clearance) return;
+  const angle = distance > 1e-6 ? Math.atan2(dy, dx) : s.ship.heading + Math.PI / 2;
+  s.breaker.x = s.ship.x + Math.cos(angle) * clearance;
+  s.breaker.y = s.ship.y + Math.sin(angle) * clearance;
+}
 export function stepEscort(s, dt, input = {}) {
   if (s.phase !== 'running') return;
   dt = clamp(dt, 0, .04);
@@ -91,10 +109,11 @@ export function stepEscort(s, dt, input = {}) {
   const distance = Math.hypot(dx, dy);
   if (distance) {
     const travel = Math.min(300 * dt, input.target && !input.x && !input.y ? distance : Infinity);
-    s.breaker.x = clamp(s.breaker.x + dx / distance * travel, 18, WIDTH - 18);
-    s.breaker.y = clamp(s.breaker.y + dy / distance * travel, 18, HEIGHT - 18);
+    s.breaker.x = clamp(s.breaker.x + dx / distance * travel, 27, WIDTH - 27);
+    s.breaker.y = clamp(s.breaker.y + dy / distance * travel, 27, HEIGHT - 27);
     s.breaker.heading = Math.atan2(dy, dx);
   }
+  separateShips(s);
   const ram = input.ram && s.cooldown === 0;
   if (ram) { s.cooldown = 2.6; s.pulse = .35; }
   s.spawn -= dt;
@@ -111,7 +130,7 @@ export function stepEscort(s, dt, input = {}) {
     floe.x += floe.vx * dt; floe.y += floe.vy * dt; floe.angle += floe.spin * dt; floe.grace -= dt;
     if (floe.x < -150 || floe.x > WIDTH + 150 || floe.y < -150 || floe.y > HEIGHT + 150) continue;
     const danger = floe.r > s.vessel.tolerance;
-    if (danger && floe.grace <= 0 && Math.hypot(floe.x - s.breaker.x, floe.y - s.breaker.y) < floe.r + (ram ? 82 : 22)) {
+    if (danger && floe.grace <= 0 && bowHitsFloe(s.breaker, floe, ram)) {
       fracture(s, floe); continue;
     }
     if (Math.hypot(floe.x - s.ship.x, floe.y - s.ship.y) < floe.r + s.vessel.size * .55) {

@@ -1,4 +1,4 @@
-import { WIDTH, HEIGHT, createEscort, stepEscort, escortScore, escortPosition, iceDrift } from './sar-escort-model.js';
+import { WIDTH, HEIGHT, BREAKER_SIZE, BOW_HALF_ANGLE, RAM_REACH, createEscort, stepEscort, escortScore, escortPosition, iceDrift } from './sar-escort-model.js';
 
 export const game = {
   title: 'SAR: Ice Escort',
@@ -15,7 +15,7 @@ export const game = {
       <label>A → B <span data-distance></span><progress data-route max="65" value="0"></progress></label></div>
       <canvas data-sea tabindex="0" aria-label="Escort ice field. Steer with arrows or WASD, or drag on the chart. Space triggers a ram burst."></canvas>
       <div class="escort-bottom"><button data-start>Begin escort</button><button data-ram disabled>Ram · Space</button><button data-result hidden></button><p data-status role="status"></p></div>
-      <p class="escort-help">Steer the red Amundsen with WASD / arrows, or hold and drag on the water. The pack drifts with shifting winds and currents: watch the arrows and clear the crossing ahead. Contact splits large floes; Space or Ram breaks a wider cluster every 2.6 seconds. Break amber floes until they turn blue, small enough for this ship to pass safely. Get the white ship from A to B.</p>
+      <p class="escort-help">Steer the red Amundsen with WASD / arrows, or hold and drag on the water. Only your bow breaks ice: turn towards incoming floes. Space or Ram breaks a cluster ahead every 2.6 seconds. Keep clear of the other ship and watch the current arrows. Break amber floes until they turn blue, small enough for this ship to pass safely. Get the white ship from A to B.</p>
     </section>`;
     const find = selector => root.querySelector(selector), canvas = find('[data-sea]'), ctx = canvas.getContext('2d');
     function readouts() {
@@ -105,8 +105,11 @@ export const game = {
       ship(state.ship.x, state.ship.y, state.vessel.size, state.ship.heading, state.flash ? '#ff706d' : '#fff2d7');
       ctx.fillStyle = '#243d46'; ctx.fillRect(state.ship.x - 30, state.ship.y - state.vessel.size - 14, 60, 5);
       ctx.fillStyle = state.health / state.maxHealth > .3 ? '#79e0b5' : '#ff706d'; ctx.fillRect(state.ship.x - 30, state.ship.y - state.vessel.size - 14, 60 * state.health / state.maxHealth, 5);
-      ship(state.breaker.x, state.breaker.y, 25, state.breaker.heading, '#f26451');
-      if (state.pulse) { ctx.beginPath(); ctx.arc(state.breaker.x, state.breaker.y, 82 * (1 - state.pulse / .4), 0, Math.PI * 2); ctx.strokeStyle = '#fff1af'; ctx.lineWidth = 3; ctx.stroke(); }
+      ship(state.breaker.x, state.breaker.y, BREAKER_SIZE, state.breaker.heading, '#f26451');
+      ctx.save(); ctx.translate(state.breaker.x, state.breaker.y); ctx.rotate(state.breaker.heading);
+      ctx.strokeStyle = '#fff1af'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(BREAKER_SIZE * .6, -5); ctx.lineTo(BREAKER_SIZE, 0); ctx.lineTo(BREAKER_SIZE * .6, 5); ctx.stroke();
+      if (state.pulse) { ctx.beginPath(); ctx.moveTo(0, 0); ctx.arc(0, 0, RAM_REACH * (1 - state.pulse / .4), -BOW_HALF_ANGLE, BOW_HALF_ANGLE); ctx.closePath(); ctx.stroke(); }
+      ctx.restore();
       if (state.phase !== 'running') {
         ctx.fillStyle = '#08212bc9'; ctx.fillRect(180, 170, 540, 100); ctx.fillStyle = '#fff'; ctx.font = 'bold 25px system-ui';
         ctx.fillText(state.phase === 'ready' ? 'A ship. A passage. Ice everywhere.' : state.phase === 'won' ? 'SAFE IN SHELTER' : 'HULL LOST', WIDTH / 2, 215);
