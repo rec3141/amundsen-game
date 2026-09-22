@@ -54,8 +54,10 @@ export function createEscort(sar, random = Math.random) {
 }
 function addFloe(s, x, y) {
   const rand = s.random, flow = iceDrift(s, x, y), slip = .9 + rand() * .2;
+  // Equal starting-to-safe radius ratios give every hull the same number of splitting rounds.
+  const radius = (23 + rand() * 29) * s.vessel.tolerance / 14;
   s.floes.push({ x, y, vx: flow.x * slip, vy: flow.y * slip, slip,
-    r: 23 + rand() * 29, angle: rand() * 6.28, spin: (rand() - .5) * .6, grace: 0 });
+    r: radius, angle: rand() * 6.28, spin: (rand() - .5) * .6, grace: 0 });
 }
 export function spawnFloe(s) {
   const flow = iceDrift(s), across = Math.abs(flow.x) * HEIGHT, along = Math.abs(flow.y) * WIDTH;
