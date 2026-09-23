@@ -69,10 +69,23 @@ def chat_worker():
                 if index:
                     context['replyTo'] = job['context']['chat'][-1]
                 text = crew_chat.reply(handle, context)
+                earlier = [message['text'] for message in job['context']['chat']
+                           if message.get('crew') and message.get('turnReply')]
+                if earlier and any(crew_chat.reply_similarity(text, prior) >= 0.72 for prior in earlier):
+                    retry_context = {**context,
+                                     'distinctReplyRequired': ('Your draft repeated an earlier answer to this turn. Add a new '
+                                                               'card-table observation in your own voice without reusing its '
+                                                               'opening or sentence structure. If there is nothing new to add, '
+                                                               'reply with exactly NO DISTINCT CONTRIBUTION.')}
+                    text = crew_chat.reply(handle, retry_context, temperature=1.2)
+                    if text.strip().upper() == 'NO DISTINCT CONTRIBUTION' or any(
+                            crew_chat.reply_similarity(text, prior) >= 0.72 for prior in earlier):
+                        text = ''
                 name = crew_chat.PERSONAS[handle]['name']
                 _request({'action': 'crewReply', 'code': job['code'], 'name': name,
                           'crew': handle, 'text': text, 'done': index == len(job['speakers']) - 1})
-                job['context']['chat'].append({'name': name, 'text': text})
+                if text:
+                    job['context']['chat'].append({'name': name, 'text': text, 'crew': handle, 'turnReply': True})
         except Exception:
             _request({'action': 'crewReply', 'code': job['code'], 'name': 'Table',
                       'text': 'The crew conversation is unavailable. Try again in a moment.', 'done': True})

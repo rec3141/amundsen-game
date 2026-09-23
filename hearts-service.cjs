@@ -2416,7 +2416,7 @@ function handle(data) {
     room = rooms[data.code];
     if (!room) return {};
     room.chat ||= [];
-    room.chat.push({ name: data.name, text: data.text, crew: data.crew || null });
+    if (data.text) room.chat.push({ name: data.name, text: data.text, crew: data.crew || null });
     room.chat = room.chat.slice(-40);
     room.aiPending = !data.done;
     room.revision++;

@@ -1,5 +1,7 @@
 """Table conversation through the ship's resident chat model, using public play only."""
 import json
+import re
+from difflib import SequenceMatcher
 from pathlib import Path
 import urllib.request
 
@@ -13,6 +15,20 @@ HEARTS_VOICES = {
     'ada': "Amundsen's dry, perceptive librarian, fond of a precise historical detail when it genuinely fits.",
     'polly': "The ship's cheeky parrot: brief, playful, and occasionally squawks.",
 }
+
+
+def reply_similarity(left, right):
+    """Measure repeated prose while ignoring punctuation and card notation."""
+    def normalized(text):
+        return re.sub(r'[^a-z0-9\u00c0-\u024f]+', ' ', text.lower()).strip()
+
+    a, b = normalized(left), normalized(right)
+    if not a or not b:
+        return 0.0
+    sequence = SequenceMatcher(None, a, b, autojunk=False).ratio()
+    a_words, b_words = set(a.split()), set(b.split())
+    containment = len(a_words & b_words) / min(len(a_words), len(b_words))
+    return max(sequence, containment)
 
 
 def fetch(url, body=None, timeout=5):
@@ -35,7 +51,7 @@ def table_fact(hand):
     return facts[(hand - 1) % len(facts)]
 
 
-def reply(handle, context):
+def reply(handle, context, temperature=0.9):
     config = json.loads(CONFIG.read_text()) if CONFIG.exists() else {}
     backend = config.get('api', 'ollama')
     url = config.get('url', 'http://127.0.0.1:11434').rstrip('/')
@@ -72,12 +88,12 @@ def reply(handle, context):
     messages = [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(context, ensure_ascii=False)}]
     if backend == 'openai':
         body = dict(model=model, messages=messages, stream=False, max_tokens=100,
-                    temperature=0.65, chat_template_kwargs={'enable_thinking': False})
+                    temperature=temperature, chat_template_kwargs={'enable_thinking': False})
         result = fetch(url + '/v1/chat/completions', body, timeout=90)
         text = result['choices'][0]['message'].get('content', '')
     elif backend == 'ollama':
         body = dict(model=model, messages=messages, stream=False, think=False, keep_alive=-1,
-                    options={'num_predict': 100, 'num_ctx': 8192, 'temperature': 0.65})
+                    options={'num_predict': 100, 'num_ctx': 8192, 'temperature': temperature})
         text = fetch(url + '/api/chat', body, timeout=90).get('message', {}).get('content', '')
     else:
         raise RuntimeError('The crew conversation backend is unavailable.')
