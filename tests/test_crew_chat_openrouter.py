@@ -1,4 +1,5 @@
 """The card-table crew talk through OpenRouter when the dashboard's settings give them a key."""
+import io
 import os
 from pathlib import Path
 import sys
@@ -47,6 +48,21 @@ class OpenRouterTests(unittest.TestCase):
             with self.assertRaises(Exception):
                 crew_chat.reply(self.handle, CONTEXT)
         self.assertNotIn('openrouter', self.sent[0][0])
+
+    def test_mandatory_reasoning_retries_at_low_effort(self):
+        import urllib.error
+        calls = []
+
+        def fetch(url, body=None, timeout=5, headers=None):
+            calls.append(dict(body['reasoning']))
+            if body['reasoning'] == {'enabled': False}:
+                raise urllib.error.HTTPError(url, 400, 'Bad Request', {}, io.BytesIO(
+                    b'{"error":{"message":"Reasoning is mandatory for this endpoint and cannot be disabled."}}'))
+            return ANSWER
+
+        with patch.dict(os.environ, {'OPENROUTER_API_KEY': 'k'}, clear=False), patch.object(crew_chat, 'fetch', fetch):
+            self.assertEqual(crew_chat.reply(self.handle, CONTEXT), 'Hearts are trumps today.')
+        self.assertEqual(calls, [{'enabled': False}, {'effort': 'low'}])
 
 if __name__ == '__main__':
     unittest.main()

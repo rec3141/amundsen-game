@@ -4,6 +4,7 @@ import os
 import re
 from difflib import SequenceMatcher
 from pathlib import Path
+import urllib.error
 import urllib.request
 
 PERSONAS = json.loads((Path(__file__).parent / 'crew-personas.json').read_text())
@@ -100,7 +101,16 @@ def reply(handle, context, temperature=0.9):
     if backend == 'openrouter':
         body = dict(model=model, messages=messages, stream=False, max_tokens=100,
                     temperature=temperature, reasoning={'enabled': False})
-        text = fetch(url + '/v1/chat/completions', body, timeout=90, headers=headers)['choices'][0]['message'].get('content') or ''
+        try:
+            result = fetch(url + '/v1/chat/completions', body, timeout=90, headers=headers)
+        except urllib.error.HTTPError as e:
+            # a model whose reasoning is mandatory (Gemini 3) refuses enabled:false; its
+            # lowest effort reasons little or not at all
+            if e.code != 400 or 'mandatory' not in e.read().decode('utf-8', 'replace'):
+                raise
+            body['reasoning'] = {'effort': 'low'}
+            result = fetch(url + '/v1/chat/completions', body, timeout=90, headers=headers)
+        text = result['choices'][0]['message'].get('content') or ''
     elif backend == 'openai':
         body = dict(model=model, messages=messages, stream=False, max_tokens=100,
                     temperature=temperature, chat_template_kwargs={'enable_thinking': False})
