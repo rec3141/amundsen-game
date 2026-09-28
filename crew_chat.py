@@ -1,5 +1,6 @@
 """Table conversation through the ship's resident chat model, using public play only."""
 import json
+import os
 import re
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -31,9 +32,9 @@ def reply_similarity(left, right):
     return max(sequence, containment)
 
 
-def fetch(url, body=None, timeout=5):
+def fetch(url, body=None, timeout=5, headers=None):
     request = urllib.request.Request(url, data=json.dumps(body).encode() if body else None,
-                                     headers={'Content-Type': 'application/json'})
+                                     headers={'Content-Type': 'application/json', **(headers or {})})
     with urllib.request.urlopen(request, timeout=timeout) as response:
         return json.load(response)
 
@@ -52,15 +53,24 @@ def table_fact(hand):
 
 
 def reply(handle, context, temperature=0.9):
-    config = json.loads(CONFIG.read_text()) if CONFIG.exists() else {}
-    backend = config.get('api', 'ollama')
-    url = config.get('url', 'http://127.0.0.1:11434').rstrip('/')
-    model = config.get('model', 'gemma4-local')
-    # Read the resident model inventory; conversation must not load a model onto the shared GPU.
-    inventory = fetch(url + ('/v1/models' if backend == 'openai' else '/api/ps'))
-    names = [item.get('id', item.get('name', '')) for item in inventory.get('data', inventory.get('models', []))]
-    if not any(name == model or name.split(':')[0] == model.split(':')[0] for name in names):
-        raise RuntimeError('The crew conversation model is not available.')
+    # With an OpenRouter key (the underway dashboard's settings page writes OPENROUTER_GAME_KEY,
+    # or the shared OPENROUTER_API_KEY) the crew talk through OpenRouter; otherwise through the
+    # ship's local model, which conversation must never load onto the shared GPU.
+    key = (os.environ.get('OPENROUTER_GAME_KEY') or os.environ.get('OPENROUTER_API_KEY') or '').strip()
+    headers = {}
+    if key:
+        backend, url, headers = 'openrouter', 'https://openrouter.ai/api', {'Authorization': f'Bearer {key}'}
+        model = (os.environ.get('OPENROUTER_GAME_MODEL') or 'google/gemma-4-26b-a4b-it').strip()
+    else:
+        config = json.loads(CONFIG.read_text()) if CONFIG.exists() else {}
+        backend = config.get('api', 'ollama')
+        url = config.get('url', 'http://127.0.0.1:11434').rstrip('/')
+        model = config.get('model', 'gemma4-local')
+        # Read the resident model inventory before asking.
+        inventory = fetch(url + ('/v1/models' if backend == 'openai' else '/api/ps'))
+        names = [item.get('id', item.get('name', '')) for item in inventory.get('data', inventory.get('models', []))]
+        if not any(name == model or name.split(':')[0] == model.split(':')[0] for name in names):
+            raise RuntimeError('The crew conversation model is not available.')
     persona = PERSONAS[handle]
     aside = bool(context.get('aside'))
     if aside and context.get('conversationTurn') == 1:
@@ -86,7 +96,11 @@ def reply(handle, context, temperature=0.9):
     system += (f" Reply in the language of the most recent human table message that clearly establishes one. "
                f"If no recent human message establishes a language, use {default_language}, the language selected on the player's page.")
     messages = [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(context, ensure_ascii=False)}]
-    if backend == 'openai':
+    if backend == 'openrouter':
+        body = dict(model=model, messages=messages, stream=False, max_tokens=100,
+                    temperature=temperature, reasoning={'enabled': False})
+        text = fetch(url + '/v1/chat/completions', body, timeout=90, headers=headers)['choices'][0]['message'].get('content') or ''
+    elif backend == 'openai':
         body = dict(model=model, messages=messages, stream=False, max_tokens=100,
                     temperature=temperature, chat_template_kwargs={'enable_thinking': False})
         result = fetch(url + '/v1/chat/completions', body, timeout=90)
