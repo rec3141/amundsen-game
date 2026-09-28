@@ -22,9 +22,8 @@ class OpenRouterTests(unittest.TestCase):
         return ANSWER
 
     def test_key_sends_to_openrouter_with_the_model(self):
-        env = {'OPENROUTER_API_KEY': 'sk-shared', 'OPENROUTER_GAME_MODEL': 'some/model'}
+        env = {'OPENROUTER_API_KEY': 'sk-shared', 'OPENROUTER_MODEL': 'some/model'}
         with patch.dict(os.environ, env, clear=False), patch.object(crew_chat, 'fetch', self.fake_fetch):
-            os.environ.pop('OPENROUTER_GAME_KEY', None)
             self.assertEqual(crew_chat.reply(self.handle, CONTEXT), 'Hearts are trumps today.')
         url, body, headers = self.sent[-1]
         self.assertEqual(url, 'https://openrouter.ai/api/v1/chat/completions')
@@ -33,15 +32,21 @@ class OpenRouterTests(unittest.TestCase):
         self.assertNotIn('chat_template_kwargs', body)
         self.assertEqual(len(self.sent), 1, 'no local inventory check on the OpenRouter route')
 
-    def test_own_key_wins_and_model_defaults_to_gemma(self):
-        env = {'OPENROUTER_API_KEY': 'sk-shared', 'OPENROUTER_GAME_KEY': 'sk-game'}
-        with patch.dict(os.environ, env, clear=False), patch.object(crew_chat, 'fetch', self.fake_fetch):
-            os.environ.pop('OPENROUTER_GAME_MODEL', None)
+    def test_model_defaults_to_gemini_flash(self):
+        with patch.dict(os.environ, {'OPENROUTER_API_KEY': 'sk-dash'}, clear=False), \
+                patch.object(crew_chat, 'fetch', self.fake_fetch):
+            os.environ.pop('OPENROUTER_MODEL', None)
             crew_chat.reply(self.handle, CONTEXT)
         _, body, headers = self.sent[-1]
-        self.assertEqual(headers['Authorization'], 'Bearer sk-game')
-        self.assertEqual(body['model'], 'google/gemma-4-26b-a4b-it')
+        self.assertEqual(headers['Authorization'], 'Bearer sk-dash')
+        self.assertEqual(body['model'], 'google/gemini-3.8-flash')
 
+    def test_no_key_keeps_the_local_model(self):
+        with patch.dict(os.environ, {}, clear=False), patch.object(crew_chat, 'fetch', self.fake_fetch):
+            os.environ.pop('OPENROUTER_API_KEY', None)
+            with self.assertRaises(Exception):
+                crew_chat.reply(self.handle, CONTEXT)
+        self.assertNotIn('openrouter', self.sent[0][0])
 
 if __name__ == '__main__':
     unittest.main()
