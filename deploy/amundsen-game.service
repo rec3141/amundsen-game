@@ -5,6 +5,8 @@ After=network.target
 [Service]
 WorkingDirectory=/data/dev/amundsen-game
 ExecStart=/usr/bin/python3 /data/dev/amundsen-game/server.py --host 127.0.0.1 --port 8050
+# the underway dashboard's secrets: its OpenRouter key and model for the card-table crew
+EnvironmentFile=-%h/.config/underway/underway.env
 Environment=AMUNDSEN_HEARTS_NODE=/home/cryomics/.nvm/versions/node/v22.22.2/bin/node
 Restart=on-failure
 RestartSec=3

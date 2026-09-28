@@ -53,14 +53,15 @@ def table_fact(hand):
 
 
 def reply(handle, context, temperature=0.9):
-    # With an OpenRouter key (the underway dashboard's settings page writes OPENROUTER_GAME_KEY,
-    # or the shared OPENROUTER_API_KEY) the crew talk through OpenRouter; otherwise through the
-    # ship's local model, which conversation must never load onto the shared GPU.
-    key = (os.environ.get('OPENROUTER_GAME_KEY') or os.environ.get('OPENROUTER_API_KEY') or '').strip()
+    # With the underway dashboard's OpenRouter key (its settings page writes OPENROUTER_API_KEY
+    # and OPENROUTER_MODEL, shared by the chat crew and the rest) the crew talk through
+    # OpenRouter; otherwise through the ship's local model, which conversation must never
+    # load onto the shared GPU.
+    key = (os.environ.get('OPENROUTER_API_KEY') or '').strip()
     headers = {}
     if key:
         backend, url, headers = 'openrouter', 'https://openrouter.ai/api', {'Authorization': f'Bearer {key}'}
-        model = (os.environ.get('OPENROUTER_GAME_MODEL') or 'google/gemma-4-26b-a4b-it').strip()
+        model = (os.environ.get('OPENROUTER_MODEL') or 'google/gemini-3.8-flash').strip()
     else:
         config = json.loads(CONFIG.read_text()) if CONFIG.exists() else {}
         backend = config.get('api', 'ollama')
