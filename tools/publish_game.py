@@ -56,7 +56,9 @@ RemoveEncoding .gz
         if args.stage_only:
             return
         # The same grid lock protects the dashboard's scheduled mirror deployment.
-        run('rsync', '-az', '--delete-delay', '--delay-updates', '--timeout=120',
+        # The remote rsync starts only once flock has the lock, and sends nothing
+        # while it waits, so the I/O timeout must outlast the lock wait.
+        run('rsync', '-az', '--delete-delay', '--delay-updates', '--timeout=900',
             '-e', 'ssh -o BatchMode=yes -o ConnectTimeout=15',
             '--rsync-path=flock -w 600 /data/underway_server/.publish.lock rsync',
             str(SHIP_COPY) + '/', f'grid:{GRID_COPY}/')
