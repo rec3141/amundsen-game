@@ -16,6 +16,8 @@ User systemd units in `deploy/` are installed and enabled for `cryomics`.
 User lingering is enabled on this workstation, so the server starts at boot.
 The route timer checks every 30 seconds and restores only the identified game
 route after Caddy reloads. It preserves the dashboard and live-sampling routes.
+`amundsen-game-publish.timer` runs `tools/publish_game.py` every five minutes,
+mirroring committed game updates into grid's underway web root.
 Caddy's root-owned file is not modified. A saved pre-game route snapshot is in
 `runtime/caddy-before-game.json`; do not restore it wholesale over later changes.
 
@@ -28,6 +30,7 @@ XDG_RUNTIME_DIR=/run/user/1000 journalctl --user -u amundsen-game.service -n 30
 To stop and remove this deployment:
 
 ```sh
+XDG_RUNTIME_DIR=/run/user/1000 systemctl --user disable --now amundsen-game-publish.timer
 XDG_RUNTIME_DIR=/run/user/1000 systemctl --user disable --now amundsen-game-route.timer
 XDG_RUNTIME_DIR=/run/user/1000 systemctl --user stop amundsen-game-route.service
 python3 deploy/route.py --remove
